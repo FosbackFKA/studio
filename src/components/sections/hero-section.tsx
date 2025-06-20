@@ -21,7 +21,7 @@ const promoItems: PromoItem[] = [
     actionText: 'Handle nå',
     href: '#',
     imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'grass trimmer person',
+    dataAiHint: 'sale offer discount',
   },
   {
     superTitle: 'Få en frodig og lettstelt hage',
@@ -31,18 +31,18 @@ const promoItems: PromoItem[] = [
     dataAiHint: 'robotic lawnmower grass',
   },
   {
-    superTitle: 'Stort utvalg for de fleste formål',
-    title: 'Tilhengere',
+    superTitle: 'Optimalt for dine vekster',
+    title: 'Gjødsel og plantevern',
     href: '#',
     imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'car trailer yard waste',
+    dataAiHint: 'fertilizer plant care',
   },
   {
-    superTitle: 'Alt du trenger til katten din',
-    title: 'Katteutstyr',
+    superTitle: 'Skap din drømmeuteplass',
+    title: 'Hagemøbler',
     href: '#',
     imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'cat pet door',
+    dataAiHint: 'garden furniture patio',
   },
 ];
 
@@ -59,16 +59,14 @@ export function HeroSection() {
           quality={80}
           priority
         />
-        <div className="absolute inset-0 bg-black/30" /> {/* Dark overlay for text contrast */}
-        
         {/* Text Content - Centered and Constrained */}
         <div className="container mx-auto px-4 h-full">
-          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
-            <h1 className="mb-2 font-headline text-4xl font-bold md:text-5xl lg:text-6xl">
+          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center">
+            <h1 className="mb-2 font-headline text-4xl font-bold text-primary md:text-5xl lg:text-6xl">
               Sommer i hver krukke og bed!
             </h1>
-            <p className="max-w-xl text-lg md:text-xl">
-              Hos oss får du alt du trenger for en grønn og frodig sommer.
+            <p className="max-w-xl text-lg text-secondary-foreground md:text-xl">
+              Utstyret som gir deg grønne fingre og uteglede fra morgen til kveld.
             </p>
           </div>
         </div>
