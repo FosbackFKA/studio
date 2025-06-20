@@ -11,6 +11,13 @@ import { ChevronRight } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { getProductsFromFeed } from '@/lib/product-data';
 
+// Import new sections
+import { FeaturedLinksSection } from '@/components/sections/featured-links-section';
+import { CampaignsSection } from '@/components/sections/campaigns-section';
+import { PopularCategoriesSection } from '@/components/sections/popular-categories-section';
+import { ArticlesSection } from '@/components/sections/articles-section';
+
+
 const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
 
 export default async function HomePage() {
@@ -23,8 +30,11 @@ export default async function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
-      <HeroSection />
+      
       <main className="flex-grow">
+        <HeroSection />
+        <FeaturedLinksSection />
+        <CampaignsSection />
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto px-4 max-w-[1542px]">
@@ -61,6 +71,8 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        <PopularCategoriesSection />
 
         <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto px-4 max-w-[1542px]">
@@ -205,6 +217,8 @@ export default async function HomePage() {
           </div>
         </section>
 
+        <ArticlesSection />
+
         <section className="relative h-[300px] w-full md:h-[400px]">
            <Image
             src="https://placehold.co/1600x400.png"
@@ -228,5 +242,3 @@ export default async function HomePage() {
     </div>
   );
 }
-
-    

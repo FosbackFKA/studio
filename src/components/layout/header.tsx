@@ -9,7 +9,8 @@ import { User, ShoppingCart, Search, Menu as MenuIcon, MapPin } from 'lucide-rea
 export function HeaderComponent() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      {/* Top Bar: Privat/Bonde */}
+      {/* Top Bar Removed for B2C focus */}
+      {/* 
       <div className="container mx-auto px-4 py-1.5 max-w-[1542px]">
         <div className="flex justify-start">
           <div className="flex items-center space-x-1">
@@ -29,6 +30,7 @@ export function HeaderComponent() {
           </div>
         </div>
       </div>
+      */}
 
       {/* Main Header Content */}
       <div className="container mx-auto flex h-16 items-center justify-between px-4 max-w-[1542px]">

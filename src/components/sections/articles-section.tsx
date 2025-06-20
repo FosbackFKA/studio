@@ -33,7 +33,7 @@ const articles = [
 export function ArticlesSection() {
   return (
     <section className="py-12 lg:py-16 bg-secondary">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1542px]">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="font-headline text-3xl font-bold">Nyttige artikler og guider</h2>
           <Button variant="link" asChild className="text-primary hover:underline">

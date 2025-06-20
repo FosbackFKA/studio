@@ -14,8 +14,8 @@ const categories = [
 
 export function PopularCategoriesSection() {
   return (
-    <section className="py-12 lg:py-16">
-      <div className="container mx-auto px-4">
+    <section className="py-12 lg:py-16 bg-background">
+      <div className="container mx-auto px-4 max-w-[1542px]">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="font-headline text-3xl font-bold">Populære kategorier</h2>
            <Button variant="link" asChild className="text-primary hover:underline">

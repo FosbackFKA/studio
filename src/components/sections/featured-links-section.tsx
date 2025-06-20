@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Package, Home, ShieldCheck, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -12,7 +13,7 @@ const features = [
 export function FeaturedLinksSection() {
   return (
     <section className="bg-secondary py-8 lg:py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1542px]">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
             <Link href={feature.href} key={feature.title} className="group">
