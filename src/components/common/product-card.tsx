@@ -1,42 +1,49 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle as ShadCardTitle } from '@/components/ui/card'; // Renamed CardTitle to avoid conflict
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import type { Product } from '@/types/product';
 
-interface ProductCardProps {
-  title: string;
-  price: string;
-  originalPrice?: string;
-  imageUrl: string;
-  imageAlt: string;
-  productUrl: string;
-  badgeText?: string;
-  dataAiHint?: string;
-  subText?: string; // For text like "Champion" or "Stihl" under the title
+// Using a subset of Product props relevant for the card itself
+interface ProductCardProps extends Pick<Product, 
+  'title' | 
+  'price' | 
+  'imageUrl' | 
+  'productUrl'
+> {
+  salePrice?: Product['salePrice'];
+  brand?: Product['brand'];
+  imageAlt?: Product['imageAlt'];
+  badgeText?: Product['badgeText'];
+  dataAiHint?: Product['dataAiHint'];
 }
 
 export function ProductCard({
   title,
   price,
-  originalPrice,
+  salePrice,
   imageUrl,
   imageAlt,
   productUrl,
   badgeText,
   dataAiHint,
-  subText
+  brand,
 }: ProductCardProps) {
+  const displayPrice = salePrice || price;
+  const originalPrice = salePrice ? price : undefined; // Show main price as strikethrough if salePrice exists
+
   return (
     <Card className="group flex h-full transform flex-col overflow-hidden rounded-lg border-gray-200 bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg">
       <CardHeader className="relative p-0">
         <Link href={productUrl} className="block">
           <Image
             src={imageUrl}
-            alt={imageAlt}
-            width={300} // Adjusted size for better grid fit
-            height={225} // Adjusted size for better grid fit
-            className="h-48 w-full object-contain p-2 transition-transform duration-300 group-hover:scale-105" // Changed to object-contain
+            alt={imageAlt || title} // Use title as fallback for alt
+            width={300}
+            height={225}
+            className="h-48 w-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
             data-ai-hint={dataAiHint || "product agriculture"}
           />
         </Link>
@@ -52,9 +59,9 @@ export function ProductCard({
             {title}
           </Link>
         </h3>
-        {subText && <p className="mb-2 text-xs text-muted-foreground">{subText}</p>}
+        {brand && <p className="mb-2 text-xs text-muted-foreground">{brand}</p>}
         <div className="flex items-baseline space-x-2">
-          <p className="text-lg font-bold text-primary">{price}</p>
+          <p className="text-lg font-bold text-primary">{displayPrice}</p>
           {originalPrice && (
             <p className="text-sm text-muted-foreground line-through">{originalPrice}</p>
           )}
