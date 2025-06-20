@@ -10,7 +10,7 @@ export function HeaderComponent() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Top Bar */}
-      <div>
+      <div >
         <div className="container mx-auto flex h-10 items-center justify-start px-4 max-w-[1542px]">
           <div className="flex items-center space-x-1">
             <Button
@@ -43,7 +43,7 @@ export function HeaderComponent() {
             <Input
               type="search"
               placeholder="Søk"
-              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
+              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             />
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
@@ -80,7 +80,7 @@ export function HeaderComponent() {
           <Input
             type="search"
             placeholder="Søk"
-            className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
+            className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           />
           <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
         </div>
