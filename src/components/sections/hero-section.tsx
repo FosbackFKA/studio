@@ -16,8 +16,8 @@ interface PromoItem {
   title: string;
   actionText?: string;
   href: string;
-  imageUrl: StaticImageData | string; // Allow StaticImageData for local images
-  dataAiHint?: string; // Keep for potential fallbacks or other images
+  imageUrl: StaticImageData | string; 
+  dataAiHint?: string; 
 }
 
 const promoItems: PromoItem[] = [
@@ -27,28 +27,24 @@ const promoItems: PromoItem[] = [
     actionText: 'Handle nå',
     href: '#',
     imageUrl: forsidebilde1,
-    // dataAiHint: 'sale offer discount', // Removed as we use a specific image
   },
   {
     superTitle: 'Få en frodig og lettstelt hage',
     title: 'Robotgressklipper',
     href: '#',
     imageUrl: forsidebilde2,
-    // dataAiHint: 'robotic lawnmower grass', // Removed
   },
   {
-    superTitle: 'Optimalt for dine vekster',
-    title: 'Gjødsel og plantevern',
+    superTitle: 'Stort utvalg for de fleste formål',
+    title: 'Tilhengere',
     href: '#',
     imageUrl: forsidebilde3,
-    // dataAiHint: 'fertilizer plant care', // Removed
   },
   {
-    superTitle: 'Skap din drømmeuteplass',
-    title: 'Hagemøbler',
+    superTitle: 'Alt du trenger til katten din',
+    title: 'Katteutstyr',
     href: '#',
     imageUrl: forsidebilde4,
-    // dataAiHint: 'garden furniture patio', // Removed
   },
 ];
 
@@ -91,15 +87,14 @@ export function HeroSection() {
                     layout="fill"
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint={item.dataAiHint} // Keep in case imageUrl can sometimes be a string (placeholder)
                   />
                 </div>
                 {/* Text Overlay */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 text-left">
-                  {item.superTitle && <p className="text-xs text-white/90 mb-0.5">{item.superTitle}</p>}
-                  <h3 className="text-2xl font-bold text-yellow-300 group-hover:underline">{item.title}</h3>
+                  {item.superTitle && <p className="font-body text-xs text-white/90 mb-0.5">{item.superTitle}</p>}
+                  <h3 className="font-headline text-2xl font-bold text-yellow-300 group-hover:underline">{item.title}</h3>
                   {item.actionText && (
-                    <div className="mt-1 flex items-center text-sm font-medium text-white group-hover:underline">
+                    <div className="mt-1 flex items-center text-sm font-medium text-white group-hover:underline font-body">
                       {item.actionText}
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </div>
