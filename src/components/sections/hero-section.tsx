@@ -1,8 +1,8 @@
 
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import heroImage from '@/components/common/heroimage-blurrybg.png'; // Updated import
 
 const promoItems = [
   {
@@ -10,7 +10,7 @@ const promoItems = [
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
     dataAiHint: 'farming spring work',
-    bgColor: 'bg-green-700', // Example color, can be themed
+    bgColor: 'bg-green-700', 
   },
   {
     title: 'Robotgressklipper',
@@ -41,13 +41,13 @@ export function HeroSection() {
       <div className="container mx-auto px-4">
         <div className="relative mb-8 h-[300px] w-full md:h-[400px] lg:h-[350px]">
           <Image
-            src="https://placehold.co/1600x500.png" 
+            src={heroImage} // Use the imported image
             alt="Sommer i hver krukke og bed!"
             layout="fill"
             objectFit="cover"
             quality={80}
             priority
-            data-ai-hint="garden flowers summer"
+            // data-ai-hint removed as we are using a specific image
           />
           <div className="absolute inset-0 bg-black/30" />
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
