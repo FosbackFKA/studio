@@ -50,22 +50,22 @@ export function HeaderComponent() {
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <Button variant="ghost" className="hidden items-center px-2 text-sm font-medium hover:text-primary lg:flex">
+          <Button variant="ghost" className="hidden items-center px-2 text-sm font-medium text-primary hover:text-primary/90 lg:flex">
             <MapPin className="mr-1 h-5 w-5" />
             Velg min butikk
           </Button>
-          <Button variant="ghost" className="hidden items-center px-2 text-sm font-medium hover:text-primary lg:flex">
+          <Button variant="ghost" className="hidden items-center px-2 text-sm font-medium text-primary hover:text-primary/90 lg:flex">
             <ShoppingCart className="mr-1 h-5 w-5" />
             Handlekurv
           </Button>
           {/* Mobile specific icons */}
-          <Button variant="ghost" size="icon" aria-label="Velg butikk" className="lg:hidden">
+          <Button variant="ghost" size="icon" aria-label="Velg butikk" className="text-primary lg:hidden">
             <MapPin className="h-6 w-6" />
           </Button>
-          <Button variant="ghost" size="icon" aria-label="Handlekurv" className="relative lg:hidden">
+          <Button variant="ghost" size="icon" aria-label="Handlekurv" className="relative text-primary lg:hidden">
             <ShoppingCart className="h-6 w-6" />
           </Button>
-          <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Meny">
+          <Button variant="ghost" size="icon" className="lg:hidden text-primary" aria-label="Meny">
             <MenuIcon className="h-6 w-6" />
           </Button>
         </div>
@@ -90,5 +90,3 @@ export function HeaderComponent() {
     </header>
   );
 }
-
-    

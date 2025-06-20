@@ -3,19 +3,18 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const leftNavItems = [
-  { name: 'Hage og utemiljø', href: '#' },
+  { name: 'Hage og uterom', href: '#' },
   { name: 'Kjæledyr', href: '#' },
+  { name: 'Klær og sko', href: '#' },
+  { name: 'Hjem og fritid', href: '#' },
+  { name: 'Verktøy og redskap', href: '#' },
   { name: 'Skog og ved', href: '#' },
-  { name: 'Landbruk', href: '#' },
-  { name: 'Verksted og hus', href: '#' },
-  { name: 'Klær og fottøy', href: '#' },
 ];
 
 const rightNavItems = [
-  { name: 'Tilbud', href: '#', special: true },
-  { name: 'Tjenester', href: '#', special: false },
-  { name: 'Aktuelt', href: '#', special: false },
-  { name: 'Merkevarer', href: '#', special: false },
+  { name: 'Kampanjer', href: '#'},
+  { name: 'Lagersalg', href: '#'},
+  { name: 'Merkevarer', href: '#'},
 ];
 
 export function MainNavMenu() {
@@ -30,7 +29,7 @@ export function MainNavMenu() {
                   href={item.href}
                   className={cn(
                     "whitespace-nowrap px-3 py-2 text-sm font-medium hover:border-b-2 hover:border-primary",
-                    "text-foreground"
+                    "text-foreground" 
                   )}
                 >
                   {item.name}
@@ -44,8 +43,8 @@ export function MainNavMenu() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "whitespace-nowrap px-3 py-2 text-sm hover:border-b-2 hover:border-primary",
-                    item.special ? "font-semibold text-destructive" : "font-medium text-foreground"
+                    "whitespace-nowrap px-3 py-2 text-sm font-semibold hover:border-b-2 hover:border-primary",
+                    "text-primary" 
                   )}
                 >
                   {item.name}
@@ -58,5 +57,3 @@ export function MainNavMenu() {
     </nav>
   );
 }
-
-    
