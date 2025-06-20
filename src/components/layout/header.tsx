@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -21,7 +22,7 @@ export function HeaderComponent() {
             <Input
               type="search"
               placeholder="Søk etter produkter, tjenester og artikler"
-              className="h-10 w-full rounded-md border bg-gray-100 pl-10 pr-4 dark:bg-gray-800"
+              className="h-10 w-full rounded-md border bg-input pl-10 pr-4"
             />
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
@@ -53,7 +54,7 @@ export function HeaderComponent() {
           <Input
             type="search"
             placeholder="Søk etter produkter..."
-            className="h-10 w-full rounded-md border bg-gray-100 pl-10 pr-4 dark:bg-gray-800"
+            className="h-10 w-full rounded-md border bg-input pl-10 pr-4"
           />
           <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
         </div>

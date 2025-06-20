@@ -10,36 +10,36 @@ const promoItems = [
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
     dataAiHint: 'farming spring work',
-    bgColor: 'bg-green-700', 
+    bgColorClass: 'bg-primary', 
   },
   {
     title: 'Robotgressklipper',
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
     dataAiHint: 'robotic lawnmower',
-    bgColor: 'bg-green-700',
+    bgColorClass: 'bg-primary',
   },
   {
     title: 'Tilhengere',
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
     dataAiHint: 'trailer agriculture',
-    bgColor: 'bg-green-700',
+    bgColorClass: 'bg-primary',
   },
   {
     title: 'Alt fôret katten trenger',
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
     dataAiHint: 'cat food supplies',
-    bgColor: 'bg-green-700',
+    bgColorClass: 'bg-primary',
   },
 ];
 
 export function HeroSection() {
   return (
-    <section className="w-full bg-gray-100 dark:bg-gray-800">
+    <section className="w-full bg-background">
       {/* Hero Image Area - Full Width */}
-      <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px]"> {/* Adjusted height */}
+      <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px]">
         <Image
           src={heroImage}
           alt="Sommer i hver krukke og bed!"
@@ -69,7 +69,7 @@ export function HeroSection() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 relative z-20 mt-[-70px] mb-8">
           {promoItems.map((item) => (
             <Link href={item.href} key={item.title} className="group block">
-              <Card className={`overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg ${item.bgColor}`}>
+              <Card className={`overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg ${item.bgColorClass}`}>
                 <div className="relative h-40 w-full">
                   <Image
                     src={item.imageUrl}
@@ -81,7 +81,7 @@ export function HeroSection() {
                   />
                 </div>
                 <CardContent className="p-4 text-center">
-                  <CardTitle className="text-lg font-semibold text-white group-hover:underline">{item.title}</CardTitle>
+                  <CardTitle className="text-lg font-semibold text-primary-foreground group-hover:underline">{item.title}</CardTitle>
                 </CardContent>
               </Card>
             </Link>

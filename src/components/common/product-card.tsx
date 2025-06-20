@@ -35,7 +35,7 @@ export function ProductCard({
   const originalPrice = salePrice ? price : undefined; // Show main price as strikethrough if salePrice exists
 
   return (
-    <Card className="group flex h-full transform flex-col overflow-hidden rounded-lg border-gray-200 bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg">
+    <Card className="group flex h-full transform flex-col overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg">
       <CardHeader className="relative p-0">
         <Link href={productUrl} className="block">
           <Image

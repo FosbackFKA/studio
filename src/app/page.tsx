@@ -21,12 +21,12 @@ export default async function HomePage() {
   const saaingProducts = await getProductsFromFeed('saaing');
 
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-900">
+    <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
       <HeroSection />
       <main className="flex-grow">
         
-        <section className="py-8 lg:py-12">
+        <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Aktuelt akkurat nå</h2>
@@ -62,7 +62,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="py-8 lg:py-12 bg-white dark:bg-background">
+        <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-6">
                 <h2 className="font-headline text-2xl font-bold lg:text-3xl">Alt til kjæledyr</h2>
@@ -98,7 +98,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="py-8 lg:py-12 bg-gray-50 dark:bg-gray-900">
+        <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto px-4">
              <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-6">
                 <h2 className="font-headline text-2xl font-bold lg:text-3xl">Robotgressklippere</h2>
@@ -134,7 +134,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="py-8 lg:py-12 bg-white dark:bg-background">
+        <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Nødvendig utstyr til vanning i hagen</h2>
@@ -161,13 +161,13 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="py-8 lg:py-12 bg-gray-50 dark:bg-gray-900">
+        <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto px-4">
             <div className="flex flex-col overflow-hidden rounded-lg bg-card shadow-lg lg:flex-row">
               <div className="relative h-64 w-full lg:h-auto lg:w-1/2">
                 <Image src="https://placehold.co/800x600.png" alt="Perfekt plen" layout="fill" objectFit="cover" data-ai-hint="green lawn garden"/>
               </div>
-              <div className="flex w-full flex-col justify-center bg-green-700 p-6 text-white lg:w-1/2 lg:p-12">
+              <div className="flex w-full flex-col justify-center bg-[hsl(var(--secondary-foreground))] p-6 text-primary-foreground lg:w-1/2 lg:p-12">
                 <h2 className="font-headline text-3xl font-bold">Perfekt plen?</h2>
                 <p className="mt-2 mb-6 text-lg">Følg våre råd for gjødsling, kalking og pleie av plen.</p>
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground self-start">
@@ -178,7 +178,7 @@ export default async function HomePage() {
           </div>
         </section>
         
-        <section className="py-8 lg:py-12 bg-white dark:bg-background">
+        <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Hjelp til såing</h2>
