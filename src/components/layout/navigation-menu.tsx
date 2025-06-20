@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { name: 'Hage og utemiljø', href: '#' },
+  { name: 'Hage og uterom', href: '#' },
   { name: 'Kjæledyr', href: '#' },
   { name: 'Skog og ved', href: '#' },
-  { name: 'Landbruk', href: '#' },
-  { name: 'Verksted og hus', href: '#' },
+  { name: 'Verksted og redskap', href: '#' },
   { name: 'Klær og fottøy', href: '#' },
+  { name: 'Traktor og maskin', href: '#' },
+  { name: 'Landbruk', href: '#' },
   { name: 'Tilbud', href: '#', special: true },
   { name: 'Tjenester', href: '#' },
 ];
