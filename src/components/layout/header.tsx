@@ -10,7 +10,7 @@ export function HeaderComponent() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Top Bar */}
-      <div className="bg-card">
+      <div> {/* Fjernet bg-card her */}
         <div className="container mx-auto flex h-10 items-center justify-start px-4 max-w-[1542px]">
           <div className="flex items-center space-x-1">
             <Button
