@@ -17,7 +17,6 @@ interface PromoItem {
   actionText?: string;
   href: string;
   imageUrl: StaticImageData | string; 
-  dataAiHint?: string; 
 }
 
 const promoItems: PromoItem[] = [
@@ -91,7 +90,7 @@ export function HeroSection() {
                 </div>
                 {/* Text Overlay */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 text-left">
-                  {item.superTitle && <p className="font-body text-xs text-white/90 mb-0.5">{item.superTitle}</p>}
+                  {item.superTitle && <p className="font-body text-sm text-white mb-0.5">{item.superTitle}</p>}
                   <h3 className="font-headline text-2xl font-bold text-yellow-300 group-hover:underline">{item.title}</h3>
                   {item.actionText && (
                     <div className="mt-1 flex items-center text-sm font-medium text-white group-hover:underline font-body">
