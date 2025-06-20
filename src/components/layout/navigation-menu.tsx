@@ -22,7 +22,7 @@ export function MainNavMenu() {
     <nav className="bg-card">
       <div className="container mx-auto">
         <div className="flex h-12 items-center justify-between px-4">
-          <ul className="flex items-center space-x-1 overflow-x-auto">
+          <ul className="flex items-center space-x-1">
             {leftNavItems.map((item) => (
               <li key={item.name}>
                 <Link
