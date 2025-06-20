@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import heroImage from '@/components/common/heroimage-blurrybg.png'; // Updated import
+import heroImage from '@/components/common/heroimage-blurrybg.png';
 
 const promoItems = [
   {
@@ -37,19 +37,21 @@ const promoItems = [
 
 export function HeroSection() {
   return (
-    <section className="w-full bg-gray-100 dark:bg-gray-800 py-8">
-      <div className="container mx-auto px-4">
-        <div className="relative mb-8 h-[300px] w-full md:h-[400px] lg:h-[350px]">
-          <Image
-            src={heroImage} // Use the imported image
-            alt="Sommer i hver krukke og bed!"
-            layout="fill"
-            objectFit="cover"
-            quality={80}
-            priority
-            // data-ai-hint removed as we are using a specific image
-          />
-          <div className="absolute inset-0 bg-black/30" />
+    <section className="w-full bg-gray-100 dark:bg-gray-800">
+      {/* Hero Image Area - Full Width */}
+      <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px]"> {/* Adjusted height */}
+        <Image
+          src={heroImage}
+          alt="Sommer i hver krukke og bed!"
+          layout="fill"
+          objectFit="cover"
+          quality={80}
+          priority
+        />
+        <div className="absolute inset-0 bg-black/30" /> {/* Dark overlay for text contrast */}
+        
+        {/* Text Content - Centered and Constrained */}
+        <div className="container mx-auto px-4 h-full">
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
             <h1 className="mb-2 font-headline text-4xl font-bold md:text-5xl lg:text-6xl">
               Sommer i hver krukke og bed!
@@ -59,8 +61,12 @@ export function HeroSection() {
             </p>
           </div>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Promo Items Area - Constrained and Overlapping */}
+      <div className="container mx-auto px-4">
+        {/* Ensure z-index is high enough to overlap, negative margin pulls it up. mb-8 for spacing below this section. */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 relative z-20 mt-[-70px] mb-8">
           {promoItems.map((item) => (
             <Link href={item.href} key={item.title} className="group block">
               <Card className={`overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg ${item.bgColor}`}>
