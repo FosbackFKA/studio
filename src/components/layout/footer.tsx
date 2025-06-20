@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { FelleskjoepetLogo } from '@/components/common/logo';
+import { FkaLogo } from '@/components/common/logo';
 import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
 
 export function FooterComponent() {
@@ -11,7 +11,7 @@ export function FooterComponent() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <FelleskjoepetLogo className="mb-4 h-12 w-auto" />
+            <FkaLogo className="mb-4 h-12 w-auto" />
             <p className="text-sm text-muted-foreground">
               Felleskjøpet Agri er et samvirke eid av rundt 39 000 bønder. Vi er Norges ledende leverandør av driftsmidler og teknologi til norsk landbruk.
             </p>

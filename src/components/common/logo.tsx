@@ -1,29 +1,36 @@
-import type { SVGProps } from 'react';
+import NextImage, { type ImageProps as NextImageProps } from 'next/image';
+// The user stated FKA_logo.svg is at /home/user/studio/src/components/common/FKA_logo.svg
+// So the relative import from /home/user/studio/src/components/common/logo.tsx is correct.
+import fkaLogoSrc from './FKA_logo.svg';
 
-export function FelleskjoepetLogo(props: SVGProps<SVGSVGElement>) {
+interface FkaLogoProps extends Omit<NextImageProps, 'src' | 'alt'> {}
+
+export function FkaLogo(props: FkaLogoProps) {
+  const {
+    className,
+    width: explicitWidth,
+    height: explicitHeight,
+    priority, // Pass through priority if set
+    ...rest
+  } = props;
+
+  // Default intrinsic dimensions for aspect ratio if not provided by props.
+  // These are for the `next/image` `width` and `height` props, NOT for CSS.
+  // The actual rendered size will be determined by CSS (e.g., `className="h-10 w-auto"`).
+  const intrinsicWidth = 150; // Default aspect ratio, e.g., 150x40 or actual aspect ratio of logo
+  const intrinsicHeight = 40;
+
   return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Felleskjøpet Logo"
-      {...props}
-    >
-      <rect width="48" height="48" rx="4" fill="#3A7D44" /> {/* FK Green color */}
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="central"
-        textAnchor="middle"
-        fontFamily="Inter, sans-serif"
-        fontSize="24"
-        fontWeight="bold"
-        fill="white"
-      >
-        FK
-      </text>
-    </svg>
+    <NextImage
+      src={fkaLogoSrc}
+      alt="Felleskjøpet Agri Logo"
+      // Use explicit width/height if passed, otherwise use default intrinsic dimensions
+      // for aspect ratio. Tailwind classes like h-10 w-auto will then scale this.
+      width={explicitWidth || intrinsicWidth}
+      height={explicitHeight || intrinsicHeight}
+      className={className}
+      priority={priority} // Ensure priority can be passed for LCP elements
+      {...rest}
+    />
   );
 }

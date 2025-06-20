@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { FelleskjoepetLogo } from '@/components/common/logo';
+import { FkaLogo } from '@/components/common/logo';
 import { MainNavMenu } from '@/components/layout/navigation-menu';
 import { MapPin, Phone, User, ShoppingCart, Search, Menu as MenuIcon } from 'lucide-react';
 
@@ -37,7 +37,7 @@ export function HeaderComponent() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <div className="flex items-center">
           <Link href="/" aria-label="Til forsiden">
-            <FelleskjoepetLogo className="h-10 w-auto" />
+            <FkaLogo className="h-10 w-auto" priority />
           </Link>
         </div>
 
