@@ -7,16 +7,16 @@ const navItems = [
   { name: 'Kjæledyr', href: '#' },
   { name: 'Skog og ved', href: '#' },
   { name: 'Landbruk', href: '#' },
-  { name: 'Verksted, hus og hjem', href: '#' },
+  { name: 'Verksted og hus', href: '#' }, // Adjusted from "Verksted, hus og hjem"
   { name: 'Klær og fottøy', href: '#' },
-  { name: 'Tilbud', href: '#', special: true },
-  { name: 'Merkevarer', href: '#' },
+  { name: 'Tilbud', href: '#', special: true }, // Kept special styling for "Tilbud"
   { name: 'Tjenester', href: '#' },
+  // Removed 'Merkevarer' as it's not prominent in the screenshot's main nav
 ];
 
 export function MainNavMenu() {
   return (
-    <nav className="hidden border-t bg-card md:block">
+    <nav className="bg-card"> {/* Removed md:block to ensure it's part of the main flow controlled by header */}
       <div className="container mx-auto">
         <ul className="flex h-12 items-center justify-center space-x-1 overflow-x-auto px-4">
           {navItems.map((item) => (
