@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { FelleskjoepetLogo } from '@/components/common/logo';
 import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
@@ -12,7 +13,7 @@ export function FooterComponent() {
           <div>
             <FelleskjoepetLogo className="mb-4 h-12 w-auto" />
             <p className="text-sm text-muted-foreground">
-              Felleskjøpet er en samvirkebedrift eid av 44 000 norske bønder. Vi er Norges ledende leverandør av varer og tjenester til landbruket.
+              Felleskjøpet Agri er et samvirke eid av rundt 39 000 bønder. Vi er Norges ledende leverandør av driftsmidler og teknologi til norsk landbruk.
             </p>
           </div>
 
@@ -22,7 +23,7 @@ export function FooterComponent() {
               <li><Link href="#" className="hover:text-primary hover:underline">Kontakt oss</Link></li>
               <li><Link href="#" className="hover:text-primary hover:underline">Spørsmål og svar</Link></li>
               <li><Link href="#" className="hover:text-primary hover:underline">Retur og reklamasjon</Link></li>
-              <li><Link href="#" className="hover:text-primary hover:underline">Finn butikk</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:underline">Finn din nærmeste butikk</Link></li>
             </ul>
           </div>
 
@@ -31,8 +32,8 @@ export function FooterComponent() {
             <ul className="space-y-2 text-sm">
               <li><Link href="#" className="hover:text-primary hover:underline">Om oss</Link></li>
               <li><Link href="#" className="hover:text-primary hover:underline">Jobb i Felleskjøpet</Link></li>
-              <li><Link href="#" className="hover:text-primary hover:underline">Bærekraft</Link></li>
-              <li><Link href="#" className="hover:text-primary hover:underline">Presse</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:underline">Bærekraft og samfunnsansvar</Link></li>
+              <li><Link href="#" className="hover:text-primary hover:underline">Presse og media</Link></li>
             </ul>
           </div>
 
@@ -46,9 +47,11 @@ export function FooterComponent() {
             </div>
             <h3 className="mt-6 mb-2 text-lg font-semibold">Betalingsmåter</h3>
             <div className="flex items-center space-x-2">
+              {/* Replace with actual payment method logos if available/needed */}
               <span className="rounded bg-gray-200 px-2 py-1 text-xs">Vipps</span>
               <span className="rounded bg-gray-200 px-2 py-1 text-xs">Visa</span>
               <span className="rounded bg-gray-200 px-2 py-1 text-xs">Mastercard</span>
+              <span className="rounded bg-gray-200 px-2 py-1 text-xs">Faktura</span>
             </div>
           </div>
         </div>
@@ -56,7 +59,7 @@ export function FooterComponent() {
         <div className="mt-12 border-t py-8 text-center text-sm text-muted-foreground">
           <p>&copy; {currentYear} Felleskjøpet Agri SA. Alle rettigheter forbeholdt.</p>
           <p className="mt-1">
-            <Link href="#" className="hover:text-primary hover:underline">Personvernerklæring</Link> | <Link href="#" className="hover:text-primary hover:underline">Salgsbetingelser</Link>
+            <Link href="#" className="hover:text-primary hover:underline">Personvernerklæring</Link> | <Link href="#" className="hover:text-primary hover:underline">Salgsbetingelser</Link> | <Link href="#" className="hover:text-primary hover:underline">Informasjonskapsler</Link>
           </p>
         </div>
       </div>

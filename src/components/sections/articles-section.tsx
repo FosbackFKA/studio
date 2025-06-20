@@ -1,31 +1,32 @@
+
 import { ArticleCard } from '@/components/common/article-card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const articles = [
   {
-    title: 'Slik lykkes du med grønnsakshagen',
-    excerpt: 'Få de beste tipsene for en frodig og produktiv grønnsakshage denne sesongen.',
+    title: 'Gjødsling av plen: Slik får du en grønn og frodig hage',
+    excerpt: 'Alt du trenger å vite om gjødsling for å oppnå en sunn og tett plen gjennom sesongen.',
     imageUrl: 'https://placehold.co/400x225.png',
     articleUrl: '#',
     category: 'Hagetips',
-    dataAiHint: 'vegetable garden'
+    dataAiHint: 'lawn fertilization'
   },
   {
-    title: 'Vedlikehold av motorsag: En komplett guide',
-    excerpt: 'Lær hvordan du holder motorsagen i topp stand for sikker og effektiv bruk.',
+    title: 'Valg av riktig motorsag til ditt bruk',
+    excerpt: 'En guide som hjelper deg å velge motorsagen som passer best til dine behov, enten du er proff eller hobbybruker.',
     imageUrl: 'https://placehold.co/400x225.png',
     articleUrl: '#',
-    category: 'Verktøy',
-    dataAiHint: 'chainsaw maintenance'
+    category: 'Skog og Ved',
+    dataAiHint: 'chainsaw guide'
   },
   {
-    title: 'Velg riktig fôr til din hund',
-    excerpt: 'En guide til å finne det beste hundefôret tilpasset din hunds behov og alder.',
+    title: 'Hold hunden aktiv og sunn: Tips til fôr og utstyr',
+    excerpt: 'Les våre råd om ernæring og det beste utstyret for en glad og frisk hund.',
     imageUrl: 'https://placehold.co/400x225.png',
     articleUrl: '#',
-    category: 'Husdyr',
-    dataAiHint: 'dog food'
+    category: 'Kjæledyr',
+    dataAiHint: 'dog health care'
   },
 ];
 
@@ -34,7 +35,7 @@ export function ArticlesSection() {
     <section className="py-12 lg:py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="mb-8 flex items-center justify-between">
-          <h2 className="font-headline text-3xl font-bold">Fagartikler og guider</h2>
+          <h2 className="font-headline text-3xl font-bold">Nyttige artikler og guider</h2>
           <Button variant="link" asChild className="text-primary hover:underline">
             <Link href="#">Se alle artikler</Link>
           </Button>

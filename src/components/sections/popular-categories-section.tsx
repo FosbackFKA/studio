@@ -1,14 +1,15 @@
+
 import { CategoryCard } from '@/components/common/category-card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const categories = [
-  { title: 'Gressklippere', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'lawnmower grass' },
-  { title: 'Hagegjødsel', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'fertilizer garden' },
-  { title: 'Arbeidsklær', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'workwear clothing' },
-  { title: 'Høy & Fôr', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'animal feed' },
-  { title: 'Motorsager', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'chainsaw wood' },
-  { title: 'Griller', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'barbecue grill' },
+  { title: 'Robotgressklippere', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'robotic lawnmower' },
+  { title: 'Hagemøbler', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'garden furniture' },
+  { title: 'Hundeutstyr', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'dog supplies' },
+  { title: 'Traktor', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'tractor farming' },
+  { title: 'Verneutstyr', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'safety gear' },
+  { title: 'Grill og Utekjøkken', imageUrl: 'https://placehold.co/300x200.png', categoryUrl: '#', dataAiHint: 'bbq outdoor kitchen' },
 ];
 
 export function PopularCategoriesSection() {

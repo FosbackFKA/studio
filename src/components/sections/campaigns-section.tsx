@@ -1,43 +1,44 @@
+
 import { ProductCard } from '@/components/common/product-card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const campaigns = [
   {
-    title: 'Gjødselpakke Vår',
-    price: '1299,-',
-    originalPrice: '1599,-',
+    title: 'STIHL Motorsag MS 170',
+    price: '2490,-',
+    originalPrice: '2990,-',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAlt: 'Gjødselpakke',
+    imageAlt: 'STIHL Motorsag',
     productUrl: '#',
-    badgeText: 'Spar 300,-',
-    dataAiHint: 'fertilizer package'
+    badgeText: 'Spar 500,-',
+    dataAiHint: 'chainsaw stihl'
   },
   {
-    title: 'Hageredskapssett Pro',
-    price: '799,-',
+    title: 'Kärcher Høytrykksvasker K5',
+    price: '3499,-',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAlt: 'Hageredskapssett',
+    imageAlt: 'Kärcher Høytrykksvasker',
     productUrl: '#',
-    dataAiHint: 'garden tools'
+    dataAiHint: 'pressure washer karcher'
   },
   {
-    title: 'Automower X2000',
-    price: '14990,-',
-    originalPrice: '16990,-',
+    title: 'Felleskjøpet Plenrens 14kg',
+    price: '499,-',
+    originalPrice: '599,-',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAlt: 'Robotgressklipper',
+    imageAlt: 'Plenrens',
     productUrl: '#',
-    badgeText: 'Ukens Deal!',
-    dataAiHint: 'robotic lawnmower'
+    badgeText: 'Godt kjøp!',
+    dataAiHint: 'lawn care product'
   },
    {
-    title: 'Høytrykkspyler Kraftig',
-    price: '2499,-',
+    title: 'Viking Gressklipper MB 448',
+    price: '5990,-',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAlt: 'Høytrykkspyler',
+    imageAlt: 'Viking Gressklipper',
     productUrl: '#',
-    dataAiHint: 'pressure washer'
+    dataAiHint: 'lawnmower viking'
   },
 ];
 
@@ -46,7 +47,7 @@ export function CampaignsSection() {
     <section className="py-12 lg:py-16 bg-card">
       <div className="container mx-auto px-4">
         <div className="mb-8 flex items-center justify-between">
-          <h2 className="font-headline text-3xl font-bold">Ukens kampanjer</h2>
+          <h2 className="font-headline text-3xl font-bold">Aktuelle kampanjer</h2>
           <Button variant="link" asChild className="text-primary hover:underline">
             <Link href="#">Se alle kampanjer</Link>
           </Button>
