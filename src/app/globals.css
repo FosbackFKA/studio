@@ -4,78 +4,116 @@
 
 @layer base {
   :root {
-    --background: 30 25% 97%; /* fk-white-50 #faf8f6 */
-    --foreground: 0 0% 13%; /* fk-grey-4 #222222 */
-    --card: 0 0% 100%; /* fk-white #ffffff */
-    --card-foreground: 0 0% 13%; /* fk-grey-4 #222222 */
-    --popover: 0 0% 100%; /* fk-white #ffffff */
-    --popover-foreground: 0 0% 13%; /* fk-grey-4 #222222 */
-    --primary: 147 100% 21%; /* fk-green-60 #006d32 */
-    --primary-foreground: 0 0% 100%; /* fk-white #ffffff */
-    --secondary: 27 27% 92%; /* fk-beige-20 #f1e9e3 */
-    --secondary-foreground: 145 100% 19%; /* fk-green-70 #00622f */
-    --muted: 29 21% 85%; /* fk-beige-40 #e1d7cf */
-    --muted-foreground: 0 0% 47%; /* fk-grey-2 #777777 */
-    --accent: 79 82% 42%; /* fk-lightgreen-40 #86c612 */
-    --accent-foreground: 0 0% 13%; /* fk-grey-4 #222222 */
-    --destructive: 0 84.2% 60.2%; /* Standard red */
-    --destructive-foreground: 0 0% 98%; /* Standard white */
-    --border: 30 13% 80%; /* fk-beige-60 #d1c8c0 */
-    --input: 27 27% 92%; /* fk-beige-20 #f1e9e3 for input background */
-    --ring: 147 100% 21%; /* fk-green-60 #006d32 for focus rings */
+    /* Definert fra brukerens nye CSS, konvertert til HSL */
+    /* --fk-white-50-c: 250 248 246 (Light Gray) */
+    --background: 30 25% 97%;
+    /* --fk-grey-4-c: 34 34 34 */
+    --foreground: 0 0% 13%;
+    /* --fk-white-c: 255 255 255 */
+    --card: 0 0% 100%;
+    /* --fk-grey-4-c: 34 34 34 */
+    --card-foreground: 0 0% 13%;
+    /* --fk-white-c: 255 255 255 */
+    --popover: 0 0% 100%;
+    /* --fk-grey-4-c: 34 34 34 */
+    --popover-foreground: 0 0% 13%;
+    /* --fk-green-60-c: 0 109 50 (FK Green) */
+    --primary: 147 100% 21%;
+    /* --fk-white-c: 255 255 255 */
+    --primary-foreground: 0 0% 100%;
+    /* --fk-beige-20-c: 241 233 227 */
+    --secondary: 27 27% 92%;
+    /* --fk-green-70-c: 0 98 47 */
+    --secondary-foreground: 145 100% 19%;
+    /* --fk-beige-40-c: 225 215 207 */
+    --muted: 29 21% 85%;
+    /* --fk-grey-2-c: 119 119 119 */
+    --muted-foreground: 0 0% 47%;
+    /* --fk-lightgreen-40-c: 134 198 18 (FK Light Green) */
+    --accent: 79 82% 42%;
+    /* --fk-grey-4-c: 34 34 34 */
+    --accent-foreground: 0 0% 13%;
+    /* --fk-red-40-c: 215 12 40 */
+    --destructive: 352 89% 45%; /* Mer nøyaktig fra --fk-red-40-c */
+    /* --fk-white-c: 255 255 255 */
+    --destructive-foreground: 0 0% 100%;
+    /* --fk-beige-60-c: 209 200 192 */
+    --border: 30 13% 80%;
+    /* --fk-beige-20-c: 241 233 227 (brukt for input bakgrunn tidligere) */
+    --input: 27 27% 92%;
+    /* --fk-focus-c (som er --fk-blue-40-c: 0 138 255) */
+    --ring: 212 100% 50%;
+    --radius: 0.5rem;
+
+    /* Chart colors - beholdes fra eksisterende tema inntil videre */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
 
-    /* Sidebar specific colors, aligned with the new FK theme */
-    --sidebar-background: 93 23% 95%; /* fk-transparent-green #f2f5ee */
-    --sidebar-foreground: 0 0% 13%; /* fk-grey-4 #222222 */
-    --sidebar-primary: 147 100% 21%; /* fk-green-60 #006d32 */
-    --sidebar-primary-foreground: 0 0% 100%; /* fk-white #ffffff */
-    --sidebar-accent: 79 82% 42%; /* fk-lightgreen-40 #86c612 */
-    --sidebar-accent-foreground: 0 0% 13%; /* fk-grey-4 #222222 */
-    --sidebar-border: 145 20% 85%; /* fk-darkgreen-20 #ccdad2 */
-    --sidebar-ring: 147 100% 21%; /* fk-green-60 #006d32 */
+    /* Sidebar specific colors, justert med nye Felleskjøpet farger */
+    /* --fk-transparent-green-c: 242 245 238 */
+    --sidebar-background: 93 23% 95%;
+    /* --fk-grey-4-c: 34 34 34 */
+    --sidebar-foreground: 0 0% 13%;
+    /* --fk-green-60-c: 0 109 50 */
+    --sidebar-primary: 147 100% 21%;
+    /* --fk-white-c: 255 255 255 */
+    --sidebar-primary-foreground: 0 0% 100%;
+    /* --fk-lightgreen-40-c: 134 198 18 */
+    --sidebar-accent: 79 82% 42%;
+     /* --fk-grey-4-c: 34 34 34 */
+    --sidebar-accent-foreground: 0 0% 13%;
+    /* --fk-darkgreen-20-c: 204 218 210 */
+    --sidebar-border: 145 20% 85%;
+    /* --fk-focus-c (som er --fk-blue-40-c: 0 138 255) */
+    --sidebar-ring: 212 100% 50%;
   }
 
   .dark {
-    /* Dark theme variables remain as they were, focusing on light theme for FK */
-    --background: 215 15% 15%;
-    --foreground: 220 17% 90%;
-    --card: 215 15% 10%;
-    --card-foreground: 220 17% 90%;
-    --popover: 215 15% 10%;
-    --popover-foreground: 220 17% 90%;
-    --primary: 147 100% 35%; /* Adjusted primary for dark mode visibility */
+    /* Bruker nye FK variabler for dark mode også for konsistens, justert for mørkt tema */
+    /* Basert på --fk-grey-4-c eller lignende mørk farge */
+    --background: 0 0% 13%; /* Mørk grå, nesten svart */
+    /* --fk-white-c eller en lys grå */
+    --foreground: 0 0% 97%; /* Nesten hvit */
+    /* En litt lysere mørk grå enn bakgrunn */
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 97%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 97%;
+    /* En lysere/mer mettet versjon av primærfargen */
+    --primary: 147 100% 35%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 25%;
-    --secondary-foreground: 220 17% 90%;
-    --muted: 210 20% 22%;
-    --muted-foreground: 210 20% 60%;
-    --accent: 79 82% 55%; /* Adjusted accent for dark mode visibility */
-    --accent-foreground: 0 0% 13%;
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 210 15% 30%;
-    --input: 210 15% 25%;
-    --ring: 147 100% 35%; /* Adjusted ring for dark mode */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    /* En mørk grå, men lysere enn hovedbakgrunn */
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 50%;
+    /* En lysere/mer mettet versjon av aksentfargen */
+    --accent: 79 82% 55%;
+    --accent-foreground: 0 0% 13%; /* Mørk tekst på lys aksent */
+    /* Destructive kan være likt, eller en lysere rød */
+    --destructive: 352 89% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 212 100% 60%; /* Lysere blå for ring i dark mode */
 
-    --sidebar-background: 210 20% 12%;
-    --sidebar-foreground: 220 17% 85%;
+    --chart-1: 12 76% 71%;
+    --chart-2: 173 58% 49%;
+    --chart-3: 197 37% 34%;
+    --chart-4: 43 74% 76%;
+    --chart-5: 27 87% 77%;
+
+    --sidebar-background: 0 0% 10%; /* Mørkere enn hoved-bakgrunn */
+    --sidebar-foreground: 0 0% 90%;
     --sidebar-primary: 147 100% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 79 82% 55%;
     --sidebar-accent-foreground: 0 0% 13%;
-    --sidebar-border: 210 15% 25%;
-    --sidebar-ring: 147 100% 35%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 212 100% 60%;
   }
 }
 

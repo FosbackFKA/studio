@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['DM Sans', 'sans-serif'],
-        headline: ['Bricolage Grotesque', 'sans-serif'],
+        body: ['DM Sans', 'Arial', 'Helvetica', 'sans-serif'], // DM Sans som primær
+        headline: ['Bricolage Grotesque', 'Arial', 'sans-serif'], // Bricolage Grotesque som primær
         code: ['monospace'],
       },
       colors: {
