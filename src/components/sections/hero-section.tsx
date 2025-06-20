@@ -1,37 +1,48 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import heroImage from '@/components/common/heroimage-blurrybg.png';
+import { ArrowRight } from 'lucide-react';
 
-const promoItems = [
+interface PromoItem {
+  superTitle?: string;
+  title: string;
+  actionText?: string;
+  href: string;
+  imageUrl: string;
+  dataAiHint: string;
+}
+
+const promoItems: PromoItem[] = [
   {
+    superTitle: 'Alle våre tilbud på ett sted',
     title: 'Ukens kampanjer',
-    imageUrl: 'https://placehold.co/400x300.png',
+    actionText: 'Handle nå',
     href: '#',
-    dataAiHint: 'weekly deals sale',
-    bgColorClass: 'bg-primary', 
+    imageUrl: 'https://placehold.co/400x300.png',
+    dataAiHint: 'grass trimmer person',
   },
   {
+    superTitle: 'Få en frodig og lettstelt hage',
     title: 'Robotgressklipper',
-    imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
-    dataAiHint: 'robotic lawnmower',
-    bgColorClass: 'bg-primary',
+    imageUrl: 'https://placehold.co/400x300.png',
+    dataAiHint: 'robotic lawnmower grass',
   },
   {
-    title: 'Gjødsel og plantevern',
-    imageUrl: 'https://placehold.co/400x300.png',
+    superTitle: 'Stort utvalg for de fleste formål',
+    title: 'Tilhengere',
     href: '#',
-    dataAiHint: 'fertilizer plant protection',
-    bgColorClass: 'bg-primary',
+    imageUrl: 'https://placehold.co/400x300.png',
+    dataAiHint: 'car trailer yard waste',
   },
   {
-    title: 'Hagemøbler',
-    imageUrl: 'https://placehold.co/400x300.png',
+    superTitle: 'Alt du trenger til katten din',
+    title: 'Katteutstyr',
     href: '#',
-    dataAiHint: 'garden furniture outdoor',
-    bgColorClass: 'bg-primary',
+    imageUrl: 'https://placehold.co/400x300.png',
+    dataAiHint: 'cat pet door',
   },
 ];
 
@@ -65,12 +76,11 @@ export function HeroSection() {
 
       {/* Promo Items Area - Constrained and Overlapping */}
       <div className="container mx-auto px-4">
-        {/* Ensure z-index is high enough to overlap, negative margin pulls it up. mb-8 for spacing below this section. */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 relative z-20 mt-[-70px] mb-8">
           {promoItems.map((item) => (
             <Link href={item.href} key={item.title} className="group block">
-              <Card className={`overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg ${item.bgColorClass}`}>
-                <div className="relative h-40 w-full">
+              <Card className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
+                <div className="relative h-56 w-full"> {/* Adjusted height */}
                   <Image
                     src={item.imageUrl}
                     alt={item.title}
@@ -80,9 +90,17 @@ export function HeroSection() {
                     data-ai-hint={item.dataAiHint}
                   />
                 </div>
-                <CardContent className="p-4 text-center">
-                  <CardTitle className="text-lg font-semibold text-primary-foreground group-hover:underline">{item.title}</CardTitle>
-                </CardContent>
+                {/* Text Overlay */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 text-left">
+                  {item.superTitle && <p className="text-xs text-white/90 mb-0.5">{item.superTitle}</p>}
+                  <h3 className="text-2xl font-bold text-yellow-300 group-hover:underline">{item.title}</h3>
+                  {item.actionText && (
+                    <div className="mt-1 flex items-center text-sm font-medium text-white group-hover:underline">
+                      <ArrowRight className="mr-1 h-4 w-4" />
+                      {item.actionText}
+                    </div>
+                  )}
+                </div>
               </Card>
             </Link>
           ))}
