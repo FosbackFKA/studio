@@ -41,8 +41,8 @@
     --border: 30 13% 80%;
     /* --fk-beige-20-c: 241 233 227 (brukt for input bakgrunn tidligere) */
     --input: 27 27% 92%;
-    /* --fk-focus-c (som er --fk-blue-40-c: 0 138 255) */
-    --ring: 212 100% 50%;
+    /* --fk-focus-c (endret til primærfargen for konsistens) */
+    --ring: var(--primary);
     --radius: 0.5rem;
 
     /* Chart colors - beholdes fra eksisterende tema inntil videre */
@@ -67,8 +67,8 @@
     --sidebar-accent-foreground: 0 0% 13%;
     /* --fk-darkgreen-20-c: 204 218 210 */
     --sidebar-border: 145 20% 85%;
-    /* --fk-focus-c (som er --fk-blue-40-c: 0 138 255) */
-    --sidebar-ring: 212 100% 50%;
+    /* --fk-focus-c (endret til primærfargen for konsistens) */
+    --sidebar-ring: var(--primary);
   }
 
   .dark {
@@ -98,7 +98,7 @@
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 25%;
     --input: 0 0% 20%;
-    --ring: 212 100% 60%; /* Lysere blå for ring i dark mode */
+    --ring: var(--primary); /* Lysere grønn for ring i dark mode, basert på dark primary */
 
     --chart-1: 12 76% 71%;
     --chart-2: 173 58% 49%;
@@ -113,7 +113,7 @@
     --sidebar-accent: 79 82% 55%;
     --sidebar-accent-foreground: 0 0% 13%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 212 100% 60%;
+    --sidebar-ring: var(--primary);
   }
 }
 

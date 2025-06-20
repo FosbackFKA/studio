@@ -41,7 +41,7 @@ export function HeaderComponent() {
             <Input
               type="search"
               placeholder="Søk"
-              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm focus-visible:outline-none focus-visible:border-primary focus-visible:ring-0"
+              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
             />
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
@@ -78,7 +78,7 @@ export function HeaderComponent() {
           <Input
             type="search"
             placeholder="Søk"
-            className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm focus-visible:outline-none focus-visible:border-primary focus-visible:ring-0"
+            className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
           />
           <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
         </div>
