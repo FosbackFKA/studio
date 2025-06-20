@@ -27,7 +27,7 @@ export default async function HomePage() {
       <main className="flex-grow">
         
         <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Aktuelt akkurat nå</h2>
               <div className="flex flex-wrap justify-center gap-2">
@@ -63,7 +63,7 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-6">
                 <h2 className="font-headline text-2xl font-bold lg:text-3xl">Alt til kjæledyr</h2>
                 <Button variant="link" asChild className="text-primary hover:underline">
@@ -99,7 +99,7 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1542px]">
              <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-6">
                 <h2 className="font-headline text-2xl font-bold lg:text-3xl">Robotgressklippere</h2>
                 <Button variant="link" asChild className="text-primary hover:underline">
@@ -135,7 +135,7 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Nødvendig utstyr til vanning i hagen</h2>
                <Button variant="link" asChild className="text-primary hover:underline">
@@ -162,7 +162,7 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="flex flex-col overflow-hidden rounded-lg bg-card shadow-lg lg:flex-row">
               <div className="relative h-64 w-full lg:h-auto lg:w-1/2">
                 <Image src="https://placehold.co/800x600.png" alt="Perfekt plen" layout="fill" objectFit="cover" data-ai-hint="green lawn garden"/>
@@ -179,7 +179,7 @@ export default async function HomePage() {
         </section>
         
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Hjelp til såing</h2>
                <Button variant="link" asChild className="text-primary hover:underline">
@@ -215,7 +215,7 @@ export default async function HomePage() {
             data-ai-hint="norwegian landscape farm field"
           />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white">
+          <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white max-w-[1542px]">
             <FkaLogo className="mb-4 h-12 w-auto invert brightness-0 filter" />
             <h2 className="font-headline text-3xl font-bold md:text-4xl lg:text-5xl">
               Ta vare på jorda, dyra og framtida

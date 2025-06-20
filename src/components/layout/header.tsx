@@ -10,7 +10,7 @@ export function HeaderComponent() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Top Bar: Privat/Bonde */}
-      <div className="container mx-auto px-4 py-1.5">
+      <div className="container mx-auto px-4 py-1.5 max-w-[1542px]">
         <div className="flex justify-start">
           <div className="flex items-center space-x-1">
             <Button 
@@ -31,7 +31,7 @@ export function HeaderComponent() {
       </div>
       
       {/* Main Header Content */}
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 max-w-[1542px]">
         <div className="flex items-center">
           <Link href="/" aria-label="Til forsiden">
             <FkaLogo className="h-10 w-auto md:h-12" priority />
@@ -72,7 +72,7 @@ export function HeaderComponent() {
       </div>
       
       {/* Mobile Search (visible on small screens) */}
-      <div className="container mx-auto px-4 pb-2 lg:hidden">
+      <div className="container mx-auto px-4 pb-2 lg:hidden max-w-[1542px]">
         <div className="relative w-full">
           <Input
             type="search"

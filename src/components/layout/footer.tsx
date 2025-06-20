@@ -8,7 +8,7 @@ export function FooterComponent() {
 
   return (
     <footer className="border-t bg-[hsl(var(--secondary-foreground))] pt-12 text-primary-foreground">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1542px]">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <FkaLogo className="mb-4 h-10 w-auto invert brightness-0 filter" />

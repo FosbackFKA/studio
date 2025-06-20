@@ -3,24 +3,25 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const leftNavItems = [
-  { name: 'Hage og uterom', href: '#' },
+  { name: 'Hage og utemiljø', href: '#' },
   { name: 'Kjæledyr', href: '#' },
-  { name: 'Klær og sko', href: '#' },
-  { name: 'Hjem og fritid', href: '#' },
-  { name: 'Verktøy og redskap', href: '#' },
   { name: 'Skog og ved', href: '#' },
+  { name: 'Landbruk', href: '#' },
+  { name: 'Verksted og hus', href: '#' },
+  { name: 'Klær og fottøy', href: '#' },
 ];
 
 const rightNavItems = [
-  { name: 'Kampanjer', href: '#', special: true },
-  { name: 'Lagersalg', href: '#', special: true },
-  { name: 'Merkevarer', href: '#', special: true },
+  { name: 'Tilbud', href: '#', special: true },
+  { name: 'Tjenester', href: '#', special: false }, 
+  { name: 'Aktuelt', href: '#', special: false },
+  { name: 'Merkevarer', href: '#', special: false },
 ];
 
 export function MainNavMenu() {
   return (
     <nav className="bg-card">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-[1542px]">
         <div className="flex h-12 items-center justify-between px-4">
           <ul className="flex items-center space-x-1">
             {leftNavItems.map((item) => (
@@ -43,8 +44,8 @@ export function MainNavMenu() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "whitespace-nowrap px-3 py-2 text-sm font-semibold hover:border-b-2 hover:border-primary",
-                    item.special ? "text-primary" : "text-foreground"
+                    "whitespace-nowrap px-3 py-2 text-sm hover:border-b-2 hover:border-primary",
+                    item.special ? "font-semibold text-destructive" : "font-medium text-foreground" 
                   )}
                 >
                   {item.name}
