@@ -1,17 +1,23 @@
 
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import heroImage from '@/components/common/heroimage-blurrybg.png';
 import { ArrowRight } from 'lucide-react';
+
+// Import the new local images
+import forsidebilde1 from '../common/forsidebilde1.jpg';
+import forsidebilde2 from '../common/forsidebilde2.jpg';
+import forsidebilde3 from '../common/forsidebilde3.jpg';
+import forsidebilde4 from '../common/forsidebilde4.jpg';
 
 interface PromoItem {
   superTitle?: string;
   title: string;
   actionText?: string;
   href: string;
-  imageUrl: string;
-  dataAiHint: string;
+  imageUrl: StaticImageData | string; // Allow StaticImageData for local images
+  dataAiHint?: string; // Keep for potential fallbacks or other images
 }
 
 const promoItems: PromoItem[] = [
@@ -20,29 +26,29 @@ const promoItems: PromoItem[] = [
     title: 'Ukens kampanjer',
     actionText: 'Handle nå',
     href: '#',
-    imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'sale offer discount',
+    imageUrl: forsidebilde1,
+    // dataAiHint: 'sale offer discount', // Removed as we use a specific image
   },
   {
     superTitle: 'Få en frodig og lettstelt hage',
     title: 'Robotgressklipper',
     href: '#',
-    imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'robotic lawnmower grass',
+    imageUrl: forsidebilde2,
+    // dataAiHint: 'robotic lawnmower grass', // Removed
   },
   {
     superTitle: 'Optimalt for dine vekster',
     title: 'Gjødsel og plantevern',
     href: '#',
-    imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'fertilizer plant care',
+    imageUrl: forsidebilde3,
+    // dataAiHint: 'fertilizer plant care', // Removed
   },
   {
     superTitle: 'Skap din drømmeuteplass',
     title: 'Hagemøbler',
     href: '#',
-    imageUrl: 'https://placehold.co/400x300.png',
-    dataAiHint: 'garden furniture patio',
+    imageUrl: forsidebilde4,
+    // dataAiHint: 'garden furniture patio', // Removed
   },
 ];
 
@@ -85,7 +91,7 @@ export function HeroSection() {
                     layout="fill"
                     objectFit="cover"
                     className="transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint={item.dataAiHint}
+                    data-ai-hint={item.dataAiHint} // Keep in case imageUrl can sometimes be a string (placeholder)
                   />
                 </div>
                 {/* Text Overlay */}
@@ -94,8 +100,8 @@ export function HeroSection() {
                   <h3 className="text-2xl font-bold text-yellow-300 group-hover:underline">{item.title}</h3>
                   {item.actionText && (
                     <div className="mt-1 flex items-center text-sm font-medium text-white group-hover:underline">
-                      <ArrowRight className="mr-1 h-4 w-4" />
                       {item.actionText}
+                      <ArrowRight className="ml-1 h-4 w-4" />
                     </div>
                   )}
                 </div>
