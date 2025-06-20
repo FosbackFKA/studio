@@ -6,10 +6,10 @@ import heroImage from '@/components/common/heroimage-blurrybg.png';
 
 const promoItems = [
   {
-    title: 'Alt til våronna for Norsk Landbruk',
+    title: 'Ukens kampanjer',
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
-    dataAiHint: 'farming spring work',
+    dataAiHint: 'weekly deals sale',
     bgColorClass: 'bg-primary', 
   },
   {
@@ -20,17 +20,17 @@ const promoItems = [
     bgColorClass: 'bg-primary',
   },
   {
-    title: 'Tilhengere',
+    title: 'Gjødsel og plantevern',
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
-    dataAiHint: 'trailer agriculture',
+    dataAiHint: 'fertilizer plant protection',
     bgColorClass: 'bg-primary',
   },
   {
-    title: 'Alt fôret katten trenger',
+    title: 'Hagemøbler',
     imageUrl: 'https://placehold.co/400x300.png',
     href: '#',
-    dataAiHint: 'cat food supplies',
+    dataAiHint: 'garden furniture outdoor',
     bgColorClass: 'bg-primary',
   },
 ];
