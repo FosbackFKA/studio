@@ -13,15 +13,15 @@ export function HeaderComponent() {
       <div className="container mx-auto px-4 py-1.5 max-w-[1542px]">
         <div className="flex justify-start">
           <div className="flex items-center space-x-1">
-            <Button 
-                size="sm" 
+            <Button
+                size="sm"
                 className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1 h-auto text-xs"
             >
                 Privat
             </Button>
-            <Button 
-                variant="outline" 
-                size="sm" 
+            <Button
+                variant="outline"
+                size="sm"
                 className="rounded-full border-primary text-primary hover:bg-primary/10 px-3 py-1 h-auto text-xs"
             >
                 Bonde & Bedrift
@@ -29,7 +29,7 @@ export function HeaderComponent() {
           </div>
         </div>
       </div>
-      
+
       {/* Main Header Content */}
       <div className="container mx-auto flex h-16 items-center justify-between px-4 max-w-[1542px]">
         <div className="flex items-center">
@@ -70,7 +70,7 @@ export function HeaderComponent() {
           </Button>
         </div>
       </div>
-      
+
       {/* Mobile Search (visible on small screens) */}
       <div className="container mx-auto px-4 pb-2 lg:hidden max-w-[1542px]">
         <div className="relative w-full">
@@ -90,3 +90,5 @@ export function HeaderComponent() {
     </header>
   );
 }
+
+    

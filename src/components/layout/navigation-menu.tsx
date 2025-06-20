@@ -13,7 +13,7 @@ const leftNavItems = [
 
 const rightNavItems = [
   { name: 'Tilbud', href: '#', special: true },
-  { name: 'Tjenester', href: '#', special: false }, 
+  { name: 'Tjenester', href: '#', special: false },
   { name: 'Aktuelt', href: '#', special: false },
   { name: 'Merkevarer', href: '#', special: false },
 ];
@@ -45,7 +45,7 @@ export function MainNavMenu() {
                   href={item.href}
                   className={cn(
                     "whitespace-nowrap px-3 py-2 text-sm hover:border-b-2 hover:border-primary",
-                    item.special ? "font-semibold text-destructive" : "font-medium text-foreground" 
+                    item.special ? "font-semibold text-destructive" : "font-medium text-foreground"
                   )}
                 >
                   {item.name}
@@ -58,3 +58,5 @@ export function MainNavMenu() {
     </nav>
   );
 }
+
+    

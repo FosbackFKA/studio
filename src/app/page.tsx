@@ -2,7 +2,7 @@
 import { HeaderComponent } from '@/components/layout/header';
 import { HeroSection } from '@/components/sections/hero-section';
 import { FooterComponent } from '@/components/layout/footer';
-import { ProductCard } from '@/components/common/product-card'; 
+import { ProductCard } from '@/components/common/product-card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,7 +25,7 @@ export default async function HomePage() {
       <HeaderComponent />
       <HeroSection />
       <main className="flex-grow">
-        
+
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -40,7 +40,7 @@ export default async function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {aktuelltProducts.map((item) => (
-                <ProductCard 
+                <ProductCard
                   key={item.id}
                   title={item.title}
                   price={item.price}
@@ -80,7 +80,7 @@ export default async function HomePage() {
               </div>
               <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
                 {kjaeledyrProducts.map((item) => (
-                  <ProductCard 
+                  <ProductCard
                     key={item.id}
                     title={item.title}
                     price={item.price}
@@ -116,7 +116,7 @@ export default async function HomePage() {
               </div>
               <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
                 {robotgressklipperProducts.map((item) => (
-                  <ProductCard 
+                  <ProductCard
                     key={item.id}
                     title={item.title}
                     price={item.price}
@@ -144,7 +144,7 @@ export default async function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {vanningProducts.map((item) => (
-                 <ProductCard 
+                 <ProductCard
                     key={item.id}
                     title={item.title}
                     price={item.price}
@@ -177,7 +177,7 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-        
+
         <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto px-4 max-w-[1542px]">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -188,7 +188,7 @@ export default async function HomePage() {
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {saaingProducts.map((item) => (
-                <ProductCard 
+                <ProductCard
                   key={item.id}
                   title={item.title}
                   price={item.price}
@@ -228,3 +228,5 @@ export default async function HomePage() {
     </div>
   );
 }
+
+    

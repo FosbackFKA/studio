@@ -16,7 +16,7 @@ interface PromoItem {
   title: string;
   actionText?: string;
   href: string;
-  imageUrl: StaticImageData | string; 
+  imageUrl: StaticImageData | string;
 }
 
 const promoItems: PromoItem[] = [
@@ -107,3 +107,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+    
