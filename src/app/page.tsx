@@ -192,7 +192,7 @@ export default async function HomePage() {
           />
           <div className="absolute inset-0 bg-black/40" />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-white">
-            <FkaLogo className="mb-4 h-12 w-auto invert filter brightness-0" />
+            <FkaLogo variant="white" className="mb-4 h-12 w-auto" />
             <h2 className="font-headline text-3xl font-bold md:text-4xl lg:text-5xl">
               Ta vare på jorda, dyra og framtida
             </h2>

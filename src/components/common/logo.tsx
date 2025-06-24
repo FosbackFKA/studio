@@ -2,17 +2,23 @@ import NextImage, { type ImageProps as NextImageProps } from 'next/image';
 // The user stated FKA_logo.svg is at /home/user/studio/src/components/common/FKA_logo.svg
 // So the relative import from /home/user/studio/src/components/common/logo.tsx is correct.
 import fkaLogoSrc from './FKA_logo.svg';
+import fkaLogoWhiteSrc from './FKA_logo-white.svg';
 
-interface FkaLogoProps extends Omit<NextImageProps, 'src' | 'alt'> {}
+interface FkaLogoProps extends Omit<NextImageProps, 'src' | 'alt'> {
+  variant?: 'default' | 'white';
+}
 
 export function FkaLogo(props: FkaLogoProps) {
   const {
     className,
+    variant = 'default',
     width: explicitWidth,
     height: explicitHeight,
     priority, // Pass through priority if set
     ...rest
   } = props;
+
+  const logoSrc = variant === 'white' ? fkaLogoWhiteSrc : fkaLogoSrc;
 
   // Default intrinsic dimensions for aspect ratio if not provided by props.
   // These are for the `next/image` `width` and `height` props, NOT for CSS.
@@ -22,7 +28,7 @@ export function FkaLogo(props: FkaLogoProps) {
 
   return (
     <NextImage
-      src={fkaLogoSrc}
+      src={logoSrc}
       alt="Felleskjøpet Agri Logo"
       // Use explicit width/height if passed, otherwise use default intrinsic dimensions
       // for aspect ratio. Tailwind classes like h-10 w-auto will then scale this.
