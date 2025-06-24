@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Product } from '@/types/product';
 import { CheckCircle2 } from 'lucide-react';
+import type { StaticImageData } from 'next/image';
 
 interface ProductCardProps extends Pick<Product, 
   'title' | 
@@ -76,7 +77,7 @@ export function ProductCard({
           </div>
         </div>
 
-        <div className="flex flex-grow flex-col justify-between p-4 pt-0">
+        <div className="relative z-10 flex flex-grow flex-col justify-between bg-card p-4 pt-0">
           <div className="flex-grow">
             <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
               {onlineStock && (
