@@ -15,6 +15,7 @@ import { getProductsFromFeed } from '@/lib/product-data';
 import { CampaignsSection } from '@/components/sections/campaigns-section';
 import { PopularCategoriesSection } from '@/components/sections/popular-categories-section';
 import { ArticlesSection } from '@/components/sections/articles-section';
+import footerHeroImage from '@/components/common/fk_hero_bg_5.webp';
 
 
 const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
@@ -183,12 +184,11 @@ export default async function HomePage() {
 
         <section className="relative h-[300px] w-full md:h-[400px]">
            <Image
-            src="https://placehold.co/1600x400.png"
+            src={footerHeroImage}
             alt="Ta vare på jorda, dyra og framtida"
             layout="fill"
             objectFit="cover"
             quality={80}
-            data-ai-hint="norwegian landscape farm field"
           />
           <div className="absolute inset-0 bg-black/40" />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-white">
