@@ -1,11 +1,13 @@
 
+import type { StaticImageData } from 'next/image';
+
 export interface Product {
   id: string; // from <g:id> or similar unique identifier
   title: string; // from <title>
   brand?: string; // from <g:brand> or equivalent
   price: string; // from <g:price>, should be original price
   salePrice?: string; // from <g:sale_price> if available
-  imageUrl: string; // from <g:image_link> or equivalent
+  imageUrl: string | StaticImageData; // from <g:image_link> or equivalent
   productUrl: string; // from <link> or equivalent
   imageAlt?: string; // Optional, can be derived from title
   badgeText?: string; // For manually added badges like "- 14 %" or "Nyhet"
