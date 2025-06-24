@@ -37,37 +37,17 @@ export default async function HomePage() {
         <CampaignsSection />
 
         <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto px-4 max-w-[1542px]">
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Aktuelt akkurat nå</h2>
-              <div className="flex flex-wrap justify-center gap-2">
-                {filterCategories.map(cat => (
-                  <Button key={cat} variant="outline" size="sm" className="rounded-full border-primary bg-transparent text-primary hover:bg-primary/10">
-                    {cat}
-                  </Button>
-                ))}
-              </div>
+          <div className="container mx-auto max-w-[1542px] px-4">
+            <div className="mb-6 flex flex-col items-center justify-between gap-4 text-center md:flex-row">
+              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Mest populære akkurat nå</h2>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {aktuelltProducts.map((item) => (
                 <ProductCard
                   key={item.id}
-                  title={item.title}
-                  price={item.price}
-                  salePrice={item.salePrice}
-                  imageUrl={item.imageUrl}
-                  imageAlt={item.imageAlt || item.title}
-                  productUrl={item.productUrl}
-                  badgeText={item.badgeText}
-                  dataAiHint={item.dataAiHint}
-                  brand={item.brand}
+                  {...item}
                 />
               ))}
-            </div>
-            <div className="mt-8 text-center">
-              <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href="#">Se flere produkter <ChevronRight className="ml-1 h-4 w-4 inline"/></Link>
-              </Button>
             </div>
           </div>
         </section>
@@ -75,11 +55,11 @@ export default async function HomePage() {
         <PopularCategoriesSection />
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto px-4 max-w-[1542px]">
-            <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-6">
+          <div className="container mx-auto max-w-[1542px] px-4">
+            <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
                 <h2 className="font-headline text-2xl font-bold lg:text-3xl">Alt til kjæledyr</h2>
                 <Button variant="link" asChild className="text-primary hover:underline">
-                    <Link href="#">Se alt til kjæledyr <ChevronRight className="ml-1 h-4 w-4 inline"/></Link>
+                    <Link href="#">Se alt til kjæledyr <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
                 </Button>
             </div>
             <div className="flex flex-col gap-6 lg:flex-row">
@@ -94,15 +74,7 @@ export default async function HomePage() {
                 {kjaeledyrProducts.map((item) => (
                   <ProductCard
                     key={item.id}
-                    title={item.title}
-                    price={item.price}
-                    salePrice={item.salePrice}
-                    imageUrl={item.imageUrl}
-                    imageAlt={item.imageAlt || item.title}
-                    productUrl={item.productUrl}
-                    badgeText={item.badgeText}
-                    dataAiHint={item.dataAiHint}
-                    brand={item.brand}
+                    {...item}
                   />
                 ))}
               </div>
@@ -111,11 +83,11 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto px-4 max-w-[1542px]">
-             <div className="flex flex-col items-center justify-between gap-4 md:flex-row mb-6">
+          <div className="container mx-auto max-w-[1542px] px-4">
+             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
                 <h2 className="font-headline text-2xl font-bold lg:text-3xl">Robotgressklippere</h2>
                 <Button variant="link" asChild className="text-primary hover:underline">
-                    <Link href="#">Se alle robotgressklippere <ChevronRight className="ml-1 h-4 w-4 inline"/></Link>
+                    <Link href="#">Se alle robotgressklippere <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
                 </Button>
             </div>
             <div className="flex flex-col gap-6 lg:flex-row-reverse">
@@ -130,15 +102,7 @@ export default async function HomePage() {
                 {robotgressklipperProducts.map((item) => (
                   <ProductCard
                     key={item.id}
-                    title={item.title}
-                    price={item.price}
-                    salePrice={item.salePrice}
-                    imageUrl={item.imageUrl}
-                    imageAlt={item.imageAlt || item.title}
-                    productUrl={item.productUrl}
-                    badgeText={item.badgeText}
-                    dataAiHint={item.dataAiHint}
-                    brand={item.brand}
+                    {...item}
                   />
                 ))}
               </div>
@@ -147,26 +111,18 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto px-4 max-w-[1542px]">
+          <div className="container mx-auto max-w-[1542px] px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Nødvendig utstyr til vanning i hagen</h2>
                <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href="#">Se alt til vanning <ChevronRight className="ml-1 h-4 w-4 inline"/></Link>
+                <Link href="#">Se alt til vanning <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {vanningProducts.map((item) => (
                  <ProductCard
                     key={item.id}
-                    title={item.title}
-                    price={item.price}
-                    salePrice={item.salePrice}
-                    imageUrl={item.imageUrl}
-                    imageAlt={item.imageAlt || item.title}
-                    productUrl={item.productUrl}
-                    badgeText={item.badgeText}
-                    dataAiHint={item.dataAiHint}
-                    brand={item.brand}
+                    {...item}
                   />
               ))}
             </div>
@@ -174,7 +130,7 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto px-4 max-w-[1542px]">
+          <div className="container mx-auto max-w-[1542px] px-4">
             <div className="flex flex-col overflow-hidden rounded-lg bg-card shadow-lg lg:flex-row">
               <div className="relative h-64 w-full lg:h-auto lg:w-1/2">
                 <Image src="https://placehold.co/800x600.png" alt="Perfekt plen" layout="fill" objectFit="cover" data-ai-hint="green lawn garden"/>
@@ -182,7 +138,7 @@ export default async function HomePage() {
               <div className="flex w-full flex-col justify-center bg-[hsl(var(--secondary-foreground))] p-6 text-primary-foreground lg:w-1/2 lg:p-12">
                 <h2 className="font-headline text-3xl font-bold">Perfekt plen?</h2>
                 <p className="mt-2 mb-6 text-lg">Følg våre råd for gjødsling, kalking og pleie av plen.</p>
-                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground self-start">
+                <Button asChild size="lg" className="self-start bg-accent text-accent-foreground hover:bg-accent/90">
                   <Link href="#">Se våre tips og råd</Link>
                 </Button>
               </div>
@@ -191,26 +147,18 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto px-4 max-w-[1542px]">
+          <div className="container mx-auto max-w-[1542px] px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Hjelp til såing</h2>
                <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href="#">Se alt til såing <ChevronRight className="ml-1 h-4 w-4 inline"/></Link>
+                <Link href="#">Se alt til såing <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {saaingProducts.map((item) => (
                 <ProductCard
                   key={item.id}
-                  title={item.title}
-                  price={item.price}
-                  salePrice={item.salePrice}
-                  imageUrl={item.imageUrl}
-                  imageAlt={item.imageAlt || item.title}
-                  productUrl={item.productUrl}
-                  badgeText={item.badgeText}
-                  dataAiHint={item.dataAiHint}
-                  brand={item.brand}
+                  {...item}
                 />
               ))}
             </div>
@@ -229,8 +177,8 @@ export default async function HomePage() {
             data-ai-hint="norwegian landscape farm field"
           />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white max-w-[1542px]">
-            <FkaLogo className="mb-4 h-12 w-auto invert brightness-0 filter" />
+          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-white">
+            <FkaLogo className="mb-4 h-12 w-auto invert filter brightness-0" />
             <h2 className="font-headline text-3xl font-bold md:text-4xl lg:text-5xl">
               Ta vare på jorda, dyra og framtida
             </h2>

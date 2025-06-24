@@ -7,15 +7,16 @@ const campaigns = [
   {
     id: 'STH001',
     title: 'STIHL Motorsag MS 170',
-    price: '2490,-',
-    salePrice: '2490,-', // Assuming this is the actual price, if it's a sale, set original price here
-    originalPrice: '2990,-',
+    price: '2990,-',
+    salePrice: '2490,-',
     imageUrl: 'https://placehold.co/400x300.png',
     imageAlt: 'STIHL Motorsag',
     productUrl: '#',
     badgeText: 'Spar 500,-',
     dataAiHint: 'chainsaw stihl',
-    brand: 'STIHL'
+    brand: 'STIHL',
+    onlineStock: true,
+    storeStockCount: 45,
   },
   {
     id: 'KAR002',
@@ -25,20 +26,23 @@ const campaigns = [
     imageAlt: 'Kärcher Høytrykksvasker',
     productUrl: '#',
     dataAiHint: 'pressure washer karcher',
-    brand: 'Kärcher'
+    brand: 'Kärcher',
+    onlineStock: true,
+    storeStockCount: 62,
   },
   {
     id: 'FKP003',
     title: 'Felleskjøpet Plenrens 14kg',
-    price: '499,-',
+    price: '599,-',
     salePrice: '499,-',
-    originalPrice: '599,-',
     imageUrl: 'https://placehold.co/400x300.png',
     imageAlt: 'Plenrens',
     productUrl: '#',
     badgeText: 'Godt kjøp!',
     dataAiHint: 'lawn care product',
-    brand: 'Felleskjøpet'
+    brand: 'Felleskjøpet',
+    onlineStock: true,
+    storeStockCount: 120,
   },
    {
     id: 'VIK004',
@@ -48,14 +52,16 @@ const campaigns = [
     imageAlt: 'Viking Gressklipper',
     productUrl: '#',
     dataAiHint: 'lawnmower viking',
-    brand: 'Viking'
+    brand: 'Viking',
+    onlineStock: false,
+    storeStockCount: 18,
   },
 ];
 
 export function CampaignsSection() {
   return (
     <section className="py-12 lg:py-16 bg-card">
-      <div className="container mx-auto px-4 max-w-[1542px]">
+      <div className="container mx-auto max-w-[1542px] px-4">
         <div className="mb-8 flex items-center justify-between">
           <h2 className="font-headline text-3xl font-bold">Aktuelle kampanjer</h2>
           <Button variant="link" asChild className="text-primary hover:underline">
@@ -66,15 +72,7 @@ export function CampaignsSection() {
           {campaigns.map((campaign) => (
             <ProductCard
               key={campaign.id}
-              title={campaign.title}
-              price={campaign.originalPrice || campaign.price} // Show originalPrice as strikethrough if salePrice exists
-              salePrice={campaign.salePrice !== campaign.price ? campaign.salePrice : undefined}
-              imageUrl={campaign.imageUrl}
-              imageAlt={campaign.imageAlt}
-              productUrl={campaign.productUrl}
-              badgeText={campaign.badgeText}
-              dataAiHint={campaign.dataAiHint}
-              brand={campaign.brand}
+              {...campaign}
             />
           ))}
         </div>
