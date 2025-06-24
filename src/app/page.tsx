@@ -12,7 +12,6 @@ import type { Product } from '@/types/product';
 import { getProductsFromFeed } from '@/lib/product-data';
 
 // Import new sections
-import { FeaturedLinksSection } from '@/components/sections/featured-links-section';
 import { CampaignsSection } from '@/components/sections/campaigns-section';
 import { PopularCategoriesSection } from '@/components/sections/popular-categories-section';
 import { ArticlesSection } from '@/components/sections/articles-section';
@@ -33,7 +32,6 @@ export default async function HomePage() {
       
       <main className="flex-grow">
         <HeroSection />
-        <FeaturedLinksSection />
         <CampaignsSection />
 
         <section className="py-8 lg:py-12 bg-background">
