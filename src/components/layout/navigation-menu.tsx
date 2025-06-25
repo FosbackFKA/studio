@@ -342,17 +342,102 @@ const hjemOgFritidMenuData = {
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
+const verktoyOgRedskapMenuData = {
+  columns: [
+    [ // Column 1
+      {
+        title: 'Bensin, olje og smøremidler', href: '#',
+        links: [
+          { name: 'Bensin', href: '#' },
+          { name: 'Bensinkanner', href: '#' },
+          { name: 'Olje og kjemikalier', href: '#' },
+          { name: 'Sagkjedeolje', href: '#' },
+          { name: 'Smøremidler', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+      {
+        title: 'Rengjøringsmaskiner', href: '#',
+        links: [
+            { name: 'Feiemaskiner', href: '#' },
+            { name: 'Grovstøvsuger', href: '#' },
+            { name: 'Høytrykkspylere og tilbehør', href: '#' },
+            { name: 'Støvsugere', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 2
+      {
+        title: 'Bilpleie og bilutstyr', href: '#',
+        links: [
+          { name: 'Bilstereo', href: '#' },
+          { name: 'Bilutstyr', href: '#' },
+          { name: 'Eksteriørvask', href: '#' },
+          { name: 'Frostvæske og spylevæske', href: '#' },
+          { name: 'Interiørvask', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+      {
+        title: 'Snørydding og avising', href: '#',
+        links: [
+            { name: 'Brøytestikker', href: '#' },
+            { name: 'Snøskuffer', href: '#' },
+            { name: 'Strøsand og veisalt', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 3
+      {
+        title: 'Bygg og jernvare', href: '#',
+        links: [
+          { name: 'Festemateriell', href: '#' },
+          { name: 'Verkstedutstyr', href: '#' },
+          { name: 'Drenering', href: '#' },
+        ],
+      },
+      {
+        title: 'Tilhengere', href: '#',
+        links: [
+          { name: 'ATV hengere', href: '#' },
+          { name: 'Båthengere', href: '#' },
+          { name: 'Bilhengere', href: '#' },
+          { name: 'Biltraller', href: '#' },
+          { name: 'Boggihengere', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 4
+      {
+        title: 'El-artikler og belysning', href: '#',
+        links: [
+          { name: 'Alarm og overvåkning', href: '#' },
+          { name: 'Arbeidsbelysning', href: '#' },
+          { name: 'Lyspærer og lysrør', href: '#' },
+          { name: 'Skjøteledninger og kabeltromler', href: '#' },
+          { name: 'Småbatterier', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+       {
+        title: 'Verktøy og maskiner', href: '#',
+        links: [
+          { name: 'Byggtørkere', href: '#' },
+          { name: 'Elektroverktøy', href: '#' },
+          { name: 'Håndverktøy', href: '#' },
+          { name: 'Kappemaskiner', href: '#' },
+          { name: 'Kompressor og tilbehør', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+    ],
+  ],
+  footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
+};
+
 
 const simpleMenuList: Record<string, { title: string; href: string }[]> = {
-  'Verktøy og redskap': [
-    { title: 'Håndverktøy', href: '#' },
-    { title: 'El-verktøy og maskiner', href: '#' },
-    { title: 'Hageredskap', href: '#' },
-    { title: 'Snørydding og strøing', href: '#' },
-    { title: 'Bygg og anlegg', href: '#' },
-    { title: 'Kjøretøy og garasje', href: '#' },
-    { title: 'Maling og Fuge', href: '#' },
-  ],
   'Skog og ved': [
     { title: 'Motorsag og ryddesag', href: '#' },
     { title: 'Vedkløyver og vedkapper', href: '#' },
@@ -432,6 +517,7 @@ export function MainNavMenu() {
       const isKjaeledyrMenu = item.name === 'Kjæledyr';
       const isKlaerOgSkoMenu = item.name === 'Klær og sko';
       const isHjemOgFritidMenu = item.name === 'Hjem og fritid';
+      const isVerktoyOgRedskapMenu = item.name === 'Verktøy og redskap';
       const simpleMenu = simpleMenuList[item.name];
       
       return (
@@ -514,6 +600,26 @@ export function MainNavMenu() {
                       <Link href={hjemOgFritidMenuData.footerLink.href}>
                         <ChevronRight className="mr-2 h-4 w-4" />
                         {hjemOgFritidMenuData.footerLink.name}
+                      </Link>
+                    </Button>
+                  </div>
+                </>
+            ) : isVerktoyOgRedskapMenu ? (
+                <>
+                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
+                    {verktoyOgRedskapMenuData.columns.map((col, idx) => (
+                      <div key={idx} className="flex flex-col gap-4">
+                        {col.map((group) => (
+                          <MegaMenuColumn key={group.title} {...group} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
+                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
+                      <Link href={verktoyOgRedskapMenuData.footerLink.href}>
+                        <ChevronRight className="mr-2 h-4 w-4" />
+                        {verktoyOgRedskapMenuData.footerLink.name}
                       </Link>
                     </Button>
                   </div>
