@@ -32,12 +32,18 @@ import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
 import gressklipper4 from '@/components/common/gressklipper/gressklipper4.webp';
 import gressklipper5 from '@/components/common/gressklipper/gressklipper5.webp';
 
+// Import vanning images
+import vanning1 from '@/components/common/vanning/vanning1.webp';
+import vanning2 from '@/components/common/vanning/vanning2.webp';
+import vanning3 from '@/components/common/vanning/vanning3.webp';
+import vanning4 from '@/components/common/vanning/vanning4.webp';
+import vanning5 from '@/components/common/vanning/vanning5.webp';
+
 
 const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
 
 export default async function HomePage() {
   const aktuelltProducts = await getProductsFromFeed('aktuelt');
-  const vanningProducts = await getProductsFromFeed('vanning');
   const saaingProducts = await getProductsFromFeed('saaing');
   
   const newKjaeledyrProducts = [
@@ -129,6 +135,58 @@ export default async function HomePage() {
       storeStockCount: 55,
     },
   ];
+
+  const newVanningProducts = [
+    {
+      id: 'GARDCLEVER01',
+      title: 'Slangetrommel CleveRoll Easy sett M',
+      brand: 'Gardena',
+      price: '1 499,-',
+      imageUrl: vanning1,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 55,
+    },
+    {
+      id: 'GARDDUAL01',
+      title: 'Slangetrommel dual 25 m',
+      brand: 'Gardena',
+      price: '1 599,-',
+      imageUrl: vanning2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 81,
+    },
+    {
+      id: 'FKVANNK01',
+      title: 'Vannkanne sort 5 L',
+      price: '89,-',
+      imageUrl: vanning3,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 91,
+    },
+    {
+      id: 'FKVANNK02',
+      title: 'Vannkanne turkis 10 L',
+      price: '99,-',
+      imageUrl: vanning4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 90,
+    },
+    {
+      id: 'GARDPULS01',
+      title: 'Pulsspreder hel/halvsirkel',
+      brand: 'Gardena',
+      price: '419,-',
+      imageUrl: vanning5,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 95,
+    },
+  ];
+
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -252,14 +310,11 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Nødvendig utstyr til vanning i hagen</h2>
-               <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href="#">Se alt til vanning <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
-              </Button>
+            <div className="mb-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Favorittene våre til vanning i hagen</h2>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {vanningProducts.map((item) => (
+              {newVanningProducts.map((item) => (
                  <ProductCard
                     key={item.id}
                     {...item}
@@ -275,8 +330,8 @@ export default async function HomePage() {
               <div className="relative aspect-square w-full self-start md:sticky md:top-36">
                 <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" className="rounded-lg" />
               </div>
-              <div className="self-start">
-                <div className="rounded-lg bg-primary-dark-background p-6 lg:p-12">
+              <div className="flex items-start self-start">
+                  <div className="rounded-lg bg-primary-dark-background p-6 lg:p-12">
                   <p className="font-headline text-xl text-[#fff280]">Drømmer du om en</p>
                   <h2 className="font-headline text-5xl font-bold text-[#fff280]">Perfekt plen?</h2>
                   <p className="mt-4 mb-8 text-lg text-[#fff280]">
