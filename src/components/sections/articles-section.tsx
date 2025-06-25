@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 // Import new local images for the articles
-import artikkel1 from '../common/artikler/artikkel1.webp';
-import artikkel2 from '../common/artikler/artikkel2.webp';
-import artikkel3 from '../common/artikler/artikkel3.webp';
+import artikkel1 from '../common/artikler/1.webp';
+import artikkel2 from '../common/artikler/2.webp';
+import artikkel3 from '../common/artikler/3.webp';
 
 const articles = [
   {
