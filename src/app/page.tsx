@@ -133,7 +133,7 @@ export default async function HomePage() {
                       objectFit="cover"
                       className="transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 flex flex-col justify-end rounded-lg bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 text-white">
+                    <div className="absolute inset-x-0 bottom-0 top-1/3 flex flex-col justify-end rounded-b-lg bg-gradient-to-t from-black/70 via-black/50 to-transparent p-6 text-white">
                       <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
                       <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
                         <ArrowRight className="mr-2 h-4 w-4" />
