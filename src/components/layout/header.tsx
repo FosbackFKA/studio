@@ -171,13 +171,13 @@ export function HeaderComponent() {
           </Button>
           
           <Button variant="ghost" size="icon" aria-label="Handlekurv" className="relative text-primary lg:hidden">
-            <ShoppingCart className="h-7 w-7" />
+            <ShoppingCart className="h-8 w-8" />
           </Button>
           
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden text-primary" aria-label="Meny">
-                <MenuIcon className="h-7 w-7" />
+                <MenuIcon className="h-8 w-8" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="flex w-full max-w-sm flex-col bg-background p-0 sm:max-w-sm">
@@ -192,7 +192,7 @@ export function HeaderComponent() {
                 </span>
                 <SheetClose asChild>
                   <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-8 w-8">
-                     <X className="h-6 w-6" />
+                     <X className="h-7 w-7" />
                      <span className="sr-only">Lukk</span>
                   </Button>
                 </SheetClose>
