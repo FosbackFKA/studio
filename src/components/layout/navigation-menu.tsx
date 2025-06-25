@@ -99,15 +99,78 @@ const hageUteromMenuData = {
   footerLink: { name: 'Se alt i hage og uterom', href: '#' },
 };
 
-const simpleMenuList: Record<string, { title: string; href: string }[]> = {
-  'Kjæledyr': [
-    { title: 'Hund', href: '#' },
-    { title: 'Katt', href: '#' },
-    { title: 'Hest', href: '#' },
-    { title: 'Hobbyhøns', href: '#' },
-    { title: 'Smådyr', href: '#' },
-    { title: 'Utstyr og fôr', href: '#' },
+const kjaeledyrMenuData = {
+  columns: [
+    [ // Column 1
+      {
+        title: 'Hest og rytter', href: '#',
+        links: [
+          { name: 'Gjerder og grinder', href: '#' },
+          { name: 'Hestefôr og tilskudd', href: '#' },
+          { name: 'Hestesko og hovslagerutstyr', href: '#' },
+          { name: 'Hesteutstyr', href: '#' },
+          { name: 'Rytter', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+      {
+        title: 'Smådyr', href: '#',
+        links: [
+            { name: 'Bur og innredning', href: '#' },
+            { name: 'Mat til smådyrene', href: '#' },
+            { name: 'Pelspleie og klopleie', href: '#' },
+            { name: 'Annet utstyr til smådyr', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 2
+      {
+        title: 'Hobbyhøns', href: '#',
+        links: [
+          { name: 'Eggproduksjon', href: '#' },
+          { name: 'Fôr og tilskudd', href: '#' },
+          { name: 'Fôringsutstyr', href: '#' },
+          { name: 'Hønsehus', href: '#' },
+          { name: 'Utstyr til høns', href: '#' },
+        ],
+      },
+      {
+        title: 'Småfugler', href: '#',
+        links: [
+            { name: 'Fuglekasser', href: '#' },
+            { name: 'Fuglemat', href: '#' },
+            { name: 'Fuglematere', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 3
+      {
+        title: 'Hund', href: '#',
+        links: [
+          { name: 'Hundefôr', href: '#' },
+          { name: 'Hundens helse', href: '#' },
+          { name: 'Hundens luftetur', href: '#' },
+          { name: 'Hundepleie', href: '#' },
+          { name: 'Hundeutstyr', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 4
+      {
+        title: 'Katt', href: '#',
+        links: [
+          { name: 'Kattemat', href: '#' },
+          { name: 'Kattens helse', href: '#' },
+          { name: 'Kattepleie', href: '#' },
+          { name: 'Katteutstyr', href: '#' },
+        ],
+      },
+    ],
   ],
+  footerLink: { name: 'Se alt i kjæledyr', href: '#' },
+};
+
+const simpleMenuList: Record<string, { title: string; href: string }[]> = {
   'Klær og sko': [
     { title: 'Herre', href: '#' },
     { title: 'Dame', href: '#' },
@@ -209,14 +272,15 @@ const MegaMenuColumn = ({ title, links, href }: { title: string; href: string; l
 export function MainNavMenu() {
   const renderNavItems = (items: typeof leftNavItems) => {
     return items.map((item) => {
+      const isHageUteromMenu = item.name === 'Hage og uterom';
+      const isKjaeledyrMenu = item.name === 'Kjæledyr';
       const simpleMenu = simpleMenuList[item.name];
-      const isMegaMenu = item.name === 'Hage og uterom';
       
       return (
         <NavigationMenuItem key={item.name}>
           <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
           <NavigationMenuContent>
-            {isMegaMenu ? (
+            {isHageUteromMenu ? (
               <>
                 <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
                   {hageUteromMenuData.columns.map((col, idx) => (
@@ -236,6 +300,26 @@ export function MainNavMenu() {
                   </Button>
                 </div>
               </>
+            ) : isKjaeledyrMenu ? (
+                <>
+                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
+                    {kjaeledyrMenuData.columns.map((col, idx) => (
+                      <div key={idx} className="flex flex-col gap-4">
+                        {col.map((group) => (
+                          <MegaMenuColumn key={group.title} {...group} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
+                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
+                      <Link href={kjaeledyrMenuData.footerLink.href}>
+                        <ChevronRight className="mr-2 h-4 w-4" />
+                        {kjaeledyrMenuData.footerLink.name}
+                      </Link>
+                    </Button>
+                  </div>
+                </>
             ) : (
               <ul className="grid w-[250px] gap-3 p-4 md:w-[300px]">
                 {simpleMenu?.map((component) => (
