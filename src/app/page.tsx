@@ -121,22 +121,31 @@ export default async function HomePage() {
         {/* New Pet Section */}
         <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="flex flex-col gap-6 lg:flex-row">
-              {/* Left Promo Image */}
-              <div className="relative h-64 w-full rounded-lg lg:h-auto lg:w-1/3">
-                <Link href="#" className="group block h-full w-full">
-                  <Image src={hund1} alt="Alt til kjæledyr" layout="fill" objectFit="cover" className="rounded-lg" />
-                  <div className="absolute inset-0 flex flex-col justify-end rounded-lg bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 text-white">
-                    <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
-                    <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
-                      <ArrowRight className="mr-2 h-4 w-4" />
-                      <span>Utstyr og fôr til alt fra hund til hobbyhøns</span>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* Left Column: Sticky Promo Image */}
+              <div className="self-start md:sticky md:top-36">
+                <Link href="#" className="group block aspect-square">
+                  <div className="relative h-full w-full overflow-hidden rounded-lg">
+                    <Image
+                      src={hund1}
+                      alt="Alt til kjæledyr"
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 flex flex-col justify-end rounded-lg bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 text-white">
+                      <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
+                      <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
+                        <ArrowRight className="mr-2 h-4 w-4" />
+                        <span>Utstyr og fôr til alt fra hund til hobbyhøns</span>
+                      </div>
                     </div>
                   </div>
                 </Link>
               </div>
-              {/* Right Product Grid */}
-              <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
+
+              {/* Right Column: Product Grid */}
+              <div className="grid grid-cols-2 gap-4 self-start">
                 {newKjaeledyrProducts.map((item) => (
                   <ProductCard
                     key={item.id}
