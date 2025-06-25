@@ -190,9 +190,11 @@ export function HeaderComponent() {
                 <span className="font-bold text-lg text-primary">
                   {currentMenu?.title || "Meny"}
                 </span>
-                <SheetClose className="absolute right-2 top-1/2 -translate-y-1/2">
-                  <X className="h-6 w-6" />
-                  <span className="sr-only">Lukk</span>
+                <SheetClose asChild>
+                  <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-8 w-8">
+                     <X className="h-5 w-5" />
+                     <span className="sr-only">Lukk</span>
+                  </Button>
                 </SheetClose>
               </SheetHeader>
               
