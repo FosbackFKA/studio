@@ -271,11 +271,11 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="flex flex-col overflow-hidden rounded-lg bg-card shadow-lg lg:flex-row">
-              <div className="relative h-64 w-full lg:h-auto lg:w-1/2">
+            <div className="flex flex-col overflow-hidden rounded-lg bg-card shadow-lg lg:grid lg:grid-cols-2">
+              <div className="relative aspect-square w-full">
                 <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" />
               </div>
-              <div className="flex w-full flex-col justify-center bg-primary-dark-background p-6 text-primary-foreground lg:w-1/2 lg:p-12">
+              <div className="flex w-full flex-col justify-center bg-primary-dark-background p-6 text-primary-foreground lg:p-12">
                 <h2 className="font-headline text-3xl font-bold">Perfekt plen?</h2>
                 <p className="mt-2 mb-6 text-lg">Følg våre råd for gjødsling, kalking og pleie av plen.</p>
                 <Button asChild size="lg" className="self-start bg-accent text-accent-foreground hover:bg-accent/90">
