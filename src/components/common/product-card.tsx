@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Product } from '@/types/product';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, XCircle } from 'lucide-react';
 import type { StaticImageData } from 'next/image';
+import { cn } from '@/lib/utils';
 
 interface ProductCardProps extends Pick<Product, 
   'title' | 
@@ -79,16 +80,19 @@ export function ProductCard({
 
         <div className="relative z-10 flex flex-grow flex-col justify-between bg-card p-4 pt-0">
           <div className="flex-grow">
-            <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-              {onlineStock && (
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
+             <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+              {onlineStock !== undefined && (
+                <div className={cn(
+                  "flex items-center gap-1.5",
+                  onlineStock ? "text-primary" : "text-destructive"
+                )}>
+                  {onlineStock ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
                   <span>Nettlager</span>
                 </div>
               )}
               {storeStockCount !== undefined && storeStockCount > 0 && (
-                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                 <div className="flex items-center gap-1.5 text-primary">
+                  <CheckCircle2 className="h-4 w-4" />
                   <span>{storeStockCount} butikker</span>
                 </div>
               )}

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FkaLogo } from '@/components/common/logo';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { getProductsFromFeed } from '@/lib/product-data';
 
@@ -17,15 +17,64 @@ import { PopularCategoriesSection } from '@/components/sections/popular-categori
 import { ArticlesSection } from '@/components/sections/articles-section';
 import footerHeroImage from '@/components/common/fk_hero_bg_5.webp';
 
+// Import dog images
+import hund1 from '@/components/common/hund/hund1.webp';
+import hund2 from '@/components/common/hund/hund2.webp';
+import hund3 from '@/components/common/hund/hund3.webp';
+import hund4 from '@/components/common/hund/hund4.webp';
+import hund5 from '@/components/common/hund/hund5.webp';
+
 
 const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
 
 export default async function HomePage() {
   const aktuelltProducts = await getProductsFromFeed('aktuelt');
-  const kjaeledyrProducts = await getProductsFromFeed('kjaeledyr');
   const robotgressklipperProducts = await getProductsFromFeed('robotgressklippere');
   const vanningProducts = await getProductsFromFeed('vanning');
   const saaingProducts = await getProductsFromFeed('saaing');
+  
+  const newKjaeledyrProducts = [
+    {
+      id: 'LABB02',
+      title: 'Hundefôr Voksen mellom- og stor rase 15 kg',
+      brand: 'Labb',
+      price: '649,-',
+      imageUrl: hund2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 95,
+    },
+    {
+      id: 'NONSTOP01',
+      title: 'Kobbel Move Leash 150 cm grønn',
+      brand: 'Non-stop dogwear',
+      price: '349,-',
+      imageUrl: hund3,
+      productUrl: '#',
+      onlineStock: false,
+      storeStockCount: 63,
+    },
+    {
+      id: 'OZAMI01',
+      title: 'Tyggerull Premium Elg 45 g',
+      brand: 'Ozami',
+      price: '149,-',
+      imageUrl: hund4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 85,
+    },
+    {
+      id: 'FRYD01',
+      title: 'Startfôr kylling 4 kg',
+      brand: 'Fryd',
+      price: '119,-',
+      imageUrl: hund5,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
+    },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -68,25 +117,27 @@ export default async function HomePage() {
         </section>
 
         <PopularCategoriesSection />
-
+        
+        {/* New Pet Section */}
         <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-                <h2 className="font-headline text-2xl font-bold lg:text-3xl">Alt til kjæledyr</h2>
-                <Button variant="link" asChild className="text-primary hover:underline">
-                    <Link href="#">Se alt til kjæledyr <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
-                </Button>
-            </div>
             <div className="flex flex-col gap-6 lg:flex-row">
-              <div className="relative h-64 w-full lg:h-auto lg:w-1/3">
-                <Image src="https://placehold.co/600x800.png" alt="Alt til kjæledyr" layout="fill" objectFit="cover" className="rounded-lg" data-ai-hint="dog happy pet"/>
-                <div className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-black/40 p-4 text-center">
-                  <h3 className="font-headline text-3xl font-bold text-white">Alt til kjæledyr</h3>
-                  <p className="text-md text-white">Det beste for din firbente venn</p>
-                </div>
+              {/* Left Promo Image */}
+              <div className="relative h-64 w-full rounded-lg lg:h-auto lg:w-1/3">
+                <Link href="#" className="group block h-full w-full">
+                  <Image src={hund1} alt="Alt til kjæledyr" layout="fill" objectFit="cover" className="rounded-lg" />
+                  <div className="absolute inset-0 flex flex-col justify-end rounded-lg bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 text-white">
+                    <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
+                    <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
+                      <ArrowRight className="mr-2 h-4 w-4" />
+                      <span>Utstyr og fôr til alt fra hund til hobbyhøns</span>
+                    </div>
+                  </div>
+                </Link>
               </div>
+              {/* Right Product Grid */}
               <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
-                {kjaeledyrProducts.map((item) => (
+                {newKjaeledyrProducts.map((item) => (
                   <ProductCard
                     key={item.id}
                     {...item}
