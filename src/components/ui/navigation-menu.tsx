@@ -13,7 +13,7 @@ const NavigationMenu = React.forwardRef<
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
-      "relative z-10 flex flex-1 items-center justify-center",
+      "relative z-10 flex flex-1 items-center",
       className
     )}
     {...props}
@@ -42,7 +42,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-auto w-max items-center justify-center rounded-none bg-transparent px-3 py-2 text-sm font-medium text-foreground transition-colors hover:text-primary focus:bg-transparent focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:text-primary data-[state=open]:text-primary"
+  "group inline-flex h-auto w-max items-center justify-center rounded-none bg-transparent px-3 py-2 font-headline text-xl font-normal tracking-[0.2px] text-primary transition-colors hover:text-primary focus:bg-transparent focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:text-primary data-[state=open]:text-primary"
 )
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -51,7 +51,7 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
-    className={cn(navigationMenuTriggerStyle(), "group", "hover:border-b-2 hover:border-primary data-[state=open]:border-b-2 data-[state=open]:border-primary", className)}
+    className={cn(navigationMenuTriggerStyle(), "group", className)}
     {...props}
   >
     {children}

@@ -182,7 +182,7 @@ export function MainNavMenu() {
       if (isSimpleLink) {
         return (
           <NavigationMenuItem key={item.name}>
-            <NavigationMenuLink asChild className={cn('font-semibold text-primary', 'hover:border-b-2 hover:border-primary')}>
+            <NavigationMenuLink asChild>
               <Link href={item.href}>{item.name}</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -191,9 +191,7 @@ export function MainNavMenu() {
 
       return (
         <NavigationMenuItem key={item.name}>
-          <NavigationMenuTrigger className={cn(rightNavItems.some(i => i.name === item.name) && 'font-semibold text-primary')}>
-            {item.name}
-          </NavigationMenuTrigger>
+          <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
           <NavigationMenuContent>
             {isMegaMenu ? (
               <>
