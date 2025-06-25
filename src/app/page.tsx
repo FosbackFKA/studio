@@ -271,18 +271,18 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="lg:grid lg:grid-cols-2 lg:gap-6">
-              <div className="relative aspect-square w-full mb-6 lg:mb-0">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="relative aspect-square w-full self-start md:sticky md:top-36">
                 <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" className="rounded-lg" />
               </div>
-              <div className="flex flex-col justify-center">
+              <div className="self-start">
                 <div className="rounded-lg bg-primary-dark-background p-6 lg:p-12">
                   <p className="font-headline text-xl text-yellow-300">Drømmer du om en</p>
                   <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
                   <p className="mt-4 mb-8 text-lg text-yellow-300">
                     Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
                   </p>
-                  <Button asChild size="lg" className="self-start bg-secondary text-accent-foreground hover:bg-secondary/90">
+                  <Button asChild className="h-11 self-start rounded-full bg-secondary px-4 text-accent-foreground hover:bg-secondary/90">
                     <Link href="#">
                       <ArrowRight className="h-5 w-5" />
                       Se produktene
