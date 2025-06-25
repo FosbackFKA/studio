@@ -277,12 +277,12 @@ export default async function HomePage() {
               </div>
               <div className="self-start">
                 <div className="rounded-lg bg-primary-dark-background p-6 lg:p-12">
-                  <p className="font-headline text-xl text-yellow-300">Drømmer du om en</p>
-                  <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
-                  <p className="mt-4 mb-8 text-lg text-yellow-300">
+                  <p className="font-headline text-xl text-[#fff280]">Drømmer du om en</p>
+                  <h2 className="font-headline text-5xl font-bold text-[#fff280]">Perfekt plen?</h2>
+                  <p className="mt-4 mb-8 text-lg text-[#fff280]">
                     Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
                   </p>
-                  <Button asChild className="h-11 self-start rounded-full bg-secondary px-4 text-secondary-foreground hover:bg-secondary/90">
+                  <Button asChild className="h-11 self-start rounded-full bg-[#fffacc] px-4 text-secondary-foreground hover:bg-[#fffacc]/90">
                     <Link href="#">
                       <ArrowRight className="h-5 w-5" />
                       Se produktene
