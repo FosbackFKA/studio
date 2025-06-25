@@ -39,12 +39,18 @@ import vanning3 from '@/components/common/vanning/vanning3.webp';
 import vanning4 from '@/components/common/vanning/vanning4.webp';
 import vanning5 from '@/components/common/vanning/vanning5.webp';
 
+// Import saaing images
+import saaing1 from '@/components/common/saaing/saaing1.webp';
+import saaing2 from '@/components/common/saaing/saaing2.webp';
+import saaing3 from '@/components/common/saaing/saaing3.webp';
+import saaing4 from '@/components/common/saaing/saaing4.webp';
+import saaing5 from '@/components/common/saaing/saaing5.webp';
+
 
 const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
 
 export default async function HomePage() {
   const aktuelltProducts = await getProductsFromFeed('aktuelt');
-  const saaingProducts = await getProductsFromFeed('saaing');
   
   const newKjaeledyrProducts = [
     {
@@ -184,6 +190,59 @@ export default async function HomePage() {
       productUrl: '#',
       onlineStock: true,
       storeStockCount: 95,
+    },
+  ];
+
+  const newSaaingProducts: Product[] = [
+    {
+      id: 'RYOBI01',
+      title: 'Batteridrevet spreder 18V',
+      brand: 'Ryobi',
+      price: '999,-',
+      imageUrl: saaing1,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 57,
+    },
+    {
+      id: 'NORHAND01',
+      title: 'Håndsåer',
+      brand: 'Norgarden',
+      price: '219,-',
+      imageUrl: saaing2,
+      productUrl: '#',
+      onlineStock: false,
+      storeStockCount: 40,
+    },
+    {
+      id: 'NORSAVOGN01',
+      title: 'Strø- og såvogn',
+      brand: 'Norgarden',
+      price: '429,-',
+      imageUrl: saaing3,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 49,
+    },
+    {
+      id: 'GOPARTSTRO01',
+      title: 'Strøvogn håndmodell 56 kg',
+      brand: 'Gopart',
+      price: '3 999,-',
+      imageUrl: saaing4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 91,
+    },
+    {
+      id: 'NORPLEN01',
+      title: 'Plenvalse 50 cm',
+      brand: 'Norgarden',
+      price: '999,-',
+      imageUrl: saaing5,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 58,
     },
   ];
 
@@ -352,13 +411,13 @@ export default async function HomePage() {
         <section className="py-8 lg:py-12 bg-secondary">
           <div className="container mx-auto max-w-[1542px] px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Hjelp til såing</h2>
+              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Utstyr til å så jevnt</h2>
                <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href="#">Se alt til såing <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
+                <Link href="#">Så og strøredskap <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {saaingProducts.map((item) => (
+              {newSaaingProducts.map((item) => (
                 <ProductCard
                   key={item.id}
                   {...item}
