@@ -170,16 +170,78 @@ const kjaeledyrMenuData = {
   footerLink: { name: 'Se alt i kjæledyr', href: '#' },
 };
 
-const simpleMenuList: Record<string, { title: string; href: string }[]> = {
-  'Klær og sko': [
-    { title: 'Herre', href: '#' },
-    { title: 'Dame', href: '#' },
-    { title: 'Barn', href: '#' },
-    { title: 'Støvler og sko', href: '#' },
-    { title: 'Arbeidstøy og verneutstyr', href: '#' },
-    { title: 'Regntøy', href: '#' },
-    { title: 'Tilbehør', href: '#' },
+const klaerOgSkoMenuData = {
+  columns: [
+    [ // Column 1
+      {
+        title: 'Hansker', href: '#',
+        links: [
+          { name: 'Arbeidshansker', href: '#' },
+          { name: 'Engangshansker', href: '#' },
+          { name: 'Hagehansker', href: '#' },
+          { name: 'Kjemikaliehansker', href: '#' },
+        ],
+      },
+      {
+        title: 'Verneklær og vernesko', href: '#',
+        links: [
+          { name: 'Engangsbekledning', href: '#' },
+          { name: 'Verneklær', href: '#' },
+          { name: 'Vernesko og vernestøvler', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 2
+      {
+        title: 'Arbeidsklær', href: '#',
+        links: [
+          { name: 'Arbeidsbukser', href: '#' },
+          { name: 'Arbeidsjakker', href: '#' },
+          { name: 'Refleksvester', href: '#' },
+          { name: 'Varmedresser og kjeledresser', href: '#' },
+          { name: 'Varselklær', href: '#' },
+        ],
+      },
+      {
+        title: 'Verneutstyr', href: '#',
+        links: [
+          { name: 'Åndedrettsvern', href: '#' },
+          { name: 'Førstehjelpsutstyr', href: '#' },
+          { name: 'Hjelmer og visir', href: '#' },
+          { name: 'Hørselvern', href: '#' },
+          { name: 'Vernebriller', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 3
+      {
+        title: 'Fritidsklær', href: '#',
+        links: [
+          { name: 'Bukser og shorts', href: '#' },
+          { name: 'Caps og luer', href: '#' },
+          { name: 'Gensere og jakker', href: '#' },
+          { name: 'Refleksvester', href: '#' },
+          { name: 'Regntøy', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 4
+      {
+        title: 'Sko og støvler', href: '#',
+        links: [
+          { name: 'Brodder', href: '#' },
+          { name: 'Gummistøvler', href: '#' },
+          { name: 'Sko', href: '#' },
+          { name: 'Skotilbehør', href: '#' },
+        ],
+      },
+    ],
   ],
+  footerLink: { name: 'Se alt i klær og sko', href: '#' },
+};
+
+const simpleMenuList: Record<string, { title: string; href: string }[]> = {
   'Hjem og fritid': [
     { title: 'Matlaging og konservering', href: '#' },
     { title: 'Inneklima og oppvarming', href: '#' },
@@ -274,6 +336,7 @@ export function MainNavMenu() {
     return items.map((item) => {
       const isHageUteromMenu = item.name === 'Hage og uterom';
       const isKjaeledyrMenu = item.name === 'Kjæledyr';
+      const isKlaerOgSkoMenu = item.name === 'Klær og sko';
       const simpleMenu = simpleMenuList[item.name];
       
       return (
@@ -316,6 +379,26 @@ export function MainNavMenu() {
                       <Link href={kjaeledyrMenuData.footerLink.href}>
                         <ChevronRight className="mr-2 h-4 w-4" />
                         {kjaeledyrMenuData.footerLink.name}
+                      </Link>
+                    </Button>
+                  </div>
+                </>
+            ) : isKlaerOgSkoMenu ? (
+                <>
+                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
+                    {klaerOgSkoMenuData.columns.map((col, idx) => (
+                      <div key={idx} className="flex flex-col gap-4">
+                        {col.map((group) => (
+                          <MegaMenuColumn key={group.title} {...group} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
+                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
+                      <Link href={klaerOgSkoMenuData.footerLink.href}>
+                        <ChevronRight className="mr-2 h-4 w-4" />
+                        {klaerOgSkoMenuData.footerLink.name}
                       </Link>
                     </Button>
                   </div>
