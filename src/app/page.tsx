@@ -282,7 +282,7 @@ export default async function HomePage() {
                   <p className="mt-4 mb-8 text-lg text-yellow-300">
                     Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
                   </p>
-                  <Button asChild className="h-11 self-start rounded-full bg-secondary px-4 text-accent-foreground hover:bg-secondary/90">
+                  <Button asChild className="h-11 self-start rounded-full bg-secondary px-4 text-secondary-foreground hover:bg-secondary/90">
                     <Link href="#">
                       <ArrowRight className="h-5 w-5" />
                       Se produktene
