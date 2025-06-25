@@ -276,10 +276,16 @@ export default async function HomePage() {
                 <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" />
               </div>
               <div className="flex w-full flex-col justify-center bg-primary-dark-background p-6 text-primary-foreground lg:p-12">
-                <h2 className="font-headline text-3xl font-bold">Perfekt plen?</h2>
-                <p className="mt-2 mb-6 text-lg">Følg våre råd for gjødsling, kalking og pleie av plen.</p>
+                <p className="font-headline text-xl">Drømmer du om en</p>
+                <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
+                <p className="mt-4 mb-8 text-lg">
+                  Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
+                </p>
                 <Button asChild size="lg" className="self-start bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href="#">Se våre tips og råd</Link>
+                  <Link href="#">
+                    <ArrowRight className="h-5 w-5" />
+                    Se produktene
+                  </Link>
                 </Button>
               </div>
             </div>
