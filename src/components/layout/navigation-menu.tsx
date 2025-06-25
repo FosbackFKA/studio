@@ -101,30 +101,64 @@ const hageUteromMenuData = {
 
 const simpleMenuList: Record<string, { title: string; href: string }[]> = {
   'Kjæledyr': [
-    { title: 'Hund', href: '#' }, { title: 'Katt', href: '#' }, { title: 'Smådyr', href: '#' },
-    { title: 'Fugl', href: '#' }, { title: 'Hest', href: '#' }, { title: 'Fôr', href: '#' },
+    { title: 'Hund', href: '#' },
+    { title: 'Katt', href: '#' },
+    { title: 'Hest', href: '#' },
+    { title: 'Hobbyhøns', href: '#' },
+    { title: 'Smådyr', href: '#' },
+    { title: 'Utstyr og fôr', href: '#' },
   ],
   'Klær og sko': [
-    { title: 'Herre', href: '#' }, { title: 'Dame', href: '#' }, { title: 'Barn', href: '#' },
-    { title: 'Vernesko', href: '#' }, { title: 'Støvler', href: '#' }, { title: 'Tilbehør', href: '#' },
+    { title: 'Herre', href: '#' },
+    { title: 'Dame', href: '#' },
+    { title: 'Barn', href: '#' },
+    { title: 'Støvler og sko', href: '#' },
+    { title: 'Arbeidstøy og verneutstyr', href: '#' },
+    { title: 'Regntøy', href: '#' },
+    { title: 'Tilbehør', href: '#' },
   ],
   'Hjem og fritid': [
-    { title: 'Inneklima', href: '#' }, { title: 'Kjøkken og mat', href: '#' }, { title: 'Rengjøring', href: '#' },
-    { title: 'Jakt og fiske', href: '#' }, { title: 'Bålpanner', href: '#' },
+    { title: 'Matlaging og konservering', href: '#' },
+    { title: 'Inneklima og oppvarming', href: '#' },
+    { title: 'Vask og rengjøring', href: '#' },
+    { title: 'Jakt og fiske', href: '#' },
+    { title: 'Bålpanner og tilbehør', href: '#' },
+    { title: 'Leker og spill', href: '#' },
   ],
   'Verktøy og redskap': [
-    { title: 'El-verktøy', href: '#' }, { title: 'Hageredskap', href: '#' }, { title: 'Snørydding', href: '#' },
-    { title: 'Bygg og anlegg', href: '#' }, { title: 'Trillebårer', href: '#' },
+    { title: 'Håndverktøy', href: '#' },
+    { title: 'El-verktøy og maskiner', href: '#' },
+    { title: 'Hageredskap', href: '#' },
+    { title: 'Snørydding og strøing', href: '#' },
+    { title: 'Bygg og anlegg', href: '#' },
+    { title: 'Kjøretøy og garasje', href: '#' },
+    { title: 'Maling og Fuge', href: '#' },
   ],
   'Skog og ved': [
-    { title: 'Motorsag', href: '#' }, { title: 'Vedkløyver', href: '#' }, { title: 'Økser', href: '#' },
-    { title: 'Verneutstyr', href: '#' }, { title: 'Tilbehør', href: '#' },
+    { title: 'Motorsag og ryddesag', href: '#' },
+    { title: 'Vedkløyver og vedkapper', href: '#' },
+    { title: 'Økser og sager', href: '#' },
+    { title: 'Verneutstyr', href: '#' },
+    { title: 'Skog og tømmerutstyr', href: '#' },
+    { title: 'Tilbehør', href: '#' },
   ],
   'Kampanjer': [
-    { title: 'Ukens kampanjer', href: '#' }, { title: 'Sesongsalg', href: '#' }, { title: 'Medlemstilbud', href: '#' },
+    { title: 'Ukens kampanjer', href: '#' },
+    { title: 'Tilbud på robotgressklippere', href: '#' },
+    { title: 'Tilbud på klær og sko', href: '#' },
   ],
   'Lagersalg': [
-    { title: 'Alle produkter', href: '#' }, { title: 'Utgående varer', href: '#' }, { title: 'B-varer', href: '#' },
+    { title: 'Siste sjanse', href: '#' },
+    { title: 'Utgående varer', href: '#' },
+    { title: 'Se alle tilbud', href: '#' },
+  ],
+  'Merkevarer': [
+    { title: 'Stihl', href: '#' },
+    { title: 'Kärcher', href: '#' },
+    { title: 'Gardena', href: '#' },
+    { title: 'Non-stop dogwear', href: '#' },
+    { title: 'Labb', href: '#' },
+    { title: 'Appetitt', href: '#' },
   ],
 };
 
@@ -177,18 +211,7 @@ export function MainNavMenu() {
     return items.map((item) => {
       const simpleMenu = simpleMenuList[item.name];
       const isMegaMenu = item.name === 'Hage og uterom';
-      const isSimpleLink = !isMegaMenu && !simpleMenu;
-
-      if (isSimpleLink) {
-        return (
-          <NavigationMenuItem key={item.name}>
-            <NavigationMenuLink asChild>
-              <Link href={item.href}>{item.name}</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        );
-      }
-
+      
       return (
         <NavigationMenuItem key={item.name}>
           <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
