@@ -9,10 +9,8 @@ import Image from 'next/image';
 import { FkaLogo } from '@/components/common/logo';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import type { Product } from '@/types/product';
-import { getProductsFromFeed } from '@/lib/product-data';
 
 // Import new sections
-import { CampaignsSection } from '@/components/sections/campaigns-section';
 import { PopularCategoriesSection } from '@/components/sections/popular-categories-section';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import footerHeroImage from '@/components/common/fk_hero_bg_5.webp';
@@ -46,12 +44,73 @@ import saaing3 from '@/components/common/saaing/saaing3.webp';
 import saaing4 from '@/components/common/saaing/saaing4.webp';
 import saaing5 from '@/components/common/saaing/saaing5.webp';
 
+// Import images for 'Mest populære'
+import popular1 from '@/components/common/populaere/1.webp';
+import popular2 from '@/components/common/populaere/2.webp';
+import popular3 from '@/components/common/populaere/3.webp';
+import popular4 from '@/components/common/populaere/4.webp';
+import popular5 from '@/components/common/populaere/5.webp';
 
-const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
 
 export default async function HomePage() {
-  const aktuelltProducts = await getProductsFromFeed('aktuelt');
-  
+  const mostPopularProducts: Product[] = [
+    {
+      id: 'SEGNAVH3000E',
+      title: 'Robotgressklipper Navimow H3000E med VisionFence',
+      brand: 'Segway',
+      price: '34 999,-',
+      salePrice: '29 999,-',
+      imageUrl: popular1,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 63,
+    },
+    {
+      id: 'CHAMP92001I',
+      title: 'Strømaggregat 92001I-EU bensin inverter 2,2 kW',
+      brand: 'Champion Europe',
+      price: '7 999,-',
+      salePrice: '5 999,-',
+      imageUrl: popular2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
+    },
+    {
+      id: 'STIHLRM22R',
+      title: 'Bensindrevet bio gressklipper RM 2,2 R',
+      brand: 'Stihl',
+      price: '4 449,-',
+      salePrice: '3 999,-',
+      imageUrl: popular3,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 68,
+    },
+    {
+      id: 'KARCHERK4P',
+      title: 'Høytrykkspyler K4 Premium',
+      brand: 'Kärcher',
+      price: '3 199,-',
+      salePrice: '2 699,-',
+      imageUrl: popular4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 81,
+    },
+    {
+      id: 'GARDENACLAS30',
+      title: 'Hageslange Classic (1/2") 30 M',
+      brand: 'Gardena',
+      price: '499,-',
+      salePrice: '379,-',
+      imageUrl: popular5,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
+    },
+  ];
+
   const newKjaeledyrProducts = [
     {
       id: 'LABB02',
@@ -253,36 +312,19 @@ export default async function HomePage() {
       
       <main className="flex-grow">
         <HeroSection />
-        <CampaignsSection />
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
             <div className="mb-6 flex flex-col items-center justify-between gap-4 text-center md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Mest populære akkurat nå</h2>
-              <div className="flex flex-wrap justify-center gap-2">
-                {filterCategories.map((category, index) => (
-                  <Button
-                    key={category}
-                    variant={index === 0 ? 'default' : 'outline'}
-                    className="rounded-full"
-                  >
-                    {category}
-                  </Button>
-                ))}
-              </div>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {aktuelltProducts.map((item) => (
+              {mostPopularProducts.map((item) => (
                 <ProductCard
                   key={item.id}
                   {...item}
                 />
               ))}
-            </div>
-            <div className="mt-8 text-center">
-                <Button variant="link" asChild className="text-primary hover:underline">
-                    <Link href="#">Se flere produkter</Link>
-                </Button>
             </div>
           </div>
         </section>
@@ -385,20 +427,42 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="relative aspect-square w-full self-start md:sticky md:top-36">
-                <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" className="rounded-lg" />
+            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+              <div className="self-start md:sticky md:top-36">
+                <Image
+                  src={gressImage}
+                  alt="Perfekt plen"
+                  className="aspect-square rounded-lg object-cover"
+                  layout="responsive"
+                  width={750}
+                  height={750}
+                />
               </div>
-              <div className="flex items-start self-start">
-                  <div className="rounded-lg bg-primary-dark-background p-6 lg:p-12">
+              <div className="flex h-full items-center justify-center self-start">
+                <div className="w-full rounded-lg bg-primary-dark-background p-6 lg:p-12">
                   <p className="font-headline text-xl text-[#fff280]">Drømmer du om en</p>
                   <h2 className="font-headline text-5xl font-bold text-[#fff280]">Perfekt plen?</h2>
-                  <p className="mt-4 mb-8 text-lg text-[#fff280]">
+                  <p className="mb-8 mt-4 text-lg text-[#fff280]">
                     Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
                   </p>
-                  <Button asChild className="h-11 self-start rounded-full bg-[#fffacc] px-4 text-secondary-foreground hover:bg-[#fffacc]/90">
+                  <Button
+                    asChild
+                    className="h-11 rounded-full bg-[#fffacc] px-4 text-secondary-foreground hover:bg-[#fffacc]/90"
+                  >
                     <Link href="#">
-                      <ArrowRight className="h-5 w-5" />
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        className="mr-2 h-[0.875rem] w-[0.875rem]"
+                        role="presentation"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z"
+                        ></path>
+                      </svg>
                       Se produktene
                     </Link>
                   </Button>
