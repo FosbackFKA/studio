@@ -436,16 +436,62 @@ const verktoyOgRedskapMenuData = {
   footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
 };
 
+const skogOgVedMenuData = {
+  columns: [
+    [ // Column 1
+      {
+        title: 'Motorsager og utstyr', href: '#',
+        links: [
+          { name: 'Batteri og ladere', href: '#' },
+          { name: 'Bensin, olje og smøremidler', href: '#' },
+          { name: 'Fileutstyr', href: '#' },
+          { name: 'Motorsager', href: '#' },
+          { name: 'Sagkjeder', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 2
+      {
+        title: 'Vedproduksjon', href: '#',
+        links: [
+          { name: 'Skogsredskap', href: '#' },
+          { name: 'Skogsvinsjer', href: '#' },
+          { name: 'Avstands- og fuktighetsmålere', href: '#' },
+          { name: 'Kappsager og vedkløyvere', href: '#' },
+          { name: 'Merkebånd og markering', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 3
+      {
+        title: 'Verneklær og vernesko', href: '#',
+        links: [
+          { name: 'Engangsbekledning', href: '#' },
+          { name: 'Verneklær', href: '#' },
+          { name: 'Vernesko og vernestøvler', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 4
+      {
+        title: 'Verneutstyr', href: '#',
+        links: [
+          { name: 'Åndedrettsvern', href: '#' },
+          { name: 'Førstehjelpsutstyr', href: '#' },
+          { name: 'Hjelmer og visir', href: '#' },
+          { name: 'Hørselvern', href: '#' },
+          { name: 'Vernebriller', href: '#' },
+        ],
+      },
+    ],
+  ],
+  footerLink: { name: 'Se alt i skog og ved', href: '#' },
+};
+
 
 const simpleMenuList: Record<string, { title: string; href: string }[]> = {
-  'Skog og ved': [
-    { title: 'Motorsag og ryddesag', href: '#' },
-    { title: 'Vedkløyver og vedkapper', href: '#' },
-    { title: 'Økser og sager', href: '#' },
-    { title: 'Verneutstyr', href: '#' },
-    { title: 'Skog og tømmerutstyr', href: '#' },
-    { title: 'Tilbehør', href: '#' },
-  ],
   'Kampanjer': [
     { title: 'Ukens kampanjer', href: '#' },
     { title: 'Tilbud på robotgressklippere', href: '#' },
@@ -518,6 +564,7 @@ export function MainNavMenu() {
       const isKlaerOgSkoMenu = item.name === 'Klær og sko';
       const isHjemOgFritidMenu = item.name === 'Hjem og fritid';
       const isVerktoyOgRedskapMenu = item.name === 'Verktøy og redskap';
+      const isSkogOgVedMenu = item.name === 'Skog og ved';
       const simpleMenu = simpleMenuList[item.name];
       
       return (
@@ -620,6 +667,26 @@ export function MainNavMenu() {
                       <Link href={verktoyOgRedskapMenuData.footerLink.href}>
                         <ChevronRight className="mr-2 h-4 w-4" />
                         {verktoyOgRedskapMenuData.footerLink.name}
+                      </Link>
+                    </Button>
+                  </div>
+                </>
+            ) : isSkogOgVedMenu ? (
+                <>
+                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
+                    {skogOgVedMenuData.columns.map((col, idx) => (
+                      <div key={idx} className="flex flex-col gap-4">
+                        {col.map((group) => (
+                          <MegaMenuColumn key={group.title} {...group} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
+                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
+                      <Link href={skogOgVedMenuData.footerLink.href}>
+                        <ChevronRight className="mr-2 h-4 w-4" />
+                        {skogOgVedMenuData.footerLink.name}
                       </Link>
                     </Button>
                   </div>
