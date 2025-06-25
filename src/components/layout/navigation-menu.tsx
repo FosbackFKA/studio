@@ -241,15 +241,109 @@ const klaerOgSkoMenuData = {
   footerLink: { name: 'Se alt i klær og sko', href: '#' },
 };
 
-const simpleMenuList: Record<string, { title: string; href: string }[]> = {
-  'Hjem og fritid': [
-    { title: 'Matlaging og konservering', href: '#' },
-    { title: 'Inneklima og oppvarming', href: '#' },
-    { title: 'Vask og rengjøring', href: '#' },
-    { title: 'Jakt og fiske', href: '#' },
-    { title: 'Bålpanner og tilbehør', href: '#' },
-    { title: 'Leker og spill', href: '#' },
+const hjemOgFritidMenuData = {
+  columns: [
+    [ // Column 1
+      {
+        title: 'Brannvern og sikkerhet', href: '#',
+        links: [
+          { name: 'Alarm og overvåkning', href: '#' },
+          { name: 'Brannsikring', href: '#' },
+        ],
+      },
+      {
+        title: 'Interiør', href: '#',
+        links: [
+          { name: 'Dekorasjon', href: '#' },
+          { name: 'Lykter og telysholdere', href: '#' },
+          { name: 'Lys og servietter', href: '#' },
+          { name: 'Oppbevaring', href: '#' },
+        ],
+      },
+      {
+        title: 'Tur og friluftsutstyr', href: '#',
+        links: [
+          { name: 'Friluftsutstyr', href: '#' },
+          { name: 'Turmat', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 2
+      {
+        title: 'El-artikler og belysning', href: '#',
+        links: [
+          { name: 'Arbeidsbelysning', href: '#' },
+          { name: 'Lyspærer og lysrør', href: '#' },
+          { name: 'Plantelys', href: '#' },
+          { name: 'Skjøteledninger og kabeltromler', href: '#' },
+          { name: 'Småbatterier', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+      {
+        title: 'Leker', href: '#',
+        links: [
+          { name: 'Andre leker', href: '#' },
+          { name: 'Leketraktorer', href: '#' },
+        ],
+      },
+       {
+        title: 'Vask og renhold', href: '#',
+        links: [
+          { name: 'Desinfeksjonsmidler', href: '#' },
+          { name: 'Personlig pleie', href: '#' },
+          { name: 'Rengjøringmiddel innendørs', href: '#' },
+          { name: 'Rengjøringmiddel utendørs', href: '#' },
+          { name: 'Renholdsutstyr', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 3
+      {
+        title: 'Fanshop', href: '#',
+        links: [
+          { name: 'Felleskjøpet fanshop', href: '#' },
+          { name: 'John Deere fanshop', href: '#' },
+        ],
+      },
+      {
+        title: 'Mat og drikke', href: '#',
+        links: [
+          { name: 'Matproduksjon', href: '#' },
+          { name: 'Matvarer og drikkevarer', href: '#' },
+          { name: 'Saft og sylting', href: '#' },
+        ],
+      },
+    ],
+    [ // Column 4
+      {
+        title: 'Fyring og oppvarming', href: '#',
+        links: [
+          { name: 'Lighter, gass og tennvæske', href: '#' },
+          { name: 'Propan', href: '#' },
+          { name: 'Utstyr til ildsted', href: '#' },
+          { name: 'Vedbag', href: '#' },
+          { name: 'Varmeovner', href: '#' },
+          { name: 'Se flere', href: '#' },
+        ],
+      },
+       {
+        title: 'Skadedyrbekjempelse', href: '#',
+        links: [
+          { name: 'Fugleskremsel', href: '#' },
+          { name: 'Insektmiddel', href: '#' },
+          { name: 'Mus og rotter', href: '#' },
+          { name: 'Snegler', href: '#' },
+          { name: 'Insektfelle', href: '#' },
+        ],
+      },
+    ],
   ],
+  footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
+};
+
+
+const simpleMenuList: Record<string, { title: string; href: string }[]> = {
   'Verktøy og redskap': [
     { title: 'Håndverktøy', href: '#' },
     { title: 'El-verktøy og maskiner', href: '#' },
@@ -337,6 +431,7 @@ export function MainNavMenu() {
       const isHageUteromMenu = item.name === 'Hage og uterom';
       const isKjaeledyrMenu = item.name === 'Kjæledyr';
       const isKlaerOgSkoMenu = item.name === 'Klær og sko';
+      const isHjemOgFritidMenu = item.name === 'Hjem og fritid';
       const simpleMenu = simpleMenuList[item.name];
       
       return (
@@ -399,6 +494,26 @@ export function MainNavMenu() {
                       <Link href={klaerOgSkoMenuData.footerLink.href}>
                         <ChevronRight className="mr-2 h-4 w-4" />
                         {klaerOgSkoMenuData.footerLink.name}
+                      </Link>
+                    </Button>
+                  </div>
+                </>
+            ) : isHjemOgFritidMenu ? (
+                <>
+                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
+                    {hjemOgFritidMenuData.columns.map((col, idx) => (
+                      <div key={idx} className="flex flex-col gap-4">
+                        {col.map((group) => (
+                          <MegaMenuColumn key={group.title} {...group} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
+                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
+                      <Link href={hjemOgFritidMenuData.footerLink.href}>
+                        <ChevronRight className="mr-2 h-4 w-4" />
+                        {hjemOgFritidMenuData.footerLink.name}
                       </Link>
                     </Button>
                   </div>
