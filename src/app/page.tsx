@@ -24,12 +24,18 @@ import hund3 from '@/components/common/hund/hund3.webp';
 import hund4 from '@/components/common/hund/hund4.webp';
 import hund5 from '@/components/common/hund/hund5.webp';
 
+// Import gressklipper images
+import gressklipper1 from '@/components/common/gressklipper/gressklipper1.webp';
+import gressklipper2 from '@/components/common/gressklipper/gressklipper2.webp';
+import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
+import gressklipper4 from '@/components/common/gressklipper/gressklipper4.webp';
+import gressklipper5 from '@/components/common/gressklipper/gressklipper5.webp';
+
 
 const filterCategories = ["Alle", "Hage", "Dyr", "Gjødsel", "Maskin", "Redskap", "Tilbud"];
 
 export default async function HomePage() {
   const aktuelltProducts = await getProductsFromFeed('aktuelt');
-  const robotgressklipperProducts = await getProductsFromFeed('robotgressklippere');
   const vanningProducts = await getProductsFromFeed('vanning');
   const saaingProducts = await getProductsFromFeed('saaing');
   
@@ -73,6 +79,53 @@ export default async function HomePage() {
       productUrl: '#',
       onlineStock: true,
       storeStockCount: 88,
+    },
+  ];
+
+  const newRobotklipperProducts = [
+    {
+      id: 'SEGNAVI108E',
+      title: 'Robotgressklipper Navimow i108e',
+      brand: 'Segway',
+      price: '15 999,-',
+      imageUrl: gressklipper2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 4,
+    },
+    {
+      id: 'GARDSILENO',
+      title: 'Robotklipper Smart Sileno Free 1500',
+      brand: 'Gardena',
+      price: '25 999,-',
+      salePrice: '20 799,-',
+      badgeText: '- 20 %',
+      imageUrl: gressklipper3,
+      productUrl: '#',
+      onlineStock: false,
+      storeStockCount: 41,
+    },
+    {
+      id: 'SEGNAVIH3000E',
+      title: 'Robotgressklipper Navimow H3000E med VisionFence',
+      brand: 'Segway',
+      price: '34 999,-',
+      salePrice: '29 999,-',
+      badgeText: '- 14 %',
+      imageUrl: gressklipper4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 63,
+    },
+    {
+      id: 'SEGNAVIX330E',
+      title: 'Robotgressklipper Navimow X330e',
+      brand: 'Segway',
+      price: '39 999,-',
+      imageUrl: gressklipper5,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 55,
     },
   ];
 
@@ -159,22 +212,33 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-             <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
-                <h2 className="font-headline text-2xl font-bold lg:text-3xl">Robotgressklippere</h2>
-                <Button variant="link" asChild className="text-primary hover:underline">
-                    <Link href="#">Se alle robotgressklippere <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
-                </Button>
-            </div>
-            <div className="flex flex-col gap-6 lg:flex-row-reverse">
-              <div className="relative h-64 w-full lg:h-auto lg:w-1/3">
-                <Image src="https://placehold.co/600x800.png" alt="Robotgressklippere" layout="fill" objectFit="cover" className="rounded-lg" data-ai-hint="robotic lawnmower garden"/>
-                 <div className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-black/40 p-4 text-center">
-                  <h3 className="font-headline text-3xl font-bold text-white">Robotgressklippere</h3>
-                  <p className="text-md text-white">For en perfekt klippet plen, helt automatisk</p>
-                </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* Left Column: Sticky Promo Image */}
+              <div className="self-start md:sticky md:top-36">
+                <Link href="#" className="group block aspect-square">
+                  <div className="relative h-full w-full overflow-hidden rounded-lg">
+                    <Image
+                      src={gressklipper1}
+                      alt="Robotgressklippere"
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
+                      <p className="font-body text-sm font-medium text-yellow-300 mb-0.5">Se vårt utvalg av</p>
+                      <h3 className="font-headline text-3xl font-bold text-yellow-300">Robotgressklippere</h3>
+                      <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
+                        <ArrowRight className="mr-2 h-4 w-4" />
+                        <span>For både store og små hager</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </div>
-              <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
-                {robotgressklipperProducts.map((item) => (
+
+              {/* Right Column: Product Grid */}
+              <div className="grid grid-cols-2 gap-4 self-start">
+                {newRobotklipperProducts.map((item) => (
                   <ProductCard
                     key={item.id}
                     {...item}
