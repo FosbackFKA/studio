@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { FkaLogo } from '@/components/common/logo';
-import { MainNavMenu, leftNavItems, rightNavItems } from '@/components/layout/navigation-menu';
+import { allMegaMenusData, MainNavMenu, rightNavItems, simpleMenuList } from '@/components/layout/navigation-menu';
 import { ShoppingCart, Search, Menu as MenuIcon, MapPin, ChevronRight, X, User } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 export function HeaderComponent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -89,31 +91,72 @@ export function HeaderComponent() {
                             Logg inn
                         </Button>
                         <Separator className="my-4" />
+                        
                         <nav>
-                          <ul className="flex flex-col">
-                            {leftNavItems.map((item) => (
-                              <li key={item.name}>
-                                <Link href={item.href} className="flex items-center justify-between py-3 font-medium text-foreground" onClick={() => setIsMenuOpen(false)}>
-                                  <span>{item.name}</span>
-                                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                                </Link>
-                              </li>
+                          <Accordion type="multiple" className="w-full">
+                            {allMegaMenusData.map((menu) => (
+                              <AccordionItem value={menu.name} key={menu.name}>
+                                <AccordionTrigger className="py-3 font-medium text-foreground hover:no-underline">
+                                  {menu.name}
+                                </AccordionTrigger>
+                                <AccordionContent className="pl-4 pt-2 pb-2">
+                                  <div className="flex flex-col space-y-3">
+                                    {menu.data.columns.flat().map((group) => (
+                                      <div key={group.title}>
+                                        <Link href={group.href} className="font-semibold text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+                                          {group.title}
+                                        </Link>
+                                        <ul className="mt-1 flex flex-col space-y-1 pl-2">
+                                          {group.links.map((link) => (
+                                            <li key={link.name}>
+                                              <Link href={link.href} className="block py-1 text-sm text-muted-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+                                                {link.name}
+                                              </Link>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    ))}
+                                    <Separator />
+                                    <Link href={menu.data.footerLink.href} className="flex items-center font-semibold text-primary hover:underline" onClick={() => setIsMenuOpen(false)}>
+                                      <span>{menu.data.footerLink.name}</span>
+                                      <ChevronRight className="ml-1 h-4 w-4" />
+                                    </Link>
+                                  </div>
+                                </AccordionContent>
+                              </AccordionItem>
                             ))}
-                          </ul>
+                          </Accordion>
                         </nav>
+
                         <Separator className="my-4" />
+
                         <nav>
-                          <ul className="flex flex-col">
-                            {rightNavItems.map((item) => (
-                               <li key={item.name}>
-                                <Link href={item.href} className="flex items-center justify-between py-3 font-semibold text-primary" onClick={() => setIsMenuOpen(false)}>
-                                  <span>{item.name}</span>
-                                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
+                          <Accordion type="multiple" className="w-full">
+                            {rightNavItems.map((item) => {
+                              const subItems = simpleMenuList[item.name] || [];
+                              return (
+                                <AccordionItem value={item.name} key={item.name}>
+                                  <AccordionTrigger className="py-3 font-semibold text-primary hover:no-underline">
+                                    {item.name}
+                                  </AccordionTrigger>
+                                  <AccordionContent className="pl-4 pt-2 pb-2">
+                                    <ul className="flex flex-col space-y-1">
+                                      {subItems.map(subItem => (
+                                        <li key={subItem.title}>
+                                          <Link href={subItem.href} className="block py-1 text-sm text-muted-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+                                            {subItem.title}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </AccordionContent>
+                                </AccordionItem>
+                              );
+                            })}
+                          </Accordion>
                         </nav>
+                        
                         <Separator className="my-4" />
                          <nav>
                           <ul className="flex flex-col">

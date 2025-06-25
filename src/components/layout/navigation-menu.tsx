@@ -30,7 +30,7 @@ export const rightNavItems = [
 ];
 
 // Data for all menus
-const hageUteromMenuData = {
+export const hageUteromMenuData = {
   columns: [
     [
       {
@@ -99,7 +99,7 @@ const hageUteromMenuData = {
   footerLink: { name: 'Se alt i hage og uterom', href: '#' },
 };
 
-const kjaeledyrMenuData = {
+export const kjaeledyrMenuData = {
   columns: [
     [ // Column 1
       {
@@ -170,7 +170,7 @@ const kjaeledyrMenuData = {
   footerLink: { name: 'Se alt i kjæledyr', href: '#' },
 };
 
-const klaerOgSkoMenuData = {
+export const klaerOgSkoMenuData = {
   columns: [
     [ // Column 1
       {
@@ -241,7 +241,7 @@ const klaerOgSkoMenuData = {
   footerLink: { name: 'Se alt i klær og sko', href: '#' },
 };
 
-const hjemOgFritidMenuData = {
+export const hjemOgFritidMenuData = {
   columns: [
     [ // Column 1
       {
@@ -342,7 +342,7 @@ const hjemOgFritidMenuData = {
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
-const verktoyOgRedskapMenuData = {
+export const verktoyOgRedskapMenuData = {
   columns: [
     [ // Column 1
       {
@@ -436,7 +436,7 @@ const verktoyOgRedskapMenuData = {
   footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
 };
 
-const skogOgVedMenuData = {
+export const skogOgVedMenuData = {
   columns: [
     [ // Column 1
       {
@@ -491,7 +491,7 @@ const skogOgVedMenuData = {
 };
 
 
-const simpleMenuList: Record<string, { title: string; href: string }[]> = {
+export const simpleMenuList: Record<string, { title: string; href: string }[]> = {
   'Kampanjer': [
     { title: 'Ukens kampanjer', href: '#' },
     { title: 'Tilbud på robotgressklippere', href: '#' },
@@ -555,26 +555,36 @@ const MegaMenuColumn = ({ title, links, href }: { title: string; href: string; l
   </div>
 );
 
+const menuDataMap: Record<string, any> = {
+  'Hage og uterom': hageUteromMenuData,
+  'Kjæledyr': kjaeledyrMenuData,
+  'Klær og sko': klaerOgSkoMenuData,
+  'Hjem og fritid': hjemOgFritidMenuData,
+  'Verktøy og redskap': verktoyOgRedskapMenuData,
+  'Skog og ved': skogOgVedMenuData,
+};
+
+export const allMegaMenusData = leftNavItems.map(item => ({
+  name: item.name,
+  data: menuDataMap[item.name],
+}));
+
+
 // Main Navigation Component
 export function MainNavMenu() {
   const renderNavItems = (items: typeof leftNavItems) => {
     return items.map((item) => {
-      const isHageUteromMenu = item.name === 'Hage og uterom';
-      const isKjaeledyrMenu = item.name === 'Kjæledyr';
-      const isKlaerOgSkoMenu = item.name === 'Klær og sko';
-      const isHjemOgFritidMenu = item.name === 'Hjem og fritid';
-      const isVerktoyOgRedskapMenu = item.name === 'Verktøy og redskap';
-      const isSkogOgVedMenu = item.name === 'Skog og ved';
+      const megaMenuData = menuDataMap[item.name];
       const simpleMenu = simpleMenuList[item.name];
       
       return (
         <NavigationMenuItem key={item.name}>
           <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
           <NavigationMenuContent>
-            {isHageUteromMenu ? (
+            {megaMenuData ? (
               <>
                 <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
-                  {hageUteromMenuData.columns.map((col, idx) => (
+                  {megaMenuData.columns.map((col: any[], idx: number) => (
                     <div key={idx} className="flex flex-col gap-4">
                       {col.map((group) => (
                         <MegaMenuColumn key={group.title} {...group} />
@@ -584,113 +594,13 @@ export function MainNavMenu() {
                 </div>
                 <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
                   <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                    <Link href={hageUteromMenuData.footerLink.href}>
+                    <Link href={megaMenuData.footerLink.href}>
                       <ChevronRight className="mr-2 h-4 w-4" />
-                      {hageUteromMenuData.footerLink.name}
+                      {megaMenuData.footerLink.name}
                     </Link>
                   </Button>
                 </div>
               </>
-            ) : isKjaeledyrMenu ? (
-                <>
-                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
-                    {kjaeledyrMenuData.columns.map((col, idx) => (
-                      <div key={idx} className="flex flex-col gap-4">
-                        {col.map((group) => (
-                          <MegaMenuColumn key={group.title} {...group} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
-                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                      <Link href={kjaeledyrMenuData.footerLink.href}>
-                        <ChevronRight className="mr-2 h-4 w-4" />
-                        {kjaeledyrMenuData.footerLink.name}
-                      </Link>
-                    </Button>
-                  </div>
-                </>
-            ) : isKlaerOgSkoMenu ? (
-                <>
-                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
-                    {klaerOgSkoMenuData.columns.map((col, idx) => (
-                      <div key={idx} className="flex flex-col gap-4">
-                        {col.map((group) => (
-                          <MegaMenuColumn key={group.title} {...group} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
-                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                      <Link href={klaerOgSkoMenuData.footerLink.href}>
-                        <ChevronRight className="mr-2 h-4 w-4" />
-                        {klaerOgSkoMenuData.footerLink.name}
-                      </Link>
-                    </Button>
-                  </div>
-                </>
-            ) : isHjemOgFritidMenu ? (
-                <>
-                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
-                    {hjemOgFritidMenuData.columns.map((col, idx) => (
-                      <div key={idx} className="flex flex-col gap-4">
-                        {col.map((group) => (
-                          <MegaMenuColumn key={group.title} {...group} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
-                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                      <Link href={hjemOgFritidMenuData.footerLink.href}>
-                        <ChevronRight className="mr-2 h-4 w-4" />
-                        {hjemOgFritidMenuData.footerLink.name}
-                      </Link>
-                    </Button>
-                  </div>
-                </>
-            ) : isVerktoyOgRedskapMenu ? (
-                <>
-                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
-                    {verktoyOgRedskapMenuData.columns.map((col, idx) => (
-                      <div key={idx} className="flex flex-col gap-4">
-                        {col.map((group) => (
-                          <MegaMenuColumn key={group.title} {...group} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
-                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                      <Link href={verktoyOgRedskapMenuData.footerLink.href}>
-                        <ChevronRight className="mr-2 h-4 w-4" />
-                        {verktoyOgRedskapMenuData.footerLink.name}
-                      </Link>
-                    </Button>
-                  </div>
-                </>
-            ) : isSkogOgVedMenu ? (
-                <>
-                  <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
-                    {skogOgVedMenuData.columns.map((col, idx) => (
-                      <div key={idx} className="flex flex-col gap-4">
-                        {col.map((group) => (
-                          <MegaMenuColumn key={group.title} {...group} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
-                    <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                      <Link href={skogOgVedMenuData.footerLink.href}>
-                        <ChevronRight className="mr-2 h-4 w-4" />
-                        {skogOgVedMenuData.footerLink.name}
-                      </Link>
-                    </Button>
-                  </div>
-                </>
             ) : (
               <ul className="grid w-[250px] gap-3 p-4 md:w-[300px]">
                 {simpleMenu?.map((component) => (
