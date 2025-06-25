@@ -102,14 +102,15 @@ export function HeaderComponent() {
         <ul className="flex flex-col">
           {menuData.footerLink && (
              <li>
-                <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium" onClick={() => setIsMenuOpen(false)}>
+                <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
                   <span>{menuData.footerLink.name}</span>
+                   <ChevronRight className="h-5 w-5 text-muted-foreground" />
                 </Link>
               </li>
           )}
           {menuData.items.map((group: any) => (
             <li key={group.title}>
-              <button onClick={() => handleNavigate({ title: group.title, items: group.links })} className="flex w-full items-center justify-between py-3 font-medium">
+              <button onClick={() => handleNavigate({ title: group.title, items: group.links, parentTitle: menuData.title })} className="flex w-full items-center justify-between py-3 font-medium">
                 <span>{group.title}</span>
                 <ChevronRight className="h-5 w-5 text-muted-foreground" />
               </button>
@@ -171,34 +172,34 @@ export function HeaderComponent() {
           </Button>
           
           <Button variant="ghost" size="icon" aria-label="Handlekurv" className="relative text-primary lg:hidden">
-            <ShoppingCart className="h-8 w-8" />
+            <ShoppingCart className="h-9 w-9" />
           </Button>
           
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden text-primary" aria-label="Meny">
-                <MenuIcon className="h-8 w-8" />
+                <MenuIcon className="h-9 w-9" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="flex w-full max-w-sm flex-col bg-background p-0 sm:max-w-sm">
-              <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
+               <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
                 {navStack.length > 0 && (
                   <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
                     <ArrowLeft className="h-5 w-5" />
                   </Button>
                 )}
-                <span className="font-bold text-lg text-primary">
-                  {currentMenu?.title || "Meny"}
-                </span>
+                <div className="font-bold text-lg text-primary">
+                  {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
+                </div>
                 <SheetClose asChild>
-                  <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-8 w-8">
-                     <X className="h-7 w-7" />
+                  <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full">
+                     <X className="h-8 w-8" />
                      <span className="sr-only">Lukk</span>
                   </Button>
                 </SheetClose>
               </SheetHeader>
               
-              <div className="flex-grow overflow-x-hidden">
+              <div className="flex-grow overflow-y-auto overflow-x-hidden">
                 <div className="relative h-full">
                   {/* Main Menu Panel */}
                   <div className={cn(
@@ -214,15 +215,13 @@ export function HeaderComponent() {
                   </div>
 
                   {/* Sub Menu Panels */}
-                  {navStack.map((menu, index) => (
-                     <div key={index} className={cn(
-                        "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
-                        index === navStack.length - 1 ? "translate-x-0" : "translate-x-full"
-                      )}
-                     >
-                       {renderSubMenu(menu)}
-                     </div>
-                  ))}
+                   <div className={cn(
+                      "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
+                      navStack.length > 0 ? "translate-x-0" : "translate-x-full"
+                    )}
+                   >
+                     {currentMenu && renderSubMenu(currentMenu)}
+                   </div>
                 </div>
               </div>
 
