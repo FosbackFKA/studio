@@ -52,7 +52,7 @@ export function FooterComponent() {
   return (
     <footer className="w-full">
       {/* Top Green Part */}
-      <div className="relative overflow-hidden bg-[hsl(var(--secondary-foreground))] pt-12 pb-8 text-primary-foreground">
+      <div className="relative overflow-hidden bg-primary-dark-background pt-12 pb-8 text-primary-foreground">
         <div className="container relative z-10 mx-auto max-w-[1542px] px-4">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
             {/* Column 1: Logo and Org Info */}

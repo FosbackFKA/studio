@@ -150,7 +150,7 @@ export default async function HomePage() {
               <div className="relative h-64 w-full lg:h-auto lg:w-1/2">
                 <Image src="https://placehold.co/800x600.png" alt="Perfekt plen" layout="fill" objectFit="cover" data-ai-hint="green lawn garden"/>
               </div>
-              <div className="flex w-full flex-col justify-center bg-[hsl(var(--secondary-foreground))] p-6 text-primary-foreground lg:w-1/2 lg:p-12">
+              <div className="flex w-full flex-col justify-center bg-primary-dark-background p-6 text-primary-foreground lg:w-1/2 lg:p-12">
                 <h2 className="font-headline text-3xl font-bold">Perfekt plen?</h2>
                 <p className="mt-2 mb-6 text-lg">Følg våre råd for gjødsling, kalking og pleie av plen.</p>
                 <Button asChild size="lg" className="self-start bg-accent text-accent-foreground hover:bg-accent/90">

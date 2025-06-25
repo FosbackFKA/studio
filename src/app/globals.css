@@ -44,6 +44,8 @@
     /* --fk-focus-c (endret til primærfargen for konsistens) */
     --ring: var(--primary);
     --radius: 0.5rem;
+    
+    --primary-dark-background: 145 100% 16%;
 
     /* Chart colors - beholdes fra eksisterende tema inntil videre */
     --chart-1: 12 76% 61%;
@@ -99,6 +101,8 @@
     --border: 0 0% 25%;
     --input: 0 0% 20%;
     --ring: var(--primary); /* Lysere grønn for ring i dark mode, basert på dark primary */
+    
+    --primary-dark-background: 0 0% 10%;
 
     --chart-1: 12 76% 71%;
     --chart-2: 173 58% 49%;
