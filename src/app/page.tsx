@@ -45,11 +45,11 @@ import saaing4 from '@/components/common/saaing/saaing4.webp';
 import saaing5 from '@/components/common/saaing/saaing5.webp';
 
 // Import images for 'Mest populære'
-import popular1 from '@/components/common/populaere/1.webp';
-import popular2 from '@/components/common/populaere/2.webp';
-import popular3 from '@/components/common/populaere/3.webp';
-import popular4 from '@/components/common/populaere/4.webp';
-import popular5 from '@/components/common/populaere/5.webp';
+import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
+import popular2 from '@/components/common/aktuelle-kampanjer/2.webp';
+import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
+import popular4 from '@/components/common/aktuelle-kampanjer/4.webp';
+import popular5 from '@/components/common/aktuelle-kampanjer/5.webp';
 
 
 export default async function HomePage() {
