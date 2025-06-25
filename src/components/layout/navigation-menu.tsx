@@ -169,11 +169,11 @@ export function MainNavMenu() {
                   </NavigationMenuItem>
                 ) : (
                   <NavigationMenuItem key={item.name}>
-                    <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className='hover:border-b-2 hover:border-primary'>
+                    <NavigationMenuLink asChild className='hover:border-b-2 hover:border-primary'>
+                      <Link href={item.href}>
                         {item.name}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 )
               )}
@@ -183,11 +183,11 @@ export function MainNavMenu() {
             <ul className="hidden items-center space-x-1 lg:flex">
               {rightNavItems.map((item) => (
                 <NavigationMenuItem key={item.name}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn("font-semibold text-primary", "hover:border-b-2 hover:border-primary")}>
+                  <NavigationMenuLink asChild className={cn("font-semibold text-primary", "hover:border-b-2 hover:border-primary")}>
+                    <Link href={item.href}>
                       {item.name}
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </ul>
