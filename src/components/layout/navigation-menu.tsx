@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
-const leftNavItems = [
+export const leftNavItems = [
   { name: 'Hage og uterom', href: '#' },
   { name: 'Kjæledyr', href: '#' },
   { name: 'Klær og sko', href: '#' },
@@ -11,7 +11,7 @@ const leftNavItems = [
   { name: 'Skog og ved', href: '#' },
 ];
 
-const rightNavItems = [
+export const rightNavItems = [
   { name: 'Kampanjer', href: '#'},
   { name: 'Lagersalg', href: '#'},
   { name: 'Merkevarer', href: '#'},
