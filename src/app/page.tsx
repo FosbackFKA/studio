@@ -16,6 +16,7 @@ import { CampaignsSection } from '@/components/sections/campaigns-section';
 import { PopularCategoriesSection } from '@/components/sections/popular-categories-section';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import footerHeroImage from '@/components/common/fk_hero_bg_5.webp';
+import gressImage from '@/components/common/gress.webp';
 
 // Import dog images
 import hund1 from '@/components/common/hund/hund1.webp';
@@ -272,7 +273,7 @@ export default async function HomePage() {
           <div className="container mx-auto max-w-[1542px] px-4">
             <div className="flex flex-col overflow-hidden rounded-lg bg-card shadow-lg lg:flex-row">
               <div className="relative h-64 w-full lg:h-auto lg:w-1/2">
-                <Image src="https://placehold.co/800x600.png" alt="Perfekt plen" layout="fill" objectFit="cover" data-ai-hint="green lawn garden"/>
+                <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" />
               </div>
               <div className="flex w-full flex-col justify-center bg-primary-dark-background p-6 text-primary-foreground lg:w-1/2 lg:p-12">
                 <h2 className="font-headline text-3xl font-bold">Perfekt plen?</h2>
