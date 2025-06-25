@@ -275,18 +275,20 @@ export default async function HomePage() {
               <div className="relative aspect-square w-full mb-6 lg:mb-0">
                 <Image src={gressImage} alt="Perfekt plen" layout="fill" objectFit="cover" className="rounded-lg" />
               </div>
-              <div className="flex w-full flex-col justify-center rounded-lg bg-primary-dark-background p-6 text-primary-foreground lg:p-12">
-                <p className="font-headline text-xl">Drømmer du om en</p>
-                <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
-                <p className="mt-4 mb-8 text-lg">
-                  Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
-                </p>
-                <Button asChild size="lg" className="self-start bg-secondary text-accent-foreground hover:bg-secondary/90">
-                  <Link href="#">
-                    <ArrowRight className="h-5 w-5" />
-                    Se produktene
-                  </Link>
-                </Button>
+              <div className="flex flex-col justify-center">
+                <div className="rounded-lg bg-primary-dark-background p-6 lg:p-12">
+                  <p className="font-headline text-xl text-yellow-300">Drømmer du om en</p>
+                  <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
+                  <p className="mt-4 mb-8 text-lg text-yellow-300">
+                    Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
+                  </p>
+                  <Button asChild size="lg" className="self-start bg-secondary text-accent-foreground hover:bg-secondary/90">
+                    <Link href="#">
+                      <ArrowRight className="h-5 w-5" />
+                      Se produktene
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
