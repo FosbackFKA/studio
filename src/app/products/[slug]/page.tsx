@@ -98,6 +98,25 @@ export default function ProductPage() {
   const [zoomActive, setZoomActive] = React.useState(false);
   const [imgPos, setImgPos] = React.useState({ x: '50%', y: '50%' });
 
+  // State for sticky CTA bar
+  const [isSticky, setIsSticky] = React.useState(false);
+  const ctaSectionRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (ctaSectionRef.current) {
+        const { top } = ctaSectionRef.current.getBoundingClientRect();
+        // Show sticky bar when the top of the original CTA is about to leave the viewport
+        setIsSticky(top < 80); 
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   if (slug !== 'SEGNAVH3000E') {
     return <div>Product not found</div>;
   }
@@ -130,6 +149,44 @@ export default function ProductPage() {
   return (
      <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
+
+      {/* Sticky CTA Bar for Desktop */}
+      <div className={cn(
+          "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+          isSticky ? "translate-y-0" : "-translate-y-full"
+      )}>
+          <div className="container mx-auto max-w-[1542px] px-4">
+              <div className="flex h-20 items-center justify-between gap-6">
+                  <div className="flex items-center gap-4">
+                      <Image src={mainImage} alt={product.title} width={64} height={64} className="h-16 w-16 rounded-md object-contain border p-1" />
+                      <div>
+                          <p className="font-semibold">{product.brand}</p>
+                          <h2 className="text-lg font-bold text-foreground line-clamp-1">{product.title}</h2>
+                      </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                      <div className="text-right">
+                        <p className="text-2xl font-bold text-destructive">{product.salePrice}</p>
+                        <p className="text-md text-muted-foreground line-through">{product.price}</p>
+                      </div>
+                      <div className="flex items-center gap-2 rounded-full border p-1">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
+                              <Minus className="h-4 w-4" />
+                          </Button>
+                          <span className="w-8 text-center text-lg font-medium">{quantity}</span>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
+                              <Plus className="h-4 w-4" />
+                          </Button>
+                      </div>
+                      <Button size="lg" className="h-12 w-56 text-base" onClick={handleAddToCart}>
+                          <ShoppingCart className="mr-2 h-5 w-5" />
+                          Legg i handlekurv
+                      </Button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
       <main className="flex-grow py-8 lg:pb-24">
         <div className="container mx-auto max-w-[1542px] px-4">
           <Breadcrumb items={product.breadcrumbs} className="mb-6" />
@@ -199,23 +256,25 @@ export default function ProductPage() {
                 </div>
               </div>
 
-              <Separator className="my-6" />
+              <div ref={ctaSectionRef}>
+                <Separator className="my-6" />
 
-              <div className="hidden md:block">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 rounded-full border p-1">
-                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                    <span className="w-8 text-center text-lg font-medium">{quantity}</span>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
-                      <Plus className="h-4 w-4" />
+                <div className="hidden md:block">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 rounded-full border p-1">
+                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
+                        <Minus className="h-4 w-4" />
+                      </Button>
+                      <span className="w-8 text-center text-lg font-medium">{quantity}</span>
+                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
+                        <Plus className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    <Button size="lg" className="h-12 flex-1 text-base" onClick={handleAddToCart}>
+                      <ShoppingCart className="mr-2 h-5 w-5" />
+                      Legg i handlekurv
                     </Button>
                   </div>
-                   <Button size="lg" className="h-12 flex-1 text-base" onClick={handleAddToCart}>
-                    <ShoppingCart className="mr-2 h-5 w-5" />
-                    Legg i handlekurv
-                  </Button>
                 </div>
               </div>
 
