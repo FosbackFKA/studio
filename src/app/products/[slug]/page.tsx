@@ -152,7 +152,7 @@ export default function ProductPage() {
 
       {/* Sticky CTA Bar for Desktop */}
       <div className={cn(
-          "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+          "fixed top-20 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
           isSticky ? "translate-y-0" : "-translate-y-full"
       )}>
           <div className="container mx-auto max-w-[1542px] px-4">

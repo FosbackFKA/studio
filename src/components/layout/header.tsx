@@ -297,7 +297,18 @@ export function HeaderComponent() {
 
   const { selectedStore } = useStoreStore();
   const [hasMounted, setHasMounted] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
   React.useEffect(() => { setHasMounted(true); }, []);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavigate = (menuData: any) => {
     setNavStack((prev) => [...prev, menuData]);
@@ -444,16 +455,18 @@ export function HeaderComponent() {
   return (
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
-          <div className="flex items-center space-x-1">
-            <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
-              Privat
-            </Button>
-            <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
-              Bonde & Bedrift
-            </Button>
+        {!isScrolled && (
+          <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
+            <div className="flex items-center space-x-1">
+              <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
+                Privat
+              </Button>
+              <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
+                Bonde & Bedrift
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-[1542px]">
           <div className="flex items-center">
@@ -562,20 +575,22 @@ export function HeaderComponent() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 pb-3 lg:hidden max-w-[1542px] flex items-center gap-2">
-          <div className="relative w-full">
-            <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-          </div>
-        </div>
+        {!isScrolled && (
+            <div className="container mx-auto px-4 pb-3 lg:hidden max-w-[1542px] flex items-center gap-2">
+            <div className="relative w-full">
+                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
+                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+            </div>
+            </div>
+        )}
 
-        <div className="hidden border-t bg-card lg:block">
-          <MainNavMenu />
-        </div>
+        {!isScrolled && (
+            <div className="hidden border-t bg-card lg:block">
+            <MainNavMenu />
+            </div>
+        )}
       </header>
       <StoreSheetContent onStoreSelect={() => setStoreSheetOpen(false)} />
     </Sheet>
   );
 }
-
-    
