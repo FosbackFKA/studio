@@ -15,7 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useCartStore } from '@/hooks/use-cart-store';
 import { cn } from '@/lib/utils';
 
-import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
+import navimowMainImage from '@/components/common/gressklipper/gressklipper4.webp';
 
 
 const productData = {
@@ -24,16 +24,16 @@ const productData = {
   brand: 'Segway',
   price: '34 999,-',
   salePrice: '29 999,-',
-  imageUrl: popular1, 
+  imageUrl: navimowMainImage, 
   productUrl: '/products/SEGNAVH3000E',
   onlineStock: true,
   storeStockCount: 63,
   badgeText: '- 14 %',
   gallery: [
-    popular1,
-    { src: 'https://placehold.co/600x400.png', hint: 'lawnmower side' },
-    { src: 'https://placehold.co/600x400.png', hint: 'lawnmower top' },
-    { src: 'https://placehold.co/600x400.png', hint: 'lawnmower front' },
+    navimowMainImage,
+    "https://placehold.co/400x400.png",
+    "https://placehold.co/400x400.png",
+    "https://placehold.co/400x400.png",
   ],
   specs: [
       'For plen (opptil) 3000 m²',
@@ -92,17 +92,23 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
             {/* Image Gallery */}
             <div className="space-y-4">
-               <div className="relative aspect-square w-full overflow-hidden rounded-lg border">
+               <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-white">
                  <Image src={typeof mainImage === 'object' && 'src' in mainImage ? mainImage.src : mainImage} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => {
                   const imgSrc = typeof img === 'object' && 'src' in img ? img.src : img;
-                  const dataHint = typeof img === 'object' && 'hint' in img ? img.hint : undefined;
                   return (
-                    <button key={idx} onClick={() => setMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2', mainImage === img ? 'border-primary' : 'border-transparent')}>
-                      <Image src={imgSrc} alt={`Thumbnail ${idx+1}`} layout="fill" objectFit="contain" className="p-1" data-ai-hint={dataHint} />
+                    <button key={idx} onClick={() => setMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
+                      <Image 
+                        src={imgSrc} 
+                        alt={`Thumbnail ${idx+1}`} 
+                        layout="fill" 
+                        objectFit="contain" 
+                        className="p-1" 
+                        data-ai-hint={idx > 0 ? "robotic lawnmower" : undefined}
+                      />
                     </button>
                   );
                 })}
