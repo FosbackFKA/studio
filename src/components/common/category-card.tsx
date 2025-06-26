@@ -24,7 +24,7 @@ export function CategoryCard({ title, imageUrl, categoryUrl, dataAiHint }: Categ
             data-ai-hint={dataAiHint || "category item"}
           />
         </div>
-        <CardContent className="p-3 text-center bg-secondary">
+        <CardContent className="flex min-h-[72px] items-center justify-center bg-secondary p-3 text-center">
           <h3 className="text-base font-semibold group-hover:text-primary">{title}</h3>
         </CardContent>
       </Card>
