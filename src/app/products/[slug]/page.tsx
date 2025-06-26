@@ -1,3 +1,4 @@
+
 'use client'; 
 
 import * as React from 'react';
@@ -9,18 +10,24 @@ import { Breadcrumb } from '@/components/common/breadcrumb';
 import Image, { type StaticImageData } from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, ShoppingCart, Truck, MapPin, Minus, Plus } from 'lucide-react';
+import { CheckCircle2, ShoppingCart, Truck, MapPin, Minus, Plus, Cpu, Scissors, AreaChart } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/hooks/use-toast";
 import { useCartStore } from '@/hooks/use-cart-store';
 import { cn } from '@/lib/utils';
 import { useParams } from 'next/navigation';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { StarRating } from '@/components/common/star-rating';
+import { RelatedProductsSection } from '@/components/sections/related-products-section';
+import { FaqSection } from '@/components/sections/faq-section';
 
+// Import local images
 import navimow1 from '@/components/common/navimow/1.jpg';
 import navimow2 from '@/components/common/navimow/2.jpg';
 import navimow3 from '@/components/common/navimow/3.jpg';
 import navimow4 from '@/components/common/navimow/4.jpg';
+
 
 const productData = {
   id: 'SEGNAVH3000E',
@@ -33,12 +40,21 @@ const productData = {
   onlineStock: true,
   storeStockCount: 63,
   badgeText: '- 14 %',
+  rating: 4.5,
+  reviewCount: 28,
   gallery: [navimow1, navimow2, navimow3, navimow4],
+  highlights: [
+      { icon: AreaChart, text: 'For plen opptil 3000 m²' },
+      { icon: Scissors, text: '21 cm klippebredde' },
+      { icon: Cpu, text: 'Ingen kantledning nødvendig' },
+  ],
   specs: [
-      'For plen (opptil) 3000 m²',
-      'Klippebredde 21 cm',
-      'Maksimal stigning 45%',
-      'Ingen kantledning',
+      { label: 'For plen (opptil)', value: '3000 m²' },
+      { label: 'Klippebredde', value: '21 cm' },
+      { label: 'Maksimal stigning', value: '45%' },
+      { label: 'Kantledning', value: 'Ingen' },
+      { label: 'Appstyrt', value: 'Ja, med Wi-Fi eller 4G' },
+      { label: 'VisionFence', value: 'Ja, inkludert' },
   ],
   description: `Segway Navimow H3000E er en intelligent robotklipper som bruker en virtuell grense, som betyr at du ikke trenger komplisert kantledning. Enkel å betjene og vedlikeholde, Navimow gir deg mer fritid til å gjøre det du elsker. Navigerer enkelt i hagen din og klipper på den mest effektive måten. Resultatet er en perfekt klippet plen hver gang. Appen kobles enkelt til klipperen med Bluetooth, og deretter kobles den til med Wi-fi eller 4G. VisionFence inkluderer AI-teknologi og en integrert AI-algoritme. Den kan gjenkjenne kanter på plenen og navigere rundt hindringer i hagen. VisionFence hjelper Navimow å jobbe mer intelligent og effektivt.`,
   included: [
@@ -102,7 +118,7 @@ export default function ProductPage() {
   return (
      <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
-      <main className="flex-grow py-8">
+      <main className="flex-grow py-8 lg:pb-24">
         <div className="container mx-auto max-w-[1542px] px-4">
           <Breadcrumb items={product.breadcrumbs} className="mb-6" />
 
@@ -110,7 +126,14 @@ export default function ProductPage() {
             {/* Image Gallery */}
             <div className="space-y-4">
                <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-white">
-                 <Image src={mainImage} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
+                 <Image 
+                    src={mainImage} 
+                    alt={`Produktbilde av ${product.title}`} 
+                    layout="fill" 
+                    objectFit="contain" 
+                    className="p-4" 
+                    priority
+                 />
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
@@ -118,7 +141,7 @@ export default function ProductPage() {
                   <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
                     <Image 
                       src={img} 
-                      alt={`Thumbnail ${idx+1}`} 
+                      alt={`Miniatyrbilde ${idx + 1} av ${product.title}`} 
                       layout="fill" 
                       objectFit="contain" 
                       className="p-1"
@@ -133,37 +156,46 @@ export default function ProductPage() {
               <p className="font-semibold text-primary">{product.brand}</p>
               <h1 className="font-headline text-3xl font-bold text-foreground">{product.title}</h1>
               
+              <div className="mt-2">
+                 <StarRating rating={product.rating} reviewCount={product.reviewCount} />
+              </div>
+
               <div className="mt-4 flex items-baseline gap-3">
                 <p className="text-4xl font-bold text-destructive">{product.salePrice}</p>
                 <p className="text-xl text-muted-foreground line-through">{product.price}</p>
               </div>
               <p className="text-sm text-muted-foreground">Kampanjepris gyldig t.o.m. 28.07.24</p>
               
-              <ul className="mt-6 space-y-2 text-foreground">
-                {product.specs.map(spec => (
-                   <li key={spec} className="flex items-center gap-2">
-                     <CheckCircle2 className="h-5 w-5 text-primary" />
-                     <span>{spec}</span>
-                   </li>
-                ))}
-              </ul>
-              
+              <div className="mt-6 rounded-lg border bg-secondary/30 p-4">
+                <h3 className="mb-3 font-bold text-foreground">Høydepunkter</h3>
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                  {product.highlights.map(highlight => (
+                    <div key={highlight.text} className="flex items-center gap-2 text-sm">
+                      <highlight.icon className="h-5 w-5 text-primary" />
+                      <span>{highlight.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <Separator className="my-6" />
 
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 border rounded-full p-1">
-                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
-                    <Minus className="h-4 w-4" />
-                  </Button>
-                  <span className="w-8 text-center text-lg font-medium">{quantity}</span>
-                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
-                    <Plus className="h-4 w-4" />
+              <div className="hidden md:block">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 rounded-full border p-1">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
+                      <Minus className="h-4 w-4" />
+                    </Button>
+                    <span className="w-8 text-center text-lg font-medium">{quantity}</span>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </div>
+                   <Button size="lg" className="h-12 flex-1 text-base" onClick={handleAddToCart}>
+                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    Legg i handlekurv
                   </Button>
                 </div>
-                 <Button size="lg" className="flex-1 h-12 text-base" onClick={handleAddToCart}>
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  Legg i handlekurv
-                </Button>
               </div>
 
               <div className="mt-6 space-y-4 rounded-lg border bg-secondary/30 p-4">
@@ -195,30 +227,65 @@ export default function ProductPage() {
                 </p>
               </div>
 
-              <div className="mt-8">
-                 <Accordion type="single" collapsible defaultValue="description" className="w-full">
-                    <AccordionItem value="description">
-                      <AccordionTrigger className="text-lg font-bold">Beskrivelse</AccordionTrigger>
-                      <AccordionContent className="prose prose-sm max-w-none text-base text-foreground">
-                        <p>{product.description}</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="included">
-                      <AccordionTrigger className="text-lg font-bold">Inkludert i esken</AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="list-disc pl-5 space-y-1 text-foreground">
-                          {product.included.map(item => <li key={item}>{item}</li>)}
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
-                 </Accordion>
-              </div>
-
             </div>
           </div>
+          
+          <div className="mt-12">
+            <Accordion type="single" collapsible defaultValue="description" className="w-full">
+              <AccordionItem value="description">
+                <AccordionTrigger className="text-lg font-bold">Beskrivelse</AccordionTrigger>
+                <AccordionContent className="prose prose-sm max-w-none text-base text-foreground">
+                  <p>{product.description}</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="included">
+                <AccordionTrigger className="text-lg font-bold">Inkludert i esken</AccordionTrigger>
+                <AccordionContent>
+                  <ul className="list-disc space-y-1 pl-5 text-foreground">
+                    {product.included.map(item => <li key={item}>{item}</li>)}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+               <AccordionItem value="specs">
+                <AccordionTrigger className="text-lg font-bold">Spesifikasjoner</AccordionTrigger>
+                <AccordionContent>
+                  <Table>
+                    <TableBody>
+                      {product.specs.map(spec => (
+                        <TableRow key={spec.label}>
+                          <TableCell className="font-medium">{spec.label}</TableCell>
+                          <TableCell>{spec.value}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         </div>
+        
+        <RelatedProductsSection />
+        <FaqSection />
+
       </main>
+
+      {/* Sticky Mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background p-4 md:hidden">
+        <div className="flex items-center justify-between gap-4">
+          <div className="text-left">
+            <p className="text-lg font-bold text-destructive">{product.salePrice}</p>
+            <p className="text-sm text-muted-foreground line-through">{product.price}</p>
+          </div>
+          <Button size="lg" className="h-12 flex-1" onClick={handleAddToCart}>
+            <ShoppingCart className="mr-2 h-5 w-5" />
+            Legg i kurv
+          </Button>
+        </div>
+      </div>
+
       <FooterComponent />
     </div>
   );
 }
+
