@@ -490,6 +490,64 @@ export const skogOgVedMenuData = {
   footerLink: { name: 'Se alt i skog og ved', href: '#' },
 };
 
+export const merkevarerMenuData = {
+  columns: [
+    [
+      {
+        title: 'Populære merker', href: '#',
+        links: [
+          { name: 'Stihl', href: '#' },
+          { name: 'Kärcher', href: '#' },
+          { name: 'Gardena', href: '#' },
+          { name: 'Husqvarna', href: '#' },
+          { name: 'John Deere', href: '#' },
+          { name: 'Fiskars', href: '#' },
+        ],
+      },
+    ],
+    [
+      {
+        title: 'Hage', href: '#',
+        links: [
+          { name: 'Ryobi', href: '#' },
+          { name: 'Segway', href: '#' },
+          { name: 'Wolf-Garten', href: '#' },
+          { name: 'Nelson Garden', href: '#' },
+          { name: 'Substral', href: '#' },
+          { name: 'Espegard', href: '#' },
+        ],
+      },
+    ],
+    [
+      {
+        title: 'Kjæledyr', href: '#',
+        links: [
+          { name: 'Labb', href: '#' },
+          { name: 'Appetitt', href: '#' },
+          { name: 'Non-stop dogwear', href: '#' },
+          { name: 'Flexi', href: '#' },
+          { name: 'Trixie', href: '#' },
+          { name: 'EzyDog', href: '#' },
+        ],
+      },
+    ],
+    [
+      {
+        title: 'Verktøy & Klær', href: '#',
+        links: [
+          { name: 'DeWalt', href: '#' },
+          { name: 'Stanley', href: '#' },
+          { name: 'Bahco', href: '#' },
+          { name: 'Carhartt', href: '#' },
+          { name: 'ALFA', href: '#' },
+          { name: 'Jobman', href: '#' },
+        ],
+      },
+    ],
+  ],
+  footerLink: { name: 'Se alle merkevarer', href: '#' },
+};
+
 
 export const simpleMenuList: Record<string, { title: string; href: string }[]> = {
   'Kampanjer': [
@@ -501,14 +559,6 @@ export const simpleMenuList: Record<string, { title: string; href: string }[]> =
     { title: 'Siste sjanse', href: '#' },
     { title: 'Utgående varer', href: '#' },
     { title: 'Se alle tilbud', href: '#' },
-  ],
-  'Merkevarer': [
-    { title: 'Stihl', href: '#' },
-    { title: 'Kärcher', href: '#' },
-    { title: 'Gardena', href: '#' },
-    { title: 'Non-stop dogwear', href: '#' },
-    { title: 'Labb', href: '#' },
-    { title: 'Appetitt', href: '#' },
   ],
 };
 
@@ -562,6 +612,7 @@ const menuDataMap: Record<string, any> = {
   'Hjem og fritid': hjemOgFritidMenuData,
   'Verktøy og redskap': verktoyOgRedskapMenuData,
   'Skog og ved': skogOgVedMenuData,
+  'Merkevarer': merkevarerMenuData,
 };
 
 export const allMegaMenusData = leftNavItems.map(item => ({
