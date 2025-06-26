@@ -10,14 +10,14 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
-export const DogFoodInputSchema = z.object({
+const DogFoodInputSchema = z.object({
   age: z.string().describe("The dog's age category (e.g., puppy, adult, senior)."),
   size: z.string().describe("The dog's size category (e.g., small, medium, large)."),
   specialNeeds: z.string().optional().describe('Any special needs or health concerns the dog has (e.g., sensitive skin, weight control).'),
 });
 export type DogFoodInput = z.infer<typeof DogFoodInputSchema>;
 
-export const DogFoodOutputSchema = z.object({
+const DogFoodOutputSchema = z.object({
   productName: z.string().describe('The specific name of the recommended Royal Canin product.'),
   justification: z.string().describe("A detailed explanation of why this product is recommended, referencing the dog's specific details."),
   imageUrl: z.string().url().describe("A placeholder image URL for the product in the format 'https://placehold.co/300x300.png'."),
