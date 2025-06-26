@@ -115,7 +115,7 @@ function ShoppingCartSheet() {
           aria-label="Handlekurv"
           className="relative h-12 w-12 lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
         >
-          <ShoppingCart className="h-8 w-8 lg:h-5 lg:w-5" />
+          <ShoppingCart className="h-10 w-10 lg:h-5 lg:w-5" />
           <span className="hidden lg:inline lg:ml-1">Handlekurv</span>
           {totalItems > 0 && (
             <span className="absolute right-1 top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-bold text-primary ring-2 ring-background lg:hidden">
@@ -130,7 +130,7 @@ function ShoppingCartSheet() {
               <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
               <SheetClose asChild>
                 <Button variant="ghost" size="icon" className="text-primary rounded-full h-12 w-12">
-                  <X className="h-8 w-8" />
+                  <X className="h-10 w-10" />
                   <span className="sr-only">Lukk</span>
                 </Button>
               </SheetClose>
@@ -265,7 +265,7 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
           <SheetTitle>Velg din butikk</SheetTitle>
           <SheetClose asChild>
               <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-              <X className="h-8 w-8 text-primary" />
+              <X className="h-10 w-10 text-primary" />
               <span className="sr-only">Lukk</span>
               </Button>
           </SheetClose>
@@ -487,7 +487,7 @@ export function HeaderComponent() {
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-12 w-12 lg:hidden text-primary" aria-label="Meny">
-                  <MenuIcon className="h-8 w-8" />
+                  <MenuIcon className="h-10 w-10" />
                 </Button>
               </SheetTrigger>
               <SheetContent>
@@ -508,7 +508,7 @@ export function HeaderComponent() {
                     </SheetTitle>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-12 w-12">
-                        <X className="h-8 w-8" />
+                        <X className="h-10 w-10" />
                         <span className="sr-only">Lukk</span>
                       </Button>
                     </SheetClose>
