@@ -494,53 +494,44 @@ export const merkevarerMenuData = {
   columns: [
     [
       {
-        title: 'Populære merker', href: '#',
         links: [
           { name: 'Stihl', href: '#' },
-          { name: 'Kärcher', href: '#' },
-          { name: 'Gardena', href: '#' },
-          { name: 'Husqvarna', href: '#' },
-          { name: 'John Deere', href: '#' },
-          { name: 'Fiskars', href: '#' },
-        ],
-      },
-    ],
-    [
-      {
-        title: 'Hage', href: '#',
-        links: [
-          { name: 'Ryobi', href: '#' },
           { name: 'Segway', href: '#' },
-          { name: 'Wolf-Garten', href: '#' },
-          { name: 'Nelson Garden', href: '#' },
-          { name: 'Substral', href: '#' },
+          { name: 'Felleskjøpet', href: '#' },
+          { name: 'Ryobi', href: '#' },
           { name: 'Espegard', href: '#' },
         ],
       },
     ],
     [
       {
-        title: 'Kjæledyr', href: '#',
         links: [
-          { name: 'Labb', href: '#' },
-          { name: 'Appetitt', href: '#' },
-          { name: 'Non-stop dogwear', href: '#' },
-          { name: 'Flexi', href: '#' },
-          { name: 'Trixie', href: '#' },
-          { name: 'EzyDog', href: '#' },
+          { name: 'Gaupen', href: '#' },
+          { name: 'Champion Europe', href: '#' },
+          { name: 'Ariens', href: '#' },
+          { name: 'Gardena', href: '#' },
+          { name: 'Stiga', href: '#' },
         ],
       },
     ],
     [
       {
-        title: 'Verktøy & Klær', href: '#',
         links: [
-          { name: 'DeWalt', href: '#' },
-          { name: 'Stanley', href: '#' },
-          { name: 'Bahco', href: '#' },
-          { name: 'Carhartt', href: '#' },
-          { name: 'ALFA', href: '#' },
-          { name: 'Jobman', href: '#' },
+          { name: '3M', href: '#' },
+          { name: 'DeLaval', href: '#' },
+          { name: 'Labb', href: '#' },
+          { name: 'John Deere', href: '#' },
+          { name: 'Appetitt', href: '#' },
+        ],
+      },
+    ],
+    [
+      {
+        links: [
+          { name: 'Falkeberg', href: '#' },
+          { name: 'Champion', href: '#' },
+          { name: 'Katrin', href: '#' },
+          { name: 'Kerbl', href: '#' },
         ],
       },
     ],
@@ -587,13 +578,18 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
 );
 ListItem.displayName = 'ListItem';
 
-const MegaMenuColumn = ({ title, links, href }: { title: string; href: string; links: { name: string; href: string }[] }) => (
+const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string; links: { name: string; href: string }[] }) => (
   <div className="flex flex-col">
-    <Link href={href} className="group/megamenu-title flex items-center gap-1 p-2 font-bold text-foreground hover:text-primary">
-      <ChevronRight className="h-4 w-4 text-primary" />
-      <span className="border-b-2 border-transparent group-hover/megamenu-title:border-primary">{title}</span>
-    </Link>
-    <ul className="flex flex-col gap-0.5 pl-8">
+    {title && href ? (
+      <Link href={href} className="group/megamenu-title flex items-center gap-1 p-2 font-bold text-foreground hover:text-primary">
+        <ChevronRight className="h-4 w-4 text-primary" />
+        <span className="border-b-2 border-transparent group-hover/megamenu-title:border-primary">{title}</span>
+      </Link>
+    ) : null}
+    <ul className={cn(
+      "flex flex-col gap-0.5",
+      title && href ? "pl-8" : "pl-2"
+    )}>
       {links.map((link) => (
         <li key={link.name}>
           <Link href={link.href} className="block rounded-md p-1 text-sm text-sidebar-foreground/80 hover:bg-black/5 hover:text-primary">
@@ -638,7 +634,7 @@ export function MainNavMenu() {
                   {megaMenuData.columns.map((col: any[], idx: number) => (
                     <div key={idx} className="flex flex-col gap-4">
                       {col.map((group) => (
-                        <MegaMenuColumn key={group.title} {...group} />
+                        <MegaMenuColumn key={group.title || group.links[0].name} {...group} />
                       ))}
                     </div>
                   ))}
