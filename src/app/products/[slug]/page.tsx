@@ -61,8 +61,8 @@ const productData = {
 };
 
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  if (params.slug !== 'SEGNAVH3000E') {
+export default function ProductPage({ params: { slug } }: { params: { slug: string } }) {
+  if (slug !== 'SEGNAVH3000E') {
     return <div>Product not found</div>;
   }
   
