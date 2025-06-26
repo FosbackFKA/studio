@@ -113,22 +113,16 @@ function ShoppingCartSheet() {
           variant="ghost"
           size="icon"
           aria-label="Handlekurv"
-          className="lg:px-2 lg:py-2 lg:w-auto lg:h-auto lg:text-sm lg:font-medium text-primary"
+          className="relative lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
         >
-          <div className="relative lg:mr-1">
-            <ShoppingCart className="h-9 w-9 lg:h-5 lg:w-5" />
-             {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4">
-                  <span className="relative inline-flex h-4 w-4 rounded-full bg-yellow-400">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400/75 opacity-75"></span>
-                  </span>
-              </span>
-            )}
-          </div>
-          <span className="hidden lg:inline">Handlekurv</span>
+          <ShoppingCart className="h-9 w-9 lg:h-5 lg:w-5" />
+          <span className="hidden lg:inline lg:ml-1">Handlekurv</span>
+          {totalItems > 0 && (
+              <span className="absolute top-0 right-0 block h-3.5 w-3.5 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-yellow-400 ring-2 ring-background lg:hidden" />
+          )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col bg-card p-0 sm:max-w-md">
+      <SheetContent className="flex flex-col bg-card p-0 sm:max-w-md">
         <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
             <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
             <SheetClose asChild>
@@ -261,7 +255,7 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   }, [stores, favoriteStores]);
 
   return (
-    <SheetContent side="right" className="w-full sm:max-w-md p-0 flex flex-col">
+    <SheetContent side="right" className="p-0 flex flex-col sm:max-w-md">
       <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
         <SheetTitle>Velg din butikk</SheetTitle>
         <SheetClose asChild>
@@ -490,7 +484,7 @@ export function HeaderComponent() {
                   <MenuIcon className="h-9 w-9" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="flex w-full max-w-sm flex-col bg-background p-0 sm:max-w-sm">
+              <SheetContent side="right" className="flex max-w-sm flex-col bg-background p-0 sm:max-w-sm">
                 <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
                   {navStack.length > 0 && (
                     <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
