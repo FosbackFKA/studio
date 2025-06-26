@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -163,21 +162,19 @@ export function FooterComponent() {
       
       {/* Bottom White Part */}
        <div className="bg-background py-6">
-        <div className="container mx-auto flex flex-col items-center justify-center gap-6 px-4 max-w-[1542px]">
-            {/* Klarna Promo */}
-            <div className="min-h-[3rem]">
-                <KlarnaLogo className="h-8 w-auto" />
+        <div className="container mx-auto flex flex-col items-center justify-center gap-4 px-4 max-w-[1542px]">
+            {/* Line 1: Payment methods */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+              <KlarnaLogo className="h-8 w-auto" />
+              <MastercardLogo className="h-5 w-auto" />
+              <MaestroLogo className="h-5 w-auto" />
+              <VisaLogo className="h-7 w-auto" />
+              <VisaElectronLogo className="h-7 w-auto" />
             </div>
-
-            {/* Payment and Shipping Logos */}
+            {/* Line 2: Shipping methods */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-muted-foreground">
-                <MastercardLogo className="h-5 w-auto" />
-                <MaestroLogo className="h-5 w-auto" />
-                <VisaLogo className="h-7 w-auto" />
-                <VisaElectronLogo className="h-7 w-auto" />
-                <BringLogo className="h-[23px] w-[63px] text-muted-foreground" />
-                <PostenLogo className="h-[21px] w-[71px] text-muted-foreground" />
-                <PostenLogo className="h-[21px] w-[71px] text-muted-foreground" />
+                <BringLogo className="h-[23px] w-[63px]" />
+                <PostenLogo className="h-[21px] w-[71px]" />
             </div>
         </div>
       </div>
