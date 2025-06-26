@@ -14,8 +14,12 @@ import { useToast } from "@/hooks/use-toast";
 import { useCartStore } from '@/hooks/use-cart-store';
 import { cn } from '@/lib/utils';
 
-import navimowMainImage from '@/components/common/gressklipper/gressklipper4.webp';
-
+const navimowImagePaths = [
+    '/navimow/1.webp',
+    '/navimow/2.webp',
+    '/navimow/3.webp',
+    '/navimow/4.webp',
+];
 
 const productData = {
   id: 'SEGNAVH3000E',
@@ -23,17 +27,12 @@ const productData = {
   brand: 'Segway',
   price: '34 999,-',
   salePrice: '29 999,-',
-  imageUrl: navimowMainImage, 
+  imageUrl: navimowImagePaths[0], 
   productUrl: '/products/SEGNAVH3000E',
   onlineStock: true,
   storeStockCount: 63,
   badgeText: '- 14 %',
-  gallery: [
-    navimowMainImage,
-    "https://placehold.co/400x400.png",
-    "https://placehold.co/400x400.png",
-    "https://placehold.co/400x400.png",
-  ],
+  gallery: navimowImagePaths,
   specs: [
       'For plen (opptil) 3000 m²',
       'Klippebredde 21 cm',
@@ -71,7 +70,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const { addItem } = useCartStore();
   const { toast } = useToast();
   const [quantity, setQuantity] = React.useState(1);
-  const [mainImage, setMainImage] = React.useState(product.gallery[0]);
+  const [mainImage, setMainImage] = React.useState<string | { src: string }>(product.gallery[0]);
 
   const handleAddToCart = () => {
     addItem({ ...product, quantity: quantity });
@@ -80,6 +79,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       description: `${quantity} x ${product.title}`,
     });
   };
+
+  const handleSetMainImage = (imgSrc: string | { src: string }) => {
+    setMainImage(imgSrc);
+  };
+  
+  const getImageSrc = (img: string | { src: string }) => typeof img === 'string' ? img : img.src;
 
   return (
      <div className="flex min-h-screen flex-col bg-background">
@@ -92,20 +97,19 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             {/* Image Gallery */}
             <div className="space-y-4">
                <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-white">
-                 <Image src={mainImage} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
+                 <Image src={getImageSrc(mainImage)} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => {
                   return (
-                    <button key={idx} onClick={() => setMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
+                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', getImageSrc(mainImage) === getImageSrc(img) ? 'border-primary' : 'border-transparent')}>
                       <Image 
-                        src={img} 
+                        src={getImageSrc(img)} 
                         alt={`Thumbnail ${idx+1}`} 
                         layout="fill" 
                         objectFit="contain" 
-                        className="p-1" 
-                        data-ai-hint={idx > 0 ? "robotic lawnmower" : undefined}
+                        className="p-1"
                       />
                     </button>
                   );
