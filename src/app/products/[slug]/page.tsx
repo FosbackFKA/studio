@@ -1,4 +1,3 @@
-
 'use client'; 
 
 import * as React from 'react';
@@ -93,16 +92,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             {/* Image Gallery */}
             <div className="space-y-4">
                <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-white">
-                 <Image src={typeof mainImage === 'object' && 'src' in mainImage ? mainImage.src : mainImage} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
+                 <Image src={mainImage} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => {
-                  const imgSrc = typeof img === 'object' && 'src' in img ? img.src : img;
                   return (
                     <button key={idx} onClick={() => setMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
                       <Image 
-                        src={imgSrc} 
+                        src={img} 
                         alt={`Thumbnail ${idx+1}`} 
                         layout="fill" 
                         objectFit="contain" 
