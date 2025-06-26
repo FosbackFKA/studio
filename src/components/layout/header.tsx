@@ -124,7 +124,7 @@ function ShoppingCartSheet() {
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex flex-col bg-card p-0">
+      <SheetContent className="flex w-3/4 flex-col bg-card p-0">
         <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
             <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
             <SheetClose asChild>
@@ -257,7 +257,7 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   }, [stores, favoriteStores]);
 
   return (
-    <SheetContent side="right" className="p-0 flex flex-col">
+    <SheetContent side="right" className="w-3/4 p-0 flex flex-col">
       <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
         <SheetTitle>Velg din butikk</SheetTitle>
         <SheetClose asChild>
@@ -486,16 +486,21 @@ export function HeaderComponent() {
                   <MenuIcon className="h-9 w-9" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="flex flex-col bg-background p-0">
+              <SheetContent side="right" className="flex w-3/4 flex-col bg-background p-0">
                 <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
                   {navStack.length > 0 && (
                     <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
                       <ArrowLeft className="h-5 w-5" />
                     </Button>
                   )}
+                  {/* Visual title */}
                   <div className="font-bold text-lg text-primary">
                     {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
                   </div>
+                  {/* Accessible title for screen readers */}
+                  <SheetTitle className="sr-only">
+                    {navStack.length === 0 ? 'Hovedmeny' : currentMenu?.title}
+                  </SheetTitle>
                   <SheetClose asChild>
                     <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-9 w-9">
                       <X className="h-8 w-8" />
