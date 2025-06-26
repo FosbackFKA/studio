@@ -113,14 +113,16 @@ function ShoppingCartSheet() {
           variant="ghost"
           size="icon"
           aria-label="Handlekurv"
-          className="text-primary lg:px-2 lg:py-2 lg:w-auto lg:h-auto lg:text-sm lg:font-medium"
+          className="lg:px-2 lg:py-2 lg:w-auto lg:h-auto lg:text-sm lg:font-medium text-primary"
         >
           <div className="relative lg:mr-1">
             <ShoppingCart className="h-9 w-9 lg:h-5 lg:w-5" />
              {totalItems > 0 && (
-              <Badge className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-background bg-yellow-400 p-0 text-xs font-bold text-black">
-                {totalItems}
-              </Badge>
+              <span className="absolute -top-1 -right-1 flex h-4 w-4">
+                  <span className="relative inline-flex h-4 w-4 rounded-full bg-yellow-400">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400/75 opacity-75"></span>
+                  </span>
+              </span>
             )}
           </div>
           <span className="hidden lg:inline">Handlekurv</span>
@@ -260,8 +262,14 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
 
   return (
     <SheetContent side="right" className="w-full sm:max-w-md p-0 flex flex-col">
-      <SheetHeader className="p-4 border-b">
+      <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
         <SheetTitle>Velg din butikk</SheetTitle>
+        <SheetClose asChild>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+            <X className="h-8 w-8 text-primary" />
+            <span className="sr-only">Lukk</span>
+            </Button>
+        </SheetClose>
       </SheetHeader>
       <div className="p-4 border-b">
         <div className="relative">
@@ -307,6 +315,7 @@ export function HeaderComponent() {
   }, [isMenuOpen]);
 
   const currentMenu = navStack.length > 0 ? navStack[navStack.length - 1] : null;
+  const [storeSheetOpen, setStoreSheetOpen] = React.useState(false);
 
   const renderMainMenu = () => (
     <ul className="flex flex-col">
@@ -372,7 +381,7 @@ export function HeaderComponent() {
       })}
        <Separator className="my-2" />
        <li>
-          <Link href="#" className="flex items-center justify-between py-3 font-medium" onClick={() => setIsMenuOpen(false)}>
+          <Link href="#" className="flex items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
               <span>Våre butikker</span>
               <ChevronRight className="h-5 w-5 text-muted-foreground" />
           </Link>
@@ -386,7 +395,7 @@ export function HeaderComponent() {
         <ul className="flex flex-col">
           {menuData.items.map((item: any) => (
             <li key={item.title}>
-              <Link href={item.href} className="flex w-full items-center justify-between py-3 font-medium" onClick={() => setIsMenuOpen(false)}>
+              <Link href={item.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
                 <span>{item.title}</span>
               </Link>
             </li>
@@ -408,7 +417,7 @@ export function HeaderComponent() {
           )}
           {menuData.items.map((group: any) => (
             <li key={group.title}>
-              <button onClick={() => handleNavigate({ title: group.title, items: group.links, parentTitle: menuData.title })} className="flex w-full items-center justify-between py-3 font-medium">
+              <button onClick={() => handleNavigate({ title: group.title, items: group.links, parentTitle: menuData.title })} className="flex w-full items-center justify-between py-3 font-medium text-primary">
                 <span>{group.title}</span>
                 <ChevronRight className="h-5 w-5 text-muted-foreground" />
               </button>
@@ -422,7 +431,7 @@ export function HeaderComponent() {
        <ul className="flex flex-col">
         {menuData.items.map((link: any) => (
             <li key={link.title || link.name}>
-            <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium" onClick={() => setIsMenuOpen(false)}>
+            <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
                 <span>{link.title || link.name}</span>
             </Link>
             </li>
@@ -430,8 +439,6 @@ export function HeaderComponent() {
         </ul>
     );
   };
-
-  const [storeSheetOpen, setStoreSheetOpen] = React.useState(false);
 
   return (
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
@@ -508,10 +515,23 @@ export function HeaderComponent() {
                         navStack.length > 0 ? "-translate-x-full" : "translate-x-0"
                       )}
                     >
-                      <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium mb-4">
-                        <User className="mr-2 h-5 w-5"/>
-                        Logg inn
-                      </Button>
+                      <div className="flex flex-col gap-2 mb-4">
+                        <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
+                            <User className="mr-2 h-5 w-5"/>
+                            Logg inn
+                        </Button>
+                        <Button 
+                            variant="outline" 
+                            className="w-full justify-start text-left h-12 text-base font-medium"
+                            onClick={() => {
+                                setStoreSheetOpen(true);
+                                setIsMenuOpen(false);
+                            }}
+                        >
+                            <StoreIcon className="mr-2 h-5 w-5"/>
+                            {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
+                        </Button>
+                      </div>
                       {renderMainMenu()}
                     </div>
 
@@ -541,11 +561,6 @@ export function HeaderComponent() {
             <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="h-10 w-10 flex-shrink-0">
-              <StoreIcon className="h-5 w-5 text-primary" />
-            </Button>
-          </SheetTrigger>
         </div>
 
         <div className="hidden border-t bg-card lg:block">
