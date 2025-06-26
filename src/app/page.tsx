@@ -1,4 +1,5 @@
 
+
 import { HeaderComponent } from '@/components/layout/header';
 import { HeroSection } from '@/components/sections/hero-section';
 import { FooterComponent } from '@/components/layout/footer';
@@ -385,8 +386,8 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="relative min-h-[400px] rounded-lg overflow-hidden md:min-h-0">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch">
+              <div className="relative min-h-[400px] overflow-hidden rounded-lg md:min-h-0">
                 <Image
                   src={gressImage}
                   alt="Perfekt plen"
@@ -394,8 +395,8 @@ export default async function HomePage() {
                   objectFit="cover"
                 />
               </div>
-              <div className="md:sticky md:top-36">
-                <div className="w-full rounded-lg bg-primary-dark-background p-6 lg:p-12">
+              <div className="flex">
+                <div className="my-auto w-full rounded-lg bg-primary-dark-background p-6 lg:p-12">
                   <p className="font-headline text-xl text-[#fff280]">Drømmer du om en</p>
                   <h2 className="font-headline text-5xl font-bold text-[#fff280]">Perfekt plen?</h2>
                   <p className="mb-8 mt-4 text-lg text-[#fff280]">
@@ -551,3 +552,5 @@ export default async function HomePage() {
     </div>
   );
 }
+
+    

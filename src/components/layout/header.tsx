@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -115,7 +116,7 @@ function ShoppingCartSheet() {
           aria-label="Handlekurv"
           className="relative h-12 w-12 lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
         >
-          <ShoppingCart className="h-10 w-10 lg:h-5 lg:w-5" />
+          <ShoppingCart className="h-8 w-8 lg:h-5 lg:w-5" />
           <span className="hidden lg:inline lg:ml-1">Handlekurv</span>
           {totalItems > 0 && (
             <span className="absolute right-1 top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-bold text-primary ring-2 ring-background lg:hidden">
@@ -130,7 +131,7 @@ function ShoppingCartSheet() {
               <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
               <SheetClose asChild>
                 <Button variant="ghost" size="icon" className="text-primary rounded-full h-12 w-12">
-                  <X className="h-10 w-10" />
+                  <X className="h-8 w-8" />
                   <span className="sr-only">Lukk</span>
                 </Button>
               </SheetClose>
@@ -260,12 +261,12 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
 
   return (
     <SheetContent>
-      <div className="p-0 flex flex-col h-full">
+      <div className="p-0 flex flex-col h-full bg-card">
         <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
           <SheetTitle>Velg din butikk</SheetTitle>
           <SheetClose asChild>
               <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-              <X className="h-10 w-10 text-primary" />
+              <X className="h-8 w-8 text-primary" />
               <span className="sr-only">Lukk</span>
               </Button>
           </SheetClose>
@@ -487,28 +488,26 @@ export function HeaderComponent() {
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-12 w-12 lg:hidden text-primary" aria-label="Meny">
-                  <MenuIcon className="h-10 w-10" />
+                  <MenuIcon className="h-8 w-8" />
                 </Button>
               </SheetTrigger>
               <SheetContent>
-                <div className="flex h-full flex-col bg-background">
+                <div className="flex h-full flex-col bg-card">
                   <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
                     {navStack.length > 0 && (
-                      <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
-                        <ArrowLeft className="h-5 w-5" />
+                      <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 h-12 w-12" onClick={handleBack}>
+                        <ArrowLeft className="h-6 w-6" />
                       </Button>
                     )}
-                    {/* Visual title */}
-                    <div className="font-bold text-lg text-primary">
-                      {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
+                    <div className="font-bold text-lg text-primary flex items-center justify-center">
+                        {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
                     </div>
-                    {/* Accessible title for screen readers */}
                     <SheetTitle className="sr-only">
-                      {navStack.length === 0 ? 'Hovedmeny' : currentMenu?.title}
+                        {currentMenu?.title || 'Hovedmeny'}
                     </SheetTitle>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-12 w-12">
-                        <X className="h-10 w-10" />
+                        <X className="h-8 w-8" />
                         <span className="sr-only">Lukk</span>
                       </Button>
                     </SheetClose>
@@ -578,3 +577,5 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
+
+    
