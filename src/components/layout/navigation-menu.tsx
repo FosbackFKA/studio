@@ -664,8 +664,8 @@ export function MainNavMenu() {
   return (
     <nav className="bg-card">
       <NavigationMenu>
-        <div className="container mx-auto max-w-[1542px]">
-          <NavigationMenuList className="flex h-12 items-center justify-between px-4">
+        <div className="container mx-auto max-w-[1542px] px-4">
+          <NavigationMenuList className="flex h-12 items-center justify-between">
             {/* Left Nav */}
             <div className="flex items-center space-x-1">{renderNavItems(leftNavItems)}</div>
             {/* Right Nav */}
