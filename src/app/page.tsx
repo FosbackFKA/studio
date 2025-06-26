@@ -385,18 +385,16 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
-              <div className="self-start">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="relative min-h-[400px] rounded-lg overflow-hidden md:min-h-0">
                 <Image
                   src={gressImage}
                   alt="Perfekt plen"
-                  className="aspect-square rounded-lg object-cover"
-                  layout="responsive"
-                  width={750}
-                  height={750}
+                  layout="fill"
+                  objectFit="cover"
                 />
               </div>
-              <div className="self-start md:sticky md:top-36">
+              <div className="md:sticky md:top-36">
                 <div className="w-full rounded-lg bg-primary-dark-background p-6 lg:p-12">
                   <p className="font-headline text-xl text-[#fff280]">Drømmer du om en</p>
                   <h2 className="font-headline text-5xl font-bold text-[#fff280]">Perfekt plen?</h2>
