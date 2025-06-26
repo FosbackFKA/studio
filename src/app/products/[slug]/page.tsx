@@ -103,18 +103,20 @@ export default function ProductPage() {
   const ctaSectionRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      if (ctaSectionRef.current) {
-        const { top } = ctaSectionRef.current.getBoundingClientRect();
-        // Show sticky bar when the top of the original CTA is about to leave the viewport
-        setIsSticky(top < 80); 
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    if (!ctaSectionRef.current) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Set sticky when the original CTA is completely out of view at the top
+        setIsSticky(entry.boundingClientRect.top < 128 && !entry.isIntersecting);
+      },
+      // The height of the sticky header (main bar + nav menu) is 128px
+      { rootMargin: "-128px 0px 0px 0px", threshold: 0 }
+    );
+    
+    observer.observe(ctaSectionRef.current);
+    
+    return () => observer.disconnect();
   }, []);
 
   if (slug !== 'SEGNAVH3000E') {
@@ -150,10 +152,10 @@ export default function ProductPage() {
      <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
 
-      {/* Sticky CTA Bar for Desktop */}
+      {/* Sticky CTA Bar for Desktop. top-32 = 128px (height of scrolled header) */}
       <div className={cn(
-          "fixed top-20 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
-          isSticky ? "translate-y-0" : "-translate-y-full"
+          "fixed top-32 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+          isSticky ? "translate-y-0" : "-translate-y-[200%]"
       )}>
           <div className="container mx-auto max-w-[1542px] px-4">
               <div className="flex h-20 items-center justify-between gap-6">
