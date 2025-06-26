@@ -22,14 +22,27 @@ const categories = [
 export function PopularCategoriesSection() {
   return (
     <section className="py-12 lg:py-16 bg-card">
-      <div className="container mx-auto px-4 max-w-[1542px]">
-        <div className="mb-8">
+      <div className="container mx-auto max-w-[1542px]">
+        <div className="mb-8 px-4">
           <h2 className="font-headline text-3xl font-bold">Populære kategorier nå</h2>
         </div>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        
+        {/* Desktop Grid */}
+        <div className="hidden px-4 lg:grid lg:grid-cols-6 lg:gap-4">
           {categories.map((category) => (
             <CategoryCard key={category.title} {...category} />
           ))}
+        </div>
+
+        {/* Mobile Horizontal Scroll */}
+        <div className="lg:hidden">
+          <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+            {categories.map((category) => (
+              <div key={category.title} className="w-2/5 flex-shrink-0 sm:w-1/3">
+                <CategoryCard {...category} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
