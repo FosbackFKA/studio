@@ -62,7 +62,7 @@ export default async function HomePage() {
       price: '34 999,-',
       salePrice: '29 999,-',
       imageUrl: popular1,
-      productUrl: '#',
+      productUrl: '/products/SEGNAVH3000E',
       onlineStock: true,
       storeStockCount: 63,
     },
@@ -387,7 +387,7 @@ export default async function HomePage() {
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch">
-              <div className="relative min-h-[400px] overflow-hidden rounded-lg md:min-h-0">
+              <div className="relative min-h-[400px] overflow-hidden rounded-lg md:min-h-0 md:h-auto">
                 <Image
                   src={gressImage}
                   alt="Perfekt plen"
