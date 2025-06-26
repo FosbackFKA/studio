@@ -102,7 +102,7 @@ export function HeroSection() {
       {/* Promo Items Area - Constrained and Overlapping */}
       <div className="container mx-auto max-w-[1542px]">
         {/* Desktop Grid (lg and up) */}
-        <div className="hidden lg:grid grid-cols-4 gap-4 relative z-20 mt-[-70px] mb-8">
+        <div className="hidden lg:grid grid-cols-4 gap-4 relative z-20 mt-[-70px] mb-8 px-4">
           {promoItems.map((item) => (
             <PromoCard key={item.title} item={item} />
           ))}
@@ -110,7 +110,7 @@ export function HeroSection() {
         
         {/* Mobile Horizontal Scroll (below lg) */}
         <div className="lg:hidden relative z-20 mt-[-70px] mb-8">
-          <div className="flex overflow-x-auto space-x-4 -mx-4 px-4 pb-4 no-scrollbar">
+          <div className="flex overflow-x-auto space-x-4 px-4 pb-4 no-scrollbar">
             {promoItems.map((item) => (
               <div key={item.title} className="flex-shrink-0 w-3/4 sm:w-[45%]">
                 <PromoCard item={item} />
