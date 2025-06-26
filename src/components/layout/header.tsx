@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { FkaLogo } from '@/components/common/logo';
 import { allMegaMenusData, MainNavMenu, rightNavItems, menuDataMap } from '@/components/layout/navigation-menu';
 import { ShoppingCart, Search, Menu as MenuIcon, MapPin, ChevronRight, X, User, ArrowLeft, Trash2, Plus, Minus, CheckCircle2 } from 'lucide-react';
-import { Sheet, SheetContent, SheetHeader, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
