@@ -4,7 +4,7 @@ import * as React from 'react';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, ShoppingCart, Truck, MapPin, Info, Minus, Plus } from 'lucide-react';
@@ -15,12 +15,10 @@ import { useCartStore } from '@/hooks/use-cart-store';
 import { cn } from '@/lib/utils';
 import { useParams } from 'next/navigation';
 
-const navimowImagePaths = [
-    '/navimow/1.jpg',
-    '/navimow/2.jpg',
-    '/navimow/3.jpg',
-    '/navimow/4.jpg',
-];
+import navimow1 from '@/components/common/navimow/1.jpg';
+import navimow2 from '@/components/common/navimow/2.jpg';
+import navimow3 from '@/components/common/navimow/3.jpg';
+import navimow4 from '@/components/common/navimow/4.jpg';
 
 const productData = {
   id: 'SEGNAVH3000E',
@@ -28,12 +26,12 @@ const productData = {
   brand: 'Segway',
   price: '34 999,-',
   salePrice: '29 999,-',
-  imageUrl: navimowImagePaths[0], 
+  imageUrl: navimow1, 
   productUrl: '/products/SEGNAVH3000E',
   onlineStock: true,
   storeStockCount: 63,
   badgeText: '- 14 %',
-  gallery: navimowImagePaths,
+  gallery: [navimow1, navimow2, navimow3, navimow4],
   specs: [
       'For plen (opptil) 3000 m²',
       'Klippebredde 21 cm',
@@ -74,7 +72,7 @@ export default function ProductPage() {
   const { addItem } = useCartStore();
   const { toast } = useToast();
   const [quantity, setQuantity] = React.useState(1);
-  const [mainImage, setMainImage] = React.useState<string>(product.gallery[0]);
+  const [mainImage, setMainImage] = React.useState<string | StaticImageData>(product.gallery[0]);
 
   const handleAddToCart = () => {
     addItem({ ...product, quantity: quantity });
@@ -84,7 +82,7 @@ export default function ProductPage() {
     });
   };
 
-  const handleSetMainImage = (imgSrc: string) => {
+  const handleSetMainImage = (imgSrc: string | StaticImageData) => {
     setMainImage(imgSrc);
   };
   
@@ -104,8 +102,9 @@ export default function ProductPage() {
                </div>
                <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => {
+                  const isSelected = (typeof mainImage === 'object' && 'src' in mainImage && mainImage.src === (typeof img === 'object' && 'src' in img ? img.src : '')) || mainImage === img;
                   return (
-                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
+                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', isSelected ? 'border-primary' : 'border-transparent')}>
                       <Image 
                         src={img} 
                         alt={`Thumbnail ${idx+1}`} 
