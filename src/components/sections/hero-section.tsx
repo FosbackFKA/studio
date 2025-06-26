@@ -75,7 +75,7 @@ export function HeroSection() {
 
       {/* Promo Items Area - Constrained and Overlapping */}
       <div className="container mx-auto px-4 max-w-[1542px]">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 relative z-20 mt-[-70px] mb-8">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 relative z-20 mt-[-70px] mb-8">
           {promoItems.map((item) => (
             <Link href={item.href} key={item.title} className="group block">
               <Card className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
