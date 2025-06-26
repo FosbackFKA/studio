@@ -1,0 +1,25 @@
+import type { Store } from '@/types/store';
+
+export const allStores: Store[] = [
+  { id: 'alta', name: 'Alta', address: 'Strandveien 38', postalCode: '9513', city: 'Alta', phone: '48066407', hours: 'Man-fre: 8-17, Lør: 9-15' },
+  { id: 'askim', name: 'Askim', address: 'Løkenveien 4', postalCode: '1811', city: 'Askim', phone: '97423395', hours: 'Man-fre: 9-17, Lør: 9-15' },
+  { id: 'barkaker', name: 'Barkåker', address: 'Wirgenes vei 6', postalCode: '3157', city: 'Barkåker', phone: '94136630', hours: 'Man-fre: 8-19, Lør: 9-16', specialHours: 'Søndagsåpent 12-16 (27/4-29/6)' },
+  { id: 'bergen', name: 'Bergen', address: 'Nordre Brurås 5', postalCode: '5131', city: 'Nyborg', phone: '48070211', hours: 'Man-fre: 8-20, Lør: 10-16' },
+  { id: 'bjorkelangen', name: 'Bjørkelangen', address: 'Siloveien 2', postalCode: '1940', city: 'Bjørkelangen', phone: '99261894', hours: 'Man-fre: 8-17, Lør: 9-15' },
+  { id: 'drammen', name: 'Drammen', address: 'Ingeniør Rybergs gate 98', postalCode: '3027', city: 'Drammen', phone: '32210800', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'elverum', name: 'Elverum', address: 'Torolf Storsveens veg 2', postalCode: '2406', city: 'Elverum', phone: '62431100', hours: 'Man-fre: 8-18, Lør: 9-16' },
+  { id: 'fagernes', name: 'Fagernes', address: 'Valdresvegen 18', postalCode: '2900', city: 'Fagernes', phone: '61359500', hours: 'Man-fre: 8-17, Lør: 9-15' },
+  { id: 'fredrikstad', name: 'Fredrikstad', address: 'Stabburveien 18', postalCode: '1617', city: 'Fredrikstad', phone: '69363900', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'gjovik', name: 'Gjøvik', address: 'Kallerudveien 1', postalCode: '2816', city: 'Gjøvik', phone: '61131900', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'gol', name: 'Gol', address: 'Heradvegen 191', postalCode: '3550', city: 'Gol', phone: '32076600', hours: 'Man-fre: 8-17, Lør: 9-15' },
+  { id: 'hamar', name: 'Hamar', address: 'Vangsvegen 111', postalCode: '2322', city: 'Hamar', phone: '62541000', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'honefoss', name: 'Hønefoss', address: 'Dronning Åstas gate 25', postalCode: '3511', city: 'Hønefoss', phone: '32181100', hours: 'Man-fre: 8-19, Lør: 9-18' },
+  { id: 'kongsberg', name: 'Kongsberg', address: 'Gamle Gomsrudvei 113', postalCode: '3613', city: 'Kongsberg', phone: '32770200', hours: 'Man-fre: 8-19, Lør: 9-18' },
+  { id: 'kongsvinger', name: 'Kongsvinger', address: 'Industrivegen 30', postalCode: '2212', city: 'Kongsvinger', phone: '62822900', hours: 'Man-fre: 8-18, Lør: 9-16' },
+  { id: 'larvik', name: 'Larvik', address: 'Elveveien 135', postalCode: '3271', city: 'Larvik', phone: '33136200', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'lillestrom', name: 'Lillestrøm', address: 'Depotgata 22', postalCode: '2000', city: 'Lillestrøm', phone: '63897000', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'oslo', name: 'Oslo', address: 'Haraldrudveien 18', postalCode: '0581', city: 'Oslo', phone: '22887700', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'sarpsborg', name: 'Sarpsborg', address: 'Tuneveien 89', postalCode: '1712', city: 'Grålum', phone: '69138000', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'skien', name: 'Skien', address: 'Bedriftsveien 76', postalCode: '3735', city: 'Skien', phone: '35505400', hours: 'Man-fre: 8-20, Lør: 9-18' },
+  { id: 'trondheim', name: 'Trondheim', address: 'Kvenildmyra 6', postalCode: '7093', city: 'Tiller', phone: '72899000', hours: 'Man-fre: 8-20, Lør: 9-18' },
+];
