@@ -118,11 +118,13 @@ function ShoppingCartSheet() {
           <ShoppingCart className="h-9 w-9 lg:h-5 lg:w-5" />
           <span className="hidden lg:inline lg:ml-1">Handlekurv</span>
           {totalItems > 0 && (
-              <span className="absolute top-0 right-0 block h-3.5 w-3.5 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-yellow-400 ring-2 ring-background lg:hidden" />
+            <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-bold text-primary ring-2 ring-background lg:hidden">
+              {totalItems}
+            </span>
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex flex-col bg-card p-0 sm:max-w-md">
+      <SheetContent className="flex flex-col bg-card p-0">
         <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
             <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
             <SheetClose asChild>
@@ -255,7 +257,7 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   }, [stores, favoriteStores]);
 
   return (
-    <SheetContent side="right" className="p-0 flex flex-col sm:max-w-md">
+    <SheetContent side="right" className="p-0 flex flex-col">
       <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
         <SheetTitle>Velg din butikk</SheetTitle>
         <SheetClose asChild>
@@ -484,7 +486,7 @@ export function HeaderComponent() {
                   <MenuIcon className="h-9 w-9" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="flex max-w-sm flex-col bg-background p-0 sm:max-w-sm">
+              <SheetContent side="right" className="flex flex-col bg-background p-0">
                 <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
                   {navStack.length > 0 && (
                     <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
