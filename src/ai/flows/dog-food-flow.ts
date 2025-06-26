@@ -20,7 +20,7 @@ export type DogFoodInput = z.infer<typeof DogFoodInputSchema>;
 const DogFoodOutputSchema = z.object({
   productName: z.string().describe('The specific name of the recommended Royal Canin product.'),
   justification: z.string().describe("A detailed explanation of why this product is recommended, referencing the dog's specific details."),
-  imageUrl: z.string().url().describe("A placeholder image URL for the product in the format 'https://placehold.co/300x300.png'."),
+  imageUrl: z.string().describe("A placeholder image URL for the product in the format 'https://placehold.co/300x300.png'."),
 });
 export type DogFoodOutput = z.infer<typeof DogFoodOutputSchema>;
 
