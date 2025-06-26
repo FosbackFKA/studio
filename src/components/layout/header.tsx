@@ -113,9 +113,9 @@ function ShoppingCartSheet() {
           variant="ghost"
           size="icon"
           aria-label="Handlekurv"
-          className="relative h-12 w-12 lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
+          className="relative h-14 w-14 lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
         >
-          <ShoppingCart className="h-10 w-10 lg:h-5 lg:w-5" />
+          <ShoppingCart className="h-12 w-12 lg:h-5 lg:w-5" />
           <span className="hidden lg:inline lg:ml-1">Handlekurv</span>
           {totalItems > 0 && (
             <span className="absolute right-1 top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-bold text-primary ring-2 ring-background lg:hidden">
@@ -128,8 +128,8 @@ function ShoppingCartSheet() {
         <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
             <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
             <SheetClose asChild>
-              <Button variant="ghost" size="icon" className="text-primary rounded-full h-12 w-12">
-                <X className="h-10 w-10" />
+              <Button variant="ghost" size="icon" className="text-primary rounded-full h-14 w-14">
+                <X className="h-12 w-12" />
                 <span className="sr-only">Lukk</span>
               </Button>
             </SheetClose>
@@ -261,8 +261,8 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
       <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
         <SheetTitle>Velg din butikk</SheetTitle>
         <SheetClose asChild>
-            <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-            <X className="h-10 w-10 text-primary" />
+            <Button variant="ghost" size="icon" className="h-14 w-14 rounded-full">
+            <X className="h-12 w-12 text-primary" />
             <span className="sr-only">Lukk</span>
             </Button>
         </SheetClose>
@@ -482,13 +482,12 @@ export function HeaderComponent() {
             
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-12 w-12 lg:hidden text-primary" aria-label="Meny">
-                  <MenuIcon className="h-10 w-10" />
+                <Button variant="ghost" size="icon" className="h-14 w-14 lg:hidden text-primary" aria-label="Meny">
+                  <MenuIcon className="h-12 w-12" />
                 </Button>
               </SheetTrigger>
               <SheetContent className="flex flex-col bg-background p-0">
                 <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
-                  <SheetTitle className="sr-only">Hovedmeny</SheetTitle>
                   {navStack.length > 0 && (
                     <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
                       <ArrowLeft className="h-5 w-5" />
@@ -503,8 +502,8 @@ export function HeaderComponent() {
                     {navStack.length === 0 ? 'Hovedmeny' : currentMenu?.title}
                   </SheetTitle>
                   <SheetClose asChild>
-                    <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-12 w-12">
-                      <X className="h-10 w-10" />
+                    <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-14 w-14">
+                      <X className="h-12 w-12" />
                       <span className="sr-only">Lukk</span>
                     </Button>
                   </SheetClose>
