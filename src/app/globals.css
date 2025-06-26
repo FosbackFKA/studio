@@ -8,15 +8,15 @@
     /* --fk-white-50-c: 250 248 246 (Light Gray) */
     --background: 30 25% 97%;
     /* --fk-grey-4-c: 34 34 34 */
-    --foreground: 0 0% 13%;
+    --foreground: 147 100% 14%;
     /* --fk-white-c: 255 255 255 */
     --card: 0 0% 100%;
     /* --fk-grey-4-c: 34 34 34 */
-    --card-foreground: 0 0% 13%;
+    --card-foreground: 147 100% 14%;
     /* --fk-white-c: 255 255 255 */
     --popover: 0 0% 100%;
     /* --fk-grey-4-c: 34 34 34 */
-    --popover-foreground: 0 0% 13%;
+    --popover-foreground: 147 100% 14%;
     /* --fk-green-60-c: 0 109 50 (FK Green) */
     --primary: 147 100% 21%;
     /* --fk-white-c: 255 255 255 */
@@ -32,7 +32,7 @@
     /* --fk-lightgreen-40-c: 134 198 18 (FK Light Green) */
     --accent: 79 82% 42%;
     /* --fk-grey-4-c: 34 34 34 */
-    --accent-foreground: 0 0% 13%;
+    --accent-foreground: 147 100% 14%;
     /* --fk-red-40-c: 215 12 40 */
     --destructive: 352 89% 45%; /* Mer nøyaktig fra --fk-red-40-c */
     /* --fk-white-c: 255 255 255 */
@@ -58,7 +58,7 @@
     /* --fk-transparent-green-c: 242 245 238 */
     --sidebar-background: 93 23% 95%;
     /* --fk-grey-4-c: 34 34 34 */
-    --sidebar-foreground: 0 0% 13%;
+    --sidebar-foreground: 147 100% 14%;
     /* --fk-green-60-c: 0 109 50 */
     --sidebar-primary: 147 100% 21%;
     /* --fk-white-c: 255 255 255 */
@@ -66,7 +66,7 @@
     /* --fk-lightgreen-40-c: 134 198 18 */
     --sidebar-accent: 79 82% 42%;
      /* --fk-grey-4-c: 34 34 34 */
-    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-accent-foreground: 147 100% 14%;
     /* --fk-darkgreen-20-c: 204 218 210 */
     --sidebar-border: 145 20% 85%;
     /* --fk-focus-c (endret til primærfargen for konsistens) */
@@ -94,7 +94,7 @@
     --muted-foreground: 0 0% 50%;
     /* En lysere/mer mettet versjon av aksentfargen */
     --accent: 79 82% 55%;
-    --accent-foreground: 0 0% 13%; /* Mørk tekst på lys aksent */
+    --accent-foreground: 147 100% 14%; /* Mørk tekst på lys aksent */
     /* Destructive kan være likt, eller en lysere rød */
     --destructive: 352 89% 55%;
     --destructive-foreground: 0 0% 100%;
@@ -115,7 +115,7 @@
     --sidebar-primary: 147 100% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 79 82% 55%;
-    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-accent-foreground: 147 100% 14%;
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: var(--primary);
   }
