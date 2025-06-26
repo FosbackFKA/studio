@@ -499,20 +499,33 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="container mx-auto max-w-[1542px]">
+            <div className="mb-6 flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Utstyr til å så jevnt</h2>
                <Button variant="link" asChild className="text-primary hover:underline">
                 <Link href="#">Så og strøredskap <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
               </Button>
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            
+            {/* Desktop Grid */}
+            <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
               {newSaaingProducts.map((item) => (
                 <ProductCard
                   key={item.id}
                   {...item}
                 />
               ))}
+            </div>
+
+            {/* Mobile Horizontal Scroll */}
+            <div className="lg:hidden">
+              <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                {newSaaingProducts.map((item) => (
+                  <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
+                    <ProductCard {...item} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

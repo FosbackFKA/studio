@@ -35,17 +35,30 @@ const articles = [
 export function ArticlesSection() {
   return (
     <section className="py-12 lg:py-16 bg-background">
-      <div className="container mx-auto px-4 max-w-[1542px]">
-        <div className="mb-8 flex items-center justify-between">
+      <div className="container mx-auto max-w-[1542px]">
+        <div className="mb-8 flex items-center justify-between px-4">
           <h2 className="font-headline text-3xl font-bold">Nyttige artikler og guider</h2>
           <Button variant="link" asChild className="text-primary hover:underline">
             <Link href="#">Se alle artikler</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        
+        {/* Desktop Grid */}
+        <div className="hidden px-4 lg:grid lg:grid-cols-3 lg:gap-6">
           {articles.map((article) => (
             <ArticleCard key={article.title} {...article} />
           ))}
+        </div>
+
+        {/* Mobile Horizontal Scroll */}
+        <div className="lg:hidden">
+          <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+            {articles.map((article) => (
+              <div key={article.title} className="w-5/6 flex-shrink-0 sm:w-2/3 md:w-1/2">
+                <ArticleCard {...article} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
