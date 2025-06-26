@@ -15,10 +15,10 @@ import { useCartStore } from '@/hooks/use-cart-store';
 import { cn } from '@/lib/utils';
 
 const navimowImagePaths = [
-    '/navimow/1.webp',
-    '/navimow/2.webp',
-    '/navimow/3.webp',
-    '/navimow/4.webp',
+    '/navimow/1.jpg',
+    '/navimow/2.jpg',
+    '/navimow/3.jpg',
+    '/navimow/4.jpg',
 ];
 
 const productData = {
@@ -70,7 +70,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const { addItem } = useCartStore();
   const { toast } = useToast();
   const [quantity, setQuantity] = React.useState(1);
-  const [mainImage, setMainImage] = React.useState<string | { src: string }>(product.gallery[0]);
+  const [mainImage, setMainImage] = React.useState<string>(product.gallery[0]);
 
   const handleAddToCart = () => {
     addItem({ ...product, quantity: quantity });
@@ -80,12 +80,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     });
   };
 
-  const handleSetMainImage = (imgSrc: string | { src: string }) => {
+  const handleSetMainImage = (imgSrc: string) => {
     setMainImage(imgSrc);
   };
   
-  const getImageSrc = (img: string | { src: string }) => typeof img === 'string' ? img : img.src;
-
   return (
      <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
@@ -97,15 +95,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             {/* Image Gallery */}
             <div className="space-y-4">
                <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-white">
-                 <Image src={getImageSrc(mainImage)} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
+                 <Image src={mainImage} alt={product.title} layout="fill" objectFit="contain" className="p-4" />
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => {
                   return (
-                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', getImageSrc(mainImage) === getImageSrc(img) ? 'border-primary' : 'border-transparent')}>
+                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
                       <Image 
-                        src={getImageSrc(img)} 
+                        src={img} 
                         alt={`Thumbnail ${idx+1}`} 
                         layout="fill" 
                         objectFit="contain" 
