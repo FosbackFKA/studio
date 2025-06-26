@@ -630,7 +630,7 @@ export function MainNavMenu() {
           <NavigationMenuContent>
             {megaMenuData ? (
               <>
-                <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-6 py-8 md:grid-cols-4">
+                <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
                   {megaMenuData.columns.map((col: any[], idx: number) => (
                     <div key={idx} className="flex flex-col gap-4">
                       {col.map((group) => (
@@ -639,7 +639,7 @@ export function MainNavMenu() {
                     </div>
                   ))}
                 </div>
-                <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-6 py-4">
+                <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-4 py-4">
                   <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                     <Link href={megaMenuData.footerLink.href}>
                       <ChevronRight className="mr-2 h-4 w-4" />
