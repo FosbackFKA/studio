@@ -13,7 +13,7 @@ const articles = [
     title: 'Slik velger du riktig robotgressklipper',
     excerpt: 'Ønsker du en velstelt plen uten for mye arbeid? Da kan en robotgressklipper være løsningen for deg! Med et bredt utvalg av modeller på...',
     imageUrl: artikkel1,
-    articleUrl: '#',
+    articleUrl: '/robotgressklipper',
     dataAiHint: 'robotic lawnmower'
   },
   {
