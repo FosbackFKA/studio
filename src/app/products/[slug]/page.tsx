@@ -13,6 +13,7 @@ import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/hooks/use-toast";
 import { useCartStore } from '@/hooks/use-cart-store';
 import { cn } from '@/lib/utils';
+import { useParams } from 'next/navigation';
 
 const navimowImagePaths = [
     '/navimow/1.jpg',
@@ -61,7 +62,10 @@ const productData = {
 };
 
 
-export default function ProductPage({ params: { slug } }: { params: { slug: string } }) {
+export default function ProductPage() {
+  const params = useParams();
+  const slug = params.slug as string;
+
   if (slug !== 'SEGNAVH3000E') {
     return <div>Product not found</div>;
   }
