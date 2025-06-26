@@ -113,15 +113,17 @@ function ShoppingCartSheet() {
           variant="ghost"
           size="icon"
           aria-label="Handlekurv"
-          className="relative text-primary lg:px-2 lg:py-2 lg:w-auto lg:h-auto lg:text-sm lg:font-medium"
+          className="text-primary lg:px-2 lg:py-2 lg:w-auto lg:h-auto lg:text-sm lg:font-medium"
         >
-          <ShoppingCart className="h-9 w-9 lg:h-5 lg:w-5 lg:mr-1" />
+          <div className="relative lg:mr-1">
+            <ShoppingCart className="h-9 w-9 lg:h-5 lg:w-5" />
+             {totalItems > 0 && (
+              <Badge className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-background bg-yellow-400 p-0 text-xs font-bold text-black">
+                {totalItems}
+              </Badge>
+            )}
+          </div>
           <span className="hidden lg:inline">Handlekurv</span>
-          {totalItems > 0 && (
-            <Badge className="absolute -top-1 -right-1 lg:top-1 lg:right-1 h-5 w-5 justify-center rounded-full p-0">
-              {totalItems}
-            </Badge>
-          )}
         </Button>
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col bg-card p-0 sm:max-w-md">
@@ -316,7 +318,7 @@ export function HeaderComponent() {
               items: menu.data.columns.flat(),
               footerLink: menu.data.footerLink,
             })}
-            className="flex w-full items-center justify-between py-3 font-medium text-foreground"
+            className="flex w-full items-center justify-between py-3 font-medium text-primary"
           >
             <span>{menu.name}</span>
             <ChevronRight className="h-5 w-5 text-muted-foreground" />
