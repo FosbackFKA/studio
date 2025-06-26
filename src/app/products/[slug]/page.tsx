@@ -21,6 +21,7 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { StarRating } from '@/components/common/star-rating';
 import { RelatedProductsSection } from '@/components/sections/related-products-section';
 import { FaqSection } from '@/components/sections/faq-section';
+import { ReviewsSection } from '@/components/sections/reviews-section';
 
 // Import local images
 import navimow1 from '@/components/common/navimow/1.jpg';
@@ -93,6 +94,10 @@ export default function ProductPage() {
   const params = useParams();
   const slug = params.slug as string;
 
+  // State for image zoom
+  const [zoomActive, setZoomActive] = React.useState(false);
+  const [imgPos, setImgPos] = React.useState({ x: '50%', y: '50%' });
+
   if (slug !== 'SEGNAVH3000E') {
     return <div>Product not found</div>;
   }
@@ -101,7 +106,7 @@ export default function ProductPage() {
   const { addItem } = useCartStore();
   const { toast } = useToast();
   const [quantity, setQuantity] = React.useState(1);
-  const [mainImage, setMainImage] = React.useState<string | StaticImageData>(product.gallery[0]);
+  const [mainImage, setMainImage] = React.useState<StaticImageData>(product.gallery[0]);
 
   const handleAddToCart = () => {
     addItem({ ...product, quantity: quantity });
@@ -111,8 +116,15 @@ export default function ProductPage() {
     });
   };
 
-  const handleSetMainImage = (imgSrc: string | StaticImageData) => {
+  const handleSetMainImage = (imgSrc: StaticImageData) => {
     setMainImage(imgSrc);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setImgPos({ x: `${x}%`, y: `${y}%` });
   };
   
   return (
@@ -125,13 +137,22 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
             {/* Image Gallery */}
             <div className="space-y-4">
-               <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-white">
+               <div 
+                  className="relative aspect-square w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white"
+                  onMouseEnter={() => setZoomActive(true)}
+                  onMouseLeave={() => setZoomActive(false)}
+                  onMouseMove={handleMouseMove}
+                >
                  <Image 
                     src={mainImage} 
                     alt={`Produktbilde av ${product.title}`} 
                     layout="fill" 
                     objectFit="contain" 
-                    className="p-4" 
+                    className={cn(
+                      "p-4 transition-transform duration-200 ease-out",
+                      zoomActive ? 'scale-[2]' : 'scale-100'
+                    )}
+                    style={ zoomActive ? { transformOrigin: `${imgPos.x} ${imgPos.y}` } : {} }
                     priority
                  />
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
@@ -266,6 +287,7 @@ export default function ProductPage() {
         </div>
         
         <RelatedProductsSection />
+        <ReviewsSection />
         <FaqSection />
 
       </main>
@@ -288,4 +310,3 @@ export default function ProductPage() {
     </div>
   );
 }
-
