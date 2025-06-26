@@ -47,6 +47,32 @@ const promoItems: PromoItem[] = [
   },
 ];
 
+const PromoCard = ({ item }: { item: PromoItem }) => (
+    <Link href={item.href} className="group block h-full">
+      <Card className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg h-full">
+        <div className="relative h-56 w-full">
+          <Image
+            src={item.imageUrl}
+            alt={item.title}
+            layout="fill"
+            objectFit="cover"
+            className="transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 text-left">
+          {item.superTitle && <p className="font-body text-sm font-medium text-[#fff280] mb-0.5">{item.superTitle}</p>}
+          <h3 className="font-headline text-2xl font-bold text-[#fff280] group-hover:underline">{item.title}</h3>
+          {item.actionText && (
+            <div className="mt-1 flex items-center text-sm font-medium text-[#fff280] group-hover:underline font-body">
+              {item.actionText}
+              <ArrowRight className="ml-1 h-4 w-4" />
+            </div>
+          )}
+        </div>
+      </Card>
+    </Link>
+  );
+
 export function HeroSection() {
   return (
     <section className="w-full bg-background">
@@ -74,34 +100,23 @@ export function HeroSection() {
       </div>
 
       {/* Promo Items Area - Constrained and Overlapping */}
-      <div className="container mx-auto px-4 max-w-[1542px]">
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 relative z-20 mt-[-70px] mb-8">
+      <div className="container mx-auto max-w-[1542px]">
+        {/* Desktop Grid (lg and up) */}
+        <div className="hidden lg:grid grid-cols-4 gap-4 relative z-20 mt-[-70px] mb-8">
           {promoItems.map((item) => (
-            <Link href={item.href} key={item.title} className="group block">
-              <Card className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
-                <div className="relative h-56 w-full"> {/* Adjusted height */}
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                {/* Text Overlay */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 text-left">
-                  {item.superTitle && <p className="font-body text-sm font-medium text-[#fff280] mb-0.5">{item.superTitle}</p>}
-                  <h3 className="font-headline text-2xl font-bold text-[#fff280] group-hover:underline">{item.title}</h3>
-                  {item.actionText && (
-                    <div className="mt-1 flex items-center text-sm font-medium text-[#fff280] group-hover:underline font-body">
-                      {item.actionText}
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </div>
-                  )}
-                </div>
-              </Card>
-            </Link>
+            <PromoCard key={item.title} item={item} />
           ))}
+        </div>
+        
+        {/* Mobile Horizontal Scroll (below lg) */}
+        <div className="lg:hidden relative z-20 mt-[-70px] mb-8">
+          <div className="flex overflow-x-auto space-x-4 -mx-4 px-4 pb-4 no-scrollbar">
+            {promoItems.map((item) => (
+              <div key={item.title} className="flex-shrink-0 w-3/4 sm:w-[45%]">
+                <PromoCard item={item} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
