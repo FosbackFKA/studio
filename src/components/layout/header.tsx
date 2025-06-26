@@ -128,8 +128,8 @@ function ShoppingCartSheet() {
         <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
             <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
             <SheetClose asChild>
-              <Button variant="ghost" size="icon" className="text-primary rounded-full">
-                <X className="h-5 w-5" />
+              <Button variant="ghost" size="icon" className="text-primary rounded-full h-8 w-8">
+                <X className="h-8 w-8" />
                 <span className="sr-only">Lukk</span>
               </Button>
             </SheetClose>
@@ -257,7 +257,7 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   }, [stores, favoriteStores]);
 
   return (
-    <SheetContent side="left" className="w-full sm:max-w-md p-0 flex flex-col">
+    <SheetContent side="right" className="w-full sm:max-w-md p-0 flex flex-col">
       <SheetHeader className="p-4 border-b">
         <SheetTitle>Velg din butikk</SheetTitle>
       </SheetHeader>
@@ -335,6 +335,7 @@ export function HeaderComponent() {
                 onClick={() => handleNavigate({
                   title: item.name,
                   items: menuData.columns ? menuData.columns.flat() : menuData.links,
+                  products: menuData.products, // pass products
                   footerLink: menuData.footerLink,
                 })}
                 className="flex w-full items-center justify-between py-3 font-medium text-primary"
@@ -418,9 +419,9 @@ export function HeaderComponent() {
     return (
        <ul className="flex flex-col">
         {menuData.items.map((link: any) => (
-            <li key={link.name}>
+            <li key={link.title || link.name}>
             <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium" onClick={() => setIsMenuOpen(false)}>
-                <span>{link.name}</span>
+                <span>{link.title || link.name}</span>
             </Link>
             </li>
         ))}
@@ -491,7 +492,7 @@ export function HeaderComponent() {
                     {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
                   </div>
                   <SheetClose asChild>
-                    <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full">
+                    <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-9 w-9">
                       <X className="h-8 w-8" />
                       <span className="sr-only">Lukk</span>
                     </Button>
