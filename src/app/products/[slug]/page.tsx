@@ -1,13 +1,15 @@
 'use client'; 
 
 import * as React from 'react';
+import type { SVGProps } from 'react';
+import Link from 'next/link';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import Image, { type StaticImageData } from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, ShoppingCart, Truck, MapPin, Info, Minus, Plus } from 'lucide-react';
+import { CheckCircle2, ShoppingCart, Truck, MapPin, Minus, Plus } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/hooks/use-toast";
@@ -59,6 +61,17 @@ const productData = {
   ]
 };
 
+const KlarnaLogo = (props: SVGProps<SVGSVGElement>) => (
+  <svg role="img" xmlns="http://www.w3.org/2000/svg" width="71.25" height="30" viewBox="0 0 71.25 30" aria-label="Klarna" {...props}>
+    <title>Klarna</title>
+    <g clipPath="url(#klarna-clip-product-page)">
+      <path fill="#FFA8CD" d="M62.7688 0H8.48123C3.79718 0 0 3.79718 0 8.48123V21.5188C0 26.2028 3.79718 30 8.48123 30H62.7688c4.684 0 8.4812-3.7972 8.4812-8.4812V8.48123C71.25 3.79718 67.4528 0 62.7688 0Z"></path>
+      <path fill="#0B051D" d="M57.412 19.1418c-1.2436 0-2.2134-1.0286-2.2134-2.2776 0-1.2491.9698-2.2776 2.2134-2.2776 1.2441 0 2.2135 1.0285 2.2135 2.2776 0 1.249-.9694 2.2776-2.2135 2.2776Zm-.6215 2.4062c1.0608 0 2.4145-.4041 3.1645-1.9837l.0731.0367c-.329.8633-.329 1.3776-.329 1.5062v.202h2.6704v-8.8901h-2.6704v.2021c0 .1286 0 .6428.329 1.5061l-.0731.0368c-.75-1.5797-2.1037-1.9838-3.1645-1.9838-2.543 0-4.3355 2.0205-4.3355 4.6839 0 2.6633 1.7925 4.6838 4.3355 4.6838Zm-8.9822-9.3677c-1.2073 0-2.1586.4225-2.9268 1.9838l-.0732-.0368c.3292-.8633.3292-1.3775.3292-1.5061v-.2021h-2.6708v8.8901h2.744v-4.6838c0-1.2307.7134-2.0021 1.8659-2.0021 1.1526 0 1.7193.6612 1.7193 1.9837v4.7022H51.54v-5.6573c0-2.0205-1.5731-3.4716-3.7317-3.4716Zm-9.3112 1.9838-.0731-.0368c.3293-.8633.3293-1.3775.3293-1.5061v-.2021h-2.6708v8.8901h2.7439l.0183-4.2797c0-1.249.6586-2.0021 1.7379-2.0021.2926 0 .5305.0367.8048.1102v-2.7185c-1.2073-.2571-2.2866.2021-2.8903 1.745Zm-8.7257 4.9777c-1.244 0-2.2135-1.0286-2.2135-2.2776 0-1.2491.9695-2.2776 2.2135-2.2776 1.2439 0 2.2134 1.0285 2.2134 2.2776 0 1.249-.9695 2.2776-2.2134 2.2776Zm-.622 2.4062c1.061 0 2.4147-.4041 3.1647-1.9837l.0732.0367c-.3293.8633-.3293 1.3776-.3293 1.5062v.202h2.6708v-8.8901H32.058v.2021c0 .1286 0 .6428.3293 1.5061l-.0732.0368c-.75-1.5797-2.1037-1.9838-3.1647-1.9838-2.5428 0-4.3355 2.0205-4.3355 4.6839 0 2.6633 1.7927 4.6838 4.3355 4.6838Zm-8.1588-.2388h2.744V8.45166h-2.744V21.3092ZM18.9784 8.45166h-2.7988c0 2.29594-1.4086 4.35314-3.5489 5.82264l-.8415.5878V8.45166H8.88062V21.3092h2.90858v-6.3736l4.8111 6.3736h3.5489L15.521 15.211c2.1037-1.5245 3.4757-3.894 3.4574-6.75934Z"></path>
+    </g>
+    <defs><clipPath id="klarna-clip-product-page"><path fill="#fff" d="M0 0h71.25v30H0z"></path></clipPath></defs>
+  </svg>
+);
+
 
 export default function ProductPage() {
   const params = useParams();
@@ -101,20 +114,17 @@ export default function ProductPage() {
                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
-                {product.gallery.map((img, idx) => {
-                  const isSelected = (typeof mainImage === 'object' && 'src' in mainImage && mainImage.src === (typeof img === 'object' && 'src' in img ? img.src : '')) || mainImage === img;
-                  return (
-                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', isSelected ? 'border-primary' : 'border-transparent')}>
-                      <Image 
-                        src={img} 
-                        alt={`Thumbnail ${idx+1}`} 
-                        layout="fill" 
-                        objectFit="contain" 
-                        className="p-1"
-                      />
-                    </button>
-                  );
-                })}
+                {product.gallery.map((img, idx) => (
+                  <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
+                    <Image 
+                      src={img} 
+                      alt={`Thumbnail ${idx+1}`} 
+                      layout="fill" 
+                      objectFit="contain" 
+                      className="p-1"
+                    />
+                  </button>
+                ))}
                </div>
             </div>
 
@@ -175,9 +185,14 @@ export default function ProductPage() {
                  </div>
               </div>
 
-              <div className="mt-4 flex items-center gap-2">
-                 <span className="font-bold text-pink-500 text-2xl">Klarna.</span>
-                 <Info className="h-4 w-4 text-muted-foreground" />
+              <div className="mt-6 flex items-center gap-3 text-sm">
+                <KlarnaLogo className="h-8 w-auto flex-shrink-0 rounded-md" />
+                <p className="text-foreground">
+                  Betal 5 295,02 kr/mnd i 6 måneder, 21,90% rente.{' '}
+                  <Link href="#" className="text-primary underline hover:text-primary/80">
+                    Les mer
+                  </Link>
+                </p>
               </div>
 
               <div className="mt-8">
