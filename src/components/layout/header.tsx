@@ -113,9 +113,9 @@ function ShoppingCartSheet() {
           variant="ghost"
           size="icon"
           aria-label="Handlekurv"
-          className="relative h-16 w-16 lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
+          className="relative h-12 w-12 lg:w-auto lg:h-auto lg:px-2 lg:py-2 lg:text-sm lg:font-medium text-primary"
         >
-          <ShoppingCart className="h-14 w-14 lg:h-5 lg:w-5" />
+          <ShoppingCart className="h-8 w-8 lg:h-5 lg:w-5" />
           <span className="hidden lg:inline lg:ml-1">Handlekurv</span>
           {totalItems > 0 && (
             <span className="absolute right-1 top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-bold text-primary ring-2 ring-background lg:hidden">
@@ -124,46 +124,48 @@ function ShoppingCartSheet() {
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex w-3/4 flex-col bg-card p-0 sm:max-w-md">
-        <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
-            <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
-            <SheetClose asChild>
-              <Button variant="ghost" size="icon" className="text-primary rounded-full h-16 w-16">
-                <X className="h-14 w-14" />
-                <span className="sr-only">Lukk</span>
-              </Button>
-            </SheetClose>
-        </SheetHeader>
-        {items.length > 0 ? (
-          <div className="flex flex-1 flex-col">
-            <ScrollArea className="flex-1">
-              <div className="p-4 space-y-4">
-                {items.map(item => <CartItemCard key={item.id} item={item} />)}
-              </div>
-            </ScrollArea>
-            <div className="border-t bg-background p-4">
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm items-center">
-                  <span className="text-muted-foreground">Prisdetaljer</span>
-                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
+      <SheetContent>
+        <div className="flex h-full flex-col bg-card">
+          <SheetHeader className="flex flex-row items-center justify-between border-b p-4">
+              <SheetTitle className="text-lg font-semibold text-foreground">Handlekurv ({totalItems})</SheetTitle>
+              <SheetClose asChild>
+                <Button variant="ghost" size="icon" className="text-primary rounded-full h-12 w-12">
+                  <X className="h-8 w-8" />
+                  <span className="sr-only">Lukk</span>
+                </Button>
+              </SheetClose>
+          </SheetHeader>
+          {items.length > 0 ? (
+            <div className="flex flex-1 flex-col">
+              <ScrollArea className="flex-1">
+                <div className="p-4 space-y-4">
+                  {items.map(item => <CartItemCard key={item.id} item={item} />)}
                 </div>
-                <div className="flex justify-between font-bold text-lg">
-                  <span>Total</span>
-                  <span>kr {totalPrice.toLocaleString('nb-NO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+              </ScrollArea>
+              <div className="border-t bg-background p-4">
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm items-center">
+                    <span className="text-muted-foreground">Prisdetaljer</span>
+                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                  <div className="flex justify-between font-bold text-lg">
+                    <span>Total</span>
+                    <span>kr {totalPrice.toLocaleString('nb-NO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Inkl. mva. Frakt beregnes i kassen</p>
+                  <Link href="#" className="text-sm font-medium text-primary hover:underline">Aktiver rabattkode</Link>
                 </div>
-                <p className="text-xs text-muted-foreground">Inkl. mva. Frakt beregnes i kassen</p>
-                <Link href="#" className="text-sm font-medium text-primary hover:underline">Aktiver rabattkode</Link>
+                <Button asChild className="w-full mt-4 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="#">Gå til kasse</Link>
+                </Button>
               </div>
-              <Button asChild className="w-full mt-4 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="#">Gå til kasse</Link>
-              </Button>
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-1 items-center justify-center">
-            <p className="text-muted-foreground">Handlekurven din er tom.</p>
-          </div>
-        )}
+          ) : (
+            <div className="flex flex-1 items-center justify-center p-4">
+              <p className="text-muted-foreground">Handlekurven din er tom.</p>
+            </div>
+          )}
+        </div>
       </SheetContent>
     </Sheet>
   );
@@ -257,31 +259,33 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   }, [stores, favoriteStores]);
 
   return (
-    <SheetContent className="w-3/4 p-0 flex flex-col sm:max-w-sm">
-      <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
-        <SheetTitle>Velg din butikk</SheetTitle>
-        <SheetClose asChild>
-            <Button variant="ghost" size="icon" className="h-16 w-16 rounded-full">
-            <X className="h-14 w-14 text-primary" />
-            <span className="sr-only">Lukk</span>
-            </Button>
-        </SheetClose>
-      </SheetHeader>
-      <div className="p-4 border-b">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <Input placeholder="Søk butikk eller sted" value={search} onChange={handleSearch} className="pl-10" />
+    <SheetContent>
+      <div className="p-0 flex flex-col h-full">
+        <SheetHeader className="flex flex-row items-center justify-between p-4 border-b">
+          <SheetTitle>Velg din butikk</SheetTitle>
+          <SheetClose asChild>
+              <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+              <X className="h-8 w-8 text-primary" />
+              <span className="sr-only">Lukk</span>
+              </Button>
+          </SheetClose>
+        </SheetHeader>
+        <div className="p-4 border-b">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Input placeholder="Søk butikk eller sted" value={search} onChange={handleSearch} className="pl-10" />
+          </div>
+          <Button variant="outline" className="w-full mt-3">
+            <Navigation className="mr-2 h-4 w-4" />
+            Finn nærmeste butikk
+          </Button>
         </div>
-        <Button variant="outline" className="w-full mt-3">
-          <Navigation className="mr-2 h-4 w-4" />
-          Finn nærmeste butikk
-        </Button>
+        <ScrollArea className="flex-1">
+          <div className="p-4 space-y-4">
+            {sortedStores.map(store => <StoreCard key={store.id} store={store} onSelect={onStoreSelect} />)}
+          </div>
+        </ScrollArea>
       </div>
-      <ScrollArea className="flex-1">
-        <div className="p-4 space-y-4">
-          {sortedStores.map(store => <StoreCard key={store.id} store={store} onSelect={onStoreSelect} />)}
-        </div>
-      </ScrollArea>
     </SheetContent>
   )
 }
@@ -482,74 +486,76 @@ export function HeaderComponent() {
             
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-16 w-16 lg:hidden text-primary" aria-label="Meny">
-                  <MenuIcon className="h-14 w-14" />
+                <Button variant="ghost" size="icon" className="h-12 w-12 lg:hidden text-primary" aria-label="Meny">
+                  <MenuIcon className="h-8 w-8" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="flex w-3/4 flex-col bg-background p-0 sm:max-w-sm">
-                <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
-                  {navStack.length > 0 && (
-                    <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
-                      <ArrowLeft className="h-5 w-5" />
-                    </Button>
-                  )}
-                  {/* Visual title */}
-                  <div className="font-bold text-lg text-primary">
-                    {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
-                  </div>
-                  {/* Accessible title for screen readers */}
-                  <SheetTitle className="sr-only">
-                    {navStack.length === 0 ? 'Hovedmeny' : currentMenu?.title}
-                  </SheetTitle>
-                  <SheetClose asChild>
-                    <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-16 w-16">
-                      <X className="h-14 w-14" />
-                      <span className="sr-only">Lukk</span>
-                    </Button>
-                  </SheetClose>
-                </SheetHeader>
-                
-                <div className="flex-grow overflow-y-auto overflow-x-hidden">
-                  <div className="relative h-full">
-                    <div className={cn(
-                        "absolute inset-0 p-4 transition-transform duration-300 ease-in-out",
-                        navStack.length > 0 ? "-translate-x-full" : "translate-x-0"
-                      )}
-                    >
-                      <div className="flex flex-col gap-2 mb-4">
-                        <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
-                            <User className="mr-2 h-5 w-5"/>
-                            Logg inn
-                        </Button>
-                        <Button 
-                            variant="outline" 
-                            className="w-full justify-start text-left h-12 text-base font-medium"
-                            onClick={() => {
-                                setStoreSheetOpen(true);
-                                setIsMenuOpen(false);
-                            }}
-                        >
-                            <StoreIcon className="mr-2 h-5 w-5"/>
-                            {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
-                        </Button>
+              <SheetContent>
+                <div className="flex h-full flex-col bg-background">
+                  <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
+                    {navStack.length > 0 && (
+                      <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2" onClick={handleBack}>
+                        <ArrowLeft className="h-5 w-5" />
+                      </Button>
+                    )}
+                    {/* Visual title */}
+                    <div className="font-bold text-lg text-primary">
+                      {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
+                    </div>
+                    {/* Accessible title for screen readers */}
+                    <SheetTitle className="sr-only">
+                      {navStack.length === 0 ? 'Hovedmeny' : currentMenu?.title}
+                    </SheetTitle>
+                    <SheetClose asChild>
+                      <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-12 w-12">
+                        <X className="h-8 w-8" />
+                        <span className="sr-only">Lukk</span>
+                      </Button>
+                    </SheetClose>
+                  </SheetHeader>
+                  
+                  <div className="flex-grow overflow-y-auto overflow-x-hidden">
+                    <div className="relative h-full">
+                      <div className={cn(
+                          "absolute inset-0 p-4 transition-transform duration-300 ease-in-out",
+                          navStack.length > 0 ? "-translate-x-full" : "translate-x-0"
+                        )}
+                      >
+                        <div className="flex flex-col gap-2 mb-4">
+                          <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
+                              <User className="mr-2 h-5 w-5"/>
+                              Logg inn
+                          </Button>
+                          <Button 
+                              variant="outline" 
+                              className="w-full justify-start text-left h-12 text-base font-medium"
+                              onClick={() => {
+                                  setStoreSheetOpen(true);
+                                  setIsMenuOpen(false);
+                              }}
+                          >
+                              <StoreIcon className="mr-2 h-5 w-5"/>
+                              {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
+                          </Button>
+                        </div>
+                        {renderMainMenu()}
                       </div>
-                      {renderMainMenu()}
-                    </div>
 
-                    <div className={cn(
-                        "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
-                        navStack.length > 0 ? "translate-x-0" : "translate-x-full"
-                      )}
-                    >
-                      {currentMenu && renderSubMenu(currentMenu)}
+                      <div className={cn(
+                          "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
+                          navStack.length > 0 ? "translate-x-0" : "translate-x-full"
+                        )}
+                      >
+                        {currentMenu && renderSubMenu(currentMenu)}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="border-t p-4">
-                  <div className="flex items-center space-x-2">
-                    <Button size="lg" className="flex-1 rounded-full bg-primary px-3 py-1 h-auto font-medium text-primary-foreground hover:bg-primary/90">Privat</Button>
-                    <Button variant="outline" size="lg" className="flex-1 rounded-full border-primary bg-transparent px-3 py-1 h-auto font-medium text-primary hover:bg-primary/10">Bonde & Bedrift</Button>
+                  <div className="border-t p-4">
+                    <div className="flex items-center space-x-2">
+                      <Button size="lg" className="flex-1 rounded-full bg-primary px-3 py-1 h-auto font-medium text-primary-foreground hover:bg-primary/90">Privat</Button>
+                      <Button variant="outline" size="lg" className="flex-1 rounded-full border-primary bg-transparent px-3 py-1 h-auto font-medium text-primary hover:bg-primary/10">Bonde & Bedrift</Button>
+                    </div>
                   </div>
                 </div>
               </SheetContent>
