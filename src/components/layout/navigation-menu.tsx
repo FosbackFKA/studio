@@ -205,6 +205,7 @@ export const kjaeledyrMenuData = {
           { name: 'Hundens luftetur', href: '#' },
           { name: 'Hundepleie', href: '#' },
           { name: 'Hundeutstyr', href: '#' },
+          { name: 'Hundefôr-velger', href: '/hundevelger' },
         ],
       },
     ],
