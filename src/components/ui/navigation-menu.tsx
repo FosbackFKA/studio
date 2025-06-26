@@ -42,7 +42,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-auto w-max items-center justify-center rounded-none bg-transparent px-3 py-2 font-headline text-sm font-normal tracking-[0.2px] text-primary transition-colors hover:text-primary focus:bg-transparent focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:text-primary data-[state=open]:text-primary"
+  "group inline-flex h-auto w-max items-center justify-center rounded-md bg-transparent px-3 py-2 font-headline text-sm font-normal tracking-[0.2px] text-primary transition-colors hover:bg-accent/20 focus:bg-accent/20 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/20 data-[state=open]:bg-accent/20"
 )
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -90,7 +90,7 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex w-full")}>
+  <div className={cn("absolute left-0 top-full flex w-full justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
         "origin-top-center relative mt-0 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border-t bg-sidebar text-sidebar-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",

@@ -461,7 +461,7 @@ export function HeaderComponent() {
 
           <div className="flex items-center space-x-2 sm:space-x-3">
              <SheetTrigger asChild>
-                <Button variant="ghost" className="hidden items-center px-2 py-2 text-sm font-medium text-primary hover:bg-accent hover:text-accent-foreground lg:flex">
+                <Button variant="ghost" className="hidden items-center px-2 py-2 text-sm font-medium text-primary lg:flex">
                   <StoreIcon className="mr-1 h-5 w-5" />
                   {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
                 </Button>
