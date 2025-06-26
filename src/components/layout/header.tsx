@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { FkaLogo } from '@/components/common/logo';
-import { allMegaMenusData, MainNavMenu, rightNavItems, simpleMenuList } from '@/components/layout/navigation-menu';
+import { allMegaMenusData, MainNavMenu, rightNavItems, menuDataMap } from '@/components/layout/navigation-menu';
 import { ShoppingCart, Search, Menu as MenuIcon, MapPin, ChevronRight, X, User, ArrowLeft } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
@@ -54,8 +54,35 @@ export function HeaderComponent() {
       ))}
       <Separator className="my-2" />
       {rightNavItems.map((item) => {
-        const subItems = simpleMenuList[item.name] || [];
-        if (subItems.length > 0) {
+        const menuData = menuDataMap[item.name];
+        if (!menuData) return null;
+
+        // For menus with columns like "Merkevarer"
+        if (menuData.columns) {
+          return (
+            <li key={item.name}>
+              <button
+                onClick={() => handleNavigate({
+                  title: item.name,
+                  items: menuData.columns.flat(),
+                  footerLink: menuData.footerLink,
+                })}
+                className="flex w-full items-center justify-between py-3 font-medium text-primary"
+              >
+                <span>{item.name}</span>
+                <ChevronRight className="h-5 w-5 text-muted-foreground" />
+              </button>
+            </li>
+          );
+        }
+
+        // For menus with a simple list of links like "Kampanjer" and "Lagersalg"
+        if (menuData.links) {
+          const subItems = menuData.links.map((link: { title: string; href: string }) => ({
+            title: link.title,
+            href: link.href,
+          }));
+
           return (
             <li key={item.name}>
               <button
@@ -68,6 +95,7 @@ export function HeaderComponent() {
             </li>
           );
         }
+
         return null;
       })}
        <Separator className="my-2" />
