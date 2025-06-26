@@ -470,17 +470,30 @@ export default async function HomePage() {
         </section>
 
         <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="mb-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div className="container mx-auto max-w-[1542px]">
+            <div className="mb-6 flex flex-col items-start justify-between gap-4 px-4 md:flex-row md:items-center">
               <h2 className="font-headline text-2xl font-bold lg:text-3xl">Favorittene våre til vanning i hagen</h2>
             </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            
+            {/* Desktop Grid */}
+            <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
               {newVanningProducts.map((item) => (
                  <ProductCard
                     key={item.id}
                     {...item}
                   />
               ))}
+            </div>
+
+            {/* Mobile Horizontal Scroll */}
+            <div className="lg:hidden">
+              <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                {newVanningProducts.map((item) => (
+                  <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
+                    <ProductCard {...item} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
