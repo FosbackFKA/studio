@@ -303,7 +303,7 @@ export function HeaderComponent() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 0);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check
@@ -456,131 +456,137 @@ export function HeaderComponent() {
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
       <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         {!isScrolled && (
-          <div className="container mx-auto hidden h-10 items-center justify-start border-b px-4 max-w-[1542px] lg:flex">
-            <div className="flex items-center space-x-1">
-              <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
-                Privat
-              </Button>
-              <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
-                Bonde & Bedrift
-              </Button>
+          <div className="border-b">
+            <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
+              <div className="flex items-center space-x-1">
+                <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
+                  Privat
+                </Button>
+                <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
+                  Bonde & Bedrift
+                </Button>
+              </div>
             </div>
           </div>
         )}
 
-        <div className="container mx-auto flex h-20 items-center justify-between border-b px-4 max-w-[1542px]">
-          <div className="flex items-center">
-            <Link href="/" aria-label="Til forsiden" onClick={() => isMenuOpen && setIsMenuOpen(false)}>
-              <FkaLogo className="h-10 w-auto md:h-12" priority />
-            </Link>
-          </div>
-
-          <div className="hidden flex-1 px-8 lg:flex justify-center">
-            <div className="relative w-full max-w-lg">
-              <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+        <div className="border-b">
+          <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-[1542px]">
+            <div className="flex items-center">
+              <Link href="/" aria-label="Til forsiden" onClick={() => isMenuOpen && setIsMenuOpen(false)}>
+                <FkaLogo className="h-10 w-auto md:h-12" priority />
+              </Link>
             </div>
-          </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-3">
-             <SheetTrigger asChild>
-                <Button variant="ghost" className="hidden items-center px-2 py-2 text-sm font-medium text-primary lg:flex">
-                  <StoreIcon className="mr-1 h-5 w-5" />
-                  {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
-                </Button>
-              </SheetTrigger>
+            <div className="hidden flex-1 px-8 lg:flex justify-center">
+              <div className="relative w-full max-w-lg">
+                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
+                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+              </div>
+            </div>
 
-            <div className="hidden lg:flex">
-              <ShoppingCartSheet />
-            </div>
-            
-            <div className="lg:hidden">
-              <ShoppingCartSheet />
-            </div>
-            
-            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-12 w-12 lg:hidden text-primary" aria-label="Meny">
-                  <MenuIcon className="h-8 w-8" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <div className="flex h-full flex-col bg-card">
-                  <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
-                    {navStack.length > 0 && (
-                      <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 h-12 w-12" onClick={handleBack}>
-                        <ArrowLeft className="h-6 w-6" />
-                      </Button>
-                    )}
-                    <div className="font-bold text-lg text-primary flex items-center justify-center">
-                        {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
-                    </div>
-                    <SheetTitle className="sr-only">
-                        {currentMenu?.title || 'Hovedmeny'}
-                    </SheetTitle>
-                    <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-12 w-12">
-                        <X className="h-8 w-8" />
-                        <span className="sr-only">Lukk</span>
-                      </Button>
-                    </SheetClose>
-                  </SheetHeader>
-                  
-                  <div className="flex-grow overflow-y-auto overflow-x-hidden">
-                    <div className="relative h-full">
-                      <div className={cn(
-                          "absolute inset-0 p-4 transition-transform duration-300 ease-in-out",
-                          navStack.length > 0 ? "-translate-x-full" : "translate-x-0"
-                        )}
-                      >
-                        <div className="flex flex-col gap-2 mb-4">
-                          <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
-                              <User className="mr-2 h-5 w-5"/>
-                              Logg inn
-                          </Button>
-                          <Button 
-                              variant="outline" 
-                              className="w-full justify-start text-left h-12 text-base font-medium"
-                              onClick={() => {
-                                  setStoreSheetOpen(true);
-                                  setIsMenuOpen(false);
-                              }}
-                          >
-                              <StoreIcon className="mr-2 h-5 w-5"/>
-                              {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
-                          </Button>
+                  <Button variant="ghost" className="hidden items-center px-2 py-2 text-sm font-medium text-primary lg:flex">
+                    <StoreIcon className="mr-1 h-5 w-5" />
+                    {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
+                  </Button>
+                </SheetTrigger>
+
+              <div className="hidden lg:flex">
+                <ShoppingCartSheet />
+              </div>
+              
+              <div className="lg:hidden">
+                <ShoppingCartSheet />
+              </div>
+              
+              <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-12 w-12 lg:hidden text-primary" aria-label="Meny">
+                    <MenuIcon className="h-8 w-8" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent>
+                  <div className="flex h-full flex-col bg-card">
+                    <SheetHeader className="relative flex flex-row items-center justify-center border-b p-4 text-center">
+                      {navStack.length > 0 && (
+                        <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 h-12 w-12" onClick={handleBack}>
+                          <ArrowLeft className="h-6 w-6" />
+                        </Button>
+                      )}
+                      <div className="font-bold text-lg text-primary flex items-center justify-center">
+                          {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
+                      </div>
+                      <SheetTitle className="sr-only">
+                          {currentMenu?.title || 'Hovedmeny'}
+                      </SheetTitle>
+                      <SheetClose asChild>
+                        <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-12 w-12">
+                          <X className="h-8 w-8" />
+                          <span className="sr-only">Lukk</span>
+                        </Button>
+                      </SheetClose>
+                    </SheetHeader>
+                    
+                    <div className="flex-grow overflow-y-auto overflow-x-hidden">
+                      <div className="relative h-full">
+                        <div className={cn(
+                            "absolute inset-0 p-4 transition-transform duration-300 ease-in-out",
+                            navStack.length > 0 ? "-translate-x-full" : "translate-x-0"
+                          )}
+                        >
+                          <div className="flex flex-col gap-2 mb-4">
+                            <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
+                                <User className="mr-2 h-5 w-5"/>
+                                Logg inn
+                            </Button>
+                            <Button 
+                                variant="outline" 
+                                className="w-full justify-start text-left h-12 text-base font-medium"
+                                onClick={() => {
+                                    setStoreSheetOpen(true);
+                                    setIsMenuOpen(false);
+                                }}
+                            >
+                                <StoreIcon className="mr-2 h-5 w-5"/>
+                                {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
+                            </Button>
+                          </div>
+                          {renderMainMenu()}
                         </div>
-                        {renderMainMenu()}
-                      </div>
 
-                      <div className={cn(
-                          "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
-                          navStack.length > 0 ? "translate-x-0" : "translate-x-full"
-                        )}
-                      >
-                        {currentMenu && renderSubMenu(currentMenu)}
+                        <div className={cn(
+                            "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
+                            navStack.length > 0 ? "translate-x-0" : "translate-x-full"
+                          )}
+                        >
+                          {currentMenu && renderSubMenu(currentMenu)}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="border-t p-4">
+                      <div className="flex items-center space-x-2">
+                        <Button size="lg" className="flex-1 rounded-full bg-primary px-3 py-1 h-auto font-medium text-primary-foreground hover:bg-primary/90">Privat</Button>
+                        <Button variant="outline" size="lg" className="flex-1 rounded-full border-primary bg-transparent px-3 py-1 h-auto font-medium text-primary hover:bg-primary/10">Bonde & Bedrift</Button>
                       </div>
                     </div>
                   </div>
-
-                  <div className="border-t p-4">
-                    <div className="flex items-center space-x-2">
-                      <Button size="lg" className="flex-1 rounded-full bg-primary px-3 py-1 h-auto font-medium text-primary-foreground hover:bg-primary/90">Privat</Button>
-                      <Button variant="outline" size="lg" className="flex-1 rounded-full border-primary bg-transparent px-3 py-1 h-auto font-medium text-primary hover:bg-primary/10">Bonde & Bedrift</Button>
-                    </div>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
 
         {!isScrolled && (
-            <div className="container mx-auto px-4 pb-3 lg:hidden max-w-[1542px] flex items-center gap-2 border-b">
-            <div className="relative w-full">
-                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-            </div>
+            <div className="border-b lg:hidden">
+              <div className="container mx-auto px-4 pb-3 max-w-[1542px] flex items-center gap-2">
+              <div className="relative w-full">
+                  <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
+                  <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+              </div>
+              </div>
             </div>
         )}
 

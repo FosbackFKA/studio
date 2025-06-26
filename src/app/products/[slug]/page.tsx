@@ -110,7 +110,7 @@ export default function ProductPage() {
         // Set sticky when the original CTA is completely out of view at the top
         setIsSticky(entry.boundingClientRect.top < 128 && !entry.isIntersecting);
       },
-      // The height of the sticky header (main bar + nav menu) is 128px
+      // The height of the scrolled header (main bar + nav menu) is ~128px (8rem)
       { rootMargin: "-128px 0px 0px 0px", threshold: 0 }
     );
     
@@ -258,7 +258,7 @@ export default function ProductPage() {
                 </div>
               </div>
 
-              <div ref={ctaSectionRef}>
+              <div ref={ctaSectionRef} className={cn(isSticky && "md:invisible")}>
                 <Separator className="my-6" />
 
                 <div className="hidden md:block">
