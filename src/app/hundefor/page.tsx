@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Checkbox } from '@/components/ui/checkbox';
-import guideImage from '@/components/common/artikler/guide_hund.webp';
+import guideImage from '@/components/common/hund/hund1.webp';
 
 // Fôrvelger component - refaktorert for å passe i accordion
 function Forvelger() {
@@ -267,7 +267,7 @@ export default function HundeforPage() {
         imageUrl: p.image_link,
         productUrl: p.link,
         onlineStock: true,
-        storeStockCount: Math.floor(Math.random() * 100),
+        storeStockCount: 0, // Placeholder, will be set on client
     }));
 
     const guide = { type: 'guide' as const };
@@ -278,8 +278,16 @@ export default function HundeforPage() {
     } else {
       allItems.push(guide);
     }
-    setItemsToDisplay(allItems);
+    
+    // Set random stock counts on client to avoid hydration errors
+    const clientSideItems = allItems.map(item => {
+        if ('id' in item) { // it's a product
+            return { ...item, storeStockCount: Math.floor(Math.random() * 100) };
+        }
+        return item;
+    });
 
+    setItemsToDisplay(clientSideItems);
   }, []);
   
   const breadcrumbs = [
@@ -370,11 +378,14 @@ export default function HundeforPage() {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                        {itemsToDisplay.map((item, index) => {
-                          if ('type' in item && item.type === 'guide') {
+                          if (item && 'type' in item && item.type === 'guide') {
                               return <GuideCard key={`guide-${index}`} />;
                           }
                           const product = item as Product;
-                          return <ProductCard key={product.id || index} {...product} />;
+                          if (product && product.id) {
+                            return <ProductCard key={product.id || index} {...product} />;
+                          }
+                          return null;
                       })}
                     </div>
                 </div>
