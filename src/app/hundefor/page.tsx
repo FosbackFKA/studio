@@ -65,14 +65,6 @@ function Forvelger() {
 
   return (
     <>
-      <div className="bg-gradient-to-br from-primary to-primary-dark-background p-6 text-primary-foreground md:p-8">
-          <div className="text-center">
-            <h1 className="mt-2 font-headline text-3xl font-bold text-white">Fôrvelger for hund</h1>
-            <p className="mx-auto mt-2 max-w-2xl text-lg text-primary-foreground/80">
-              Fortell oss om hunden din, så hjelper vår AI-assistent deg med å finne det perfekte fôret.
-            </p>
-          </div>
-      </div>
       <div className="p-6 md:p-8">
         <form onSubmit={handleSubmit} className="mx-auto max-w-4xl space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
