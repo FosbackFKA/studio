@@ -81,7 +81,7 @@ function Forvelger() {
                     <div>
                       <Label htmlFor="age">Hundens alder</Label>
                       <Select name="age" onValueChange={handleSelectChange('age')} value={formData.age}>
-                        <SelectTrigger id="age">
+                        <SelectTrigger id="age" className="bg-input hover:bg-accent/20">
                           <SelectValue placeholder="Velg alder" />
                         </SelectTrigger>
                         <SelectContent>
@@ -94,7 +94,7 @@ function Forvelger() {
                     <div>
                       <Label htmlFor="size">Vekt</Label>
                       <Select name="size" onValueChange={handleSelectChange('size')} value={formData.size}>
-                        <SelectTrigger id="size">
+                        <SelectTrigger id="size" className="bg-input hover:bg-accent/20">
                           <SelectValue placeholder="Velg vekt" />
                         </SelectTrigger>
                         <SelectContent>
@@ -116,6 +116,7 @@ function Forvelger() {
                         value={formData.specialNeeds}
                         onChange={handleTextareaChange}
                         rows={3}
+                        className="bg-input"
                       />
                   </div>
                   
