@@ -15,7 +15,6 @@ import { recommendDogFood, type DogFoodInput, type DogFoodRecommendation } from 
 import { Loader2, Dog, ShoppingCart, Weight, ArrowRight, SlidersHorizontal, X } from 'lucide-react';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import type { Product } from '@/types/product';
-import type { DogFoodProduct } from '@/lib/dog-food-data';
 import allDogFoodProducts from '@/data/dog_food_products.json';
 import { ProductCard } from '@/components/common/product-card';
 import { cn } from '@/lib/utils';
