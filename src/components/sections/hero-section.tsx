@@ -88,7 +88,7 @@ export function HeroSection() {
         />
         {/* Text Content - Centered and Constrained */}
         <div className="container mx-auto px-4 h-full max-w-[1542px]">
-          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center">
+          <div className="relative z-10 flex h-full flex-col items-center justify-end pb-20 text-center">
             <h1 className="mb-2 font-headline text-4xl font-bold text-primary md:text-5xl lg:text-6xl">
               Sommer i hver krukke og bed!
             </h1>

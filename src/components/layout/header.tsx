@@ -580,7 +580,7 @@ export function HeaderComponent() {
         </div>
 
         {!isScrolled && (
-            <div className="border-b lg:hidden">
+            <div className="lg:hidden">
               <div className="container mx-auto px-4 pb-3 max-w-[1542px] flex items-center gap-2">
               <div className="relative w-full">
                   <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />

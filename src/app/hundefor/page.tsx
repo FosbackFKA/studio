@@ -259,10 +259,10 @@ export default function HundeforPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
       <main className="flex-grow bg-secondary/20">
-        <div className="container mx-auto max-w-6xl px-4 py-8 lg:py-12">
+        <div className="container mx-auto max-w-6xl px-4 pt-8 pb-0 lg:pt-12">
           <Breadcrumb items={breadcrumbs} className="mb-8" />
           
-          <Accordion type="single" collapsible className="w-full mb-12 group">
+          <Accordion type="single" collapsible className="w-full group">
               <AccordionItem value="forvelger" className="overflow-hidden rounded-xl border bg-card shadow-lg">
                   <AccordionTrigger className="w-full p-6 text-left hover:no-underline [&[data-state=open]]:bg-secondary/20">
                       <div className="flex w-full items-center justify-between gap-4">
@@ -285,7 +285,7 @@ export default function HundeforPage() {
 
         </div>
         
-        <section id="produkter" className="py-12 lg:py-16 bg-background">
+        <section id="produkter" className="py-8 lg:py-12 bg-background">
             <div className="container mx-auto max-w-6xl px-4">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
                     {/* Filters - Sidebar for Desktop */}
@@ -353,5 +353,3 @@ export default function HundeforPage() {
     </div>
   );
 }
-
-    
