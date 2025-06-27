@@ -10,9 +10,9 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { recommendDogFood, type DogFoodInput, type DogFoodOutput } from '@/ai/flows/dog-food-flow';
-import { Loader2, Dog, Sparkles, Wand2 } from 'lucide-react';
+import { Loader2, Dog, Wand2, ShoppingCart, Weight } from 'lucide-react';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 
 
@@ -112,10 +112,10 @@ export default function DogFoodSelectorPage() {
                 </div>
 
                 <div>
-                    <Label htmlFor="specialNeeds">Spesielle behov (valgfritt)</Label>
+                    <Label htmlFor="specialNeeds">Spesielle behov, helse eller merkevare (valgfritt)</Label>
                     <Textarea 
                       id="specialNeeds"
-                      placeholder="F.eks. sensitiv hud, kresen, behov for vektkontroll, høyt aktivitetsnivå, allergi..."
+                      placeholder="F.eks. sensitiv hud, kresen, vektkontroll, høyt aktivitetsnivå, allergi, Royal Canin..."
                       value={formData.specialNeeds}
                       onChange={handleTextareaChange}
                       rows={3}
@@ -164,12 +164,24 @@ export default function DogFoodSelectorPage() {
                             data-ai-hint={`${result.brand} dog food`}
                         />
                     </div>
-                    <div className="p-6 md:col-span-2 bg-card">
+                    <div className="p-6 md:col-span-2 bg-card flex flex-col">
                       <p className="font-semibold text-primary">{result.brand}</p>
                       <h3 className="font-headline text-2xl font-bold text-foreground">{result.productName}</h3>
-                      <p className="mt-4 text-base text-foreground">{result.justification}</p>
-                      <Button size="lg" className="mt-6" asChild>
-                        <Link href={result.productUrl}>Se produkt</Link>
+                      
+                      <div className="mt-3 flex items-baseline gap-4 text-foreground">
+                        <p className="text-2xl font-bold text-primary">{result.price}</p>
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <Weight className="h-5 w-5" />
+                          <span>{result.shippingWeight}</span>
+                        </div>
+                      </div>
+
+                      <p className="mt-4 text-base text-foreground flex-grow">{result.justification}</p>
+                      
+                      <Button size="lg" className="mt-6 w-full sm:w-auto" asChild>
+                        <Link href={result.productUrl} target="_blank" rel="noopener noreferrer">
+                          <ShoppingCart className="mr-2 h-5 w-5" /> Se produkt
+                        </Link>
                       </Button>
                     </div>
                 </div>
