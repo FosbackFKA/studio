@@ -297,16 +297,35 @@ export function HeaderComponent() {
 
   const { selectedStore } = useStoreStore();
   const [hasMounted, setHasMounted] = React.useState(false);
+  
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [hideMobileSearch, setHideMobileSearch] = React.useState(false);
+  const lastScrollY = React.useRef(0);
 
   React.useEffect(() => { setHasMounted(true); }, []);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      const currentScrollY = window.scrollY;
+      
+      // For the top bar ("Privat/Bonde")
+      setIsScrolled(currentScrollY > 10);
+
+      // For the mobile search bar
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Scrolling down
+        setHideMobileSearch(true);
+      } else {
+        // Scrolling up
+        setHideMobileSearch(false);
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -454,7 +473,7 @@ export function HeaderComponent() {
 
   return (
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
-      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         {!isScrolled && (
           <div className="border-b">
             <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
@@ -579,7 +598,7 @@ export function HeaderComponent() {
           </div>
         </div>
 
-        {!isScrolled && (
+        {!hideMobileSearch && (
             <div className="lg:hidden">
               <div className="container mx-auto px-4 pb-3 max-w-[1542px] flex items-center gap-2">
               <div className="relative w-full">
