@@ -143,61 +143,63 @@ export default function DogFoodSelectorPage() {
                   </div>
                 </form>
             </div>
-          </div>
-          
-          {loading && (
-             <div className="mt-12 flex flex-col items-center text-center">
-                <Dog className="h-10 w-10 animate-bounce text-primary" />
-                <p className="mt-4 text-lg text-muted-foreground">Vår ekspert analyserer behovene til hunden din...</p>
-             </div>
-          )}
 
-          {results && results.length > 0 && (
-            <div className="mt-12">
-                <div className="text-center">
-                  <h2 className="font-headline text-3xl font-bold text-foreground">Våre Anbefalinger</h2>
-                  <p className="mx-auto mb-8 max-w-2xl text-muted-foreground">Basert på informasjonen du ga, er dette våre topp anbefalinger for din hund.</p>
-                </div>
-              <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
-                 {results.map((result, index) => (
-                    <Card key={index} className="flex h-full w-full flex-col overflow-hidden bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                        <div className="flex items-center justify-center border-b bg-white p-4">
-                            <div className="relative h-48 w-48">
-                              <Image
-                                  src={result.imageUrl}
-                                  alt={result.productName}
-                                  layout="fill"
-                                  objectFit="contain"
-                                  className="rounded-md"
-                                  data-ai-hint={`${result.brand} dog food`}
-                              />
-                            </div>
-                        </div>
-                        <div className="flex flex-grow flex-col p-5">
-                            <p className="font-semibold text-primary">{result.brand}</p>
-                            <h3 className="font-headline text-xl font-bold text-foreground">{result.productName}</h3>
-                            
-                            <div className="mt-3 flex items-baseline gap-4 text-foreground">
-                                <p className="text-2xl font-bold text-primary">{result.price}</p>
-                                <div className="flex items-center gap-1.5 text-muted-foreground">
-                                    <Weight className="h-4 w-4" />
-                                    <span>{result.shippingWeight}</span>
-                                </div>
-                            </div>
-
-                            <p className="mt-4 flex-grow text-sm text-muted-foreground line-clamp-6">{result.justification}</p>
-                            
-                            <Button size="lg" className="mt-6 w-full" asChild>
-                                <Link href={result.productUrl} target="_blank" rel="noopener noreferrer">
-                                    <ShoppingCart className="mr-2 h-5 w-5" /> Se produkt
-                                </Link>
-                            </Button>
-                        </div>
-                    </Card>
-                ))}
+            {loading && (
+              <div className="border-t p-6 text-center md:p-8">
+                  <div className="flex flex-col items-center">
+                      <Dog className="h-10 w-10 animate-bounce text-primary" />
+                      <p className="mt-4 text-lg text-muted-foreground">Vår ekspert analyserer behovene til hunden din...</p>
+                  </div>
               </div>
-            </div>
-          )}
+            )}
+
+            {results && results.length > 0 && (
+              <div className="border-t bg-secondary/20 p-6 md:p-8">
+                  <div className="text-center">
+                    <h2 className="font-headline text-3xl font-bold text-foreground">Våre Anbefalinger</h2>
+                    <p className="mx-auto mb-8 max-w-2xl text-muted-foreground">Basert på informasjonen du ga, er dette våre topp anbefalinger for din hund.</p>
+                  </div>
+                <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {results.map((result, index) => (
+                      <Card key={index} className="flex h-full w-full flex-col overflow-hidden bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                          <div className="flex items-center justify-center border-b bg-white p-4">
+                              <div className="relative h-48 w-48">
+                                <Image
+                                    src={result.imageUrl}
+                                    alt={result.productName}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    className="rounded-md"
+                                    data-ai-hint={`${result.brand} dog food`}
+                                />
+                              </div>
+                          </div>
+                          <div className="flex flex-grow flex-col p-5">
+                              <p className="font-semibold text-primary">{result.brand}</p>
+                              <h3 className="font-headline text-xl font-bold text-foreground">{result.productName}</h3>
+                              
+                              <div className="mt-3 flex items-baseline gap-4 text-foreground">
+                                  <p className="text-2xl font-bold text-primary">{result.price}</p>
+                                  <div className="flex items-center gap-1.5 text-muted-foreground">
+                                      <Weight className="h-4 w-4" />
+                                      <span>{result.shippingWeight}</span>
+                                  </div>
+                              </div>
+
+                              <p className="mt-4 flex-grow text-sm text-muted-foreground line-clamp-6">{result.justification}</p>
+                              
+                              <Button size="lg" className="mt-6 w-full" asChild>
+                                  <Link href={result.productUrl} target="_blank" rel="noopener noreferrer">
+                                      <ShoppingCart className="mr-2 h-5 w-5" /> Se produkt
+                                  </Link>
+                              </Button>
+                          </div>
+                      </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </main>
       <FooterComponent />
