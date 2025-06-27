@@ -95,7 +95,7 @@ const dogFoodFlow = ai.defineFlow(
         throw new Error("The AI could not generate a recommendation. Please try again.");
     }
 
-    const allowedHosts = ['www.felleskjopet.no', 'placehold.co'];
+    const allowedHosts = ['www.felleskjopet.no', 'felleskjopet.no', 'placehold.co'];
     let isAllowedHost = false;
     try {
         const url = new URL(output.imageUrl);
