@@ -268,59 +268,69 @@ function FilterPanel() {
 
 export default function HundeforPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
+  const [topSellers, setTopSellers] = React.useState<Product[]>([]);
+  const [itemsToDisplay, setItemsToDisplay] = React.useState<(Product | { type: 'guide'; data: any })[]>([]);
+  const [allProducts, setAllProducts] = React.useState<Product[]>([]);
+
+  React.useEffect(() => {
+    // This code now runs only on the client side to avoid hydration errors from Math.random()
+    const allProductsData: Product[] = allDogFoodProducts.map(p => ({
+        id: p.id,
+        title: p.title,
+        brand: p.brand,
+        price: p.price,
+        imageUrl: p.image_link,
+        productUrl: p.link,
+        onlineStock: true,
+        storeStockCount: Math.floor(Math.random() * 100),
+    }));
+    setAllProducts(allProductsData);
+
+    const topSellerIds = [
+      'hundefôr_voksen_mellom_og_stor_rase_15_kg',
+      'hundefôr_puppy_medium_breed_12_kg',
+      'hundefôr_maxi_adult_15_kg'
+    ];
+
+    const generatedTopSellers: Product[] = topSellerIds.map(id => {
+      const p = allDogFoodProducts.find(prod => prod.id === id);
+      if (!p) return null;
+      return {
+        id: p.id,
+        title: p.title,
+        brand: p.brand,
+        price: p.price,
+        imageUrl: p.image_link,
+        productUrl: p.link,
+        onlineStock: true,
+        storeStockCount: Math.floor(Math.random() * 100),
+      };
+    }).filter((p): p is Product => p !== null);
+    setTopSellers(generatedTopSellers);
+
+    const guide = {
+        title: 'Slik velger du riktig fôr til hunden din',
+        excerpt: 'Det kan være en jungel å velge riktig hundefôr. Lær deg hva du skal se etter for å dekke din hunds unike ernæringsbehov.',
+        imageUrl: 'https://placehold.co/800x450.png',
+        link: '#',
+        span: 'lg:col-span-2',
+        dataAiHint: 'dog eating food'
+    };
+
+    const generatedItemsToDisplay = [
+        ...allProductsData.slice(0, 2),
+        { type: 'guide' as const, data: guide },
+        ...allProductsData.slice(2, 7),
+    ];
+    setItemsToDisplay(generatedItemsToDisplay);
+
+  }, []); // Empty dependency array ensures this runs once on mount.
   
   const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
     { name: 'Kjæledyr', href: '#' },
     { name: 'Hund', href: '#' },
     { name: 'Hundefôr', href: '/hundefor' },
-  ];
-
-  const topSellerIds = [
-    'hundefôr_voksen_mellom_og_stor_rase_15_kg',
-    'hundefôr_puppy_medium_breed_12_kg',
-    'hundefôr_maxi_adult_15_kg'
-  ];
-
-  const topSellers: Product[] = topSellerIds.map(id => {
-    const p = allDogFoodProducts.find(prod => prod.id === id);
-    if (!p) return null;
-    return {
-      id: p.id,
-      title: p.title,
-      brand: p.brand,
-      price: p.price,
-      imageUrl: p.image_link,
-      productUrl: p.link,
-      onlineStock: true,
-      storeStockCount: Math.floor(Math.random() * 100),
-    };
-  }).filter((p): p is Product => p !== null);
-
-  const allProducts: Product[] = allDogFoodProducts.map(p => ({
-      id: p.id,
-      title: p.title,
-      brand: p.brand,
-      price: p.price,
-      imageUrl: p.image_link,
-      productUrl: p.link,
-      onlineStock: true,
-      storeStockCount: Math.floor(Math.random() * 100),
-  }));
-
-  const guide = {
-      title: 'Slik velger du riktig fôr til hunden din',
-      excerpt: 'Det kan være en jungel å velge riktig hundefôr. Lær deg hva du skal se etter for å dekke din hunds unike ernæringsbehov.',
-      imageUrl: 'https://placehold.co/800x450.png',
-      link: '#',
-      span: 'lg:col-span-2',
-      dataAiHint: 'dog eating food'
-  };
-
-  const itemsToDisplay = [
-      ...allProducts.slice(0, 2),
-      { type: 'guide', data: guide },
-      ...allProducts.slice(2, 7),
   ];
 
   return (
@@ -399,10 +409,11 @@ export default function HundeforPage() {
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {itemsToDisplay.map((item, index) => {
-                              if (item.type === 'guide') {
+                              if ('type' in item && item.type === 'guide') {
                                 return <GuideCard key={`guide-${index}`} {...item.data} />;
                               }
-                              return <ProductCard key={item.data.id} {...item.data} />;
+                              const product = item as Product;
+                              return <ProductCard key={product.id} {...product} />;
                             })}
                         </div>
                     </div>
@@ -415,5 +426,3 @@ export default function HundeforPage() {
     </div>
   );
 }
-
-    
