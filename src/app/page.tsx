@@ -52,6 +52,11 @@ import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
 import popular4 from '@/components/common/aktuelle-kampanjer/4.webp';
 import popular5 from '@/components/common/aktuelle-kampanjer/5.webp';
 
+// Import article images
+import artikkel1 from '@/components/common/artikler/1.webp';
+import artikkel2 from '@/components/common/artikler/2.webp';
+import artikkel3 from '@/components/common/artikler/3.webp';
+
 
 export default async function HomePage() {
   const mostPopularProducts: Product[] = [
@@ -305,7 +310,30 @@ export default async function HomePage() {
       storeStockCount: 58,
     },
   ];
-
+  
+  const homePageArticles = [
+    {
+      title: 'Slik velger du riktig robotgressklipper',
+      excerpt: 'Ønsker du en velstelt plen uten for mye arbeid? Da kan en robotgressklipper være løsningen for deg! Med et bredt utvalg av modeller på...',
+      imageUrl: artikkel1,
+      articleUrl: '/robotgressklipper',
+      dataAiHint: 'robotic lawnmower'
+    },
+    {
+      title: 'Slik blir du kvitt ugress',
+      excerpt: 'Vi elsker når det blir varmere i været og hagen våkner til liv. Knoppene blomstrer og gresset spirer, men det gjør dessverre også ugresset. Vi...',
+      imageUrl: artikkel2,
+      articleUrl: '#',
+      dataAiHint: 'dandelions weeds'
+    },
+    {
+      title: 'Hvordan bekjempe snegler?',
+      excerpt: 'De er ikke spesielt trivelige, brune, slimete og spiser det meste de kommer over. Brunsneglen har blitt et stort problem i hagene våre. Men...',
+      imageUrl: artikkel3,
+      articleUrl: '#',
+      dataAiHint: 'slug leaf'
+    },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -351,7 +379,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {/* Left Column: Sticky Promo Image */}
               <div className="self-start md:sticky md:top-36">
-                <Link href="#" className="group block aspect-square">
+                <Link href="/hundefor" className="group block aspect-square">
                   <div className="relative h-full w-full overflow-hidden rounded-lg">
                     <Image
                       src={hund1}
@@ -529,7 +557,12 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <ArticlesSection />
+        <ArticlesSection 
+            title="Nyttige artikler og guider"
+            articles={homePageArticles}
+            linkText="Se alle artikler"
+            linkHref="#"
+        />
 
         <section className="relative h-[300px] w-full md:h-[400px]">
            <Image
@@ -552,5 +585,3 @@ export default async function HomePage() {
     </div>
   );
 }
-
-    
