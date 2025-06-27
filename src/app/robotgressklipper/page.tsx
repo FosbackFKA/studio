@@ -64,15 +64,16 @@ function RobotklipperChatbot() {
         e.preventDefault();
         if (!input.trim() || isLoading) return;
 
-        const userMessage: Message = { role: 'user', content: input };
-        setMessages(prev => [...prev, userMessage]);
+        const newUserMessage: Message = { role: 'user', content: input };
+        const newMessages = [...messages, newUserMessage];
+        setMessages(newMessages);
+
         const currentInput = input;
         setInput('');
         setIsLoading(true);
 
         try {
-            const chatHistory = [...messages]; 
-            const response = await robotklipperChat({ history: chatHistory, question: currentInput });
+            const response = await robotklipperChat({ history: messages, question: currentInput });
             setMessages(prev => [...prev, { role: 'model', content: response }]);
         } catch (error) {
             console.error("Error calling chatbot flow:", error);
@@ -89,8 +90,8 @@ function RobotklipperChatbot() {
                     {messages.map((msg, index) => (
                         <div key={index} className={cn("flex items-start gap-3", msg.role === 'user' ? 'justify-end' : 'justify-start')}>
                             {msg.role === 'model' && (
-                                <Avatar className="h-8 w-8 border">
-                                    <FkaLogo />
+                                <Avatar className="h-8 w-8 border bg-white p-1">
+                                    <FkaLogo className="h-full w-auto" />
                                 </Avatar>
                             )}
                             <div className={cn(
@@ -108,8 +109,8 @@ function RobotklipperChatbot() {
                     ))}
                     {isLoading && (
                          <div className="flex items-start gap-3 justify-start">
-                             <Avatar className="h-8 w-8 border">
-                                <FkaLogo />
+                             <Avatar className="h-8 w-8 border bg-white p-1">
+                                <FkaLogo className="h-full w-auto" />
                             </Avatar>
                              <div className="max-w-md rounded-lg px-4 py-2 bg-secondary">
                                 <Loader2 className="h-5 w-5 animate-spin" />
