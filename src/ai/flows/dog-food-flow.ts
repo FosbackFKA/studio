@@ -24,7 +24,7 @@ const DogFoodOutputSchema = z.object({
   brand: z.string().describe('The brand of the recommended product.'),
   price: z.string().describe('The price of the product.'),
   shippingWeight: z.string().describe('The shipping weight of the product.'),
-  justification: z.string().describe("A detailed explanation in Norwegian of why this product is recommended, referencing the dog's specific details and the product's description and USPs."),
+  justification: z.string().describe("The exact, unmodified product description (from the `description` field) of the chosen product. Do not generate new text."),
   imageUrl: z.string().describe("The image URL for the product (from the `image_link` field)."),
   productUrl: z.string().describe("The URL to the product page (from the `link` field)."),
 });
@@ -76,17 +76,24 @@ const dogFoodSelectionPrompt = ai.definePrompt({
     }))
   })},
   output: { schema: DogFoodOutputSchema },
-  prompt: `Du er en ekspert på dyreernæring og en hjelpsom assistent for Felleskjøpet. Svarene dine til brukeren må være på norsk.
-Din oppgave er å velge det ENE beste produktet fra produktlisten nedenfor, basert på hundens detaljer.
+  prompt: `Du er en produktvelger-assistent for Felleskjøpet. Din ENESTE oppgave er å velge det beste produktet fra en gitt liste og returnere informasjonen i et spesifikt format. Svarene dine til brukeren må være på norsk.
 
-VIKTIG: Du kan KUN velge fra listen over tilgjengelige produkter. Du har IKKE lov til å finne på produkter eller hente informasjon fra andre steder. All informasjon i svaret ditt må komme direkte fra produktet du velger fra listen.
+**REGELSETT:**
+1.  **BRUK KUN DENNE LISTEN:** Du vil få en liste med "Tilgjengelige produkter". Du har KUN lov til å velge ett produkt fra denne listen. Ikke finn på produkter eller informasjon.
+2.  **PRIORITERING:** Merkene "Labb" og "Appetitt" er Felleskjøpets egne merker. Hvis et produkt fra disse merkene er relevant for hundens behov, skal det prioriteres over andre merker.
+3.  **DATAOVERFØRING:** Fyll ut output-feltene nøyaktig som beskrevet:
+    - \`productName\`: Kopier \`title\` fra det valgte produktet.
+    - \`justification\`: Kopier \`description\` fra det valgte produktet. IKKE skriv din egen tekst.
+    - \`imageUrl\`: Kopier \`image_link\` fra det valgte produktet.
+    - \`productUrl\`: Kopier \`link\` fra det valgte produktet.
+    - Kopier \`brand\`, \`price\`, og \`shipping_weight\` direkte.
 
-Hundens detaljer:
+**Hundens detaljer:**
 - Alder: {{dogDetails.age}}
-- Størrelse/Vektkategori: {{dogDetails.size}}
-- Spesielle behov eller helseproblemer: {{#if dogDetails.specialNeeds}}{{dogDetails.specialNeeds}}{{else}}Ingen spesifisert{{/if}}
+- Størrelse: {{dogDetails.size}}
+- Behov/Ønsker: {{#if dogDetails.specialNeeds}}{{dogDetails.specialNeeds}}{{else}}Ingen spesifisert{{/if}}
 
-Tilgjengelige produkter:
+**Tilgjengelige produkter:**
 {{#each productList}}
 - Produkt: {{{this.title}}}
   - Merke: {{{this.brand}}}
@@ -98,11 +105,7 @@ Tilgjengelige produkter:
   - Bilde-URL: {{{this.image_link}}}
 {{/each}}
 
-Fremgangsmåte:
-1. Gjennomgå listen over "Tilgjengelige produkter". Dette er den ENESTE kilden til informasjon du kan bruke.
-2. Velg det ENE produktet som passer absolutt best for hundens alder, størrelse og spesielle behov.
-3. Skriv en overbevisende begrunnelse PÅ NORSK. Forklar *hvorfor* dette spesifikke produktet er det beste valget, og referer til hvordan produktets beskrivelse og salgspunkter (USPs) møter hundens behov.
-4. Fyll ut alle feltene i svaret ditt med nøyaktig data fra det valgte produktet (productName fra \`title\`, brand, price, shippingWeight fra \`shipping_weight\`, imageUrl fra \`image_link\`, productUrl fra \`link\`).
+Velg det ENE beste produktet fra listen over basert på hundens detaljer og fyll ut alle feltene i output-formatet med nøyaktig data fra det valgte produktet.
 `,
 });
 
@@ -121,7 +124,17 @@ const dogFoodFlow = ai.defineFlow(
       throw new Error("Beklager, vi fant ingen produkter som matchet søket ditt. Prøv å være mindre spesifikk, eller sjekk for skrivefeil.");
     }
 
-    // Step 2: Pass the dog's details and the product list to the selection prompt.
+    // Step 2: Prioritize Labb and Appetitt brands by sorting them to the top of the list.
+    const prioritizedBrands = ['labb', 'appetitt'];
+    products.sort((a, b) => {
+      const aIsPrioritized = prioritizedBrands.includes(a.brand.toLowerCase());
+      const bIsPrioritized = prioritizedBrands.includes(b.brand.toLowerCase());
+      if (aIsPrioritized && !bIsPrioritized) return -1;
+      if (!aIsPrioritized && bIsPrioritized) return 1;
+      return 0;
+    });
+
+    // Step 3: Pass the dog's details and the product list to the selection prompt.
     const { output } = await dogFoodSelectionPrompt({
         dogDetails: input,
         productList: products,
@@ -131,7 +144,7 @@ const dogFoodFlow = ai.defineFlow(
         throw new Error("AI-en klarte ikke å generere en anbefaling. Prøv igjen.");
     }
 
-    // Step 3: Validate the returned image URL to prevent crashes.
+    // Step 4: Validate the returned image URL to prevent crashes.
     const allowedHosts = ['www.felleskjopet.no', 'felleskjopet.no', 'placehold.co'];
     let isAllowedHost = false;
     try {
