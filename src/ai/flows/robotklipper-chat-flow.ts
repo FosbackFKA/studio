@@ -131,16 +131,11 @@ const robotklipperChatFlow = ai.defineFlow(
             ...messagesForApi,
             { role: 'user' as const, parts: [{ text: input.question }] },
         ];
-
-        // 3. Inject the system prompt into the first turn of the conversation.
-        // This is the robust way to provide system instructions.
-        if (messagesForApi.length === 0) {
-            finalPrompt[0].parts[0].text = `${systemPrompt}\n\nUSER QUESTION: ${finalPrompt[0].parts[0].text}`;
-        }
         
-        // 4. Call the model.
+        // 3. Call the model.
         const llmResponse = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
+            system: systemPrompt,
             prompt: finalPrompt,
             tools: [searchRobotklippereTool],
             output: { schema: RobotklipperChatOutputSchema },
