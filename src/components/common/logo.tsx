@@ -25,11 +25,7 @@ export function FkaLogo(props: FkaLogoProps) {
     <NextImage
       src={logoSrc}
       alt="Felleskjøpet Agri Logo"
-      // Provide intrinsic dimensions for Next.js to calculate the aspect ratio.
-      width={150} 
-      height={40}
-      // The passed `className` (e.g., "h-10") will set one dimension,
-      // and "w-auto" will ensure the other scales correctly.
+      // Let the static import and CSS handle the aspect ratio and sizing
       className={cn("w-auto", className)}
       {...rest}
     />

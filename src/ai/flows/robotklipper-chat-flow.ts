@@ -107,30 +107,41 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async (input) => {
         // 1. Prepare the chat history for the Gemini API.
-        // It expects an array of { role, parts: [{ text }] }.
-        const history = (input.history || [])
-            .filter(h => h.role && h.content)
-            .map(h => ({
-                role: h.role as 'user' | 'model',
-                parts: [{ text: h.content }],
-            }));
-        
-        // 2. Add the user's new question to the history.
-        const prompt = [
-            ...history,
+        const history = input.history || [];
+
+        // 2. The Gemini API requires conversations to alternate between 'user' and 'model' roles,
+        // starting with 'user'. We process the history to ensure it's valid.
+        let validHistory = history.filter(h => h.role && h.content);
+        const firstUserIndex = validHistory.findIndex(h => h.role === 'user');
+
+        if (firstUserIndex !== -1) {
+            validHistory = validHistory.slice(firstUserIndex);
+        } else {
+            validHistory = []; // If no user messages are in the history, start fresh.
+        }
+
+        const messagesForApi = validHistory.map(h => ({
+            role: h.role as 'user' | 'model',
+            parts: [{ text: h.content }],
+        }));
+
+        // 3. Construct the final prompt array
+        const finalPrompt = [
+            ...messagesForApi,
             { role: 'user' as const, parts: [{ text: input.question }] },
         ];
 
-        // 3. Inject the system prompt into the first turn of the conversation.
-        // This is the robust way to provide system instructions without using the `system` parameter.
-        if (prompt.length === 1 && prompt[0].role === 'user') {
-            prompt[0].parts[0].text = `${systemPrompt}\n\nUSER QUESTION: ${prompt[0].parts[0].text}`;
+        // 4. Inject the system prompt into the first turn of the conversation.
+        // This is the robust way to provide system instructions. It works because on the
+        // first real user turn, `messagesForApi` will be empty.
+        if (messagesForApi.length === 0) {
+            finalPrompt[0].parts[0].text = `${systemPrompt}\n\nUSER QUESTION: ${finalPrompt[0].parts[0].text}`;
         }
         
-        // 4. Call the model.
+        // 5. Call the model.
         const llmResponse = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
-            prompt: prompt,
+            prompt: finalPrompt,
             tools: [searchRobotklippereTool],
             output: { schema: RobotklipperChatOutputSchema },
         });
