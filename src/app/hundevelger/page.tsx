@@ -153,9 +153,9 @@ export default function DogFoodSelectorPage() {
             <div className="mt-10">
                 <h2 className="text-center font-headline text-3xl font-bold text-foreground mb-2">Våre Anbefalinger</h2>
                 <p className="text-center text-muted-foreground mb-6">Basert på informasjonen du ga, er dette våre topp anbefalinger for din hund.</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex flex-wrap items-stretch justify-center gap-6">
                  {results.map((result, index) => (
-                    <Card key={index} className="overflow-hidden bg-gradient-to-br from-card to-secondary/20 flex flex-col">
+                    <Card key={index} className="w-full max-w-sm overflow-hidden bg-gradient-to-br from-card to-secondary/20 flex flex-col">
                         <div className="p-4 flex items-center justify-center bg-white">
                             <Image
                                 src={result.imageUrl}
@@ -197,4 +197,3 @@ export default function DogFoodSelectorPage() {
     </div>
   );
 }
-
