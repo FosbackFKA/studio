@@ -311,12 +311,13 @@ export function HeaderComponent() {
       // For the top bar ("Privat/Bonde")
       setIsScrolled(currentScrollY > 10);
 
-      // For the mobile search bar
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down
+      // More robust check to prevent flickering.
+      // We only update the state when the scroll direction *changes* past a certain threshold.
+      const direction = currentScrollY > lastScrollY.current ? "down" : "up";
+
+      if (direction === 'down' && currentScrollY > 150 && !hideMobileSearch) {
         setHideMobileSearch(true);
-      } else {
-        // Scrolling up
+      } else if (direction === 'up' && hideMobileSearch) {
         setHideMobileSearch(false);
       }
       
@@ -324,10 +325,9 @@ export function HeaderComponent() {
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [hideMobileSearch]);
 
   const handleNavigate = (menuData: any) => {
     setNavStack((prev) => [...prev, menuData]);
@@ -473,7 +473,7 @@ export function HeaderComponent() {
 
   return (
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         {!isScrolled && (
           <div className="border-b">
             <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
@@ -599,7 +599,7 @@ export function HeaderComponent() {
         </div>
 
         <div className={cn(
-          "grid lg:hidden transition-[grid-template-rows] duration-300 ease-in-out",
+          "grid lg:hidden transition-[grid-template-rows] duration-300 ease-in-out border-b",
           hideMobileSearch ? "grid-rows-[0fr]" : "grid-rows-[1fr]"
         )}>
           <div className="overflow-hidden">
