@@ -76,7 +76,7 @@ const robotklipperChatFlow = ai.defineFlow(
             system: systemPrompt,
         });
 
-        return llmResponse.text;
+        return llmResponse.text ?? '';
     }
 );
 
