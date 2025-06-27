@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { recommendDogFood, type DogFoodInput, type DogFoodRecommendation } from '@/ai/flows/dog-food-flow';
-import { Loader2, Dog, Wand2, ShoppingCart, Weight } from 'lucide-react';
+import { Loader2, Dog, ShoppingCart, Weight } from 'lucide-react';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 
 
@@ -74,7 +74,6 @@ export default function DogFoodSelectorPage() {
             
             <div className="bg-gradient-to-br from-primary to-primary-dark-background p-6 text-primary-foreground md:p-8">
                 <div className="text-center">
-                  <Wand2 className="mx-auto h-10 w-10 text-yellow-300" />
                   <h1 className="mt-2 font-headline text-3xl font-bold text-white">Fôrvelger for Hund</h1>
                   <p className="mx-auto mt-2 max-w-2xl text-lg text-primary-foreground/80">
                     Fortell oss om hunden din, så hjelper vår AI-assistent deg med å finne det perfekte fôret.
