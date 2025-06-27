@@ -95,8 +95,18 @@ const dogFoodFlow = ai.defineFlow(
         throw new Error("The AI could not generate a recommendation. Please try again.");
     }
 
-    // If the AI hallucinates an image, provide a default one.
-    if (!output.imageUrl || !output.imageUrl.startsWith('http')) {
+    const allowedHosts = ['www.felleskjopet.no', 'placehold.co'];
+    let isAllowedHost = false;
+    try {
+        const url = new URL(output.imageUrl);
+        if (allowedHosts.includes(url.hostname)) {
+            isAllowedHost = true;
+        }
+    } catch (e) {
+        // Invalid URL, will use fallback.
+    }
+
+    if (!isAllowedHost) {
         output.imageUrl = 'https://placehold.co/300x300.png';
     }
 
