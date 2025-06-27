@@ -47,7 +47,7 @@ const searchRobotklippereTool = ai.defineTool(
   }
 );
 
-// Schema for chat history
+// Schema for chat history from the client
 const HistorySchema = z.array(
     z.object({
         role: z.enum(['user', 'model']),
@@ -107,17 +107,18 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async (input) => {
         // 1. Prepare the chat history for the Gemini API.
-        const history = input.history || [];
-
-        // 2. The Gemini API requires conversations to alternate between 'user' and 'model' roles,
+        // The Gemini API requires conversations to alternate between 'user' and 'model' roles,
         // starting with 'user'. We process the history to ensure it's valid.
-        let validHistory = history.filter(h => h.role && h.content);
+        let validHistory = (input.history || []).filter(h => h.role && h.content);
         const firstUserIndex = validHistory.findIndex(h => h.role === 'user');
 
-        if (firstUserIndex !== -1) {
+        if (firstUserIndex > 0) {
+            // If the history starts with model messages, trim them.
             validHistory = validHistory.slice(firstUserIndex);
-        } else {
-            validHistory = []; // If no user messages are in the history, start fresh.
+        } else if (firstUserIndex === -1) {
+            // If there are no user messages (e.g., only the initial model greeting),
+            // we start the conversation fresh with just the user's question.
+            validHistory = [];
         }
 
         const messagesForApi = validHistory.map(h => ({
@@ -125,20 +126,19 @@ const robotklipperChatFlow = ai.defineFlow(
             parts: [{ text: h.content }],
         }));
 
-        // 3. Construct the final prompt array
+        // 2. Construct the final prompt array
         const finalPrompt = [
             ...messagesForApi,
             { role: 'user' as const, parts: [{ text: input.question }] },
         ];
 
-        // 4. Inject the system prompt into the first turn of the conversation.
-        // This is the robust way to provide system instructions. It works because on the
-        // first real user turn, `messagesForApi` will be empty.
+        // 3. Inject the system prompt into the first turn of the conversation.
+        // This is the robust way to provide system instructions.
         if (messagesForApi.length === 0) {
             finalPrompt[0].parts[0].text = `${systemPrompt}\n\nUSER QUESTION: ${finalPrompt[0].parts[0].text}`;
         }
         
-        // 5. Call the model.
+        // 4. Call the model.
         const llmResponse = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
             prompt: finalPrompt,
