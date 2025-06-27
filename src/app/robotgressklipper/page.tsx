@@ -2,15 +2,14 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ArrowRight, Check, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowRight, SlidersHorizontal, X } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -18,7 +17,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 // Import images
 import heroImage from '@/components/common/gressklipper/gressklipper1.webp';
@@ -31,8 +30,9 @@ import gressklipper5 from '@/components/common/gressklipper/gressklipper5.webp';
 import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
 import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
 
-const robotklipperProducts: Product[] = [
+const allProductsAndGuides = [
     {
+      type: 'product',
       id: 'SEGNAVH3000E',
       title: 'Robotgressklipper Navimow H3000E med VisionFence',
       brand: 'Segway',
@@ -45,6 +45,7 @@ const robotklipperProducts: Product[] = [
       storeStockCount: 63,
     },
     {
+      type: 'product',
       id: 'GARDSILENO',
       title: 'Robotklipper Smart Sileno Free 1500',
       brand: 'Gardena',
@@ -57,6 +58,15 @@ const robotklipperProducts: Product[] = [
       storeStockCount: 41,
     },
     {
+      type: 'guide',
+      title: 'Slik velger du riktig robotgressklipper',
+      excerpt: 'Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage, enten den er stor, liten, enkel eller kompleks.',
+      imageUrl: guideImage,
+      link: '#',
+      span: 'lg:col-span-2', // This guide will span 2 columns on large screens
+    },
+    {
+      type: 'product',
       id: 'SEGNAVI108E',
       title: 'Robotgressklipper Navimow i108e',
       brand: 'Segway',
@@ -67,6 +77,7 @@ const robotklipperProducts: Product[] = [
       storeStockCount: 4,
     },
      {
+      type: 'product',
       id: 'STIHLRM22R',
       title: 'Bensindrevet bio gressklipper RM 2,2 R',
       brand: 'Stihl',
@@ -78,6 +89,7 @@ const robotklipperProducts: Product[] = [
       storeStockCount: 68,
     },
     {
+      type: 'product',
       id: 'SEGNAVIX330E',
       title: 'Robotgressklipper Navimow X330e',
       brand: 'Segway',
@@ -88,6 +100,7 @@ const robotklipperProducts: Product[] = [
       storeStockCount: 55,
     },
     {
+      type: 'product',
       id: 'GARDENASMART',
       title: 'Robotgressklipper Smart Sileno life 1000m²',
       brand: 'Gardena',
@@ -98,6 +111,7 @@ const robotklipperProducts: Product[] = [
       storeStockCount: 22,
     },
      {
+      type: 'product',
       id: 'STIHLIMOW5',
       title: 'Robotgressklipper iMow 5',
       brand: 'Stihl',
@@ -109,14 +123,6 @@ const robotklipperProducts: Product[] = [
     },
 ];
 
-const comparisonData = [
-  { feature: 'Maks plenstørrelse', navimowH: '3000 m²', navimowI: '1000 m²', imow: '5000 m²' },
-  { feature: 'Maks stigning', navimowH: '45%', navimowI: '30%', imow: '60%' },
-  { feature: 'Klippebredde', navimowH: '21 cm', navimowI: '18 cm', imow: '28 cm' },
-  { feature: 'Kantledning', navimowH: 'Nei', navimowI: 'Nei', imow: 'Ja' },
-  { feature: 'VisionFence', navimowH: <Check className="h-5 w-5 text-primary" />, navimowI: 'Valgfritt', imow: 'Nei' },
-  { feature: 'Appstyrt', navimowH: <Check className="h-5 w-5 text-primary" />, navimowI: <Check className="h-5 w-5 text-primary" />, imow: <Check className="h-5 w-5 text-primary" /> },
-];
 
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
@@ -180,8 +186,33 @@ function FilterPanel() {
     );
 }
 
+function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; excerpt: string; imageUrl: StaticImageData; link: string; span?: string; }) {
+  return (
+    <div className={cn("group relative aspect-video w-full overflow-hidden rounded-lg shadow-md lg:aspect-auto", span)}>
+      <Link href={link} className="block h-full w-full">
+        <Image
+          src={imageUrl}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-6 text-white">
+          <h3 className="font-headline text-2xl font-bold">{title}</h3>
+          <p className="mt-2 text-white/90 line-clamp-2">{excerpt}</p>
+          <Button asChild size="lg" className="mt-4">
+            <span className='z-10 relative'>Les guiden <ArrowRight className="ml-2 h-4 w-4" /></span>
+          </Button>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
 export default function RobotklipperPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
+  const products = allProductsAndGuides.filter(item => item.type === 'product');
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -203,14 +234,6 @@ export default function RobotklipperPage() {
             <p className="mt-2 max-w-2xl text-lg text-gray-200">
                 Utforsk vårt utvalg av smarte robotgressklippere som gir deg mer tid til å nyte hagen.
             </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                 <Button size="lg" asChild className="h-12 text-base">
-                    <Link href="#products">Se alle modeller</Link>
-                 </Button>
-                 <Button size="lg" variant="outline" asChild className="h-12 text-base bg-transparent text-white border-white hover:bg-white/10 hover:text-white">
-                    <Link href="#guide">Les vår kjøpsguide</Link>
-                 </Button>
-            </div>
           </div>
         </section>
         
@@ -222,14 +245,16 @@ export default function RobotklipperPage() {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
                 {/* Filters - Sidebar for Desktop */}
                 <aside className="hidden lg:block lg:col-span-1">
-                    <h2 className="text-xl font-bold mb-4">Filter</h2>
-                    <FilterPanel />
+                    <div className="sticky top-32">
+                        <h2 className="text-xl font-bold mb-4">Filter</h2>
+                        <FilterPanel />
+                    </div>
                 </aside>
 
                 {/* Products Grid */}
                 <div className="lg:col-span-3">
                     <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                        <h2 className="text-2xl font-bold whitespace-nowrap">Alle robotgressklippere ({robotklipperProducts.length})</h2>
+                        <h2 className="text-2xl font-bold whitespace-nowrap">Alle robotgressklippere ({products.length})</h2>
                         
                         <div className="flex w-full sm:w-auto items-center gap-4">
                              {/* Mobile Filter Trigger */}
@@ -267,64 +292,25 @@ export default function RobotklipperPage() {
                             </Select>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                        {robotklipperProducts.map((product) => (
-                            <ProductCard key={product.id} {...product} />
-                        ))}
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {allProductsAndGuides.map((item, index) => {
+                            if (item.type === 'guide') {
+                                return <GuideCard key={index} {...item} />;
+                            }
+                            if (item.type === 'product') {
+                                return <ProductCard key={item.id} {...item} />;
+                            }
+                            return null;
+                        })}
                     </div>
+                    
                     <div className="mt-12 flex justify-center">
                         <Button variant="outline" size="lg">Last inn flere</Button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <section id="guide" className="py-12 lg:py-16 mt-12 lg:mt-16 bg-secondary/30">
-            <div className="container mx-auto max-w-[1542px] px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center rounded-lg bg-card p-8 shadow-sm">
-                    <div className="relative aspect-square max-w-sm mx-auto">
-                        <Image src={guideImage} alt="Robotgressklipper" layout="fill" objectFit="contain" />
-                    </div>
-                    <div className="text-center md:text-left">
-                        <h2 className="font-headline text-3xl font-bold text-primary">Slik velger du riktig robotgressklipper</h2>
-                        <p className="mt-2 mb-4 text-lg text-muted-foreground">Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage.</p>
-                        <Button size="lg" asChild>
-                            <Link href="#">
-                                Se vår guide <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section className="py-12 lg:py-16">
-            <div className="container mx-auto max-w-[1542px] px-4">
-                <h2 className="font-headline text-3xl font-bold mb-6 text-center">Sammenlign våre bestselgere</h2>
-                <div className="overflow-x-auto">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[25%]">Egenskap</TableHead>
-                                <TableHead>Navimow H-serie</TableHead>
-                                <TableHead>Navimow i-serie</TableHead>
-                                <TableHead>iMOW</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {comparisonData.map((row) => (
-                                <TableRow key={row.feature}>
-                                    <TableCell className="font-medium">{row.feature}</TableCell>
-                                    <TableCell>{row.navimowH}</TableCell>
-                                    <TableCell>{row.navimowI}</TableCell>
-                                    <TableCell>{row.imow}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </div>
-            </div>
-        </section>
 
       </main>
       <FooterComponent />
