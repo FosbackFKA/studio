@@ -110,7 +110,7 @@ export function FooterComponent() {
             {/* Column 1: Logo and Org Info */}
             <div className="flex flex-col gap-4">
               <Link href="/">
-                <FkaLogo variant="white" className="h-10 w-auto" />
+                <FkaLogo variant="white" className="h-10" />
               </Link>
               <div>
                 <p className="text-sm opacity-90">Org. nr. 911608103</p>

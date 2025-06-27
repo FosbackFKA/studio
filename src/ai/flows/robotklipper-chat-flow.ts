@@ -49,20 +49,6 @@ const RobotklipperChatInputSchema = z.object({
   question: z.string(),
 });
 
-const robotklipperChatPrompt = ai.definePrompt({
-    name: 'robotklipperChatPrompt',
-    model: 'googleai/gemini-2.5-flash',
-    tools: [searchRobotklippereTool],
-    system: `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
-- Svar alltid på Norsk.
-- Vær hyggelig og serviceinnstilt.
-- Hvis du anbefaler et produkt, inkluder alltid produktnavnet og en lenke til produktsiden i svaret ditt, formatert som en Markdown-lenke.
-- Bruk 'searchRobotklippere' verktøyet for å finne produkter når brukeren spør om det. Ikke finn på produkter. Ikke bare list opp produkter, men gi en kort begrunnelse for hvorfor det er en god anbefaling.
-- Hold svarene dine konsise og til poenget.`,
-    input: { schema: z.object({ question: z.string() }) },
-    prompt: `{{question}}`
-});
-
 
 const robotklipperChatFlow = ai.defineFlow(
     {
@@ -72,12 +58,20 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async ({history, question}) => {
 
-        const cleanHistory = (history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role);
+        const cleanHistory = (history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
         
-        const llmResponse = await robotklipperChatPrompt(
-            { question }, 
-            { history: cleanHistory }
-        );
+        const llmResponse = await ai.generate({
+            model: 'googleai/gemini-2.5-flash',
+            tools: [searchRobotklippereTool],
+            system: `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
+- Svar alltid på Norsk.
+- Vær hyggelig og serviceinnstilt.
+- Hvis du anbefaler et produkt, inkluder alltid produktnavnet og en lenke til produktsiden i svaret ditt, formatert som en Markdown-lenke.
+- Bruk 'searchRobotklippere' verktøyet for å finne produkter når brukeren spør om det. Ikke finn på produkter. Ikke bare list opp produkter, men gi en kort begrunnelse for hvorfor det er en god anbefaling.
+- Hold svarene dine konsise og til poenget.`,
+            history: cleanHistory,
+            prompt: question
+        });
 
         return llmResponse.text ?? "Beklager, jeg forstod ikke helt. Kan du prøve å spørre på en annen måte?";
     }

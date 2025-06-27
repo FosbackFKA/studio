@@ -45,7 +45,7 @@ function CartItemCard({ item }: { item: CartItem }) {
   return (
     <div className="flex items-start gap-4">
       <div className="relative h-24 w-24 flex-shrink-0">
-        <Image src={item.imageUrl} alt={item.title} layout="fill" objectFit="contain" className="rounded-md border p-1" />
+        <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain" />
         {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent/20 px-1.5 py-0.5 text-xs font-semibold text-primary">{item.badgeText}</Badge>}
       </div>
       <div className="flex-1">
@@ -462,7 +462,7 @@ export function HeaderComponent() {
           <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-[1542px]">
             <div className="flex items-center">
               <Link href="/" aria-label="Til forsiden" onClick={() => isMenuOpen && setIsMenuOpen(false)}>
-                <FkaLogo className="h-10 w-auto md:h-12" priority />
+                <FkaLogo className="h-10 md:h-12" priority />
               </Link>
             </div>
 
@@ -504,7 +504,7 @@ export function HeaderComponent() {
                         </Button>
                       )}
                       <div className="font-bold text-lg text-primary flex items-center justify-center">
-                          {navStack.length === 0 ? <FkaLogo className="h-8 w-auto" /> : currentMenu?.title}
+                          {navStack.length === 0 ? <FkaLogo className="h-8" /> : currentMenu?.title}
                       </div>
                       <SheetTitle className="sr-only">
                           {currentMenu?.title || 'Hovedmeny'}
@@ -567,7 +567,7 @@ export function HeaderComponent() {
           </div>
         </div>
 
-        <div className="lg:hidden">
+        <div className="lg:hidden border-t">
           <div className="container mx-auto px-4 py-3 max-w-[1542px] flex items-center gap-2">
             <div className="relative w-full">
                 <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
