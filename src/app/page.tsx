@@ -463,7 +463,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {/* Left Column: Sticky Promo Image */}
               <div className="self-start md:sticky md:top-36">
-                <Link href="#" className="group block aspect-square">
+                <Link href="/robotgressklipper" className="group block aspect-square">
                   <div className="relative h-full w-full overflow-hidden rounded-lg">
                     <Image
                       src={gressklipper1}
@@ -575,7 +575,7 @@ export default async function HomePage() {
             quality={80}
           />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-primary">
-            <FkaLogo className="mb-4 h-12" />
+            <FkaLogo className="mb-4 h-12 w-auto" />
             <h2 className="font-headline text-3xl font-bold md:text-4xl lg:text-5xl">
               Ta vare på jorda, dyra og framtida
             </h2>

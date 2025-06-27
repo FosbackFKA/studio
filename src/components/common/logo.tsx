@@ -29,8 +29,8 @@ export function FkaLogo(props: FkaLogoProps) {
       width={150} 
       height={40}
       // The passed `className` (e.g., "h-10") will set one dimension,
-      // and "w-auto" or "h-auto" will ensure the other scales correctly.
-      className={cn("h-auto w-auto", className)}
+      // and "w-auto" will ensure the other scales correctly.
+      className={cn("w-auto", className)}
       {...rest}
     />
   );

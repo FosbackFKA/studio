@@ -54,7 +54,7 @@ const HistorySchema = z.array(
     })
 );
 
-export const RobotklipperChatInputSchema = z.object({
+const RobotklipperChatInputSchema = z.object({
   history: HistorySchema,
   question: z.string(),
 });
@@ -73,7 +73,7 @@ const RecommendedProductSchema = z.object({
 export type RecommendedProduct = z.infer<typeof RecommendedProductSchema>;
 
 // Define the structured output for the chatbot
-export const RobotklipperChatOutputSchema = z.object({
+const RobotklipperChatOutputSchema = z.object({
   responseText: z.string().describe("The conversational, text-based response to the user's question."),
   recommendedProducts: z.array(RecommendedProductSchema).optional().describe("A list of products recommended in the responseText. Only populate this if you are recommending specific products."),
 });
@@ -95,15 +95,6 @@ VIKTIG: Hvis brukeren spør om noe utenfor dette emnet (f.eks. andre produkter s
 - I TILLEGG til å inkludere lenker i teksten, MÅ du fylle ut \`recommendedProducts\`-listen med de fulle detaljene for HVERT produkt du anbefaler, hentet direkte fra verktøysvaret. Ikke legg til produkter du ikke eksplisitt anbefaler i tekstsvaret.
 - Hold svarene dine konsise og til poenget.`;
 
-const robotklipperChatPrompt = ai.definePrompt(
-    {
-        name: 'robotklipperChatPrompt',
-        inputSchema: RobotklipperChatInputSchema,
-        output: { schema: RobotklipperChatOutputSchema },
-        system: systemPrompt,
-        tools: [searchRobotklippereTool],
-    }
-);
 
 const robotklipperChatFlow = ai.defineFlow(
     {
@@ -114,9 +105,12 @@ const robotklipperChatFlow = ai.defineFlow(
     async (input) => {
         const cleanHistory = (input.history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
         
-        const llmResponse = await robotklipperChatPrompt({
-            ...input,
-            history: cleanHistory
+        const llmResponse = await ai.generate({
+            model: 'googleai/gemini-2.5-flash',
+            system: systemPrompt,
+            prompt: [...cleanHistory, { role: 'user', content: input.question }],
+            tools: [searchRobotklippereTool],
+            output: { schema: RobotklipperChatOutputSchema },
         });
 
         const output = llmResponse.output();
