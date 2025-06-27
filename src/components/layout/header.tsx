@@ -298,36 +298,7 @@ export function HeaderComponent() {
   const { selectedStore } = useStoreStore();
   const [hasMounted, setHasMounted] = React.useState(false);
   
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [hideMobileSearch, setHideMobileSearch] = React.useState(false);
-  const lastScrollY = React.useRef(0);
-
   React.useEffect(() => { setHasMounted(true); }, []);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // For the top bar ("Privat/Bonde")
-      setIsScrolled(currentScrollY > 10);
-
-      // More robust check to prevent flickering.
-      // We only update the state when the scroll direction *changes* past a certain threshold.
-      const direction = currentScrollY > lastScrollY.current ? "down" : "up";
-
-      if (direction === 'down' && currentScrollY > 150 && !hideMobileSearch) {
-        setHideMobileSearch(true);
-      } else if (direction === 'up' && hideMobileSearch) {
-        setHideMobileSearch(false);
-      }
-      
-      lastScrollY.current = currentScrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [hideMobileSearch]);
 
   const handleNavigate = (menuData: any) => {
     setNavStack((prev) => [...prev, menuData]);
@@ -473,21 +444,19 @@ export function HeaderComponent() {
 
   return (
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
-      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        {!isScrolled && (
-          <div className="border-b">
-            <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
-              <div className="flex items-center space-x-1">
-                <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
-                  Privat
-                </Button>
-                <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
-                  Bonde & Bedrift
-                </Button>
-              </div>
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="border-b">
+          <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
+            <div className="flex items-center space-x-1">
+              <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
+                Privat
+              </Button>
+              <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
+                Bonde & Bedrift
+              </Button>
             </div>
           </div>
-        )}
+        </div>
 
         <div>
           <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-[1542px]">
@@ -598,16 +567,11 @@ export function HeaderComponent() {
           </div>
         </div>
 
-        <div className={cn(
-          "grid lg:hidden transition-[grid-template-rows] duration-300 ease-in-out border-b",
-          hideMobileSearch ? "grid-rows-[0fr]" : "grid-rows-[1fr]"
-        )}>
-          <div className="overflow-hidden">
-            <div className="container mx-auto px-4 py-3 max-w-[1542px] flex items-center gap-2">
-              <div className="relative w-full">
-                  <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-                  <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-              </div>
+        <div className="lg:hidden">
+          <div className="container mx-auto px-4 py-3 max-w-[1542px] flex items-center gap-2">
+            <div className="relative w-full">
+                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
+                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
             </div>
           </div>
         </div>
