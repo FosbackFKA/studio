@@ -202,27 +202,32 @@ export default function HundeforPage() {
     { name: 'Hundefôr', href: '/hundefor' },
   ];
 
-  const allProducts: DogFoodProduct[] = allDogFoodProducts;
-  const featuredProductIds = [
-    'hundefôr_aktiv_15_kg',
-    'hundefôr_puppy_medium_breed_12_kg',
-    'hundefôr_maxi_adult_15_kg',
-    'hundefôr_sensitiv_små_raser_3_kg',
-  ];
-  const featuredProducts: Product[] = featuredProductIds.map(id => {
-      const p = allProducts.find(prod => prod.id === id);
-      if (!p) return null;
-      return {
-        id: p.id,
-        title: p.title,
-        brand: p.brand,
-        price: p.price,
-        imageUrl: p.image_link,
-        productUrl: p.link,
-        onlineStock: true,
-        storeStockCount: Math.floor(Math.random() * 100), // Mock stock
-      };
-    }).filter((p): p is Product => p !== null);
+  const [featuredProducts, setFeaturedProducts] = React.useState<Product[]>([]);
+
+  React.useEffect(() => {
+    const allProducts: DogFoodProduct[] = allDogFoodProducts;
+    const featuredProductIds = [
+      'hundefôr_aktiv_15_kg',
+      'hundefôr_puppy_medium_breed_12_kg',
+      'hundefôr_maxi_adult_15_kg',
+      'hundefôr_sensitiv_små_raser_3_kg',
+    ];
+    const products: Product[] = featuredProductIds.map(id => {
+        const p = allProducts.find(prod => prod.id === id);
+        if (!p) return null;
+        return {
+          id: p.id,
+          title: p.title,
+          brand: p.brand,
+          price: p.price,
+          imageUrl: p.image_link,
+          productUrl: p.link,
+          onlineStock: true,
+          storeStockCount: Math.floor(Math.random() * 100), // Mock stock
+        };
+      }).filter((p): p is Product => p !== null);
+    setFeaturedProducts(products);
+  }, []);
 
   const articles = [
     {
