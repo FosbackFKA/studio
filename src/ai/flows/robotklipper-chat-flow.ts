@@ -58,21 +58,9 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async ({history, question}) => {
 
-        // Defensively filter history to ensure all items are valid.
-        // This prevents crashes if malformed data is sent from the client.
-        const cleanHistory = (history || []).filter(h => {
-            return (
-                h &&
-                typeof h === 'object' &&
-                !Array.isArray(h) &&
-                'role' in h &&
-                typeof h.role === 'string' &&
-                (h.role === 'user' || h.role === 'model') &&
-                'content' in h &&
-                typeof h.content === 'string' &&
-                h.content.trim() !== ''
-            );
-        });
+        // Zod validation on the inputSchema handles data integrity.
+        // The previous manual filter was buggy and has been removed.
+        const cleanHistory = (history || []).filter(h => h.content.trim() !== '');
 
         const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
 - Svar alltid på Norsk.

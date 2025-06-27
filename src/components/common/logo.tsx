@@ -3,6 +3,7 @@ import NextImage, { type ImageProps as NextImageProps } from 'next/image';
 // So the relative import from /home/user/studio/src/components/common/logo.tsx is correct.
 import fkaLogoSrc from './FKA_logo.svg';
 import fkaLogoWhiteSrc from './FKA_logo-white.svg';
+import { cn } from '@/lib/utils';
 
 interface FkaLogoProps extends Omit<NextImageProps, 'src' | 'alt'> {
   variant?: 'default' | 'white';
@@ -34,7 +35,7 @@ export function FkaLogo(props: FkaLogoProps) {
       // for aspect ratio. Tailwind classes like h-10 w-auto will then scale this.
       width={explicitWidth || intrinsicWidth}
       height={explicitHeight || intrinsicHeight}
-      className={className}
+      className={cn("w-auto", className)}
       priority={priority} // Ensure priority can be passed for LCP elements
       {...rest}
     />
