@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2 } from 'lucide-react';
+import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2, ChevronRight } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -18,10 +18,11 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
-import { robotklipperChat } from '@/ai/flows/robotklipper-chat-flow';
+import { robotklipperChat, type RecommendedProduct, type RobotklipperChatInput, type RobotklipperChatOutput } from '@/ai/flows/robotklipper-chat-flow';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import allProductsAndGuides from '@/data/robotklipper_products.json';
+import { Card } from '@/components/ui/card';
 
 
 // Import images
@@ -41,9 +42,11 @@ const imageMap: Record<string, StaticImageData> = {
   heroImage, guideImage, gressklipper1, gressklipper2, gressklipper3, gressklipper4, gressklipper5, popular1, popular3,
 };
 
+// Updated Message type to include optional products
 type Message = {
   role: 'user' | 'model';
   content: string;
+  products?: RecommendedProduct[];
 };
 
 function RobotklipperChatbot() {
@@ -65,16 +68,19 @@ function RobotklipperChatbot() {
         if (!input.trim() || isLoading) return;
 
         const newUserMessage: Message = { role: 'user', content: input };
-        const newMessages = [...messages, newUserMessage];
-        setMessages(newMessages);
+        setMessages(prev => [...prev, newUserMessage]);
 
         const currentInput = input;
         setInput('');
         setIsLoading(true);
 
         try {
-            const response = await robotklipperChat({ history: messages, question: currentInput });
-            setMessages(prev => [...prev, { role: 'model', content: response }]);
+            // Prepare history for the API call - only text content
+            const historyForApi = messages.map(msg => ({ role: msg.role, content: msg.content }));
+            
+            const response: RobotklipperChatOutput = await robotklipperChat({ history: historyForApi, question: currentInput });
+            
+            setMessages(prev => [...prev, { role: 'model', content: response.responseText, products: response.recommendedProducts }]);
         } catch (error) {
             console.error("Error calling chatbot flow:", error);
             setMessages(prev => [...prev, { role: 'model', content: 'Beklager, noe gikk galt. Prøv igjen.' }]);
@@ -95,10 +101,36 @@ function RobotklipperChatbot() {
                                 </Avatar>
                             )}
                             <div className={cn(
-                                "max-w-md rounded-lg px-4 py-2",
+                                "max-w-md rounded-lg px-4 py-3",
                                 msg.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary'
                             )}>
                                 <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                                
+                                {msg.products && msg.products.length > 0 && (
+                                    <div className="mt-4 space-y-2 border-t pt-3">
+                                        {msg.products.map((product) => (
+                                            <Link href={product.productUrl} key={product.id} target="_blank" rel="noopener noreferrer" className="block group">
+                                                <Card className="flex items-center gap-3 p-2 transition-colors hover:bg-background/50">
+                                                    <div className="relative h-16 w-16 flex-shrink-0">
+                                                        <Image 
+                                                            src={imageMap[product.imageUrl as string]} 
+                                                            alt={product.title} 
+                                                            fill 
+                                                            className="rounded-md object-contain border bg-white p-1" 
+                                                            sizes="64px" 
+                                                        />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        {product.brand && <p className="text-xs font-semibold text-primary">{product.brand}</p>}
+                                                        <p className="text-sm font-medium leading-tight line-clamp-2 group-hover:underline">{product.title}</p>
+                                                        <p className="mt-1 text-sm font-bold text-primary">{product.salePrice || product.price}</p>
+                                                    </div>
+                                                    <ChevronRight className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                                                </Card>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                             {msg.role === 'user' && (
                                 <Avatar className="h-8 w-8 border">

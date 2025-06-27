@@ -3,12 +3,16 @@
 /**
  * @fileOverview An AI-powered chatbot for robotic lawnmowers.
  * - robotklipperChat - A function that handles the chatbot conversation.
+ * - RobotklipperChatInput - The input type for the chatbot.
+ * - RobotklipperChatOutput - The output type for the chatbot.
+ * - RecommendedProduct - The type for a product recommendation.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import { searchRobotklippere, type RobotklipperProduct } from '@/lib/robotklipper-data';
 
+// Updated tool to include imageUrl for the frontend cards.
 const searchRobotklippereTool = ai.defineTool(
   {
     name: 'searchRobotklippere',
@@ -21,13 +25,14 @@ const searchRobotklippereTool = ai.defineTool(
         price: z.string(),
         salePrice: z.string().optional(),
         productUrl: z.string(),
+        imageUrl: z.string().describe("The identifier for the product's image."),
         description: z.string().optional().describe('A brief description of the product.'),
         usp: z.array(z.string()).optional().describe('A list of unique selling propositions (USPs) for the product.'),
     })),
   },
   async ({ query }) => {
     const products = await searchRobotklippere(query);
-    // Return a subset of fields relevant to the LLM
+    // Return a subset of fields relevant to the LLM and frontend.
     return products.slice(0, 5).map((p: RobotklipperProduct) => ({
         id: p.id,
         title: p.title,
@@ -35,6 +40,7 @@ const searchRobotklippereTool = ai.defineTool(
         price: p.price,
         salePrice: p.salePrice,
         productUrl: p.productUrl,
+        imageUrl: p.imageUrl, // Pass imageUrl
         description: p.description,
         usp: p.usp,
     }));
@@ -48,23 +54,33 @@ const HistorySchema = z.array(
     })
 );
 
-const RobotklipperChatInputSchema = z.object({
+export const RobotklipperChatInputSchema = z.object({
   history: HistorySchema,
   question: z.string(),
 });
+export type RobotklipperChatInput = z.infer<typeof RobotklipperChatInputSchema>;
+
+// Define the shape for a single recommended product
+const RecommendedProductSchema = z.object({
+    id: z.string(),
+    title: z.string(),
+    brand: z.string().optional(),
+    price: z.string(),
+    salePrice: z.string().optional(),
+    productUrl: z.string(),
+    imageUrl: z.string(),
+});
+export type RecommendedProduct = z.infer<typeof RecommendedProductSchema>;
+
+// Define the structured output for the chatbot
+export const RobotklipperChatOutputSchema = z.object({
+  responseText: z.string().describe("The conversational, text-based response to the user's question."),
+  recommendedProducts: z.array(RecommendedProductSchema).optional().describe("A list of products recommended in the responseText. Only populate this if you are recommending specific products."),
+});
+export type RobotklipperChatOutput = z.infer<typeof RobotklipperChatOutputSchema>;
 
 
-const robotklipperChatFlow = ai.defineFlow(
-    {
-        name: 'robotklipperChatFlow',
-        inputSchema: RobotklipperChatInputSchema,
-        outputSchema: z.string(),
-    },
-    async ({history, question}) => {
-
-        const cleanHistory = (history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
-        
-        const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som KUN spesialiserer seg på robotgressklippere.
+const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som KUN spesialiserer seg på robotgressklippere.
 Ditt ansvarsområde er begrenset til:
 - Spesifikke robotgressklipper-modeller og deres funksjoner.
 - Tilbehør som garasjer, kniver, og installasjonssett.
@@ -75,20 +91,42 @@ VIKTIG: Hvis brukeren spør om noe utenfor dette emnet (f.eks. andre produkter s
 - Svar alltid på Norsk.
 - Vær hyggelig og serviceinnstilt.
 - Bruk 'searchRobotklippere' verktøyet for å finne produkter. Bruk produktinformasjonen, spesielt beskrivelsen og salgspunktene (usp), for å gi en god begrunnelse for hvorfor du anbefaler et produkt.
-- Når du anbefaler et produkt, inkluder ALLTID produktnavnet og en Markdown-lenke til produktsiden.
+- Når du anbefaler et produkt, inkluder ALLTID produktnavnet og en Markdown-lenke til produktsiden i \`responseText\`.
+- I TILLEGG til å inkludere lenker i teksten, MÅ du fylle ut \`recommendedProducts\`-listen med de fulle detaljene for HVERT produkt du anbefaler, hentet direkte fra verktøysvaret. Ikke legg til produkter du ikke eksplisitt anbefaler i tekstsvaret.
 - Hold svarene dine konsise og til poenget.`;
 
-        const llmResponse = await ai.generate({
-            model: 'googleai/gemini-2.5-flash',
-            tools: [searchRobotklippereTool],
-            history: cleanHistory,
-            prompt: `${systemPrompt}\n\nBrukerspørsmål: ${question}`,
-        });
-
-        return llmResponse.text ?? "Beklager, jeg forstod ikke helt. Kan du prøve å spørre på en annen måte?";
+const robotklipperChatPrompt = ai.definePrompt(
+    {
+        name: 'robotklipperChatPrompt',
+        inputSchema: RobotklipperChatInputSchema,
+        output: { schema: RobotklipperChatOutputSchema },
+        system: systemPrompt,
+        tools: [searchRobotklippereTool],
     }
 );
 
-export async function robotklipperChat(input: z.infer<typeof RobotklipperChatInputSchema>): Promise<string> {
+const robotklipperChatFlow = ai.defineFlow(
+    {
+        name: 'robotklipperChatFlow',
+        inputSchema: RobotklipperChatInputSchema,
+        outputSchema: RobotklipperChatOutputSchema,
+    },
+    async (input) => {
+        const cleanHistory = (input.history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
+        
+        const llmResponse = await robotklipperChatPrompt({
+            ...input,
+            history: cleanHistory
+        });
+
+        const output = llmResponse.output();
+        if (!output) {
+            return { responseText: "Beklager, jeg forstod ikke helt. Kan du prøve å spørre på en annen måte?" };
+        }
+        return output;
+    }
+);
+
+export async function robotklipperChat(input: RobotklipperChatInput): Promise<RobotklipperChatOutput> {
     return robotklipperChatFlow(input);
 }
