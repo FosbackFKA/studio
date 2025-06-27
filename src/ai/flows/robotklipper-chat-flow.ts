@@ -12,7 +12,7 @@ import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import { searchRobotklippere, type RobotklipperProduct } from '@/lib/robotklipper-data';
 
-// Updated tool to include imageUrl for the frontend cards.
+// Tool to search for products
 const searchRobotklippereTool = ai.defineTool(
   {
     name: 'searchRobotklippere',
@@ -40,13 +40,14 @@ const searchRobotklippereTool = ai.defineTool(
         price: p.price,
         salePrice: p.salePrice,
         productUrl: p.productUrl,
-        imageUrl: p.imageUrl, // Pass imageUrl
+        imageUrl: p.imageUrl,
         description: p.description,
         usp: p.usp,
     }));
   }
 );
 
+// Schema for chat history
 const HistorySchema = z.array(
     z.object({
         role: z.enum(['user', 'model']),
@@ -54,13 +55,14 @@ const HistorySchema = z.array(
     })
 );
 
+// Input schema for the main chat function
 const RobotklipperChatInputSchema = z.object({
   history: HistorySchema,
   question: z.string(),
 });
 export type RobotklipperChatInput = z.infer<typeof RobotklipperChatInputSchema>;
 
-// Define the shape for a single recommended product
+// Schema for a single recommended product in the output
 const RecommendedProductSchema = z.object({
     id: z.string(),
     title: z.string(),
@@ -72,14 +74,14 @@ const RecommendedProductSchema = z.object({
 });
 export type RecommendedProduct = z.infer<typeof RecommendedProductSchema>;
 
-// Define the structured output for the chatbot
+// Output schema for the chatbot's response
 const RobotklipperChatOutputSchema = z.object({
   responseText: z.string().describe("The conversational, text-based response to the user's question."),
   recommendedProducts: z.array(RecommendedProductSchema).optional().describe("A list of products recommended in the responseText. Only populate this if you are recommending specific products."),
 });
 export type RobotklipperChatOutput = z.infer<typeof RobotklipperChatOutputSchema>;
 
-
+// The system prompt that defines the chatbot's personality and rules
 const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som KUN spesialiserer seg på robotgressklippere.
 Ditt ansvarsområde er begrenset til:
 - Spesifikke robotgressklipper-modeller og deres funksjoner.
@@ -96,6 +98,7 @@ VIKTIG: Hvis brukeren spør om noe utenfor dette emnet (f.eks. andre produkter s
 - Hold svarene dine konsise og til poenget.`;
 
 
+// The main flow function
 const robotklipperChatFlow = ai.defineFlow(
     {
         name: 'robotklipperChatFlow',
@@ -103,24 +106,44 @@ const robotklipperChatFlow = ai.defineFlow(
         outputSchema: RobotklipperChatOutputSchema,
     },
     async (input) => {
-        const cleanHistory = (input.history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
+        // 1. Prepare the chat history for the Gemini API.
+        // It expects an array of { role, parts: [{ text }] }.
+        const history = (input.history || [])
+            .filter(h => h.role && h.content)
+            .map(h => ({
+                role: h.role as 'user' | 'model',
+                parts: [{ text: h.content }],
+            }));
         
+        // 2. Add the user's new question to the history.
+        const prompt = [
+            ...history,
+            { role: 'user' as const, parts: [{ text: input.question }] },
+        ];
+
+        // 3. Inject the system prompt into the first turn of the conversation.
+        // This is the robust way to provide system instructions without using the `system` parameter.
+        if (prompt.length === 1 && prompt[0].role === 'user') {
+            prompt[0].parts[0].text = `${systemPrompt}\n\nUSER QUESTION: ${prompt[0].parts[0].text}`;
+        }
+        
+        // 4. Call the model.
         const llmResponse = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
-            system: systemPrompt,
-            prompt: [...cleanHistory, { role: 'user', content: input.question }],
+            prompt: prompt,
             tools: [searchRobotklippereTool],
             output: { schema: RobotklipperChatOutputSchema },
         });
 
         const output = llmResponse.output();
         if (!output) {
-            return { responseText: "Beklager, jeg forstod ikke helt. Kan du prøve å spørre på en annen måte?" };
+            return { responseText: "Beklager, jeg fikk ikke generert et svar. Prøv igjen." };
         }
         return output;
     }
 );
 
+// Exported wrapper function for the client to call.
 export async function robotklipperChat(input: RobotklipperChatInput): Promise<RobotklipperChatOutput> {
     return robotklipperChatFlow(input);
 }
