@@ -598,16 +598,17 @@ export function HeaderComponent() {
           </div>
         </div>
 
-        {!hideMobileSearch && (
-            <div className="lg:hidden">
-              <div className="container mx-auto px-4 pb-3 max-w-[1542px] flex items-center gap-2">
-              <div className="relative w-full">
-                  <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-                  <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-              </div>
-              </div>
+        <div className={cn(
+          "lg:hidden transition-all duration-300 ease-in-out overflow-hidden",
+          hideMobileSearch ? "max-h-0" : "max-h-20"
+        )}>
+          <div className="container mx-auto px-4 py-3 max-w-[1542px] flex items-center gap-2">
+            <div className="relative w-full">
+                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
+                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
             </div>
-        )}
+          </div>
+        </div>
 
         <div className="hidden border-b bg-card lg:block">
             <MainNavMenu />
