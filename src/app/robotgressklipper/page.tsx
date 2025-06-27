@@ -63,7 +63,7 @@ const allProductsAndGuides = [
       excerpt: 'Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage, enten den er stor, liten, enkel eller kompleks.',
       imageUrl: guideImage,
       link: '#',
-      span: 'lg:col-span-2', // This guide will span 2 columns on large screens
+      span: 'col-span-2 lg:col-span-3', // This guide will span full width
     },
     {
       type: 'product',
@@ -293,7 +293,7 @@ export default function RobotklipperPage() {
                         </div>
                     </div>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                         {allProductsAndGuides.map((item, index) => {
                             if (item.type === 'guide') {
                                 return <GuideCard key={index} {...item} />;
@@ -317,5 +317,3 @@ export default function RobotklipperPage() {
     </div>
   );
 }
-
-    

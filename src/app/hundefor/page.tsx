@@ -232,7 +232,7 @@ function FilterPanel() {
 
 function GuideCard() {
   return (
-    <div className="group relative aspect-video w-full overflow-hidden rounded-lg shadow-md lg:col-span-3 lg:aspect-[2/1]">
+    <div className="group relative col-span-2 w-full overflow-hidden rounded-lg shadow-md lg:col-span-3 lg:aspect-[2/1]">
       <Link href="#" className="block h-full w-full">
         <Image
           src={guideImage}
@@ -376,7 +376,7 @@ export default function HundeforPage() {
                         </div>
                     </div>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                        {itemsToDisplay.map((item, index) => {
                           if (item && 'type' in item && item.type === 'guide') {
                               return <GuideCard key={`guide-${index}`} />;
