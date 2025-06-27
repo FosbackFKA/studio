@@ -66,12 +66,13 @@ function RobotklipperChatbot() {
 
         const userMessage: Message = { role: 'user', content: input };
         setMessages(prev => [...prev, userMessage]);
+        const currentInput = input;
         setInput('');
         setIsLoading(true);
 
         try {
-            const chatHistory = messages.map(msg => ({ role: msg.role, content: msg.content }));
-            const response = await robotklipperChat({ history: chatHistory, question: input });
+            const chatHistory = [...messages]; 
+            const response = await robotklipperChat({ history: chatHistory, question: currentInput });
             setMessages(prev => [...prev, { role: 'model', content: response }]);
         } catch (error) {
             console.error("Error calling chatbot flow:", error);
@@ -185,22 +186,24 @@ function FilterPanel() {
 
 function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; excerpt: string; imageUrl: StaticImageData; link: string; span?: string; }) {
   return (
-    <div className={cn("group relative w-full overflow-hidden rounded-lg shadow-md", span)}>
+    <div className={cn("group w-full overflow-hidden rounded-lg shadow-md", span)}>
       <Link href={link} className="block h-full w-full">
-        <Image
-          src={imageUrl}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-300 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-6 text-white">
-          <h3 className="font-headline text-2xl font-bold">{title}</h3>
-          <p className="mt-2 text-white/90 line-clamp-2">{excerpt}</p>
-          <Button asChild size="lg" className="mt-4">
-            <span className='z-10 relative'>Les guiden <ArrowRight className="ml-2 h-4 w-4" /></span>
-          </Button>
+        <div className="relative h-full min-h-[250px] w-full lg:aspect-[2/1]">
+            <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6 text-white">
+            <h3 className="font-headline text-2xl font-bold">{title}</h3>
+            <p className="mt-2 text-white/90 line-clamp-2">{excerpt}</p>
+            <Button asChild size="lg" className="mt-4">
+                <span className='z-10 relative'>Les guiden <ArrowRight className="ml-2 h-4 w-4" /></span>
+            </Button>
+            </div>
         </div>
       </Link>
     </div>
@@ -218,7 +221,7 @@ export default function RobotklipperPage() {
       <HeaderComponent />
       <main className="flex-grow">
         <section className="relative h-[300px] w-full md:h-[400px]">
-          <Image src={heroImage} alt="Robotgressklipper på en grønn plen" layout="fill" objectFit="cover" priority />
+          <Image src={heroImage} alt="Robotgressklipper på en grønn plen" fill className="object-cover" sizes="100vw" priority />
           <div className="absolute inset-0 bg-black/40" />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
             <h1 className="font-headline text-4xl font-bold text-white md:text-5xl lg:text-6xl">Få en perfekt plen, helt automatisk</h1>
@@ -320,4 +323,3 @@ export default function RobotklipperPage() {
     </div>
   );
 }
-

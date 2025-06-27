@@ -70,9 +70,9 @@ export function ProductCard({
             <Image
               src={imageUrl}
               alt={imageAlt || title}
-              layout="fill"
-              objectFit="contain"
-              className="transition-transform duration-300 group-hover:scale-105"
+              fill
+              sizes="(max-width: 640px) 75vw, (max-width: 1024px) 40vw, 30vw"
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
               data-ai-hint={dataAiHint || "product agriculture"}
             />
           </div>

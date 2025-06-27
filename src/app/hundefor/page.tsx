@@ -147,17 +147,15 @@ function Forvelger() {
           <div className="grid justify-center grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {results.map((result, index) => (
                 <Card key={index} className="flex h-full w-full flex-col overflow-hidden bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <div className="flex items-center justify-center border-b bg-white p-4">
-                        <div className="relative h-48 w-48">
-                          <Image
-                              src={result.imageUrl}
-                              alt={result.productName}
-                              layout="fill"
-                              objectFit="contain"
-                              className="rounded-md"
-                              data-ai-hint={`${result.brand} dog food`}
-                          />
-                        </div>
+                    <div className="relative h-48 w-full border-b bg-white p-4">
+                        <Image
+                            src={result.imageUrl}
+                            alt={result.productName}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="rounded-md object-contain"
+                            data-ai-hint={`${result.brand} dog food`}
+                        />
                     </div>
                     <div className="flex flex-grow flex-col p-5">
                         <p className="font-semibold text-primary">{result.brand}</p>
@@ -234,13 +232,15 @@ function GuideCard() {
   return (
     <div className="group relative col-span-2 w-full overflow-hidden rounded-lg shadow-md lg:col-span-3 lg:aspect-[2/1]">
       <Link href="#" className="block h-full w-full">
-        <Image
-          src={guideImage}
-          alt="Slik velger du riktig fôr til hunden din"
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-300 group-hover:scale-105"
-        />
+        <div className="relative w-full h-full min-h-[250px] lg:min-h-0">
+          <Image
+            src={guideImage}
+            alt="Slik velger du riktig fôr til hunden din"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-0 left-0 p-6 text-white">
           <h3 className="font-headline text-2xl font-bold">Slik velger du riktig fôr til hunden din</h3>

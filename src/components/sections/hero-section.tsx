@@ -54,9 +54,9 @@ const PromoCard = ({ item }: { item: PromoItem }) => (
           <Image
             src={item.imageUrl}
             alt={item.title}
-            layout="fill"
-            objectFit="cover"
-            className="transition-transform duration-300 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 25vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 text-left">
@@ -81,8 +81,9 @@ export function HeroSection() {
         <Image
           src={heroImage}
           alt="Sommer i hver krukke og bed!"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
+          sizes="100vw"
           quality={80}
           priority
         />

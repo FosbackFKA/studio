@@ -205,10 +205,10 @@ export default function ProductPage() {
                  <Image 
                     src={mainImage} 
                     alt={`Produktbilde av ${product.title}`} 
-                    layout="fill" 
-                    objectFit="contain" 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className={cn(
-                      "p-4 transition-transform duration-200 ease-out",
+                      "p-4 object-contain transition-transform duration-200 ease-out",
                       zoomActive ? 'scale-[2]' : 'scale-100'
                     )}
                     style={ zoomActive ? { transformOrigin: `${imgPos.x} ${imgPos.y}` } : {} }
@@ -222,9 +222,9 @@ export default function ProductPage() {
                     <Image 
                       src={img} 
                       alt={`Miniatyrbilde ${idx + 1} av ${product.title}`} 
-                      layout="fill" 
-                      objectFit="contain" 
-                      className="p-1"
+                      fill
+                      sizes="25vw"
+                      className="object-contain p-1"
                     />
                   </button>
                 ))}

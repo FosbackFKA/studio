@@ -58,6 +58,10 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async ({history, question}) => {
 
+        // Defensively filter history to ensure all items are valid.
+        // This prevents crashes if malformed data is sent from the client.
+        const cleanHistory = history.filter(h => h && typeof h.role === 'string' && typeof h.content === 'string');
+
         const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
 - Svar alltid på Norsk.
 - Vær hyggelig og serviceinnstilt.
@@ -69,14 +73,14 @@ const robotklipperChatFlow = ai.defineFlow(
             model: 'googleai/gemini-2.0-flash',
             tools: [searchRobotklippereTool],
             history: [
-                ...history,
+                ...cleanHistory,
                 { role: 'user', content: question }
             ],
             prompt: '', // Prompt is now the last item in history
             system: systemPrompt,
         });
 
-        return llmResponse.text ?? '';
+        return llmResponse.text ?? "Beklager, jeg forstod ikke helt. Kan du prøve å spørre på en annen måte?";
     }
 );
 

@@ -15,13 +15,13 @@ export function ArticleCard({ title, excerpt, imageUrl, articleUrl, dataAiHint }
   return (
     <Card className="group flex h-full transform flex-col overflow-hidden rounded-lg bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
       <CardHeader className="relative p-0">
-        <Link href={articleUrl} className="block">
+        <Link href={articleUrl} className="relative block h-48 w-full">
           <Image
             src={imageUrl}
             alt={title}
-            width={400}
-            height={225}
-            className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 84vw, (max-width: 1200px) 66vw, 33vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             data-ai-hint={dataAiHint || "article nature"}
           />
         </Link>
