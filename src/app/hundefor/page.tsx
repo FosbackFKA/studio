@@ -297,7 +297,7 @@ export default function HundeforPage() {
     const generatedItemsToDisplay = [
         ...allProductsData.slice(0, 3),
         { type: 'guide' as const, data: guide },
-        ...allProductsData.slice(3, 8),
+        ...allProductsData.slice(3, 9),
     ];
     setItemsToDisplay(generatedItemsToDisplay);
 
