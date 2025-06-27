@@ -24,12 +24,11 @@ const DogFoodOutputSchema = z.object({
   brand: z.string().describe('The brand of the recommended product.'),
   price: z.string().describe('The price of the product.'),
   shippingWeight: z.string().describe('The shipping weight of the product.'),
-  justification: z.string().describe("A detailed explanation of why this product is recommended, referencing the dog's specific details and the product's description and USPs."),
+  justification: z.string().describe("A detailed explanation in Norwegian of why this product is recommended, referencing the dog's specific details and the product's description and USPs."),
   imageUrl: z.string().describe("The image URL for the product (from the `image_link` field)."),
   productUrl: z.string().describe("The URL to the product page (from the `link` field)."),
 });
 export type DogFoodOutput = z.infer<typeof DogFoodOutputSchema>;
-
 
 const findDogFoodProducts = ai.defineTool(
   {
@@ -59,26 +58,51 @@ export async function recommendDogFood(input: DogFoodInput): Promise<DogFoodOutp
   return dogFoodFlow(input);
 }
 
-const dogFoodRecommendationPrompt = ai.definePrompt({
-  name: 'dogFoodRecommendationPrompt',
-  input: { schema: DogFoodInputSchema },
+const dogFoodSelectionPrompt = ai.definePrompt({
+  name: 'dogFoodSelectionPrompt',
+  input: { schema: z.object({
+    dogDetails: DogFoodInputSchema,
+    productList: z.array(z.object({
+        id: z.string(),
+        title: z.string(),
+        brand: z.string(),
+        description: z.string(),
+        link: z.string(),
+        image_link: z.string(),
+        price: z.string(),
+        shipping_weight: z.string(),
+        usp: z.array(z.string()),
+        tags: z.array(z.string()),
+    }))
+  })},
   output: { schema: DogFoodOutputSchema },
-  tools: [findDogFoodProducts],
-  prompt: `You are an expert pet nutritionist and a helpful assistant for Felleskjøpet, a Norwegian retailer. Your responses to the user must be in Norwegian.
-Your task is to recommend the single best dog food product from the Felleskjøpet catalog based on the dog's details provided.
+  prompt: `Du er en ekspert på dyreernæring og en hjelpsom assistent for Felleskjøpet. Svarene dine til brukeren må være på norsk.
+Din oppgave er å velge det ENE beste produktet fra produktlisten nedenfor, basert på hundens detaljer.
 
-Your process is as follows:
-1. Use the 'findDogFoodProducts' tool to search the product catalog. Provide all the user's input (age, size, special needs) to the tool to get a list of relevant products. The user might mention a preferred brand in the special needs, so include that in your search.
-2. If the tool returns an empty list, you must inform the user that you could not find a specific match and recommend a general-purpose product as a fallback, explaining why.
-3. If the tool returns products, review the list and select the ONE product that is the absolute best fit.
-4. Your final recommendation MUST be one of the products returned by the tool. Do not invent products.
-5. Create a compelling justification in Norwegian for your choice. Explain *why* this specific product is the best choice, referencing how its description and unique selling points (USPs) address the dog's age, size, and any special needs.
-6. Populate the output with the exact data from the selected product (productName from \`title\`, brand, price, shippingWeight from \`shipping_weight\`, imageUrl from \`image_link\`, productUrl from \`link\`).
+VIKTIG: Du kan KUN velge fra listen over tilgjengelige produkter. Du har IKKE lov til å finne på produkter eller hente informasjon fra andre steder. All informasjon i svaret ditt må komme direkte fra produktet du velger fra listen.
 
-Dog Details:
-- Age: {{age}}
-- Size/Weight Category: {{size}}
-- Special Needs or Health Concerns: {{#if specialNeeds}}{{specialNeeds}}{{else}}None specified{{/if}}
+Hundens detaljer:
+- Alder: {{dogDetails.age}}
+- Størrelse/Vektkategori: {{dogDetails.size}}
+- Spesielle behov eller helseproblemer: {{#if dogDetails.specialNeeds}}{{dogDetails.specialNeeds}}{{else}}Ingen spesifisert{{/if}}
+
+Tilgjengelige produkter:
+{{#each productList}}
+- Produkt: {{{this.title}}}
+  - Merke: {{{this.brand}}}
+  - Beskrivelse: {{{this.description}}}
+  - Salgspunkter (USPs): {{{this.usp}}}
+  - Pris: {{{this.price}}}
+  - Vekt: {{{this.shipping_weight}}}
+  - URL: {{{this.link}}}
+  - Bilde-URL: {{{this.image_link}}}
+{{/each}}
+
+Fremgangsmåte:
+1. Gjennomgå listen over "Tilgjengelige produkter". Dette er den ENESTE kilden til informasjon du kan bruke.
+2. Velg det ENE produktet som passer absolutt best for hundens alder, størrelse og spesielle behov.
+3. Skriv en overbevisende begrunnelse PÅ NORSK. Forklar *hvorfor* dette spesifikke produktet er det beste valget, og referer til hvordan produktets beskrivelse og salgspunkter (USPs) møter hundens behov.
+4. Fyll ut alle feltene i svaret ditt med nøyaktig data fra det valgte produktet (productName fra \`title\`, brand, price, shippingWeight fra \`shipping_weight\`, imageUrl fra \`image_link\`, productUrl fra \`link\`).
 `,
 });
 
@@ -89,12 +113,25 @@ const dogFoodFlow = ai.defineFlow(
     outputSchema: DogFoodOutputSchema,
   },
   async (input) => {
-    const { output } = await dogFoodRecommendationPrompt(input);
-    
-    if (!output) {
-        throw new Error("The AI could not generate a recommendation. Please try again.");
+    // Step 1: Programmatically call the tool to get a list of relevant products.
+    const products = await findDogFoodProducts(input);
+
+    // Handle case where no products are found.
+    if (!products || products.length === 0) {
+      throw new Error("Beklager, vi fant ingen produkter som matchet søket ditt. Prøv å være mindre spesifikk, eller sjekk for skrivefeil.");
     }
 
+    // Step 2: Pass the dog's details and the product list to the selection prompt.
+    const { output } = await dogFoodSelectionPrompt({
+        dogDetails: input,
+        productList: products,
+    });
+    
+    if (!output) {
+        throw new Error("AI-en klarte ikke å generere en anbefaling. Prøv igjen.");
+    }
+
+    // Step 3: Validate the returned image URL to prevent crashes.
     const allowedHosts = ['www.felleskjopet.no', 'felleskjopet.no', 'placehold.co'];
     let isAllowedHost = false;
     try {
