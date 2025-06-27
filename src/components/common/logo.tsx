@@ -35,7 +35,7 @@ export function FkaLogo(props: FkaLogoProps) {
       // for aspect ratio. Tailwind classes like h-10 w-auto will then scale this.
       width={explicitWidth || intrinsicWidth}
       height={explicitHeight || intrinsicHeight}
-      className={cn("w-auto", className)}
+      className={cn("w-auto h-auto", className)}
       priority={priority} // Ensure priority can be passed for LCP elements
       {...rest}
     />

@@ -18,9 +18,9 @@ export function CategoryCard({ title, imageUrl, categoryUrl, dataAiHint }: Categ
           <Image
             src={imageUrl}
             alt={title}
-            layout="fill"
-            objectFit="cover"
-            className="transition-transform duration-300 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 15vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             data-ai-hint={dataAiHint || "category item"}
           />
         </div>

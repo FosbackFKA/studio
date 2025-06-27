@@ -384,9 +384,9 @@ export default async function HomePage() {
                     <Image
                       src={hund1}
                       alt="Alt til kjæledyr"
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
                       <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
@@ -419,8 +419,9 @@ export default async function HomePage() {
                 <Image
                   src={gressImage}
                   alt="Perfekt plen"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
               <div className="flex">
@@ -467,9 +468,9 @@ export default async function HomePage() {
                     <Image
                       src={gressklipper1}
                       alt="Robotgressklippere"
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
                       <p className="font-body text-sm font-medium text-yellow-300 mb-0.5">Se vårt utvalg av</p>
@@ -568,8 +569,9 @@ export default async function HomePage() {
            <Image
             src={footerHeroImage}
             alt="Ta vare på jorda, dyra og framtida"
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
             quality={80}
           />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-primary">
