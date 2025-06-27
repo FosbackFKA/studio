@@ -265,16 +265,18 @@ export default function RobotklipperPage() {
                                     </Button>
                                 </SheetTrigger>
                                 <SheetContent>
-                                    <SheetHeader className="flex-row items-center justify-between border-b p-4">
-                                        <SheetTitle>Filtre</SheetTitle>
-                                         <SheetClose asChild>
-                                            <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                                                <X className="h-8 w-8 text-primary" />
-                                            </Button>
-                                        </SheetClose>
-                                    </SheetHeader>
-                                    <div className="p-4">
-                                       <FilterPanel />
+                                    <div className="flex h-full flex-col bg-card">
+                                        <SheetHeader className="flex-row items-center justify-between border-b p-4">
+                                            <SheetTitle>Filtre</SheetTitle>
+                                            <SheetClose asChild>
+                                                <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+                                                    <X className="h-8 w-8 text-primary" />
+                                                </Button>
+                                            </SheetClose>
+                                        </SheetHeader>
+                                        <div className="p-4">
+                                           <FilterPanel />
+                                        </div>
                                     </div>
                                 </SheetContent>
                             </Sheet>
@@ -299,7 +301,7 @@ export default function RobotklipperPage() {
                                 return <GuideCard key={index} {...item} />;
                             }
                             if (item.type === 'product') {
-                                return <ProductCard key={item.id} {...item} />;
+                                return <ProductCard key={item.id} {...item as Product} />;
                             }
                             return null;
                         })}

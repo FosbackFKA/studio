@@ -267,12 +267,12 @@ export default function HundeforPage() {
         imageUrl: p.image_link,
         productUrl: p.link,
         onlineStock: true,
-        storeStockCount: 0, // Placeholder, will be set on client
+        storeStockCount: 0,
     }));
 
     const guide = { type: 'guide' as const };
     const allItems: (Product | { type: 'guide' })[] = [...products];
-    // Insert guide after the first row of 3 products
+
     if (allItems.length > 3) {
       allItems.splice(3, 0, guide);
     } else {
@@ -348,16 +348,18 @@ export default function HundeforPage() {
                                     </Button>
                                 </SheetTrigger>
                                 <SheetContent>
-                                    <SheetHeader className="flex-row items-center justify-between border-b p-4">
-                                        <SheetTitle>Filtre</SheetTitle>
-                                          <SheetClose asChild>
-                                            <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                                                <X className="h-8 w-8 text-primary" />
-                                            </Button>
-                                        </SheetClose>
-                                    </SheetHeader>
-                                    <div className="p-4">
-                                        <FilterPanel />
+                                    <div className="flex h-full flex-col bg-card">
+                                        <SheetHeader className="flex-row items-center justify-between border-b p-4">
+                                            <SheetTitle>Filtre</SheetTitle>
+                                            <SheetClose asChild>
+                                                <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+                                                    <X className="h-8 w-8 text-primary" />
+                                                </Button>
+                                            </SheetClose>
+                                        </SheetHeader>
+                                        <div className="p-4">
+                                            <FilterPanel />
+                                        </div>
                                     </div>
                                 </SheetContent>
                             </Sheet>
