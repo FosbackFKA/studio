@@ -36,7 +36,7 @@ export default function DogFoodSelectorPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.age || !formData.size) {
-      setError('Vennligst velg alder og størrelse for hunden din.');
+      setError('Vennligst velg alder og vekt for hunden din.');
       return;
     }
     setError(null);
@@ -99,17 +99,17 @@ export default function DogFoodSelectorPage() {
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="size">Størrelse / Vekt</Label>
+                      <Label htmlFor="size">Vekt</Label>
                       <Select name="size" onValueChange={handleSelectChange('size')} value={formData.size}>
                         <SelectTrigger id="size">
-                          <SelectValue placeholder="Velg størrelse" />
+                          <SelectValue placeholder="Velg vekt" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="x-small">X-Small (opptil 4 kg)</SelectItem>
-                          <SelectItem value="mini">Mini (opptil 10 kg)</SelectItem>
-                          <SelectItem value="medium">Medium (11-25 kg)</SelectItem>
-                          <SelectItem value="maxi">Maxi (26-44 kg)</SelectItem>
-                          <SelectItem value="giant">Giant (over 45 kg)</SelectItem>
+                          <SelectItem value="x-small">Opptil 4 kg</SelectItem>
+                          <SelectItem value="mini">Opptil 10 kg</SelectItem>
+                          <SelectItem value="medium">11-25 kg</SelectItem>
+                          <SelectItem value="maxi">26-44 kg</SelectItem>
+                          <SelectItem value="giant">Over 45 kg</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -159,7 +159,7 @@ export default function DogFoodSelectorPage() {
                     <h2 className="font-headline text-3xl font-bold text-foreground">Våre Anbefalinger</h2>
                     <p className="mx-auto mb-8 max-w-2xl text-muted-foreground">Basert på informasjonen du ga, er dette våre topp anbefalinger for din hund.</p>
                   </div>
-                <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid justify-center grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {results.map((result, index) => (
                       <Card key={index} className="flex h-full w-full flex-col overflow-hidden bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                           <div className="flex items-center justify-center border-b bg-white p-4">
