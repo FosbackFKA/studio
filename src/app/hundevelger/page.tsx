@@ -72,10 +72,10 @@ export default function DogFoodSelectorPage() {
           
           <div className="overflow-hidden rounded-xl bg-card shadow-lg">
             
-            <div className="bg-gradient-to-br from-primary to-primary-dark-background p-6 text-primary-foreground md:p-10">
+            <div className="bg-gradient-to-br from-primary to-primary-dark-background p-6 text-primary-foreground md:p-8">
                 <div className="text-center">
-                  <Wand2 className="mx-auto h-12 w-12 text-yellow-300" />
-                  <h1 className="mt-2 font-headline text-4xl font-bold text-white">Fôrvelger for Hund</h1>
+                  <Wand2 className="mx-auto h-10 w-10 text-yellow-300" />
+                  <h1 className="mt-2 font-headline text-3xl font-bold text-white">Fôrvelger for Hund</h1>
                   <p className="mx-auto mt-2 max-w-2xl text-lg text-primary-foreground/80">
                     Fortell oss om hunden din, så hjelper vår AI-assistent deg med å finne det perfekte fôret.
                   </p>
