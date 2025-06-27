@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2 } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -18,6 +18,11 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
+import { robotklipperChat } from '@/ai/flows/robotklipper-chat-flow';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import allProductsAndGuides from '@/data/robotklipper_products.json';
+
 
 // Import images
 import heroImage from '@/components/common/gressklipper/gressklipper1.webp';
@@ -29,99 +34,106 @@ import gressklipper4 from '@/components/common/gressklipper/gressklipper4.webp';
 import gressklipper5 from '@/components/common/gressklipper/gressklipper5.webp';
 import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
 import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { FkaLogo } from '@/components/common/logo';
 
-const allProductsAndGuides = [
-    {
-      type: 'product',
-      id: 'SEGNAVH3000E',
-      title: 'Robotgressklipper Navimow H3000E med VisionFence',
-      brand: 'Segway',
-      price: '34 999,-',
-      salePrice: '29 999,-',
-      badgeText: '- 14 %',
-      imageUrl: popular1,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: true,
-      storeStockCount: 63,
-    },
-    {
-      type: 'product',
-      id: 'GARDSILENO',
-      title: 'Robotklipper Smart Sileno Free 1500',
-      brand: 'Gardena',
-      price: '25 999,-',
-      salePrice: '20 799,-',
-      badgeText: '- 20 %',
-      imageUrl: gressklipper3,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: false,
-      storeStockCount: 41,
-    },
-    {
-      type: 'guide',
-      title: 'Slik velger du riktig robotgressklipper',
-      excerpt: 'Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage, enten den er stor, liten, enkel eller kompleks.',
-      imageUrl: guideImage,
-      link: '#',
-      span: 'col-span-2 lg:col-span-3', // This guide will span full width
-    },
-    {
-      type: 'product',
-      id: 'SEGNAVI108E',
-      title: 'Robotgressklipper Navimow i108e',
-      brand: 'Segway',
-      price: '15 999,-',
-      imageUrl: gressklipper2,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: true,
-      storeStockCount: 4,
-    },
-     {
-      type: 'product',
-      id: 'STIHLRM22R',
-      title: 'Bensindrevet bio gressklipper RM 2,2 R',
-      brand: 'Stihl',
-      price: '4 449,-',
-      salePrice: '3 999,-',
-      imageUrl: popular3,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 68,
-    },
-    {
-      type: 'product',
-      id: 'SEGNAVIX330E',
-      title: 'Robotgressklipper Navimow X330e',
-      brand: 'Segway',
-      price: '39 999,-',
-      imageUrl: gressklipper5,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: true,
-      storeStockCount: 55,
-    },
-    {
-      type: 'product',
-      id: 'GARDENASMART',
-      title: 'Robotgressklipper Smart Sileno life 1000m²',
-      brand: 'Gardena',
-      price: '18 999,-',
-      imageUrl: gressklipper1,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: true,
-      storeStockCount: 22,
-    },
-     {
-      type: 'product',
-      id: 'STIHLIMOW5',
-      title: 'Robotgressklipper iMow 5',
-      brand: 'Stihl',
-      price: '21 990,-',
-      imageUrl: gressklipper4,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: true,
-      storeStockCount: 18,
-    },
-];
+const imageMap: Record<string, StaticImageData> = {
+  heroImage, guideImage, gressklipper1, gressklipper2, gressklipper3, gressklipper4, gressklipper5, popular1, popular3,
+};
+
+type Message = {
+  role: 'user' | 'model';
+  content: string;
+};
+
+function RobotklipperChatbot() {
+    const [messages, setMessages] = React.useState<Message[]>([
+        { role: 'model', content: 'Hei! Jeg er din personlige ekspert på robotgressklippere. Hva kan jeg hjelpe deg med i dag? Du kan for eksempel spørre meg "hvilken klipper passer for en hage på 1500m2?".' }
+    ]);
+    const [input, setInput] = React.useState('');
+    const [isLoading, setIsLoading] = React.useState(false);
+    const scrollAreaRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        if (scrollAreaRef.current) {
+            scrollAreaRef.current.scrollTo({ top: scrollAreaRef.current.scrollHeight, behavior: 'smooth' });
+        }
+    }, [messages]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!input.trim() || isLoading) return;
+
+        const userMessage: Message = { role: 'user', content: input };
+        setMessages(prev => [...prev, userMessage]);
+        setInput('');
+        setIsLoading(true);
+
+        try {
+            const chatHistory = messages.map(msg => ({ role: msg.role, content: msg.content }));
+            const response = await robotklipperChat({ history: chatHistory, question: input });
+            setMessages(prev => [...prev, { role: 'model', content: response }]);
+        } catch (error) {
+            console.error("Error calling chatbot flow:", error);
+            setMessages(prev => [...prev, { role: 'model', content: 'Beklager, noe gikk galt. Prøv igjen.' }]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className="flex h-[60vh] flex-col bg-card">
+            <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+                <div className="space-y-4">
+                    {messages.map((msg, index) => (
+                        <div key={index} className={cn("flex items-start gap-3", msg.role === 'user' ? 'justify-end' : 'justify-start')}>
+                            {msg.role === 'model' && (
+                                <Avatar className="h-8 w-8 border">
+                                    <FkaLogo />
+                                </Avatar>
+                            )}
+                            <div className={cn(
+                                "max-w-md rounded-lg px-4 py-2",
+                                msg.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-secondary'
+                            )}>
+                                <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                            </div>
+                            {msg.role === 'user' && (
+                                <Avatar className="h-8 w-8 border">
+                                    <AvatarFallback>DU</AvatarFallback>
+                                </Avatar>
+                            )}
+                        </div>
+                    ))}
+                    {isLoading && (
+                         <div className="flex items-start gap-3 justify-start">
+                             <Avatar className="h-8 w-8 border">
+                                <FkaLogo />
+                            </Avatar>
+                             <div className="max-w-md rounded-lg px-4 py-2 bg-secondary">
+                                <Loader2 className="h-5 w-5 animate-spin" />
+                            </div>
+                         </div>
+                    )}
+                </div>
+            </ScrollArea>
+            <div className="border-t p-4">
+                <form onSubmit={handleSubmit} className="flex items-center gap-2">
+                    <Input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Skriv meldingen din her..."
+                        disabled={isLoading}
+                        className="flex-1"
+                    />
+                    <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+                        <ArrowUp className="h-4 w-4" />
+                    </Button>
+                </form>
+            </div>
+        </div>
+    );
+}
 
 
 const breadcrumbs = [
@@ -138,38 +150,23 @@ function FilterPanel() {
                 <AccordionTrigger className="text-base font-semibold">Merke</AccordionTrigger>
                 <AccordionContent className="space-y-2 pt-2">
                     <div className="flex items-center space-x-2">
-                        <Checkbox id="segway" />
-                        <Label htmlFor="segway">Segway</Label>
+                        <Checkbox id="segway" /><Label htmlFor="segway">Segway</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <Checkbox id="gardena" />
-                        <Label htmlFor="gardena">Gardena</Label>
+                        <Checkbox id="gardena" /><Label htmlFor="gardena">Gardena</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <Checkbox id="stihl" />
-                        <Label htmlFor="stihl">Stihl</Label>
+                        <Checkbox id="stihl" /><Label htmlFor="stihl">Stihl</Label>
                     </div>
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="area">
                 <AccordionTrigger className="text-base font-semibold">Plenareal</AccordionTrigger>
                 <AccordionContent className="space-y-2 pt-2">
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="area-1000" />
-                        <Label htmlFor="area-1000">Opptil 1000 m²</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="area-2000" />
-                        <Label htmlFor="area-2000">1000 - 2000 m²</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="area-3000" />
-                        <Label htmlFor="area-3000">2000 - 3000 m²</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="area-5000" />
-                        <Label htmlFor="area-5000">3000 m² og mer</Label>
-                    </div>
+                    <div className="flex items-center space-x-2"><Checkbox id="area-1000" /><Label htmlFor="area-1000">Opptil 1000 m²</Label></div>
+                    <div className="flex items-center space-x-2"><Checkbox id="area-2000" /><Label htmlFor="area-2000">1000 - 2000 m²</Label></div>
+                    <div className="flex items-center space-x-2"><Checkbox id="area-3000" /><Label htmlFor="area-3000">2000 - 3000 m²</Label></div>
+                    <div className="flex items-center space-x-2"><Checkbox id="area-5000" /><Label htmlFor="area-5000">3000 m² og mer</Label></div>
                 </AccordionContent>
             </AccordionItem>
             <AccordionItem value="price">
@@ -188,7 +185,7 @@ function FilterPanel() {
 
 function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; excerpt: string; imageUrl: StaticImageData; link: string; span?: string; }) {
   return (
-    <div className={cn("group relative aspect-video w-full overflow-hidden rounded-lg shadow-md lg:aspect-auto", span)}>
+    <div className={cn("group relative w-full overflow-hidden rounded-lg shadow-md", span)}>
       <Link href={link} className="block h-full w-full">
         <Image
           src={imageUrl}
@@ -212,52 +209,60 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
 
 export default function RobotklipperPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
-  const products = allProductsAndGuides.filter(item => item.type === 'product');
+  
+  const products = allProductsAndGuides.filter(item => item.type === 'product') as (Product[] & {imageUrl: string});
+  const guide = allProductsAndGuides.find(item => item.type === 'guide');
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
       <main className="flex-grow">
         <section className="relative h-[300px] w-full md:h-[400px]">
-          <Image
-            src={heroImage}
-            alt="Robotgressklipper på en grønn plen"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
+          <Image src={heroImage} alt="Robotgressklipper på en grønn plen" layout="fill" objectFit="cover" priority />
           <div className="absolute inset-0 bg-black/40" />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
-            <h1 className="font-headline text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-              Få en perfekt plen, helt automatisk
-            </h1>
-            <p className="mt-2 max-w-2xl text-lg text-gray-200">
-                Utforsk vårt utvalg av smarte robotgressklippere som gir deg mer tid til å nyte hagen.
-            </p>
+            <h1 className="font-headline text-4xl font-bold text-white md:text-5xl lg:text-6xl">Få en perfekt plen, helt automatisk</h1>
+            <p className="mt-2 max-w-2xl text-lg text-gray-200">Utforsk vårt utvalg av smarte robotgressklippere som gir deg mer tid til å nyte hagen.</p>
           </div>
         </section>
         
         <div className="container mx-auto max-w-[1542px] px-4 py-8 lg:py-12">
             <Breadcrumb items={breadcrumbs} />
+
+             <Accordion type="single" collapsible className="w-full group mb-8 lg:mb-12">
+                <AccordionItem value="chatbot" className="overflow-hidden rounded-xl border bg-card shadow-lg">
+                    <AccordionTrigger className="w-full p-6 text-left hover:no-underline [&[data-state=open]]:bg-secondary/20">
+                        <div className="flex w-full items-center justify-between gap-4">
+                            <div className="flex-shrink-0">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                                <Sparkles className="h-6 w-6 text-primary" />
+                                </div>
+                            </div>
+                            <div className="flex-1 text-left">
+                                <h2 className="font-headline text-xl font-bold">Trenger du hjelp?</h2>
+                                <p className="mt-1 text-muted-foreground">Snakk med vår KI-ekspert for å finne den perfekte robotklipperen.</p>
+                            </div>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="p-0">
+                        <RobotklipperChatbot />
+                    </AccordionContent>
+                </AccordionItem>
+            </Accordion>
         </div>
 
         <div id="products" className="container mx-auto max-w-[1542px] px-4">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-                {/* Filters - Sidebar for Desktop */}
                 <aside className="hidden lg:block lg:col-span-1">
                     <div className="sticky top-32">
                         <h2 className="text-xl font-bold mb-4">Filtre</h2>
                         <FilterPanel />
                     </div>
                 </aside>
-
-                {/* Products Grid */}
                 <div className="lg:col-span-3">
                     <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                         <h2 className="text-2xl font-bold whitespace-nowrap">Alle robotgressklippere ({products.length})</h2>
-                        
                         <div className="flex w-full sm:w-auto items-center gap-4">
-                             {/* Mobile Filter Trigger */}
                             <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
                                 <SheetTrigger asChild>
                                     <Button variant="outline" className="lg:hidden flex-1">
@@ -265,7 +270,7 @@ export default function RobotklipperPage() {
                                     </Button>
                                 </SheetTrigger>
                                 <SheetContent>
-                                    <div className="flex h-full flex-col bg-card">
+                                     <div className="flex h-full flex-col bg-card">
                                         <SheetHeader className="flex-row items-center justify-between border-b p-4">
                                             <SheetTitle>Filtre</SheetTitle>
                                             <SheetClose asChild>
@@ -280,11 +285,8 @@ export default function RobotklipperPage() {
                                     </div>
                                 </SheetContent>
                             </Sheet>
-
                             <Select defaultValue="popularitet">
-                                <SelectTrigger className="w-full sm:w-[180px]">
-                                    <SelectValue placeholder="Sorter etter" />
-                                </SelectTrigger>
+                                <SelectTrigger className="w-full sm:w-[180px]"><SelectValue placeholder="Sorter etter" /></SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="popularitet">Popularitet</SelectItem>
                                     <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
@@ -296,15 +298,14 @@ export default function RobotklipperPage() {
                     </div>
                     
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                        {allProductsAndGuides.map((item, index) => {
-                            if (item.type === 'guide') {
-                                return <GuideCard key={index} {...item} />;
-                            }
-                            if (item.type === 'product') {
-                                return <ProductCard key={item.id} {...item as Product} />;
-                            }
-                            return null;
-                        })}
+                        {products.map((p) => (
+                            <ProductCard key={p.id} {...p} imageUrl={imageMap[p.imageUrl as string]} />
+                        ))}
+                        {guide && (
+                            <div className="col-span-2 lg:col-span-3">
+                                <GuideCard {...guide} imageUrl={imageMap[guide.imageUrl as string]} />
+                            </div>
+                        )}
                     </div>
                     
                     <div className="mt-12 flex justify-center">
@@ -319,3 +320,4 @@ export default function RobotklipperPage() {
     </div>
   );
 }
+

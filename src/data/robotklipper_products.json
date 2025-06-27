@@ -1,0 +1,93 @@
+
+[
+    {
+      "type": "product",
+      "id": "SEGNAVH3000E",
+      "title": "Robotgressklipper Navimow H3000E med VisionFence",
+      "brand": "Segway",
+      "price": "34 999,-",
+      "salePrice": "29 999,-",
+      "badgeText": "- 14 %",
+      "imageUrl": "popular1",
+      "productUrl": "/products/SEGNAVH3000E",
+      "onlineStock": true,
+      "storeStockCount": 63
+    },
+    {
+      "type": "product",
+      "id": "GARDSILENO",
+      "title": "Robotklipper Smart Sileno Free 1500",
+      "brand": "Gardena",
+      "price": "25 999,-",
+      "salePrice": "20 799,-",
+      "badgeText": "- 20 %",
+      "imageUrl": "gressklipper3",
+      "productUrl": "/products/SEGNAVH3000E",
+      "onlineStock": false,
+      "storeStockCount": 41
+    },
+    {
+      "type": "guide",
+      "title": "Slik velger du riktig robotgressklipper",
+      "excerpt": "Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage, enten den er stor, liten, enkel eller kompleks.",
+      "imageUrl": "guideImage",
+      "link": "#",
+      "span": "col-span-2 lg:col-span-3"
+    },
+    {
+      "type": "product",
+      "id": "SEGNAVI108E",
+      "title": "Robotgressklipper Navimow i108e",
+      "brand": "Segway",
+      "price": "15 999,-",
+      "imageUrl": "gressklipper2",
+      "productUrl": "/products/SEGNAVH3000E",
+      "onlineStock": true,
+      "storeStockCount": 4
+    },
+     {
+      "type": "product",
+      "id": "STIHLRM22R",
+      "title": "Bensindrevet bio gressklipper RM 2,2 R",
+      "brand": "Stihl",
+      "price": "4 449,-",
+      "salePrice": "3 999,-",
+      "imageUrl": "popular3",
+      "productUrl": "#",
+      "onlineStock": true,
+      "storeStockCount": 68
+    },
+    {
+      "type": "product",
+      "id": "SEGNAVIX330E",
+      "title": "Robotgressklipper Navimow X330e",
+      "brand": "Segway",
+      "price": "39 999,-",
+      "imageUrl": "gressklipper5",
+      "productUrl": "/products/SEGNAVH3000E",
+      "onlineStock": true,
+      "storeStockCount": 55
+    },
+    {
+      "type": "product",
+      "id": "GARDENASMART",
+      "title": "Robotgressklipper Smart Sileno life 1000m²",
+      "brand": "Gardena",
+      "price": "18 999,-",
+      "imageUrl": "gressklipper1",
+      "productUrl": "/products/SEGNAVH3000E",
+      "onlineStock": true,
+      "storeStockCount": 22
+    },
+     {
+      "type": "product",
+      "id": "STIHLIMOW5",
+      "title": "Robotgressklipper iMow 5",
+      "brand": "Stihl",
+      "price": "21 990,-",
+      "imageUrl": "gressklipper4",
+      "productUrl": "/products/SEGNAVH3000E",
+      "onlineStock": true,
+      "storeStockCount": 18
+    }
+]
