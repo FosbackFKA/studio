@@ -7,7 +7,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import { searchRobotklippere } from '@/lib/robotklipper-data';
+import { searchRobotklippere, type RobotklipperProduct } from '@/lib/robotklipper-data';
 
 const searchRobotklippereTool = ai.defineTool(
   {
@@ -21,18 +21,22 @@ const searchRobotklippereTool = ai.defineTool(
         price: z.string(),
         salePrice: z.string().optional(),
         productUrl: z.string(),
+        description: z.string().optional().describe('A brief description of the product.'),
+        usp: z.array(z.string()).optional().describe('A list of unique selling propositions (USPs) for the product.'),
     })),
   },
   async ({ query }) => {
     const products = await searchRobotklippere(query);
     // Return a subset of fields relevant to the LLM
-    return products.slice(0, 5).map(p => ({
+    return products.slice(0, 5).map((p: RobotklipperProduct) => ({
         id: p.id,
         title: p.title,
         brand: p.brand,
         price: p.price,
         salePrice: p.salePrice,
         productUrl: p.productUrl,
+        description: p.description,
+        usp: p.usp,
     }));
   }
 );
@@ -60,13 +64,18 @@ const robotklipperChatFlow = ai.defineFlow(
 
         const cleanHistory = (history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
         
-        // This is the correct way to provide system instructions without using the unsupported `system` parameter.
-        // We prepend the instructions to the user's question.
-        const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
+        const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som KUN spesialiserer seg på robotgressklippere.
+Ditt ansvarsområde er begrenset til:
+- Spesifikke robotgressklipper-modeller og deres funksjoner.
+- Tilbehør som garasjer, kniver, og installasjonssett.
+- Generelle råd om installasjon, vedlikehold og feilsøking av robotgressklippere.
+
+VIKTIG: Hvis brukeren spør om noe utenfor dette emnet (f.eks. andre produkter som hundemat, traktorer, eller generelle hagespørsmål), skal du høflig avslå og forklare at din ekspertise kun er robotgressklippere.
+
 - Svar alltid på Norsk.
 - Vær hyggelig og serviceinnstilt.
-- Hvis du anbefaler et produkt, inkluder alltid produktnavnet og en lenke til produktsiden i svaret ditt, formatert som en Markdown-lenke.
-- Bruk 'searchRobotklippere' verktøyet for å finne produkter når brukeren spør om det. Ikke finn på produkter. Ikke bare list opp produkter, men gi en kort begrunnelse for hvorfor det er en god anbefaling.
+- Bruk 'searchRobotklippere' verktøyet for å finne produkter. Bruk produktinformasjonen, spesielt beskrivelsen og salgspunktene (usp), for å gi en god begrunnelse for hvorfor du anbefaler et produkt.
+- Når du anbefaler et produkt, inkluder ALLTID produktnavnet og en Markdown-lenke til produktsiden.
 - Hold svarene dine konsise og til poenget.`;
 
         const llmResponse = await ai.generate({

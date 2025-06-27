@@ -4,14 +4,22 @@ import allRobotklipperProducts from '@/data/robotklipper_products.json';
 
 export interface RobotklipperProduct extends Omit<Product, 'imageUrl'> {
   imageUrl: string; // Identifier for the image
+  description?: string;
+  usp?: string[];
 }
 
 function scoreProduct(product: RobotklipperProduct, query: string): number {
-  const productText = `${product.title.toLowerCase()} ${product.brand?.toLowerCase()}`;
-  let score = 0;
-  if (productText.includes(query)) {
-    score += 1;
-  }
+  const productText = `${product.title.toLowerCase()} ${product.brand?.toLowerCase()} ${product.description?.toLowerCase()} ${product.usp?.join(' ').toLowerCase()}`;
+  const queryTerms = query.split(/\s+/);
+  
+  // Score based on how many query terms are found in the product text
+  const score = queryTerms.reduce((currentScore, term) => {
+    if (productText.includes(term)) {
+      return currentScore + 1;
+    }
+    return currentScore;
+  }, 0);
+
   return score;
 }
 
