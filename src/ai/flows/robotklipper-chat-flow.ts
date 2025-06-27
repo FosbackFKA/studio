@@ -60,17 +60,20 @@ const robotklipperChatFlow = ai.defineFlow(
 
         const cleanHistory = (history || []).filter(h => h.content && typeof h.content === 'string' && h.content.trim() !== '' && h.role && ['user', 'model'].includes(h.role));
         
-        const llmResponse = await ai.generate({
-            model: 'googleai/gemini-2.5-flash',
-            tools: [searchRobotklippereTool],
-            system: `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
+        // This is the correct way to provide system instructions without using the unsupported `system` parameter.
+        // We prepend the instructions to the user's question.
+        const systemPrompt = `Du er en hjelpsom og vennlig Felleskjøpet-ekspert som spesialiserer seg på robotgressklippere.
 - Svar alltid på Norsk.
 - Vær hyggelig og serviceinnstilt.
 - Hvis du anbefaler et produkt, inkluder alltid produktnavnet og en lenke til produktsiden i svaret ditt, formatert som en Markdown-lenke.
 - Bruk 'searchRobotklippere' verktøyet for å finne produkter når brukeren spør om det. Ikke finn på produkter. Ikke bare list opp produkter, men gi en kort begrunnelse for hvorfor det er en god anbefaling.
-- Hold svarene dine konsise og til poenget.`,
+- Hold svarene dine konsise og til poenget.`;
+
+        const llmResponse = await ai.generate({
+            model: 'googleai/gemini-2.5-flash',
+            tools: [searchRobotklippereTool],
             history: cleanHistory,
-            prompt: question
+            prompt: `${systemPrompt}\n\nBrukerspørsmål: ${question}`,
         });
 
         return llmResponse.text ?? "Beklager, jeg forstod ikke helt. Kan du prøve å spørre på en annen måte?";
