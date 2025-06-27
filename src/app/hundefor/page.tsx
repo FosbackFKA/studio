@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
@@ -12,13 +12,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { recommendDogFood, type DogFoodInput, type DogFoodRecommendation } from '@/ai/flows/dog-food-flow';
-import { Loader2, Dog, ShoppingCart, Weight } from 'lucide-react';
+import { Loader2, Dog, ShoppingCart, Weight, ArrowRight } from 'lucide-react';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import type { Product } from '@/types/product';
 import type { DogFoodProduct } from '@/lib/dog-food-data';
 import allDogFoodProducts from '@/data/dog_food_products.json';
 import { ProductCard } from '@/components/common/product-card';
-import { ArticlesSection } from '@/components/sections/articles-section';
+import { cn } from '@/lib/utils';
+
 
 function Forvelger() {
   const [formData, setFormData] = React.useState<DogFoodInput>({
@@ -194,6 +195,36 @@ function Forvelger() {
   )
 }
 
+function GuideCard({ title, excerpt, imageUrl, link, span, dataAiHint }: { title: string; excerpt: string; imageUrl: string | StaticImageData; link: string; span?: string; dataAiHint?: string; }) {
+  return (
+    <div className={cn("group relative aspect-video w-full overflow-hidden rounded-lg shadow-md lg:aspect-auto", span)}>
+      <Link href={link} className="block h-full w-full">
+        <Image
+          src={imageUrl}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 group-hover:scale-105"
+          data-ai-hint={dataAiHint}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-6 text-white">
+          <h3 className="font-headline text-2xl font-bold">{title}</h3>
+          <p className="mt-2 text-white/90 line-clamp-2">{excerpt}</p>
+          <Button asChild size="lg" className="mt-4">
+            <span className='z-10 relative'>Les guiden <ArrowRight className="ml-2 h-4 w-4" /></span>
+          </Button>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
+interface DisplayItem {
+  type: 'product' | 'guide';
+  data: any;
+}
+
 export default function HundeforPage() {
   const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
@@ -202,16 +233,19 @@ export default function HundeforPage() {
     { name: 'Hundefôr', href: '/hundefor' },
   ];
 
-  const [featuredProducts, setFeaturedProducts] = React.useState<Product[]>([]);
+  const [displayItems, setDisplayItems] = React.useState<DisplayItem[]>([]);
 
   React.useEffect(() => {
     const allProducts: DogFoodProduct[] = allDogFoodProducts;
+    
     const featuredProductIds = [
       'hundefôr_aktiv_15_kg',
-      'hundefôr_puppy_medium_breed_12_kg',
       'hundefôr_maxi_adult_15_kg',
+      'hundefôr_puppy_medium_breed_12_kg',
       'hundefôr_sensitiv_små_raser_3_kg',
+      'hundefôr_voksen_mellom_og_stor_rase_15_kg'
     ];
+    
     const products: Product[] = featuredProductIds.map(id => {
         const p = allProducts.find(prod => prod.id === id);
         if (!p) return null;
@@ -222,36 +256,32 @@ export default function HundeforPage() {
           price: p.price,
           imageUrl: p.image_link,
           productUrl: p.link,
-          onlineStock: true,
-          storeStockCount: Math.floor(Math.random() * 100), // Mock stock
+          onlineStock: true, // Mocked
+          storeStockCount: Math.floor(Math.random() * 100), // Mocked
         };
       }).filter((p): p is Product => p !== null);
-    setFeaturedProducts(products);
-  }, []);
 
-  const articles = [
-    {
+    const guide = {
       title: 'Slik velger du riktig fôr til hunden din',
       excerpt: 'Det kan være en jungel å velge riktig hundefôr. Lær deg hva du skal se etter for å dekke din hunds unike ernæringsbehov.',
-      imageUrl: 'https://placehold.co/400x225.png',
-      articleUrl: '#',
+      imageUrl: 'https://placehold.co/800x450.png',
+      link: '#',
+      span: 'lg:col-span-2',
       dataAiHint: 'dog eating food'
-    },
-    {
-      title: 'Hva betyr ingrediensene i hundefôret?',
-      excerpt: 'Kyllingmel, hydrolysert protein, omega-3... Forstå hva de ulike ingrediensene betyr for hundens helse og velvære.',
-      imageUrl: 'https://placehold.co/400x225.png',
-      articleUrl: '#',
-      dataAiHint: 'dog food ingredients'
-    },
-    {
-      title: 'Tips for kresne hunder',
-      excerpt: 'Har du en hund som rynker på nesen av maten? Her er våre beste tips for å øke matlysten hos selv de mest kresne spiserne.',
-      imageUrl: 'https://placehold.co/400x225.png',
-      articleUrl: '#',
-      dataAiHint: 'sad dog bowl'
-    },
-  ];
+    };
+
+    const items: DisplayItem[] = [
+      { type: 'product', data: products[0] },
+      { type: 'product', data: products[1] },
+      { type: 'product', data: products[2] },
+      { type: 'guide', data: guide },
+      { type: 'product', data: products[3] },
+      { type: 'product', data: products[4] },
+    ];
+    
+    setDisplayItems(items);
+
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -264,22 +294,19 @@ export default function HundeforPage() {
         
         <section className="py-12 lg:py-16 bg-background">
             <div className="container mx-auto max-w-6xl px-4">
-                <h2 className="text-center font-headline text-3xl font-bold text-foreground">Populært hundefôr</h2>
-                <p className="text-center mx-auto mb-8 max-w-2xl text-muted-foreground">Et utvalg av våre mest populære fôrtyper for hunder i alle størrelser og aldre.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {featuredProducts.map((product) => (
-                        <ProductCard key={product.id} {...product} />
-                    ))}
+                <h2 className="text-center font-headline text-3xl font-bold text-foreground">Utforsk Vårt Utvalg</h2>
+                <p className="text-center mx-auto mb-8 max-w-2xl text-muted-foreground">Et utvalg av våre mest populære fôrtyper, og nyttige guider som hjelper deg å velge riktig.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {displayItems.map((item, index) => {
+                      if (item.type === 'guide') {
+                        return <GuideCard key={`guide-${index}`} {...item.data} />;
+                      }
+                      return <ProductCard key={item.data.id} {...item.data} />;
+                    })}
                 </div>
             </div>
         </section>
 
-        <ArticlesSection 
-          title="Guider for hundeeiere"
-          linkText="Se flere guider"
-          linkHref="#"
-          articles={articles}
-        />
       </main>
       <FooterComponent />
     </div>
