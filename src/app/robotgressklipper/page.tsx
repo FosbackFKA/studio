@@ -246,7 +246,7 @@ export default function RobotklipperPage() {
                 {/* Filters - Sidebar for Desktop */}
                 <aside className="hidden lg:block lg:col-span-1">
                     <div className="sticky top-32">
-                        <h2 className="text-xl font-bold mb-4">Filter</h2>
+                        <h2 className="text-xl font-bold mb-4">Filtre</h2>
                         <FilterPanel />
                     </div>
                 </aside>
@@ -266,7 +266,7 @@ export default function RobotklipperPage() {
                                 </SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader className="flex-row items-center justify-between border-b p-4">
-                                        <SheetTitle>Filter</SheetTitle>
+                                        <SheetTitle>Filtre</SheetTitle>
                                          <SheetClose asChild>
                                             <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
                                                 <X className="h-8 w-8 text-primary" />
@@ -317,3 +317,5 @@ export default function RobotklipperPage() {
     </div>
   );
 }
+
+    
