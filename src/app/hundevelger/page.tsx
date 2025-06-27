@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
-import { recommendDogFood, type DogFoodInput, type DogFoodOutput } from '@/ai/flows/dog-food-flow';
+import { recommendDogFood, type DogFoodInput, type DogFoodRecommendation } from '@/ai/flows/dog-food-flow';
 import { Loader2, Dog, Wand2, ShoppingCart, Weight } from 'lucide-react';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 
@@ -22,7 +22,7 @@ export default function DogFoodSelectorPage() {
     size: '',
     specialNeeds: '',
   });
-  const [result, setResult] = React.useState<DogFoodOutput | null>(null);
+  const [results, setResults] = React.useState<DogFoodRecommendation[] | null>(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -41,13 +41,14 @@ export default function DogFoodSelectorPage() {
     }
     setError(null);
     setLoading(true);
-    setResult(null);
+    setResults(null);
 
     try {
       const response = await recommendDogFood(formData);
-      setResult(response);
+      setResults(response);
     } catch (e) {
-      setError('Beklager, en feil oppstod. Prøv igjen.');
+      const errorMessage = e instanceof Error ? e.message : 'En ukjent feil oppstod.';
+      setError(`Beklager, en feil oppstod. ${errorMessage}`);
       console.error(e);
     } finally {
       setLoading(false);
@@ -66,7 +67,7 @@ export default function DogFoodSelectorPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
       <main className="flex-grow bg-secondary/30">
-        <div className="container mx-auto max-w-4xl px-4 py-8 lg:py-16">
+        <div className="container mx-auto max-w-6xl px-4 py-8 lg:py-16">
           <Breadcrumb items={breadcrumbs} className="mb-6" />
 
           <div className="text-center">
@@ -77,7 +78,7 @@ export default function DogFoodSelectorPage() {
             </p>
           </div>
 
-          <Card className="mt-8">
+          <Card className="mt-8 max-w-4xl mx-auto">
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -148,44 +149,46 @@ export default function DogFoodSelectorPage() {
              </div>
           )}
 
-          {result && (
+          {results && results.length > 0 && (
             <div className="mt-10">
-                <h2 className="text-center font-headline text-3xl font-bold text-foreground mb-2">Vår Anbefaling</h2>
-                <p className="text-center text-muted-foreground mb-6">Basert på informasjonen du ga, er dette vår anbefaling for din hund.</p>
-              <Card className="overflow-hidden bg-gradient-to-br from-card to-secondary/20">
-                <div className="grid grid-cols-1 md:grid-cols-3">
-                    <div className="p-6 flex items-center justify-center">
-                         <Image
-                            src={result.imageUrl}
-                            alt={result.productName}
-                            width={250}
-                            height={250}
-                            className="rounded-md object-contain"
-                            data-ai-hint={`${result.brand} dog food`}
-                        />
-                    </div>
-                    <div className="p-6 md:col-span-2 bg-card flex flex-col">
-                      <p className="font-semibold text-primary">{result.brand}</p>
-                      <h3 className="font-headline text-2xl font-bold text-foreground">{result.productName}</h3>
-                      
-                      <div className="mt-3 flex items-baseline gap-4 text-foreground">
-                        <p className="text-2xl font-bold text-primary">{result.price}</p>
-                        <div className="flex items-center gap-1 text-muted-foreground">
-                          <Weight className="h-5 w-5" />
-                          <span>{result.shippingWeight}</span>
+                <h2 className="text-center font-headline text-3xl font-bold text-foreground mb-2">Våre Anbefalinger</h2>
+                <p className="text-center text-muted-foreground mb-6">Basert på informasjonen du ga, er dette våre topp anbefalinger for din hund.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 {results.map((result, index) => (
+                    <Card key={index} className="overflow-hidden bg-gradient-to-br from-card to-secondary/20 flex flex-col">
+                        <div className="p-4 flex items-center justify-center bg-white">
+                            <Image
+                                src={result.imageUrl}
+                                alt={result.productName}
+                                width={200}
+                                height={200}
+                                className="rounded-md object-contain h-48 w-48"
+                                data-ai-hint={`${result.brand} dog food`}
+                            />
                         </div>
-                      </div>
+                        <div className="p-4 md:p-6 bg-card flex flex-col flex-grow">
+                            <p className="font-semibold text-primary">{result.brand}</p>
+                            <h3 className="font-headline text-xl font-bold text-foreground">{result.productName}</h3>
+                            
+                            <div className="mt-2 flex items-baseline gap-4 text-foreground">
+                                <p className="text-xl font-bold text-primary">{result.price}</p>
+                                <div className="flex items-center gap-1 text-muted-foreground">
+                                    <Weight className="h-4 w-4" />
+                                    <span>{result.shippingWeight}</span>
+                                </div>
+                            </div>
 
-                      <p className="mt-4 text-base text-foreground flex-grow">{result.justification}</p>
-                      
-                      <Button size="lg" className="mt-6 w-full sm:w-auto" asChild>
-                        <Link href={result.productUrl} target="_blank" rel="noopener noreferrer">
-                          <ShoppingCart className="mr-2 h-5 w-5" /> Se produkt
-                        </Link>
-                      </Button>
-                    </div>
-                </div>
-              </Card>
+                            <p className="mt-3 text-sm text-foreground flex-grow line-clamp-6">{result.justification}</p>
+                            
+                            <Button size="lg" className="mt-4 w-full" asChild>
+                                <Link href={result.productUrl} target="_blank" rel="noopener noreferrer">
+                                    <ShoppingCart className="mr-2 h-5 w-5" /> Se produkt
+                                </Link>
+                            </Button>
+                        </div>
+                    </Card>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -194,3 +197,4 @@ export default function DogFoodSelectorPage() {
     </div>
   );
 }
+

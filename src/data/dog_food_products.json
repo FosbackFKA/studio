@@ -16,7 +16,8 @@
     ],
     "tags": [
       "large",
-      "voksen"
+      "voksen",
+      "aktiv"
     ]
   },
   {
@@ -35,8 +36,9 @@
       "Bidrar til sunne og rene tenner"
     ],
     "tags": [
-      "large",
-      "voksen"
+      "medium",
+      "voksen",
+      "aktiv"
     ]
   },
   {
@@ -54,7 +56,9 @@
       "Kylling"
     ],
     "tags": [
-      "voksen"
+      "voksen",
+      "medium",
+      "large"
     ]
   },
   {
@@ -72,7 +76,8 @@
       "Kornfritt"
     ],
     "tags": [
-      "voksen"
+      "voksen",
+      "medium"
     ]
   },
   {
@@ -113,7 +118,8 @@
     "tags": [
       "aktiv",
       "voksen",
-      "vektkontroll"
+      "medium",
+      "large"
     ]
   },
   {
@@ -132,7 +138,7 @@
       "Komplett næringsinnhold"
     ],
     "tags": [
-      "voksen",
+      "senior",
       "small"
     ]
   },
@@ -152,8 +158,10 @@
       "Med animalsk og marint fett"
     ],
     "tags": [
-      "large",
-      "aktiv"
+      "voksen",
+      "aktiv",
+      "medium",
+      "large"
     ]
   },
   {
@@ -172,6 +180,8 @@
       "Kornfritt"
     ],
     "tags": [
+      "voksen",
+      "medium",
       "large"
     ]
   },
@@ -191,7 +201,8 @@
       "Kornfritt"
     ],
     "tags": [
-      "large"
+      "voksen",
+      "medium"
     ]
   },
   {
@@ -210,7 +221,9 @@
       "Med ekstra probiotika"
     ],
     "tags": [
-      "allergi"
+      "allergi",
+      "sensitiv",
+      "voksen"
     ]
   },
   {
@@ -230,7 +243,10 @@
     ],
     "tags": [
       "allergi",
-      "vektkontroll"
+      "sensitiv",
+      "vektkontroll",
+      "voksen",
+      "senior"
     ]
   },
   {
@@ -250,7 +266,8 @@
     ],
     "tags": [
       "allergi",
-      "small"
+      "sensitiv",
+      "voksen"
     ]
   },
   {
@@ -269,9 +286,10 @@
       "Med animalsk og marint fett"
     ],
     "tags": [
-      "allergi",
-      "large",
-      "aktiv"
+      "voksen",
+      "aktiv",
+      "medium",
+      "large"
     ]
   },
   {
@@ -290,6 +308,7 @@
       "Høyt innhold av fett og protein"
     ],
     "tags": [
+      "voksen",
       "aktiv"
     ]
   },
@@ -309,6 +328,7 @@
       "Høyt innhold av fett og protein"
     ],
     "tags": [
+      "voksen",
       "aktiv"
     ]
   },
@@ -316,7 +336,7 @@
     "id": "hundefôr_exigent_mini_adult_3_kg",
     "title": "Hundefôr Exigent Mini Adult 3 kg",
     "brand": "Royal Canin",
-    "description": "Fullfôr til hunder - tilpasset voksne og eldre hunder av småraser (fra 1 til 10 kg) - Fra 10 måneders alder - For kresne hunder.  Ved måltidene vurderer hunden fôrets aroma og tekstur og størrelsen på bitene. For å få hunden din til å spise sunn mat – og ikke bare godbitene den vil ha når den...",
+    "description": "Fullfôr til hunder - tilpasset voksne og eldre hunder av småraser (fra 1 til 10 kg) - Fra 10 måneders alder - For kresne hunder.  Ved måltidene vurderer hunden fôrets aroma og tekstur og størrelsen på bitene. For å få hunden din til å spise sunn mat – og ikke bare godbitene den vil ha når den er...",
     "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/rc-hund-exiget-mini-3-kg-50348201/",
     "image_link": "https://www.felleskjopet.no/globalassets/products/50348201_base_50348201-base.jpg",
     "price": "359.00 NOK",
@@ -329,7 +349,9 @@
     ],
     "tags": [
       "voksen",
-      "small"
+      "senior",
+      "small",
+      "kresen"
     ]
   },
   {
@@ -348,202 +370,8 @@
       "Lettfordøyelig hydrolisert protein"
     ],
     "tags": [
-      "aktiv"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_adult_fish_l_1_5_kg",
-    "title": "Hundefôr Finest Adult Fish L 1,5 kg",
-    "brand": "Fish4Dogs",
-    "description": "Fish4Dogs® Finest Adult White Fish er et komplett fôr og er laget av sesongbaserte varianter av hvit fisk, fanget i det rike fiskeområdet i Nord-Atlanteren. Denne deilige kornfrie oppskriften er et komplett balansert tørrfôr; inneholder omega 3, som har mange fordeler, inkludert lettere fordøyels...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-adult-fish-l--50333539/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50333539_base_50333539-base.jpg",
-    "price": "169.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Fiskebasert fôr",
-      "Kornfritt",
-      "Marin kilde til Omega 3",
-      "Ideell for hunder med intoleranse"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_adult_fish_l_12_kg",
-    "title": "Hundefôr Finest Adult Fish L 12 kg",
-    "brand": "Fish4Dogs",
-    "description": "Fish4Dogs&reg; Finest Adult White Fish er et komplett fôr og er laget av sesongbaserte varianter av hvit fisk, fanget i det rike fiskeområdet i Nord-Atlanteren. Denne deilige kornfrie oppskriften er et komplett balansert tørrfôr; inneholder omega 3, som har mange fordeler, inkludert lettere fordøyels...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-adult-fish-l--50329540/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50329540_base_50329540-base-929823dfc863r-55317.jpg",
-    "price": "939.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Fiskebasert fôr",
-      "Kornfritt",
-      "Marin kilde til Omega 3",
-      "Ideell for hunder med intoleranse"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_adult_fish_s_1_5_kg",
-    "title": "Hundefôr Finest Adult Fish S 1.5 kg",
-    "brand": "Fish4Dogs",
-    "description": "Finest Valp er produsert i Norge av hvit fisk fra Nordatlanteren, og er produsert med kun en proteinkilde. Størrelse på fôrkuler passer til valper av små raser, eller i tidlig fase av vekstperioden.   Fish4Dogs&reg; Finest Adult White Fish er et komplett fôr og er laget av sesongbaserte varianter av...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-adultfish-s-1-50329541/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50329541_base_50329541-base-929823dfc689r-55262.jpg",
-    "price": "169.00 NOK",
-    "shipping_weight": "1.50kg",
-    "usp": [
-      "Fiskebasert fôr",
-      "Kornfritt",
-      "Marin kilde til Omega 4",
-      "Ideell for hunder med intoleranse"
-    ],
-    "tags": [
-      "valp",
       "voksen",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_adult_salmon_l_12_kg",
-    "title": "Hundefôr Finest Adult Salmon L 12 kg",
-    "brand": "Fish4Dogs",
-    "description": "Fish4Dogs&reg; Finest Adult Salmon er laget av Norsk kvalitetslaks. Finest Laks er et super-premium fôr, produsert med kun en proteinkilde. Størrelse på fôrkuler passer til mellomstore og store raser. Denne deilige, kornfrie oppskriften er et komplett, balansert, tørrfôr. Laks er rik på naturlig omeg...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-adu-salmon-l--50329544/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50329544_base_50329544-base-929823dsc894r-55263.jpg",
-    "price": "939.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Fiskebasert fôr",
-      "Kornfritt",
-      "Marin kilde til Omega 7",
-      "Ideell for hunder med intoleranse"
-    ],
-    "tags": [
-      "large",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_puppy_fish_l_6_kg",
-    "title": "Hundefôr Finest Puppy Fish L 6 kg",
-    "brand": "Fish4Dogs",
-    "description": "Finest Valp er produsert i Norge av hvit fisk fra Nordatlanteren, og er produsert med kun en proteinkilde. Størrelse på fôrkuler passer til valper av mellomstore og store raser. å hjelpe valper til å trives i de første månedene er utrolig viktig. å gi valpen næringsrik, deilig mat som de liker er...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-puppy-fish-l--50329539/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50329539_base_50329539-base-929823pfc801r-55261.jpg",
-    "price": "469.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "For valper 12 uker +",
-      "Enkel oppskrift av høy kvalitet",
-      "Kornfritt",
-      "Marin kilde til Omega 3"
-    ],
-    "tags": [
-      "valp",
-      "large"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_puppy_fish_s_1_5_kg",
-    "title": "Hundefôr Finest Puppy Fish S 1.5 kg",
-    "brand": "Fish4Dogs",
-    "description": "Finest Valp er produsert i Norge av hvit fisk fra Nordatlanteren, og er produsert med kun en proteinkilde. Størrelse på fôrkuler passer til valper av små raser, eller i tidlig fase av vekstperioden.       å hjelpe valper til å trives i de første månedene er utrolig viktig. å gi valpen næringsrik,...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-puppy-fish-s--50329538/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50329538_base_50329538-base-929823pfc702r-55316.jpg",
-    "price": "169.00 NOK",
-    "shipping_weight": "1.50kg",
-    "usp": [
-      "For valper 12 uker +",
-      "Enkel oppskrift av høy kvalitet",
-      "Kornfritt",
-      "Marin kilde til Omega 3"
-    ],
-    "tags": [
-      "valp",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_finest_senior_salmon_6_kg",
-    "title": "Hundefôr Finest Senior Salmon 6 kg",
-    "brand": "Fish4Dogs",
-    "description": "Fish4Dogs Finest Senior Små biter er spesielt utviklet for hunder som er 8 år eller eldre. Fôret inneholder en blanding av bestemte nivåer av næringsstoffer tilpasset behovene til seniorhunder.  ﻿ Størrelse på fôrkuler passer til mellomstore og store raser.  ﻿ Laks er naturlig rik på omega 3...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-senior-salm-l-50333522/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50333522_base_50333522-base.jpg",
-    "price": "469.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "Fiskebasert fôr",
-      "Kornfritt",
-      "Marin kilde til Omega 7",
-      "Bra for den senstitive magen"
-    ],
-    "tags": [
-      "large",
-      "senior",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_grass_feed_lamb_17_kg",
-    "title": "Hundefôr Grass feed Lamb 17 kg",
-    "brand": "Acana",
-    "description": "Acana Grass-Fed Lamb er et “limited ingredient” fôr som inneholder 50 % lam, ett enkelt, lett fordøyelig animalsk protein som er ideelt for diett-sensitive hunder av alle raser og livsstadier. Tørrfôret er kornfritt og helt uten syntetiske tilsetninger, og er tilberedt av ingredienser av svært hø...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-grass-feed-lamb-17kg-50348169/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348169_base_50348169-base.jpg",
-    "price": "2079.00 NOK",
-    "shipping_weight": "17.00kg",
-    "usp": [
-      "Inneholder 50 % lam",
-      "Lett fordøyelig animalsk protein",
-      "Ideelt for diett-sensitive hunder"
-    ],
-    "tags": [
-      "allergi"
-    ]
-  },
-  {
-    "id": "hundefôr_grass_feed_lamb_2_kg",
-    "title": "Hundefôr Grass feed Lamb 2 kg",
-    "brand": "Acana",
-    "description": "Acana Grass-Fed Lamb er et “limited ingredient” fôr som inneholder 50 % lam, ett enkelt, lett fordøyelig animalsk protein som er ideelt for diett-sensitive hunder av alle raser og livsstadier. Tørrfôret er kornfritt og helt uten syntetiske tilsetninger, og er tilberedt av ingredienser av svært hø...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-grass-feed-lamb-2kg-50348167/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348167_base_50348167-base.jpg",
-    "price": "429.00 NOK",
-    "shipping_weight": "2.00kg",
-    "usp": [
-      "Inneholder 50 % lam",
-      "Lett fordøyelig animalsk protein",
-      "Ideelt for diett-sensitive hunder",
-      "Kornfritt"
-    ],
-    "tags": [
-      "allergi"
-    ]
-  },
-  {
-    "id": "hundefôr_grass_feed_lamb_6_kg",
-    "title": "Hundefôr Grass feed Lamb 6 kg",
-    "brand": "Acana",
-    "description": "Acana Grass-Fed Lamb er et “limited ingredient” fôr som inneholder 50 % lam, ett enkelt, lett fordøyelig animalsk protein som er ideelt for diett-sensitive hunder av alle raser og livsstadier. Tørrfôret er kornfritt og helt uten syntetiske tilsetninger, og er tilberedt av ingredienser av svært hø...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-grass-feed-lamb-6kg-50348168/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348168_base_50348168-base.jpg",
-    "price": "949.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "Inneholder 50 % lam",
-      "Lett fordøyelig animalsk protein",
-      "Ideelt for diett-sensitive hunder"
-    ],
-    "tags": [
-      "allergi"
+      "aktiv"
     ]
   },
   {
@@ -556,7 +384,7 @@
     "price": "979.00 NOK",
     "shipping_weight": "15.17kg",
     "usp": [
-      "For valper av mellomstore raser opptil 12-14 måneder",
+      "For valper av store raser opptil 12-14 måneder",
       "Optimale nivåer av protein",
       "fett og karbohydrater",
       "Støtter sunn fordøyelse",
@@ -565,8 +393,7 @@
     "tags": [
       "valp",
       "large",
-      "voksen",
-      "vektkontroll"
+      "giant"
     ]
   },
   {
@@ -579,7 +406,7 @@
     "price": "979.00 NOK",
     "shipping_weight": "15.00kg",
     "usp": [
-      "For valper av store raser opptil 12 måneder",
+      "For valper av mellomstore raser opptil 12 måneder",
       "Optimale nivåer av protein",
       "fett og karbohydrater",
       "Støtter sunn fordøyelse",
@@ -587,108 +414,7 @@
     ],
     "tags": [
       "valp",
-      "large"
-    ]
-  },
-  {
-    "id": "hundefôr_healthy_mobility_large_adult_kyllling_14_kg",
-    "title": "Hundefôr Healthy Mobility Large Adult Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Hill`s Science Plan Healthy Mobility Large Breed Adult hundefôr med kylling gir din store voksne hund avansert ernæring som støtter ledd og bevegelse. Dette nøyaktig balanserte fôret inneholder EPA fra fiskeolje for å gi god bruskhelse. Glukosaminer og kondroitin gir byggestener til leddbrusk....",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-h-mobility-large--50328570/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328570_base_50328570-base-984167604370-54722.jpg",
-    "price": "1199.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Dette tørrfôret støtter leddhelse",
-      "For en sunn og frisk brusk hos hund",
-      "Inneholder EPA fra fiskeolje",
-      "Ingredienser av høy kvalitet"
-    ],
-    "tags": [
-      "large",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_healthy_mobility_medium_adult_kyllling_14_kg",
-    "title": "Hundefôr Healthy Mobility Medium Adult Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Hill`s Science Plan Healthy Mobility Adult medium hundefôr med kylling gir din voksne hund avansert ernæring som støtter ledd og bevegelse. Dette nøyaktig balanserte fôret inneholder EPA fra fiskeolje for å gi god bruskhelse. Glukosaminer og kondroitin gir byggestener til leddbrusk. Dette hundefô...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-h-mobility-med-14-50328569/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328569_base_50328569-base-984167604381-54727.jpg",
-    "price": "1199.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Dette tørrfôret støtter leddhelse",
-      "For en sunn og frisk brusk hos hund",
-      "Inneholder EPA fra fiskeolje",
-      "Ingredienser av høy kvalitet"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_healthy_mobility_small_mini_adult_kyllling_1_5_kg",
-    "title": "Hundefôr Healthy Mobility Small & Mini Adult Kyllling 1,5 kg",
-    "brand": "Hill´s",
-    "description": "Hill`s Science Plan Healthy Mobility Small & Mini Adult hundefôr med kylling gir din lille, voksne hund avansert ernæring som støtter ledd og bevegelse. Dette nøyaktig balanserte fôret inneholder EPA fra fiskeolje for å gi god bruskhelse. Glukosaminer og kondroitin gir byggestener til leddbrusk....",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-h-mobility-sm-15k-50328568/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328568_base_50328568-base-984167604252-54711.jpg",
-    "price": "299.00 NOK",
-    "shipping_weight": "1.50kg",
-    "usp": [
-      "Dette tørrfôret støtter leddhelse",
-      "For en sunn og frisk brusk hos hund",
-      "Inneholder EPA fra fiskeolje",
-      "Ingredienser av høy kvalitet"
-    ],
-    "tags": [
-      "voksen",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_large_breed_adult_kyllling_14_kg",
-    "title": "Hundefôr Large Breed Adult Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Store hunder har et eget næringsbehov. Så Hill`s Science Plan Large Breed Adult hundefôr med kylling er spesielt sammensatt for å gi den store hunden den behøver som voksen. Laget av lettfordøyelige ingredienser vil dette fôret for voksne, store hunder støtte sunn muskulatur med proteiner av høy...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-large-chicken--50328556/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328556_base_50328556-base-984167604387-54723.jpg",
-    "price": "999.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Tørrfôr for store",
-      "voksne hunder",
-      "Støtter leddhelse",
-      "Med omega-6 fettsyrer og vitamin E",
-      "Fremmer sunn muskulatur"
-    ],
-    "tags": [
-      "large",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_large_breed_mature_adult_6_kyllling_14_kg",
-    "title": "Hundefôr Large Breed Mature Adult 6+ Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Når din store hund blir eldre behøver den et fôr tilpasset sin alder. Hill`s Science Plan Mature Large Breed Adult hundefôr med kylling gir energi og støtter god helse til vitale organer hos eldre hunder . Pleiende omega-6 fettsyrer og vitamin E for frisk hud og pels og balansert mineralinnhold f...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-mature-large-chicken-50328562/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328562_base_50328562-base-984167604371-54721.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "For store hunder over 6 år",
-      "Støtter energi og aktivitetsnivå",
-      "Støtter sunt hjerte og sunne nyrer",
-      "Støtter sunn hud og blank pels"
-    ],
-    "tags": [
-      "aktiv",
-      "large",
-      "voksen"
+      "medium"
     ]
   },
   {
@@ -708,6 +434,7 @@
       "kilde til omega-3 og glukosamin"
     ],
     "tags": [
+      "voksen",
       "vektkontroll"
     ]
   },
@@ -727,63 +454,7 @@
       "Med karnitin for fettforbrenning"
     ],
     "tags": [
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_light_4x3_kg",
-    "title": "Hundefôr Light 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Light er tilpasset hunder som er overvektige eller har lett for å legge på seg. Fôret har et moderat fettinnhold, og det skreddersydde nivået av kostfiber gjør det lettere å kontrollere hundens energiinntak. Appetitt Light inneholder karnitin som kan påvirke energi- og fettmetabolismen....",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-light-smaa-pel-4x3kg-12832/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12832_base_12832-base.jpg",
-    "price": "799.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder med overvekt",
-      "Moderat fettinnhold",
-      "Karnitin for energi- og fettforbrenning"
-    ],
-    "tags": [
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_light_and_fit_recipe_11_4_kg",
-    "title": "Hundefôr Light and Fit Recipe 11,4 kg",
-    "brand": "Acana",
-    "description": "Overvektige hunder drar fordel av en diett rik på proteiner for å fremme en slank muskelmasse. Men samtidig bør dietten inneholde minimalt med karbohydrater, for å motvirke overvekt og diabetes. Det er derfor Acana Light & Fit er stappfullt med kjøtt, inkludert frittgående kylling, reirlagte egg ...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-light-and-fit-recipe-114-50348165/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348165_base_50348165-base.jpg",
-    "price": "1179.00 NOK",
-    "shipping_weight": "11.40kg",
-    "usp": [
-      "For hunder med overvekt",
-      "Også for å hindre overvekt",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_light_and_fit_recipe_6_kg",
-    "title": "Hundefôr Light and Fit Recipe 6 kg",
-    "brand": "Acana",
-    "description": "Overvektige hunder drar fordel av en diett rik på proteiner for å fremme en slank muskelmasse. Men samtidig bør dietten inneholde minimalt med karbohydrater, for å motvirke overvekt og diabetes. Det er derfor Acana Light & Fit er stappfullt med kjøtt, inkludert frittgående kylling, reirlagte egg ...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-light-and-fit-recipe-6kg-50348164/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348164_base_50348164-base.jpg",
-    "price": "739.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "For hunder med overvekt",
-      "Også for å hindre overvekt",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "small",
+      "voksen",
       "vektkontroll"
     ]
   },
@@ -803,28 +474,8 @@
       "Lettfordøyelig hydrolysert protein"
     ],
     "tags": [
-      "large",
-      "aktiv"
-    ]
-  },
-  {
-    "id": "hundefôr_maintenance_medium_breed_1_kg",
-    "title": "Hundefôr Maintenance Medium Breed 1 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Maintenance Medium Breed er et fullfôr for voksne hunder av mellomstore raser (10-25 kg) over 1 år. Fôret er tilpasset hunder uten særskilte behov og med normal aktivitet. Men normal aktivitet regnes hunder som mosjoneres 1-2 timer daglig uten spesielt høy anstrengelse. Dette fôret har e...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-maint-medium-1kg-12868/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12868_base_12868-base-99979212716ny.jpg",
-    "price": "119.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder mellom 10-25 kg",
-      "Med normalt aktivitetsnivå",
-      "Lettfordøyelig hydrolysert protein"
-    ],
-    "tags": [
-      "large",
-      "aktiv"
+      "voksen",
+      "large"
     ]
   },
   {
@@ -843,8 +494,8 @@
       "Lettfordøyelig hydrolysert protein"
     ],
     "tags": [
-      "large",
-      "aktiv"
+      "voksen",
+      "medium"
     ]
   },
   {
@@ -863,8 +514,8 @@
       "Lettfordøyelig hydrolysert protein"
     ],
     "tags": [
-      "large",
-      "aktiv"
+      "voksen",
+      "medium"
     ]
   },
   {
@@ -883,27 +534,7 @@
       "Lettfordøyelig hydrolysert protein"
     ],
     "tags": [
-      "aktiv",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_maintenance_small_breed_4x3_kg",
-    "title": "Hundefôr Maintenance Small Breed 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Maintenance Small Breed er et fullfôr for voksne hunder av små raser (under 10 kg) over 1 år. Fôret er tilpasset hunder uten særskilte behov og med normal aktivitet. Men normal aktivitet regnes hunder som mosjoneres 1-2 timer daglig uten spesielt høy anstrengelse. Dette fôret har et høyt...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-maint-small-4x3kg-12826/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12826_base_12826-base-d.jpg",
-    "price": "729.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder under 10 kg",
-      "Med normalt aktivitetsnivå",
-      "Lettfordøyelig hydrolysert protein"
-    ],
-    "tags": [
-      "aktiv",
+      "voksen",
       "small"
     ]
   },
@@ -924,6 +555,7 @@
     ],
     "tags": [
       "large",
+      "maxi",
       "voksen"
     ]
   },
@@ -945,8 +577,7 @@
     "tags": [
       "valp",
       "large",
-      "voksen",
-      "vektkontroll"
+      "maxi"
     ]
   },
   {
@@ -964,103 +595,7 @@
       "Egnet fra 12 mnd til 7 år"
     ],
     "tags": [
-      "large",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_medium_adult_kyllling_14_kg",
-    "title": "Hundefôr Medium Adult Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Når din hund er på toppen av livet behøver den et fôr som passer. Hill`s Science Plan Adult hundefôr med kylling inneholder proteiner av høy kvalitet gir sunne, sterke muskler, naturlige fibre for en sunn fordøyelse og omega-6 fettsyrer for frisk hud. Spesielt sammensatt så også din voksne hund...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-med-chicken-14-50328553/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328553_base_50328553-base-984167604354-54717.jpg",
-    "price": "1049.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Lettfordøyelige ingredienser",
-      "Støtter sunn hud og blank pels",
-      "Støtter sunn muskulatur",
-      "Støtter sunn fordøyelse"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_medium_adult_kyllling_2_5_kg",
-    "title": "Hundefôr Medium Adult Kyllling 2,5 kg",
-    "brand": "Hill´s",
-    "description": "Når din hund er på toppen av livet behøver den et fôr som passer. Hill`s Science Plan Adult hundefôr med kylling inneholder proteiner av høy kvalitet gir sunne, sterke muskler, naturlige fibre for en sunn fordøyelse og omega-6 fettsyrer for frisk hud. Spesielt sammensatt så også din voksne hund...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-m-chicken-25kg-50332260/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50332260_base_50332260-base-984167604274-59277.jpg",
-    "price": "329.00 NOK",
-    "shipping_weight": "2.50kg",
-    "usp": [
-      "Lettfordøyelige ingredienser",
-      "Støtter sunn hud og blank pels",
-      "Støtter sunn muskulatur",
-      "Støtter sunn fordøyelse"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_medium_adult_lam_og_ris_14_kg",
-    "title": "Hundefôr Medium Adult Lam og Ris 14 kg",
-    "brand": "Hill´s",
-    "description": "Når din hund er på toppen av livet behøver den et fôr som passer. Hill`s Science Plan Adult hundefôr med lam og ris inneholder proteiner av høy kvalitet gir sunne, sterke muskler og fibre for en sunn fordøyelse og omega-6 fettsyrer for frisk hud. Spesielt sammensatt så også din voksne hund gleder...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-medium-lambri--50328554/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328554_base_50328554-base-984167604357-54720.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Støtter sunn fordøyelse",
-      "Støtter sunn hud og blank pels",
-      "Støtter sunn muskulatur",
-      "Lettfordøyelige ingredienser"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_medium_lam_og_ris_14_kg",
-    "title": "Hundefôr Medium Lam og Ris 14 kg",
-    "brand": "Hill´s",
-    "description": "Din lille valp vokser fort. Og du vil ha et fôr som holder følge med veksten. Hill`s Science Plan tørrfôr for valp med lam og ris inneholder den rette balansen av ingredienser og mineraler for å støtte din valp når den vokser så den kan få en god start i livet. DHA fra fiskeolje støtter utvikling...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-puppy-med-lambrice-1-50328548/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328548_base_50328548-base-984167604353-54961.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Optimale nivåer av kalsium",
-      "Støtter sterke ben og tenner",
-      "Sunn utvikling av øyne og hjerne",
-      "Fremmer sunn muskulatur hos valper"
-    ],
-    "tags": [
-      "valp"
-    ]
-  },
-  {
-    "id": "hundefôr_medium_mature_adult_7_kyllling_14_kg",
-    "title": "Hundefôr Medium Mature Adult 7+ Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Når din hund blir eldre behøver den et fôr tilpasset sin alder. Hill`s Science Plan Mature Adult hundefôr med kylling gir energi og støtter god helse til vitale organer hos eldre hunder . Pleiende omega-6 fettsyrer og vitamin E for frisk hud og pels og balansert mineralinnhold for hjerte, nyrer o...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-mature-med-chicken-1-50328561/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328561_base_50328561-base-984167604378-54730.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Støtter immunforsvaret",
-      "Støtter sunn muskulatur",
-      "Støtter energi og aktivitetsnivå",
-      "Med balansert mineralinnhold"
-    ],
-    "tags": [
-      "aktiv",
+      "medium",
       "voksen"
     ]
   },
@@ -1081,29 +616,7 @@
     ],
     "tags": [
       "valp",
-      "large",
-      "voksen",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_mini_adult_2_kg",
-    "title": "Hundefôr Mini Adult 2 kg",
-    "brand": "Royal Canin",
-    "description": "Fullfôr til hunder - Til voksne hunder av små raser (opptil 10 kg) - Over 10 måneders alder. Royal Canin® Mini Adult er et balansert fullfôr som er designet for å møte små rasers spesielle behov og støtte dem gjennom årene som voksen. Dette fôret passer for små raser som veier opptil 10 kg og er...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/rc-hund-mini-adult-2kg-50348200/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348200_base_50348200-base.jpg",
-    "price": "249.00 NOK",
-    "shipping_weight": "2.00kg",
-    "usp": [
-      "Fullfôr til voksne hunder",
-      "For små raser opp til 10 kg",
-      "Nøye tilpasset kaloriinnhold",
-      "Sunt og ernæringsmessig fôr"
-    ],
-    "tags": [
-      "voksen",
-      "small"
+      "medium"
     ]
   },
   {
@@ -1124,29 +637,7 @@
     "tags": [
       "voksen",
       "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_mini_puppy_12x85_g",
-    "title": "Hundefôr Mini Puppy 12x85 g",
-    "brand": "Royal Canin",
-    "description": "Komplett fôr til hunder - For valper av små raser (voksenvekt fra 1 til 10 kg) - Til 10 måneders alder.  Royal Canin® Mini Puppy Gravy-våtfôr er sammensatt spesielt for å støtte de ernæringsmessige behovene hos valper av små raser. Dette våtfôret egner seg til valper som er mellom 2 og 10 måneder...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/rc-hund-mini-puppy-gravy-12x85-50348199/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348199_base_50348199-base.jpg",
-    "price": "239.00 NOK",
-    "shipping_weight": "1.02kg",
-    "usp": [
-      "Fullfôr til valper små raser",
-      "For små raser opp til 10 kg",
-      "Våtfôr i praktiske pakninger",
-      "Sunt og ernæringsmessig fôr"
-    ],
-    "tags": [
-      "valp",
-      "voksen",
-      "small",
-      "vektkontroll"
+      "mini"
     ]
   },
   {
@@ -1166,153 +657,8 @@
     ],
     "tags": [
       "valp",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_mini_puppy_8_kg",
-    "title": "Hundefôr Mini Puppy 8 kg",
-    "brand": "Royal Canin",
-    "description": "Komplett fôr til hunder - Til valper av små raser (voksenvekt opptil 10 kg) - Fra 2 til 10 måneders alder.  Hundefôret Royal Canin® Mini Puppy er sammensatt spesielt for å støtte de ernæringsmessige behovene hos valper av små raser. Dette tørrfôret egner seg til valper som er mellom 2 og 10 måned...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/rc-hund-mini-puppy-8-kg-50348198/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348198_base_50348198-base.jpg",
-    "price": "779.00 NOK",
-    "shipping_weight": "8.00kg",
-    "usp": [
-      "Fullfôr til valper små raser",
-      "For valper fra 2 til 10 måneder",
-      "Med optimalt energiinnhold",
-      "Sunt og ernæringsmessig fôr"
-    ],
-    "tags": [
-      "valp",
-      "voksen",
       "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_oral_care_adult_kyllling_12_kg",
-    "title": "Hundefôr Oral Care Adult Kyllling 12 kg",
-    "brand": "Hill´s",
-    "description": "Merk! Kan være bestilllingsvare i enkelte butikker. Hundens munnhelse er mye mer enn bare tannhelse. Støtt generell helse og velvære med Hill`s Science Plan Oral Care Adult hundefôr med kylling. laget med en unik, klinisk dokumentert selvlåsende fiberteknologi gir disse unike fôrbitene rene tenne...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-oral-care-med--50328574/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328574_base_50328574-base-984167604330-54960.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Dette tørrfôret støtter tannhelse",
-      "Reduserer plakk",
-      "Renser tennene og gir bedre ånde",
-      "Støtter sunn hud og blank pels"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_perfect_weight_large_adult_kyllling_12_kg",
-    "title": "Hundefôr Perfect Weight Large Adult Kyllling 12 kg",
-    "brand": "Hill´s",
-    "description": "å bli satt på en lavkaloridiett kan være anstrengende både for deg og for din store hund. Hill`s Science Plan Perfect Weight Large Breed Adult hundefôr med kylling tilbyr en delikat, banebrytende diett for vektkontroll som din voksne hund vil elske. Med proteiner for opprettholdelse av sunn...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-per-weig-large-ch-50328566/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328566_base_50328566-base-984167604316-54918.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Kliniks dokumentert vektkontroll",
-      "Tilsatt L-karnitin og kokosolje",
-      "Inneholder prebiotiske fibre",
-      "Sunn vektkontroll hos store hunder"
-    ],
-    "tags": [
-      "large",
-      "voksen",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_perfect_weight_medium_adult_kyllling_12_kg",
-    "title": "Hundefôr Perfect Weight Medium Adult Kyllling 12 kg",
-    "brand": "Hill´s",
-    "description": "å bli satt på en lavkaloridiett kan være anstrengende både for deg og for din hund. Hill`s Science Plan Perfect Weight Adult hundefôr med kylling tilbyr en delikat, banebrytende diett for vektkontroll som din hund vil elske. Med proteiner for opprettholdelse av sunn msukelmasse er dette et perfek...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-per-weig-med-chi--50328565/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328565_base_50328565-base-984167604297-54714.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Klinisk dokumentert vektkontroll",
-      "Tilsatt L-karnitin og kokosolje",
-      "Inneholder prebiotiske fibre",
-      "Sunn vektkontroll for hunder"
-    ],
-    "tags": [
-      "voksen",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_perfect_weight_small_mini_adult_kyllling_1_5_kg",
-    "title": "Hundefôr Perfect Weight Small & Mini Adult Kyllling 1,5 kg",
-    "brand": "Hill´s",
-    "description": "Begynner din lille hund å bli overvektig? Leter du etter en enkel måte å holde en sunn kroppsvekt på din lille hund uten kompliserte diettplaner? Hill`s Science Plan Perfect Weight Small & Mini tørrfôr for hund er en banebrytende diett for vektkontroll som små hunder ikke kan motstå. Ved siden av...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-per-weig-sm-chi-1-50328564/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328564_base_50328564-base-984167604255-54710.jpg",
-    "price": "299.00 NOK",
-    "shipping_weight": "1.50kg",
-    "usp": [
-      "Klinisk dokumentert vektkontroll",
-      "Høyt proteininnhold og mye fibre",
-      "Inneholder prebiotiske fibre",
-      "Sunn vektkontroll for hunder"
-    ],
-    "tags": [
-      "voksen",
-      "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_performance_adult_kyllling_14_kg",
-    "title": "Hundefôr Performance Adult Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Merk! Kan være bestilllingsvare i enkelte butikker. Hill`s Science Plan Performance Adult hundefôr med kylling tilfredsstiller det høye energinivået arbeidende hunder behøver. Dette nøye balanserte fôret inneholder proteiner av høy kvalitet for sunn muskulatur og riktig riktig balansert...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-performance-14-50328573/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328573_base_50328573-base-984167604383-54962.jpg",
-    "price": "1199.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Tørrfôr for aktive",
-      "voksne hunder",
-      "Fôrbiter med høyt energiinnhold",
-      "Med balansert mineralinnhold",
-      "Ingredienser av høy kvalitet"
-    ],
-    "tags": [
-      "aktiv",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_puppy_large_breed_1_kg",
-    "title": "Hundefôr Puppy Large Breed 1 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Puppy Large Breed er tilpasset valper av store raser (voksenvekt over 25 kg). Fôret har et innhold av proteiner av animalsk og marin opprinnelse med høy proteinfordøyelighet, og som er avgjørende for vekst og utvikling av valpen. Fôret inneholder ingen korn- råvarer med unntak av ris og...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-puppy-large-1kg-12871/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12871_base_12871-base-99979212404ny.jpg",
-    "price": "119.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "Valper med voksenvekt over 25 kg",
-      "Fremmer sunn vekst og utvikling",
-      "Lettfordøyelig hydrolysert protein"
-    ],
-    "tags": [
-      "valp",
-      "large",
-      "voksen",
-      "vektkontroll"
+      "mini"
     ]
   },
   {
@@ -1332,31 +678,7 @@
     ],
     "tags": [
       "valp",
-      "large",
-      "voksen",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_puppy_medium_breed_1_kg",
-    "title": "Hundefôr Puppy Medium Breed 1 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Puppy Medium Breed er tilpasset valper av mellomstore raser (voksenvekt mellom 10 og 25 kg). Fôret har et innhold av proteiner av animalsk og marin opprinnelse med høy proteinfordøyelighet, og som er avgjørende for vekst og utvikling av valpen. Fôret inneholder ingen kornråvarer med unnt...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-puppy-medium-1kg-12874/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12874_base_12874-base-99979212711ny.jpg",
-    "price": "119.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "Valper med voksenvekt 10-25 kg",
-      "Fremmer sunn vekst og utvikling",
-      "Lettfordøyelig hydrolysert protein"
-    ],
-    "tags": [
-      "valp",
-      "large",
-      "voksen",
-      "vektkontroll"
+      "large"
     ]
   },
   {
@@ -1376,9 +698,7 @@
     ],
     "tags": [
       "valp",
-      "large",
-      "voksen",
-      "vektkontroll"
+      "medium"
     ]
   },
   {
@@ -1398,50 +718,7 @@
     ],
     "tags": [
       "valp",
-      "large",
-      "voksen",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_puppy_recipe_6_kg",
-    "title": "Hundefôr Puppy Recipe 6 kg",
-    "brand": "Acana",
-    "description": "Av natur er alle valper rovdyr, som betyr at de er biologisk tilpasset en variert diett med ferske, hele kjøttslag med mindre mengder frukt og grønnsaker. Acana Puppy Recipe er stappfullt med frittgående kylling og reirlagte egg fra præriegårder og viltfanget flyndre fra Vancouver Island, levert...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-puppy-recipe-6kg-50348160/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348160_base_50348160-base.jpg",
-    "price": "729.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "Valpefôr for mellomstore valper",
-      "Med kylling",
-      "Kornfritt"
-    ],
-    "tags": [
-      "valp",
-      "large"
-    ]
-  },
-  {
-    "id": "hundefôr_puppy_small_breed_1_kg",
-    "title": "Hundefôr Puppy Small Breed 1 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Puppy Small Breed er tilpasset valper av små raser (voksenvekt under 10 kg). Fôret har et innhold av proteiner av animalsk og marin opprinnelse med høy proteinfordøyelighet, og som er avgjørende for vekst og utvikling av valpen. Fôret inneholder ingen kornråvarer med unntak av ris og har...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-puppy-small-1kg-12876/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12876_base_12876-base-99979212710ny.jpg",
-    "price": "119.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "Valper med voksenvekt under 10 kg",
-      "Fremmer sunn vekst og utvikling",
-      "Lettfordøyelig hydrolysert protein"
-    ],
-    "tags": [
-      "valp",
-      "voksen",
-      "small",
-      "vektkontroll"
+      "medium"
     ]
   },
   {
@@ -1458,49 +735,6 @@
       "Valper med voksenvekt under 10 kg",
       "Fremmer sunn vekst og utvikling",
       "Lettfordøyelig hydrolysert protein"
-    ],
-    "tags": [
-      "valp",
-      "voksen",
-      "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_puppy_small_breed_4x3_kg",
-    "title": "Hundefôr Puppy Small Breed 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Puppy Small Breed er tilpasset valper av små raser (voksenvekt under 10 kg). Fôret har et innhold av proteiner av animalsk og marin opprinnelse med høy proteinfordøyelighet, og som er avgjørende for vekst og utvikling av valpen. Fôret inneholder ingen kornråvarer med unntak av ris og har...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-puppy-small-4x3kg-12827/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12827_base_12827-base-999792fka12648ny-61350.jpg",
-    "price": "729.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For eldre hunder i alle størrelser",
-      "Optimalt fôr for sunn aldring",
-      "Med karnitin for fettforbrenning"
-    ],
-    "tags": [
-      "valp",
-      "voksen",
-      "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_puppy_small_breed_recipe_6_kg",
-    "title": "Hundefôr Puppy Small Breed Recipe 6 kg",
-    "brand": "Acana",
-    "description": "For å støtte opp om deres korte og intense vekstperiode, trenger valper av små raser et fett- og proteinrikt kosthold med fett fra en variasjon ferske kjøttslag. Det er derfor Acana Puppy Small breed er fylt med frittgående kylling, viltfanget flyndre og reirlagte egg, stappfulle med godstoffer o...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-puppy-small-breed-recipe-50348159/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348159_base_50348159-base.jpg",
-    "price": "739.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "Valpefôr til små hunderaser",
-      "Med kylling",
-      "Kornfritt"
     ],
     "tags": [
       "valp",
@@ -1523,7 +757,8 @@
       "Med karnitin for fettforbrenning"
     ],
     "tags": [
-      "senior"
+      "senior",
+      "vektkontroll"
     ]
   },
   {
@@ -1542,45 +777,7 @@
       "Med karnitin for fettforbrenning"
     ],
     "tags": [
-      "senior"
-    ]
-  },
-  {
-    "id": "hundefôr_senior_4x3_kg",
-    "title": "Hundefôr Senior 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Energi- og næringsinnholdet i Appetitt Senior er tilpasset og balansert etter aldrende hunders behov. Aldringsprosessen hos hunder varierer, og overgangen til et seniorfôr må vurderes individuelt for hver hund. Fôret har et moderat proteinnivå og et høyt innhold av naturlige antioksidanter som...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-senior-smaa-pel-4x3kg-12828/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12828_base_12828-base-999792fka12681ny-61349.jpg",
-    "price": "749.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For eldre hunder i alle størrelser",
-      "Optimalt fôr for sunn aldring",
-      "Med karnitin for fettforbrenning"
-    ],
-    "tags": [
-      "senior"
-    ]
-  },
-  {
-    "id": "hundefôr_senior_dog_recipe_6_kg",
-    "title": "Hundefôr Senior Dog Recipe 6 kg",
-    "brand": "Acana",
-    "description": "Eldre hunder drar fordel av en diett rik på kjøttproteiner for å fremme en slank muskelmasse, men samtidig bør dietten inneholde minimalt med karbohydrater, for å motvirke overvekt og diabetes.  Næringsinnhold:  Råprotein (min.): 33 % Fettinnhold (min.): 14 % Råaske (maks.): 7 % Råfiber (maks.): ...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/acana-senior-dog-recipe-6-kg-50348166/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50348166_base_50348166-base.jpg",
-    "price": "739.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "For eldre hunder",
-      "Motvirke overvekt",
-      "Med smak av kylling"
-    ],
-    "tags": [
       "senior",
-      "small",
       "vektkontroll"
     ]
   },
@@ -1600,8 +797,9 @@
       "Med smak av kylling"
     ],
     "tags": [
-      "large",
-      "senior"
+      "senior",
+      "medium",
+      "large"
     ]
   },
   {
@@ -1620,28 +818,6 @@
       "Med smak av kylling"
     ],
     "tags": [
-      "large",
-      "senior",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_senior_små_hunder_5x3_kg",
-    "title": "Hundefôr Senior små hunder 5x3 kg",
-    "brand": "Labb",
-    "description": "Labb Senior har et næringsinnhold tilpasset eldre hunder. Hunder eldes individuelt og det varierer fra individ til individ når det er gunstig å endre fôringen. En stor andel av proteinet er hydrolysert kyllingprotein med høy fordøyelighet og lavt innhold av potensielle allergener. Se www.labb.no...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-senior-smaa-5x3kg-12679/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12679_base_12679-base.jpg",
-    "price": "669.00 NOK",
-    "shipping_weight": "15.80kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "Til eldre hunder for sunn aldring",
-      "Støtter aldrene ledd",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "large",
       "senior",
       "small"
     ]
@@ -1663,7 +839,10 @@
     ],
     "tags": [
       "allergi",
-      "large"
+      "sensitiv",
+      "medium",
+      "large",
+      "voksen"
     ]
   },
   {
@@ -1683,27 +862,9 @@
     ],
     "tags": [
       "allergi",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitiv_små_raser_5x3_kg",
-    "title": "Hundefôr Sensitiv små raser 5x3 kg",
-    "brand": "Labb",
-    "description": "Labb Sensitiv har et høyt innhold av hydrolysert animalsk protein fra kylling, og inneholder ikke hvete. Dermed har Labb Sensitiv et lavt innhold av mulige allergener og stoffer som kan forårsake allergier eller fôrintoleranse. Labb Sensitiv kan være et godt alternativ til hunder med hudirritasjo...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-sensitiv-smaa-5x3kg-12705/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12705_base_12705-base.jpg",
-    "price": "699.00 NOK",
-    "shipping_weight": "15.80kg",
-    "usp": [
-      "Fullfôr sensitiv til hunder under 15 kg",
-      "Norsk kvalitetsfôr til hund",
-      "Skånsom for magen",
-      "Fôr med lavt innhold av allergener"
-    ],
-    "tags": [
-      "allergi",
-      "small"
+      "sensitiv",
+      "small",
+      "voksen"
     ]
   },
   {
@@ -1723,7 +884,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
+      "sensitiv",
+      "large",
+      "voksen"
     ]
   },
   {
@@ -1743,7 +906,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
+      "sensitiv",
+      "medium",
+      "voksen"
     ]
   },
   {
@@ -1763,7 +928,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
+      "sensitiv",
+      "medium",
+      "voksen"
     ]
   },
   {
@@ -1783,27 +950,9 @@
     ],
     "tags": [
       "allergi",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitive_chicken_small_breed_4x3_kg",
-    "title": "Hundefôr Sensitive Chicken Small Breed 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Sensitive Chicken Small Breed er tilpasset sensitive hunder av små raser (under 10 kg) og har et høyt innhold av hydrolysert protein fra kylling med høy fordøyelighet. Fôret er et monoproteinfôr og er dermed helt fri for marine proteinkilder (inneholder ikke krill). Naturlig glukosamin o...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-sens-kyll-small-4x3kg-12830/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12830_base_12830-base-999792fka12632ny-61347.jpg",
-    "price": "799.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder under 10 kg",
-      "Monoproteinfôr med kylling protein",
-      "Tilpasset sensitive hunder"
-    ],
-    "tags": [
-      "allergi",
-      "small"
+      "sensitiv",
+      "small",
+      "voksen"
     ]
   },
   {
@@ -1823,7 +972,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
+      "sensitiv",
+      "large",
+      "voksen"
     ]
   },
   {
@@ -1843,27 +994,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitive_fish_medium_breed_3_kg",
-    "title": "Hundefôr Sensitive Fish Medium Breed 3 kg",
-    "brand": "Appetitt",
-    "description": "Sensitive Fish Medium er tilpasset sensitive hunder av mellomstore raser (10-25 kg). Fôret har et høyt innhold av hydrolysert protein fra fisk med høy fordøyelighet. Inneholder kun proteiner fra marine kilder, og er derfor et godt alternativ for hunder som er sensitive overfor kylling eller andre...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-sens-fish-medium-3kg-12884/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12884_base_12884-base-99979212605ny-61300.jpg",
-    "price": "369.00 NOK",
-    "shipping_weight": "3.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder mellom 10-25 kg",
-      "Monoproteinfôr med marint protein",
-      "Tilpasset sensitive hunder"
-    ],
-    "tags": [
-      "allergi",
-      "large"
+      "sensitiv",
+      "medium",
+      "voksen"
     ]
   },
   {
@@ -1883,27 +1016,9 @@
     ],
     "tags": [
       "allergi",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitive_fish_small_breed_4x3_kg",
-    "title": "Hundefôr Sensitive Fish Small Breed 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Sensitive Fish Small er tilpasset sensitive hunder av små raser (under 10 kg). Fôret har et høyt innhold av hydrolysert protein fra fisk med høy fordøyelighet. Inneholder kun proteiner fra marine kilder, og er derfor et godt alternativ for hunder som er sensitive overfor kylling eller andre...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-sens-fish-smaa-pel-4x3-12829/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12829_base_12829-base-999792fka12616ny-61348.jpg",
-    "price": "879.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder under 10 kg",
-      "Monoproteinfôr med marint protein",
-      "Tilpasset sensitive hunder"
-    ],
-    "tags": [
-      "allergi",
-      "small"
+      "sensitiv",
+      "small",
+      "voksen"
     ]
   },
   {
@@ -1923,7 +1038,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
+      "sensitiv",
+      "large",
+      "voksen"
     ]
   },
   {
@@ -1943,27 +1060,9 @@
     ],
     "tags": [
       "allergi",
-      "large"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitive_lamb_chicken_medium_breed_3_kg",
-    "title": "Hundefôr Sensitive Lamb & Chicken Medium Breed 3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Sensitive with Lamb and Chicken Medium Breed er tilpasset sensitive hunder av mellomstore raser (10-25 kg). Fôret har et høyt innhold av protein fra lam og har i tillegg et høyt innhold hydrolysert protein fra kylling med høy fordøyelighet. Naturlig glukosamin og kondroitin fra kylling f...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-sens-lamb-m-3kg-12889/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12889_base_12889-base-99979212905ny.jpg",
-    "price": "369.00 NOK",
-    "shipping_weight": "3.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder mellom 10-25 kg",
-      "Hydrolisertprotein fra lam-kylling",
-      "Tilpasset sensitive hunder"
-    ],
-    "tags": [
-      "allergi",
-      "large"
+      "sensitiv",
+      "medium",
+      "voksen"
     ]
   },
   {
@@ -1983,27 +1082,9 @@
     ],
     "tags": [
       "allergi",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitive_lamb_chicken_small_breed_4x3_kg",
-    "title": "Hundefôr Sensitive Lamb & Chicken Small Breed 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Sensitive with Lamb and Chicken Small Breed er tilpasset sensitive hunder av små raser (under 10 kg). Fôret har et høyt innhold av protein fra lam og har i tillegg et høyt innhold hydrolysert protein fra kylling med høy fordøyelighet. Naturlig glukosamin og kondroitin fra kylling for led...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-sens-lam-s-3kgx4stk-12925/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12925_base_12925-base.jpg",
-    "price": "799.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder under 10 kg",
-      "Hydrolisertprotein fra lam-kylling",
-      "Tilpasset sensitive hunder"
-    ],
-    "tags": [
-      "allergi",
-      "small"
+      "sensitiv",
+      "small",
+      "voksen"
     ]
   },
   {
@@ -2023,7 +1104,8 @@
     ],
     "tags": [
       "valp",
-      "allergi"
+      "allergi",
+      "sensitiv"
     ]
   },
   {
@@ -2044,67 +1126,9 @@
     "tags": [
       "valp",
       "allergi",
+      "sensitiv",
       "small"
     ]
-  },
-  {
-    "id": "hundefôr_sensitive_stomach_skin_medium_adult_kyllling_14_kg",
-    "title": "Hundefôr Sensitive Stomach & Skin Medium Adult Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Din voksne hund vil se like bra ut som den føler seg. Hill`s Science Plan Sensitive Stomach & Skin Adult hundefôr med kylling er spesielt sammensatt med tanke på optimal fordøyelseshelse. Dette hundefôret for sensitiv fordøyelse har prebiotiske fibre som ernærer tarmbakteriene og støtter...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-sens-stomskin-m-1-50328572/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328572_base_50328572-base-984167604385-54725.jpg",
-    "price": "1199.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Med betemasse",
-      "Lettfordøyelige ingredienser",
-      "Støtter sunn hud og blank pels",
-      "Laget med naturlige ingredienser"
-    ],
-    "tags": [
-      "allergi",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_sensitive_stomach_skin_small_mini_adult_kyllling_3_kg",
-    "title": "Hundefôr Sensitive Stomach & Skin Small & Mini Adult Kyllling 3 kg",
-    "brand": "Hill´s",
-    "description": "Hundefôr for små hunder, store fordeler. Hill`s Science Plan Sensitive Stomach & Skin Small & Mini Adult hundefôr med kylling er et hundefôr for små hunder som gir optimal fordøyelsehelse og gir næring til huden. Dette hundefôret for følsom mage-tarm har høykvalitets proteiner og klinisk...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-ad-sens-stomskin-sm--50328571/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328571_base_50328571-base-984167604342-54702.jpg",
-    "price": "449.00 NOK",
-    "shipping_weight": "3.00kg",
-    "usp": [
-      "Med små fôrkuler",
-      "Støtter sunn hud og blank pels",
-      "Optimal balanse av næringsstoffer",
-      "For små raser med sensitiv hud"
-    ],
-    "tags": [
-      "allergi",
-      "large",
-      "voksen",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_skin_coat_1_kg",
-    "title": "Hundefôr Skin & Coat 1 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Skin & Coat har et høyt innhold av proteiner av animalsk og marin opprinnelse med høy proteinfordøyelighet. En spesiell formel av biotin, metionin, fettsyrer og organisk sink for hud og pels til hunden. Appetitt Skin & Coat inneholder ingen kornråvarer med unntak av ris, og har et høyt...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/app-skin-coat-1kg-12796/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12796_base_12796-base-99979212405ny.jpg",
-    "price": "119.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder i alle størrelser",
-      "Ekstra tilsetninger for sunn pels",
-      "Høyt innhold av hydrolisert protein"
-    ],
-    "tags": []
   },
   {
     "id": "hundefôr_skin_coat_12_kg",
@@ -2121,7 +1145,11 @@
       "Ekstra tilsetninger for sunn pels",
       "Høyt innhold av hydrolisert protein"
     ],
-    "tags": []
+    "tags": [
+      "voksen",
+      "sensitiv",
+      "allergi"
+    ]
   },
   {
     "id": "hundefôr_skin_coat_3_kg",
@@ -2138,103 +1166,11 @@
       "Ekstra tilsetninger for sunn pels",
       "Høyt innhold av hydrolisert protein"
     ],
-    "tags": []
-  },
-  {
-    "id": "hundefôr_skin_coat_4x3_kg",
-    "title": "Hundefôr Skin & Coat 4x3 kg",
-    "brand": "Appetitt",
-    "description": "Appetitt Skin & Coat har et høyt innhold av proteiner av animalsk og marin opprinnelse med høy proteinfordøyelighet. En spesiell formel av biotin, metionin, fettsyrer og organisk sink for hud og pels til hunden. Appetitt Skin & Coat inneholder ingen kornråvarer med unntak av ris, og har et høyt...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/kit-app-skin-coat-small-4x3kg-12831/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12831_base_12831-base-999792fka12638ny-61346.jpg",
-    "price": "769.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Høykvalitetsfôr produsert i Norge",
-      "For voksne hunder i alle størrelser",
-      "Ekstra tilsetninger for sunn pels",
-      "Høyt innhold av hydrolysert protein"
-    ],
-    "tags": []
-  },
-  {
-    "id": "hundefôr_small_mini_adult_kyllling_6_kg",
-    "title": "Hundefôr Small & Mini Adult Kyllling 6 kg",
-    "brand": "Hill´s",
-    "description": "Selv om din lille, voksne hund er liten er den en fullverdig hund. Gi den en målrettet ernæring som Hill`s Science Plan Small & Mini Adult hundefôr med kylling. Dette lettfordøyelige fôret er laget av ingredienser spesielt for små hunder sin magetarm. Små fôrbiter paser små munner, proteiner av h...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-sm-chicken-6kg-50328551/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328551_base_50328551-base-984167604233-54709.jpg",
-    "price": "699.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "Støtter sunn fordøyelse",
-      "Støtter sunn hud og blank pels",
-      "Fremmer sunn muskulatur",
-      "Støtter immunforsvaret"
-    ],
     "tags": [
       "voksen",
+      "sensitiv",
+      "allergi",
       "small"
-    ]
-  },
-  {
-    "id": "hundefôr_small_mini_adult_lam_og_ris_1_5_kg",
-    "title": "Hundefôr Small & Mini Adult Lam og Ris 1,5 kg",
-    "brand": "Hill´s",
-    "description": "Selv om din lille, voksne hund er liten er den en fullverdig hund. Gi den en målrettet ernæring som Hill`s Science Plan Small & Mini Adult hundefôr med lam og ris. Dette lettfordøyelige fôret er laget av ingredienser spesielt for små hunder sin magetarm. Små fôrbiter paser små munner, proteiner a...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-adult-sm-lambrice-15-50328552/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328552_base_50328552-base-984167604235-54701.jpg",
-    "price": "279.00 NOK",
-    "shipping_weight": "1.50kg",
-    "usp": [
-      "Støtter sunn fordøyelse",
-      "Støtter sunn hud og blank pels",
-      "Opprettholder sunn muskulatur",
-      "Støtter immunforsvaret"
-    ],
-    "tags": [
-      "voksen",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_small_mini_mature_adult_7_kyllling_3_kg",
-    "title": "Hundefôr Small & Mini Mature Adult 7+ Kyllling 3 kg",
-    "brand": "Hill´s",
-    "description": "Små hunder har egne næringskrav. Små, eldre hunder har også egne, mer spesifike krav til fôret . Hill`s Science Plan Small & Mini Adult 7+ tørrfôr til hund er spesielt sammensatt for å gi små hunder en god aldring. De små fôrbitene inneholder en synergetisk blanding av næringstoffer for energi og...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-mature-chicken-sm-3k-50328560/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328560_base_50328560-base-984167604343-54919.jpg",
-    "price": "419.00 NOK",
-    "shipping_weight": "3.00kg",
-    "usp": [
-      "Med balansert mineralinnhold",
-      "Omega-6 fettsyrer og vitamin E",
-      "Lettfordøyelige ingredienser",
-      "Støtter immunforsvaret"
-    ],
-    "tags": [
-      "voksen",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_valp_mellom_og_store_raser_1_kg",
-    "title": "Hundefôr Valp mellom- og store raser 1 kg",
-    "brand": "Labb",
-    "description": "Labb Valp har et høyt innhold av animalsk og marint protein og er tilpasset valper i vekst fram til ca. 1 – 1 1/2 års alder. Et riktig innhold av protein og energi gir riktig tilveksthastighet og kan dermed forebygge problemer med bein og ledd. En stor andel hydrolysert protein bidrar til høy...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-valp-mellstor-1kg-12339/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12339_base_12339-base.jpg",
-    "price": "99.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "Høy proteinfordøyelighet",
-      "For valper frem til 1-1 1/2 års alder",
-      "Med smak av laks og kylling"
-    ],
-    "tags": [
-      "valp",
-      "large"
     ]
   },
   {
@@ -2254,49 +1190,8 @@
     ],
     "tags": [
       "valp",
+      "medium",
       "large"
-    ]
-  },
-  {
-    "id": "hundefôr_valp_mellom_og_store_raser_6_kg",
-    "title": "Hundefôr Valp mellom- og store raser 6 kg",
-    "brand": "Labb",
-    "description": "Labb Valp har et høyt innhold av animalsk og marint protein og er tilpasset valper i vekst fram til ca. 1 – 1 1/2 års alder. Et riktig innhold av protein og energi gir riktig tilveksthastighet og kan dermed forebygge problemer med bein og ledd. En stor andel hydrolysert protein bidrar til høy...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-valp-mellstor-6kg-12338/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12338_base_12338-base-a.jpg",
-    "price": "429.00 NOK",
-    "shipping_weight": "6.00kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "Høy proteinfordøyelighet",
-      "For valper frem til 1-1 1/2 års alder",
-      "Med smak av laks og kylling"
-    ],
-    "tags": [
-      "valp",
-      "large"
-    ]
-  },
-  {
-    "id": "hundefôr_valp_små_raser_1_kg",
-    "title": "Hundefôr Valp små raser 1 kg",
-    "brand": "Labb",
-    "description": "Labb Valp har et høyt innhold av animalsk og marint protein og er tilpasset valper i vekst fram til cirka 1 års alder. En stor andel hydrolysert protein bidrar til høy fordøyelighet og redusert fare for allergier. Frukto-oligosakkarider fra vegetabilske fibre hjelper valpens fordøyelse. Fôret...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-valp-smaa-raser-1kg-12366/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12366_base_12366-base-99979212366-52433.jpg",
-    "price": "99.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "Til valper for sunn vekst",
-      "For drektige og diegivende tisper",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "valp",
-      "allergi",
-      "large",
-      "small"
     ]
   },
   {
@@ -2316,30 +1211,6 @@
     ],
     "tags": [
       "valp",
-      "allergi",
-      "large",
-      "small"
-    ]
-  },
-  {
-    "id": "hundefôr_valp_små_raser_5x3_kg",
-    "title": "Hundefôr Valp små raser 5x3 kg",
-    "brand": "Labb",
-    "description": "Labb Valp har et høyt innhold av animalsk og marint protein og er tilpasset valper i vekst fram til cirka 1 års alder. En stor andel hydrolysert protein bidrar til høy fordøyelighet og redusert fare for allergier. Frukto-oligosakkarider fra vegetabilske fibre hjelper valpens fordøyelse. Fôret...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-valp-smaa-5x3kg-12677/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12677_base_12677-base.jpg",
-    "price": "629.00 NOK",
-    "shipping_weight": "15.80kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "Til valper for sunn vekst",
-      "For drektige og diegivende tisper",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "valp",
-      "allergi",
-      "large",
       "small"
     ]
   },
@@ -2359,7 +1230,8 @@
       "Med smak av kylling"
     ],
     "tags": [
-      "allergi",
+      "voksen",
+      "medium",
       "large",
       "vektkontroll"
     ]
@@ -2380,54 +1252,9 @@
       "Med smak av kylling"
     ],
     "tags": [
-      "allergi",
-      "large",
+      "voksen",
       "small",
       "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_vektkontroll_små_hunder_5x3_kg",
-    "title": "Hundefôr Vektkontroll små hunder 5x3 kg",
-    "brand": "Labb",
-    "description": "Labb Vektkontroll har et moderat energiinnhold tilpasset voksne hunder som er overvektige eller har lett for å legge på seg. En stor andel hydrolysert protein bidrar til høy fordøyelighet og kan gi redusert fare for allergier. Kondroitin fra laks og kylling, samt lett tilgjengelig kalsium fra...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-vekt-smaa-5x3kg-12704/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12704_base_12704-base.jpg",
-    "price": "699.00 NOK",
-    "shipping_weight": "15.80kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "For hunder med overvekt",
-      "Også for å hindre overvekt",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "allergi",
-      "large",
-      "small",
-      "vektkontroll"
-    ]
-  },
-  {
-    "id": "hundefôr_voksen_mellom_og_stor_rase_1_kg",
-    "title": "Hundefôr Voksen mellom- og stor rase 1 kg",
-    "brand": "Labb",
-    "description": "Labb Voksen har et høyt innhold av animalsk og marint protein og er tilpasset voksne hunder med normalt aktivitetsnivå. En stor andel hydrolysert protein bidrar til høy fordøyelighet og redusert fare for allergier. Kondroitin fra laks og kylling, samt lett tilgjengelig kalsium fra eggeskall, kan...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-voksen-melstor-1kg-12365/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12365_base_12365-base-99979212365-52432.jpg",
-    "price": "99.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "For hunder i normal aktivitet",
-      "Ideelt forhold mellom omega-3 og -6",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "aktiv",
-      "allergi",
-      "large",
-      "voksen"
     ]
   },
   {
@@ -2446,10 +1273,9 @@
       "Med smak av kylling"
     ],
     "tags": [
-      "aktiv",
-      "allergi",
-      "large",
-      "voksen"
+      "voksen",
+      "medium",
+      "large"
     ]
   },
   {
@@ -2468,33 +1294,9 @@
       "Med smak av kylling."
     ],
     "tags": [
-      "aktiv",
-      "allergi",
-      "large",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_voksen_små_hunder_1_kg",
-    "title": "Hundefôr Voksen små hunder 1 kg",
-    "brand": "Labb",
-    "description": "Labb Voksen har et høyt innhold av animalsk og marint protein og er tilpasset voksne hunder med normalt aktivitetsnivå. En stor andel hydrolysert protein bidrar til høy fordøyelighet og redusert fare for allergier. Kondroitin fra laks og kylling, samt lett tilgjengelig kalsium fra eggeskall, kan...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-voksen-smaa-raser-1kg-12364/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12364_base_12364-base-99979212364-52431.jpg",
-    "price": "99.00 NOK",
-    "shipping_weight": "1.00kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "For hunder i normal aktivitet",
-      "Ideelt forhold mellom omega-3 og -6",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "small",
-      "allergi",
-      "large",
-      "aktiv",
-      "voksen"
+      "voksen",
+      "medium",
+      "large"
     ]
   },
   {
@@ -2513,135 +1315,9 @@
       "Med smak av kylling"
     ],
     "tags": [
-      "small",
-      "allergi",
-      "large",
-      "aktiv",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_voksen_små_hunder_5x3_kg",
-    "title": "Hundefôr Voksen små hunder 5x3 kg",
-    "brand": "Labb",
-    "description": "Labb Voksen har et høyt innhold av animalsk og marint protein og er tilpasset voksne hunder med normalt aktivitetsnivå. En stor andel hydrolysert protein bidrar til høy fordøyelighet og redusert fare for allergier. Kondroitin fra laks og kylling, samt lett tilgjengelig kalsium fra eggeskall, kan...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/labb-voksen-smaa-5x3kg-12678/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/12678_base_12678-base.jpg",
-    "price": "649.00 NOK",
-    "shipping_weight": "15.80kg",
-    "usp": [
-      "Norskprodusert fôr",
-      "For hunder i normal aktivitet",
-      "Ideelt forhold mellom omega-3 og -6",
-      "Med smak av kylling"
-    ],
-    "tags": [
-      "small",
-      "allergi",
-      "large",
-      "aktiv",
-      "voksen"
-    ]
-  },
-  {
-    "id": "hundefôr_white_fish_adult_small_kib_12_kg",
-    "title": "Hundefôr White Fish Adult Small Kib 12 kg",
-    "brand": "Fish4Dogs",
-    "description": "Fish4Dogs Sardin er siste tilskudd i Finest-serien. Fôret er egnet for alle voksne hunder, uavhengig av rase og bidrar til skinnende blank pels, sunn hud og smidige ledd.  Fôret inneholder fersk, hel sardin av høy kvalitet, fisket langs Cornish-kysten. For å sikre et bærekraftig fiske følger...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/fish4dogs-finest-adult-fish-s--50333508/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50333508_base_50333508-base.jpg",
-    "price": "899.00 NOK",
-    "shipping_weight": "12.00kg",
-    "usp": [
-      "Fiskebasert fôr",
-      "Kornfritt og uten tilsetningsstoffer",
-      "Marin kilde til Omega 3",
-      "Med søtpotet som karbohydratkilde",
-      "Ideell for hunder med intoleranse",
-      "Bidrar til blank pels og smidige ledd"
-    ],
-    "tags": [
-      "voksen"
-    ]
-  },
-  {
-    "id": "valpefôr_large_breed_kyllling_14_5_kg",
-    "title": "Valpefôr Large Breed Kyllling 14,5 kg",
-    "brand": "Hill´s",
-    "description": "Store hunder behøver mye kjærlighet og Hill`s Science Plan Large Breed Puppy med kylling inneholder optimale nivåer av kalsium for kontrollert benvekst: et unikt behov for valper av store raser. Gi din valp av stor rase den beste starten i livet så de kan utvikle sitt fulle potensial med et...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-puppy-large-chicken--50328549/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328549_base_50328549-base-984167604386-54724.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "14.50kg",
-    "usp": [
-      "Optimale nivåer av kalsium",
-      "Støtter sterke ben og tenner",
-      "Støtter immunforsvaret og vekst",
-      "Fremmer sunn muskulatur hos valper"
-    ],
-    "tags": [
-      "valp",
-      "large"
-    ]
-  },
-  {
-    "id": "valpefôr_medium_kyllling_14_kg",
-    "title": "Valpefôr Medium Kyllling 14 kg",
-    "brand": "Hill´s",
-    "description": "Din lille valp vokser fort. Og du vil ha et fôr som holder følge med veksten. Hill`s Science Plan tørrfôr for valp med kylling inneholder den rette balansen av ingredienser og mineraler for å støtte din valp når den vokser så den kan få en god start i livet. DHA fra fiskeolje støtter utviklingen ...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-puppy-medium-chicken-50328547/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328547_base_50328547-base-984167604352-54715.jpg",
-    "price": "1099.00 NOK",
-    "shipping_weight": "14.00kg",
-    "usp": [
-      "Støtter immunforsvaret og vekst",
-      "Sunn utvikling av øyne og hjerne",
-      "Støtter sunn muskulatur",
-      "Styrker ben og tenner"
-    ],
-    "tags": [
-      "valp"
-    ]
-  },
-  {
-    "id": "valpefôr_medium_kyllling_2_5_kg",
-    "title": "Valpefôr Medium Kyllling 2,5 kg",
-    "brand": "Hill´s",
-    "description": "Din lille valp vokser fort. Og du vil ha et fôr som holder følge med veksten. Hill`s Science Plan tørrfôr for valp med kylling inneholder den rette balansen av ingredienser og mineraler for å støtte din valp når den vokser så den kan få en god start i livet. DHA fra fiskeolje støtter utviklingen ...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-puppy-medium-chicken-50328546/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328546_base_50328546-base-984167604267-54712.jpg",
-    "price": "359.00 NOK",
-    "shipping_weight": "2.50kg",
-    "usp": [
-      "Støtter immunforsvaret og vekst",
-      "Sunn utvikling av øyne og hjerne",
-      "Støtter sunn muskulatur",
-      "Styrker ben og tenner",
-      "Ingredienser av høy kvalitet",
-      "Anbefalt av veterinær"
-    ],
-    "tags": [
-      "valp"
-    ]
-  },
-  {
-    "id": "valpefôr_small_mini_kyllling_3_kg",
-    "title": "Valpefôr Small & Mini Kyllling 3 kg",
-    "brand": "Hill´s",
-    "description": "Små hunder behøver mye kjærlighet. Så gi din lille valp en god start i livet med Hill`s Science Plan Small & Mini Puppy hundefôr. Dette hundefôr skreddersydd for behovene til små hunder opp til 1 år. Små fôrbiter gir din valp DHA fra fiskeolje som støtter utviklingen av hjerne og øyne. Proteiner ...",
-    "link": "https://www.felleskjopet.no/kjaeledyr/hund/hundefor-og-tilskudd/toerrfor/hills-dog-puppy-sm-chicken-3kg-50328545/",
-    "image_link": "https://www.felleskjopet.no/globalassets/products/50328545_base_50328545-base-984167604345-54909.jpg",
-    "price": "419.00 NOK",
-    "shipping_weight": "3.00kg",
-    "usp": [
-      "Sunn utvikling av øyne og hjerne",
-      "Støtter sunn vekst hos valper",
-      "Styrker ben og sterke tenner",
-      "Støtter immunforsvaret hos valper"
-    ],
-    "tags": [
-      "valp",
+      "voksen",
       "small"
     ]
   }
 ]
+

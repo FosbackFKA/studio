@@ -5,7 +5,7 @@
  *
  * - recommendDogFood - A function that recommends dog food based on dog's details.
  * - DogFoodInput - The input type for the recommendDogFood function.
- * - DogFoodOutput - The return type for the recommendDogFood function.
+ * - DogFoodRecommendation - The type for a single recommended product.
  */
 
 import {ai} from '@/ai/genkit';
@@ -19,7 +19,7 @@ const DogFoodInputSchema = z.object({
 });
 export type DogFoodInput = z.infer<typeof DogFoodInputSchema>;
 
-const DogFoodOutputSchema = z.object({
+const RecommendedProductSchema = z.object({
   productName: z.string().describe('The exact name of the recommended product (from the `title` field).'),
   brand: z.string().describe('The brand of the recommended product.'),
   price: z.string().describe('The price of the product.'),
@@ -28,33 +28,12 @@ const DogFoodOutputSchema = z.object({
   imageUrl: z.string().describe("The image URL for the product (from the `image_link` field)."),
   productUrl: z.string().describe("The URL to the product page (from the `link` field)."),
 });
-export type DogFoodOutput = z.infer<typeof DogFoodOutputSchema>;
 
-const findDogFoodProducts = ai.defineTool(
-  {
-    name: 'findDogFoodProducts',
-    description: 'Searches the product catalog for dog food based on the dog\'s characteristics.',
-    inputSchema: DogFoodInputSchema,
-    outputSchema: z.array(z.object({
-      id: z.string(),
-      title: z.string(),
-      brand: z.string(),
-      description: z.string(),
-      link: z.string(),
-      image_link: z.string(),
-      price: z.string(),
-      shipping_weight: z.string(),
-      usp: z.array(z.string()),
-      tags: z.array(z.string()),
-    })),
-  },
-  async (input): Promise<DogFoodProduct[]> => {
-    return await searchDogFood(input);
-  }
-);
+const DogFoodOutputSchema = z.array(RecommendedProductSchema);
 
+export type DogFoodRecommendation = z.infer<typeof RecommendedProductSchema>;
 
-export async function recommendDogFood(input: DogFoodInput): Promise<DogFoodOutput> {
+export async function recommendDogFood(input: DogFoodInput): Promise<DogFoodRecommendation[]> {
   return dogFoodFlow(input);
 }
 
@@ -76,12 +55,13 @@ const dogFoodSelectionPrompt = ai.definePrompt({
     }))
   })},
   output: { schema: DogFoodOutputSchema },
-  prompt: `Du er en produktvelger-assistent for Felleskjøpet. Din ENESTE oppgave er å velge det beste produktet fra en gitt liste og returnere informasjonen i et spesifikt format. Svarene dine til brukeren må være på norsk.
+  prompt: `Du er en ekspert produktvelger-assistent for Felleskjøpet. Din ENESTE oppgave er å velge de beste produktene fra en gitt liste og returnere informasjonen i et spesifikt format. Svarene dine til brukeren må være på norsk.
 
 **REGELSETT:**
-1.  **BRUK KUN DENNE LISTEN:** Du vil få en liste med "Tilgjengelige produkter". Du har KUN lov til å velge ett produkt fra denne listen. Ikke finn på produkter eller informasjon.
-2.  **PRIORITERING:** Merkene "Labb" og "Appetitt" er Felleskjøpets egne merker. Hvis et produkt fra disse merkene er relevant for hundens behov, skal det prioriteres over andre merker.
-3.  **DATAOVERFØRING:** Fyll ut output-feltene nøyaktig som beskrevet:
+1.  **VURDERING:** Analyser hundens alder, størrelse, og spesielle behov NØYE. Velg det eller de produktene fra listen som er den **mest presise matchen** for ALLE disse kriteriene. For eksempel, hvis hunden er "voksen", MÅ du velge et produkt for voksne hunder, ikke valper.
+2.  **BRUK KUN DENNE LISTEN:** Du vil få en liste med "Tilgjengelige produkter". Du har KUN lov til å velge ett eller flere produkter fra denne listen. Ikke finn på produkter eller informasjon.
+3.  **PRIORITERING:** Merkene "Labb" og "Appetitt" er Felleskjøpets egne merker. Hvis et produkt fra disse merkene er relevant for hundens behov, skal det prioriteres.
+4.  **DATAOVERFØRING:** Fyll ut output-feltene nøyaktig som beskrevet for hvert produkt du anbefaler:
     - \`productName\`: Kopier \`title\` fra det valgte produktet.
     - \`justification\`: Kopier \`description\` fra det valgte produktet. IKKE skriv din egen tekst.
     - \`imageUrl\`: Kopier \`image_link\` fra det valgte produktet.
@@ -96,16 +76,18 @@ const dogFoodSelectionPrompt = ai.definePrompt({
 **Tilgjengelige produkter:**
 {{#each productList}}
 - Produkt: {{{this.title}}}
+  - ID: {{{this.id}}}
   - Merke: {{{this.brand}}}
   - Beskrivelse: {{{this.description}}}
   - Salgspunkter (USPs): {{{this.usp}}}
+  - Tags: {{{this.tags}}}
   - Pris: {{{this.price}}}
   - Vekt: {{{this.shipping_weight}}}
   - URL: {{{this.link}}}
   - Bilde-URL: {{{this.image_link}}}
 {{/each}}
 
-Velg det ENE beste produktet fra listen over basert på hundens detaljer og fyll ut alle feltene i output-formatet med nøyaktig data fra det valgte produktet.
+Velg opptil de 3 BESTE produktene fra listen over basert på hundens detaljer. Returner en liste med produktobjekter. Hvis du bare finner ett godt treff, returner kun det ene.
 `,
 });
 
@@ -117,7 +99,7 @@ const dogFoodFlow = ai.defineFlow(
   },
   async (input) => {
     // Step 1: Programmatically call the tool to get a list of relevant products.
-    const products = await findDogFoodProducts(input);
+    const products = await searchDogFood(input);
 
     // Handle case where no products are found.
     if (!products || products.length === 0) {
@@ -134,32 +116,38 @@ const dogFoodFlow = ai.defineFlow(
       return 0;
     });
 
-    // Step 3: Pass the dog's details and the product list to the selection prompt.
+    // Step 3: Pass the dog's details and the top N product candidates to the selection prompt.
+    const productCandidates = products.slice(0, 15);
+
     const { output } = await dogFoodSelectionPrompt({
         dogDetails: input,
-        productList: products,
+        productList: productCandidates,
     });
     
     if (!output) {
         throw new Error("AI-en klarte ikke å generere en anbefaling. Prøv igjen.");
     }
 
-    // Step 4: Validate the returned image URL to prevent crashes.
-    const allowedHosts = ['www.felleskjopet.no', 'felleskjopet.no', 'placehold.co'];
-    let isAllowedHost = false;
-    try {
-        const url = new URL(output.imageUrl);
-        if (allowedHosts.includes(url.hostname)) {
-            isAllowedHost = true;
+    // Step 4: Validate the returned image URLs to prevent crashes.
+    const validatedOutput = output.map(rec => {
+        const allowedHosts = ['www.felleskjopet.no', 'felleskjopet.no', 'placehold.co'];
+        let isAllowedHost = false;
+        try {
+            const url = new URL(rec.imageUrl);
+            if (allowedHosts.includes(url.hostname)) {
+                isAllowedHost = true;
+            }
+        } catch (e) {
+            // Invalid URL
         }
-    } catch (e) {
-        // Invalid URL, will use fallback.
-    }
 
-    if (!isAllowedHost) {
-        output.imageUrl = 'https://placehold.co/300x300.png';
-    }
+        if (!isAllowedHost) {
+            rec.imageUrl = 'https://placehold.co/300x300.png';
+        }
+        return rec;
+    });
 
-    return output;
+    return validatedOutput;
   }
 );
+
