@@ -1,7 +1,9 @@
+
 'use client';
 
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
@@ -71,7 +73,7 @@ export default function DogFoodSelectorPage() {
             <Wand2 className="mx-auto h-12 w-12 text-primary" />
             <h1 className="mt-2 font-headline text-4xl font-bold text-foreground">Fôrvelger for Hund</h1>
             <p className="mt-2 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Fortell oss om hunden din, så hjelper vår AI-assistent deg med å finne det perfekte Royal Canin-fôret.
+              Fortell oss om hunden din, så hjelper vår AI-assistent deg med å finne det perfekte fôret.
             </p>
           </div>
 
@@ -113,7 +115,7 @@ export default function DogFoodSelectorPage() {
                     <Label htmlFor="specialNeeds">Spesielle behov (valgfritt)</Label>
                     <Textarea 
                       id="specialNeeds"
-                      placeholder="F.eks. sensitiv hud, kresen, behov for vektkontroll, høyt aktivitetsnivå..."
+                      placeholder="F.eks. sensitiv hud, kresen, behov for vektkontroll, høyt aktivitetsnivå, allergi..."
                       value={formData.specialNeeds}
                       onChange={handleTextareaChange}
                       rows={3}
@@ -159,14 +161,15 @@ export default function DogFoodSelectorPage() {
                             width={250}
                             height={250}
                             className="rounded-md object-contain"
-                            data-ai-hint="dog food bag"
+                            data-ai-hint={`${result.brand} dog food`}
                         />
                     </div>
                     <div className="p-6 md:col-span-2 bg-card">
-                      <h3 className="font-headline text-2xl font-bold text-primary">{result.productName}</h3>
+                      <p className="font-semibold text-primary">{result.brand}</p>
+                      <h3 className="font-headline text-2xl font-bold text-foreground">{result.productName}</h3>
                       <p className="mt-4 text-base text-foreground">{result.justification}</p>
-                      <Button size="lg" className="mt-6">
-                        Se produkt
+                      <Button size="lg" className="mt-6" asChild>
+                        <Link href={result.productUrl}>Se produkt</Link>
                       </Button>
                     </div>
                 </div>
