@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { recommendDogFood, type DogFoodInput, type DogFoodRecommendation } from '@/ai/flows/dog-food-flow';
-import { Loader2, Dog, ShoppingCart, Weight, SlidersHorizontal, X, Sparkles } from 'lucide-react';
+import { Loader2, Dog, ShoppingCart, Weight, SlidersHorizontal, X, Sparkles, ArrowRight } from 'lucide-react';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import type { Product } from '@/types/product';
 import allDogFoodProducts from '@/data/dog_food_products.json';
@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Checkbox } from '@/components/ui/checkbox';
+import guideImage from '@/components/common/artikler/guide_hund.webp';
 
 // Fôrvelger component - refaktorert for å passe i accordion
 function Forvelger() {
@@ -229,13 +230,36 @@ function FilterPanel() {
     );
 }
 
+function GuideCard() {
+  return (
+    <div className="group relative aspect-video w-full overflow-hidden rounded-lg shadow-md lg:col-span-3 lg:aspect-[2/1]">
+      <Link href="#" className="block h-full w-full">
+        <Image
+          src={guideImage}
+          alt="Slik velger du riktig fôr til hunden din"
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-6 text-white">
+          <h3 className="font-headline text-2xl font-bold">Slik velger du riktig fôr til hunden din</h3>
+          <p className="mt-2 text-white/90 line-clamp-2">Det kan være vanskelig å vite hvilket fôr som er best. Les vår guide for å finne det perfekte fôret tilpasset din hunds alder, størrelse og aktivitetsnivå.</p>
+          <Button asChild size="lg" className="mt-4">
+            <span className='z-10 relative'>Les guiden <ArrowRight className="ml-2 h-4 w-4" /></span>
+          </Button>
+        </div>
+      </Link>
+    </div>
+  );
+}
+
 export default function HundeforPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
-  const [allProducts, setAllProducts] = React.useState<Product[]>([]);
+  const [itemsToDisplay, setItemsToDisplay] = React.useState<(Product | { type: 'guide' })[]>([]);
 
   React.useEffect(() => {
-    // This code now runs only on the client side to avoid hydration errors from Math.random()
-    const allProductsData: Product[] = allDogFoodProducts.map(p => ({
+    const products: Product[] = allDogFoodProducts.map(p => ({
         id: p.id,
         title: p.title,
         brand: p.brand,
@@ -245,7 +269,17 @@ export default function HundeforPage() {
         onlineStock: true,
         storeStockCount: Math.floor(Math.random() * 100),
     }));
-    setAllProducts(allProductsData);
+
+    const guide = { type: 'guide' as const };
+    const allItems: (Product | { type: 'guide' })[] = [...products];
+    // Insert guide after the first row of 3 products
+    if (allItems.length > 3) {
+      allItems.splice(3, 0, guide);
+    } else {
+      allItems.push(guide);
+    }
+    setItemsToDisplay(allItems);
+
   }, []);
   
   const breadcrumbs = [
@@ -258,11 +292,11 @@ export default function HundeforPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
-      <main className="flex-grow bg-secondary/20">
-        <div className="container mx-auto max-w-6xl px-4 pt-8 pb-0 lg:pt-12">
+      <main className="flex-grow">
+        <div className="container mx-auto max-w-6xl px-4 pt-8 pb-12 lg:pt-12">
           <Breadcrumb items={breadcrumbs} className="mb-8" />
           
-          <Accordion type="single" collapsible className="w-full group">
+          <Accordion type="single" collapsible className="w-full group mb-8 lg:mb-12">
               <AccordionItem value="forvelger" className="overflow-hidden rounded-xl border bg-card shadow-lg">
                   <AccordionTrigger className="w-full p-6 text-left hover:no-underline [&[data-state=open]]:bg-secondary/20">
                       <div className="flex w-full items-center justify-between gap-4">
@@ -277,76 +311,75 @@ export default function HundeforPage() {
                           </div>
                       </div>
                   </AccordionTrigger>
-                  <AccordionContent className="border-t">
+                  <AccordionContent>
                       <Forvelger />
                   </AccordionContent>
               </AccordionItem>
           </Accordion>
-
-        </div>
         
-        <section id="produkter" className="py-8 lg:py-12 bg-background">
-            <div className="container mx-auto max-w-6xl px-4">
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-                    {/* Filters - Sidebar for Desktop */}
-                    <aside className="hidden lg:block lg:col-span-1">
-                        <div className="sticky top-32">
-                            <h2 className="text-xl font-bold mb-4">Filtre</h2>
-                            <FilterPanel />
-                        </div>
-                    </aside>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+                {/* Filters - Sidebar for Desktop */}
+                <aside className="hidden lg:block lg:col-span-1">
+                    <div className="sticky top-32">
+                        <h2 className="text-xl font-bold mb-4">Filtre</h2>
+                        <FilterPanel />
+                    </div>
+                </aside>
 
-                    {/* Products Grid */}
-                    <div className="lg:col-span-3">
-                        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                            <h2 className="text-2xl font-bold whitespace-nowrap">Utforsk alt hundefôr ({allProducts.length})</h2>
-                            
-                            <div className="flex w-full sm:w-auto items-center gap-4">
-                                 {/* Mobile Filter Trigger */}
-                                <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-                                    <SheetTrigger asChild>
-                                        <Button variant="outline" className="lg:hidden flex-1">
-                                            <SlidersHorizontal className="mr-2 h-4 w-4" /> Filter
-                                        </Button>
-                                    </SheetTrigger>
-                                    <SheetContent>
-                                        <SheetHeader className="flex-row items-center justify-between border-b p-4">
-                                            <SheetTitle>Filtre</SheetTitle>
-                                             <SheetClose asChild>
-                                                <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                                                    <X className="h-8 w-8 text-primary" />
-                                                </Button>
-                                            </SheetClose>
-                                        </SheetHeader>
-                                        <div className="p-4">
-                                           <FilterPanel />
-                                        </div>
-                                    </SheetContent>
-                                </Sheet>
-
-                                <Select defaultValue="popularitet">
-                                    <SelectTrigger className="w-full sm:w-[180px]">
-                                        <SelectValue placeholder="Sorter etter" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="popularitet">Popularitet</SelectItem>
-                                        <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
-                                        <SelectItem value="pris-hoy-lav">Pris: Høy-lav</SelectItem>
-                                        <SelectItem value="nyeste">Nyeste</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                        </div>
+                {/* Products Grid */}
+                <div className="lg:col-span-3">
+                    <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                        <h2 className="text-2xl font-bold whitespace-nowrap">Utforsk alt hundefôr ({allDogFoodProducts.length})</h2>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {allProducts.map((product) => {
-                              return <ProductCard key={product.id} {...product} />;
-                            })}
+                        <div className="flex w-full sm:w-auto items-center gap-4">
+                              {/* Mobile Filter Trigger */}
+                            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+                                <SheetTrigger asChild>
+                                    <Button variant="outline" className="lg:hidden flex-1">
+                                        <SlidersHorizontal className="mr-2 h-4 w-4" /> Filter
+                                    </Button>
+                                </SheetTrigger>
+                                <SheetContent>
+                                    <SheetHeader className="flex-row items-center justify-between border-b p-4">
+                                        <SheetTitle>Filtre</SheetTitle>
+                                          <SheetClose asChild>
+                                            <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+                                                <X className="h-8 w-8 text-primary" />
+                                            </Button>
+                                        </SheetClose>
+                                    </SheetHeader>
+                                    <div className="p-4">
+                                        <FilterPanel />
+                                    </div>
+                                </SheetContent>
+                            </Sheet>
+
+                            <Select defaultValue="popularitet">
+                                <SelectTrigger className="w-full sm:w-[180px]">
+                                    <SelectValue placeholder="Sorter etter" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="popularitet">Popularitet</SelectItem>
+                                    <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
+                                    <SelectItem value="pris-hoy-lav">Pris: Høy-lav</SelectItem>
+                                    <SelectItem value="nyeste">Nyeste</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                       {itemsToDisplay.map((item, index) => {
+                          if ('type' in item && item.type === 'guide') {
+                              return <GuideCard key={`guide-${index}`} />;
+                          }
+                          const product = item as Product;
+                          return <ProductCard key={product.id || index} {...product} />;
+                      })}
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
       </main>
       <FooterComponent />

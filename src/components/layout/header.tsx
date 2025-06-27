@@ -470,7 +470,7 @@ export function HeaderComponent() {
           </div>
         )}
 
-        <div className="border-b">
+        <div>
           <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-[1542px]">
             <div className="flex items-center">
               <Link href="/" aria-label="Til forsiden" onClick={() => isMenuOpen && setIsMenuOpen(false)}>
