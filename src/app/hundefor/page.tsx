@@ -268,7 +268,6 @@ function FilterPanel() {
 
 export default function HundeforPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
-  const [topSellers, setTopSellers] = React.useState<Product[]>([]);
   const [itemsToDisplay, setItemsToDisplay] = React.useState<(Product | { type: 'guide'; data: any })[]>([]);
   const [allProducts, setAllProducts] = React.useState<Product[]>([]);
 
@@ -286,41 +285,19 @@ export default function HundeforPage() {
     }));
     setAllProducts(allProductsData);
 
-    const topSellerIds = [
-      'hundefôr_voksen_mellom_og_stor_rase_15_kg',
-      'hundefôr_puppy_medium_breed_12_kg',
-      'hundefôr_maxi_adult_15_kg'
-    ];
-
-    const generatedTopSellers: Product[] = topSellerIds.map(id => {
-      const p = allDogFoodProducts.find(prod => prod.id === id);
-      if (!p) return null;
-      return {
-        id: p.id,
-        title: p.title,
-        brand: p.brand,
-        price: p.price,
-        imageUrl: p.image_link,
-        productUrl: p.link,
-        onlineStock: true,
-        storeStockCount: Math.floor(Math.random() * 100),
-      };
-    }).filter((p): p is Product => p !== null);
-    setTopSellers(generatedTopSellers);
-
     const guide = {
         title: 'Slik velger du riktig fôr til hunden din',
         excerpt: 'Det kan være en jungel å velge riktig hundefôr. Lær deg hva du skal se etter for å dekke din hunds unike ernæringsbehov.',
         imageUrl: 'https://placehold.co/800x450.png',
         link: '#',
-        span: 'lg:col-span-2',
+        span: 'lg:col-span-3',
         dataAiHint: 'dog eating food'
     };
 
     const generatedItemsToDisplay = [
-        ...allProductsData.slice(0, 2),
+        ...allProductsData.slice(0, 3),
         { type: 'guide' as const, data: guide },
-        ...allProductsData.slice(2, 7),
+        ...allProductsData.slice(3, 8),
     ];
     setItemsToDisplay(generatedItemsToDisplay);
 
@@ -342,19 +319,7 @@ export default function HundeforPage() {
           <Forvelger />
         </div>
         
-        <section className="py-12 lg:py-16 bg-background">
-            <div className="container mx-auto max-w-6xl px-4">
-                <h2 className="text-center font-headline text-3xl font-bold text-foreground">Våre toppselgere</h2>
-                <p className="text-center mx-auto mb-8 max-w-2xl text-muted-foreground">De mest populære fôrtypene valgt av våre kunder.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {topSellers.map((product) => (
-                      <ProductCard key={product.id} {...product} />
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        <section id="produkter" className="py-12 lg:py-16 bg-secondary/20">
+        <section id="produkter" className="py-12 lg:py-16 bg-background">
             <div className="container mx-auto max-w-6xl px-4">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
                     {/* Filters - Sidebar for Desktop */}
