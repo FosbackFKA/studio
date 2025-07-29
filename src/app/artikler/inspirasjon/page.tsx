@@ -200,5 +200,3 @@ export default function InspirationArticlePage() {
     </div>
   );
 }
-
-    
