@@ -9,10 +9,9 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, MoveRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { ArticlesSection } from '@/components/sections/articles-section';
-import { Card, CardContent } from '@/components/ui/card';
 
 // --- Page Specific Data ---
 
