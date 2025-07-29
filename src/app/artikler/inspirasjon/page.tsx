@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { ArticlesSection } from '@/components/sections/articles-section';
 
@@ -23,71 +23,71 @@ const breadcrumbs = [
 
 const shopTheLookProducts: Product[] = [
   {
-    id: 'FK50097000',
-    title: 'Plantekasse i tre med bunn 80x120 cm',
-    brand: 'Felleskjøpet',
-    price: '999,-',
+    id: 'ESPFAT60',
+    title: 'Bålpanne 60',
+    brand: 'Espegard',
+    price: '2 490,-',
     imageUrl: 'https://placehold.co/400x400.png',
-    dataAiHint: 'wooden planter box',
+    dataAiHint: 'fire pit steel',
     productUrl: '#',
     onlineStock: true,
-    storeStockCount: 45,
+    storeStockCount: 78,
   },
   {
-    id: 'FK50102000',
-    title: 'Plantejord 40L FK',
+    id: 'FKPOPCORN',
+    title: 'Popcorngryte for bålpanne',
     brand: 'Felleskjøpet',
-    price: '79,-',
+    price: '499,-',
     imageUrl: 'https://placehold.co/400x400.png',
-    dataAiHint: 'potting soil bag',
+    dataAiHint: 'popcorn kettle fire',
     productUrl: '#',
     onlineStock: true,
-    storeStockCount: 110,
+    storeStockCount: 120,
   },
   {
-    id: 'GRWKH01',
-    title: 'Hagespade og håndrake sett',
-    brand: 'Greenworks',
-    price: '249,-',
+    id: 'GPLEDLYS',
+    title: 'Lyslenke LED utendørs 10m',
+    brand: 'GP',
+    price: '799,-',
     imageUrl: 'https://placehold.co/400x400.png',
-    dataAiHint: 'gardening tools',
+    dataAiHint: 'outdoor string lights',
     productUrl: '#',
     onlineStock: true,
-    storeStockCount: 98,
+    storeStockCount: 92,
   },
   {
-    id: 'FKVKN01',
-    title: 'Vannekanne i metall 10L',
+    id: 'FKULLSEKK',
+    title: 'Ullpledd Grå',
     brand: 'Felleskjøpet',
-    price: '349,-',
+    price: '699,-',
     imageUrl: 'https://placehold.co/400x400.png',
-    dataAiHint: 'metal watering can',
+    dataAiHint: 'gray wool blanket',
     productUrl: '#',
     onlineStock: true,
-    storeStockCount: 77,
+    storeStockCount: 65,
   },
 ];
 
 const relatedArticles = [
     {
-      title: 'Slik velger du riktig gjødsel',
-      excerpt: 'Gjødsel er nøkkelen til en frodig hage. Lær hvordan du velger riktig type for dine planter, enten du har roser, grønnsaker eller plen.',
+      title: 'Guide: Slik velger du riktig høytrykkspyler',
+      excerpt: 'En høytrykkspyler er et fantastisk verktøy for rengjøring. Lær deg hva du bør se etter for å finne modellen som passer dine behov perfekt.',
       imageUrl: 'https://placehold.co/600x400.png',
-      dataAiHint: 'fertilizer bags',
+      dataAiHint: 'pressure washer cleaning',
       articleUrl: '#',
     },
     {
-      title: 'Kom i gang med kompost',
-      excerpt: 'Gjør hageavfallet om til næringsrik jord! Vår guide viser deg hvordan du enkelt starter din egen kompostbinge og skaper gull for hagen din.',
+      title: 'Vedlikehold av utemøbler i tre',
+      excerpt: 'Med riktig vedlikehold kan utemøblene dine i tre vare i mange år. Følg våre enkle steg for å beskytte og bevare treverket.',
       imageUrl: 'https://placehold.co/600x400.png',
-      dataAiHint: 'compost bin garden',
+      dataAiHint: 'wooden outdoor furniture',
       articleUrl: '#',
     },
     {
-      title: 'Dyrk i pallekarmer: En komplett guide',
-      excerpt: 'Pallekarmer er en enkel og effektiv måte å starte en kjøkkenhage på. Lær alt du trenger for å lykkes, fra jordvalg til planteavstand.',
+      title: 'Skap en summende oase for biene',
+      excerpt: 'Hjelp de viktige pollinatorene! Lær hvilke blomster du kan plante for å skape en frodig og bievennlig hage eller balkong.',
       imageUrl: 'https://placehold.co/600x400.png',
-      dataAiHint: 'pallet collar garden',
+      dataAiHint: 'bees flowers garden',
       articleUrl: '#',
     },
   ];
@@ -102,101 +102,118 @@ export default function InspirationArticlePage() {
       <main className="flex-grow">
 
         {/* 1. Hero Section */}
-        <section className="relative h-[60vh] min-h-[400px] w-full md:h-[80vh]">
+        <section className="relative h-[70vh] min-h-[500px] w-full bg-slate-800">
           <Image 
             src="https://placehold.co/1920x1080.png" 
-            alt="En frodig kjøkkenhage i morgensol"
+            alt="En stemningsfull uteplass i skumringen med en tent bålpanne og lyslenker"
             fill
             sizes="100vw"
-            className="object-cover"
-            data-ai-hint="kitchen garden sunrise"
+            className="object-cover opacity-60"
+            data-ai-hint="cozy patio dusk firepit"
             priority
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="container relative z-10 mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-4 text-center text-white">
-            <h1 className="font-headline text-4xl font-bold md:text-6xl lg:text-7xl">
-              Fra frø til festmåltid
+            <h1 className="font-headline text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+              Forleng kveldene utendørs
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
-              Oppdag gleden ved å dyrke dine egne grønnsaker, urter og bær.
+            <p className="mt-4 max-w-3xl text-lg text-white/90 md:text-xl">
+              Gjør uteplassen om til en magisk oase der de gode samtalene og den lune stemningen varer langt utover solnedgang.
             </p>
           </div>
         </section>
 
-        <div className="bg-background py-12 lg:py-16">
+        <div className="bg-background py-12 lg:py-20">
             <div className="container mx-auto max-w-6xl px-4">
-                 <Breadcrumb items={breadcrumbs} className="mb-8" />
+                 <Breadcrumb items={breadcrumbs} className="mb-10" />
             
-                {/* 2. Captivating Introduction */}
-                <section className="mx-auto max-w-3xl text-center">
-                    <p className="font-headline text-xl leading-relaxed text-muted-foreground md:text-2xl">
-                        Det er noe magisk med å hente ingredienser rett fra egen hage. Lyden av en crisp salat som rives, duften av ferske urter, og smaken av solmodne tomater. En kjøkkenhage er mer enn bare mat – det er en kilde til glede, læring og bærekraftig luksus.
-                    </p>
-                </section>
-            </div>
-            
-            {/* 3. Visual Gallery - Asymmetrical Grid */}
-            <section className="container mx-auto max-w-6xl px-4 my-16 lg:my-24">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                    
-                    <div className="md:col-span-3 relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
-                        <Image src="https://placehold.co/800x600.png" alt="Nærbilde av hender som planter et lite frø i jorden" fill className="object-cover" data-ai-hint="hands planting seed" sizes="(max-width: 768px) 100vw, 60vw" />
-                    </div>
+                {/* 2. Main Content Sections */}
 
-                    <div className="md:col-span-2 flex items-center justify-center p-6 bg-secondary rounded-lg">
-                        <blockquote className="font-headline text-2xl text-center text-secondary-foreground italic">
-                            "Å dyrke en hage er å tro på morgendagen."
-                            <cite className="block text-base not-italic mt-2 font-sans font-medium">— Audrey Hepburn</cite>
+                {/* Section: Bålpanne */}
+                <section className="my-16 lg:my-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="order-2 md:order-1">
+                        <h2 className="font-headline text-3xl font-bold text-foreground">Et levende samlingspunkt</h2>
+                        <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                            Ingenting samler folk som varmen og de dansende flammene fra en bålpanne. Den blir raskt det naturlige hjertet på uteplassen – et sted for grilling av pølser, gode historier og stillhet under stjernehimmelen. Lyden av knitrende ved og den lune varmen skaper en uforglemmelig ramme for kveldene dine.
+                        </p>
+                        <blockquote className="mt-6 border-l-4 border-primary pl-4 italic text-muted-foreground">
+                            "Bålpannen har forandret måten vi bruker hagen på. Nå er vi ute nesten hver kveld, uansett årstid."
+                            <cite className="mt-2 block not-italic font-semibold text-foreground">— Fornøyd kunde</cite>
                         </blockquote>
                     </div>
-
-                    <div className="md:col-span-2 relative aspect-square rounded-lg overflow-hidden shadow-lg">
-                        <Image src="https://placehold.co/600x600.png" alt="En samling av fargerike grønnsaker i en kurv" fill className="object-cover" data-ai-hint="vegetable basket harvest" sizes="(max-width: 768px) 100vw, 40vw" />
+                    <div className="order-1 md:order-2 relative aspect-square rounded-lg overflow-hidden shadow-xl">
+                        <Image src="https://placehold.co/800x800.png" alt="Vennegjeng samlet rundt en bålpanne med marshmallows" fill className="object-cover" data-ai-hint="friends fire pit" sizes="(max-width: 768px) 100vw, 50vw"/>
                     </div>
+                </section>
 
-                     <div className="md:col-span-3 flex flex-col justify-center bg-card p-6 md:p-8 rounded-lg">
-                        <h3 className="font-headline text-2xl font-bold mb-3">En hage for alle sanser</h3>
-                        <p className="text-muted-foreground">
-                            Planlegg for variasjon. Tenk på farger, former og dufter. Plant høye solsikker ved siden av lave ringblomster. La agurker klatre opp et espalier for å skape høyde, og la gressløkens lilla blomster bli et summende midtpunkt for pollinerende insekter. En kjøkkenhage kan være like vakker som den er produktiv.
+                {/* Section: Belysning */}
+                <section className="my-16 lg:my-24">
+                     <div className="text-center mb-12">
+                        <h2 className="font-headline text-3xl font-bold text-foreground">Sett stemningen med lys</h2>
+                        <p className="mx-auto mt-2 max-w-3xl text-lg text-muted-foreground">
+                            Riktig belysning kan forvandle en vanlig uteplass til et eventyrlig landskap. Kombiner ulike lyskilder for å skape dybde, funksjonalitet og en innbydende atmosfære.
                         </p>
                     </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="flex flex-col items-center text-center">
+                            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
+                                <Image src="https://placehold.co/600x600.png" alt="En lyslenke spent over en terrasse" fill className="object-cover" data-ai-hint="string lights patio" sizes="(max-width: 768px) 100vw, 33vw"/>
+                            </div>
+                            <h3 className="font-headline text-xl font-semibold">Tak av lys</h3>
+                            <p className="text-muted-foreground mt-1">Strekk lyslenker over sittegruppen for å skape en følelse av et tak. Dette gir et lunt og definert uterom.</p>
+                        </div>
+                         <div className="flex flex-col items-center text-center">
+                            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
+                                <Image src="https://placehold.co/600x600.png" alt="Solcellelamper langs en hagesti" fill className="object-cover" data-ai-hint="solar lights path" sizes="(max-width: 768px) 100vw, 33vw"/>
+                            </div>
+                            <h3 className="font-headline text-xl font-semibold">Led veien</h3>
+                            <p className="text-muted-foreground mt-1">Bruk solcellelamper eller diskrete spotlights langs stier og i blomsterbed for å guide gjester og fremheve hagens vakre detaljer.</p>
+                        </div>
+                         <div className="flex flex-col items-center text-center">
+                            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
+                                <Image src="https://placehold.co/600x600.png" alt="En stor lanterne med blokklys på et bord" fill className="object-cover" data-ai-hint="lantern candle table" sizes="(max-width: 768px) 100vw, 33vw"/>
+                            </div>
+                            <h3 className="font-headline text-xl font-semibold">Levende lys</h3>
+                            <p className="text-muted-foreground mt-1">Ikke undervurder kraften i levende lys. Plasser store lanterner på gulvet og mindre lykter på bordet for en ekstra koselig glød.</p>
+                        </div>
+                    </div>
+                </section>
 
-                </div>
-            </section>
-
-             {/* 4. "Shop the Look" Section */}
-            <section className="container mx-auto max-w-6xl px-4 my-16 lg:my-24">
-                <div className="text-center mb-12">
-                    <h2 className="font-headline text-3xl font-bold text-foreground">Skap stilen</h2>
-                    <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
-                        Her er produktene du trenger for å starte din egen kjøkkenhage.
-                    </p>
-                </div>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    {shopTheLookProducts.map((product) => (
-                        <ProductCard key={product.id} {...product} />
-                    ))}
-                </div>
-                <div className="text-center mt-12">
-                    <Button asChild size="lg">
-                        <Link href="#">Se alt til kjøkkenhagen <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                    </Button>
-                </div>
-            </section>
-        </div>
+                {/* 4. "Shop the Look" Section */}
+                <section className="my-16 lg:my-24">
+                    <div className="text-center mb-12">
+                        <h2 className="font-headline text-3xl font-bold text-foreground">Skap magien selv</h2>
+                        <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
+                            Med disse produktene er du godt på vei til å skape din egen drømmeuteplass.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        {shopTheLookProducts.map((product) => (
+                            <ProductCard key={product.id} {...product} />
+                        ))}
+                    </div>
+                    <div className="text-center mt-12">
+                        <Button asChild size="lg">
+                            <Link href="#">Se alt til uteplassen <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                        </Button>
+                    </div>
+                </section>
+            </div>
         
-        {/* 5. Related Articles */}
-        <ArticlesSection 
-            title="Mer inspirasjon"
-            articles={relatedArticles}
-            linkText="Se alle artikler"
-            linkHref="#"
-            className="bg-secondary"
-        />
-
+            {/* 5. Related Articles */}
+            <ArticlesSection 
+                title="Mer inspirasjon"
+                articles={relatedArticles}
+                linkText="Se alle artikler"
+                linkHref="#"
+                className="bg-secondary"
+            />
+        </div>
       </main>
 
       <FooterComponent />
     </div>
   );
 }
+
+    
