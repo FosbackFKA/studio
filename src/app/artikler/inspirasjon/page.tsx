@@ -107,6 +107,7 @@ export default function InspirationArticlePage() {
             src="https://placehold.co/1920x1080.png" 
             alt="En frodig kjøkkenhage i morgensol"
             fill
+            sizes="100vw"
             className="object-cover"
             data-ai-hint="kitchen garden sunrise"
             priority
@@ -134,7 +135,7 @@ export default function InspirationArticlePage() {
                 </section>
             </div>
             
-            {/* 3. Visual Gallery */}
+            {/* 3. Visual Gallery - Asymmetrical Grid */}
             <section className="container mx-auto max-w-6xl px-4 my-16 lg:my-24">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                     
