@@ -313,11 +313,11 @@ export default async function HomePage() {
   
   const homePageArticles = [
     {
-      title: 'Slik velger du riktig robotgressklipper',
-      excerpt: 'Ønsker du en velstelt plen uten for mye arbeid? Da kan en robotgressklipper være løsningen for deg! Med et bredt utvalg av modeller på...',
+      title: 'Fra frø til festmåltid',
+      excerpt: 'Oppdag gleden ved å dyrke dine egne grønnsaker, urter og bær. Vi viser deg hvordan du kan lage en frodig kjøkkenhage som er like vakker som den er produktiv.',
       imageUrl: artikkel1,
-      articleUrl: '/robotgressklipper',
-      dataAiHint: 'robotic lawnmower'
+      articleUrl: '/artikler/inspirasjon',
+      dataAiHint: 'kitchen garden vegetables'
     },
     {
       title: 'Slik blir du kvitt ugress',
