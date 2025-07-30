@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
 import { ArrowRight } from 'lucide-react';
 import type { Product } from '@/types/product';
+import { cn } from '@/lib/utils';
 
 // Import local images
 import heroImage from '@/components/common/inspirasjonsmal/inspirasjon-hero.jpg';
@@ -107,10 +108,62 @@ const relatedArticles = [
     },
 ];
 
-const galleryImages = [
-    { src: takAvLysImage, alt: "En lyslenke spent over en terrasse", title: "Tak av lys", description: "Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.", hint: "string lights patio" },
-    { src: ledVeienImage, alt: "Solcellelamper langs en hagesti", title: "Led veien", description: "Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.", hint: "solar lights path" },
-    { src: levendeLysImage, alt: "En stor lanterne med blokklys på et bord", title: "Levende lys", description: "Store lanterner og lykter gir en ekstra koselig og levende glød.", hint: "lantern candle table" },
+const galleryImages: {
+  src: StaticImageData;
+  alt: string;
+  title: string;
+  description: string;
+  hint: string;
+  className: string;
+}[] = [
+  {
+    src: takAvLysImage,
+    alt: 'En lyslenke spent over en terrasse',
+    title: 'Tak av lys',
+    description: 'Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.',
+    hint: 'string lights patio',
+    className: 'col-span-1 md:col-span-2 row-span-2',
+  },
+  {
+    src: ledVeienImage,
+    alt: 'Solcellelamper langs en hagesti',
+    title: 'Led veien',
+    description: 'Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.',
+    hint: 'solar lights path',
+    className: 'col-span-1',
+  },
+  {
+    src: levendeLysImage,
+    alt: 'En stor lanterne med blokklys på et bord',
+    title: 'Levende lys',
+    description: 'Store lanterner og lykter gir en ekstra koselig og levende glød.',
+    hint: 'lantern candle table',
+    className: 'col-span-1',
+  },
+  {
+    src: artikkel1,
+    alt: 'Høytrykkspyler i bruk på terrasse',
+    title: 'Rengjør uteområdet',
+    description: 'En skinnende ren terrasse er den perfekte basen for en koselig uteplass.',
+    hint: 'pressure washer patio',
+    className: 'col-span-1',
+  },
+    {
+    src: artikkel2,
+    alt: 'Nærbilde av treverk på utemøbler',
+    title: 'Vedlikehold møblene',
+    description: 'Sørg for at tremøblene dine tåler vær og vind sesong etter sesong.',
+    hint: 'wood furniture oil',
+    className: 'col-span-1',
+  },
+  {
+    src: artikkel3,
+    alt: 'Bie på en blomst i en frodig hage',
+    title: 'En levende hage',
+    description: 'Plant bievennlige blomster for å skape liv og summetoner i hagen din.',
+    hint: 'bee friendly garden',
+    className: 'col-span-1 md:col-span-2',
+  },
 ];
 
 
@@ -167,22 +220,30 @@ export default function InspirationTemplatePage() {
                     </blockquote>
                 </section>
 
-                {/* 3. Visuell Inspirasjon */}
+                {/* 3. Visuell Inspirasjon (New Gallery) */}
                 <section className="mb-16 lg:mb-24">
-                     <div className="mb-12 text-center">
+                    <div className="mb-12 text-center">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
                         <p className="mx-auto mt-2 max-w-3xl text-lg text-muted-foreground">
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {galleryImages.map((image) => (
-                            <div key={image.title} className="flex flex-col items-center text-center">
-                                <div className="group relative mb-4 w-full aspect-square overflow-hidden rounded-lg shadow-lg">
-                                    <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-300 group-hover:scale-105" data-ai-hint={image.hint} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"/>
+                    <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
+                        {galleryImages.map((image, index) => (
+                            <div key={index} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    fill
+                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                                    data-ai-hint={image.hint}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                                <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
+                                    <h3 className="font-bold">{image.title}</h3>
+                                    <p className="text-sm text-white/80">{image.description}</p>
                                 </div>
-                                <h3 className="font-headline text-xl font-semibold">{image.title}</h3>
-                                <p className="mt-1 text-muted-foreground">{image.description}</p>
                             </div>
                         ))}
                     </div>
