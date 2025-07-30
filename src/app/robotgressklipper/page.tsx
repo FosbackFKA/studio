@@ -243,6 +243,18 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
 
 function FloatingChatbot() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isBubbleVisible, setIsBubbleVisible] = React.useState(true);
+  const [isAnimating, setIsAnimating] = React.useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsAnimating(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleOpenChat = () => {
+    setIsOpen(true);
+    setIsBubbleVisible(false);
+  }
 
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
@@ -250,11 +262,25 @@ function FloatingChatbot() {
       {/* Speech Bubble */}
       <div className={cn(
         "absolute bottom-full right-0 mb-3 transition-opacity duration-300",
-        isOpen ? "opacity-0" : "opacity-100 animate-bounce delay-1000"
+        isOpen || !isBubbleVisible ? "opacity-0" : "opacity-100",
       )}>
-        <div className="relative rounded-lg bg-primary py-2 px-4 text-sm font-medium text-primary-foreground shadow-lg">
+        <div className={cn(
+            "relative rounded-lg bg-background py-2 px-4 text-sm font-medium text-primary shadow-lg",
+            isAnimating && "animate-bounce"
+        )}>
           Spør KI-Eksperten!
-          <div className="absolute right-4 -bottom-2 h-4 w-4 rotate-45 transform bg-primary"></div>
+          <div className="absolute right-4 -bottom-2 h-4 w-4 rotate-45 transform bg-background"></div>
+           <Button
+            variant="ghost"
+            size="icon"
+            className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-secondary text-muted-foreground"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsBubbleVisible(false);
+            }}
+          >
+            <X className="h-4 w-4" />
+          </Button>
         </div>
       </div>
 
@@ -266,7 +292,7 @@ function FloatingChatbot() {
         <Button 
           size="icon" 
           className="h-16 w-16 rounded-full shadow-lg"
-          onClick={() => setIsOpen(true)}
+          onClick={handleOpenChat}
           aria-label="Åpne chat med KI-Ekspert"
         >
           <Sparkles className="h-8 w-8" />
