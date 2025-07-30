@@ -99,10 +99,10 @@ function SearchPopover() {
 
 
   return (
-    <div className="w-full max-w-lg" ref={popoverRef}>
+    <div className="w-full max-w-lg" ref={popoverRef} onBlur={handleBlur}>
        <Popover open={open} onOpenChange={setOpen}>
          <PopoverTrigger asChild>
-          <div className="relative w-full max-w-lg">
+          <div className="relative w-full">
             <Input 
               type="search" 
               placeholder="Søk" 
@@ -117,7 +117,6 @@ function SearchPopover() {
           side="bottom" 
           align="start"
           onOpenAutoFocus={(e) => e.preventDefault()}
-          onCloseAutoFocus={(e) => e.preventDefault()}
         >
             <div className="flex flex-col gap-6">
                 <div className="flex flex-col items-start gap-4">
@@ -134,7 +133,7 @@ function SearchPopover() {
                         >
                             <span className="truncate">{search}</span>
                             <X
-                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-50 transition-colors hover:text-destructive hover:bg-destructive/10 rounded-full"
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:text-destructive hover:bg-destructive/10 rounded-full"
                                 onClick={(e) => handleRemoveSearch(e, search)}
                             />
                         </Button>
@@ -526,15 +525,32 @@ export function HeaderComponent() {
     const hasSubCategories = listItems[0]?.links;
 
     return (
-       <ul className="flex flex-col">
+      <>
         {menuData.footerLink && (
-           <li>
-              <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
-                <span>{menuData.footerLink.name}</span>
-                 <ChevronRight className="h-5 w-5 text-muted-foreground" />
-              </Link>
-            </li>
+           <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium text-primary border-b" onClick={() => setIsMenuOpen(false)}>
+             <span>{menuData.footerLink.name}</span>
+              <ChevronRight className="h-5 w-5 text-muted-foreground" />
+           </Link>
+         )}
+
+        {menuData.products && (
+          <div className="mb-4">
+            <h3 className="my-2 text-sm font-semibold text-muted-foreground">Populære produkter</h3>
+            <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
+              {menuData.products.map((product: Product) => (
+                <Link href={product.productUrl || '#'} key={product.id} className="block w-24 flex-shrink-0" onClick={() => setIsMenuOpen(false)}>
+                  <div className="relative aspect-square w-full rounded-md bg-white border">
+                    <Image src={product.imageUrl} alt={product.title} fill className="object-contain p-1" sizes="96px" />
+                  </div>
+                  <p className="mt-1.5 text-xs font-medium text-foreground line-clamp-2">{product.title}</p>
+                </Link>
+              ))}
+            </div>
+            <Separator />
+          </div>
         )}
+
+       <ul className="flex flex-col">
         {hasSubCategories ? (
           listItems.map((group: any) => (
             <li key={group.title}>
@@ -554,6 +570,7 @@ export function HeaderComponent() {
           ))
         )}
         </ul>
+      </>
     );
   };
 
@@ -629,7 +646,7 @@ export function HeaderComponent() {
                       </SheetClose>
                     </SheetHeader>
                     
-                    <div className="flex-grow overflow-y-auto overflow-x-hidden">
+                    <ScrollArea className="flex-grow overflow-y-auto overflow-x-hidden">
                       <div className="relative h-full">
                         <div className={cn(
                             "absolute inset-0 p-4 transition-transform duration-300 ease-in-out",
@@ -657,14 +674,14 @@ export function HeaderComponent() {
                         </div>
 
                         <div className={cn(
-                            "absolute inset-0 bg-background p-4 transition-transform duration-300 ease-in-out",
+                            "absolute inset-0 bg-card p-4 transition-transform duration-300 ease-in-out",
                             navStack.length > 0 ? "translate-x-0" : "translate-x-full"
                           )}
                         >
                           {currentMenu && renderSubMenu(currentMenu)}
                         </div>
                       </div>
-                    </div>
+                    </ScrollArea>
 
                     <div className="border-t p-4">
                       <div className="flex items-center space-x-2">
