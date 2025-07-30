@@ -107,26 +107,13 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async (input) => {
         // 1. Prepare the chat history for the Gemini API.
-        // The Gemini API requires conversations to alternate between 'user' and 'model' roles,
-        // starting with 'user'. We process the history to ensure it's valid.
-        let validHistory = (input.history || []).filter(h => h.role && h.content);
-        const firstUserIndex = validHistory.findIndex(h => h.role === 'user');
-
-        if (firstUserIndex > 0) {
-            // If the history starts with model messages, trim them.
-            validHistory = validHistory.slice(firstUserIndex);
-        } else if (firstUserIndex === -1) {
-            // If there are no user messages (e.g., only the initial model greeting),
-            // we start the conversation fresh with just the user's question.
-            validHistory = [];
-        }
-
-        const messagesForApi = validHistory.map(h => ({
+        const history = (input.history || []).filter(h => h.role && h.content);
+        const messagesForApi = history.map(h => ({
             role: h.role as 'user' | 'model',
             parts: [{ text: h.content }],
         }));
 
-        // 2. Construct the final prompt array
+        // 2. Construct the final prompt array, ensuring it starts with a user message if history is empty.
         const finalPrompt = [
             ...messagesForApi,
             { role: 'user' as const, parts: [{ text: input.question }] },
