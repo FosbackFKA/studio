@@ -290,7 +290,7 @@ export default function InspirationTemplatePage() {
                             ))}
                         </div>
                         <DialogContent
-                            className="bg-transparent border-none shadow-none p-0"
+                            className="bg-transparent border-none shadow-none p-0 max-w-none w-screen h-screen"
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
                             onTouchEnd={handleTouchEnd}
@@ -302,22 +302,22 @@ export default function InspirationTemplatePage() {
                                 <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                                 <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                 
-                                <div className="relative z-10 flex flex-1 flex-col justify-center overflow-hidden">
-                                  <div className="relative flex flex-1 items-center justify-center p-8 overflow-hidden">
-                                      <Image
-                                          src={galleryImages[selectedImageIndex].src}
-                                          alt={galleryImages[selectedImageIndex].alt}
-                                          width={1920}
-                                          height={1080}
-                                          className="h-auto w-auto max-h-full max-w-full object-contain rounded-lg"
-                                          sizes="100vw"
-                                      />
-                                  </div>
-
-                                  <div className="flex-shrink-0 bg-black/80 p-4 text-center text-white backdrop-blur-sm">
-                                      <h3 className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</h3>
-                                      <p className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</p>
-                                  </div>
+                                <div className="relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-4 md:p-8">
+                                    <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+                                        <Image
+                                            src={galleryImages[selectedImageIndex].src}
+                                            alt={galleryImages[selectedImageIndex].alt}
+                                            width={1920}
+                                            height={1080}
+                                            className="h-auto w-auto max-h-full max-w-full object-contain rounded-lg"
+                                            sizes="100vw"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className="relative z-10 flex-shrink-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
+                                    <h3 className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</h3>
+                                    <p className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</p>
                                 </div>
 
                                 <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
