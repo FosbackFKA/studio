@@ -23,6 +23,9 @@ import baalpanneImage from '@/components/common/inspirasjonsmal/p_baalpanne.jpg'
 import popcornImage from '@/components/common/inspirasjonsmal/p_popcorn.jpg';
 import lyslenkeImage from '@/components/common/inspirasjonsmal/p_lyslenke.jpg';
 import ullpleddImage from '@/components/common/inspirasjonsmal/p_ullpledd.jpg';
+import artikkel1 from '@/components/common/artikler/1.webp';
+import artikkel2 from '@/components/common/artikler/2.webp';
+import artikkel3 from '@/components/common/artikler/3.webp';
 
 
 // --- Page Specific Data ---
@@ -84,21 +87,21 @@ const relatedArticles = [
     {
       title: 'Guide: Slik velger du riktig høytrykkspyler',
       excerpt: 'En høytrykkspyler er et fantastisk verktøy for rengjøring. Lær deg hva du bør se etter for å finne modellen som passer dine behov perfekt.',
-      imageUrl: 'https://placehold.co/600x400.png',
+      imageUrl: artikkel1,
       dataAiHint: 'pressure washer cleaning',
       articleUrl: '#',
     },
     {
       title: 'Vedlikehold av utemøbler i tre',
       excerpt: 'Med riktig vedlikehold kan utemøblene dine i tre vare i mange år. Følg våre enkle steg for å beskytte og bevare treverket.',
-      imageUrl: 'https://placehold.co/600x400.png',
+      imageUrl: artikkel2,
       dataAiHint: 'wooden outdoor furniture',
       articleUrl: '#',
     },
     {
       title: 'Skap en summende oase for biene',
       excerpt: 'Hjelp de viktige pollinatorene! Lær hvilke blomster du kan plante for å skape en frodig og bievennlig hage eller balkong.',
-      imageUrl: 'https://placehold.co/600x400.png',
+      imageUrl: artikkel3,
       dataAiHint: 'bees flowers garden',
       articleUrl: '#',
     },
