@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { FkaLogo } from '@/components/common/logo';
 import { allMegaMenusData, MainNavMenu, rightNavItems, menuDataMap } from '@/components/layout/navigation-menu';
-import { ShoppingCart, Search, Menu as MenuIcon, MapPin, ChevronRight, X, User, ArrowLeft, Trash2, Plus, Minus, CheckCircle2, Heart, Phone, Clock, Info, Navigation, Store as StoreIcon } from 'lucide-react';
+import { ShoppingCart, Search, Menu as MenuIcon, MapPin, ChevronRight, X, User, ArrowLeft, Trash2, Plus, Minus, CheckCircle2, Heart, Phone, Clock, Info, Navigation, Store as StoreIcon, TrendingUp } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
@@ -17,14 +17,110 @@ import { cn } from '@/lib/utils';
 import type { CartItem } from '@/hooks/use-cart-store';
 import { useCartStore, selectCartItems, selectTotalItems, selectTotalPrice } from '@/hooks/use-cart-store';
 import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
+import popular2 from '@/components/common/aktuelle-kampanjer/2.webp';
+import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
 import type { Store } from '@/types/store';
 import { allStores } from '@/lib/store-data';
 import { useStoreStore } from '@/hooks/use-store-store';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import type { Product } from '@/types/product';
+import { ProductCard } from '../common/product-card';
 
 
 const parsePrice = (priceString?: string): number => {
     if (!priceString) return 0;
     return parseFloat(priceString.replace(/,-/g, '').replace(/\s/g, ''));
+}
+
+function SearchPopover() {
+  const [open, setOpen] = React.useState(false);
+
+  const popularSearches = [
+    'robotgressklipper',
+    'høytrykkspyler',
+    'motorsag',
+    'hundefôr',
+    'gjødsel',
+    'tilhenger',
+  ];
+
+  const recommendedProducts: Product[] = [
+    {
+      id: 'SEGNAVH3000E',
+      title: 'Robotgressklipper Navimow H3000E med VisionFence',
+      brand: 'Segway',
+      price: '34 999,-',
+      salePrice: '29 999,-',
+      imageUrl: popular1,
+      productUrl: '/products/SEGNAVH3000E',
+      onlineStock: true,
+      storeStockCount: 63,
+    },
+    {
+      id: 'CHAMP92001I',
+      title: 'Strømaggregat 92001I-EU bensin inverter 2,2 kW',
+      brand: 'Champion Europe',
+      price: '7 999,-',
+      salePrice: '5 999,-',
+      imageUrl: popular2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
+    },
+    {
+      id: 'STIHLRM22R',
+      title: 'Bensindrevet bio gressklipper RM 2,2 R',
+      brand: 'Stihl',
+      price: '4 449,-',
+      salePrice: '3 999,-',
+      imageUrl: popular3,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 68,
+    },
+  ];
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <div className="relative w-full max-w-lg">
+          <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" onFocus={() => setOpen(true)} />
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+        </div>
+      </PopoverTrigger>
+      <PopoverContent className="w-[512px] p-4 mt-1" side="bottom" align="start">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="col-span-1">
+            <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
+              <TrendingUp className="mr-2 h-4 w-4" />
+              Populære søk
+            </h3>
+            <div className="flex flex-col items-start">
+              {popularSearches.map(search => (
+                <Button key={search} variant="link" className="p-0 h-auto text-sm font-normal text-muted-foreground hover:text-primary">
+                  {search}
+                </Button>
+              ))}
+            </div>
+          </div>
+          <div className="col-span-2">
+            <h3 className="text-sm font-semibold text-foreground mb-2">Anbefalte produkter</h3>
+            <div className="grid grid-cols-2 gap-2">
+               {recommendedProducts.map(product => (
+                <Link href={product.productUrl} key={product.id} className="group text-xs">
+                    <div className="relative aspect-square w-full">
+                      <Image src={product.imageUrl} alt={product.title} fill className="rounded-md object-contain border p-1" sizes="120px" />
+                    </div>
+                    <p className="font-semibold mt-1 truncate">{product.title}</p>
+                    <p className="text-destructive font-bold">{product.salePrice}</p>
+                 </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
 }
 
 function CartItemCard({ item }: { item: CartItem }) {
@@ -467,10 +563,7 @@ export function HeaderComponent() {
             </div>
 
             <div className="hidden flex-1 px-8 lg:flex justify-center">
-              <div className="relative w-full max-w-lg">
-                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-              </div>
+              <SearchPopover />
             </div>
 
             <div className="flex items-center space-x-2 sm:space-x-3">
