@@ -238,7 +238,7 @@ export default function InspirationTemplatePage() {
 
         <div className="bg-background py-12 lg:py-16">
             <div className="container mx-auto max-w-[1542px] px-4">
-                 <Breadcrumb items={breadcrumbs} className="mb-12 max-w-4xl mx-auto" />
+                 <Breadcrumb items={breadcrumbs} className="mb-12" />
                  
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
                 <section className="mb-16 md:mb-24 max-w-4xl mx-auto">
@@ -304,13 +304,13 @@ export default function InspirationTemplatePage() {
                                         className="object-contain" 
                                         sizes="100vw"
                                     />
-                                    <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white">
+                                    <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                         <X className="h-8 w-8" />
                                     </Button>
-                                     <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white">
+                                     <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                         <ChevronLeft className="h-10 w-10" />
                                     </Button>
-                                     <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white">
+                                     <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                         <ChevronRight className="h-10 w-10" />
                                     </Button>
                                 </div>
