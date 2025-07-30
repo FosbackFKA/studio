@@ -2,9 +2,6 @@
 
 import Link from 'next/link';
 import { FkaLogo } from '@/components/common/logo';
-import { ArrowUp } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
 import type { SVGProps } from 'react';
 
 // New flourish graphic component using the provided HTML, converted to JSX
@@ -77,30 +74,6 @@ const PostenLogo = (props: SVGProps<SVGSVGElement>) => (
 
 
 export function FooterComponent() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const toggleVisibility = () => {
-    if (window.scrollY > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
-  }, []);
-
   return (
     <footer className="w-full">
       {/* Top Green Part */}
@@ -178,18 +151,6 @@ export function FooterComponent() {
             </div>
         </div>
       </div>
-      
-      {/* Scroll to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className={cn(
-          'fixed bottom-5 right-5 z-50 h-12 w-12 rounded-full bg-card shadow-lg ring-1 ring-border transition-opacity hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-          isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
-        )}
-        aria-label="Gå til toppen"
-      >
-        <ArrowUp className="mx-auto h-6 w-6" />
-      </button>
     </footer>
   );
 }
