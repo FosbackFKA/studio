@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2, ChevronRight } from 'lucide-react';
+import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2, ChevronRight, MessageSquare, Bot } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -22,7 +22,7 @@ import { robotklipperChat, type RecommendedProduct, type RobotklipperChatInput, 
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import allProductsAndGuides from '@/data/robotklipper_products.json';
-import { Card } from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 
 
 // Import images
@@ -75,7 +75,6 @@ function RobotklipperChatbot() {
         setIsLoading(true);
 
         try {
-            // Prepare history for the API call - only text content
             const historyForApi = messages.map(msg => ({ role: msg.role, content: msg.content }));
             
             const response: RobotklipperChatOutput = await robotklipperChat({ history: historyForApi, question: currentInput });
@@ -90,7 +89,7 @@ function RobotklipperChatbot() {
     };
 
     return (
-        <div className="flex h-[60vh] flex-col bg-card">
+        <div className="flex h-full flex-col bg-card">
             <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
                 <div className="space-y-4">
                     {messages.map((msg, index) => (
@@ -169,7 +168,6 @@ function RobotklipperChatbot() {
     );
 }
 
-
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
     { name: 'Hage og uterom', href: '#' },
@@ -243,6 +241,46 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
   );
 }
 
+function FloatingChatbot() {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div>
+      <div className={cn(
+        "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 transition-transform duration-300 ease-in-out",
+        isOpen ? "translate-y-8 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+      )}>
+        <Button 
+          size="icon" 
+          className="h-16 w-16 rounded-full shadow-lg"
+          onClick={() => setIsOpen(true)}
+        >
+          <Sparkles className="h-8 w-8" />
+        </Button>
+      </div>
+
+      <div className={cn(
+          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-32px)] h-[70vh] max-w-md max-h-[700px] transition-transform duration-300 ease-in-out",
+          !isOpen ? "translate-y-8 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+      )}>
+        <Card className="flex flex-col h-full w-full overflow-hidden shadow-2xl">
+          <CardHeader className="flex flex-row items-center justify-between bg-primary p-4 text-primary-foreground">
+            <div className="flex items-center gap-3">
+              <Bot className="h-6 w-6" />
+              <CardTitle className="text-lg">KI-Eksperten</CardTitle>
+            </div>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-primary-foreground hover:bg-primary/80" onClick={() => setIsOpen(false)}>
+              <X className="h-5 w-5" />
+            </Button>
+          </CardHeader>
+          <RobotklipperChatbot />
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+
 export default function RobotklipperPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
   
@@ -264,27 +302,6 @@ export default function RobotklipperPage() {
         
         <div className="container mx-auto max-w-[1542px] px-4 py-8 lg:py-12">
             <Breadcrumb items={breadcrumbs} />
-
-             <Accordion type="single" collapsible className="w-full group mb-8 lg:mb-12">
-                <AccordionItem value="chatbot" className="overflow-hidden rounded-xl border bg-card shadow-lg">
-                    <AccordionTrigger className="w-full p-6 text-left hover:no-underline [&[data-state=open]]:bg-secondary/20">
-                        <div className="flex w-full items-center justify-between gap-4">
-                            <div className="flex-shrink-0">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                                <Sparkles className="h-6 w-6 text-primary" />
-                                </div>
-                            </div>
-                            <div className="flex-1 text-left">
-                                <h2 className="font-headline text-xl font-bold">Trenger du hjelp?</h2>
-                                <p className="mt-1 text-muted-foreground">Snakk med vår KI-ekspert for å finne den perfekte robotklipperen.</p>
-                            </div>
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="p-0">
-                        <RobotklipperChatbot />
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
         </div>
 
         <div id="products" className="container mx-auto max-w-[1542px] px-4">
@@ -353,6 +370,7 @@ export default function RobotklipperPage() {
 
       </main>
       <FooterComponent />
+      <FloatingChatbot />
     </div>
   );
 }
