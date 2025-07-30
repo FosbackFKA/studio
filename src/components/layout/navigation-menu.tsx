@@ -723,7 +723,7 @@ export function MainNavMenu() {
                       <div className="md:col-span-3">
                            <h3 className="px-3 text-lg font-bold text-primary">Utvalgte kampanjeprodukter</h3>
                            <Separator className="mb-2" />
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                               {megaMenuData.products.map((product: any) => (
                                   <div key={product.id} className="max-w-xs">
                                     <ProductCard {...product} />
