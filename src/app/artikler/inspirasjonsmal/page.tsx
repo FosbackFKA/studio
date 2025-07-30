@@ -289,36 +289,39 @@ export default function InspirationTemplatePage() {
                                 </DialogTrigger>
                             ))}
                         </div>
-                        <DialogContent 
-                            className="max-w-7xl w-[95vw] h-[90vh] bg-transparent border-none shadow-none p-0"
+                        <DialogContent
+                            className="max-w-none w-screen h-screen bg-transparent border-none shadow-none p-0 flex items-center justify-center"
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
                             onTouchEnd={handleTouchEnd}
                         >
-                             {selectedImageIndex !== null && (
-                                <div className="relative w-full h-full">
-                                    <Image 
-                                        src={galleryImages[selectedImageIndex].src} 
-                                        alt={galleryImages[selectedImageIndex].alt} 
-                                        fill 
-                                        className="object-contain" 
+                            {selectedImageIndex !== null && (
+                            <>
+                                <div className="relative inline-block max-w-[95vw] max-h-[90vh]">
+                                    <Image
+                                        src={galleryImages[selectedImageIndex].src}
+                                        alt={galleryImages[selectedImageIndex].alt}
+                                        width={galleryImages[selectedImageIndex].src.width}
+                                        height={galleryImages[selectedImageIndex].src.height}
+                                        className="object-contain w-auto h-auto max-w-full max-h-full rounded-lg"
                                         sizes="100vw"
                                     />
-                                    <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+                                    <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4 text-white rounded-b-lg">
                                         <h3 className="text-xl font-bold">{galleryImages[selectedImageIndex].title}</h3>
                                         <p className="text-base text-white/90">{galleryImages[selectedImageIndex].description}</p>
                                     </div>
-                                    <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
-                                        <X className="h-8 w-8" />
-                                    </Button>
-                                     <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
-                                        <ChevronLeft className="h-10 w-10" />
-                                    </Button>
-                                     <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
-                                        <ChevronRight className="h-10 w-10" />
-                                    </Button>
                                 </div>
-                             )}
+                                <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                    <X className="h-8 w-8" />
+                                </Button>
+                                <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                    <ChevronLeft className="h-10 w-10" />
+                                </Button>
+                                <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                    <ChevronRight className="h-10 w-10" />
+                                </Button>
+                            </>
+                            )}
                         </DialogContent>
                     </Dialog>
                 </section>
