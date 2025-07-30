@@ -163,6 +163,9 @@ function RobotklipperChatbot() {
                         <ArrowUp className="h-4 w-4" />
                     </Button>
                 </form>
+                <p className="text-xs text-muted-foreground text-center mt-2">
+                    KI-eksperten kan gjøre feil. Vurder å sjekke viktig informasjon.
+                </p>
             </div>
         </div>
     );
@@ -406,3 +409,5 @@ export default function RobotklipperPage() {
     </div>
   );
 }
+
+    
