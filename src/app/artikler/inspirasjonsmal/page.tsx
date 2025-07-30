@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, X, Quote } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
@@ -253,10 +253,19 @@ export default function InspirationTemplatePage() {
                             <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
                         </div>
                     </div>
-                    <blockquote className="mt-10 border-l-4 border-primary pl-6 text-lg italic text-muted-foreground">
-                        "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
-                        <cite className="mt-3 block not-italic font-semibold text-foreground">— Kari N, Fornøyd kunde</cite>
-                    </blockquote>
+                     <div className="mt-12 lg:mt-16">
+                        <div className="relative rounded-lg bg-secondary/30 p-8 text-center md:p-12">
+                            <Quote className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 text-primary/10" />
+                            <blockquote className="relative">
+                                <p className="font-headline text-2xl font-medium text-foreground md:text-3xl">
+                                    "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
+                                </p>
+                                <cite className="mt-6 block text-base not-italic text-muted-foreground">
+                                    — Kari N, Fornøyd kunde
+                                </cite>
+                            </blockquote>
+                        </div>
+                    </div>
                 </section>
 
                 {/* 3. Visuell Inspirasjon (New Gallery) */}
@@ -298,11 +307,12 @@ export default function InspirationTemplatePage() {
                           {selectedImageIndex !== null && (
                           <div 
                               className="fixed inset-0 z-50 flex flex-col"
+                              onClick={closeDialog}
                               onTouchStart={handleTouchStart}
                               onTouchMove={handleTouchMove}
                               onTouchEnd={handleTouchEnd}
                           >
-                              <div className="absolute inset-0 bg-black/80" onClick={closeDialog}></div>
+                              <div className="absolute inset-0 bg-black/80"></div>
                               
                               <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                               <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
