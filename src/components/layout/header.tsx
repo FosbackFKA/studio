@@ -101,16 +101,16 @@ function SearchPopover() {
   return (
     <div className="w-full max-w-lg" onBlur={handleBlur} ref={popoverRef}>
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild onClick={() => setOpen(true)}>
-          <div className="relative">
-            <Input 
-              type="search" 
-              placeholder="Søk" 
-              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
-              onFocus={() => setOpen(true)}
-            />
-            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-          </div>
+        <PopoverTrigger asChild>
+            <div className="relative">
+              <Input 
+                type="search" 
+                placeholder="Søk" 
+                className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
+                onFocus={() => setOpen(true)}
+              />
+              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+            </div>
         </PopoverTrigger>
         <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
             <div className="flex flex-col gap-6">
@@ -128,7 +128,7 @@ function SearchPopover() {
                         >
                             <span className="truncate">{search}</span>
                             <X
-                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:text-destructive"
                                 onClick={(e) => handleRemoveSearch(e, search)}
                             />
                         </Button>
