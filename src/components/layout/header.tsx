@@ -119,19 +119,21 @@ function SearchPopover() {
                     <Clock className="mr-2 h-4 w-4" />
                     Tidligere søk
                   </h3>
-                  {previousSearches.map(search => (
-                    <Button
-                      key={search}
-                      variant="ghost"
-                      className="group flex h-auto w-full items-center justify-between px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
-                    >
-                      <span className="truncate">{search}</span>
-                      <X
-                        className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
-                        onClick={(e) => handleRemoveSearch(e, search)}
-                      />
-                    </Button>
-                  ))}
+                   <div className="flex flex-wrap items-start gap-2">
+                    {previousSearches.map(search => (
+                        <Button
+                            key={search}
+                            variant="ghost"
+                            className="group h-auto items-center justify-center gap-2 rounded-full border px-2.5 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
+                        >
+                            <span className="truncate">{search}</span>
+                            <X
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
+                                onClick={(e) => handleRemoveSearch(e, search)}
+                            />
+                        </Button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="flex flex-col items-start gap-4">
@@ -141,7 +143,7 @@ function SearchPopover() {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {popularSearches.map(search => (
-                      <Button key={search} variant="ghost" className="h-auto px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary rounded-full border">
+                      <Button key={search} variant="ghost" className="h-auto px-3 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary rounded-full border">
                         {search}
                       </Button>
                     ))}
