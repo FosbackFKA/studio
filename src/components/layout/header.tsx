@@ -99,9 +99,9 @@ function SearchPopover() {
 
 
   return (
-    <div className="w-full max-w-lg" onBlur={handleBlur} ref={popoverRef}>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
+    <div className="w-full max-w-lg" ref={popoverRef}>
+       <Popover open={open} onOpenChange={setOpen}>
+         <PopoverTrigger asChild>
           <div className="relative w-full max-w-lg">
             <Input 
               type="search" 
@@ -112,7 +112,13 @@ function SearchPopover() {
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
         </PopoverTrigger>
-        <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
+        <PopoverContent 
+          className="w-[640px] p-4 mt-1" 
+          side="bottom" 
+          align="start"
+          onOpenAutoFocus={(e) => e.preventDefault()}
+          onCloseAutoFocus={(e) => e.preventDefault()}
+        >
             <div className="flex flex-col gap-6">
                 <div className="flex flex-col items-start gap-4">
                   <h3 className="flex items-center text-sm font-semibold text-foreground">
@@ -128,7 +134,7 @@ function SearchPopover() {
                         >
                             <span className="truncate">{search}</span>
                             <X
-                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:text-destructive hover:bg-destructive/10 rounded-full"
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-50 transition-colors hover:text-destructive hover:bg-destructive/10 rounded-full"
                                 onClick={(e) => handleRemoveSearch(e, search)}
                             />
                         </Button>
@@ -476,8 +482,7 @@ export function HeaderComponent() {
           <button
             onClick={() => handleNavigate({
               title: menu.name,
-              items: menu.data.columns.flat(),
-              footerLink: menu.data.footerLink,
+              ...menu.data,
             })}
             className="flex w-full items-center justify-between py-3 font-medium text-primary"
           >
@@ -491,45 +496,20 @@ export function HeaderComponent() {
         const menuData = menuDataMap[item.name];
         if (!menuData) return null;
 
-        if (menuData.columns || menuData.products) {
-          return (
-            <li key={item.name}>
-              <button
-                onClick={() => handleNavigate({
-                  title: item.name,
-                  items: menuData.columns ? menuData.columns.flat() : menuData.links,
-                  products: menuData.products, // pass products
-                  footerLink: menuData.footerLink,
-                })}
-                className="flex w-full items-center justify-between py-3 font-medium text-primary"
-              >
-                <span>{item.name}</span>
-                <ChevronRight className="h-5 w-5 text-muted-foreground" />
-              </button>
-            </li>
-          );
-        }
-
-        if (menuData.links) {
-          const subItems = menuData.links.map((link: { title: string; href: string }) => ({
-            title: link.title,
-            href: link.href,
-          }));
-
-          return (
-            <li key={item.name}>
-              <button
-                onClick={() => handleNavigate({ title: item.name, items: subItems, isSimpleList: true })}
-                className="flex w-full items-center justify-between py-3 font-medium text-primary"
-              >
-                <span>{item.name}</span>
-                <ChevronRight className="h-5 w-5 text-muted-foreground" />
-              </button>
-            </li>
-          );
-        }
-
-        return null;
+        return (
+          <li key={item.name}>
+            <button
+              onClick={() => handleNavigate({
+                title: item.name,
+                ...menuData
+              })}
+              className="flex w-full items-center justify-between py-3 font-medium text-primary"
+            >
+              <span>{item.name}</span>
+              <ChevronRight className="h-5 w-5 text-muted-foreground" />
+            </button>
+          </li>
+        );
       })}
        <Separator className="my-2" />
        <li>
@@ -540,54 +520,39 @@ export function HeaderComponent() {
       </li>
     </ul>
   );
-
+  
   const renderSubMenu = (menuData: any) => {
-    if (menuData.isSimpleList) {
-      return (
-        <ul className="flex flex-col">
-          {menuData.items.map((item: any) => (
-            <li key={item.title}>
-              <Link href={item.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
-                <span>{item.title}</span>
+    const listItems = menuData.columns ? menuData.columns.flat() : (menuData.links || []);
+    const hasSubCategories = listItems[0]?.links;
+
+    return (
+       <ul className="flex flex-col">
+        {menuData.footerLink && (
+           <li>
+              <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
+                <span>{menuData.footerLink.name}</span>
+                 <ChevronRight className="h-5 w-5 text-muted-foreground" />
               </Link>
             </li>
-          ))}
-        </ul>
-      );
-    }
-
-    if (menuData.items && menuData.items[0]?.links) {
-      return (
-        <ul className="flex flex-col">
-          {menuData.footerLink && (
-             <li>
-                <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
-                  <span>{menuData.footerLink.name}</span>
-                   <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                </Link>
-              </li>
-          )}
-          {menuData.items.map((group: any) => (
+        )}
+        {hasSubCategories ? (
+          listItems.map((group: any) => (
             <li key={group.title}>
               <button onClick={() => handleNavigate({ title: group.title, items: group.links, parentTitle: menuData.title })} className="flex w-full items-center justify-between py-3 font-medium text-primary">
                 <span>{group.title}</span>
                 <ChevronRight className="h-5 w-5 text-muted-foreground" />
               </button>
             </li>
-          ))}
-        </ul>
-      );
-    }
-    
-    return (
-       <ul className="flex flex-col">
-        {menuData.items.map((link: any) => (
-            <li key={link.title || link.name}>
-            <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
-                <span>{link.title || link.name}</span>
-            </Link>
-            </li>
-        ))}
+          ))
+        ) : (
+          listItems.map((link: any) => (
+              <li key={link.title || link.name}>
+              <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
+                  <span>{link.title || link.name}</span>
+              </Link>
+              </li>
+          ))
+        )}
         </ul>
     );
   };

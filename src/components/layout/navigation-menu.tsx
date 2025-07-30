@@ -17,19 +17,25 @@ import { ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ProductCard } from '@/components/common/product-card';
+import type { Product } from '@/types/product';
+
 
 // Import products for campaign menu
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
 import popular2 from '../common/aktuelle-kampanjer/2.webp';
 import popular3 from '../common/aktuelle-kampanjer/3.webp';
 
-// Import article images (using placeholders for now)
-import artikkel1 from '../common/artikler/1.webp';
-import artikkel2 from '../common/artikler/2.webp';
-import artikkel3 from '../common/artikler/3.webp';
+// Import product images
+import hund1 from '@/components/common/hund/hund1.webp';
+import hund2 from '@/components/common/hund/hund2.webp';
+import hund3 from '@/components/common/hund/hund3.webp';
+
+import gressklipper1 from '@/components/common/gressklipper/gressklipper1.webp';
+import gressklipper2 from '@/components/common/gressklipper/gressklipper2.webp';
+import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
 
 
-const kampanjeProducts = [
+const kampanjeProducts: Product[] = [
     {
       id: 'SEGNAVH3000E',
       title: 'Robotgressklipper Navimow H3000E med VisionFence',
@@ -62,6 +68,75 @@ const kampanjeProducts = [
       productUrl: '#',
       onlineStock: true,
       storeStockCount: 68,
+    },
+];
+
+const hageProducts: Product[] = [
+    {
+      id: 'SEGNAVH3000E',
+      title: 'Robotgressklipper Navimow H3000E med VisionFence',
+      brand: 'Segway',
+      price: '34 999,-',
+      salePrice: '29 999,-',
+      imageUrl: gressklipper1,
+      productUrl: '/products/SEGNAVH3000E',
+      onlineStock: true,
+      storeStockCount: 63,
+    },
+    {
+      id: 'SEGNAVI108E',
+      title: 'Robotgressklipper Navimow i108e',
+      brand: 'Segway',
+      price: '15 999,-',
+      imageUrl: gressklipper2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 4,
+    },
+    {
+      id: 'GARDSILENO',
+      title: 'Robotklipper Smart Sileno Free 1500',
+      brand: 'Gardena',
+      price: '25 999,-',
+      salePrice: '20 799,-',
+      badgeText: '- 20 %',
+      imageUrl: gressklipper3,
+      productUrl: '#',
+      onlineStock: false,
+      storeStockCount: 41,
+    },
+];
+
+const kjaeledyrProducts: Product[] = [
+     {
+      id: 'LABB01',
+      title: 'Hundefôr Voksen små hunder 3 kg',
+      brand: 'Labb',
+      price: '249,-',
+      imageUrl: hund1,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 120,
+    },
+    {
+      id: 'LABB02',
+      title: 'Hundefôr Voksen mellom- og stor rase 15 kg',
+      brand: 'Labb',
+      price: '649,-',
+      imageUrl: hund2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 95,
+    },
+    {
+      id: 'NONSTOP01',
+      title: 'Kobbel Move Leash 150 cm grønn',
+      brand: 'Non-stop dogwear',
+      price: '349,-',
+      imageUrl: hund3,
+      productUrl: '#',
+      onlineStock: false,
+      storeStockCount: 63,
     },
 ];
 
@@ -133,9 +208,7 @@ export const hageUteromMenuData = {
           { name: 'Vanning', href: '#' },
         ],
       },
-    ],
-    [
-      {
+       {
         title: 'Skadedyrbekjempelse', href: '#',
         links: [
           { name: 'Fugleskremsel', href: '#' },
@@ -147,11 +220,7 @@ export const hageUteromMenuData = {
       },
     ],
   ],
-  articles: [
-    { title: 'Guide: Slik velger du riktig høytrykkspyler', imageUrl: artikkel1, href: '#' },
-    { title: 'Vedlikehold av utemøbler i tre', imageUrl: artikkel2, href: '#' },
-    { title: 'Skap en summende oase for biene', imageUrl: artikkel3, href: '#' },
-  ],
+  products: hageProducts,
   footerLink: { name: 'Se alt i hage og uterom', href: '#' },
 };
 
@@ -190,14 +259,6 @@ export const kjaeledyrMenuData = {
           { name: 'Utstyr til høns', href: '#' },
         ],
       },
-      {
-        title: 'Småfugler', href: '#',
-        links: [
-            { name: 'Fuglekasser', href: '#' },
-            { name: 'Fuglemat', href: '#' },
-            { name: 'Fuglematere', href: '#' },
-        ],
-      },
     ],
     [ // Column 3
       {
@@ -211,9 +272,7 @@ export const kjaeledyrMenuData = {
           { name: 'Hundefôr-velger', href: '/hundefor' },
         ],
       },
-    ],
-    [ // Column 4
-      {
+       {
         title: 'Katt', href: '#',
         links: [
           { name: 'Kattemat', href: '#' },
@@ -224,10 +283,7 @@ export const kjaeledyrMenuData = {
       },
     ],
   ],
-  articles: [
-    { title: 'Slik velger du riktig fôr til hunden', imageUrl: 'https://placehold.co/300x200.png', href: '/hundefor' },
-    { title: 'Hvordan aktivisere katten din inne?', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
-  ],
+  products: kjaeledyrProducts,
   footerLink: { name: 'Se alt i kjæledyr', href: '#' },
 };
 
@@ -286,9 +342,7 @@ export const klaerOgSkoMenuData = {
           { name: 'Se flere', href: '#' },
         ],
       },
-    ],
-    [ // Column 4
-      {
+       {
         title: 'Sko og støvler', href: '#',
         links: [
           { name: 'Brodder', href: '#' },
@@ -298,10 +352,6 @@ export const klaerOgSkoMenuData = {
         ],
       },
     ],
-  ],
-  articles: [
-    { title: 'Velg riktige arbeidshansker', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
-    { title: 'Guide til vernesko', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
   ],
   footerLink: { name: 'Se alt i klær og sko', href: '#' },
 };
@@ -317,19 +367,20 @@ export const hjemOgFritidMenuData = {
         ],
       },
       {
-        title: 'Interiør', href: '#',
-        links: [
-          { name: 'Dekorasjon', href: '#' },
-          { name: 'Lykter og telysholdere', href: '#' },
-          { name: 'Lys og servietter', href: '#' },
-          { name: 'Oppbevaring', href: '#' },
-        ],
-      },
-      {
         title: 'Tur og friluftsutstyr', href: '#',
         links: [
           { name: 'Friluftsutstyr', href: '#' },
           { name: 'Turmat', href: '#' },
+        ],
+      },
+       {
+        title: 'Vask og renhold', href: '#',
+        links: [
+          { name: 'Desinfeksjonsmidler', href: '#' },
+          { name: 'Personlig pleie', href: '#' },
+          { name: 'Rengjøringmiddel innendørs', href: '#' },
+          { name: 'Rengjøringmiddel utendørs', href: '#' },
+          { name: 'Renholdsutstyr', href: '#' },
         ],
       },
     ],
@@ -352,16 +403,7 @@ export const hjemOgFritidMenuData = {
           { name: 'Leketraktorer', href: '#' },
         ],
       },
-       {
-        title: 'Vask og renhold', href: '#',
-        links: [
-          { name: 'Desinfeksjonsmidler', href: '#' },
-          { name: 'Personlig pleie', href: '#' },
-          { name: 'Rengjøringmiddel innendørs', href: '#' },
-          { name: 'Rengjøringmiddel utendørs', href: '#' },
-          { name: 'Renholdsutstyr', href: '#' },
-        ],
-      },
+      
     ],
     [ // Column 3
       {
@@ -404,10 +446,6 @@ export const hjemOgFritidMenuData = {
       },
     ],
   ],
-  articles: [
-    { title: 'Slik fyrer du riktig i ovnen', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
-    { title: 'Lag din egen eplemost', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
-  ],
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
@@ -447,12 +485,15 @@ export const verktoyOgRedskapMenuData = {
           { name: 'Se flere', href: '#' },
         ],
       },
-      {
-        title: 'Snørydding og avising', href: '#',
+       {
+        title: 'Verktøy og maskiner', href: '#',
         links: [
-            { name: 'Brøytestikker', href: '#' },
-            { name: 'Snøskuffer', href: '#' },
-            { name: 'Strøsand og veisalt', href: '#' },
+          { name: 'Byggtørkere', href: '#' },
+          { name: 'Elektroverktøy', href: '#' },
+          { name: 'Håndverktøy', href: '#' },
+          { name: 'Kappemaskiner', href: '#' },
+          { name: 'Kompressor og tilbehør', href: '#' },
+          { name: 'Se flere', href: '#' },
         ],
       },
     ],
@@ -477,34 +518,6 @@ export const verktoyOgRedskapMenuData = {
         ],
       },
     ],
-    [ // Column 4
-      {
-        title: 'El-artikler og belysning', href: '#',
-        links: [
-          { name: 'Alarm og overvåkning', href: '#' },
-          { name: 'Arbeidsbelysning', href: '#' },
-          { name: 'Lyspærer og lysrør', href: '#' },
-          { name: 'Skjøteledninger og kabeltromler', href: '#' },
-          { name: 'Småbatterier', href: '#' },
-          { name: 'Se flere', href: '#' },
-        ],
-      },
-       {
-        title: 'Verktøy og maskiner', href: '#',
-        links: [
-          { name: 'Byggtørkere', href: '#' },
-          { name: 'Elektroverktøy', href: '#' },
-          { name: 'Håndverktøy', href: '#' },
-          { name: 'Kappemaskiner', href: '#' },
-          { name: 'Kompressor og tilbehør', href: '#' },
-          { name: 'Se flere', href: '#' },
-        ],
-      },
-    ],
-  ],
-  articles: [
-    { title: 'Guide til høytrykkspylere', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
-    { title: 'Velg riktig tilhenger', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
   ],
   footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
 };
@@ -546,9 +559,7 @@ export const skogOgVedMenuData = {
           { name: 'Vernesko og vernestøvler', href: '#' },
         ],
       },
-    ],
-    [ // Column 4
-      {
+       {
         title: 'Verneutstyr', href: '#',
         links: [
           { name: 'Åndedrettsvern', href: '#' },
@@ -559,10 +570,6 @@ export const skogOgVedMenuData = {
         ],
       },
     ],
-  ],
-  articles: [
-    { title: 'Slik bruker du motorsagen sikkert', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
-    { title: 'Fra stokk til ved', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
   ],
   footerLink: { name: 'Se alt i skog og ved', href: '#' },
 };
@@ -635,30 +642,6 @@ export const lagersalgMenuData = {
   footerLink: { name: 'Se alle tilbud', href: '#' }
 };
 
-// Helper components for menus
-const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
-  ({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-              className
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    );
-  }
-);
-ListItem.displayName = 'ListItem';
-
 const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string; links: { name: string; href: string }[] }) => (
   <div className="flex flex-col">
     {title && href ? (
@@ -681,18 +664,6 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
     </ul>
   </div>
 );
-
-const ArticlePreview = ({ article }: { article: { title: string; imageUrl: string | StaticImageData; href: string } }) => (
-  <Link href={article.href} className="group block rounded-lg p-2 hover:bg-black/5">
-    <div className="flex items-center gap-4">
-      <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md">
-        <Image src={article.imageUrl} alt={article.title} fill className="object-cover" sizes="80px" />
-      </div>
-      <p className="text-sm font-semibold text-sidebar-foreground group-hover:text-primary">{article.title}</p>
-    </div>
-  </Link>
-);
-
 
 export const menuDataMap: Record<string, any> = {
   'Hage og uterom': hageUteromMenuData,
@@ -723,31 +694,45 @@ export function MainNavMenu() {
           <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
           <NavigationMenuContent>
             {megaMenuData ? (
-              megaMenuData.columns ? (
-              // Standard megamenu with columns (Hage, Kjæledyr, Merkevarer...)
-              <>
-                <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
-                  {megaMenuData.columns.map((col: any[], idx: number) => (
-                    <div key={idx} className="flex flex-col gap-4">
-                      {col.map((group) => (
-                        <MegaMenuColumn key={group.title || group.links[0].name} {...group} />
+              <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
+                  {/* Link Columns */}
+                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products})}>
+                      {megaMenuData.columns?.map((col: any[], idx: number) => (
+                        <div key={idx} className="flex flex-col gap-4">
+                          {col.map((group) => (
+                            <MegaMenuColumn key={group.title || group.links[0].name} {...group} />
+                          ))}
+                        </div>
                       ))}
-                    </div>
-                  ))}
-                  {/* Articles Column */}
-                  {megaMenuData.articles && (
-                    <div className="flex flex-col gap-4 rounded-lg bg-black/5 p-4">
-                       <h3 className="px-2 font-headline text-lg font-medium text-foreground">Anbefalte artikler</h3>
-                       <div className="flex flex-col gap-2">
-                        {megaMenuData.articles.map((article: any) => (
-                          <ArticlePreview key={article.title} article={article} />
-                        ))}
-                       </div>
+                      {/* For menus without columns like Merkevarer */}
+                      {!megaMenuData.columns && megaMenuData.links && (
+                           <div className="flex flex-col gap-2 md:col-span-1">
+                              <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
+                              <Separator className="mb-2" />
+                              {megaMenuData.links.map((link: { title: string, href: string }) => (
+                                  <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
+                                      <span>{link.title}</span>
+                                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                                  </Link>
+                              ))}
+                          </div>
+                      )}
+                  </div>
+                  {/* Products Column */}
+                  {megaMenuData.products && (
+                    <div className="md:col-span-2">
+                       <h3 className="px-3 text-lg font-bold text-primary">Populære produkter</h3>
+                       <Separator className="mb-2" />
+                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            {megaMenuData.products.slice(0,3).map((product: any) => (
+                              <ProductCard key={product.id} {...product} />
+                            ))}
+                        </div>
                     </div>
                   )}
-                </div>
-                {megaMenuData.footerLink && (
-                  <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-4 py-4">
+                 
+                 {megaMenuData.footerLink && (
+                  <div className="md:col-span-5 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                       <Link href={megaMenuData.footerLink.href}>
                         <ChevronRight className="mr-2 h-4 w-4" />
@@ -756,49 +741,7 @@ export function MainNavMenu() {
                     </Button>
                   </div>
                 )}
-              </>
-            ) : megaMenuData.links ? (
-              // Special menu for Kampanjer and Lagersalg
-              <div className="container mx-auto max-w-[1542px] px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                  {/* Column for links */}
-                  <div className="flex flex-col gap-2 md:col-span-1">
-                      <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
-                      <Separator className="mb-2" />
-                      {megaMenuData.links.map((link: { title: string, href: string }) => (
-                          <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
-                              <span>{link.title}</span>
-                              <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                          </Link>
-                      ))}
-                  </div>
-                  {/* Columns for products (if they exist) */}
-                  {megaMenuData.products && (
-                      <div className="md:col-span-3">
-                           <h3 className="px-3 text-lg font-bold text-primary">Utvalgte kampanjeprodukter</h3>
-                           <Separator className="mb-2" />
-                           <div className="mx-auto max-w-4xl">
-                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                {megaMenuData.products.map((product: any) => (
-                                  <ProductCard key={product.id} {...product} />
-                                ))}
-                            </div>
-                          </div>
-                      </div>
-                  )}
-                </div>
-                {megaMenuData.footerLink && (
-                <div className="mt-8 border-t border-sidebar-border pt-4">
-                  <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                    <Link href={megaMenuData.footerLink.href}>
-                      <ChevronRight className="mr-2 h-4 w-4" />
-                      {megaMenuData.footerLink.name}
-                    </Link>
-                  </Button>
-                </div>
-              )}
               </div>
-            ) : null
             ) : null}
           </NavigationMenuContent>
         </NavigationMenuItem>
