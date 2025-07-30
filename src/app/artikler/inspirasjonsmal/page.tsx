@@ -19,6 +19,10 @@ import challengeImage from '@/components/common/inspirasjonsmal/foer.png';
 import takAvLysImage from '@/components/common/inspirasjonsmal/hengelys.png';
 import ledVeienImage from '@/components/common/inspirasjonsmal/solcellelys.jpg';
 import levendeLysImage from '@/components/common/inspirasjonsmal/lanterne.jpg';
+import baalpanneImage from '@/components/common/inspirasjonsmal/p_baalpanne.jpg';
+import popcornImage from '@/components/common/inspirasjonsmal/p_popcorn.jpg';
+import lyslenkeImage from '@/components/common/inspirasjonsmal/p_lyslenke.jpg';
+import ullpleddImage from '@/components/common/inspirasjonsmal/p_ullpledd.jpg';
 
 
 // --- Page Specific Data ---
@@ -35,7 +39,7 @@ const shopTheLookProducts: Product[] = [
     title: 'Bålpanne 60',
     brand: 'Espegard',
     price: '2 490,-',
-    imageUrl: 'https://placehold.co/400x400.png',
+    imageUrl: baalpanneImage,
     dataAiHint: 'fire pit steel',
     productUrl: '#',
     onlineStock: true,
@@ -46,7 +50,7 @@ const shopTheLookProducts: Product[] = [
     title: 'Popcorngryte for bålpanne',
     brand: 'Felleskjøpet',
     price: '499,-',
-    imageUrl: 'https://placehold.co/400x400.png',
+    imageUrl: popcornImage,
     dataAiHint: 'popcorn kettle fire',
     productUrl: '#',
     onlineStock: true,
@@ -57,7 +61,7 @@ const shopTheLookProducts: Product[] = [
     title: 'Lyslenke LED utendørs 10m',
     brand: 'GP',
     price: '799,-',
-    imageUrl: 'https://placehold.co/400x400.png',
+    imageUrl: lyslenkeImage,
     dataAiHint: 'outdoor string lights',
     productUrl: '#',
     onlineStock: true,
@@ -68,7 +72,7 @@ const shopTheLookProducts: Product[] = [
     title: 'Ullpledd Grå',
     brand: 'Felleskjøpet',
     price: '699,-',
-    imageUrl: 'https://placehold.co/400x400.png',
+    imageUrl: ullpleddImage,
     dataAiHint: 'gray wool blanket',
     productUrl: '#',
     onlineStock: true,
