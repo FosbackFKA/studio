@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
@@ -164,7 +164,50 @@ const galleryImages: {
 // --- Main Page Component ---
 
 export default function InspirationTemplatePage() {
-    const [selectedImage, setSelectedImage] = React.useState<StaticImageData | null>(null);
+    const [selectedImageIndex, setSelectedImageIndex] = React.useState<number | null>(null);
+    const touchStartX = React.useRef(0);
+    const touchEndX = React.useRef(0);
+
+    const openDialog = (index: number) => setSelectedImageIndex(index);
+    const closeDialog = () => setSelectedImageIndex(null);
+
+    const nextImage = React.useCallback(() => {
+        if (selectedImageIndex === null) return;
+        setSelectedImageIndex((prevIndex) => (prevIndex! + 1) % galleryImages.length);
+    }, [selectedImageIndex]);
+
+    const prevImage = React.useCallback(() => {
+        if (selectedImageIndex === null) return;
+        setSelectedImageIndex((prevIndex) => (prevIndex! - 1 + galleryImages.length) % galleryImages.length);
+    }, [selectedImageIndex]);
+
+    React.useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (selectedImageIndex === null) return;
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeDialog();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedImageIndex, nextImage, prevImage]);
+    
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.targetTouches[0].clientX;
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.targetTouches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        if (touchStartX.current - touchEndX.current > 75) {
+            nextImage();
+        }
+        if (touchStartX.current - touchEndX.current < -75) {
+            prevImage();
+        }
+    };
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -224,11 +267,11 @@ export default function InspirationTemplatePage() {
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
                         </p>
                     </div>
-                    <Dialog>
+                    <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
                         <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
                             {galleryImages.map((image, index) => (
                                 <DialogTrigger key={index} asChild>
-                                    <button onClick={() => setSelectedImage(image.src)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
+                                    <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
                                         <Image
                                             src={image.src}
                                             alt={image.alt}
@@ -246,10 +289,30 @@ export default function InspirationTemplatePage() {
                                 </DialogTrigger>
                             ))}
                         </div>
-                        <DialogContent className="max-w-4xl h-[80vh] bg-transparent border-none shadow-none">
-                             {selectedImage && (
+                        <DialogContent 
+                            className="max-w-7xl w-[95vw] h-[90vh] bg-transparent border-none shadow-none p-0"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
+                             {selectedImageIndex !== null && (
                                 <div className="relative w-full h-full">
-                                    <Image src={selectedImage} alt="Fullskjermsvisning" fill className="object-contain" sizes="100vw"/>
+                                    <Image 
+                                        src={galleryImages[selectedImageIndex].src} 
+                                        alt={galleryImages[selectedImageIndex].alt} 
+                                        fill 
+                                        className="object-contain" 
+                                        sizes="100vw"
+                                    />
+                                    <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white">
+                                        <X className="h-8 w-8" />
+                                    </Button>
+                                     <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white">
+                                        <ChevronLeft className="h-10 w-10" />
+                                    </Button>
+                                     <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/50 text-white hover:bg-black/75 hover:text-white">
+                                        <ChevronRight className="h-10 w-10" />
+                                    </Button>
                                 </div>
                              )}
                         </DialogContent>
