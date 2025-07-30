@@ -37,6 +37,8 @@ import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
 import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { FkaLogo } from '@/components/common/logo';
+import chatbotIcon from '@/components/common/chat-bot.png';
+import chatbotAvatar from '@/components/common/FK_symbol_Main_rgb.png';
 
 const imageMap: Record<string, StaticImageData> = {
   heroImage, guideImage, gressklipper1, gressklipper2, gressklipper3, gressklipper4, gressklipper5, popular1,
@@ -172,7 +174,7 @@ function RobotklipperChatbot() {
                         <div key={index} className={cn("flex items-start gap-3", msg.role === 'user' ? 'justify-end' : 'justify-start')}>
                             {msg.role === 'model' && (
                                 <Avatar className="h-8 w-8 border bg-white p-1">
-                                    <FkaLogo className="h-full w-auto" />
+                                    <Image src={chatbotAvatar} alt="Felleskjøpet KI-Ekspert" />
                                 </Avatar>
                             )}
                             <div className={cn(
@@ -219,7 +221,7 @@ function RobotklipperChatbot() {
                     {isLoading && (
                          <div className="flex items-start gap-3 justify-start">
                              <Avatar className="h-8 w-8 border bg-white p-1">
-                                <FkaLogo className="h-full w-auto" />
+                                <Image src={chatbotAvatar} alt="Felleskjøpet KI-Ekspert" />
                             </Avatar>
                              <div className="max-w-md rounded-lg px-4 py-2 bg-secondary">
                                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -369,14 +371,14 @@ function FloatingChatbot() {
         <Button 
           size="icon" 
           className={cn(
-            "h-16 w-16 rounded-full shadow-lg transition-all duration-300 ease-in-out",
-            "bg-gradient-to-br from-primary to-green-400 text-primary-foreground",
+            "h-16 w-16 rounded-full shadow-lg transition-all duration-300 ease-in-out p-3",
+            "bg-primary text-primary-foreground",
             "hover:scale-110 hover:shadow-xl focus:scale-110 focus:shadow-xl focus:outline-none"
           )}
           onClick={handleOpenChat}
           aria-label="Åpne chat med KI-Ekspert"
         >
-          <Sparkles className="h-9 w-9" />
+          <Image src={chatbotIcon} alt="Chatbot icon" className="h-full w-full"/>
         </Button>
       </div>
 
@@ -475,7 +477,8 @@ export default function RobotklipperPage() {
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                         {products.map((p: any) => {
                           const imageSrc = imageMap[p.id as string] || imageMap[p.image_link as string] || guideImage;
-                          if (!p.imageUrl) p.imageUrl = imageSrc;
+                          if (!p.imageUrl && p.id && imageMap[p.id]) p.imageUrl = imageMap[p.id];
+                          if (!p.imageUrl) return null;
                           return (
                             <ProductCard 
                                 key={p.id} 
