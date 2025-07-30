@@ -92,6 +92,8 @@ function SearchPopover() {
   };
   
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    // We check if the new focused element is a child of the popover.
+    // If it is, we don't want to close the popover.
     if (popoverRef.current && !popoverRef.current.contains(e.relatedTarget as Node)) {
         setOpen(false);
     }
@@ -533,24 +535,7 @@ export function HeaderComponent() {
            </Link>
          )}
 
-        {menuData.products && (
-          <div className="mb-4">
-            <h3 className="my-2 text-sm font-semibold text-muted-foreground">Populære produkter</h3>
-            <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
-              {menuData.products.map((product: Product) => (
-                <Link href={product.productUrl || '#'} key={product.id} className="block w-24 flex-shrink-0" onClick={() => setIsMenuOpen(false)}>
-                  <div className="relative aspect-square w-full rounded-md bg-white border">
-                    <Image src={product.imageUrl} alt={product.title} fill className="object-contain p-1" sizes="96px" />
-                  </div>
-                  <p className="mt-1.5 text-xs font-medium text-foreground line-clamp-2">{product.title}</p>
-                </Link>
-              ))}
-            </div>
-            <Separator />
-          </div>
-        )}
-
-       <ul className="flex flex-col">
+       <ul className="flex flex-col flex-grow">
         {hasSubCategories ? (
           listItems.map((group: any) => (
             <li key={group.title}>
@@ -570,6 +555,23 @@ export function HeaderComponent() {
           ))
         )}
         </ul>
+
+        {menuData.products && (
+          <div className="mt-auto pt-4">
+            <Separator />
+            <h3 className="my-2 text-sm font-semibold text-muted-foreground">Populære produkter</h3>
+            <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
+              {menuData.products.map((product: Product) => (
+                <Link href={product.productUrl || '#'} key={product.id} className="block w-24 flex-shrink-0" onClick={() => setIsMenuOpen(false)}>
+                  <div className="relative aspect-square w-full rounded-md bg-white border">
+                    <Image src={product.imageUrl} alt={product.title} fill className="object-contain p-1" sizes="96px" />
+                  </div>
+                  <p className="mt-1.5 text-xs font-medium text-foreground line-clamp-2">{product.title}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </>
     );
   };
@@ -598,7 +600,7 @@ export function HeaderComponent() {
               </Link>
             </div>
 
-            <div className="hidden flex-1 px-8 lg:flex justify-end">
+            <div className="hidden flex-1 justify-end px-8 lg:flex">
               <SearchPopover />
             </div>
 
@@ -674,7 +676,7 @@ export function HeaderComponent() {
                         </div>
 
                         <div className={cn(
-                            "absolute inset-0 bg-card p-4 transition-transform duration-300 ease-in-out",
+                            "absolute inset-0 bg-card p-4 transition-transform duration-300 ease-in-out flex flex-col",
                             navStack.length > 0 ? "translate-x-0" : "translate-x-full"
                           )}
                         >
@@ -713,3 +715,4 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
+
