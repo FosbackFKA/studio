@@ -297,10 +297,11 @@ export default function InspirationTemplatePage() {
                         >
                             {selectedImageIndex !== null && (
                             <>
+                                <div onClick={closeDialog} className="absolute inset-0 z-0" aria-label="Lukk bildevisning"></div>
                                 <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                                 <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                 
-                                <div className="flex flex-1 flex-col justify-center overflow-hidden">
+                                <div className="relative z-10 flex flex-1 flex-col justify-center overflow-hidden">
                                   <div className="relative flex flex-1 items-center justify-center p-8 overflow-hidden">
                                       <Image
                                           src={galleryImages[selectedImageIndex].src}
@@ -318,13 +319,13 @@ export default function InspirationTemplatePage() {
                                   </div>
                                 </div>
 
-                                <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                     <X className="h-8 w-8" />
                                 </Button>
-                                <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                     <ChevronLeft className="h-10 w-10" />
                                 </Button>
-                                <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                     <ChevronRight className="h-10 w-10" />
                                 </Button>
                             </>
