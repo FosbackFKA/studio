@@ -414,45 +414,27 @@ export default async function HomePage() {
 
         <section className="py-8 lg:py-12 bg-background">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-stretch">
-              <div className="relative min-h-[400px] overflow-hidden rounded-lg md:min-h-0 md:h-auto">
-                <Image
-                  src={gressImage}
-                  alt="Perfekt plen"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex">
-                <div className="my-auto w-full rounded-lg bg-primary-dark-background p-6 lg:p-12">
-                  <p className="font-headline text-xl text-[#fff280]">Drømmer du om en</p>
-                  <h2 className="font-headline text-5xl font-bold text-[#fff280]">Perfekt plen?</h2>
-                  <p className="mb-8 mt-4 text-lg text-[#fff280]">
-                    Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
-                  </p>
-                  <Button
-                    asChild
-                    className="h-11 rounded-full bg-[#fffacc] px-4 text-secondary-foreground hover:bg-[#fffacc]/90"
-                  >
-                    <Link href="#">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        className="mr-2 h-[0.875rem] w-[0.875rem]"
-                        role="presentation"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z"
-                        ></path>
-                      </svg>
-                      Se produktene
-                    </Link>
-                  </Button>
-                </div>
+            <div className="relative flex min-h-[400px] w-full items-center justify-start overflow-hidden rounded-lg text-white">
+              <Image
+                src={gressImage}
+                alt="Perfekt plen"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+              <div className="relative z-10 p-6 lg:p-12 max-w-2xl">
+                <p className="font-headline text-xl text-yellow-300">Drømmer du om en</p>
+                <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
+                <p className="mb-8 mt-4 text-lg text-white/90">
+                  Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
+                </p>
+                <Button asChild className="h-11 rounded-full bg-yellow-300 px-6 text-primary hover:bg-yellow-300/90">
+                  <Link href="#">
+                    <ArrowRight className="mr-2 h-4 w-4" />
+                    Se produktene
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -589,3 +571,4 @@ export default async function HomePage() {
 }
 
     
+
