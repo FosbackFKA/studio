@@ -116,13 +116,15 @@ function RobotklipperChatbot() {
                                             <Link href={product.productUrl} key={product.id} target="_blank" rel="noopener noreferrer" className="block group">
                                                 <Card className="flex items-center gap-3 p-2 transition-colors hover:bg-background/50">
                                                     <div className="relative h-16 w-16 flex-shrink-0">
-                                                        <Image 
-                                                            src={imageMap[product.imageUrl as string]} 
-                                                            alt={product.title} 
-                                                            fill 
-                                                            className="rounded-md object-contain border bg-white p-1" 
-                                                            sizes="64px" 
-                                                        />
+                                                        {imageMap[product.imageUrl as string] && (
+                                                          <Image 
+                                                              src={imageMap[product.imageUrl as string]} 
+                                                              alt={product.title} 
+                                                              fill 
+                                                              className="rounded-md object-contain border bg-white p-1" 
+                                                              sizes="64px" 
+                                                          />
+                                                        )}
                                                     </div>
                                                     <div className="flex-1">
                                                         {product.brand && <p className="text-xs font-semibold text-primary">{product.brand}</p>}
@@ -402,10 +404,15 @@ export default function RobotklipperPage() {
                     </div>
                     
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                        {products.map((p) => (
+                        {products.map((p) => {
+                          if (!p.imageUrl || !imageMap[p.imageUrl as string]) {
+                            return null;
+                          }
+                          return (
                             <ProductCard key={p.id} {...p} imageUrl={imageMap[p.imageUrl as string]} />
-                        ))}
-                        {guide && (
+                          )
+                        })}
+                        {guide && imageMap[guide.imageUrl as string] && (
                             <div className="col-span-2 lg:col-span-3">
                                 <GuideCard {...guide} imageUrl={imageMap[guide.imageUrl as string]} />
                             </div>
