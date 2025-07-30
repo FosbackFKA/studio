@@ -12,6 +12,7 @@ import { ProductCard } from '@/components/common/product-card';
 import { ArrowRight, Star } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { ArticlesSection } from '@/components/sections/articles-section';
+import heroImage from '@/components/common/inspirasjonsmal/image (11).jpg';
 
 // --- Page Specific Data ---
 
@@ -104,7 +105,7 @@ export default function InspirationTemplatePage() {
         {/* 1. Tittel, ingress og bilde (Hero) */}
         <section className="relative h-[70vh] min-h-[500px] w-full">
           <Image 
-            src="https://placehold.co/1920x1080.png" 
+            src={heroImage} 
             alt="Kari sin drømmehage i skumringen med en tent bålpanne og lyslenker"
             fill
             sizes="100vw"
