@@ -662,18 +662,18 @@ ListItem.displayName = 'ListItem';
 const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string; links: { name: string; href: string }[] }) => (
   <div className="flex flex-col">
     {title && href ? (
-      <Link href={href} className="group/megamenu-title flex items-center gap-1 p-2 font-bold text-foreground hover:text-primary">
-        <ChevronRight className="h-4 w-4 text-primary" />
-        <span className="border-b-2 border-transparent group-hover/megamenu-title:border-primary">{title}</span>
+      <Link href={href} className="group/megamenu-title mb-2 flex items-center gap-2 p-2">
+        <ChevronRight className="h-5 w-5 text-primary transition-transform group-hover/megamenu-title:translate-x-1" />
+        <span className="font-headline text-lg font-medium text-foreground underline-offset-4 group-hover/megamenu-title:text-primary group-hover/megamenu-title:underline">{title}</span>
       </Link>
     ) : null}
     <ul className={cn(
-      "flex flex-col gap-0.5",
-      title && href ? "pl-8" : "pl-2"
+      "flex flex-col gap-1",
+      title && href ? "pl-9" : "pl-2"
     )}>
       {links.map((link) => (
         <li key={link.name}>
-          <Link href={link.href} className="block rounded-md p-1 text-sm text-sidebar-foreground/80 hover:bg-black/5 hover:text-primary">
+          <Link href={link.href} className="block rounded-md p-2 text-sm text-sidebar-foreground/80 hover:bg-black/5 hover:text-primary">
             {link.name}
           </Link>
         </li>
@@ -683,12 +683,12 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
 );
 
 const ArticlePreview = ({ article }: { article: { title: string; imageUrl: string | StaticImageData; href: string } }) => (
-  <Link href={article.href} className="group block rounded-md p-2 hover:bg-black/5">
-    <div className="flex items-center gap-3">
-      <div className="relative h-16 w-16 flex-shrink-0">
-        <Image src={article.imageUrl} alt={article.title} fill className="rounded-md object-cover" sizes="64px" />
+  <Link href={article.href} className="group block rounded-lg p-2 hover:bg-black/5">
+    <div className="flex items-center gap-4">
+      <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md">
+        <Image src={article.imageUrl} alt={article.title} fill className="object-cover" sizes="80px" />
       </div>
-      <p className="text-sm font-medium text-sidebar-foreground/80 group-hover:text-primary">{article.title}</p>
+      <p className="text-sm font-semibold text-sidebar-foreground group-hover:text-primary">{article.title}</p>
     </div>
   </Link>
 );
@@ -736,8 +736,8 @@ export function MainNavMenu() {
                   ))}
                   {/* Articles Column */}
                   {megaMenuData.articles && (
-                    <div className="flex flex-col gap-4">
-                       <h3 className="p-2 font-bold text-foreground">Anbefalte artikler</h3>
+                    <div className="flex flex-col gap-4 rounded-lg bg-black/5 p-4">
+                       <h3 className="px-2 font-headline text-lg font-medium text-foreground">Anbefalte artikler</h3>
                        <div className="flex flex-col gap-2">
                         {megaMenuData.articles.map((article: any) => (
                           <ArticlePreview key={article.title} article={article} />
