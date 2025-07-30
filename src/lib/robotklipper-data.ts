@@ -9,8 +9,19 @@ export interface RobotklipperProduct extends Omit<Product, 'imageUrl'> {
 }
 
 function scoreProduct(product: RobotklipperProduct, query: string): number {
-  const productText = `${product.title.toLowerCase()} ${product.brand ? product.brand.toLowerCase() : ''} ${product.description?.toLowerCase()} ${product.usp?.join(' ').toLowerCase()}`;
-  const queryTerms = query.split(/\s+/);
+    const parts = [
+        product.title,
+        product.brand,
+        product.description,
+        ...(product.usp || []),
+    ];
+
+    const productText = parts
+        .filter(p => typeof p === 'string') // Only include actual strings
+        .join(' ')
+        .toLowerCase();
+
+    const queryTerms = query.split(/\s+/);
   
   // Score based on how many query terms are found in the product text
   const score = queryTerms.reduce((currentScore, term) => {
