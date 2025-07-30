@@ -102,15 +102,15 @@ function SearchPopover() {
     <div className="w-full max-w-lg" onBlur={handleBlur} ref={popoverRef}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-            <div className="relative">
-              <Input 
-                type="search" 
-                placeholder="Søk" 
-                className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
-                onFocus={() => setOpen(true)}
-              />
-              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-            </div>
+          <div className="relative w-full max-w-lg">
+            <Input 
+              type="search" 
+              placeholder="Søk" 
+              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
+              onFocus={() => setOpen(true)}
+            />
+            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+          </div>
         </PopoverTrigger>
         <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
             <div className="flex flex-col gap-6">
