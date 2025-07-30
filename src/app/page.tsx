@@ -51,7 +51,7 @@ import popular2 from '@/components/common/aktuelle-kampanjer/2.webp';
 import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
 import popular4 from '@/components/common/aktuelle-kampanjer/4.webp';
 import popular5 from '@/components/common/aktuelle-kampanjer/5.webp';
-import baalpanneImage from '@/components/common/inspirasjonsmal/p_baalpanne.jpg';
+import heroInspoImage from '@/components/common/inspirasjonsmal/inspirasjon-hero.jpg';
 
 
 // Import article images
@@ -317,7 +317,7 @@ export default async function HomePage() {
     {
       title: 'Skap en magisk uteplass',
       excerpt: 'Forleng sommerkveldene og skap en uforglemmelig stemning med riktig bruk av lys og varme. Se hvordan du kan forvandle din terrasse.',
-      imageUrl: baalpanneImage,
+      imageUrl: heroInspoImage,
       articleUrl: '/artikler/inspirasjonsmal',
       dataAiHint: 'fire pit cozy'
     },
