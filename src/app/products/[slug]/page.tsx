@@ -402,11 +402,16 @@ export default function ProductPage() {
                   </Table>
                 </AccordionContent>
               </AccordionItem>
+              <AccordionItem value="reviews">
+                <AccordionTrigger className="text-lg font-bold">Anmeldelser</AccordionTrigger>
+                <AccordionContent>
+                  <ReviewsSection />
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </div>
         </div>
         
-        <ReviewsSection />
         <GuidesAndArticlesSection />
         <FaqSection />
         <RelatedProductsSection />

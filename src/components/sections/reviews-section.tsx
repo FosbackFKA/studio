@@ -56,9 +56,8 @@ const reviewsData = {
 
 export function ReviewsSection() {
   return (
-    <section id="reviews" className="mt-12 border-t pt-12 lg:mt-16 lg:pt-16">
-      <div className="container mx-auto max-w-[1542px] px-4">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+    <section id="reviews" className="py-6">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           {/* Left Column: Summary */}
           <div className="md:col-span-1">
             <h2 className="mb-4 font-headline text-2xl font-bold lg:text-3xl">Anmeldelser</h2>
@@ -120,9 +119,11 @@ export function ReviewsSection() {
                 </div>
               </div>
             ))}
+             <div className="text-center">
+                <Button variant="outline">Last inn flere anmeldelser</Button>
+            </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }
