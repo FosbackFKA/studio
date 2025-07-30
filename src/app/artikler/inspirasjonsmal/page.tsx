@@ -241,7 +241,7 @@ export default function InspirationTemplatePage() {
                  <Breadcrumb items={breadcrumbs} className="mb-12" />
                  
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
-                <section className="mb-16 md:mb-24 mx-auto max-w-4xl">
+                <section className="mb-16 md:mb-24 mx-auto max-w-[1542px]">
                     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
@@ -289,21 +289,24 @@ export default function InspirationTemplatePage() {
                                 </DialogTrigger>
                             ))}
                         </div>
-                        <DialogContent
-                            className="bg-transparent border-none shadow-none p-0 max-w-none w-screen h-screen"
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
+                        <DialogContent 
+                            className="bg-transparent border-none shadow-none p-0 max-w-none w-auto h-auto"
+                            onOpenAutoFocus={(e) => e.preventDefault()}
                         >
                             {selectedImageIndex !== null && (
-                            <div className="fixed inset-0 z-50 flex flex-col" onClick={closeDialog}>
-                                <div className="absolute inset-0 bg-black/80"></div>
+                            <div 
+                                className="fixed inset-0 z-50 flex flex-col"
+                                onTouchStart={handleTouchStart}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
+                            >
+                                <div className="absolute inset-0 bg-black/80" onClick={closeDialog}></div>
                                 
                                 <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                                 <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                 
-                                <div className="relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-4 md:p-8" onClick={e => e.stopPropagation()}>
-                                    <div className="relative flex-1 flex items-center justify-center">
+                                <div className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8" onClick={e => e.stopPropagation()}>
+                                    <div className="relative flex-1 flex items-center justify-center w-full h-full overflow-hidden">
                                         <Image
                                             src={galleryImages[selectedImageIndex].src}
                                             alt={galleryImages[selectedImageIndex].alt}
@@ -313,7 +316,7 @@ export default function InspirationTemplatePage() {
                                             sizes="100vw"
                                         />
                                     </div>
-                                     <div className="relative z-10 flex-shrink-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm mt-4 rounded-lg">
+                                     <div className="relative z-10 flex-shrink-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm mt-4 rounded-lg max-w-3xl">
                                         <h3 className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</h3>
                                         <p className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</p>
                                     </div>
