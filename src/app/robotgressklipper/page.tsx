@@ -34,9 +34,7 @@ import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
 import gressklipper4 from '@/components/common/gressklipper/gressklipper4.webp';
 import gressklipper5 from '@/components/common/gressklipper/gressklipper5.webp';
 import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
-import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { FkaLogo } from '@/components/common/logo';
 import chatbotIcon from '@/components/common/chat-bot.png';
 import chatbotAvatar from '@/components/common/FK_symbol_Main_rgb.png';
 
@@ -368,18 +366,13 @@ function FloatingChatbot() {
         "transition-transform duration-300 ease-in-out",
         isOpen ? "translate-y-8 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
       )}>
-        <Button 
-          size="icon" 
-          className={cn(
-            "h-16 w-16 rounded-full shadow-lg transition-all duration-300 ease-in-out p-3",
-            "bg-primary text-primary-foreground",
-            "hover:scale-110 hover:shadow-xl focus:scale-110 focus:shadow-xl focus:outline-none"
-          )}
+        <button
           onClick={handleOpenChat}
           aria-label="Åpne chat med KI-Ekspert"
+          className="bg-transparent border-none p-0 drop-shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 focus:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-full"
         >
-          <Image src={chatbotIcon} alt="Chatbot icon" className="h-full w-full"/>
-        </Button>
+          <Image src={chatbotIcon} alt="Chatbot icon" width={64} height={64} />
+        </button>
       </div>
 
       {/* Chat Window */}
@@ -477,12 +470,21 @@ export default function RobotklipperPage() {
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                         {products.map((p: any) => {
                           const imageSrc = imageMap[p.id as string] || imageMap[p.image_link as string] || guideImage;
-                          if (!p.imageUrl && p.id && imageMap[p.id]) p.imageUrl = imageMap[p.id];
-                          if (!p.imageUrl) return null;
+                          if (!p.id) return null; // Make sure product has an ID
+                          
+                          // Assign a valid image source
+                          const finalImageUrl = imageMap[p.id] || imageMap[p.image_link] || guideImage;
+
+                          // Ensure the product object has the imageUrl field for ProductCard
+                          const productData: Product & { imageUrl: StaticImageData | string } = {
+                            ...p,
+                            imageUrl: finalImageUrl,
+                          };
+
                           return (
                             <ProductCard 
                                 key={p.id} 
-                                {...p}
+                                {...productData}
                                 productUrl={`/products/SEGNAVH3000E`} // Hardcoded for demo
                             />
                           )
