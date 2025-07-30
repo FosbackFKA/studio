@@ -9,9 +9,12 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
+import { ArticlesSection } from '@/components/sections/articles-section';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+
 
 // Import local images
 import heroImage from '@/components/common/inspirasjonsmal/inspirasjon-hero.jpg';
@@ -26,7 +29,6 @@ import ullpleddImage from '@/components/common/inspirasjonsmal/p_ullpledd.jpg';
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
-import { ArticlesSection } from '@/components/sections/articles-section';
 
 
 // --- Page Specific Data ---
@@ -156,20 +158,14 @@ const galleryImages: {
     hint: 'wood furniture oil',
     className: 'col-span-1',
   },
-  {
-    src: artikkel3,
-    alt: 'Bie på en blomst i en frodig hage',
-    title: 'En levende hage',
-    description: 'Plant bievennlige blomster for å skape liv og summetoner i hagen din.',
-    hint: 'bee friendly garden',
-    className: 'col-span-1 md:col-span-2',
-  },
 ];
 
 
 // --- Main Page Component ---
 
 export default function InspirationTemplatePage() {
+    const [selectedImage, setSelectedImage] = React.useState<StaticImageData | null>(null);
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <HeaderComponent />
@@ -228,25 +224,36 @@ export default function InspirationTemplatePage() {
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
-                        {galleryImages.map((image, index) => (
-                            <div key={index} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
-                                <Image
-                                    src={image.src}
-                                    alt={image.alt}
-                                    fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                                    data-ai-hint={image.hint}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                                <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
-                                    <h3 className="font-bold">{image.title}</h3>
-                                    <p className="text-sm text-white/80">{image.description}</p>
+                    <Dialog>
+                        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
+                            {galleryImages.map((image, index) => (
+                                <DialogTrigger key={index} asChild>
+                                    <button onClick={() => setSelectedImage(image.src)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
+                                        <Image
+                                            src={image.src}
+                                            alt={image.alt}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                                            data-ai-hint={image.hint}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                                        <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
+                                            <h3 className="font-bold">{image.title}</h3>
+                                            <p className="text-sm text-white/80">{image.description}</p>
+                                        </div>
+                                    </button>
+                                </DialogTrigger>
+                            ))}
+                        </div>
+                        <DialogContent className="max-w-4xl h-[80vh] bg-transparent border-none shadow-none">
+                             {selectedImage && (
+                                <div className="relative w-full h-full">
+                                    <Image src={selectedImage} alt="Fullskjermsvisning" fill className="object-contain" sizes="100vw"/>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                             )}
+                        </DialogContent>
+                    </Dialog>
                 </section>
 
                 {/* 4. Produktkarusell ("Shop the Look") */}
