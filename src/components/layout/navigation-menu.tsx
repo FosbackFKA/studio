@@ -21,6 +21,7 @@ import { ProductCard } from '@/components/common/product-card';
 // Import products for campaign menu
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
 import popular2 from '../common/aktuelle-kampanjer/2.webp';
+import popular3 from '../common/aktuelle-kampanjer/3.webp';
 
 const kampanjeProducts = [
     {
@@ -44,6 +45,17 @@ const kampanjeProducts = [
       productUrl: '#',
       onlineStock: true,
       storeStockCount: 88,
+    },
+    {
+      id: 'STIHLRM22R',
+      title: 'Bensindrevet bio gressklipper RM 2,2 R',
+      brand: 'Stihl',
+      price: '4 449,-',
+      salePrice: '3 999,-',
+      imageUrl: popular3,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 68,
     },
 ];
 
@@ -711,9 +723,11 @@ export function MainNavMenu() {
                       <div className="md:col-span-3">
                            <h3 className="px-3 text-lg font-bold text-primary">Utvalgte kampanjeprodukter</h3>
                            <Separator className="mb-2" />
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                               {megaMenuData.products.map((product: any) => (
-                                  <ProductCard key={product.id} {...product} />
+                                  <div key={product.id} className="max-w-xs">
+                                    <ProductCard {...product} />
+                                  </div>
                               ))}
                           </div>
                       </div>
