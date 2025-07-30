@@ -24,6 +24,7 @@ import { allStores } from '@/lib/store-data';
 import { useStoreStore } from '@/hooks/use-store-store';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import type { Product } from '@/types/product';
+import { ProductCard } from '@/components/common/product-card';
 
 
 const parsePrice = (priceString?: string): number => {
@@ -133,7 +134,7 @@ function SearchPopover() {
                         >
                             <span className="truncate">{search}</span>
                             <X
-                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:text-destructive hover:bg-destructive/10 rounded-full"
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-50 transition-colors hover:bg-destructive/10 hover:text-destructive rounded-full"
                                 onClick={(e) => handleRemoveSearch(e, search)}
                             />
                         </Button>
@@ -557,15 +558,12 @@ export function HeaderComponent() {
         {menuData.products && (
           <div className="mt-auto pt-4">
             <Separator />
-            <h3 className="my-2 text-sm font-semibold text-muted-foreground">Populære produkter</h3>
+            <h3 className="my-4 text-base font-semibold text-foreground">Populære produkter</h3>
             <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
               {menuData.products.map((product: Product) => (
-                <Link href={product.productUrl || '#'} key={product.id} className="block w-32 flex-shrink-0" onClick={() => setIsMenuOpen(false)}>
-                  <div className="relative aspect-square w-full rounded-md bg-white border">
-                    <Image src={product.imageUrl} alt={product.title} fill className="object-contain p-1" sizes="128px" />
-                  </div>
-                  <p className="mt-1.5 text-sm font-medium text-foreground line-clamp-2">{product.title}</p>
-                </Link>
+                 <div key={product.id} className="w-48 flex-shrink-0">
+                    <ProductCard {...product} />
+                </div>
               ))}
             </div>
           </div>
@@ -713,5 +711,6 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
+
 
 
