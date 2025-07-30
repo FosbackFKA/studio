@@ -102,18 +102,18 @@ export default function InspirationTemplatePage() {
       <main className="flex-grow">
 
         {/* 1. Tittel, ingress og bilde (Hero) */}
-        <section className="relative h-[70vh] min-h-[500px] w-full bg-slate-800">
+        <section className="relative h-[70vh] min-h-[500px] w-full">
           <Image 
             src="https://placehold.co/1920x1080.png" 
             alt="Kari sin drømmehage i skumringen med en tent bålpanne og lyslenker"
             fill
             sizes="100vw"
-            className="object-cover opacity-60"
+            className="object-cover"
             data-ai-hint="cozy patio dusk firepit"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="container relative z-10 mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-4 text-center text-white">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="container relative z-10 mx-auto flex h-full max-w-6xl flex-col items-center justify-end px-4 pb-20 text-center text-white">
             <h1 className="font-headline text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
               Kari skapte sin drømmehage med Felleskjøpet
             </h1>
@@ -179,7 +179,7 @@ export default function InspirationTemplatePage() {
                 </section>
 
                 {/* 4. Produktkarusell ("Shop the Look") */}
-                <section className="my-16 lg:my-24 bg-secondary py-16 rounded-lg">
+                <section className="my-16 lg:my-24 bg-secondary/30 py-16 rounded-lg">
                     <div className="text-center mb-12 px-4">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
                         <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
