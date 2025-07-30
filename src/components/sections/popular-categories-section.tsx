@@ -11,7 +11,7 @@ import kategori6 from '../common/populaere-kategorier/6.webp';
 
 
 const categories = [
-  { title: 'Robotgressklipper', imageUrl: kategori1, categoryUrl: '#' },
+  { title: 'Robotgressklipper', imageUrl: kategori1, categoryUrl: '/robotgressklipper' },
   { title: 'Gressklipper', imageUrl: kategori2, categoryUrl: '#' },
   { title: 'Hageredskap', imageUrl: kategori3, categoryUrl: '#' },
   { title: 'Mose og ugress', imageUrl: kategori4, categoryUrl: '#' },
