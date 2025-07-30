@@ -100,64 +100,71 @@ function SearchPopover() {
             type="search" 
             placeholder="Søk" 
             className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
-            onClick={() => setOpen(true)}
             onFocus={() => setOpen(true)}
            />
           <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
         </div>
       </PopoverTrigger>
-      <PopoverContent className="w-[512px] p-0 mt-1" side="bottom" align="start">
-        <div className="grid grid-cols-3">
-          {/* Left Column */}
-          <div className="col-span-1 flex flex-col border-r p-4">
-              <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
-                <Clock className="mr-2 h-4 w-4" />
-                Tidligere søk
-              </h3>
-              <div className="flex flex-col items-start -ml-2">
-                {previousSearches.map(search => (
-                  <Button
-                    key={search}
-                    variant="ghost"
-                    className="group flex h-auto w-full items-center justify-between p-2 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
-                  >
-                    <span className="truncate">{search}</span>
-                    <X
-                      className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
-                      onClick={(e) => handleRemoveSearch(e, search)}
-                    />
-                  </Button>
-                ))}
-              </div>
-              <Separator className="my-4"/>
-              <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
-                <TrendingUp className="mr-2 h-4 w-4" />
-                Populære søk
-              </h3>
-              <div className="flex flex-col items-start -ml-2">
-                {popularSearches.map(search => (
-                  <Button key={search} variant="ghost" className="h-auto w-full p-2 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary">
-                    {search}
-                  </Button>
-                ))}
-              </div>
-          </div>
-          {/* Right Column */}
-          <div className="col-span-2 p-4">
-            <h3 className="text-sm font-semibold text-foreground mb-2">Anbefalte produkter</h3>
-            <div className="grid grid-cols-2 gap-2">
-               {recommendedProducts.map(product => (
-                <Link href={product.productUrl} key={product.id} className="group rounded-md p-2 text-xs hover:bg-accent/20">
-                    <div className="relative aspect-square w-full bg-white rounded-md">
-                      <Image src={product.imageUrl} alt={product.title} fill className="rounded-md object-contain border p-1" sizes="120px" />
-                    </div>
-                    <p className="font-semibold mt-1 truncate group-hover:text-primary">{product.title}</p>
-                    <p className="text-destructive font-bold">{product.salePrice}</p>
-                 </Link>
-              ))}
+      <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
+          <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
+                    <Clock className="mr-2 h-4 w-4" />
+                    Tidligere søk
+                  </h3>
+                  <div className="flex flex-col items-start">
+                    {previousSearches.map(search => (
+                      <Button
+                        key={search}
+                        variant="ghost"
+                        className="group flex h-auto w-full items-center justify-between px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
+                      >
+                        <span className="truncate">{search}</span>
+                        <X
+                          className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
+                          onClick={(e) => handleRemoveSearch(e, search)}
+                        />
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
+                    <TrendingUp className="mr-2 h-4 w-4" />
+                    Populære søk
+                  </h3>
+                  <div className="flex flex-col items-start">
+                    {popularSearches.map(search => (
+                      <Button key={search} variant="ghost" className="h-auto w-full px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary">
+                        {search}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
             </div>
+            
+            <Separator />
+            
+            <div>
+                 <h3 className="text-sm font-semibold text-foreground mb-2">Anbefalte produkter</h3>
+                 <div className="grid grid-cols-3 gap-2">
+                   {recommendedProducts.map(product => (
+                    <Link href={product.productUrl} key={product.id} className="group rounded-md p-2 text-xs hover:bg-accent/20">
+                        <div className="relative aspect-square w-full bg-white rounded-md">
+                          <Image src={product.imageUrl} alt={product.title} fill className="rounded-md object-contain border p-1" sizes="120px" />
+                        </div>
+                        <p className="font-semibold mt-2 truncate group-hover:text-primary">{product.title}</p>
+                        <div className="flex items-baseline gap-2">
+                            <p className="text-destructive font-bold">{product.salePrice}</p>
+                            <p className="text-muted-foreground line-through text-xs">{product.price}</p>
+                        </div>
+                     </Link>
+                  ))}
+                </div>
+            </div>
+
           </div>
-        </div>
       </PopoverContent>
     </Popover>
   );
@@ -717,3 +724,4 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
+
