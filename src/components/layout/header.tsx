@@ -91,14 +91,13 @@ function SearchPopover() {
     setPreviousSearches(searches => searches.filter(s => s !== searchToRemove));
   };
   
-   const handleFocus = () => {
+  const handleFocus = () => {
     setOpen(true);
   };
-
+  
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
-    // Check if the new focused element is inside the popover. If not, close it.
-    if (popoverRef.current && !popoverRef.current.contains(e.relatedTarget)) {
-      setOpen(false);
+    if (popoverRef.current && !popoverRef.current.contains(e.relatedTarget as Node)) {
+        setOpen(false);
     }
   };
 
@@ -106,15 +105,17 @@ function SearchPopover() {
   return (
     <div onBlur={handleBlur} ref={popoverRef}>
       <Popover open={open} onOpenChange={setOpen}>
-        <div className="relative w-full max-w-lg">
-          <Input 
-            type="search" 
-            placeholder="Søk" 
-            className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
-            onFocus={handleFocus}
-           />
-          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-        </div>
+        <PopoverTrigger asChild onClick={() => setOpen(true)}>
+          <div className="relative w-full max-w-lg">
+            <Input 
+              type="search" 
+              placeholder="Søk" 
+              className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
+              onFocus={handleFocus}
+            />
+            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+          </div>
+        </PopoverTrigger>
         <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
             <div className="flex flex-col gap-6">
                 <div className="flex flex-col items-start gap-4">
