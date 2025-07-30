@@ -21,7 +21,7 @@ function scoreProduct(product: RobotklipperProduct, query: string): number {
         .join(' ')
         .toLowerCase();
 
-    const queryTerms = query.split(/\s+/);
+    const queryTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
   
   // Score based on how many query terms are found in the product text
   const score = queryTerms.reduce((currentScore, term) => {
