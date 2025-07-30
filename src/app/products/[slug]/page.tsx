@@ -10,7 +10,7 @@ import { Breadcrumb } from '@/components/common/breadcrumb';
 import Image, { type StaticImageData } from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, ShoppingCart, Truck, MapPin, Minus, Plus, Cpu, Scissors, AreaChart } from 'lucide-react';
+import { CheckCircle2, ShoppingCart, Truck, MapPin, Minus, Plus, Cpu, Scissors, AreaChart, ChevronRight } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/hooks/use-toast";
@@ -22,12 +22,18 @@ import { StarRating } from '@/components/common/star-rating';
 import { RelatedProductsSection } from '@/components/sections/related-products-section';
 import { FaqSection } from '@/components/sections/faq-section';
 import { ReviewsSection } from '@/components/sections/reviews-section';
+import { ArticleCard } from '@/components/common/article-card';
 
 // Import local images
 import navimow1 from '@/components/common/navimow/1.jpg';
 import navimow2 from '@/components/common/navimow/2.jpg';
 import navimow3 from '@/components/common/navimow/3.jpg';
 import navimow4 from '@/components/common/navimow/4.jpg';
+
+// Import article images
+import artikkel1 from '@/components/common/artikler/1.webp';
+import artikkel2 from '@/components/common/artikler/2.webp';
+import artikkel3 from '@/components/common/artikler/3.webp';
 
 
 const productData = {
@@ -78,6 +84,30 @@ const productData = {
   ]
 };
 
+const relevantArticles = [
+    {
+      title: 'Slik velger du riktig robotgressklipper',
+      excerpt: 'Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage, enten den er stor, liten, enkel eller kompleks.',
+      imageUrl: artikkel1,
+      articleUrl: '#',
+      dataAiHint: 'robotic lawnmower guide'
+    },
+    {
+      title: 'Installasjon av robotklipper uten kantledning',
+      excerpt: 'Moderne robotklippere bruker GPS og kamera for å navigere. Lær hvordan du enkelt setter opp virtuelle grenser og no-go soner via appen.',
+      imageUrl: artikkel2,
+      articleUrl: '#',
+      dataAiHint: 'gps robot setup'
+    },
+    {
+      title: 'Vedlikehold av robotgressklipper',
+      excerpt: 'Enkle tips for å holde robotklipperen din i toppform. Rengjøring, bytte av kniver og vinterlagring – vi viser deg hvordan.',
+      imageUrl: artikkel3,
+      articleUrl: '#',
+      dataAiHint: 'robot mower maintenance'
+    },
+];
+
 const KlarnaLogo = (props: SVGProps<SVGSVGElement>) => (
   <svg role="img" xmlns="http://www.w3.org/2000/svg" width="71.25" height="30" viewBox="0 0 71.25 30" aria-label="Klarna" {...props}>
     <title>Klarna</title>
@@ -88,6 +118,37 @@ const KlarnaLogo = (props: SVGProps<SVGSVGElement>) => (
     <defs><clipPath id="klarna-clip-product-page"><path fill="#fff" d="M0 0h71.25v30H0z"></path></clipPath></defs>
   </svg>
 );
+
+function GuidesAndArticlesSection() {
+    return (
+        <section className="mt-12 border-t pt-12 lg:mt-16 lg:pt-16">
+            <div className="container mx-auto max-w-[1542px]">
+                <div className="mb-8 flex items-center justify-between px-4">
+                  <h2 className="font-headline text-2xl font-bold lg:text-3xl">Lær mer: Guider og artikler</h2>
+                  <Button variant="link" asChild className="text-primary hover:underline">
+                    <Link href="#">Se alle guider <ChevronRight className="ml-1 h-4 w-4" /></Link>
+                  </Button>
+                </div>
+                
+                <div className="hidden px-4 lg:grid lg:grid-cols-3 lg:gap-6">
+                  {relevantArticles.map((article) => (
+                    <ArticleCard key={article.title} {...article} />
+                  ))}
+                </div>
+
+                <div className="lg:hidden">
+                  <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                    {relevantArticles.map((article) => (
+                      <div key={article.title} className="w-5/6 flex-shrink-0 sm:w-2/3 md:w-1/2">
+                        <ArticleCard {...article} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+        </section>
+    );
+}
 
 
 export default function ProductPage() {
@@ -107,11 +168,8 @@ export default function ProductPage() {
     
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Set sticky when the original CTA is completely out of view at the top
-        // Header height is roughly 171px, which is our rootMargin.
         setIsSticky(entry.boundingClientRect.top < 171 && !entry.isIntersecting);
       },
-      // The height of the scrolled header (main bar + nav menu) is ~171px
       { rootMargin: "-171px 0px 0px 0px", threshold: 0 }
     );
     
@@ -155,10 +213,10 @@ export default function ProductPage() {
 
       {/* Sticky CTA Bar for Desktop */}
       <div className={cn(
-          "fixed top-0 left-0 right-0 z-40 hidden pt-[171px] bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+          "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
           isSticky ? "translate-y-0" : "-translate-y-full"
       )}>
-          <div className="container mx-auto max-w-[1542px] px-4">
+          <div className="container mx-auto max-w-[1542px] px-4 pt-[171px]">
               <div className="flex h-20 items-center justify-between gap-6">
                   <div className="flex items-center gap-4">
                       <Image src={mainImage} alt={product.title} width={64} height={64} className="h-16 w-16 rounded-md object-contain border p-1" />
@@ -348,9 +406,10 @@ export default function ProductPage() {
           </div>
         </div>
         
-        <RelatedProductsSection />
         <ReviewsSection />
+        <GuidesAndArticlesSection />
         <FaqSection />
+        <RelatedProductsSection />
 
       </main>
 
