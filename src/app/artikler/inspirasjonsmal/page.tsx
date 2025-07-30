@@ -290,14 +290,15 @@ export default function InspirationTemplatePage() {
                             ))}
                         </div>
                         <DialogContent
-                            className="h-screen w-screen max-w-none border-none bg-transparent p-0 shadow-none flex flex-col"
+                            className="bg-transparent border-none shadow-none p-0"
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
                             onTouchEnd={handleTouchEnd}
                         >
                             {selectedImageIndex !== null && (
-                            <>
-                                <div onClick={closeDialog} className="absolute inset-0 z-0" aria-label="Lukk bildevisning"></div>
+                            <div className="fixed inset-0 z-50 flex flex-col">
+                                <div className="absolute inset-0 bg-black/80" onClick={closeDialog}></div>
+                                
                                 <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                                 <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                 
@@ -328,7 +329,7 @@ export default function InspirationTemplatePage() {
                                 <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                     <ChevronRight className="h-10 w-10" />
                                 </Button>
-                            </>
+                            </div>
                             )}
                         </DialogContent>
                     </Dialog>
