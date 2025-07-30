@@ -24,7 +24,6 @@ import { allStores } from '@/lib/store-data';
 import { useStoreStore } from '@/hooks/use-store-store';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import type { Product } from '@/types/product';
-import { ProductCard } from '../common/product-card';
 
 
 const parsePrice = (priceString?: string): number => {
@@ -136,7 +135,7 @@ function SearchPopover() {
                   </h3>
                   <div className="flex flex-col items-start">
                     {popularSearches.map(search => (
-                      <Button key={search} variant="ghost" className="h-auto w-full px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary">
+                      <Button key={search} variant="ghost" className="h-auto w-full justify-start px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary">
                         {search}
                       </Button>
                     ))}
@@ -150,7 +149,7 @@ function SearchPopover() {
                  <h3 className="text-sm font-semibold text-foreground mb-2">Anbefalte produkter</h3>
                  <div className="grid grid-cols-3 gap-2">
                    {recommendedProducts.map(product => (
-                    <Link href={product.productUrl} key={product.id} className="group rounded-md p-2 text-xs hover:bg-accent/20">
+                    <Link href={product.productUrl || '#'} key={product.id} className="group rounded-md p-2 text-xs hover:bg-accent/20">
                         <div className="relative aspect-square w-full bg-white rounded-md">
                           <Image src={product.imageUrl} alt={product.title} fill className="rounded-md object-contain border p-1" sizes="120px" />
                         </div>
@@ -725,3 +724,4 @@ export function HeaderComponent() {
   );
 }
 
+    
