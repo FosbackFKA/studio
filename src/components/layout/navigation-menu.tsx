@@ -185,7 +185,7 @@ export const kjaeledyrMenuData = {
           { name: 'Hundens luftetur', href: '#' },
           { name: 'Hundepleie', href: '#' },
           { name: 'Hundeutstyr', href: '#' },
-          { name: 'Hundefôr-velger', href: '/hundevelger' },
+          { name: 'Hundefôr-velger', href: '/hundefor' },
         ],
       },
     ],
@@ -711,7 +711,7 @@ export function MainNavMenu() {
                       <div className="md:col-span-3">
                            <h3 className="px-3 text-lg font-bold text-primary">Utvalgte kampanjeprodukter</h3>
                            <Separator className="mb-2" />
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                               {megaMenuData.products.map((product: any) => (
                                   <ProductCard key={product.id} {...product} />
                               ))}
