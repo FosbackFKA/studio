@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,6 +22,12 @@ import { ProductCard } from '@/components/common/product-card';
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
 import popular2 from '../common/aktuelle-kampanjer/2.webp';
 import popular3 from '../common/aktuelle-kampanjer/3.webp';
+
+// Import article images (using placeholders for now)
+import artikkel1 from '../common/artikler/1.webp';
+import artikkel2 from '../common/artikler/2.webp';
+import artikkel3 from '../common/artikler/3.webp';
+
 
 const kampanjeProducts = [
     {
@@ -141,6 +147,11 @@ export const hageUteromMenuData = {
       },
     ],
   ],
+  articles: [
+    { title: 'Guide: Slik velger du riktig høytrykkspyler', imageUrl: artikkel1, href: '#' },
+    { title: 'Vedlikehold av utemøbler i tre', imageUrl: artikkel2, href: '#' },
+    { title: 'Skap en summende oase for biene', imageUrl: artikkel3, href: '#' },
+  ],
   footerLink: { name: 'Se alt i hage og uterom', href: '#' },
 };
 
@@ -192,7 +203,7 @@ export const kjaeledyrMenuData = {
       {
         title: 'Hund', href: '#',
         links: [
-          { name: 'Hundefôr', href: '#' },
+          { name: 'Hundefôr', href: '/hundefor' },
           { name: 'Hundens helse', href: '#' },
           { name: 'Hundens luftetur', href: '#' },
           { name: 'Hundepleie', href: '#' },
@@ -212,6 +223,10 @@ export const kjaeledyrMenuData = {
         ],
       },
     ],
+  ],
+  articles: [
+    { title: 'Slik velger du riktig fôr til hunden', imageUrl: 'https://placehold.co/300x200.png', href: '/hundefor' },
+    { title: 'Hvordan aktivisere katten din inne?', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
   ],
   footerLink: { name: 'Se alt i kjæledyr', href: '#' },
 };
@@ -283,6 +298,10 @@ export const klaerOgSkoMenuData = {
         ],
       },
     ],
+  ],
+  articles: [
+    { title: 'Velg riktige arbeidshansker', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
+    { title: 'Guide til vernesko', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
   ],
   footerLink: { name: 'Se alt i klær og sko', href: '#' },
 };
@@ -385,6 +404,10 @@ export const hjemOgFritidMenuData = {
       },
     ],
   ],
+  articles: [
+    { title: 'Slik fyrer du riktig i ovnen', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
+    { title: 'Lag din egen eplemost', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
+  ],
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
@@ -479,6 +502,10 @@ export const verktoyOgRedskapMenuData = {
       },
     ],
   ],
+  articles: [
+    { title: 'Guide til høytrykkspylere', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
+    { title: 'Velg riktig tilhenger', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
+  ],
   footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
 };
 
@@ -532,6 +559,10 @@ export const skogOgVedMenuData = {
         ],
       },
     ],
+  ],
+  articles: [
+    { title: 'Slik bruker du motorsagen sikkert', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
+    { title: 'Fra stokk til ved', imageUrl: 'https://placehold.co/300x200.png', href: '#' },
   ],
   footerLink: { name: 'Se alt i skog og ved', href: '#' },
 };
@@ -651,6 +682,18 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
   </div>
 );
 
+const ArticlePreview = ({ article }: { article: { title: string; imageUrl: string | StaticImageData; href: string } }) => (
+  <Link href={article.href} className="group block rounded-md p-2 hover:bg-black/5">
+    <div className="flex items-center gap-3">
+      <div className="relative h-16 w-16 flex-shrink-0">
+        <Image src={article.imageUrl} alt={article.title} fill className="rounded-md object-cover" sizes="64px" />
+      </div>
+      <p className="text-sm font-medium text-sidebar-foreground/80 group-hover:text-primary">{article.title}</p>
+    </div>
+  </Link>
+);
+
+
 export const menuDataMap: Record<string, any> = {
   'Hage og uterom': hageUteromMenuData,
   'Kjæledyr': kjaeledyrMenuData,
@@ -683,7 +726,7 @@ export function MainNavMenu() {
               megaMenuData.columns ? (
               // Standard megamenu with columns (Hage, Kjæledyr, Merkevarer...)
               <>
-                <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
+                <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
                   {megaMenuData.columns.map((col: any[], idx: number) => (
                     <div key={idx} className="flex flex-col gap-4">
                       {col.map((group) => (
@@ -691,6 +734,17 @@ export function MainNavMenu() {
                       ))}
                     </div>
                   ))}
+                  {/* Articles Column */}
+                  {megaMenuData.articles && (
+                    <div className="flex flex-col gap-4">
+                       <h3 className="p-2 font-bold text-foreground">Anbefalte artikler</h3>
+                       <div className="flex flex-col gap-2">
+                        {megaMenuData.articles.map((article: any) => (
+                          <ArticlePreview key={article.title} article={article} />
+                        ))}
+                       </div>
+                    </div>
+                  )}
                 </div>
                 {megaMenuData.footerLink && (
                   <div className="container mx-auto max-w-[1542px] border-t border-sidebar-border px-4 py-4">
