@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import type { StaticImageData } from 'next/image';
 import { cn } from '@/lib/utils';
+import { ChevronRight } from 'lucide-react';
 
 interface Article {
   title: string;
@@ -23,12 +24,12 @@ interface ArticlesSectionProps {
 
 export function ArticlesSection({ title, articles, linkText, linkHref, className }: ArticlesSectionProps) {
   return (
-    <section className={cn('py-12 lg:py-16 bg-background', className)}>
-      <div className="container mx-auto max-w-[1542px]">
+    <section className={cn('py-12 lg:py-16 bg-transparent', className)}>
+      <div className="container mx-auto max-w-[1542px] px-0">
         <div className="mb-8 flex items-center justify-between px-4">
-          <h2 className="font-headline text-3xl font-bold">{title}</h2>
+          <h2 className="font-headline text-2xl font-bold">{title}</h2>
           <Button variant="link" asChild className="text-primary hover:underline">
-            <Link href={linkHref}>{linkText}</Link>
+            <Link href={linkHref}>{linkText} <ChevronRight className="ml-1 h-4 w-4" /></Link>
           </Button>
         </div>
         
