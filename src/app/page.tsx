@@ -316,7 +316,7 @@ export default async function HomePage() {
       title: 'Fra frø til festmåltid',
       excerpt: 'Oppdag gleden ved å dyrke dine egne grønnsaker, urter og bær. Vi viser deg hvordan du kan lage en frodig kjøkkenhage som er like vakker som den er produktiv.',
       imageUrl: artikkel1,
-      articleUrl: '/artikler/inspirasjon',
+      articleUrl: '/artikler/inspirasjonsmal',
       dataAiHint: 'kitchen garden vegetables'
     },
     {

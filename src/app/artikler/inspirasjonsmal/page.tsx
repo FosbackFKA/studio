@@ -18,7 +18,7 @@ import { ArticlesSection } from '@/components/sections/articles-section';
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
     { name: 'Artikler', href: '#' },
-    { name: 'Inspirasjon', href: '/artikler/inspirasjonsmal' },
+    { name: 'Inspirasjonsmal', href: '/artikler/inspirasjonsmal' },
 ];
 
 const shopTheLookProducts: Product[] = [
@@ -124,7 +124,7 @@ export default function InspirationTemplatePage() {
         </section>
 
         <div className="bg-background py-12 lg:py-20">
-            <div className="container mx-auto max-w-6xl px-4">
+            <div className="container mx-auto max-w-4xl px-4">
                  <Breadcrumb items={breadcrumbs} className="mb-10" />
             
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
@@ -179,14 +179,14 @@ export default function InspirationTemplatePage() {
                 </section>
 
                 {/* 4. Produktkarusell ("Shop the Look") */}
-                <section className="my-16 lg:my-24">
-                    <div className="text-center mb-12">
+                <section className="my-16 lg:my-24 bg-secondary py-16 rounded-lg">
+                    <div className="text-center mb-12 px-4">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
                         <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
                             Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 px-4">
                         {shopTheLookProducts.map((product) => (
                             <ProductCard key={product.id} {...product} />
                         ))}
@@ -201,13 +201,14 @@ export default function InspirationTemplatePage() {
             </div>
         
             {/* 5. Relaterte Artikler (Mer inspirasjon) */}
-            <ArticlesSection 
-                title="Mer inspirasjon"
-                articles={relatedArticles}
-                linkText="Se alle artikler"
-                linkHref="#"
-                className="bg-secondary"
-            />
+            <div className="container mx-auto max-w-6xl px-4">
+              <ArticlesSection 
+                  title="Mer inspirasjon"
+                  articles={relatedArticles}
+                  linkText="Se alle artikler"
+                  linkHref="#"
+              />
+            </div>
         </div>
       </main>
 
