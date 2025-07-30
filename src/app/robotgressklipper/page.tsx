@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2, ChevronRight, MessageSquare, Bot } from 'lucide-react';
+import { ArrowRight, SlidersHorizontal, X, Sparkles, ArrowUp, Loader2, ChevronRight, MessageSquare, Bot, Info } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -92,6 +92,11 @@ function RobotklipperChatbot() {
         <div className="flex h-full flex-col bg-card">
             <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
                 <div className="space-y-4">
+                    <div className="flex items-start gap-3 rounded-lg border bg-secondary p-3 text-sm text-secondary-foreground">
+                        <Info className="h-5 w-5 flex-shrink-0 text-primary" />
+                        <p>KI-eksperten kan gjøre feil. Sjekk viktig informasjon før du tar en endelig avgjørelse.</p>
+                    </div>
+
                     {messages.map((msg, index) => (
                         <div key={index} className={cn("flex items-start gap-3", msg.role === 'user' ? 'justify-end' : 'justify-start')}>
                             {msg.role === 'model' && (
@@ -163,9 +168,6 @@ function RobotklipperChatbot() {
                         <ArrowUp className="h-4 w-4" />
                     </Button>
                 </form>
-                <p className="text-xs text-muted-foreground text-center mt-2">
-                    KI-eksperten kan gjøre feil. Vurder å sjekke viktig informasjon.
-                </p>
             </div>
         </div>
     );
@@ -247,6 +249,14 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
 function FloatingChatbot() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isBubbleVisible, setIsBubbleVisible] = React.useState(true);
+  
+  React.useEffect(() => {
+    // Hide the bubble after 3 seconds
+    const timer = setTimeout(() => {
+      // No change to animation, just handling visibility if needed
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleOpenChat = () => {
     setIsOpen(true);
@@ -409,5 +419,3 @@ export default function RobotklipperPage() {
     </div>
   );
 }
-
-    
