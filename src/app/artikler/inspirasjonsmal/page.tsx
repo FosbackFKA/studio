@@ -12,7 +12,6 @@ import { ProductCard } from '@/components/common/product-card';
 import { ArrowRight, Star } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { ArticlesSection } from '@/components/sections/articles-section';
-import heroImage from '@/components/common/inspirasjonsmal/image (11).jpg';
 
 // --- Page Specific Data ---
 
@@ -104,8 +103,16 @@ export default function InspirationTemplatePage() {
 
         {/* 1. Tittel, ingress og bilde (Hero) */}
         <section className="relative h-[70vh] min-h-[500px] w-full">
-          <Image 
-            src={heroImage} 
+          {/*
+           * FEILRETTING:
+           * Bildet `image (11).jpg` har mellomrom og parenteser i navnet, noe som kan skape byggefeil.
+           * For å fikse dette permanent:
+           * 1. Flytt bildet fra `src/components/common/inspirasjonsmal/` til `public/`
+           * 2. Gi det et nytt, enkelt navn, f.eks. `inspirasjon-hero.jpg`
+           * 3. Endre `src`-propellen under til `src="/inspirasjon-hero.jpg"` og fjern `priority`-propen.
+          */}
+          <Image
+            src="https://placehold.co/1920x1080.png"
             alt="Kari sin drømmehage i skumringen med en tent bålpanne og lyslenker"
             fill
             sizes="100vw"
@@ -127,7 +134,7 @@ export default function InspirationTemplatePage() {
         <div className="bg-background py-12 lg:py-20">
             <div className="container mx-auto max-w-4xl px-4">
                  <Breadcrumb items={breadcrumbs} className="mb-10" />
-            
+
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
                 <section className="my-16 lg:my-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div className="order-2 md:order-1">
@@ -200,10 +207,10 @@ export default function InspirationTemplatePage() {
                     </div>
                 </section>
             </div>
-        
+
             {/* 5. Relaterte Artikler (Mer inspirasjon) */}
             <div className="container mx-auto max-w-6xl px-4">
-              <ArticlesSection 
+              <ArticlesSection
                   title="Mer inspirasjon"
                   articles={relatedArticles}
                   linkText="Se alle artikler"
