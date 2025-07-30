@@ -1,93 +1,1132 @@
-
 [
-    {
-      "type": "product",
-      "id": "SEGNAVH3000E",
-      "title": "Robotgressklipper Navimow H3000E med VisionFence",
-      "brand": "Segway",
-      "price": "34 999,-",
-      "salePrice": "29 999,-",
-      "badgeText": "- 14 %",
-      "imageUrl": "popular1",
-      "productUrl": "/products/SEGNAVH3000E",
-      "onlineStock": true,
-      "storeStockCount": 63
-    },
-    {
-      "type": "product",
-      "id": "GARDSILENO",
-      "title": "Robotklipper Smart Sileno Free 1500",
-      "brand": "Gardena",
-      "price": "25 999,-",
-      "salePrice": "20 799,-",
-      "badgeText": "- 20 %",
-      "imageUrl": "gressklipper3",
-      "productUrl": "/products/SEGNAVH3000E",
-      "onlineStock": false,
-      "storeStockCount": 41
-    },
-    {
-      "type": "guide",
-      "title": "Slik velger du riktig robotgressklipper",
-      "excerpt": "Få en perfekt plen uten å løfte en finger. Les vår guide for å finne modellen som passer din hage, enten den er stor, liten, enkel eller kompleks.",
-      "imageUrl": "guideImage",
-      "link": "#",
-      "span": "col-span-2 lg:col-span-3"
-    },
-    {
-      "type": "product",
-      "id": "SEGNAVI108E",
-      "title": "Robotgressklipper Navimow i108e",
-      "brand": "Segway",
-      "price": "15 999,-",
-      "imageUrl": "gressklipper2",
-      "productUrl": "/products/SEGNAVH3000E",
-      "onlineStock": true,
-      "storeStockCount": 4
-    },
-     {
-      "type": "product",
-      "id": "STIHLRM22R",
-      "title": "Bensindrevet bio gressklipper RM 2,2 R",
-      "brand": "Stihl",
-      "price": "4 449,-",
-      "salePrice": "3 999,-",
-      "imageUrl": "popular3",
-      "productUrl": "#",
-      "onlineStock": true,
-      "storeStockCount": 68
-    },
-    {
-      "type": "product",
-      "id": "SEGNAVIX330E",
-      "title": "Robotgressklipper Navimow X330e",
-      "brand": "Segway",
-      "price": "39 999,-",
-      "imageUrl": "gressklipper5",
-      "productUrl": "/products/SEGNAVH3000E",
-      "onlineStock": true,
-      "storeStockCount": 55
-    },
-    {
-      "type": "product",
-      "id": "GARDENASMART",
-      "title": "Robotgressklipper Smart Sileno life 1000m²",
-      "brand": "Gardena",
-      "price": "18 999,-",
-      "imageUrl": "gressklipper1",
-      "productUrl": "/products/SEGNAVH3000E",
-      "onlineStock": true,
-      "storeStockCount": 22
-    },
-     {
-      "type": "product",
-      "id": "STIHLIMOW5",
-      "title": "Robotgressklipper iMow 5",
-      "brand": "Stihl",
-      "price": "21 990,-",
-      "imageUrl": "gressklipper4",
-      "productUrl": "/products/SEGNAVH3000E",
-      "onlineStock": true,
-      "storeStockCount": 18
-    }
+  {
+    "id": "robotklipper_smart_sileno_free_1500",
+    "title": "Robotklipper Smart Sileno Free 1500",
+    "brand": "Gardena",
+    "description": "Robotklipper Smart Sileno Free 1500, er robotgressklipperen som lærer og tilpasser seg akkurat din plen for perfekt plenpleie. Med den smarte Sileno free robotgressklipperen er installasjon av begrensningskabel noe som hører fortiden til. Med navigeringsteknologi uten behov for begrensningskabel,...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/gardena-free-1500-robotklipper-50346128/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346128_base_50346128-base.jpg",
+    "price": "20799.00 NOK",
+    "shipping_weight": "13.22kg",
+    "usp": [
+      "For plen opptil 1500 m²",
+      "Klippebredde 22 cm",
+      "Maksimal stigning 30%",
+      "Uten kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_smart_sileno_free_800_med_garasje",
+    "title": "Robotklipper Smart Sileno Free 800 med garasje",
+    "brand": "Gardena",
+    "description": "Robotklipper Smart Sileno Free 800, er robotgressklipperen som lærer og tilpasser seg akkurat din plen for perfekt plenpleie. Med den smarte Sileno free robotgressklipperen er installasjon av kantledning noe som hører fortiden til. Med navigeringsteknologi uten behov for kantledning, den innovati...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/gardena-free-800-m-gar-robotkl-50347730/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50347730_base_50347730-base.jpg",
+    "price": "22698.00 NOK",
+    "shipping_weight": "16.12kg",
+    "usp": [
+      "For plen opptil 800 m²",
+      "Klippebredde 22 cm",
+      "Maksimal stigning 30%",
+      "Uten kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_smart_sileno_free_800",
+    "title": "Robotklipper Smart Sileno Free 800",
+    "brand": "Gardena",
+    "description": "Robotklipper Smart Sileno Free 800, er robotgressklipperen som lærer og tilpasser seg akkurat din plen for perfekt plenpleie. Med den smarte Sileno free robotgressklipperen er installasjon av begrensningskabel noe som hører fortiden til. Med navigeringsteknologi uten behov for begrensningskabel,...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/gardena-free-800-robotklipper-50346127/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346127_base_50346127-base.jpg",
+    "price": "15999.00 NOK",
+    "shipping_weight": "13.22kg",
+    "usp": [
+      "For plen opptil 800 m²",
+      "Klippebredde 22 cm",
+      "Maksimal stigning 30%",
+      "Uten kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_smart_sileno_free_1500_med_garasje",
+    "title": "Robotklipper Smart Sileno Free 1500 med garasje",
+    "brand": "Gardena",
+    "description": "Robotklipper Smart Sileno Free 1500, er robotgressklipperen som lærer og tilpasser seg akkurat din plen for perfekt plenpleie. Med den smarte Sileno free robotgressklipperen er installasjon av kantledning noe som hører fortiden til. Med navigeringsteknologi uten behov for kantledning, den...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/gardena-free1500-m-gar-robotkl-50347731/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50347731_base_50347731-base.jpg",
+    "price": "28698.00 NOK",
+    "shipping_weight": "16.12kg",
+    "usp": [
+      "For plen opptil 1500 m²",
+      "Klippebredde 22 cm",
+      "Maksimal stigning 30%",
+      "Uten kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_smart_sileno_life_800",
+    "title": "Robotklipper smart Sileno life 800",
+    "brand": "Gardena",
+    "description": "Oppdag hvor enkelt det er å ta vare på plenen din med den intelligente robotgressklipperen Gardena Smart Sileno Life. Nyt full tilkobling med Gardena Smart System. Med Gardena smart system app kan du ta vare på hagen din fra hvor som helst.  De smarte robotgressklipperne fra Gardena har en...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/gardena-life-800-robotklipper-50346126/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346126_base_50346126-base.jpg",
+    "price": "11499.00 NOK",
+    "shipping_weight": "14.50kg",
+    "usp": [
+      "For plen opptil 800 m²",
+      "Klippebredde 22 cm",
+      "Maksimal stigning 35%",
+      "Med kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_sileno_city_500",
+    "title": "Robotklipper Sileno City 500",
+    "brand": "Gardena",
+    "description": "Kompakt og liten robotgressklipper som passer perfekt i små hager opptil 500 m². Den klarer skråninger opptil 35 prosent og smale passasjer uten problemer. Lader automatisk, har LCD display med innstilingsmeny. Det svingbare bakhjulet gir roboten økt smidighet og manøvrerbarhet - perfekt for små ...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/robot-sileno-city-500-50303783/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50303783_base_50303783-base-918997967647205-34632.jpg",
+    "price": "9300.00 NOK",
+    "shipping_weight": "11.81kg",
+    "usp": [
+      "For plen opptil 500 m²",
+      "Klippebredde 17 cm",
+      "Maksimal stigning 35%",
+      "Med kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_sileno_life_smart_lona_700",
+    "title": "Robotklipper Sileno Life Smart Lona 700",
+    "brand": "Gardena",
+    "description": "Oppdag hvor enkelt det er å ta vare på plenen din med den intelligente robotgressklipperen, smart Sileno Life! Nyt full tilkobling til Gardena Smart Sileno Life og Gardena smart system. Med EasyApp Control kan du ta vare på hagen din fra hvor som helst. Vår nye robotgressklipper har nå en innovat...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/robotklipper/robot-sileno-life-700m2-smart--50332450/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50332450_base_50332450-base-918997970571805-58361.jpg",
+    "price": "12100.00 NOK",
+    "shipping_weight": "14.50kg",
+    "usp": [
+      "For plen opptil 700 m²",
+      "Klippebredde 22 cm",
+      "Maksimal stigning 35%",
+      "Med kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_h1500e_vf",
+    "title": "Robotgressklipper Navimow H1500E-VF",
+    "brand": "Segway",
+    "description": "Segway Navimow H1500E+VisionFence er en stillegående robotklipper som passer for plener på opptil 1500 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS.  Opptil 1500 m2  Ingen kantledning, navigerer med GPS  Bluetooth, WiFi og 4G - 1 års dataforbruk inklude...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/segway-nmow-h1500evf-robotklip-50345835/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345835_base_50345835-base.jpg",
+    "price": "25999.00 NOK",
+    "shipping_weight": "17.50kg",
+    "usp": [
+      "For plen opptil 1500 m²",
+      "Klippebredde 21 cm",
+      "Maksimal stigning 45 %",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_h3000e_med_visionfence",
+    "title": "Robotgressklipper Navimow H3000E med VisionFence",
+    "brand": "Segway",
+    "description": "Segway Navimow H3000E+VisionFence er en stillegående robotklipper som passer for plener på opptil 3000 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS. Opptil 3000 m2  Ingen kantledning, navigerer med GPS  Bluetooth, WiFi og 4G  Kantklippefunksjon  Justerb...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/segway-nmow-h3000vf-robotklipp-50343154/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50343154_base_50343154-base2.jpg",
+    "price": "29999.00 NOK",
+    "shipping_weight": "17.50kg",
+    "usp": [
+      "For plen opptil 3000 m²",
+      "Klippebredde 21 cm",
+      "Maksimal stigning 45%",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_h800e_vf",
+    "title": "Robotgressklipper Navimow H800E-VF",
+    "brand": "Segway",
+    "description": "Segway Navimow H800E+VisionFence er en stillegående robotklipper som passer for plener på opptil 800 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS.  Opptil 800 m2  Ingen kantledning, navigerer med GPS  Bluetooth, WiFi og 4G – 1 års dataforbruk inkludert ...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/segway-navimow-h800evf-robotkl-50345834/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345834_base_50345834-base.jpg",
+    "price": "20999.00 NOK",
+    "shipping_weight": "17.50kg",
+    "usp": [
+      "For plen opptil 800 m²",
+      "Klippebredde 21 cm",
+      "Maksimal stigning 45 %",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_x330e",
+    "title": "Robotgressklipper Navimow X330e",
+    "brand": "Segway",
+    "description": "Segway Navimow X330 er en stillegående robotklipper som anbefales for plener på opptil 3000 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS.  Det disse klipperne skiller seg ut i mengden på er spesielt ladetid, klippeareal, navigasjon, ekstrautstyr og hvor...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/segway-navimow-x330e-robotklip-50345830/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345830_base_50345830-base-b.jpg",
+    "price": "39999.00 NOK",
+    "shipping_weight": "18.98kg",
+    "usp": [
+      "For plen opptill 3000 m2",
+      "Klippebredde  23",
+      "7 cm",
+      "Maksimal stigning 50%",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_x350e",
+    "title": "Robotgressklipper Navimow X350e",
+    "brand": "Segway",
+    "description": "Segway Navimow X350 er en stillegående robotklipper som anbefales for plener på opptil 5000 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS.  Det disse klipperene skiller seg ut i mengden på er spesielt ladetid, klippeareal, navigasjon, ekstrautstyr og hvo...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/segway-navimow-x350e-robotklip-50345831/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345831_base_50345831-base-b.jpg",
+    "price": "47999.00 NOK",
+    "shipping_weight": "19.07kg",
+    "usp": [
+      "For plen opptill 5000 m2",
+      "Klippebredde  23",
+      "7 cm",
+      "Maksimal stigning 50%",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_x390e",
+    "title": "Robotgressklipper Navimow X390e",
+    "brand": "Segway",
+    "description": "Segway Navimow X390 er en stillegående robotklipper som anbefales for plener på opptil 10.000 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS.  Det disse klipperne skiller seg ut i mengden på er spesielt ladetid, klippeareal, navigasjon, ekstrautstyr og hv...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/segway-navimow-x390e-robotklip-50345832/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345832_base_50345832-base-b.jpg",
+    "price": "61999.00 NOK",
+    "shipping_weight": "19.07kg",
+    "usp": [
+      "For plen opptill 10000 m2",
+      "Klippebredde  23",
+      "7 cm",
+      "Maksimal stigning 50%",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "stihl_robotklipper_rmi_422_p_imow",
+    "title": "Stihl robotklipper RMI 422 P IMOW",
+    "brand": "Stihl",
+    "description": "Robotgressklipperene i serie RMI 4 er i sitt rette element på små og middelstore gressplener. RMI 422 P klipper plener på opptil 1500 m&sup2;, med et perfekt klipperesultat og på kort tid. Plenen blir dermed raskt tilgjengelig igjen for lek og avkobling. RMI 422 P utmerker seg på ekstra kuperte...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/robotklipper/stihl-robotklipper-rmi-4220-p--50314043/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50314043_base_50314043-base-96538963010111435-41104.jpg",
+    "price": "9443.00 NOK",
+    "shipping_weight": "15.14kg",
+    "usp": [
+      "For plen opptil 1500 m²",
+      "Klippebredde 20 cm",
+      "Maksimal stigning 40%",
+      "For små og middelstore gressplener"
+    ]
+  },
+  {
+    "id": "stihl_robotklipper_rmi_4221_pc_imow",
+    "title": "Stihl robotklipper RMI 4221 PC iMow",
+    "brand": "Stihl",
+    "description": "Merk! Kan være bestillingsvare i enkelte butikker. iMOW RMI 422.1 PC robotgressklipper er en praktisk og effektiv liten bioklipper som kan styres med app på din smarttelefon eller nettbrett. Den klipper opptil 1700 m&sup2; gressplener med hjelp av en dynamisk klippeplan, hvor du selv bestemmer når den...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/robotklipper/stihl-robotklipper-rmi-4221-pc-50328134/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50328134_base_50328134-base-96538963010111465-53654.jpg",
+    "price": "10493.00 NOK",
+    "shipping_weight": "15.00kg",
+    "usp": [
+      "For plen opptil 1700 m²",
+      "Klippebredde 20 cm",
+      "Maksimal stigning 40%",
+      "Kan styres via app"
+    ]
+  },
+  {
+    "id": "robotklipper_rmi_522_c",
+    "title": "Robotklipper RMI 522 C",
+    "brand": "Stihl",
+    "description": "RMI 522 C er enkel å programmere, klipper opptil 2100 m2 og 35 timer i uken, tilpasser hastigheten i kupert terreng ved hjelp av helningssensorer og klarer opptil 40 % stigning. Robotklipperen kan styres med app på mobil eller nettbrett, den har alarm ved tyveri og signallyd når knivene starter,...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/robotklipper/stihl-robotklipper-rmi-522-c-50325745/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50325745_base_50325745-base-96538963050111403a-52354.jpg",
+    "price": "12593.00 NOK",
+    "shipping_weight": "16.00kg",
+    "usp": [
+      "For plen opptil 2100 m²",
+      "Klippebredde 20 cm",
+      "Maksimal stigning 40%",
+      "Styres via app"
+    ]
+  },
+  {
+    "id": "robotklipper_rmi_632_1_imow",
+    "title": "Robotklipper RMI 632.1 iMow",
+    "brand": "Stihl",
+    "description": "RMI 632.1 er enkel å programmere, klipper opptil 3000 m 2 og 35 timer i uken, tilpasser hastigheten i kupert terreng ved hjelp av helningssensorer og klarer opptil 45 % stigning. Robotklipperen har alarm ved tyveri og signallyd når knivene starter. Monteringssett kjøpes som tilbehør. Utstyr:...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/robotklipper/stihl-robotklipper-rmi-6321-50325746/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50325746_base_50325746-base-96538963090121430a-52359.jpg",
+    "price": "12599.30 NOK",
+    "shipping_weight": "20.00kg",
+    "usp": [
+      "For plen opptil 3000 m²",
+      "Klippebredde 28 cm",
+      "Maksimal stigning 45%",
+      "For store gressplener"
+    ]
+  },
+  {
+    "id": "robotklipper_imow_5",
+    "title": "Robotklipper iMow 5",
+    "brand": "Stihl",
+    "description": "Neste generasjons Stihl robotklippere redefinerer det helautomatiske plenstellet. Modellene iMow® og iMow® EVO løfter plenstellet til en helt ny opplevelse gjennom sin bruk av innovativ teknologi og moderne design kombinert med den velkjente Stihl-kvaliteten. Ta tilbake fritiden din med den nye...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/stihl-imow-5-robotklipper-50337114/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337114_base_50337114-base-a.jpg",
+    "price": "13999.30 NOK",
+    "shipping_weight": "18.00kg",
+    "usp": [
+      "For plen opptil 1500  m²",
+      "Klippebredde 28 cm",
+      "Maks 40% helling",
+      "Kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_imow_5_evo",
+    "title": "Robotklipper iMow 5 Evo",
+    "brand": "Stihl",
+    "description": "Neste generasjons Stihl robotklippere redefinerer det helautomatiske plenstellet. Modellene iMow® og iMow® EVO løfter plenstellet til en helt ny opplevelse gjennom sin bruk av innovativ teknologi og moderne design kombinert med den velkjente Stihl-kvaliteten. Ta tilbake fritiden din med den nye...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/stihl-imow-5-evo-robotklipper-50337115/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337115_base_50337115-base-a.jpg",
+    "price": "19599.30 NOK",
+    "shipping_weight": "18.00kg",
+    "usp": [
+      "For plen opptil 1500  m²",
+      "Klippebredde 28 cm",
+      "45% helling",
+      "opptil 55 % med ekstautstyr",
+      "Kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_imow_6",
+    "title": "Robotklipper iMow 6",
+    "brand": "Stihl",
+    "description": "Neste generasjons Stihl robotklippere redefinerer det helautomatiske plenstellet. Modellene iMow® og iMow® EVO løfter plenstellet til en helt ny opplevelse gjennom sin bruk av innovativ teknologi og moderne design kombinert med den velkjente Stihl-kvaliteten. Ta tilbake fritiden din med den nye...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/stihl-imow-6-robotklipper-50337116/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337116_base_50337116-base.jpg",
+    "price": "20299.30 NOK",
+    "shipping_weight": "22.00kg",
+    "usp": [
+      "For plen opptil 3000  m²",
+      "Klippebredde 28 cm",
+      "Maks 40% helling",
+      "Kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_imow_7",
+    "title": "Robotklipper iMow 7",
+    "brand": "Stihl",
+    "description": "Neste generasjons Stihl robotklippere redefinerer det helautomatiske plenstellet. Modellene iMOW® og iMOW® EVO løfter plenstellet til en helt ny opplevelse gjennom sin bruk av innovativ teknologi og moderne design kombinert med den velkjente Stihl-kvaliteten. Ta tilbake fritiden din med den nye...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/stihl-imow-70-robotklipper-50337118/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337118_base_50337118-base-a.jpg",
+    "price": "29084.30 NOK",
+    "shipping_weight": "22.00kg",
+    "usp": [
+      "For plen opptil 5000  m²",
+      "Klippebredde 28 cm",
+      "Maks 40% helling",
+      "Kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_7_imow_evo",
+    "title": "Robotklipper 7 iMow Evo",
+    "brand": "Stihl",
+    "description": "Neste generasjons Stihl robotklippere redefinerer det helautomatiske plenstellet. Modellene iMow® og iMow® EVO løfter plenstellet til en helt ny opplevelse gjennom sin bruk av innovativ teknologi og moderne design kombinert med den velkjente Stihl-kvaliteten. Ta tilbake fritiden din med den nye...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/stihl-imow-70-evo-robotklipper-50337119/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337119_base_50337119-base-b.jpg",
+    "price": "33599.30 NOK",
+    "shipping_weight": "22.00kg",
+    "usp": [
+      "For plen opptil 5000  m²",
+      "Klippebredde 28 cm",
+      "45% helling",
+      "opptil 60 % med ekstautstyr",
+      "Kantledning"
+    ]
+  },
+  {
+    "id": "robotklipper_imow_6_evo",
+    "title": "Robotklipper iMow 6 Evo",
+    "brand": "Stihl",
+    "description": "Neste generasjons Stihl robotklippere redefinerer det helautomatiske plenstellet. Modellene iMow® og iMow® Evo løfter plenstellet til en helt ny opplevelse gjennom sin bruk av innovativ teknologi og moderne design kombinert med den velkjente Stihl-kvaliteten. Ta tilbake fritiden din med den nye...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/stihl-imow-6-evo-robotklipper-50337117/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337117_base_50337117-base-b.jpg",
+    "price": "24499.30 NOK",
+    "shipping_weight": "22.00kg",
+    "usp": [
+      "For plen opptil 3000 m²",
+      "Klippebredde 28 cm",
+      "45% helning",
+      "opptil 60 % med ekstautstyr",
+      "Kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_i108e",
+    "title": "Robotgressklipper Navimow i108e",
+    "brand": "Segway",
+    "description": "Segway Navimow i108E er en innovativ robotgressklipper som revolusjonerer måten plener klippes på. Ved å eliminere behovet for tradisjonelle kantledninger, introduserer den en brukervennlig løsning som sparer tid og reduserer installasjonsarbeid. Med virtuell grensesetting via app kan du enkelt...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/segway-navimow-i108e-robotklip-50345826/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345826_base_50345826-base-n.jpg",
+    "price": "15999.00 NOK",
+    "shipping_weight": "10.90kg",
+    "usp": [
+      "For plen opptil 800 m²",
+      "Klippebredde 18 cm",
+      "Maksimal stigning 30%",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "robotgressklipper_navimow_x315e",
+    "title": "Robotgressklipper Navimow X315e ",
+    "brand": "Segway",
+    "description": "Segway Navimow X315 er en stillegående robotklipper som anbefales for plener på opptil 1500 m2. Her trenger du ingen kantledning, da denne klipperen navigerer via satellitt med GPS.  Det disse klipperne skiller seg ut i mengden på er spesielt ladetid, klippeareal, navigasjon, ekstrautstyr og hvor...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/robotklipper/segway-navimow-x315-robotklipp-50347966/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50347966_base_50347966-base.jpg",
+    "price": "31999.00 NOK",
+    "shipping_weight": "18.98kg",
+    "usp": [
+      "For plen opptill 1500 m2",
+      "Klippebredde 23",
+      "7 cm",
+      "Maksimal stigning 50%",
+      "Ingen kantledning"
+    ]
+  },
+  {
+    "id": "garasje_til_sileno_city_life",
+    "title": "Garasje til Sileno City/Life",
+    "brand": "Gardena",
+    "description": "Gardena Robotgressklippere er svært robuste og laget for arbeid utendørs.. For den voksende gruppen Gardena robotgressklippere, tilbyr vi nå et godt designet hus, som er enkelt å håndtere. Det tar bare noen få trinn å sette opp huset over dokkingstasjonen. Robotgressklipperen blir da beskyttet mo...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/garasje-sileno-citylife-50314430/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50314430_base_50314430-base-918997967933201-40993.jpg",
+    "price": "2699.00 NOK",
+    "shipping_weight": "4.50kg",
+    "usp": [
+      "Beskytter mot sol og regn",
+      "Kabler lett tilgjenglig bak",
+      "Foldbart lokk"
+    ]
+  },
+  {
+    "id": "begrensningskabel_150_m",
+    "title": "Begrensningskabel 150 m",
+    "brand": "Gardena",
+    "description": "Når begrensningskabel er lagt, vet robotgressklipperen umiddelbart hvor den skal klippe. Du får med en 150 meter lang begrensningskabel når du kjøper robotgressklipper. For større områder kan du tilpasse begrensningskabelen ved å legge til ønsket lengde. Den samme kabelen fungerer som guidekabel,...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-begrensningskabel-150m-50322795/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50322795_base_50322795-base-918997966809602-48225.jpg",
+    "price": "1249.00 NOK",
+    "shipping_weight": "1.40kg",
+    "usp": [
+      "For installasjon av robotklipper",
+      "Definerer klippeområdet",
+      "Brukes også som ledekabel",
+      "Til robotklipper 04088-60"
+    ]
+  },
+  {
+    "id": "begrensningskabel_50_m",
+    "title": "Begrensningskabel 50 m",
+    "brand": "Gardena",
+    "description": "Etter at begrensningskabelen har blitt lagt, vet robotklipperen nøyaktig hvilket område som skal klippes. Denne 50 meter lange kabelen er praktisk hvis det nylig har blitt plantet et nytt område i hagen som skal klippes, dette medfører at man må da legge ut en ny begrensningskabel for dette...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-begrensningskabel-50m-50322796/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50322796_base_50322796-base-918997967104802-48227.jpg",
+    "price": "529.00 NOK",
+    "shipping_weight": "0.49kg",
+    "usp": [
+      "For installasjon av robotklipper",
+      "Definerer klippeområdet",
+      "Brukes også som ledekabel",
+      "Til robotklipper 04058-60"
+    ]
+  },
+  {
+    "id": "koblinger_kontakter_til_robotklippere",
+    "title": "Koblinger/kontakter til robotklippere",
+    "brand": "Gardena",
+    "description": "Koblinger og kontakter til begrensningskabel til Gardena robotklippere. For tilkobling og utvidelse av begrensningskabelen og guidekabelen.  Inneholder: 6 koblinger og 3 kontakter.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-forbindlsesledd-50303798/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50303798_base_50303798-base-918997966809701-34620.jpg",
+    "price": "249.00 NOK",
+    "shipping_weight": "0.03kg",
+    "usp": [
+      "Sett med 6 koblinger og 3 kontakter"
+    ]
+  },
+  {
+    "id": "garasje_til_sileno",
+    "title": "Garasje til Sileno",
+    "brand": "Gardena",
+    "description": "Beskytt din smarte Sileno robotgressklipper mot skader, slitasje og værforhold med denne garasjen fra Gardena.  Sikker og trygg utendørs lagringsgarasje for din robotgressklipper:  En garasje for robotgressklipperen din er den ultimate måten å trygt lagre din smarte Sileno robotgressklipper...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-garasje-sileno-free-50346131/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346131_base_50346131-base.jpg",
+    "price": "2699.00 NOK",
+    "shipping_weight": "2.90kg",
+    "usp": [
+      "Sikrer trygg utendørs lagring",
+      "Beskytter mot sterke værforhold",
+      "Enkel installasjon",
+      "rask tilgang",
+      "Passer til  SILENO max og smart SILENO free"
+    ]
+  },
+  {
+    "id": "hjulbørster_til_sileno",
+    "title": "Hjulbørster til Sileno",
+    "brand": "Gardena",
+    "description": "Gress og jord kan samle seg på hjulene, noe som kan redusere ytelsen i skråninger. Gardenas hjulbørster til Sileno sørger for at robotgressklipperen din kjører jevnt gjennom plenen gang på gang.  Si farvel til manuell rengjøring av gressoppsamling i hjulbuer. Disse hjulbørstene til smarte Sileno...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-hjulboerster-sileno-fr-50346130/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346130_base_50346130-base.jpg",
+    "price": "349.00 NOK",
+    "shipping_weight": "0.10kg",
+    "usp": [
+      "Holder hjulene rene",
+      "Unngår gressklumper",
+      "Enkel installasjon uten verktøy",
+      "Passer til SILENO max og smart SILENO free"
+    ]
+  },
+  {
+    "id": "plugger_for_robotklipper",
+    "title": "Plugger for robotklipper",
+    "brand": "Gardena",
+    "description": "Til innfesting av begrensningskabelen til Gardena robotgressklipper. Du får med 200 stifter når du kjøper Gadena robotgressklipper R40Li. Det anbefales å feste begrensningskabelen og guidekabelen med korte mellomrom med Gardena stifter, spesielt i ujevne plenområder. Dette settet inneholder 100...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-plugger-for-robot-50303799/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50303799_base_50303799-base-918997966809801-34621.jpg",
+    "price": "289.00 NOK",
+    "shipping_weight": "0.35kg",
+    "usp": [
+      "Til innfesting av begrensningskabelen",
+      "Inneholder 100 stifter"
+    ]
+  },
+  {
+    "id": "anti_kollisjonsradar_til_sileno",
+    "title": "Anti-kollisjonsradar til Sileno",
+    "brand": "Gardena",
+    "description": "Oppgrader din Gardena-robotgressklipper med Sileno Anti-kollisjon Radar. Denne sensoren gjør at klipperen unngår hindringer, som beskytter klipperen og hagens omgivelser.  Praktisk hindringsdeteksjon:  Fra frittstående blomsterkasser og hagepynt til kjæledyrleker og bortkomne fotballer, er hagen...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-radar-sileno-free-50346129/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346129_base_50346129-base.jpg",
+    "price": "2199.00 NOK",
+    "shipping_weight": "0.20kg",
+    "usp": [
+      "Beskytter klipper og hage",
+      "Forhindrer kollisjoner",
+      "Enkel installasjon uten verktøy",
+      "Passer til  SILENO max og smart SILENO free"
+    ]
+  },
+  {
+    "id": "reparasjonskit_for_robotklipper",
+    "title": "Reparasjonskit for robotklipper",
+    "brand": "Gardena",
+    "description": "Inneholder 5 meter begrensningskabel , 10 fester og 6 forbindelsesledd for enkel tilkobling mellom eksisterende og ny kabel. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/gardena-reparasjonskit-for-rob-50322797/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50322797_base_50322797-base-978997967104902-48228.jpg",
+    "price": "339.00 NOK",
+    "shipping_weight": "0.12kg",
+    "usp": [
+      "Perfekt for fiksing av begrensningskabel",
+      "Til mindre justeringer av klippeområdet"
+    ]
+  },
+  {
+    "id": "hjulbørster_til_sileno_city",
+    "title": "Hjulbørster til Sileno City",
+    "brand": "Gardena",
+    "description": "Merk! Kan være bestillingsvare i enkelte butikker. Spesielt under våte forhold holder de lettmonterte hjulebørstene Sileno city robotgressliperenes hjul fri for gress og smuss.   ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/hjulboerster-til-sileno-city-50314432/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50314432_base_50314432-base-918997592615801-40957.jpg",
+    "price": "250.00 NOK",
+    "shipping_weight": "0.10kg",
+    "usp": [
+      "Børster til robotgressklipper hjul",
+      "Lett å montere",
+      "Holder hjulene fri for gress og smuss"
+    ]
+  },
+  {
+    "id": "kantledning_arb_151_150_m",
+    "title": "Kantledning ARB 151 150 m",
+    "brand": "Stihl",
+    "description": "Merk! Kan være bestillingsvare i enkelte butikker. Kantledning til installering av iMOW robotklippere. En rulle med 150 meter ledning ø 2.3 mm. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/ekstrautstyr-og-tilbehor/kantledning-150-m-arb-1511-50325749/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50325749_base_50325749-base-96538900004008633-52338.jpg",
+    "price": "1099.00 NOK",
+    "shipping_weight": "2.00kg",
+    "usp": [
+      "Kanttråd til iMow robotklippere",
+      "150 meter lang",
+      "Ø 2",
+      "3 mm"
+    ]
+  },
+  {
+    "id": "kantledning_imow_500_m_3_4_mm",
+    "title": "Kantledning iMow 500 m 3,4 mm",
+    "brand": "Stihl",
+    "description": "Kanttråd for installasjon av robotgressklipper. Fungerer som guidekabel, og viser robotgressklipperen veien tilbake til ladestasjonen.  Passer alle robotklippere.  Rull med 500 meter, Ø 3,4 mm. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/kantledning-34-500-92744345/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/92744345_base_92744345-base.jpg",
+    "price": "3288.00 NOK",
+    "shipping_weight": "8.15kg",
+    "usp": [
+      "Kanttråd til robotklippere",
+      "500 meter lang",
+      "Ø 3",
+      "4 mm",
+      "Passer alle robotklippere"
+    ]
+  },
+  {
+    "id": "kantledning_arb_501_500_m",
+    "title": "Kantledning ARB 501 500 m",
+    "brand": "Stihl",
+    "description": "500 meter lang begrensningskabel for installasjon av robotgressklipper. Den samme kabelen fungerer som guidekabel, og viser robotgressklipperen veien tilbake til ladestasjonen. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/kanttraad-arb-501-500-m-34-mm-50314050/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50314050_base_50314050-base-96538963010111426-41265.jpg",
+    "price": "2000.00 NOK",
+    "shipping_weight": "8.38kg",
+    "usp": [
+      "Kanttråd til robotklippere",
+      "500 meter lang",
+      "Ø 3",
+      "4 mm",
+      "Passer til alle Stihl robotklippere"
+    ]
+  },
+  {
+    "id": "kniv_til_imow_robotgressklipper",
+    "title": "Kniv til iMow robotgressklipper",
+    "brand": "Stihl",
+    "description": "Spesialdesignet biokniv i stål med lav luftmotstand og lang levetid. Gir ett veldig bra klipperesultat. Brukes i kombinasjon med discut skiven ARS 028. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/ekstrautstyr-og-tilbehor/kniv-28-cm-imow-35229522/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/35229522_base_35229522-base-96538963097020102-53645.jpg",
+    "price": "359.00 NOK",
+    "shipping_weight": "0.10kg",
+    "usp": [
+      "28 cm kniv",
+      "Til iMow 632 serien"
+    ]
+  },
+  {
+    "id": "monteringssett_lite_for_imow_robotgressklipper",
+    "title": "Monteringssett lite for iMow robotgressklipper",
+    "brand": "Stihl",
+    "description": "Komplett monteringssett med 150 m (rull) avgrensningstråd ø 2,3 mm, 150 stk. festeplugger og 3 stk. skjøtestykker. Anbefalt til RMI 422 (1 sett), RMI 422 P (2 sett) og RMI 632 (2 sett).   ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/ekstrautstyr-og-tilbehor/monteringssett-imow-lite-50324558/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50324558_base_50324558-base-96538969090071023-49967.jpg",
+    "price": "650.00 NOK",
+    "shipping_weight": "3.00kg",
+    "usp": [
+      "Komplett monterinssett",
+      "Med 150 meter kantledning",
+      "Anbefalt til RMI 422",
+      "RMI 422 P",
+      "RMI 632"
+    ]
+  },
+  {
+    "id": "4g_modul_navimow_access",
+    "title": "4G modul Navimow Access+",
+    "brand": "Segway",
+    "description": "Navimow Access+ 4G-modul er tilbehøret som tilbyr sømløs mobiltilkobling, så du får en enda bedre opplevelse med din kabelfrie robotklipper.  Når du opplever svake Wi-Fi-signaler kan du stole på den stabile mobilforbindelsen som Navimow Access+ leverer. Selv ved god trådløs dekning i huset, kan d...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/navimow-4g-modul-i-50345828/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345828_base_50345828-base.jpg",
+    "price": "1229.00 NOK",
+    "shipping_weight": "0.06kg",
+    "usp": [
+      "Sørger for stabil Wi-Fi dekning",
+      "Tyverisikring",
+      "Mulighet for å spore din Navimow",
+      "Passer Segway Navimow i108E og i105E"
+    ]
+  },
+  {
+    "id": "garasje_navimow_s_for_i_serie",
+    "title": "Garasje Navimow S for I serie",
+    "brand": "Segway",
+    "description": "Garasje for robotgressklippere i I-serien. Gir klippere din optimal beskyttelse med en solid og stilren garasje.  Garasjen beskytter roboten din mot vær og vind, og i tillegg forlenger den levetiden på klipperen. Enkel å montere og designet for å passe til I-serien. Sikrer at gressklipperen allti...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/navimow-garasje-s-50345827/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345827_base_50345827-base.jpg",
+    "price": "1899.00 NOK",
+    "shipping_weight": "4.13kg",
+    "usp": [
+      "Beskytter mot vind",
+      "regn og sol",
+      "Med tak som kan åpnes",
+      "Passer Navimow I-Serie modeller"
+    ]
+  },
+  {
+    "id": "terrenghjul_navimow",
+    "title": "Terrenghjul Navimow",
+    "brand": "Segway",
+    "description": "Segway Navimow terrenghjul til I-serien er et flott tilbehør for robotgressklipperen din. Disse gummierte dekkene gir forbedret grep og stabilitet på ulike underlag.  Enkle å montere. Passer Segway Navimow i108E og i105E. Mål på hjul: diameter 24,8 cm.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/navimow-off-road-hjul-i-50345829/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50345829_base_50345829-base.jpg",
+    "price": "1299.00 NOK",
+    "shipping_weight": "3.00kg",
+    "usp": [
+      "Forbedret grep",
+      "Enkle å montere",
+      "Passer Segway Navimow i108E og i105E"
+    ]
+  },
+  {
+    "id": "knivsett_til_robotklippere",
+    "title": "Knivsett til robotklippere",
+    "brand": "Gardena",
+    "description": "Reservekniver for klipping og pleie &ndash; klipp og bioklipp. Dette settet med 9 reservekniver og 9 festeskruer er klart til bruk når knivene på Gardena robotgressklipper R40Li trenger utskifting for å sikre fortsatt skarp og presis klipping. Gardena Robotic Lawnmower R40Li bruker 3 kniver &ndash; med dette...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/reserveblad-for-gardena-robotk-50303796/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50303796_base_50303796-base-918997966809501-34618.jpg",
+    "price": "319.00 NOK",
+    "shipping_weight": "0.04kg",
+    "usp": [
+      "Reservekniver for utskiftning",
+      "9 kniver og 9 festeskruer",
+      "Kompatibel med alle Gardena robotklippere"
+    ]
+  },
+  {
+    "id": "forlengerkabel_navimow_for_x_serie",
+    "title": "Forlengerkabel Navimow for X serie",
+    "brand": null,
+    "description": "Antenneforlengerkabel på 10 meter til Segway Navimow X-serie robotgressklipper. Øker rekkevidden til Navimow antenneforlenger med 10 meter ved behov for ytterligere rekkevidde.  Passer kun til robotklippere i X-serien. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-antenne-forlenger-x-50346521/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346521_base_50346521-base.jpg",
+    "price": "399.00 NOK",
+    "shipping_weight": "0.42kg",
+    "usp": [
+      "Forlengerkabel 10 m",
+      "Øker rekkevidden",
+      "Passer til robotklippere i X-serien"
+    ]
+  },
+  {
+    "id": "antenneforlenger_navimow",
+    "title": "Antenneforlenger Navimow",
+    "brand": "Segway",
+    "description": "Antenneforlenger til Segway Navimow robotgressklippere. Lar deg feste signalantennen høyere opp ved behov for å forsterke satellitt/GPS-signalet.  Passer til : I, H, og X-modeller.  Kabel kan kjøpes separat med varenummer: 48900752 til H og I serien, og 100000260 til X-serien. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-antenne-monteringskit-50346522/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346522_base_50346522-base.jpg",
+    "price": "799.00 NOK",
+    "shipping_weight": "0.67kg",
+    "usp": [
+      "Kan festes på huset",
+      "Justerbar vinkel 180 grader",
+      "Forsterker satellitt/GPS-signal",
+      "Passer til I",
+      "H",
+      "X modeller"
+    ]
+  },
+  {
+    "id": "antennemottaker_navimow_for_x_serie",
+    "title": "Antennemottaker Navimow for X serie",
+    "brand": "Segway",
+    "description": "En ekstra antenne gir utvidet signaldekning, noe som gjør den ideell for store plener og sikrer stabil tilkobling over større områder Denne antennen støtter navigasjonen til roboten og sørger for signaldekning i store plener og komplekse hager.  Har du svært store plener eller utfordrende områder...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/ekstrautstyr-og-tilbehor/segway-antennemottaker-x-50346519/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346519_base_50346519-base.jpg",
+    "price": "3699.00 NOK",
+    "shipping_weight": "2.13kg",
+    "usp": [
+      "Gir utvidet signaldekning",
+      "Ideell for store og komplekse hager",
+      "Passer modeller i X-serien"
+    ]
+  },
+  {
+    "id": "antenneforlenger_navimow",
+    "title": "Antenneforlenger Navimow",
+    "brand": "Segway",
+    "description": "Antenneforlenger til Segway Navimow robotgressklippere. Lar deg feste signalantennen høyere opp ved behov for å forsterke satellitt/GPS-signalet. Med 10 meter forlengerkabel.  Passer til H og I serien.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-navimow-antenneforlenge-50343155/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50343155_base_50343155-base.jpg",
+    "price": "699.00 NOK",
+    "shipping_weight": "0.00kg",
+    "usp": [
+      "Kan festes på huset",
+      "Justerbar vinkel",
+      "Forsterker satellitt/GPS-signal",
+      "Med 10 meter kabel",
+      "Passer til H og I serien"
+    ]
+  },
+  {
+    "id": "forlengerkabel_navimow",
+    "title": "Forlengerkabel Navimow",
+    "brand": "Segway",
+    "description": "Antenneforlengerkabel på 10 meter til Segway Navimow robotgressklipper. Øker rekkevidden til Navimow antenneforlenger (Antenna Extension Kit) med 10 meter ved behov for ytterligere rekkevidde.  NB! Det anbefales ikke å skjøte antennekabelen med mer enn totalt 20 meter.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-navimow-forlengerkabel-50343157/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50343157_base_50343157-base.jpg",
+    "price": "399.00 NOK",
+    "shipping_weight": "0.00kg",
+    "usp": [
+      "Forlengerkabel 10 m",
+      "Øker rekkevidden",
+      "Til Segway Navimow robotgressklipper"
+    ]
+  },
+  {
+    "id": "garasje_navimow_l_for_x_serie",
+    "title": "Garasje Navimow L for X serie",
+    "brand": "Segway",
+    "description": "Garasje for robotgressklippere i X-serien. Gir klippere din optimal beskyttelse med en solid og stilren garasje.  Garasjen beskytter roboten din mot vær og vind, og i tillegg forlenger den levetiden på klipperen. Enkel å montere og designet for å passe til X-serien, sikrer den at gressklipperen...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-navimow-garasje-l-50346515/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346515_base_50346515-base.jpg",
+    "price": "3199.00 NOK",
+    "shipping_weight": "4.30kg",
+    "usp": [
+      "Beskytter mot vind",
+      "regn og sol",
+      "Med tak som kan åpnes",
+      "Passer till X-modeller"
+    ]
+  },
+  {
+    "id": "garasje_navimow_m_for_h_serie",
+    "title": "Garasje Navimow M for H serie",
+    "brand": "Segway",
+    "description": "Garasje for robotklipperen for ekstra beskyttelse mot vind, regn og sol. Med håndtak og tak som kan åpnes for enkel tilgang til robotens skjerm. Passer til alle Segway Navimow H-serie robotgressklippere. Laget av plast: PC/ASA.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-navimow-garasje-m-50343158/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50343158_base_50343158-base.jpg",
+    "price": "2499.00 NOK",
+    "shipping_weight": "4.30kg",
+    "usp": [
+      "Beskytter mot vind",
+      "regn og sol",
+      "Med tak som kan åpnes",
+      "Passer Navimow H-Serie modeller"
+    ]
+  },
+  {
+    "id": "knivsett_navimow",
+    "title": "Knivsett Navimow",
+    "brand": "Segway",
+    "description": "Kniver til Segway Navimow H-modell. For best best mulig resultat, bør knivene byttes etter en tids bruk. Inkludert skruer. Inneholder 12 stk. i pakken.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-navimow-knivsett-50343156/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50343156_base_50343156-base.jpg",
+    "price": "249.00 NOK",
+    "shipping_weight": "0.03kg",
+    "usp": [
+      "Passer til Segway Navimow H-modell",
+      "12 stk i pakken",
+      "Inkludert  skruer"
+    ]
+  },
+  {
+    "id": "visionfence_navimow",
+    "title": "VisionFence Navimow",
+    "brand": "Segway",
+    "description": "VisionFence er et tilbehør til Segway Navimow robotklippere som gjør den i stand til å håndtere mer komplekse og utfordrende hager. Teknologien er kamerabasert og styres av kunstig intelligens. I områder med svakt GPS-signal vil VisionFence kamerasensor kunne forbedre klipperesultatet. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-navimow-visionfence-50343160/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50343160_base_50343160-base.jpg",
+    "price": "3699.00 NOK",
+    "shipping_weight": "0.47kg",
+    "usp": [
+      "Bedre klipping ved svakt signal",
+      "Ser objekter på 1",
+      "5 meters avstand",
+      "Til komplekse og utfordrende hager",
+      "Passer alle Navimow H-modeller"
+    ]
+  },
+  {
+    "id": "strømforsyning_navimow_antenne_for_x_serie",
+    "title": "Strømforsyning Navimow antenne for X serie",
+    "brand": "Segway",
+    "description": "Strømforsyning som passer til X- serie antenne, om man ønsker å plassere den vekk fra ladestasjonen.  Gir mulighet for bedre plassering i forhold til signal. Passer antenne til X-serien. ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/segway-stroemforsyning-antenne-50346520/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50346520_base_50346520-base.jpg",
+    "price": "399.00 NOK",
+    "shipping_weight": "0.26kg",
+    "usp": [
+      "Mulighet for bedre plassering ift signal",
+      "Passer antenne til X-serien"
+    ]
+  },
+  {
+    "id": "smart_connector_for_stihl_maskiner",
+    "title": "Smart Connector for Stihl maskiner",
+    "brand": "Stihl",
+    "description": "Stihl Smart connector er en sensor som monteres på maskinen. Smart connectoren registrerer og lagrer driftstimer via Bluetooth® 4.2 til Stihl App og informasjonen kan også benyttes i Stihl connect PRO portalen til enhetsstyring / styring og administrasjon av maskinparken. Smart connector er ca. 5...",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/park-og-groentanlegg/robotgressklipper/ekstrautstyr-og-tilbehor/smart-connector-stihl-50314697/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50314697_base_50314697-base-96538900004004900-40929.jpg",
+    "price": "429.00 NOK",
+    "shipping_weight": "0.10kg",
+    "usp": [
+      "Tilkobling via Bluetooth",
+      "Oversikt over service/vedlikehold",
+      "Enkel installering",
+      "Selvdrevet",
+      "GPS-lokalisering",
+      "Kan være bestillingsvare"
+    ]
+  },
+  {
+    "id": "forhjul_avs_100_0_2_stk",
+    "title": "Forhjul AVS 100.0 2 stk",
+    "brand": "Stihl",
+    "description": "Merk! Kan være bestillingsvare i enkelte butikker. De tunge forhjulene sørger for at iMow-gressklipperen kan brukes trygt i kupert terreng. Den modifiserte vektfordelingen forbedrer grepet til gressklipperen i skrånende nivåer.  ",
+    "link": "https://www.felleskjopet.no/maskin-og-redskap/plen-og-hage/robotgressklipper/tilbehoer/stihl-tunge-forhjul-avs-1000-2-50315263/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50315263_base_50315263-base-965389690090071052-41012.jpg",
+    "price": "1299.00 NOK",
+    "shipping_weight": "1.00kg",
+    "usp": [
+      "Tunge forhjul",
+      "God i skråninger",
+      "Forbedret grep"
+    ]
+  },
+  {
+    "id": "kniv_til_imow_robotgressklipper",
+    "title": "Kniv til iMow robotgressklipper",
+    "brand": "Stihl",
+    "description": "Spesialdesignet biokniv i stål med lav luftmotstand og lang levetid. Gir ett veldig bra klipperesultat. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/kniv-20-cm-imow-50286825/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50286825_base_50286825-base-96538963017020101-26118-jpg.jpg",
+    "price": "239.00 NOK",
+    "shipping_weight": "0.07kg",
+    "usp": [
+      "Kniv 20 cm",
+      "Til iMow 422 og 522 serien"
+    ]
+  },
+  {
+    "id": "festeplugger_til_imow_75_stk",
+    "title": "Festeplugger til iMow 75 stk",
+    "brand": "Stihl",
+    "description": "Festeplugger til forankring av avgrensningstråden til gressplenen ved montering av robotgressklipper. Innhold: 75 stk. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/festeplugger-34mm-75-stk-50337104/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337104_base_50337104-base.jpg",
+    "price": "269.00 NOK",
+    "shipping_weight": "0.99kg",
+    "usp": [
+      "Festeplugger til avgrensningstråd",
+      "Passer til 3",
+      "4 mm tråd"
+    ]
+  },
+  {
+    "id": "skjøtestykke_til_imow_10_stk",
+    "title": "Skjøtestykke til iMow 10 stk",
+    "brand": "Stihl",
+    "description": "Til stabil forbindelse av avgrensningstråd og ledetråd. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/skjoetestykker-10-stk-50337106/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337106_base_50337106-base.jpg",
+    "price": "239.00 NOK",
+    "shipping_weight": "0.30kg",
+    "usp": [
+      "Skjøtestykker",
+      "Til avgrensningstråd/ ledetråd"
+    ]
+  },
+  {
+    "id": "reparasjonssett_til_imow_1_kabel",
+    "title": "Reparasjonssett til iMow 1 kabel",
+    "brand": "Stihl",
+    "description": "Reparasjonssett til enkel utbedring av avgrensningstråden ved mindre skader eller brudd. Inneholder 5 meter, Ø 3,4 mm, avgrensningstråd, 6 skjøtestykker og 10 festeplugger. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/reprasjonssett-1-imow-kabel-50337110/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337110_base_50337110-base.jpg",
+    "price": "429.00 NOK",
+    "shipping_weight": "0.18kg",
+    "usp": [
+      "Brukes ved skader på avgrensningstråd",
+      "Med 5 meter kantledning",
+      "10 festeplugger"
+    ]
+  },
+  {
+    "id": "kniver_til_imow_basic_9_stk",
+    "title": "Kniver til iMow basic 9 stk",
+    "brand": "Stihl",
+    "description": "Reservekniver til robotklipper. Trenger du å skifte ut knivene på robotklipperen din kan du enkelt skifte de ut uten bruk av verktøy. Passer til iMow® 5 / 5 EVO, iMow® 6 / 6 Evo og iMow® 7 / 7 EVO. Innhold: 9 stk. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/kniver-basic-imow-9-pk-506070-50337111/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337111_base_50337111-base.jpg",
+    "price": "389.00 NOK",
+    "shipping_weight": "0.02kg",
+    "usp": [
+      "Reservekniver for robotklipper",
+      "Enkelt å bytte uten verktøy",
+      "Til iMow 5/6/7-modellene"
+    ]
+  },
+  {
+    "id": "terrenghjul_til_imow_robotklipper_2_stk",
+    "title": "Terrenghjul til iMow robotklipper 2 stk",
+    "brand": "Stihl",
+    "description": "Terrenghjul for robotklipper forenkler kjøring i terrenget og på ujevne gressplener. Egnet til å kjøre opp hellinger på inntil 60 %. Passer til iMow® 5 Evo, 6 Evo og 7 Evo. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/oppgraderingssett-terrenghjul--50337113/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337113_base_50337113-2base.jpg",
+    "price": "909.00 NOK",
+    "shipping_weight": "1.73kg",
+    "usp": [
+      "Oppgraderingssett med terrenhjul",
+      "Gir bedre grep",
+      "For kjøring på opptil 60% helling",
+      "Passer til 5/6/7- modellene"
+    ]
+  },
+  {
+    "id": "monteringsett_til_imow_2_plus",
+    "title": "Monteringsett til Imow 2 Plus",
+    "brand": "Stihl",
+    "description": "Monteringsett for robotklippere. Inneholder: 400 m avgrensningstråd på rull, 7 skjøtestykker, 500 festeplugger og kabelmerker. Diameter tråd: 3,4 mm. Passer til de fleste robotklippere avhengig av plenstørrelse. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/monteringssett-2-plus-imow-50337108/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337108_base_50337108-base.jpg",
+    "price": "5149.00 NOK",
+    "shipping_weight": "8.79kg",
+    "usp": [
+      "Komplett monteringssett",
+      "Med 400 meter kantledning",
+      "500 festeplugger",
+      "7 skjøtestykker",
+      "Passer til  iMow robotklippere"
+    ]
+  },
+  {
+    "id": "smart_connector_boks",
+    "title": "Smart Connector boks",
+    "brand": "Stihl",
+    "description": "Stihl connected box overfører registrerte data fra en Smart Connector eller et batteri med integrert tilkobling raskt og automatisk til Stihl Cloud. Stihl connected box stasjonær. Med Stihl connected har vi laget en digital løsning for deg slik at du kan organisere maskinflåten din på en smart og...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/stihl-connector-boks-50340399/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50340399_base_50340399-base-a.jpg",
+    "price": "3039.00 NOK",
+    "shipping_weight": "0.00kg",
+    "usp": [
+      "Er for verksted eller lager",
+      "Enkel overføring av info til PC",
+      "Få orden på maskinparken",
+      "Samle alt på ett sted"
+    ]
+  },
+  {
+    "id": "smart_connector_boks_mobil",
+    "title": "Smart Connector boks mobil",
+    "brand": "Stihl",
+    "description": "Stihl connected box overfører registrerte data fra en Smart Connector eller et batteri med integrert tilkobling raskt og automatisk til Stihl Cloud. Stihl connected box mobil variant med SIM-kort. Med Stihl connected har vi laget en digital løsning for deg slik at du kan organisere maskinflåten d...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/stihl-connector-boks-mobil-50340400/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50340400_base_50340400-base-a.jpg",
+    "price": "4499.00 NOK",
+    "shipping_weight": "0.00kg",
+    "usp": [
+      "Mobil tas med overalt",
+      "Enkel overføring av info til PC",
+      "Få orden på maskinparken",
+      "Samle alt på ett sted"
+    ]
+  },
+  {
+    "id": "knivblader_til_robotklipper_12_stk",
+    "title": "Knivblader til robotklipper 12 stk",
+    "brand": "Stiga",
+    "description": "Robotgressklipperen Stiga G er utstyrt med 4 roterende kniver i karbonstål. De roterer opp til 2850 rpm, noe som garanterer høy klippeytelse. Det blir et presist og pent snitt og gir gresset tid til å leges igjen ved å gro naturlig. Dette erstatningsknivsettet inkluderer 12 stk erstatningskniver...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/knivblader-stig-12-stk-92522231/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/92522231_base_92522231-base.jpg",
+    "price": "419.00 NOK",
+    "shipping_weight": "0.36kg",
+    "usp": [
+      "For Stiga robotklipper",
+      "Inkluderer 12 erstatningskniver",
+      "Kniver i karbonstål",
+      "Roterer opp til 2850"
+    ]
+  },
+  {
+    "id": "begrensningskabel_1000_m",
+    "title": "Begrensningskabel 1000 m",
+    "brand": "Stiga",
+    "description": "Denne kabelrullen har en lengde på 1000 meter og er kompatibel med Stiga G robotklipper. Den er nødvending for å få roboten til å navigere riktig i hagen. Når begrensningskabel er lagt, vet robotgressklipperen umiddelbart hvor den skal klippe. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/grensekabel-1000m-92714050/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/92714050_base_92714050-base.jpg",
+    "price": "8499.00 NOK",
+    "shipping_weight": "20.00kg",
+    "usp": [
+      "For installasjon av robotklipper",
+      "Definerer klippeområdet"
+    ]
+  },
+  {
+    "id": "monteringssett_til_imow_1",
+    "title": "Monteringssett til iMow 1",
+    "brand": "Stihl",
+    "description": "Monteringssett for robotklippere. Inneholder: 150 m avgrensningstråd på rull, 3 skjøtestykker, 250 festeplugger og kabelmerker. Diameter tråd: 3,4 mm. Passer til de fleste robotklippere avhengig av plenstørrelse. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/monteringssett-1-imow-50337107/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337107_base_50337107-base.jpg",
+    "price": "1949.00 NOK",
+    "shipping_weight": "3.51kg",
+    "usp": [
+      "Komplett monteringssett",
+      "Med 150 meter kantledning",
+      "250 festeplugger",
+      "3 skjøtestykker",
+      "Passer til  iMow robotklippere"
+    ]
+  },
+  {
+    "id": "iprotect_soltak_for_imow_robotklipper",
+    "title": "Iprotect soltak for iMow robotklipper",
+    "brand": "Stihl",
+    "description": "Soltak for beskyttelse av robotklipperen mot sterk solstråling, andre værforhold og tilsmussing. Passer til iMow® 5 / 5 Evo, 6 / 6 Evo og 7 / 7 Evo. ",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/iprotect-soltak-imow-50337121/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337121_base_50338147-base.jpg",
+    "price": "2749.00 NOK",
+    "shipping_weight": "4.10kg",
+    "usp": [
+      "Soltak for robotklipper",
+      "Beskytter din robotklipper",
+      "Passer til iMow 5/6/7-modellene",
+      "Enkel montering"
+    ]
+  },
+  {
+    "id": "kabelsøker_for_robotklipper",
+    "title": "Kabelsøker for robotklipper",
+    "brand": "Grouw",
+    "description": "Kabelsøker for robotklipper for å finne kabelbrudd på grenseledning som er lagt i gressplenen.  Bruddetektoren har AUX-inngang for høretelefoner og benytter 2x9V batterier som selges separat. Leveres med oppbevaringsveske.  Mottakerfrekvens 100-300Hz, Sendefrekvens 1.5Hz. Inkludert  1 stk sender ...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/kabelsoeker-robotklipper-grouw-50337434/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337434_base_50337434-base-a.jpg",
+    "price": "499.00 NOK",
+    "shipping_weight": "0.28kg",
+    "usp": [
+      "Finn kabelbrud på grenseledining",
+      "Inkludert sender og mottaker",
+      "Mottakerfrekvens 100-300 Hz",
+      "Senderfrekvens 1.5Hz",
+      "Leveres med oppbevaringsveske"
+    ]
+  },
+  {
+    "id": "festeplugger_til_imow_100_stk",
+    "title": "Festeplugger til iMow 100 stk",
+    "brand": "Stihl",
+    "description": "Biologisk nedbrytbare festeplugger til forankring av avgrensningstråden på gressplenen ved montering av robotgressklipper. Etter hvert vil avgrensningstråden gro fast i bakken og behovet for festepluggene vil være redusert, pluggen vil da gradvis brytes ned i jorden uten å etterlate seg plastrest...",
+    "link": "https://www.felleskjopet.no/hjem-og-fritid/hage/hagemaskiner/robotgressklipper/tilbehoer/festeplugger-bio-34mm-100-stk-50337105/",
+    "image_link": "https://www.felleskjopet.no/globalassets/products/50337105_base_50337105-base.jpg",
+    "price": "300.00 NOK",
+    "shipping_weight": "0.00kg",
+    "usp": [
+      "Festeplugger til avgrensningstråd",
+      "Passer til 3",
+      "4 mm tråd",
+      "100% biologisk nedbrytbare",
+      "Etterlater ikke plast i bakken"
+    ]
+  }
 ]
+
+    
