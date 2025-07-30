@@ -253,12 +253,13 @@ export default function InspirationTemplatePage() {
                             <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
                         </div>
                     </div>
-                     <div className="mt-12 lg:mt-16">
-                        <blockquote className="border-l-4 border-primary pl-6">
-                            <p className="font-headline text-2xl font-medium leading-relaxed text-foreground md:text-3xl">
+                     <div className="mt-16 text-center mx-auto max-w-3xl lg:mt-24">
+                        <Quote className="mx-auto h-12 w-12 text-primary/30" />
+                        <blockquote className="mt-4">
+                            <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
                                 "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
                             </p>
-                            <cite className="mt-4 block text-base not-italic text-muted-foreground">
+                            <cite className="mt-6 block text-base not-italic text-muted-foreground">
                                 — Kari N, Fornøyd kunde
                             </cite>
                         </blockquote>
@@ -304,20 +305,18 @@ export default function InspirationTemplatePage() {
                           {selectedImageIndex !== null && (
                           <div 
                               className="fixed inset-0 z-50 flex flex-col"
+                              onClick={closeDialog}
                               onTouchStart={handleTouchStart}
                               onTouchMove={handleTouchMove}
                               onTouchEnd={handleTouchEnd}
                           >
-                              <div className="absolute inset-0 bg-black/80" onClick={closeDialog}></div>
-                              
-                              <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
-                              <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
+                              <div className="absolute inset-0 bg-black/80"></div>
                               
                               <div 
                                   className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8"
                                   onClick={(e) => e.stopPropagation()} 
                               >
-                                  <div className="relative flex-1 flex items-center justify-center w-full h-full max-h-[calc(100vh-180px)] overflow-hidden">
+                                  <div className="relative flex-1 flex items-center justify-center w-full max-h-[calc(100vh-180px)]">
                                       <Image
                                           src={galleryImages[selectedImageIndex].src}
                                           alt={galleryImages[selectedImageIndex].alt}
@@ -328,18 +327,18 @@ export default function InspirationTemplatePage() {
                                       />
                                   </div>
                                    <div className="relative z-10 flex-shrink-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm mt-4 rounded-lg max-w-3xl">
-                                      <h3 className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</h3>
-                                      <p className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</p>
+                                      <DialogTitle className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</DialogTitle>
+                                      <DialogDescription className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                   </div>
                               </div>
                               
-                              <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                              <Button onClick={(e) => { e.stopPropagation(); closeDialog(); }} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                   <X className="h-8 w-8" />
                               </Button>
-                              <Button onClick={prevImage} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                              <Button onClick={(e) => { e.stopPropagation(); prevImage(); }} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                   <ChevronLeft className="h-10 w-10" />
                               </Button>
-                              <Button onClick={nextImage} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                              <Button onClick={(e) => { e.stopPropagation(); nextImage(); }} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                   <ChevronRight className="h-10 w-10" />
                               </Button>
                           </div>
