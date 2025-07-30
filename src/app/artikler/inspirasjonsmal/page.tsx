@@ -13,7 +13,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 
 // Import local images
@@ -297,6 +297,8 @@ export default function InspirationTemplatePage() {
                         >
                             {selectedImageIndex !== null && (
                             <>
+                                <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
+                                <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                 <div className="relative inline-block max-w-[95vw] max-h-[90vh]">
                                     <Image
                                         src={galleryImages[selectedImageIndex].src}
