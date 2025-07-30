@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -15,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { ProductCard } from '@/components/common/product-card';
 
 // Import products for campaign menu
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
@@ -28,7 +30,9 @@ const kampanjeProducts = [
       price: '34 999,-',
       salePrice: '29 999,-',
       imageUrl: popular1,
-      productUrl: '#',
+      productUrl: '/products/SEGNAVH3000E',
+      onlineStock: true,
+      storeStockCount: 63,
     },
     {
       id: 'CHAMP92001I',
@@ -38,34 +42,10 @@ const kampanjeProducts = [
       salePrice: '5 999,-',
       imageUrl: popular2,
       productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
     },
 ];
-
-
-const MenuProductItem = ({ product }: { product: typeof kampanjeProducts[0] }) => (
-  <Link href={product.productUrl} className="group flex items-start gap-4 rounded-md p-2 hover:bg-black/5">
-    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md">
-      <Image
-        src={product.imageUrl}
-        alt={product.title}
-        layout="fill"
-        objectFit="cover"
-        className="transition-transform duration-300 group-hover:scale-105"
-      />
-    </div>
-    <div>
-      {product.brand && <p className="text-xs text-primary">{product.brand}</p>}
-      <p className="text-sm font-medium text-foreground group-hover:text-primary line-clamp-2">{product.title}</p>
-      <div className="mt-1 flex items-baseline gap-2">
-          <p className="font-bold text-primary">{product.salePrice || product.price}</p>
-          {product.salePrice && (
-            <p className="text-sm text-muted-foreground line-through">{product.price}</p>
-          )}
-        </div>
-    </div>
-  </Link>
-);
-
 
 export const leftNavItems = [
   { name: 'Hage og uterom', href: '#' },
@@ -714,9 +694,9 @@ export function MainNavMenu() {
             ) : megaMenuData.links ? (
               // Special menu for Kampanjer and Lagersalg
               <div className="container mx-auto max-w-[1542px] px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   {/* Column for links */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 md:col-span-1">
                       <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
                       <Separator className="mb-2" />
                       {megaMenuData.links.map((link: { title: string, href: string }) => (
@@ -728,12 +708,12 @@ export function MainNavMenu() {
                   </div>
                   {/* Columns for products (if they exist) */}
                   {megaMenuData.products && (
-                      <div className="md:col-span-2">
-                          <h3 className="px-3 text-lg font-bold text-primary">Utvalgte kampanjeprodukter</h3>
+                      <div className="md:col-span-3">
+                           <h3 className="px-3 text-lg font-bold text-primary">Utvalgte kampanjeprodukter</h3>
                            <Separator className="mb-2" />
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               {megaMenuData.products.map((product: any) => (
-                                  <MenuProductItem key={product.id} product={product} />
+                                  <ProductCard key={product.id} {...product} />
                               ))}
                           </div>
                       </div>
