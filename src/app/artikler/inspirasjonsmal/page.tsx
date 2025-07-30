@@ -15,6 +15,10 @@ import { ArticlesSection } from '@/components/sections/articles-section';
 
 // Import the new local images
 import heroImage from '@/components/common/inspirasjonsmal/inspirasjon-hero.jpg';
+import challengeImage from '@/components/common/inspirasjonsmal/foer.png';
+import takAvLysImage from '@/components/common/inspirasjonsmal/hengelys.png';
+import ledVeienImage from '@/components/common/inspirasjonsmal/solcellelys.jpg';
+import levendeLysImage from '@/components/common/inspirasjonsmal/lanterne.jpg';
 
 
 // --- Page Specific Data ---
@@ -144,7 +148,7 @@ export default function InspirationTemplatePage() {
                         </blockquote>
                     </div>
                     <div className="order-1 md:order-2 relative aspect-square rounded-lg overflow-hidden shadow-xl">
-                        <Image src="https://placehold.co/600x600.png" alt="Vennegjeng samlet rundt en bålpanne med marshmallows" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="friends bonfire marshmallows"/>
+                        <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
                     </div>
                 </section>
 
@@ -159,21 +163,21 @@ export default function InspirationTemplatePage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="flex flex-col items-center text-center">
                             <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
-                                <Image src="https://placehold.co/600x600.png" alt="En lyslenke spent over en terrasse" fill className="object-cover" data-ai-hint="string lights patio" sizes="(max-width: 768px) 100vw, 33vw"/>
+                                <Image src={takAvLysImage} alt="En lyslenke spent over en terrasse" fill className="object-cover" data-ai-hint="string lights patio" sizes="(max-width: 768px) 100vw, 33vw"/>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">Tak av lys</h3>
                             <p className="text-muted-foreground mt-1">Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.</p>
                         </div>
                          <div className="flex flex-col items-center text-center">
                             <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
-                                <Image src="https://placehold.co/600x600.png" alt="Solcellelamper langs en hagesti" fill className="object-cover" data-ai-hint="solar lights path" sizes="(max-width: 768px) 100vw, 33vw"/>
+                                <Image src={ledVeienImage} alt="Solcellelamper langs en hagesti" fill className="object-cover" data-ai-hint="solar lights path" sizes="(max-width: 768px) 100vw, 33vw"/>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">Led veien</h3>
                             <p className="text-muted-foreground mt-1">Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.</p>
                         </div>
                          <div className="flex flex-col items-center text-center">
                             <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
-                                <Image src="https://placehold.co/600x600.png" alt="En stor lanterne med blokklys på et bord" fill className="object-cover" data-ai-hint="lantern candle table" sizes="(max-width: 768px) 100vw, 33vw"/>
+                                <Image src={levendeLysImage} alt="En stor lanterne med blokklys på et bord" fill className="object-cover" data-ai-hint="lantern candle table" sizes="(max-width: 768px) 100vw, 33vw"/>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">Levende lys</h3>
                             <p className="text-muted-foreground mt-1">Store lanterner og lykter gir en ekstra koselig og levende glød.</p>
