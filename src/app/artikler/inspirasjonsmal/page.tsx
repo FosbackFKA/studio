@@ -21,9 +21,6 @@ import challengeImage from '@/components/common/inspirasjonsmal/foer.png';
 import takAvLysImage from '@/components/common/inspirasjonsmal/hengelys.png';
 import ledVeienImage from '@/components/common/inspirasjonsmal/solcellelys.jpg';
 import levendeLysImage from '@/components/common/inspirasjonsmal/lanterne.jpg';
-import utekjokkenImage from '@/components/common/inspirasjonsmal/utekjokken.jpg';
-import urterImage from '@/components/common/inspirasjonsmal/urter.jpg';
-import sitteplassImage from '@/components/common/inspirasjonsmal/sitteplass.jpg';
 
 
 import baalpanneImage from '@/components/common/inspirasjonsmal/p_baalpanne.jpg';
@@ -118,9 +115,6 @@ const galleryImages = [
     { src: takAvLysImage, alt: "En lyslenke spent over en terrasse", title: "Tak av lys", description: "Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.", hint: "string lights patio" },
     { src: ledVeienImage, alt: "Solcellelamper langs en hagesti", title: "Led veien", description: "Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.", hint: "solar lights path" },
     { src: levendeLysImage, alt: "En stor lanterne med blokklys på et bord", title: "Levende lys", description: "Store lanterner og lykter gir en ekstra koselig og levende glød.", hint: "lantern candle table" },
-    { src: utekjokkenImage, alt: "Et enkelt utekjøkken med grill", title: "Utekjøkken", description: "Et praktisk hjørne for matlaging gjør det enkelt å nyte måltider ute.", hint: "outdoor kitchen grill" },
-    { src: urterImage, alt: "Krukker med friske urter", title: "Dyrk dine egne smaker", description: "Urter i krukker er både dekorativt og praktisk for utekokken.", hint: "herbs pots" },
-    { src: sitteplassImage, alt: "En koselig sitteplass med puter og pledd", title: "Myke tekstiler", description: "Puter og pledd gjør sitteplassen komfortabel og innbydende.", hint: "cozy outdoor seating" },
 ];
 
 function VideoGenerator() {
