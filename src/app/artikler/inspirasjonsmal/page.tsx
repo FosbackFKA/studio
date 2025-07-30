@@ -13,6 +13,10 @@ import { ArrowRight, Star } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { ArticlesSection } from '@/components/sections/articles-section';
 
+// Import the new local images
+import heroImage from '@/components/common/inspirasjonsmal/inspirasjon-hero.jpg';
+
+
 // --- Page Specific Data ---
 
 const breadcrumbs = [
@@ -103,21 +107,12 @@ export default function InspirationTemplatePage() {
 
         {/* 1. Tittel, ingress og bilde (Hero) */}
         <section className="relative h-[70vh] min-h-[500px] w-full">
-          {/*
-           * FEILRETTING:
-           * Bildet `image (11).jpg` har mellomrom og parenteser i navnet, noe som kan skape byggefeil.
-           * For å fikse dette permanent:
-           * 1. Flytt bildet fra `src/components/common/inspirasjonsmal/` til `public/`
-           * 2. Gi det et nytt, enkelt navn, f.eks. `inspirasjon-hero.jpg`
-           * 3. Endre `src`-propellen under til `src="/inspirasjon-hero.jpg"` og fjern `priority`-propen.
-          */}
           <Image
-            src="https://placehold.co/1920x1080.png"
+            src={heroImage}
             alt="Kari sin drømmehage i skumringen med en tent bålpanne og lyslenker"
             fill
             sizes="100vw"
             className="object-cover"
-            data-ai-hint="cozy patio dusk firepit"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -149,7 +144,7 @@ export default function InspirationTemplatePage() {
                         </blockquote>
                     </div>
                     <div className="order-1 md:order-2 relative aspect-square rounded-lg overflow-hidden shadow-xl">
-                        <Image src="https://placehold.co/800x800.png" alt="Vennegjeng samlet rundt en bålpanne med marshmallows" fill className="object-cover" data-ai-hint="friends fire pit" sizes="(max-width: 768px) 100vw, 50vw"/>
+                        <Image src="https://placehold.co/600x600.png" alt="Vennegjeng samlet rundt en bålpanne med marshmallows" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="friends bonfire marshmallows"/>
                     </div>
                 </section>
 
