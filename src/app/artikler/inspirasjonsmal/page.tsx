@@ -142,7 +142,7 @@ export default function InspirationTemplatePage() {
                  <Breadcrumb items={breadcrumbs} className="mb-10" />
 
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
-                <section className="my-16 lg:my-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <section className="my-16 grid grid-cols-1 items-center gap-12 md:my-24 md:grid-cols-2">
                     <div className="order-2 md:order-1">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
                         <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -154,59 +154,59 @@ export default function InspirationTemplatePage() {
                             <cite className="mt-2 block not-italic font-semibold text-foreground">— Kari N, Fornøyd kunde</cite>
                         </blockquote>
                     </div>
-                    <div className="order-1 md:order-2 relative aspect-square rounded-lg overflow-hidden shadow-xl">
+                    <div className="relative order-1 aspect-square overflow-hidden rounded-lg shadow-xl md:order-2">
                         <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
                     </div>
                 </section>
 
                 {/* 3. Visuell Inspirasjon */}
                 <section className="my-16 lg:my-24">
-                     <div className="text-center mb-12">
+                     <div className="mb-12 text-center">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
                         <p className="mx-auto mt-2 max-w-3xl text-lg text-muted-foreground">
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                         <div className="flex flex-col items-center text-center">
-                            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
-                                <Image src={takAvLysImage} alt="En lyslenke spent over en terrasse" fill className="object-cover" data-ai-hint="string lights patio" sizes="(max-width: 768px) 100vw, 33vw"/>
+                            <div className="group relative mb-4 w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+                                <Image src={takAvLysImage} alt="En lyslenke spent over en terrasse" fill className="object-cover transition-transform duration-300 group-hover:scale-105" data-ai-hint="string lights patio" sizes="(max-width: 768px) 100vw, 33vw"/>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">Tak av lys</h3>
-                            <p className="text-muted-foreground mt-1">Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.</p>
+                            <p className="mt-1 text-muted-foreground">Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.</p>
                         </div>
                          <div className="flex flex-col items-center text-center">
-                            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
-                                <Image src={ledVeienImage} alt="Solcellelamper langs en hagesti" fill className="object-cover" data-ai-hint="solar lights path" sizes="(max-width: 768px) 100vw, 33vw"/>
+                            <div className="group relative mb-4 w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+                                <Image src={ledVeienImage} alt="Solcellelamper langs en hagesti" fill className="object-cover transition-transform duration-300 group-hover:scale-105" data-ai-hint="solar lights path" sizes="(max-width: 768px) 100vw, 33vw"/>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">Led veien</h3>
-                            <p className="text-muted-foreground mt-1">Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.</p>
+                            <p className="mt-1 text-muted-foreground">Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.</p>
                         </div>
                          <div className="flex flex-col items-center text-center">
-                            <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg mb-4">
-                                <Image src={levendeLysImage} alt="En stor lanterne med blokklys på et bord" fill className="object-cover" data-ai-hint="lantern candle table" sizes="(max-width: 768px) 100vw, 33vw"/>
+                            <div className="group relative mb-4 w-full aspect-square overflow-hidden rounded-lg shadow-lg">
+                                <Image src={levendeLysImage} alt="En stor lanterne med blokklys på et bord" fill className="object-cover transition-transform duration-300 group-hover:scale-105" data-ai-hint="lantern candle table" sizes="(max-width: 768px) 100vw, 33vw"/>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">Levende lys</h3>
-                            <p className="text-muted-foreground mt-1">Store lanterner og lykter gir en ekstra koselig og levende glød.</p>
+                            <p className="mt-1 text-muted-foreground">Store lanterner og lykter gir en ekstra koselig og levende glød.</p>
                         </div>
                     </div>
                 </section>
 
                 {/* 4. Produktkarusell ("Shop the Look") */}
-                <section className="my-16 lg:my-24 bg-secondary/30 py-16 rounded-lg">
-                    <div className="text-center mb-12 px-4">
+                <section className="my-16 rounded-lg bg-secondary/30 py-16 lg:my-24">
+                    <div className="mb-12 px-4 text-center">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
                         <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
                             Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+                    <div className="grid grid-cols-2 gap-6 px-4 lg:grid-cols-4">
                         {shopTheLookProducts.map((product) => (
                             <ProductCard key={product.id} {...product} />
                         ))}
                     </div>
                     {/* Call-to-Action */}
-                    <div className="text-center mt-12">
+                    <div className="mt-12 text-center">
                         <Button asChild size="lg">
                             <Link href="#">Se alt til uteplassen <ArrowRight className="ml-2 h-4 w-4" /></Link>
                         </Button>
