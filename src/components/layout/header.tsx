@@ -134,7 +134,7 @@ function SearchPopover() {
                         >
                             <span className="truncate">{search}</span>
                             <X
-                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-50 transition-colors hover:bg-destructive/10 hover:text-destructive rounded-full"
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:bg-destructive/10 hover:text-destructive rounded-full"
                                 onClick={(e) => handleRemoveSearch(e, search)}
                             />
                         </Button>
@@ -447,6 +447,33 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   )
 }
 
+function MiniProductCard({ product }: { product: Product }) {
+  return (
+    <Link href={product.productUrl || '#'} className="group block">
+      <div className="space-y-2">
+        <div className="relative aspect-square w-full overflow-hidden rounded-md border bg-white">
+          <Image
+            src={product.imageUrl}
+            alt={product.title}
+            fill
+            sizes="150px"
+            className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+        <div>
+          <p className="truncate text-sm font-medium text-foreground group-hover:text-primary">{product.title}</p>
+          <div className="flex items-baseline gap-2">
+            <p className="font-bold text-primary">{product.salePrice || product.price}</p>
+            {product.salePrice && (
+              <p className="text-xs text-muted-foreground line-through">{product.price}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export function HeaderComponent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [navStack, setNavStack] = React.useState<any[]>([]);
@@ -523,7 +550,7 @@ export function HeaderComponent() {
   
   const renderSubMenu = (menuData: any) => {
     const listItems = menuData.columns ? menuData.columns.flat() : (menuData.links || []);
-    const hasSubCategories = listItems[0]?.links;
+    const hasSubCategories = menuData.columns && listItems[0]?.links;
 
     return (
       <>
@@ -561,8 +588,8 @@ export function HeaderComponent() {
             <h3 className="my-4 text-base font-semibold text-foreground">Populære produkter</h3>
             <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
               {menuData.products.map((product: Product) => (
-                 <div key={product.id} className="w-48 flex-shrink-0">
-                    <ProductCard {...product} />
+                 <div key={product.id} className="w-40 flex-shrink-0">
+                    <MiniProductCard product={product} />
                 </div>
               ))}
             </div>
@@ -711,6 +738,7 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
+
 
 
 
