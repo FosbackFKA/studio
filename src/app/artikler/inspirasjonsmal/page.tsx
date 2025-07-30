@@ -183,7 +183,7 @@ export default function InspirationTemplatePage() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-          <div className="container relative z-10 mx-auto flex h-full max-w-4xl flex-col items-center justify-end px-4 pb-16 text-center text-white md:pb-24">
+          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-end px-4 pb-16 text-center text-white md:pb-24">
             <h1 className="font-headline text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
               Kari skapte sin drømmehage med Felleskjøpet
             </h1>
@@ -194,11 +194,11 @@ export default function InspirationTemplatePage() {
         </section>
 
         <div className="bg-background py-12 lg:py-16">
-            <div className="container mx-auto max-w-4xl px-4">
-                 <Breadcrumb items={breadcrumbs} className="mb-12" />
+            <div className="container mx-auto max-w-[1542px] px-4">
+                 <Breadcrumb items={breadcrumbs} className="mb-12 max-w-4xl mx-auto" />
                  
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
-                <section className="mb-16 md:mb-24">
+                <section className="mb-16 md:mb-24 max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
@@ -218,7 +218,7 @@ export default function InspirationTemplatePage() {
 
                 {/* 3. Visuell Inspirasjon (New Gallery) */}
                 <section className="mb-16 lg:mb-24">
-                    <div className="mb-12 text-center">
+                    <div className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
                         <p className="mx-auto mt-2 max-w-3xl text-lg text-muted-foreground">
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
@@ -258,13 +258,13 @@ export default function InspirationTemplatePage() {
 
                 {/* 4. Produktkarusell ("Shop the Look") */}
                 <section className="rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
-                    <div className="mb-12 text-center">
+                    <div className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
                         <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
                             Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-6 md:grid-cols-4 max-w-5xl mx-auto">
                         {shopTheLookProducts.map((product) => (
                             <ProductCard key={product.id} {...product} />
                         ))}
