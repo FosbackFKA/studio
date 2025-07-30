@@ -91,10 +91,6 @@ function SearchPopover() {
     setPreviousSearches(searches => searches.filter(s => s !== searchToRemove));
   };
   
-  const handleFocus = () => {
-    setOpen(true);
-  };
-  
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
     if (popoverRef.current && !popoverRef.current.contains(e.relatedTarget as Node)) {
         setOpen(false);
@@ -103,15 +99,15 @@ function SearchPopover() {
 
 
   return (
-    <div onBlur={handleBlur} ref={popoverRef}>
+    <div className="w-full max-w-lg" onBlur={handleBlur} ref={popoverRef}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild onClick={() => setOpen(true)}>
-          <div className="relative w-full max-w-lg">
+          <div className="relative">
             <Input 
               type="search" 
               placeholder="Søk" 
               className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
-              onFocus={handleFocus}
+              onFocus={() => setOpen(true)}
             />
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
