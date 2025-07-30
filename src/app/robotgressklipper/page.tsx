@@ -251,12 +251,14 @@ function FloatingChatbot() {
   const [isBubbleVisible, setIsBubbleVisible] = React.useState(true);
   
   React.useEffect(() => {
-    // Hide the bubble after 3 seconds
-    const timer = setTimeout(() => {
-      // No change to animation, just handling visibility if needed
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+    // Hide the bubble after some time if it's still visible
+    if (isBubbleVisible) {
+      const timer = setTimeout(() => {
+        setIsBubbleVisible(false);
+      }, 8000); // Hide after 8 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [isBubbleVisible]);
 
   const handleOpenChat = () => {
     setIsOpen(true);
@@ -295,11 +297,15 @@ function FloatingChatbot() {
       )}>
         <Button 
           size="icon" 
-          className="h-16 w-16 rounded-full shadow-lg"
+          className={cn(
+            "h-16 w-16 rounded-full shadow-lg transition-all duration-300 ease-in-out",
+            "bg-gradient-to-br from-primary to-green-400 text-primary-foreground",
+            "hover:scale-110 hover:shadow-xl focus:scale-110 focus:shadow-xl focus:outline-none"
+          )}
           onClick={handleOpenChat}
           aria-label="Åpne chat med KI-Ekspert"
         >
-          <Sparkles className="h-8 w-8" />
+          <Sparkles className="h-9 w-9" />
         </Button>
       </div>
 
