@@ -244,12 +244,6 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
 function FloatingChatbot() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isBubbleVisible, setIsBubbleVisible] = React.useState(true);
-  const [isAnimating, setIsAnimating] = React.useState(true);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setIsAnimating(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleOpenChat = () => {
     setIsOpen(true);
@@ -264,12 +258,9 @@ function FloatingChatbot() {
         "absolute bottom-full right-0 mb-3 transition-opacity duration-300",
         isOpen || !isBubbleVisible ? "opacity-0" : "opacity-100",
       )}>
-        <div className={cn(
-            "relative rounded-lg bg-background py-2 px-4 text-sm font-medium text-primary shadow-lg",
-            isAnimating && "animate-bounce"
-        )}>
+        <div className="relative rounded-lg border bg-background py-2 px-4 text-sm font-medium text-primary shadow-lg">
           Spør KI-Eksperten!
-          <div className="absolute right-4 -bottom-2 h-4 w-4 rotate-45 transform bg-background"></div>
+          <div className="absolute right-4 -bottom-2 h-4 w-4 rotate-45 transform bg-background border-r border-b"></div>
            <Button
             variant="ghost"
             size="icon"
