@@ -39,30 +39,30 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { FkaLogo } from '@/components/common/logo';
 
 const imageMap: Record<string, StaticImageData> = {
-  heroImage, guideImage, gressklipper1, gressklipper2, gressklipper3, gressklipper4, gressklipper5, popular1, popular3,
-  '50346128': popular3,
-  '50347730': popular3,
-  '50346127': popular3,
-  '50347731': popular3,
-  '50346126': popular3,
-  '50303783': popular3,
-  '50332450': popular3,
+  heroImage, guideImage, gressklipper1, gressklipper2, gressklipper3, gressklipper4, gressklipper5, popular1,
+  '50346128': gressklipper1,
+  '50347730': gressklipper1,
+  '50346127': gressklipper1,
+  '50347731': gressklipper1,
+  '50346126': gressklipper1,
+  '50303783': gressklipper1,
+  '50332450': gressklipper1,
   '50345835': popular1,
   '50343154': popular1,
   '50345834': popular1,
   '50345830': gressklipper5,
   '50345831': gressklipper5,
   '50345832': gressklipper5,
-  '50314043': popular3,
-  '50328134': popular3,
-  '50325745': popular3,
-  '50325746': popular3,
-  '50337114': popular3,
-  '50337115': popular3,
-  '50337116': popular3,
-  '50337118': popular3,
-  '50337119': popular3,
-  '50337117': popular3,
+  '50314043': gressklipper1,
+  '50328134': gressklipper1,
+  '50325745': gressklipper1,
+  '50325746': gressklipper1,
+  '50337114': gressklipper1,
+  '50337115': gressklipper1,
+  '50337116': gressklipper1,
+  '50337118': gressklipper1,
+  '50337119': gressklipper1,
+  '50337117': gressklipper1,
   '50345826': gressklipper2,
   '50347966': gressklipper5,
   '50314430': guideImage,
@@ -475,12 +475,12 @@ export default function RobotklipperPage() {
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                         {products.map((p: any) => {
                           const imageSrc = imageMap[p.id as string] || imageMap[p.image_link as string] || guideImage;
+                          if (!p.imageUrl) p.imageUrl = imageSrc;
                           return (
                             <ProductCard 
                                 key={p.id} 
                                 {...p}
                                 productUrl={`/products/SEGNAVH3000E`} // Hardcoded for demo
-                                imageUrl={imageSrc} 
                             />
                           )
                         })}
