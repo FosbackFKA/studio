@@ -124,7 +124,7 @@ const robotklipperChatFlow = ai.defineFlow(
             output: { schema: RobotklipperChatOutputSchema },
         });
 
-        const output = llmResponse.output();
+        const output = llmResponse.output;
         if (!output) {
             return { responseText: "Beklager, jeg fikk ikke generert et svar. Prøv igjen." };
         }
