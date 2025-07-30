@@ -241,7 +241,7 @@ export default function InspirationTemplatePage() {
                  <Breadcrumb items={breadcrumbs} className="mb-12" />
                  
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
-                <section className="mb-16 md:mb-24 max-w-4xl mx-auto">
+                <section className="mb-16 md:mb-24 mx-auto max-w-4xl">
                     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
@@ -290,7 +290,7 @@ export default function InspirationTemplatePage() {
                             ))}
                         </div>
                         <DialogContent
-                            className="max-w-none w-screen h-screen bg-transparent border-none shadow-none p-0 flex items-center justify-center"
+                            className="h-screen w-screen max-w-none border-none bg-transparent p-0 shadow-none flex flex-col"
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
                             onTouchEnd={handleTouchEnd}
@@ -299,20 +299,23 @@ export default function InspirationTemplatePage() {
                             <>
                                 <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                                 <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
-                                <div className="relative inline-block max-w-[95vw] max-h-[90vh]">
+                                
+                                <div className="relative flex flex-1 items-center justify-center p-8">
                                     <Image
                                         src={galleryImages[selectedImageIndex].src}
                                         alt={galleryImages[selectedImageIndex].alt}
-                                        width={galleryImages[selectedImageIndex].src.width}
-                                        height={galleryImages[selectedImageIndex].src.height}
-                                        className="object-contain w-auto h-auto max-w-full max-h-full rounded-lg"
+                                        width={1920}
+                                        height={1080}
+                                        className="h-auto w-auto max-w-full max-h-full object-contain rounded-lg"
                                         sizes="100vw"
                                     />
-                                    <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4 text-white rounded-b-lg">
-                                        <h3 className="text-xl font-bold">{galleryImages[selectedImageIndex].title}</h3>
-                                        <p className="text-base text-white/90">{galleryImages[selectedImageIndex].description}</p>
-                                    </div>
                                 </div>
+
+                                <div className="flex-shrink-0 bg-black/80 p-4 text-center text-white backdrop-blur-sm">
+                                    <h3 className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</h3>
+                                    <p className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</p>
+                                </div>
+
                                 <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                     <X className="h-8 w-8" />
                                 </Button>
