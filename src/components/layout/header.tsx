@@ -92,8 +92,6 @@ function SearchPopover() {
   };
   
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
-    // We check if the new focused element is a child of the popover.
-    // If it is, we don't want to close the popover.
     if (popoverRef.current && !popoverRef.current.contains(e.relatedTarget as Node)) {
         setOpen(false);
     }
@@ -131,7 +129,7 @@ function SearchPopover() {
                         <Button
                             key={search}
                             variant="ghost"
-                            className="group h-auto items-center justify-center gap-2 rounded-full border px-3 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
+                            className="group h-auto items-center justify-center gap-2 rounded-full border bg-accent/10 px-3 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
                         >
                             <span className="truncate">{search}</span>
                             <X
@@ -150,7 +148,7 @@ function SearchPopover() {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {popularSearches.map(search => (
-                      <Button key={search} variant="ghost" className="h-auto px-3 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary rounded-full border">
+                      <Button key={search} variant="ghost" className="h-auto px-3 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary rounded-full border bg-accent/10">
                         {search}
                       </Button>
                     ))}
@@ -562,11 +560,11 @@ export function HeaderComponent() {
             <h3 className="my-2 text-sm font-semibold text-muted-foreground">Populære produkter</h3>
             <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
               {menuData.products.map((product: Product) => (
-                <Link href={product.productUrl || '#'} key={product.id} className="block w-24 flex-shrink-0" onClick={() => setIsMenuOpen(false)}>
+                <Link href={product.productUrl || '#'} key={product.id} className="block w-32 flex-shrink-0" onClick={() => setIsMenuOpen(false)}>
                   <div className="relative aspect-square w-full rounded-md bg-white border">
-                    <Image src={product.imageUrl} alt={product.title} fill className="object-contain p-1" sizes="96px" />
+                    <Image src={product.imageUrl} alt={product.title} fill className="object-contain p-1" sizes="128px" />
                   </div>
-                  <p className="mt-1.5 text-xs font-medium text-foreground line-clamp-2">{product.title}</p>
+                  <p className="mt-1.5 text-sm font-medium text-foreground line-clamp-2">{product.title}</p>
                 </Link>
               ))}
             </div>
@@ -715,4 +713,5 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
+
 
