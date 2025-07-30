@@ -267,30 +267,32 @@ export default function InspirationTemplatePage() {
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
                         </p>
                     </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
+                        {galleryImages.map((image, index) => (
+                            <DialogTrigger key={index} asChild>
+                                <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
+                                    <Image
+                                        src={image.src}
+                                        alt={image.alt}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                                        data-ai-hint={image.hint}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                                    <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
+                                        <h3 className="font-bold">{image.title}</h3>
+                                        <p className="text-sm text-white/80">{image.description}</p>
+                                    </div>
+                                </button>
+                            </DialogTrigger>
+                        ))}
+                    </div>
+
                     <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
-                        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
-                            {galleryImages.map((image, index) => (
-                                <DialogTrigger key={index} asChild>
-                                    <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
-                                        <Image
-                                            src={image.src}
-                                            alt={image.alt}
-                                            fill
-                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                                            data-ai-hint={image.hint}
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                                        <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
-                                            <h3 className="font-bold">{image.title}</h3>
-                                            <p className="text-sm text-white/80">{image.description}</p>
-                                        </div>
-                                    </button>
-                                </DialogTrigger>
-                            ))}
-                        </div>
                         <DialogContent 
-                            className="bg-transparent border-none shadow-none p-0 max-w-none w-auto h-auto"
+                            className="bg-transparent border-none shadow-none p-0 max-w-none w-screen h-screen"
                             onOpenAutoFocus={(e) => e.preventDefault()}
                         >
                             {selectedImageIndex !== null && (
@@ -305,7 +307,10 @@ export default function InspirationTemplatePage() {
                                 <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                                 <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
                                 
-                                <div className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8" onClick={e => e.stopPropagation()}>
+                                <div 
+                                    className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8"
+                                    onClick={(e) => e.stopPropagation()} 
+                                >
                                     <div className="relative flex-1 flex items-center justify-center w-full h-full overflow-hidden">
                                         <Image
                                             src={galleryImages[selectedImageIndex].src}
