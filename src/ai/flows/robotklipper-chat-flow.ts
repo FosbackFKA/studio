@@ -107,23 +107,17 @@ const robotklipperChatFlow = ai.defineFlow(
     },
     async (input) => {
         // 1. Prepare the chat history for the Gemini API.
-        const history = (input.history || []).filter(h => h.role && h.content);
-        const messagesForApi = history.map(h => ({
+        const history = (input.history || []).map(h => ({
             role: h.role as 'user' | 'model',
-            parts: [{ text: h.content }],
+            content: [{ text: h.content }],
         }));
-
-        // 2. Construct the final prompt array, ensuring it starts with a user message if history is empty.
-        const finalPrompt = [
-            ...messagesForApi,
-            { role: 'user' as const, parts: [{ text: input.question }] },
-        ];
         
-        // 3. Call the model.
+        // 2. Call the model.
         const llmResponse = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
             system: systemPrompt,
-            prompt: finalPrompt,
+            history: history,
+            prompt: input.question,
             tools: [searchRobotklippereTool],
             output: { schema: RobotklipperChatOutputSchema },
         });
