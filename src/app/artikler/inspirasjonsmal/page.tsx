@@ -254,17 +254,14 @@ export default function InspirationTemplatePage() {
                         </div>
                     </div>
                      <div className="mt-12 lg:mt-16">
-                        <div className="relative rounded-lg bg-secondary/30 p-8 text-center md:p-12">
-                            <Quote className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 text-primary/10" />
-                            <blockquote className="relative">
-                                <p className="font-headline text-2xl font-medium text-foreground md:text-3xl">
-                                    "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
-                                </p>
-                                <cite className="mt-6 block text-base not-italic text-muted-foreground">
-                                    — Kari N, Fornøyd kunde
-                                </cite>
-                            </blockquote>
-                        </div>
+                        <blockquote className="border-l-4 border-primary pl-6">
+                            <p className="font-headline text-2xl font-medium leading-relaxed text-foreground md:text-3xl">
+                                "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
+                            </p>
+                            <cite className="mt-4 block text-base not-italic text-muted-foreground">
+                                — Kari N, Fornøyd kunde
+                            </cite>
+                        </blockquote>
                     </div>
                 </section>
 
@@ -307,12 +304,11 @@ export default function InspirationTemplatePage() {
                           {selectedImageIndex !== null && (
                           <div 
                               className="fixed inset-0 z-50 flex flex-col"
-                              onClick={closeDialog}
                               onTouchStart={handleTouchStart}
                               onTouchMove={handleTouchMove}
                               onTouchEnd={handleTouchEnd}
                           >
-                              <div className="absolute inset-0 bg-black/80"></div>
+                              <div className="absolute inset-0 bg-black/80" onClick={closeDialog}></div>
                               
                               <DialogTitle className="sr-only">{galleryImages[selectedImageIndex].title}</DialogTitle>
                               <DialogDescription className="sr-only">{galleryImages[selectedImageIndex].description}</DialogDescription>
@@ -321,7 +317,7 @@ export default function InspirationTemplatePage() {
                                   className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8"
                                   onClick={(e) => e.stopPropagation()} 
                               >
-                                  <div className="relative flex-1 flex items-center justify-center w-full h-full overflow-hidden">
+                                  <div className="relative flex-1 flex items-center justify-center w-full h-full max-h-[calc(100vh-180px)] overflow-hidden">
                                       <Image
                                           src={galleryImages[selectedImageIndex].src}
                                           alt={galleryImages[selectedImageIndex].alt}
