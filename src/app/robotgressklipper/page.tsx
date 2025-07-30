@@ -245,22 +245,37 @@ function FloatingChatbot() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div>
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
+      
+      {/* Speech Bubble */}
       <div className={cn(
-        "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 transition-transform duration-300 ease-in-out",
+        "absolute bottom-full right-0 mb-3 transition-opacity duration-300",
+        isOpen ? "opacity-0" : "opacity-100 animate-bounce delay-1000"
+      )}>
+        <div className="relative rounded-lg bg-primary py-2 px-4 text-sm font-medium text-primary-foreground shadow-lg">
+          Spør KI-Eksperten!
+          <div className="absolute right-4 -bottom-2 h-4 w-4 rotate-45 transform bg-primary"></div>
+        </div>
+      </div>
+
+      {/* Main Chat Button */}
+      <div className={cn(
+        "transition-transform duration-300 ease-in-out",
         isOpen ? "translate-y-8 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
       )}>
         <Button 
           size="icon" 
           className="h-16 w-16 rounded-full shadow-lg"
           onClick={() => setIsOpen(true)}
+          aria-label="Åpne chat med KI-Ekspert"
         >
           <Sparkles className="h-8 w-8" />
         </Button>
       </div>
 
+      {/* Chat Window */}
       <div className={cn(
-          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-32px)] h-[70vh] max-w-md max-h-[700px] transition-transform duration-300 ease-in-out",
+          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-32px)] h-[70vh] max-w-md max-h-[700px] transition-transform duration-300 ease-in-out",
           !isOpen ? "translate-y-8 opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
       )}>
         <Card className="flex flex-col h-full w-full overflow-hidden shadow-2xl">
@@ -269,7 +284,7 @@ function FloatingChatbot() {
               <Bot className="h-6 w-6" />
               <CardTitle className="text-lg">KI-Eksperten</CardTitle>
             </div>
-            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-primary-foreground hover:bg-primary/80" onClick={() => setIsOpen(false)}>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-primary-foreground hover:bg-primary/80" onClick={() => setIsOpen(false)} aria-label="Lukk chat">
               <X className="h-5 w-5" />
             </Button>
           </CardHeader>
