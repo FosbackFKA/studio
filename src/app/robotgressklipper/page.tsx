@@ -40,6 +40,77 @@ import { FkaLogo } from '@/components/common/logo';
 
 const imageMap: Record<string, StaticImageData> = {
   heroImage, guideImage, gressklipper1, gressklipper2, gressklipper3, gressklipper4, gressklipper5, popular1, popular3,
+  '50346128': popular3,
+  '50347730': popular3,
+  '50346127': popular3,
+  '50347731': popular3,
+  '50346126': popular3,
+  '50303783': popular3,
+  '50332450': popular3,
+  '50345835': popular1,
+  '50343154': popular1,
+  '50345834': popular1,
+  '50345830': gressklipper5,
+  '50345831': gressklipper5,
+  '50345832': gressklipper5,
+  '50314043': popular3,
+  '50328134': popular3,
+  '50325745': popular3,
+  '50325746': popular3,
+  '50337114': popular3,
+  '50337115': popular3,
+  '50337116': popular3,
+  '50337118': popular3,
+  '50337119': popular3,
+  '50337117': popular3,
+  '50345826': gressklipper2,
+  '50347966': gressklipper5,
+  '50314430': guideImage,
+  '50322795': guideImage,
+  '50322796': guideImage,
+  '50303798': guideImage,
+  '50346131': guideImage,
+  '50346130': guideImage,
+  '50303799': guideImage,
+  '50346129': guideImage,
+  '50322797': guideImage,
+  '50314432': guideImage,
+  '50325749': guideImage,
+  '92744345': guideImage,
+  '50314050': guideImage,
+  '35229522': guideImage,
+  '50324558': guideImage,
+  '50345828': guideImage,
+  '50345827': guideImage,
+  '50345829': guideImage,
+  '50303796': guideImage,
+  '50346521': guideImage,
+  '50346522': guideImage,
+  '50346519': guideImage,
+  '50343155': guideImage,
+  '50343157': guideImage,
+  '50346515': guideImage,
+  '50343158': guideImage,
+  '50343156': guideImage,
+  '50343160': guideImage,
+  '50346520': guideImage,
+  '50314697': guideImage,
+  '50315263': guideImage,
+  '50286825': guideImage,
+  '50337104': guideImage,
+  '50337106': guideImage,
+  '50337110': guideImage,
+  '50337111': guideImage,
+  '50337113': guideImage,
+  '50337108': guideImage,
+  '50340399': guideImage,
+  '50340400': guideImage,
+  '92522231': guideImage,
+  '92714050': guideImage,
+  '50337107': guideImage,
+  '50337121': guideImage,
+  '50337434': guideImage,
+  '50337105': guideImage,
 };
 
 // Updated Message type to include optional products
@@ -116,9 +187,9 @@ function RobotklipperChatbot() {
                                             <Link href={product.productUrl} key={product.id} target="_blank" rel="noopener noreferrer" className="block group">
                                                 <Card className="flex items-center gap-3 p-2 transition-colors hover:bg-background/50">
                                                     <div className="relative h-16 w-16 flex-shrink-0">
-                                                        {imageMap[product.imageUrl as string] && (
+                                                        {imageMap[product.id] && (
                                                           <Image 
-                                                              src={imageMap[product.imageUrl as string]} 
+                                                              src={imageMap[product.id as string]} 
                                                               alt={product.title} 
                                                               fill 
                                                               className="rounded-md object-contain border bg-white p-1" 
@@ -253,13 +324,11 @@ function FloatingChatbot() {
   const [isBubbleVisible, setIsBubbleVisible] = React.useState(true);
   
   React.useEffect(() => {
-    // Hide the bubble after some time if it's still visible
-    if (isBubbleVisible) {
-      const timer = setTimeout(() => {
+    if (!isBubbleVisible) return;
+    const timer = setTimeout(() => {
         setIsBubbleVisible(false);
-      }, 8000); // Hide after 8 seconds
-      return () => clearTimeout(timer);
-    }
+    }, 8000); // Hide after 8 seconds
+    return () => clearTimeout(timer);
   }, [isBubbleVisible]);
 
   const handleOpenChat = () => {
@@ -273,7 +342,7 @@ function FloatingChatbot() {
       {/* Speech Bubble */}
       <div className={cn(
         "absolute bottom-full right-0 mb-3 transition-opacity duration-300",
-        isOpen || !isBubbleVisible ? "opacity-0" : "opacity-100",
+        isOpen || !isBubbleVisible ? "opacity-0 pointer-events-none" : "opacity-100",
       )}>
         <div className="relative rounded-lg border bg-background py-2 px-4 text-sm font-medium text-primary shadow-lg">
           Spør KI-Eksperten!
@@ -337,8 +406,8 @@ function FloatingChatbot() {
 export default function RobotklipperPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = React.useState(false);
   
-  const products = allProductsAndGuides.filter(item => item.type === 'product') as (Product[] & {imageUrl: string});
-  const guide = allProductsAndGuides.find(item => item.type === 'guide');
+  const products = allProductsAndGuides.filter(item => item && item.type === 'product') as (Product[] & {imageUrl: string});
+  const guide = allProductsAndGuides.find(item => item && item.type === 'guide');
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -404,17 +473,20 @@ export default function RobotklipperPage() {
                     </div>
                     
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                        {products.map((p) => {
-                          if (!p.imageUrl || !imageMap[p.imageUrl as string]) {
-                            return null;
-                          }
+                        {products.map((p: any) => {
+                          const imageSrc = imageMap[p.id as string] || imageMap[p.image_link as string] || guideImage;
                           return (
-                            <ProductCard key={p.id} {...p} imageUrl={imageMap[p.imageUrl as string]} />
+                            <ProductCard 
+                                key={p.id} 
+                                {...p}
+                                productUrl={`/products/SEGNAVH3000E`} // Hardcoded for demo
+                                imageUrl={imageSrc} 
+                            />
                           )
                         })}
-                        {guide && imageMap[guide.imageUrl as string] && (
+                        {guide && imageMap[(guide as any).image_link as string] && (
                             <div className="col-span-2 lg:col-span-3">
-                                <GuideCard {...guide} imageUrl={imageMap[guide.imageUrl as string]} />
+                                <GuideCard {...(guide as any)} imageUrl={imageMap[(guide as any).image_link as string]} />
                             </div>
                         )}
                     </div>
