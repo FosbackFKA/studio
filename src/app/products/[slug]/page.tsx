@@ -108,11 +108,11 @@ export default function ProductPage() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Set sticky when the original CTA is completely out of view at the top
-        // Header height is roughly 128px (8rem), which is our rootMargin.
-        setIsSticky(entry.boundingClientRect.top < 128 && !entry.isIntersecting);
+        // Header height is roughly 171px, which is our rootMargin.
+        setIsSticky(entry.boundingClientRect.top < 171 && !entry.isIntersecting);
       },
-      // The height of the scrolled header (main bar + nav menu) is ~128px (8rem)
-      { rootMargin: "-128px 0px 0px 0px", threshold: 0 }
+      // The height of the scrolled header (main bar + nav menu) is ~171px
+      { rootMargin: "-171px 0px 0px 0px", threshold: 0 }
     );
     
     observer.observe(ctaSectionRef.current);
@@ -155,7 +155,7 @@ export default function ProductPage() {
 
       {/* Sticky CTA Bar for Desktop */}
       <div className={cn(
-          "fixed top-0 left-0 right-0 z-40 hidden pt-[128px] bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+          "fixed top-0 left-0 right-0 z-40 hidden pt-[171px] bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
           isSticky ? "translate-y-0" : "-translate-y-full"
       )}>
           <div className="container mx-auto max-w-[1542px] px-4">
