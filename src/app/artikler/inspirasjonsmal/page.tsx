@@ -304,6 +304,10 @@ export default function InspirationTemplatePage() {
                                         className="object-contain" 
                                         sizes="100vw"
                                     />
+                                    <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+                                        <h3 className="text-xl font-bold">{galleryImages[selectedImageIndex].title}</h3>
+                                        <p className="text-base text-white/90">{galleryImages[selectedImageIndex].description}</p>
+                                    </div>
                                     <Button onClick={closeDialog} variant="ghost" size="icon" className="absolute top-4 right-4 z-50 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
                                         <X className="h-8 w-8" />
                                     </Button>
