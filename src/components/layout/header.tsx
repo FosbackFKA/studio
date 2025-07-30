@@ -124,11 +124,11 @@ function SearchPopover() {
                         <Button
                             key={search}
                             variant="ghost"
-                            className="group h-auto items-center justify-center gap-2 rounded-full border px-2.5 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
+                            className="group h-auto items-center justify-center gap-2 rounded-full border px-3 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
                         >
                             <span className="truncate">{search}</span>
                             <X
-                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:text-destructive"
+                                className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 transition-colors hover:text-destructive hover:bg-destructive/10 rounded-full"
                                 onClick={(e) => handleRemoveSearch(e, search)}
                             />
                         </Button>
@@ -616,7 +616,7 @@ export function HeaderComponent() {
               </Link>
             </div>
 
-            <div className="hidden flex-1 px-8 lg:flex justify-center">
+            <div className="hidden flex-1 px-8 lg:flex justify-end">
               <SearchPopover />
             </div>
 
