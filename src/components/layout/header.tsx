@@ -38,6 +38,7 @@ function SearchPopover() {
     'Labb hundefôr',
     'vernesko',
   ]);
+  const popoverRef = React.useRef<HTMLDivElement>(null);
 
   const popularSearches = [
     'robotgressklipper',
@@ -89,59 +90,66 @@ function SearchPopover() {
     e.stopPropagation();
     setPreviousSearches(searches => searches.filter(s => s !== searchToRemove));
   };
+  
+   const handleFocus = () => {
+    setOpen(true);
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    // Check if the new focused element is inside the popover. If not, close it.
+    if (popoverRef.current && !popoverRef.current.contains(e.relatedTarget)) {
+      setOpen(false);
+    }
+  };
 
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+    <div onBlur={handleBlur} ref={popoverRef}>
+      <Popover open={open} onOpenChange={setOpen}>
         <div className="relative w-full max-w-lg">
           <Input 
             type="search" 
             placeholder="Søk" 
             className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm"
-            onFocus={() => setOpen(true)}
+            onFocus={handleFocus}
            />
           <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
         </div>
-      </PopoverTrigger>
-      <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
-          <div className="flex flex-col gap-6">
-            <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
+        <PopoverContent className="w-[640px] p-4 mt-1" side="bottom" align="start">
+            <div className="flex flex-col gap-6">
+                <div className="flex flex-col items-start gap-4">
+                  <h3 className="flex items-center text-sm font-semibold text-foreground">
                     <Clock className="mr-2 h-4 w-4" />
                     Tidligere søk
                   </h3>
-                  <div className="flex flex-col items-start">
-                    {previousSearches.map(search => (
-                      <Button
-                        key={search}
-                        variant="ghost"
-                        className="group flex h-auto w-full items-center justify-between px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
-                      >
-                        <span className="truncate">{search}</span>
-                        <X
-                          className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
-                          onClick={(e) => handleRemoveSearch(e, search)}
-                        />
-                      </Button>
-                    ))}
-                  </div>
+                  {previousSearches.map(search => (
+                    <Button
+                      key={search}
+                      variant="ghost"
+                      className="group flex h-auto w-full items-center justify-between px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary"
+                    >
+                      <span className="truncate">{search}</span>
+                      <X
+                        className="h-4 w-4 flex-shrink-0 text-muted-foreground/50 opacity-0 transition-opacity group-hover:opacity-100"
+                        onClick={(e) => handleRemoveSearch(e, search)}
+                      />
+                    </Button>
+                  ))}
                 </div>
-                <div>
-                  <h3 className="flex items-center text-sm font-semibold text-foreground mb-2">
+
+                <div className="flex flex-col items-start gap-4">
+                  <h3 className="flex items-center text-sm font-semibold text-foreground">
                     <TrendingUp className="mr-2 h-4 w-4" />
                     Populære søk
                   </h3>
-                  <div className="flex flex-col items-start">
+                  <div className="flex flex-wrap gap-2">
                     {popularSearches.map(search => (
-                      <Button key={search} variant="ghost" className="h-auto w-full justify-start px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary">
+                      <Button key={search} variant="ghost" className="h-auto px-2 py-1.5 text-left font-normal text-muted-foreground hover:bg-accent/20 hover:text-primary rounded-full border">
                         {search}
                       </Button>
                     ))}
                   </div>
                 </div>
-            </div>
             
             <Separator />
             
@@ -164,8 +172,9 @@ function SearchPopover() {
             </div>
 
           </div>
-      </PopoverContent>
-    </Popover>
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 }
 
@@ -723,5 +732,3 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
-
-    
