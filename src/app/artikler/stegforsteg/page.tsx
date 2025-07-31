@@ -16,16 +16,16 @@ import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Import local images
-import step1Image from '@/components/common/kanin/kaninhus.jpg';
-const heroImage = step1Image;
-import step2Image from '@/components/common/kanin/kanin-plassering.jpg';
-import step4Image from '@/components/common/kanin/kanin-mat.jpg';
-
-
 import product1 from '@/components/common/kanin/p-hus.jpg';
 import product2 from '@/components/common/kanin/p-hoy.jpg';
 import product3 from '@/components/common/kanin/p-mat.jpg';
 import product4 from '@/components/common/kanin/p-drikke.jpg';
+
+const step1Image = product1;
+const heroImage = step1Image;
+const step2Image = step1Image;
+const step4Image = product3;
+
 
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
@@ -64,7 +64,7 @@ const steps = [
     title: 'Riktig fôring er avgjørende',
     description: 'Hoveddelen av kaninens kosthold skal bestå av høy av god kvalitet. Dette er avgjørende for fordøyelsen og tannhelsen. Gi i tillegg en liten mengde kaninpellets daglig, og suppler med trygge, grønne bladgrønnsaker. Friskt vann må alltid være tilgjengelig.',
     image: step4Image,
-    dataAiHint: 'rabbit eating hay'
+    dataAiHint: 'rabbit food pellets'
   },
   {
     step: 5,
