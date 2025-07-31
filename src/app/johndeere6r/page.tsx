@@ -14,15 +14,6 @@ import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, PlayCircle, S
 import { cn } from '@/lib/utils';
 import './styles.css';
 
-// --- Bildeimport ---
-import heroImage from './images/jd_6r_hero.jpg';
-import actionImage from './images/jd_6r_action.jpg';
-import commandArmImage from './images/jd_6r_commandarm.jpg';
-import displayImage from './images/jd_6r_display.jpg';
-import blueprintOutline from './images/jd_6r_blueprint_outline.png';
-import blueprintFill from './images/jd_6r_blueprint_fill.png';
-
-
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
     { name: 'Maskin og redskap', href: '#' },
@@ -90,11 +81,12 @@ export default function JohnDeere6RPage() {
                 {/* --- Hero Seksjon --- */}
                 <section id="oversikt" className="relative h-screen min-h-[700px] w-full text-white">
                     <Image
-                        src={heroImage}
+                        src="https://placehold.co/1920x1080.png"
                         alt="John Deere 6R 110 traktor på et jorde ved soloppgang"
                         fill
                         className="object-cover"
                         priority
+                        data-ai-hint="tractor field sunrise"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
                     <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
@@ -163,7 +155,7 @@ export default function JohnDeere6RPage() {
                         {/* --- Se den i aksjon --- */}
                         <section>
                             <div className="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl shadow-lg">
-                                <Image src={actionImage} alt="John Deere 6R 110 i arbeid" fill className="object-cover" />
+                                <Image src="https://placehold.co/1280x720.png" alt="John Deere 6R 110 i arbeid" fill className="object-cover" data-ai-hint="tractor action video"/>
                                 <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/50"></div>
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-transform group-hover:scale-110">
@@ -180,9 +172,9 @@ export default function JohnDeere6RPage() {
                     <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
                         <div className="container mx-auto max-w-[1542px] px-4 relative flex items-center justify-center">
                             <div className="blueprint-container">
-                                <Image src={blueprintOutline} alt="Teknisk tegning av traktor" className="blueprint-outline" fill />
+                                <Image src="https://placehold.co/800x450.png" alt="Teknisk tegning av traktor" className="blueprint-outline" fill data-ai-hint="tractor blueprint outline" />
                                 <div className="blueprint-fill-wrapper">
-                                    <Image src={blueprintFill} alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill />
+                                    <Image src="https://placehold.co/800x450.png" alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill data-ai-hint="tractor blueprint fill" />
                                 </div>
                             </div>
                         </div>
@@ -200,7 +192,7 @@ export default function JohnDeere6RPage() {
                                 </p>
                             </div>
                             <div className="aspect-video overflow-hidden rounded-xl shadow-lg">
-                                <Image src={commandArmImage} alt="John Deere CommandARM" className="object-cover w-full h-full" />
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover w-full h-full" data-ai-hint="tractor joystick controls" />
                             </div>
                         </section>
 
@@ -214,7 +206,7 @@ export default function JohnDeere6RPage() {
                                 </p>
                             </div>
                             <div className="aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
-                                <Image src={displayImage} alt="John Deere G5Plus CommandCenter display" className="object-cover w-full h-full" />
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover w-full h-full" data-ai-hint="tractor display screen"/>
                             </div>
                         </section>
                     </div>
@@ -304,4 +296,5 @@ export default function JohnDeere6RPage() {
             <FooterComponent />
         </div>
     );
-}
+
+    
