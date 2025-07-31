@@ -60,19 +60,19 @@ export function ProductCard({
   return (
     <Link href={productUrl} className="group block h-full">
       <Card className="flex h-full flex-col overflow-hidden rounded-lg border border-primary/20 bg-card shadow-sm transition-all duration-300 hover:border-primary/60 hover:shadow-md">
-        <div className="relative">
+        <div className="relative bg-white">
           {discountText && (
             <Badge variant="outline" className="absolute left-3 top-3 z-10 border-none bg-accent px-2 py-1 text-sm font-semibold text-accent-foreground">
               {discountText}
             </Badge>
           )}
-          <div className="relative aspect-square w-full bg-white">
+          <div className="relative aspect-square w-full">
             <Image
             src={imageUrl}
             alt={imageAlt || title}
             fill
             sizes="(max-width: 640px) 75vw, (max-width: 1024px) 40vw, 30vw"
-            className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+            className="p-2 object-contain transition-transform duration-300 group-hover:scale-105"
             data-ai-hint={dataAiHint || "product agriculture"}
             />
           </div>

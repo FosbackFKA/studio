@@ -16,12 +16,11 @@ import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Import local images
-import heroImage from '@/components/common/kanin/kanin-hero.jpg';
 import step1Image from '@/components/common/kanin/kaninhus.jpg';
+const heroImage = step1Image;
 import step2Image from '@/components/common/kanin/kanin-plassering.jpg';
-import step3Image from '@/components/common/kanin/kanin-innredning.jpg';
 import step4Image from '@/components/common/kanin/kanin-mat.jpg';
-import step5Image from '@/components/common/kanin/kanin-aktivitet.jpg';
+
 
 import product1 from '@/components/common/kanin/p-hus.jpg';
 import product2 from '@/components/common/kanin/p-hoy.jpg';
@@ -57,7 +56,7 @@ const steps = [
     step: 3,
     title: 'Innred for komfort og trivsel',
     description: 'Fyll sovedelen rikelig med halm eller annet egnet redemateriale. I løpegården legger du et tykt lag med bunnstrø, som f.eks. flis eller spon, for å absorbere fuktighet. Sørg for at kaninen har tilgang til en solid matskål som ikke kan tippes, og en drikkeflaske eller vannskål med friskt vann.',
-    image: step3Image,
+    image: step1Image,
     dataAiHint: 'rabbit bedding hay'
   },
   {
@@ -71,7 +70,7 @@ const steps = [
     step: 5,
     title: 'Aktivisering og tilsyn',
     description: 'Selv med en løpegård, trenger kaninen din daglig aktivisering og sosial kontakt. La den hoppe fritt i en sikker, større luftegård under oppsyn. Sjekk kaninen og huset daglig for å forsikre deg om at alt er som det skal. Se etter tegn på sykdom og påse at huset er rent og trygt.',
-    image: step5Image,
+    image: step1Image,
     dataAiHint: 'rabbit playing tunnel'
   },
 ];
@@ -86,6 +85,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 32,
+    dataAiHint: 'rabbit hutch wood'
   },
   {
     id: 'HOY01',
@@ -96,6 +96,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 150,
+    dataAiHint: 'hay bale'
   },
   {
     id: 'KANINFOR01',
@@ -106,6 +107,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 112,
+    dataAiHint: 'rabbit food pellets'
   },
   {
     id: 'DRIKKEFLASKE01',
@@ -116,6 +118,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 210,
+    dataAiHint: 'rabbit water bottle'
   },
 ];
 
@@ -125,18 +128,21 @@ const relatedArticles = [
       excerpt: 'Lær hvilke grønnsaker, urter og grener som er trygge og sunne for kaninen din. En variert diett er viktig for trivselen.',
       imageUrl: artikkel1,
       articleUrl: '#',
+      dataAiHint: 'rabbit eating greens'
     },
     {
       title: 'Slik unngår du de vanligste kaninsykdommene',
       excerpt: 'Forebygging er den beste medisin. Les om hvordan riktig kosthold, renhold og oppmerksomhet kan holde kaninen din frisk og glad.',
       imageUrl: artikkel2,
       articleUrl: '#',
+      dataAiHint: 'healthy rabbit checkup'
     },
     {
       title: 'Aktiviseringstips for kanin',
       excerpt: 'En stimulert kanin er en lykkelig kanin. Få tips til leker og aktiviteter som utfordrer kaninens naturlige instinkter.',
       imageUrl: artikkel3,
       articleUrl: '#',
+      dataAiHint: 'rabbit toys'
     },
 ];
 
@@ -154,6 +160,7 @@ export default function StegForStegPage() {
             sizes="100vw"
             className="object-cover"
             priority
+            data-ai-hint="happy rabbit green grass"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="container relative z-10 mx-auto flex h-full max-w-5xl flex-col items-start justify-end px-4 pb-16 text-left">
@@ -253,5 +260,3 @@ export default function StegForStegPage() {
     </div>
   );
 }
-
-    
