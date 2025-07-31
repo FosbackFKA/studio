@@ -8,7 +8,7 @@ import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, PlayCircle, Settings, Tractor, Wallet } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -192,7 +192,7 @@ export default function JohnDeere6RPage() {
                                 </p>
                             </div>
                             <div className="aspect-video overflow-hidden rounded-xl shadow-lg">
-                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover w-full h-full" data-ai-hint="tractor joystick controls" />
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="tractor joystick controls" />
                             </div>
                         </section>
 
@@ -206,7 +206,7 @@ export default function JohnDeere6RPage() {
                                 </p>
                             </div>
                             <div className="aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
-                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover w-full h-full" data-ai-hint="tractor display screen"/>
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="tractor display screen"/>
                             </div>
                         </section>
                     </div>
@@ -297,5 +297,3 @@ export default function JohnDeere6RPage() {
         </div>
     );
 }
-
-    
