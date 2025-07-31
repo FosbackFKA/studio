@@ -776,38 +776,21 @@ export function MainNavMenu() {
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
                   {isCampaign ? (
-                     <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-                       <div className="md:col-span-1 flex flex-col gap-4">
-                           {megaMenuData.links.filter((l: any) => !l.isSundayOnly).map((link: any) => (
-                             <Button
-                               key={link.title}
-                               asChild
-                               size="lg"
-                               variant={link.isSpecial ? 'default' : 'outline'}
-                               className={cn(
-                                 "h-auto justify-start py-3 text-base",
-                                 link.isSpecial ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border-primary text-primary hover:bg-primary/10 hover:text-primary"
-                               )}
-                             >
-                               <Link href={link.href}>{link.title}</Link>
-                             </Button>
-                           ))}
-                           {isSunday && megaMenuData.links.find((l: any) => l.isSundayOnly) && (
-                              <Button asChild size="lg" variant="outline" className="h-auto justify-start py-3 text-base border-yellow-400 text-yellow-500 hover:bg-yellow-50 hover:text-yellow-600">
-                                <Link href={megaMenuData.links.find((l: any) => l.isSundayOnly).href}>
-                                    {megaMenuData.links.find((l: any) => l.isSundayOnly).title}
-                                </Link>
-                              </Button>
-                           )}
-                       </div>
-                       <div className="md:col-span-4">
-                          <h3 className="mb-4 text-lg font-bold text-primary">Populære produkter på kampanje</h3>
-                          <div className="grid grid-cols-4 gap-4">
-                             {megaMenuData.products.slice(0, 4).map((product: Product) => (
-                                <ProductCard key={product.id} {...product} />
-                             ))}
-                          </div>
-                       </div>
+                     <div className="md:col-span-1 flex flex-col gap-4">
+                         {megaMenuData.links.filter((l: any) => !(l.isSundayOnly && !isSunday)).map((link: any) => (
+                           <Button
+                             key={link.title}
+                             asChild
+                             size="lg"
+                             variant={link.isSpecial ? 'default' : 'outline'}
+                             className={cn(
+                               "h-auto justify-start py-3 text-base",
+                               link.isSpecial ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border-primary text-primary hover:bg-primary/10 hover:text-primary"
+                             )}
+                           >
+                             <Link href={link.href}>{link.title}</Link>
+                           </Button>
+                         ))}
                      </div>
                   ) : (
                     <>
@@ -832,15 +815,28 @@ export function MainNavMenu() {
                               </div>
                           )}
                       </div>
-                      
-                      {megaMenuData.articles && (
+                    </>
+                  )}
+                 
+                 {isCampaign ? (
+                    <div className="md:col-span-3">
+                        <h3 className="mb-4 text-lg font-bold text-primary">Utvalgte produkter på kampanje</h3>
+                        <div className="grid grid-cols-3 gap-4">
+                            {megaMenuData.products.slice(0, 3).map((product: Product) => (
+                            <ProductCard key={product.id} {...product} />
+                            ))}
+                        </div>
+                    </div>
+                 ) : (
+                    <>
+                    {megaMenuData.articles && (
                         <div className="md:col-span-1 flex gap-8">
-                           <Separator orientation="vertical" className="h-auto" />
-                           <div className="flex-1">
+                            <Separator orientation="vertical" className="h-auto" />
+                            <div className="flex-1">
                             <div>
-                              <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
-                              <Separator className="mb-2" />
-                              <div className="flex flex-col gap-2">
+                                <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
+                                <Separator className="mb-2" />
+                                <div className="flex flex-col gap-2">
                                 {megaMenuData.articles[0] && <ArticleCard {...megaMenuData.articles[0]} />}
                                 <div className="mt-2 flex flex-col gap-1 pl-2">
                                     {megaMenuData.articles.slice(1).map((article: any) => (
@@ -851,19 +847,20 @@ export function MainNavMenu() {
                                     ))}
                                 </div>
                                 <Button asChild variant="link" className="justify-start mt-2">
-                                  <Link href="#">
+                                    <Link href="#">
                                     Se alle artikler i {item.name.toLowerCase()}
                                     <ChevronRight className="ml-1 h-4 w-4" />
-                                  </Link>
+                                    </Link>
                                 </Button>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
                         </div>
-                      )}
+                    )}
                     </>
-                  )}
-                 
+                 )}
+
+
                  {megaMenuData.footerLink && !isCampaign && (
                   <div className="md:col-span-4 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
