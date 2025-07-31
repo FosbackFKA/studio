@@ -447,33 +447,6 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
   )
 }
 
-function MiniProductCard({ product }: { product: Product }) {
-  return (
-    <Link href={product.productUrl || '#'} className="group block w-40">
-      <div className="space-y-2">
-        <div className="relative aspect-square w-full overflow-hidden rounded-md border bg-white">
-          <Image
-            src={product.imageUrl}
-            alt={product.title}
-            fill
-            sizes="150px"
-            className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-          />
-        </div>
-        <div>
-          <p className="truncate text-sm font-medium text-foreground group-hover:text-primary">{product.title}</p>
-          <div className="flex items-baseline gap-2">
-            <p className="font-bold text-primary">{product.salePrice || product.price}</p>
-            {product.salePrice && (
-              <p className="text-xs text-muted-foreground line-through">{product.price}</p>
-            )}
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 export function HeaderComponent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [navStack, setNavStack] = React.useState<any[]>([]);
@@ -596,6 +569,41 @@ export function HeaderComponent() {
               ))}
             </div>
           </div>
+        )}
+
+        {menuData.products && (
+            <div className="mt-auto flex-shrink-0 pt-4">
+                <Separator />
+                <h3 className="my-4 text-base font-semibold text-foreground">Populære produkter</h3>
+                <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
+                {menuData.products.map((product: Product) => (
+                    <div key={product.id} className="w-40 flex-shrink-0">
+                        <Link href={product.productUrl || '#'} className="group block w-full">
+                            <div className="space-y-2">
+                                <div className="relative aspect-square w-full overflow-hidden rounded-md border bg-white">
+                                <Image
+                                    src={product.imageUrl}
+                                    alt={product.title}
+                                    fill
+                                    sizes="150px"
+                                    className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                                />
+                                </div>
+                                <div>
+                                <p className="truncate text-sm font-medium text-foreground group-hover:text-primary">{product.title}</p>
+                                <div className="flex items-baseline gap-2">
+                                    <p className="font-bold text-primary">{product.salePrice || product.price}</p>
+                                    {product.salePrice && (
+                                    <p className="text-xs text-muted-foreground line-through">{product.price}</p>
+                                    )}
+                                </div>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                ))}
+                </div>
+            </div>
         )}
       </div>
     );

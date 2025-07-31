@@ -16,33 +16,25 @@ import { cn } from '@/lib/utils';
 import { ChevronRight, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ProductCard } from '@/components/common/product-card';
 import type { Product } from '@/types/product';
 import { ArticleCard } from '@/components/common/article-card';
+import { ProductCard } from '@/components/common/product-card';
 
 
 // Import products for campaign menu
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
 import popular2 from '../common/aktuelle-kampanjer/2.webp';
 import popular3 from '../common/aktuelle-kampanjer/3.webp';
-import popular4 from '@/components/common/aktuelle-kampanjer/4.webp';
-import popular5 from '@/components/common/aktuelle-kampanjer/5.webp';
-
 
 // Import product images
 import hund1 from '@/components/common/hund/hund1.webp';
 import hund2 from '@/components/common/hund/hund2.webp';
 import hund3 from '@/components/common/hund/hund3.webp';
 
-import gressklipper1 from '@/components/common/gressklipper/gressklipper1.webp';
-import gressklipper2 from '@/components/common/gressklipper/gressklipper2.webp';
-import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
-
 // Import article images for the new menu
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
-
 
 const kampanjeProducts: Product[] = [
     {
@@ -80,39 +72,27 @@ const kampanjeProducts: Product[] = [
     },
 ];
 
-const hageProducts: Product[] = [
-    {
-      id: 'SEGNAVH3000E',
-      title: 'Robotgressklipper Navimow H3000E med VisionFence',
-      brand: 'Segway',
-      price: '34 999,-',
-      salePrice: '29 999,-',
-      imageUrl: gressklipper1,
-      productUrl: '/products/SEGNAVH3000E',
-      onlineStock: true,
-      storeStockCount: 63,
+const hageArticles = [
+   {
+      title: 'Guide: Slik velger du riktig høytrykkspyler',
+      excerpt: 'En høytrykkspyler er et fantastisk verktøy for rengjøring. Lær deg hva du bør se etter for å finne modellen som passer dine behov perfekt.',
+      imageUrl: artikkel1,
+      dataAiHint: 'pressure washer cleaning',
+      articleUrl: '#',
     },
     {
-      id: 'SEGNAVI108E',
-      title: 'Robotgressklipper Navimow i108e',
-      brand: 'Segway',
-      price: '15 999,-',
-      imageUrl: gressklipper2,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 4,
+      title: 'Vedlikehold av utemøbler i tre',
+      excerpt: 'Med riktig vedlikehold kan utemøblene dine i tre vare i mange år. Følg våre enkle steg for å beskytte og bevare treverket.',
+      imageUrl: artikkel2,
+      dataAiHint: 'wooden outdoor furniture',
+      articleUrl: '#',
     },
     {
-      id: 'GARDSILENO',
-      title: 'Robotklipper Smart Sileno Free 1500',
-      brand: 'Gardena',
-      price: '25 999,-',
-      salePrice: '20 799,-',
-      badgeText: '- 20 %',
-      imageUrl: gressklipper3,
-      productUrl: '#',
-      onlineStock: false,
-      storeStockCount: 41,
+      title: 'Skap en summende oase for biene',
+      excerpt: 'Hjelp de viktige pollinatorene! Lær hvilke blomster du kan plante for å skape en frodig og bievennlig hage eller balkong.',
+      imageUrl: artikkel3,
+      dataAiHint: 'bees flowers garden',
+      articleUrl: '#',
     },
 ];
 
@@ -140,42 +120,6 @@ const kjaeledyrArticles = [
     },
 ];
 
-const verktoyProducts: Product[] = [
-    {
-      id: 'KARCHERK4P',
-      title: 'Høytrykkspyler K4 Premium',
-      brand: 'Kärcher',
-      price: '3 199,-',
-      salePrice: '2 699,-',
-      imageUrl: popular4,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 81,
-    },
-    {
-      id: 'CHAMP92001I',
-      title: 'Strømaggregat 92001I-EU bensin inverter 2,2 kW',
-      brand: 'Champion Europe',
-      price: '7 999,-',
-      salePrice: '5 999,-',
-      imageUrl: popular2,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 88,
-    },
-    {
-      id: 'GARDENACLAS30',
-      title: 'Hageslange Classic (1/2") 30 M',
-      brand: 'Gardena',
-      price: '499,-',
-      salePrice: '379,-',
-      imageUrl: popular5,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 88,
-    },
-];
-
 const guideArticles = [
    {
       title: 'Slik velger du riktig høytrykkspyler',
@@ -198,7 +142,31 @@ const guideArticles = [
       dataAiHint: 'bees flowers garden',
       articleUrl: '#',
     },
-]
+];
+
+const skogOgVedArticles = [
+    {
+      title: 'Tips til vedlikehold av motorsag',
+      excerpt: 'En skarp og velfungerende motorsag er tryggere og mer effektiv. Lær hvordan du vedlikeholder sagen din for optimal ytelse og levetid.',
+      imageUrl: artikkel1,
+      dataAiHint: 'chainsaw maintenance',
+      articleUrl: '#',
+    },
+    {
+      title: 'Slik kløyver du ved trygt og effektivt',
+      excerpt: 'Riktig teknikk og utstyr er nøkkelen til sikker og effektiv vedkløyving. Følg våre beste tips for å forberede vinterveden.',
+      imageUrl: artikkel2,
+      dataAiHint: 'chopping wood axe',
+      articleUrl: '#',
+    },
+    {
+      title: 'Hvordan velge riktig verneutstyr?',
+      excerpt: 'Sikkerhet først! Vår guide hjelper deg å velge riktig hjelm, visir, hansker og vernebukse for trygt arbeid i skogen.',
+      imageUrl: artikkel3,
+      dataAiHint: 'safety equipment forest',
+      articleUrl: '#',
+    }
+];
 
 export const leftNavItems = [
   { name: 'Hage og uterom', href: '#' },
@@ -240,7 +208,7 @@ export const hageUteromMenuData = {
         title: 'Hagemaskiner', href: '#',
         links: [
           { name: 'Batteri og tilbehør', href: '#' },
-          { name: 'Gressklippere', href: '#' },
+          { name: 'Gressklippere', href: '/robotgressklipper' },
           { name: 'Øvrige maskiner', href: '#' },
           { name: 'Snøfresere', href: '#' },
         ],
@@ -280,7 +248,7 @@ export const hageUteromMenuData = {
       },
     ],
   ],
-  products: hageProducts,
+  articles: hageArticles,
   footerLink: { name: 'Se alt i hage og uterom', href: '#' },
 };
 
@@ -413,7 +381,7 @@ export const klaerOgSkoMenuData = {
       },
     ],
   ],
-  products: verktoyProducts.slice(0,3),
+  articles: skogOgVedArticles,
   footerLink: { name: 'Se alt i klær og sko', href: '#' },
 };
 
@@ -556,7 +524,7 @@ export const verktoyOgRedskapMenuData = {
       },
     ],
   ],
-  products: verktoyProducts,
+  articles: hageArticles,
   footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
 };
 
@@ -609,7 +577,7 @@ export const skogOgVedMenuData = {
       },
     ],
   ],
-  products: kampanjeProducts.slice(0,3),
+  articles: skogOgVedArticles,
   footerLink: { name: 'Se alt i skog og ved', href: '#' },
 };
 
@@ -666,7 +634,7 @@ export const merkevarerMenuData = {
 export const kampanjerMenuData = {
   links: [
     { title: 'Ukens kampanjer', href: '#' },
-    { title: 'Tilbud på robotgressklippere', href: '#' },
+    { title: 'Tilbud på robotgressklippere', href: '/robotgressklipper' },
     { title: 'Tilbud på klær og sko', href: '#' },
     { title: 'Lagersalg', href: '#' },
   ],
@@ -784,7 +752,7 @@ export function MainNavMenu() {
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
                   <div className={cn(
                     "grid md:grid-cols-3 gap-x-8",
-                    megaMenuData.articles ? "md:col-span-3" : "md:col-span-5"
+                    megaMenuData.articles ? "md:col-span-3" : (megaMenuData.products ? "md:col-span-3" : "md:col-span-5")
                     )} >
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
@@ -823,9 +791,26 @@ export function MainNavMenu() {
                                     </Link>
                                 ))}
                             </div>
+                             <Button asChild variant="link" className="justify-start mt-2">
+                              <Link href="#">
+                                Se alle artikler i {item.name.toLowerCase()}
+                                <ChevronRight className="ml-1 h-4 w-4" />
+                              </Link>
+                            </Button>
                           </div>
                        </div>
                     </div>
+                    </div>
+                  )}
+
+                  {megaMenuData.products && (
+                    <div className="md:col-span-2">
+                      <h3 className="mb-4 px-3 text-lg font-bold text-primary">Populære produkter</h3>
+                      <div className="grid grid-cols-3 gap-4">
+                        {megaMenuData.products.map((product: Product) => (
+                          <ProductCard key={product.id} {...product} />
+                        ))}
+                      </div>
                     </div>
                   )}
                  
@@ -833,8 +818,8 @@ export function MainNavMenu() {
                   <div className="md:col-span-5 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                       <Link href={megaMenuData.footerLink.href}>
-                        <ChevronRight className="mr-2 h-4 w-4" />
                         {megaMenuData.footerLink.name}
+                        <ChevronRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
