@@ -238,7 +238,7 @@ export default function ProductPage() {
           <div className="container mx-auto max-w-[1542px] px-4 pt-[171px]">
               <div className="flex h-20 items-center justify-between gap-6">
                   <div className="flex items-center gap-4">
-                      <Image src={mainImage} alt={product.title} width={64} height={64} className="h-16 w-16 rounded-md object-contain border p-1" />
+                      <Image src={mainImage} alt={product.title} width={64} height={64} className="h-16 w-16 rounded-md object-contain border bg-white p-1" />
                       <div>
                           <p className="font-semibold">{product.brand}</p>
                           <h2 className="text-lg font-bold text-foreground line-clamp-1">{product.title}</h2>
