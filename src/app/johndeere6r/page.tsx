@@ -12,12 +12,15 @@ import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star } from 'lucide-react';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
 import g5PlusImage from '@/components/common/johndeere6r/G5Plus.png';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 
 const breadcrumbs = [
@@ -125,6 +128,92 @@ type ConfigSelection = {
 };
 
 
+function QuoteRequestDialog({ trigger, selection, totalPrice }: { trigger: React.ReactNode; selection: ConfigSelection; totalPrice: number; }) {
+  const selectedOptions = React.useMemo(() => {
+    return Object.entries(selection).map(([key, value]) => {
+      const category = configOptions[key as keyof typeof configOptions];
+      const option = category.options.find(opt => opt.id === value);
+      if (option && option.price > 0) {
+        return {
+          name: option.name,
+          price: option.price,
+        };
+      }
+      return null;
+    }).filter(Boolean);
+  }, [selection]);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogContent className="sm:max-w-[600px]">
+        <DialogHeader>
+          <DialogTitle className="font-headline text-2xl">Be om et uforpliktende tilbud</DialogTitle>
+          <DialogDescription>
+            En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud basert på dine valg.
+          </DialogDescription>
+        </DialogHeader>
+        
+        <div className="grid gap-6 py-4">
+          <Card className="bg-secondary/30">
+            <CardHeader>
+              <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-1 text-sm">
+                {selectedOptions.map(option => option && (
+                  <li key={option.name} className="flex justify-between">
+                    <span className="text-muted-foreground">{option.name}</span>
+                    <span>+ {option.price.toLocaleString('nb-NO')} kr</span>
+                  </li>
+                ))}
+              </ul>
+              <Separator className="my-2" />
+              <div className="flex justify-between font-bold">
+                <span>Estimert totalpris (eks. mva)</span>
+                <span>{totalPrice.toLocaleString('nb-NO')} kr</span>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1">
+              <Label htmlFor="name">Fullt navn</Label>
+              <Input id="name" placeholder="Ola Nordmann" />
+            </div>
+             <div className="space-y-1">
+              <Label htmlFor="phone">Telefon</Label>
+              <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
+            </div>
+          </div>
+           <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1">
+              <Label htmlFor="email">E-post</Label>
+              <Input id="email" type="email" placeholder="din@epost.no" />
+            </div>
+             <div className="space-y-1">
+              <Label htmlFor="zip">Postnummer</Label>
+              <Input id="zip" placeholder="Ditt postnummer" />
+            </div>
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor="comments">Kommentarer eller spørsmål (valgfritt)</Label>
+            <Textarea id="comments" placeholder="Har du spesifikke behov eller spørsmål til selgeren?" />
+          </div>
+        </div>
+
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button type="button" variant="outline">Avbryt</Button>
+          </DialogClose>
+          <Button type="submit" disabled>Send forespørsel</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
 
@@ -193,9 +282,15 @@ export default function JohnDeere6RPage() {
                             Kraft, intelligens og komfort – redefinert for moderne landbruk.
                         </p>
                         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                            <Button asChild size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
-                                <Link href="#kontakt">Be om et tilbud</Link>
-                            </Button>
+                             <QuoteRequestDialog
+                                selection={configSelection}
+                                totalPrice={totalPrice}
+                                trigger={
+                                    <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                                        Be om et tilbud
+                                    </Button>
+                                }
+                            />
                             <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-yellow-300/10 hover:text-yellow-300 backdrop-blur-sm">
                                 <Link href="#spesifikasjoner">Se tekniske data</Link>
                             </Button>
@@ -426,9 +521,15 @@ export default function JohnDeere6RPage() {
                                    </div>
                                </CardContent>
                                <div className="p-6 pt-0">
-                                   <Button size="lg" className="w-full h-12 text-base">
-                                       <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
-                                   </Button>
+                                   <QuoteRequestDialog
+                                        selection={configSelection}
+                                        totalPrice={totalPrice}
+                                        trigger={
+                                            <Button size="lg" className="w-full h-12 text-base">
+                                                <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
+                                            </Button>
+                                        }
+                                   />
                                </div>
                            </Card>
                         </div>
@@ -545,9 +646,15 @@ export default function JohnDeere6RPage() {
                            Våre maskinselgere står klare til å hjelpe deg med å konfigurere en John Deere 6R som er perfekt tilpasset din gård og dine behov. Ta kontakt for en uforpliktende prat eller et skreddersydd tilbud.
                         </p>
                         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                            <Button asChild size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
-                                <Link href="#"><Mail className="mr-2"/> Finn din lokale selger</Link>
-                            </Button>
+                             <QuoteRequestDialog
+                                selection={configSelection}
+                                totalPrice={totalPrice}
+                                trigger={
+                                    <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                                        <Mail className="mr-2"/> Finn din lokale selger
+                                    </Button>
+                                }
+                            />
                             <Button asChild size="lg" className="h-14 px-8 text-lg border-2 border-yellow-300 bg-transparent text-yellow-300 hover:bg-yellow-300/10 hover:text-yellow-300">
                                 <Link href="#"><Phone className="mr-2"/> Ring oss: 72 50 50 50</Link>
                             </Button>
