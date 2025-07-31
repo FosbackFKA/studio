@@ -12,7 +12,7 @@ import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X } from 'lucide-react';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X, MoveHorizontal, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
@@ -21,6 +21,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Slider } from '@/components/ui/slider';
 
 
 const breadcrumbs = [
@@ -274,6 +275,80 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
 }
 
 
+function Tractor360Viewer() {
+    const totalFrames = 24;
+    const [currentFrame, setCurrentFrame] = React.useState(0);
+    const [isLoaded, setIsLoaded] = React.useState(false);
+
+    // Create an array of image URLs (placeholders for a 360 sequence)
+    const imageUrls = React.useMemo(() => 
+        Array.from({ length: totalFrames }, (_, i) => 
+            `https://placehold.co/1200x800.png?text=Angle+${i+1}`
+        ), []);
+
+    // Preload images to ensure smooth interaction
+    React.useEffect(() => {
+        let loadedCount = 0;
+        imageUrls.forEach((src) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.onload = () => {
+                loadedCount++;
+                if (loadedCount === totalFrames) {
+                    setIsLoaded(true);
+                }
+            };
+        });
+    }, [imageUrls]);
+
+    const handleSliderChange = (value: number[]) => {
+        setCurrentFrame(value[0]);
+    };
+
+    return (
+        <Card className="p-4 shadow-lg overflow-hidden">
+            <div className="relative aspect-[3/2] w-full">
+                {!isLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-secondary">
+                        <Loader className="h-12 w-12 animate-spin text-primary" />
+                    </div>
+                )}
+                {imageUrls.map((src, index) => (
+                    <Image
+                        key={src}
+                        src={src}
+                        alt={`John Deere 6R 110 - Angle ${index + 1}`}
+                        fill
+                        className={cn(
+                            "object-contain transition-opacity duration-100",
+                            currentFrame === index && isLoaded ? "opacity-100" : "opacity-0"
+                        )}
+                        sizes="(max-width: 768px) 100vw, 80vw"
+                        data-ai-hint="tractor field side"
+                        priority={index === 0}
+                    />
+                ))}
+            </div>
+            <div className="mt-4 px-4">
+                <div className="flex items-center gap-4">
+                    <Search className="h-5 w-5 text-muted-foreground" />
+                    <Slider
+                        defaultValue={[0]}
+                        min={0}
+                        max={totalFrames - 1}
+                        step={1}
+                        onValueChange={handleSliderChange}
+                        disabled={!isLoaded}
+                    />
+                     <MoveHorizontal className="h-5 w-5 text-muted-foreground" />
+                </div>
+            </div>
+        </Card>
+    );
+}
+
+
+
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
 
@@ -390,6 +465,18 @@ export default function JohnDeere6RPage() {
 
                 <div id="funksjoner" className="bg-white py-16 lg:py-24">
                     <div className="container mx-auto max-w-[1542px] px-4">
+                        <section className="mb-16 lg:mb-24 text-center">
+                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Utforsk 6R 110 i 360 grader</h2>
+                             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                                Dra i slideren under for å rotere traktoren og se den fra alle vinkler.
+                             </p>
+                             <div className="mt-8 max-w-5xl mx-auto">
+                                <Tractor360Viewer />
+                             </div>
+                        </section>
+
+                        <Separator className="my-16 lg:my-24" />
+
                         {/* --- CommandARM og Display --- */}
                         <section className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
                             <div>
