@@ -105,6 +105,7 @@ const configOptions = {
 const comparisonData = {
   headers: ['6R 110', '6R 120', '6R 130'],
   specs: [
+    { label: 'Passer best for', values: ['Allsidig gårdsarbeid, fôring og lettere jordbearbeiding.', 'Mer krevende oppgaver som f.eks. pløying og transport.', 'Intensive oppgaver, større redskaper og maksimale ytelser.'] },
     { label: 'Maks. effekt (IPM)', values: ['130 hk', '140 hk', '150 hk'] },
     { label: 'Nominell effekt', values: ['110 hk', '120 hk', '130 hk'] },
     { label: 'Motortype', values: ['PowerTech™ PVS', 'PowerTech™ PVS', 'PowerTech™ PSS'] },
@@ -448,22 +449,20 @@ export default function JohnDeere6RPage() {
                       <div className="overflow-x-auto">
                         <Table>
                           <TableHeader>
-                            <TableRow className="bg-transparent hover:bg-transparent">
-                              <TableHead className="text-left font-semibold text-foreground w-[25%]">Modell</TableHead>
-                              {comparisonData.headers.map((header, index) => (
+                            <TableRow className="bg-secondary/50 hover:bg-secondary/50 border-b-2 border-border">
+                              <TableHead className="text-left font-semibold text-foreground w-[25%] py-4">Modell</TableHead>
+                              {comparisonData.headers.map((header) => (
                                 <TableHead
                                   key={header}
                                   className={cn(
-                                    "text-center font-semibold text-foreground w-1/4",
-                                    header === '6R 110' && "text-primary"
+                                    "text-center font-semibold text-foreground w-1/4 p-4",
+                                    header === '6R 110' && "bg-primary/10 text-primary"
                                   )}
                                 >
-                                  {header === '6R 110' ? (
-                                    <div className="flex items-center justify-center gap-2">
-                                      <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                                  <div className="flex items-center justify-center gap-2">
+                                      {header === '6R 110' && <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />}
                                       {header}
-                                    </div>
-                                  ) : header}
+                                  </div>
                                 </TableHead>
                               ))}
                             </TableRow>
@@ -487,11 +486,11 @@ export default function JohnDeere6RPage() {
                             ))}
                             <TableRow className="bg-transparent hover:bg-transparent">
                                 <TableCell></TableCell>
-                                {comparisonData.headers.map((header, index) => (
+                                {comparisonData.headers.map((header) => (
                                     <TableCell key={header} className="text-center p-4">
                                         <Button asChild variant={header === '6R 110' ? 'default' : 'outline'}>
-                                            <Link href={header === '6R 110' ? '#' : '#'}>
-                                                {header === '6R 110' ? 'Valgt modell' : 'Be om tilbud'}
+                                            <Link href="#">
+                                                {header === '6R 110' ? 'Valgt modell' : 'Gå til modell'}
                                             </Link>
                                         </Button>
                                     </TableCell>
