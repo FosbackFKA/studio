@@ -97,6 +97,28 @@ const shopTheLookProducts: Product[] = [
     storeStockCount: 112,
     dataAiHint: 'rabbit food pellets'
   },
+  {
+    id: 'HOY01',
+    title: 'Høy til smådyr',
+    brand: 'Felleskjøpet',
+    price: '99,-',
+    imageUrl: product3,
+    productUrl: '#',
+    onlineStock: true,
+    storeStockCount: 250,
+    dataAiHint: 'hay small animals'
+  },
+  {
+    id: 'VANNFLASKE01',
+    title: 'Vannflaske til smådyr 500ml',
+    brand: 'Felleskjøpet',
+    price: '129,-',
+    imageUrl: artikkel2,
+    productUrl: '#',
+    onlineStock: true,
+    storeStockCount: 180,
+    dataAiHint: 'water bottle rodent'
+  },
 ];
 
 const relatedArticles = [
@@ -181,7 +203,7 @@ export default function StegForStegPage() {
             
             <section className="my-16 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16 md:my-24">
               <div className="mb-12 text-center max-w-4xl mx-auto">
-                <h2 className="font-headline text-3xl font-bold text-foreground">Shop utstyret du trenger</h2>
+                <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
                 <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
               </div>
               <div className="grid grid-cols-2 gap-6 md:grid-cols-4 max-w-5xl mx-auto">
