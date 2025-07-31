@@ -66,7 +66,7 @@ export function ProductCard({
               {discountText}
             </Badge>
           )}
-          <div className="relative aspect-square w-full p-4">
+          <div className="relative aspect-square w-full bg-white p-2">
             <Image
               src={imageUrl}
               alt={imageAlt || title}
