@@ -230,11 +230,11 @@ export default function InspirationTemplatePage() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-end px-4 pb-16 text-center text-white md:pb-24">
-            <h1 className="font-headline text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-end px-4 pb-16 text-center md:pb-24">
+            <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-6xl lg:text-7xl">
               Kari skapte sin drømmehage med Felleskjøpet
             </h1>
-            <p className="mt-4 max-w-3xl text-lg text-white/90 md:text-xl">
+            <p className="mt-4 max-w-3xl text-lg text-yellow-300/90 md:text-xl">
               Se hvordan enkle grep og de riktige produktene forvandlet en vanlig uteplass til en magisk oase for hele familien.
             </p>
           </div>
@@ -316,7 +316,7 @@ export default function InspirationTemplatePage() {
                           >
                               <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
                               
-                              <div className="relative z-10 flex flex-1 flex-col items-center justify-start p-4 md:p-8" onClick={(e) => e.stopPropagation()}>
+                              <div className="relative z-10 flex flex-1 items-center justify-start p-4 md:p-8" onClick={(e) => e.stopPropagation()}>
                                   <div className="relative flex-1 w-full h-full flex items-center justify-center">
                                       <Image
                                           src={galleryImages[selectedImageIndex].src}
@@ -385,5 +385,3 @@ export default function InspirationTemplatePage() {
     </div>
   );
 }
-
-    
