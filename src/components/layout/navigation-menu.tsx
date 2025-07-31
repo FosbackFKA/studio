@@ -13,7 +13,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ProductCard } from '@/components/common/product-card';
@@ -782,7 +782,10 @@ export function MainNavMenu() {
           <NavigationMenuContent>
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
-                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3")} >
+                  <div className={cn(
+                    "grid md:grid-cols-3 gap-x-8",
+                    megaMenuData.articles ? "md:col-span-3" : "md:col-span-5"
+                    )} >
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
                           {col.map((group) => (
@@ -803,33 +806,26 @@ export function MainNavMenu() {
                           </div>
                       )}
                   </div>
-                  {(megaMenuData.products || megaMenuData.articles) && (
+                  {(megaMenuData.articles) && (
                     <div className="md:col-span-2 flex gap-8">
                        <Separator orientation="vertical" className="h-auto" />
                        <div className="flex-1">
-                          {megaMenuData.products && (
-                            <div>
-                               <h3 className="px-3 text-lg font-bold text-primary">Populære produkter</h3>
-                               <Separator className="mb-2" />
-                               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                    {megaMenuData.products.slice(0,3).map((product: any) => (
-                                      <ProductCard key={product.id} {...product} />
-                                    ))}
-                                </div>
+                        <div>
+                          <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
+                          <Separator className="mb-2" />
+                          <div className="flex flex-col gap-2">
+                            {megaMenuData.articles[0] && <ArticleCard {...megaMenuData.articles[0]} />}
+                            <div className="mt-2 flex flex-col gap-1 pl-2">
+                                {megaMenuData.articles.slice(1).map((article: any) => (
+                                    <Link href={article.articleUrl} key={article.title} className="group flex items-center gap-2 rounded-md p-2 text-sm text-sidebar-foreground/80 hover:bg-black/5 hover:text-primary">
+                                        <FileText className="h-4 w-4 flex-shrink-0 text-primary/80" />
+                                        <span className="truncate group-hover:underline">{article.title}</span>
+                                    </Link>
+                                ))}
                             </div>
-                          )}
-                          {megaMenuData.articles && (
-                            <div>
-                              <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
-                              <Separator className="mb-2" />
-                              <div className="grid grid-cols-1 gap-4">
-                                  {megaMenuData.articles.slice(0,3).map((article: any) => (
-                                    <ArticleCard key={article.title} {...article} />
-                                  ))}
-                              </div>
-                           </div>
-                          )}
+                          </div>
                        </div>
+                    </div>
                     </div>
                   )}
                  

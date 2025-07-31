@@ -449,7 +449,7 @@ function StoreSheetContent({ onStoreSelect }: { onStoreSelect: () => void }) {
 
 function MiniProductCard({ product }: { product: Product }) {
   return (
-    <Link href={product.productUrl || '#'} className="group block">
+    <Link href={product.productUrl || '#'} className="group block w-40">
       <div className="space-y-2">
         <div className="relative aspect-square w-full overflow-hidden rounded-md border bg-white">
           <Image
@@ -590,8 +590,8 @@ export function HeaderComponent() {
             <h3 className="my-4 text-base font-semibold text-foreground">Populære artikler</h3>
             <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
               {menuData.articles.map((article: any) => (
-                 <div key={article.title} className="w-5/6 flex-shrink-0 sm:w-2/3 md:w-1/2">
-                    <ArticleCard {...article} />
+                 <div key={article.title} className="w-2/3 flex-shrink-0">
+                    <ArticleCard {...article} compact />
                 </div>
               ))}
             </div>

@@ -2,6 +2,7 @@
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface ArticleCardProps {
   title: string;
@@ -9,13 +10,14 @@ interface ArticleCardProps {
   imageUrl: string | StaticImageData;
   articleUrl: string;
   dataAiHint?: string;
+  compact?: boolean;
 }
 
-export function ArticleCard({ title, excerpt, imageUrl, articleUrl, dataAiHint }: ArticleCardProps) {
+export function ArticleCard({ title, excerpt, imageUrl, articleUrl, dataAiHint, compact = false }: ArticleCardProps) {
   return (
     <Card className="group flex h-full transform flex-col overflow-hidden rounded-lg bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
       <CardHeader className="relative p-0">
-        <Link href={articleUrl} className="relative block h-48 w-full">
+        <Link href={articleUrl} className={cn("relative block w-full", compact ? "h-32" : "h-48")}>
           <Image
             src={imageUrl}
             alt={title}
