@@ -163,10 +163,10 @@ export default function StegForStegPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="container relative z-10 mx-auto flex h-full max-w-5xl flex-col items-start justify-end px-4 pb-16 text-left">
-            <h1 className="font-headline text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-5xl lg:text-6xl">
               Guide: Slik trives kaninen i utendørs kaninhus
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
+            <p className="mt-4 max-w-2xl text-lg text-yellow-300/90 md:text-xl">
               Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.
             </p>
           </div>
