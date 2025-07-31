@@ -58,6 +58,7 @@ import heroInspoImage from '@/components/common/inspirasjonsmal/inspirasjon-hero
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
+import rabbitHeroImage from '@/components/common/stegforstegmal/hero.jpg';
 
 
 export default async function HomePage() {
@@ -324,7 +325,7 @@ export default async function HomePage() {
     {
       title: 'Guide: Slik trives kaninen ute',
       excerpt: 'Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.',
-      imageUrl: artikkel2,
+      imageUrl: rabbitHeroImage,
       articleUrl: '/artikler/stegforsteg',
       dataAiHint: 'rabbit hutch'
     },
