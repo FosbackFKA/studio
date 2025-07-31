@@ -612,7 +612,7 @@ export function HeaderComponent() {
   return (
     <Sheet open={storeSheetOpen} onOpenChange={setStoreSheetOpen}>
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="border-b">
+        <div>
           <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
             <div className="flex items-center space-x-1">
               <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
