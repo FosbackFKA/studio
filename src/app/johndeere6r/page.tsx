@@ -323,18 +323,15 @@ function Tractor360Viewer() {
 
     React.useEffect(() => {
         let loadedCount = 0;
-        const imageElements: HTMLImageElement[] = [];
-
         imageUrls.forEach((src) => {
-            const img = document.createElement('img');
+            const img = new window.Image();
             img.src = src.src; 
             img.onload = () => {
                 loadedCount++;
-                if (loadedCount === totalFrames) {
+                if (loadedCount === imageUrls.length) {
                     setIsLoaded(true);
                 }
             };
-            imageElements.push(img);
         });
     }, [imageUrls]);
 
