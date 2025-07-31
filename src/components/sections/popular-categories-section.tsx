@@ -7,7 +7,6 @@ import kategori2 from '../common/populaere-kategorier/2.webp';
 import kategori3 from '../common/populaere-kategorier/3.webp';
 import kategori4 from '../common/populaere-kategorier/4.webp';
 import kategori5 from '../common/populaere-kategorier/5.webp';
-import kategori6 from '../common/populaere-kategorier/6.webp';
 
 
 const categories = [
@@ -16,7 +15,6 @@ const categories = [
   { title: 'Hageredskap', imageUrl: kategori3, categoryUrl: '#' },
   { title: 'Mose og ugress', imageUrl: kategori4, categoryUrl: '#' },
   { title: 'Insekter', imageUrl: kategori5, categoryUrl: '#' },
-  { title: 'Hundebur og transport', imageUrl: kategori6, categoryUrl: '#' },
 ];
 
 export function PopularCategoriesSection() {
@@ -28,7 +26,7 @@ export function PopularCategoriesSection() {
         </div>
         
         {/* Desktop Grid */}
-        <div className="hidden px-4 lg:grid lg:grid-cols-6 lg:gap-4">
+        <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
           {categories.map((category) => (
             <CategoryCard key={category.title} {...category} />
           ))}
