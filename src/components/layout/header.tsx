@@ -202,7 +202,7 @@ function CartItemCard({ item }: { item: CartItem }) {
     <div className="flex items-start gap-4">
       <div className="relative h-24 w-24 flex-shrink-0">
         <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain" />
-        {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent/20 px-1.5 py-0.5 text-xs font-semibold text-primary">{item.badgeText}</Badge>}
+        {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent px-1.5 py-0.5 text-xs font-semibold text-accent-foreground">{item.badgeText}</Badge>}
       </div>
       <div className="flex-1">
         <div className="flex justify-between items-start">

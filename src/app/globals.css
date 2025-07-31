@@ -29,9 +29,9 @@
     --muted: 29 21% 85%;
     /* --fk-grey-2-c: 119 119 119 */
     --muted-foreground: 0 0% 47%;
-    /* --fk-lightgreen-40-c: 134 198 18 (FK Light Green) */
-    --accent: 79 82% 42%;
-    /* --fk-grey-4-c: 34 34 34 */
+    /* New accent color: #e4ecc9 */
+    --accent: 77 33% 85%;
+    /* Darker foreground for the new light accent */
     --accent-foreground: 147 100% 14%;
     /* --fk-red-40-c: 215 12 40 */
     --destructive: 352 89% 45%; /* Mer nøyaktig fra --fk-red-40-c */
