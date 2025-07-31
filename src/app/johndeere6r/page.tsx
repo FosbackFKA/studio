@@ -378,6 +378,16 @@ export default function JohnDeere6RPage() {
                     </div>
                 </div>
 
+                <div className="bg-secondary/30 py-16 lg:py-24">
+                    <div className="container mx-auto max-w-4xl px-4 text-left">
+                        <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Allsidig, kraftig og smart</h2>
+                        <p className="mt-4 text-lg text-muted-foreground">
+                            John Deere 6R 110 er mer enn bare en traktor; det er en partner i din daglige drift. Den er designet for å være den ultimate allrounderen, perfekt for gårdsarbeid, fôrhåndtering, transport og lettere jordbearbeiding. Med sin kompakte størrelse kombinert med en kraftig motor og avansert teknologi, gir den deg fleksibiliteten til å takle varierte oppgaver med presisjon og effektivitet. Enten du navigerer trange fjøs eller jobber på åpne jorder, er 6R 110 bygget for å gjøre arbeidsdagen enklere og mer produktiv.
+                        </p>
+                    </div>
+                </div>
+
+
                 <div id="funksjoner" className="bg-white py-16 lg:py-24">
                     <div className="container mx-auto max-w-[1542px] px-4">
                         {/* --- CommandARM og Display --- */}
@@ -565,7 +575,7 @@ export default function JohnDeere6RPage() {
                              <QuoteRequestDialog
                                 trigger={
                                     <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
-                                        <Mail className="mr-2"/> Finn din lokale selger
+                                        <Mail className="mr-2"/> Be om et tilbud
                                     </Button>
                                 }
                             />
