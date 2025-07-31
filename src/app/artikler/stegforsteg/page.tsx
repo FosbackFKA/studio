@@ -15,16 +15,17 @@ import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// Import local images
+// Import local images for the article
+import heroImage from '@/components/common/stegforstegmal/hero.jpg';
+import step1Image from '@/components/common/stegforstegmal/1.jpg';
+import step2Image from '@/components/common/stegforstegmal/2.jpg';
+import step3Image from '@/components/common/stegforstegmal/3.jpg';
+import step4Image from '@/components/common/stegforstegmal/4.jpg';
+import step5Image from '@/components/common/stegforstegmal/5.jpg';
+
+// Import local images for products and related articles
 import product1 from '@/components/common/artikler/1.webp';
 import product3 from '@/components/common/artikler/2.webp';
-
-const step1Image = product1;
-const heroImage = step1Image;
-const step2Image = step1Image;
-const step4Image = product3;
-
-
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
@@ -54,7 +55,7 @@ const steps = [
     step: 3,
     title: 'Innred for komfort og trivsel',
     description: 'Fyll sovedelen rikelig med halm eller annet egnet redemateriale. I løpegården legger du et tykt lag med bunnstrø, som f.eks. flis eller spon, for å absorbere fuktighet. Sørg for at kaninen har tilgang til en solid matskål som ikke kan tippes, og en drikkeflaske eller vannskål med friskt vann.',
-    image: step1Image,
+    image: step3Image,
     dataAiHint: 'rabbit bedding hay'
   },
   {
@@ -68,7 +69,7 @@ const steps = [
     step: 5,
     title: 'Aktivisering og tilsyn',
     description: 'Selv med en løpegård, trenger kaninen din daglig aktivisering og sosial kontakt. La den hoppe fritt i en sikker, større luftegård under oppsyn. Sjekk kaninen og huset daglig for å forsikre deg om at alt er som det skal. Se etter tegn på sykdom og påse at huset er rent og trygt.',
-    image: step1Image,
+    image: step5Image,
     dataAiHint: 'rabbit playing tunnel'
   },
 ];
