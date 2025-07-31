@@ -24,7 +24,7 @@ import { allStores } from '@/lib/store-data';
 import { useStoreStore } from '@/hooks/use-store-store';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import type { Product } from '@/types/product';
-import { ProductCard } from '@/components/common/product-card';
+import { ArticleCard } from '@/components/common/article-card';
 
 
 const parsePrice = (priceString?: string): number => {
@@ -584,14 +584,14 @@ export function HeaderComponent() {
           </ul>
         </div>
         
-        {menuData.products && (
+        {menuData.articles && (
           <div className="mt-auto flex-shrink-0 pt-4">
             <Separator />
-            <h3 className="my-4 text-base font-semibold text-foreground">Populære produkter</h3>
+            <h3 className="my-4 text-base font-semibold text-foreground">Populære artikler</h3>
             <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
-              {menuData.products.map((product: Product) => (
-                 <div key={product.id} className="w-48 flex-shrink-0">
-                    <ProductCard {...product} />
+              {menuData.articles.map((article: any) => (
+                 <div key={article.title} className="w-5/6 flex-shrink-0 sm:w-2/3 md:w-1/2">
+                    <ArticleCard {...article} />
                 </div>
               ))}
             </div>

@@ -782,8 +782,7 @@ export function MainNavMenu() {
           <NavigationMenuContent>
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
-                  {/* Link Columns */}
-                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products && !megaMenuData.articles, "md:grid-cols-2 col-span-2": megaMenuData.articles && !megaMenuData.products, "md:grid-cols-3 col-span-3": megaMenuData.products || megaMenuData.articles })} >
+                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3")} >
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
                           {col.map((group) => (
@@ -791,7 +790,6 @@ export function MainNavMenu() {
                           ))}
                         </div>
                       ))}
-                      {/* For menus without columns like Merkevarer */}
                       {!megaMenuData.columns && megaMenuData.links && (
                            <div className="flex flex-col gap-2 md:col-span-1">
                               <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
@@ -805,29 +803,33 @@ export function MainNavMenu() {
                           </div>
                       )}
                   </div>
-                  {/* Products Column */}
-                  {megaMenuData.products && (
-                    <div className="md:col-span-2">
-                       <h3 className="px-3 text-lg font-bold text-primary">Populære produkter</h3>
-                       <Separator className="mb-2" />
-                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                            {megaMenuData.products.slice(0,3).map((product: any) => (
-                              <ProductCard key={product.id} {...product} />
-                            ))}
-                        </div>
-                    </div>
-                  )}
-
-                  {/* Articles Column */}
-                  {megaMenuData.articles && (
-                    <div className={cn("md:col-span-2", { "md:col-span-3": !megaMenuData.products })}>
-                       <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
-                       <Separator className="mb-2" />
-                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                            {megaMenuData.articles.slice(0,3).map((article: any) => (
-                              <ArticleCard key={article.title} {...article} />
-                            ))}
-                        </div>
+                  {(megaMenuData.products || megaMenuData.articles) && (
+                    <div className="md:col-span-2 flex gap-8">
+                       <Separator orientation="vertical" className="h-auto" />
+                       <div className="flex-1">
+                          {megaMenuData.products && (
+                            <div>
+                               <h3 className="px-3 text-lg font-bold text-primary">Populære produkter</h3>
+                               <Separator className="mb-2" />
+                               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                    {megaMenuData.products.slice(0,3).map((product: any) => (
+                                      <ProductCard key={product.id} {...product} />
+                                    ))}
+                                </div>
+                            </div>
+                          )}
+                          {megaMenuData.articles && (
+                            <div>
+                              <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
+                              <Separator className="mb-2" />
+                              <div className="grid grid-cols-1 gap-4">
+                                  {megaMenuData.articles.slice(0,3).map((article: any) => (
+                                    <ArticleCard key={article.title} {...article} />
+                                  ))}
+                              </div>
+                           </div>
+                          )}
+                       </div>
                     </div>
                   )}
                  
