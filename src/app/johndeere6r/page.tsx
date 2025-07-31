@@ -8,7 +8,7 @@ import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Table, TableBody, TableCell, TableHeader, TableHead, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, PlayCircle, Settings, Tractor, Wallet } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -296,5 +296,6 @@ export default function JohnDeere6RPage() {
             <FooterComponent />
         </div>
     );
+}
 
     
