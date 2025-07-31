@@ -775,14 +775,13 @@ export function MainNavMenu() {
           <NavigationMenuContent>
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
-                  {/* Special Layout for Kampanjer */}
                   {isCampaign ? (
-                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                     <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
                         <div className="md:col-span-1 flex flex-col gap-4">
-                           <Button asChild size="lg" className="h-auto py-3 text-base">
-                            <Link href={megaMenuData.footerLink.href}>{megaMenuData.links[0].title}</Link>
+                          <Button asChild size="lg" className="h-auto py-3 text-base">
+                            <Link href={megaMenuData.links[0].href}>{megaMenuData.links[0].title}</Link>
                           </Button>
-                           <Button asChild size="lg" variant="outline" className="h-auto py-3 text-base">
+                          <Button asChild size="lg" variant="outline" className="h-auto py-3 text-base border-primary text-primary hover:bg-primary/10">
                             <Link href={megaMenuData.specialLink.href}>{megaMenuData.specialLink.title}</Link>
                           </Button>
                           {isSunday && (
@@ -791,9 +790,9 @@ export function MainNavMenu() {
                             </Button>
                           )}
                         </div>
-                        <div className="md:col-span-2">
+                        <div className="md:col-span-4">
                            <h3 className="mb-4 text-lg font-bold text-primary">Populære produkter på kampanje</h3>
-                           <div className="grid grid-cols-2 gap-4">
+                           <div className="grid grid-cols-4 gap-4">
                               {megaMenuData.products.slice(0, 4).map((product: Product) => (
                                  <ProductCard key={product.id} {...product} />
                               ))}
