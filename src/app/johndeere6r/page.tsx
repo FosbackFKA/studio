@@ -10,12 +10,14 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, PlayCircle, Settings, Tractor, Wallet } from 'lucide-react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
 import g5PlusImage from '@/components/common/johndeere6r/G5Plus.png';
+
 
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
@@ -56,12 +58,85 @@ const techSpecs = [
     { label: 'Hydraulikkapasitet', value: '114 l/min' },
 ];
 
+const configOptions = {
+  girkasse: {
+    title: "Girkasse",
+    icon: GitCommit,
+    options: [
+      { id: 'autopowr', name: 'AutoPowr™ IVT™', description: 'Trinnløs og sømløs giring for maksimal effektivitet.', price: 0 },
+      { id: 'autoquad', name: 'AutoQuad™ Plus', description: 'Manuell giring med automatiserte funksjoner.', price: -25000 },
+    ],
+  },
+  frontlaster: {
+    title: "Frontlaster",
+    icon: Loader,
+    options: [
+      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', price: 95000 },
+      { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', price: 0 },
+    ],
+  },
+  dekk: {
+    title: "Dekk",
+    icon: Tractor,
+    options: [
+      { id: 'standard_dekk', name: 'Standard dekk', description: 'Allsidige dekk for varierte oppgaver.', price: 0 },
+      { id: 'brede_dekk', name: 'Brede dekk', description: 'For redusert marktrykk og bedre trekkraft.', price: 42000 },
+    ],
+  },
+  lys: {
+    title: "Lyspakke",
+    icon: Sun,
+    options: [
+      { id: 'standard_lys', name: 'Standard lyspakke', description: 'Halogenlys for god sikt.', price: 0 },
+      { id: 'premium_lys', name: 'Premium 360° LED', description: 'Full LED-belysning for overlegen sikt om natten.', price: 35000 },
+    ],
+  },
+  gps: {
+    title: "GPS-system",
+    icon: Map,
+    options: [
+      { id: 'gps_forberedt', name: 'GPS-forberedt', description: 'Klargjort for ettermontering av GPS.', price: 0 },
+      { id: 'integrert_gps', name: 'Integrert StarFire™', description: 'Fullt integrert GPS for presisjonslandbruk.', price: 120000 },
+    ],
+  },
+};
+
+type ConfigSelection = {
+  girkasse: string;
+  frontlaster: string;
+  dekk: string;
+  lys: string;
+  gps: string;
+};
+
+
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
 
+    const [configSelection, setConfigSelection] = React.useState<ConfigSelection>({
+        girkasse: 'autopowr',
+        frontlaster: 'uten_laster',
+        dekk: 'standard_dekk',
+        lys: 'standard_lys',
+        gps: 'gps_forberedt',
+    });
+
+    const basePrice = 1450000;
+
+    const totalPrice = React.useMemo(() => {
+        return Object.keys(configSelection).reduce((acc, key) => {
+            const category = configOptions[key as keyof typeof configOptions];
+            const selectedOption = category.options.find(opt => opt.id === configSelection[key as keyof typeof configSelection]);
+            return acc + (selectedOption?.price || 0);
+        }, basePrice);
+    }, [configSelection]);
+
+    const handleConfigChange = (category: keyof ConfigSelection, value: string) => {
+        setConfigSelection(prev => ({ ...prev, [category]: value }));
+    };
+
     const handleScroll = () => {
-        // --- Nav-lenke-scrolling ---
-        const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'kontakt'];
+        const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'konfigurator', 'tjenester', 'kontakt'];
         const scrollPosition = window.scrollY + 200;
         
         for (const sectionId of sections) {
@@ -116,7 +191,7 @@ export default function JohnDeere6RPage() {
                 {/* --- Sticky Sub-nav --- */}
                 <div className="sticky top-[64px] z-40 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
                     <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
-                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Kontakt'].map((item) => (
+                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Konfigurator', 'Tjenester', 'Kontakt'].map((item) => (
                             <Link
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
@@ -232,8 +307,110 @@ export default function JohnDeere6RPage() {
                     </div>
                 </section>
                 
+                 {/* --- Bygg din 6R --- */}
+                <section id="konfigurator" className="bg-white py-16 lg:py-24">
+                    <div className="container mx-auto max-w-7xl px-4">
+                        <div className="text-center mb-12">
+                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Bygg din 6R</h2>
+                            <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                                Skreddersy traktoren etter dine behov. Velg utstyr og se prisen oppdateres i sanntid.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                           {/* Tractor Image */}
+                            <div className="lg:col-span-2 sticky top-24">
+                                <Card className="overflow-hidden">
+                                <div className="relative aspect-video w-full bg-secondary/30">
+                                    <Image
+                                        src={heroImage}
+                                        alt={`John Deere 6R 110 med ${configSelection.frontlaster === 'med_laster' ? 'frontlaster' : 'uten frontlaster'}`}
+                                        fill
+                                        className="object-contain p-8 transition-all duration-300"
+                                        sizes="(max-width: 1024px) 100vw, 66vw"
+                                    />
+                                    {configSelection.frontlaster === 'med_laster' && (
+                                        <div data-ai-hint="tractor front loader" className="absolute top-1/4 left-1/4 h-1/2 w-1/2 bg-gray-400/20 rounded-md backdrop-blur-sm flex items-center justify-center text-primary font-semibold">
+                                            {/* This is a visual representation, not a real image swap */}
+                                            Frontlaster montert
+                                        </div>
+                                    )}
+                                </div>
+                                </Card>
+                            </div>
+                            
+                            {/* Configuration Options */}
+                            <div className="lg:col-span-1 space-y-6">
+                                {Object.entries(configOptions).map(([key, category]) => (
+                                    <Card key={key} className="overflow-hidden">
+                                    <CardHeader className="bg-secondary/30">
+                                        <CardTitle className="flex items-center gap-2 font-headline text-xl">
+                                            <category.icon className="h-6 w-6 text-primary" />
+                                            {category.title}
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="p-4">
+                                        <RadioGroup
+                                            value={configSelection[key as keyof ConfigSelection]}
+                                            onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
+                                        >
+                                        {category.options.map(option => (
+                                            <Label key={option.id} className={cn(
+                                                "flex items-start gap-4 rounded-lg border p-4 cursor-pointer transition-colors hover:bg-accent/10",
+                                                configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
+                                            )}>
+                                                <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
+                                                <div className="flex-1">
+                                                    <div className="flex justify-between items-center">
+                                                        <span className="font-semibold text-foreground">{option.name}</span>
+                                                        <span className="text-sm font-medium text-primary">
+                                                            {option.price > 0 ? `+ ${option.price.toLocaleString('nb-NO')} kr` : (option.price < 0 ? `- ${(option.price * -1).toLocaleString('nb-NO')} kr` : 'Standard')}
+                                                        </span>
+                                                    </div>
+                                                    <p className="text-sm text-muted-foreground">{option.description}</p>
+                                                </div>
+                                            </Label>
+                                        ))}
+                                        </RadioGroup>
+                                    </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Sticky Price Summary */}
+                        <div className="lg:col-start-3 mt-8 lg:sticky lg:bottom-8">
+                           <Card className="shadow-lg">
+                               <CardHeader>
+                                   <CardTitle className="font-headline text-2xl">Prisoverslag</CardTitle>
+                               </CardHeader>
+                               <CardContent className="space-y-2">
+                                   <div className="flex justify-between">
+                                       <span className="text-muted-foreground">Grunnpris</span>
+                                       <span>{basePrice.toLocaleString('nb-NO')} kr</span>
+                                   </div>
+                                    <div className="flex justify-between">
+                                       <span className="text-muted-foreground">Valgt utstyr</span>
+                                       <span>{(totalPrice - basePrice).toLocaleString('nb-NO')} kr</span>
+                                   </div>
+                                   <Separator className="my-2" />
+                                   <div className="flex justify-between items-baseline font-bold text-2xl">
+                                       <span>Totalpris (eks. mva)</span>
+                                       <span>{totalPrice.toLocaleString('nb-NO')} kr</span>
+                                   </div>
+                               </CardContent>
+                               <div className="p-6 pt-0">
+                                   <Button size="lg" className="w-full h-12 text-base">
+                                       <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
+                                   </Button>
+                               </div>
+                           </Card>
+                        </div>
+                    </div>
+                </section>
+
+
                 {/* --- Tjenester --- */}
-                 <section id="tjenester" className="py-16 lg:py-24 bg-white">
+                 <section id="tjenester" className="py-16 lg:py-24 bg-secondary/30">
                     <div className="container mx-auto max-w-[1542px] px-4">
                        <div className="text-center">
                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Vi er med deg hele veien</h2>
@@ -242,19 +419,19 @@ export default function JohnDeere6RPage() {
                             </p>
                         </div>
                          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-                            <Card className="flex flex-col items-center p-8 text-center shadow-lg">
+                            <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
                                 <Settings className="h-12 w-12 text-primary" />
                                 <CardTitle className="mt-4 font-headline text-2xl">Verkstedtjenester</CardTitle>
                                 <CardContent className="mt-2 flex-grow text-muted-foreground">Våre sertifiserte teknikere over hele landet sikrer profesjonell service og vedlikehold, slik at din maskin alltid yter sitt beste.</CardContent>
                                 <Button variant="link">Les mer <ArrowRight className="ml-2" /></Button>
                             </Card>
-                             <Card className="flex flex-col items-center p-8 text-center shadow-lg">
+                             <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
                                 <Wallet className="h-12 w-12 text-primary" />
                                 <CardTitle className="mt-4 font-headline text-2xl">Finansiering og leasing</CardTitle>
                                 <CardContent className="mt-2 flex-grow text-muted-foreground">Vi tilbyr skreddersydde og konkurransedyktige finansieringsløsninger som passer din drift og dine investeringsplaner.</CardContent>
                                  <Button variant="link">Se dine muligheter <ArrowRight className="ml-2" /></Button>
                             </Card>
-                             <Card className="flex flex-col items-center p-8 text-center shadow-lg">
+                             <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
                                 <Tractor className="h-12 w-12 text-primary" />
                                 <CardTitle className="mt-4 font-headline text-2xl">Presisjonsjordbruk</CardTitle>
                                 <CardContent className="mt-2 flex-grow text-muted-foreground">Få mest mulig ut av hver kvadratmeter med våre løsninger for presisjonslandbruk. Vi hjelper deg med alt fra autostyring til avansert dataanalyse.</CardContent>
