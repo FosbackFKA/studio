@@ -12,11 +12,12 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader } from 'lucide-react';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
 import g5PlusImage from '@/components/common/johndeere6r/G5Plus.png';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 
 const breadcrumbs = [
@@ -63,40 +64,40 @@ const configOptions = {
     title: "Girkasse",
     icon: GitCommit,
     options: [
-      { id: 'autopowr', name: 'AutoPowr™ IVT™', description: 'Trinnløs og sømløs giring for maksimal effektivitet.', price: 0 },
-      { id: 'autoquad', name: 'AutoQuad™ Plus', description: 'Manuell giring med automatiserte funksjoner.', price: -25000 },
+      { id: 'autopowr', name: 'AutoPowr™ IVT™', description: 'Trinnløs og sømløs giring for maksimal effektivitet.', longDescription: 'AutoPowr™ er en hydro-mekanisk girkasse som leverer trinnløs og kontinuerlig kraft ved alle hastigheter. Den kombinerer mekanisk effektivitet med presisjonen til hydrostatisk drift, ideelt for varierte oppgaver.', price: 0 },
+      { id: 'autoquad', name: 'AutoQuad™ Plus', description: 'Manuell giring med automatiserte funksjoner.', longDescription: 'AutoQuad™ Plus gir deg fire powershift-trinn i hver av de seks gruppene. Den tilbyr manuell kontroll med tilleggsfunksjoner som SoftShift for myke girskift under belastning.', price: -25000 },
     ],
   },
   frontlaster: {
     title: "Frontlaster",
     icon: Loader,
     options: [
-      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', price: 95000 },
-      { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', price: 0 },
+      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', longDescription: 'Fullt integrert John Deere frontlaster, perfekt tilpasset 6R-serien for optimal balanse, sikt og ytelse. Inkluderer joystick-kontroll i CommandARM™.', price: 95000 },
+      { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', longDescription: 'Leveres uten frontlaster for de som ikke har behov, eller ønsker å ettermontere eget utstyr. Traktoren er fortsatt klargjort for laster.', price: 0 },
     ],
   },
   dekk: {
     title: "Dekk",
     icon: Tractor,
     options: [
-      { id: 'standard_dekk', name: 'Standard dekk', description: 'Allsidige dekk for varierte oppgaver.', price: 0 },
-      { id: 'brede_dekk', name: 'Brede dekk', description: 'For redusert marktrykk og bedre trekkraft.', price: 42000 },
+      { id: 'standard_dekk', name: 'Standard dekk', description: 'Allsidige dekk for varierte oppgaver.', longDescription: 'Et balansert dekkvalg som gir god ytelse for både jordbearbeiding, transport og arbeid på gårdsplassen. Et godt kompromiss mellom trekkraft og veiegenskaper.', price: 0 },
+      { id: 'brede_dekk', name: 'Brede dekk', description: 'For redusert marktrykk og bedre trekkraft.', longDescription: 'Brede dekk fordeler vekten over et større område, noe som reduserer jordpakking og øker trekkraften på mykt underlag. Ideelt for arbeid på sensitive jorder.', price: 42000 },
     ],
   },
   lys: {
     title: "Lyspakke",
     icon: Sun,
     options: [
-      { id: 'standard_lys', name: 'Standard lyspakke', description: 'Halogenlys for god sikt.', price: 0 },
-      { id: 'premium_lys', name: 'Premium 360° LED', description: 'Full LED-belysning for overlegen sikt om natten.', price: 35000 },
+      { id: 'standard_lys', name: 'Standard lyspakke', description: 'Halogenlys for god sikt.', longDescription: 'Standardpakken gir solid belysning med velprøvde halogenpærer, tilstrekkelig for de fleste arbeidsoppgaver under normale lysforhold.', price: 0 },
+      { id: 'premium_lys', name: 'Premium 360° LED', description: 'Full LED-belysning for overlegen sikt om natten.', longDescription: 'Premium-pakken oppgraderer all arbeidsbelysning til kraftig LED. Gir et hvitt, dagslyslignende lys i 360 grader rundt traktoren for maksimal sikt og sikkerhet ved nattarbeid.', price: 35000 },
     ],
   },
   gps: {
     title: "GPS-system",
     icon: Map,
     options: [
-      { id: 'gps_forberedt', name: 'GPS-forberedt', description: 'Klargjort for ettermontering av GPS.', price: 0 },
-      { id: 'integrert_gps', name: 'Integrert StarFire™', description: 'Fullt integrert GPS for presisjonslandbruk.', price: 120000 },
+      { id: 'gps_forberedt', name: 'GPS-forberedt', description: 'Klargjort for ettermontering av GPS.', longDescription: 'Traktoren leveres klargjort for AutoTrac™, noe som betyr at kabler og braketter er på plass for enkel ettermontering av en StarFire™-mottaker og aktivering av autostyring.', price: 0 },
+      { id: 'integrert_gps', name: 'Integrert StarFire™', description: 'Fullt integrert GPS for presisjonslandbruk.', longDescription: 'Fabrikkmontert StarFire™-mottaker og full aktivering av AutoTrac™ på G5Plus-skjermen. Klar for presisjonslandbruk rett fra levering, noe som sikrer nøyaktige pass og redusert overlapping.', price: 120000 },
     ],
   },
 };
@@ -309,6 +310,7 @@ export default function JohnDeere6RPage() {
                 
                  {/* --- Bygg din 6R --- */}
                 <section id="konfigurator" className="bg-white py-16 lg:py-24">
+                    <TooltipProvider>
                     <div className="container mx-auto max-w-7xl px-4">
                         <div className="text-center mb-12">
                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Bygg din 6R</h2>
@@ -329,9 +331,8 @@ export default function JohnDeere6RPage() {
                                         sizes="(max-width: 1024px) 100vw, 66vw"
                                     />
                                     {configSelection.frontlaster === 'med_laster' && (
-                                        <div data-ai-hint="tractor front loader" className="absolute top-1/4 left-1/4 h-1/2 w-1/2 bg-gray-400/20 rounded-md backdrop-blur-sm flex items-center justify-center text-primary font-semibold">
-                                            {/* This is a visual representation, not a real image swap */}
-                                            Frontlaster montert
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex items-center justify-center" data-ai-hint="tractor front loader">
+                                            <p className="bg-black/20 text-white p-4 rounded-lg backdrop-blur-sm">Visuell representasjon av frontlaster</p>
                                         </div>
                                     )}
                                 </div>
@@ -361,7 +362,19 @@ export default function JohnDeere6RPage() {
                                                 <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
                                                 <div className="flex-1">
                                                     <div className="flex justify-between items-center">
-                                                        <span className="font-semibold text-foreground">{option.name}</span>
+                                                        <div className="flex items-center gap-2">
+                                                            <span className="font-semibold text-foreground">{option.name}</span>
+                                                            <Tooltip>
+                                                                <TooltipTrigger asChild>
+                                                                    <button type="button" aria-label="Mer informasjon">
+                                                                        <Info className="h-4 w-4 text-muted-foreground" />
+                                                                    </button>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    <p className="max-w-xs">{option.longDescription}</p>
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </div>
                                                         <span className="text-sm font-medium text-primary">
                                                             {option.price > 0 ? `+ ${option.price.toLocaleString('nb-NO')} kr` : (option.price < 0 ? `- ${(option.price * -1).toLocaleString('nb-NO')} kr` : 'Standard')}
                                                         </span>
@@ -406,6 +419,7 @@ export default function JohnDeere6RPage() {
                            </Card>
                         </div>
                     </div>
+                    </TooltipProvider>
                 </section>
 
 
