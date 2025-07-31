@@ -548,7 +548,7 @@ export default function JohnDeere6RPage() {
                             <Button asChild size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                 <Link href="#"><Mail className="mr-2"/> Finn din lokale selger</Link>
                             </Button>
-                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-yellow-300 text-yellow-300 hover:bg-yellow-300/10 hover:text-yellow-300">
+                            <Button asChild size="lg" className="h-14 px-8 text-lg border-2 border-yellow-300 bg-transparent text-yellow-300 hover:bg-yellow-300/10 hover:text-yellow-300">
                                 <Link href="#"><Phone className="mr-2"/> Ring oss: 72 50 50 50</Link>
                             </Button>
                         </div>
