@@ -244,21 +244,6 @@ export default function JohnDeere6RPage() {
                                 ))}
                             </div>
                         </section>
-
-                        <Separator className="my-16 lg:my-24" />
-
-                        {/* --- Se den i aksjon --- */}
-                        <section>
-                            <div className="aspect-video w-full overflow-hidden rounded-xl shadow-lg">
-                                <iframe
-                                    className="h-full w-full"
-                                    src="https://www.youtube.com/embed/pCJK1xopEds?start=18"
-                                    title="John Deere 6R Series Tractors"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen
-                                ></iframe>
-                            </div>
-                        </section>
                     </div>
                 </div>
 
@@ -288,6 +273,21 @@ export default function JohnDeere6RPage() {
                             </div>
                             <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
                                 <Image src={g5PlusImage} alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" />
+                            </div>
+                        </section>
+
+                        <Separator className="my-16 lg:my-24" />
+
+                        {/* --- Se den i aksjon --- */}
+                        <section>
+                            <div className="aspect-video w-full overflow-hidden rounded-xl shadow-lg">
+                                <iframe
+                                    className="h-full w-full"
+                                    src="https://www.youtube.com/embed/pCJK1xopEds?start=18"
+                                    title="John Deere 6R Series Tractors"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                ></iframe>
                             </div>
                         </section>
                     </div>
