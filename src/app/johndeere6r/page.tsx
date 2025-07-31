@@ -23,6 +23,39 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Slider } from '@/components/ui/slider';
 
+// Import 360 images
+import img0 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00000.jpg';
+import img1 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00001.avif';
+import img3 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00003.avif';
+import img4 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00004.avif';
+import img5 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00005.avif';
+import img7 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00007.avif';
+import img8 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00008.avif';
+import img9 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00009.avif';
+import img11 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00011.avif';
+import img12 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00012.avif';
+import img13 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00013.avif';
+import img15 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00015.avif';
+import img16 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00016.avif';
+import img17 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00017.avif';
+import img19 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00019.avif';
+import img20 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00020.avif';
+import img21 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00021.avif';
+import img23 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00023.avif';
+import img24 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00024.avif';
+import img26 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00026.avif';
+import img28 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00028.jpg';
+import img30 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00030.jpg';
+import img32 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00032.jpg';
+import img34 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00034.jpg';
+import img36 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00036.avif';
+import img38 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00038.avif';
+import img40 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00040.jpg';
+import img42 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00042.jpg';
+import img44 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00044.avif';
+import img46 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00046.avif';
+
+
 
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
@@ -276,29 +309,32 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
 
 
 function Tractor360Viewer() {
-    const totalFrames = 24;
+    const totalFrames = 30;
     const [currentFrame, setCurrentFrame] = React.useState(0);
     const [isLoaded, setIsLoaded] = React.useState(false);
 
     // Create an array of image URLs (placeholders for a 360 sequence)
     const imageUrls = React.useMemo(() => 
-        Array.from({ length: totalFrames }, (_, i) => 
-            `https://placehold.co/1200x800.png?text=Angle+${i+1}`
-        ), []);
+        [img0, img1, img3, img4, img5, img7, img8, img9, img11, img12, img13, img15, img16, img17, img19, img20, img21, img23, img24, img26, img28, img30, img32, img34, img36, img38, img40, img42, img44, img46]
+    , []);
 
     // Preload images to ensure smooth interaction
     React.useEffect(() => {
         let loadedCount = 0;
+        const imageElements: HTMLImageElement[] = [];
+
         imageUrls.forEach((src) => {
             const img = document.createElement('img');
-            img.src = src;
+            img.src = src.src; // Access the src property of StaticImageData
             img.onload = () => {
                 loadedCount++;
                 if (loadedCount === totalFrames) {
                     setIsLoaded(true);
                 }
             };
+            imageElements.push(img);
         });
+
     }, [imageUrls]);
 
     const handleSliderChange = (value: number[]) => {
@@ -315,7 +351,7 @@ function Tractor360Viewer() {
                 )}
                 {imageUrls.map((src, index) => (
                     <Image
-                        key={src}
+                        key={index}
                         src={src}
                         alt={`John Deere 6R 110 - Angle ${index + 1}`}
                         fill
@@ -324,7 +360,6 @@ function Tractor360Viewer() {
                             currentFrame === index && isLoaded ? "opacity-100" : "opacity-0"
                         )}
                         sizes="(max-width: 768px) 100vw, 80vw"
-                        data-ai-hint="tractor field side"
                         priority={index === 0}
                     />
                 ))}
