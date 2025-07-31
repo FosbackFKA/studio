@@ -128,77 +128,138 @@ type ConfigSelection = {
 };
 
 
-function QuoteRequestDialog({ trigger, selection }: { trigger: React.ReactNode; selection: ConfigSelection; }) {
-  const selectedOptions = React.useMemo(() => {
-    return Object.entries(selection).map(([key, value]) => {
-      const category = configOptions[key as keyof typeof configOptions];
-      const option = category.options.find(opt => opt.id === value);
-      // Only include non-default selections
-      if (option && !option.id.includes('standard') && !option.id.includes('uten') && !option.id.includes('forberedt')) {
-        return {
-          name: option.name,
-        };
-      }
-      return null;
-    }).filter(Boolean);
-  }, [selection]);
+function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
+    const [configSelection, setConfigSelection] = React.useState<ConfigSelection>({
+        girkasse: 'autopowr',
+        frontlaster: 'uten_laster',
+        dekk: 'standard_dekk',
+        lys: 'standard_lys',
+        gps: 'gps_forberedt',
+    });
+
+    const handleConfigChange = (category: keyof ConfigSelection, value: string) => {
+        setConfigSelection(prev => ({ ...prev, [category]: value }));
+    };
+
+    const selectedOptions = React.useMemo(() => {
+        return Object.entries(configSelection).map(([key, value]) => {
+          const category = configOptions[key as keyof typeof configOptions];
+          const option = category.options.find(opt => opt.id === value);
+          // Only include non-default selections
+          if (option && !option.id.includes('standard') && !option.id.includes('uten_laster') && !option.id.includes('gps_forberedt')) {
+            return {
+              name: option.name,
+            };
+          }
+          return null;
+        }).filter(Boolean);
+    }, [configSelection]);
 
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-4xl">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl">Be om et uforpliktende tilbud</DialogTitle>
           <DialogDescription>
-            En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud basert på dine valg.
+            En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud. Du kan justere valgene under, eller sende inn som den er.
           </DialogDescription>
         </DialogHeader>
         
-        <div className="grid gap-6 py-4">
-          <Card className="bg-secondary/30">
-            <CardHeader>
-              <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {selectedOptions.length > 0 ? (
-                <>
-                  <p className='text-sm font-medium mb-2'>Valgt utstyr:</p>
-                  <ul className="space-y-1 text-sm list-disc pl-5">
-                    {selectedOptions.map(option => option && (
-                      <li key={option.name} className="text-muted-foreground">{option.name}</li>
-                    ))}
-                  </ul>
-                </>
-              ) : (
-                <p className="text-sm text-muted-foreground">Standard konfigurasjon valgt.</p>
-              )}
-            </CardContent>
-          </Card>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <Label htmlFor="name">Fullt navn</Label>
-              <Input id="name" placeholder="Ola Nordmann" />
-            </div>
-             <div className="space-y-1">
-              <Label htmlFor="phone">Telefon</Label>
-              <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
+          {/* Left Column: Contact Form & Summary */}
+          <div className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <Label htmlFor="name">Fullt navn</Label>
+                  <Input id="name" placeholder="Ola Nordmann" />
+                </div>
+                 <div className="space-y-1">
+                  <Label htmlFor="phone">Telefon</Label>
+                  <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <Label htmlFor="email">E-post</Label>
+                  <Input id="email" type="email" placeholder="din@epost.no" />
+                </div>
+                 <div className="space-y-1">
+                  <Label htmlFor="zip">Postnummer</Label>
+                  <Input id="zip" placeholder="Ditt postnummer" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="comments">Kommentarer eller spørsmål (valgfritt)</Label>
+                <Textarea id="comments" placeholder="Har du spesifikke behov eller spørsmål til selgeren?" />
+              </div>
+
+               <Card className="bg-secondary/30">
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {selectedOptions.length > 0 ? (
+                    <>
+                      <p className='text-sm font-medium mb-2'>Valgt utstyr:</p>
+                      <ul className="space-y-1 text-sm list-disc pl-5">
+                        {selectedOptions.map(option => option && (
+                          <li key={option.name} className="text-muted-foreground">{option.name}</li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">Standard konfigurasjon valgt.</p>
+                  )}
+                </CardContent>
+              </Card>
           </div>
-           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <Label htmlFor="email">E-post</Label>
-              <Input id="email" type="email" placeholder="din@epost.no" />
+
+          {/* Right Column: Configurator */}
+           <TooltipProvider>
+            <div className="space-y-4">
+              {Object.entries(configOptions).map(([key, category]) => (
+                  <div key={key}>
+                      <CardTitle className="flex items-center gap-2 font-headline text-lg mb-2">
+                          <category.icon className="h-5 w-5 text-primary" />
+                          {category.title}
+                      </CardTitle>
+                      <RadioGroup
+                          value={configSelection[key as keyof ConfigSelection]}
+                          onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
+                          className="grid grid-cols-2 gap-2"
+                      >
+                      {category.options.map(option => (
+                          <Label key={option.id} className={cn(
+                              "flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-accent/10",
+                              configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
+                          )}>
+                              <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
+                              <div className="flex-1">
+                                  <div className="flex justify-between items-center">
+                                      <div className="flex items-center gap-2">
+                                          <span className="font-semibold text-foreground text-sm">{option.name}</span>
+                                      </div>
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">{option.description}</p>
+                              </div>
+                               <Tooltip>
+                                  <TooltipTrigger asChild>
+                                      <button type="button" aria-label="Mer informasjon" className="mt-0.5">
+                                          <Info className="h-4 w-4 text-muted-foreground" />
+                                      </button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                      <p className="max-w-xs">{option.longDescription}</p>
+                                  </TooltipContent>
+                              </Tooltip>
+                          </Label>
+                      ))}
+                      </RadioGroup>
+                  </div>
+              ))}
             </div>
-             <div className="space-y-1">
-              <Label htmlFor="zip">Postnummer</Label>
-              <Input id="zip" placeholder="Ditt postnummer" />
-            </div>
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="comments">Kommentarer eller spørsmål (valgfritt)</Label>
-            <Textarea id="comments" placeholder="Har du spesifikke behov eller spørsmål til selgeren?" />
-          </div>
+           </TooltipProvider>
         </div>
 
         <DialogFooter>
@@ -215,18 +276,6 @@ function QuoteRequestDialog({ trigger, selection }: { trigger: React.ReactNode; 
 
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
-
-    const [configSelection, setConfigSelection] = React.useState<ConfigSelection>({
-        girkasse: 'autopowr',
-        frontlaster: 'uten_laster',
-        dekk: 'standard_dekk',
-        lys: 'standard_lys',
-        gps: 'gps_forberedt',
-    });
-
-    const handleConfigChange = (category: keyof ConfigSelection, value: string) => {
-        setConfigSelection(prev => ({ ...prev, [category]: value }));
-    };
 
     const handleScroll = () => {
         const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'konfigurator', 'sammenlign', 'tjenester', 'kontakt'];
@@ -272,7 +321,6 @@ export default function JohnDeere6RPage() {
                         </p>
                         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                              <QuoteRequestDialog
-                                selection={configSelection}
                                 trigger={
                                     <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                         Be om et tilbud
@@ -289,7 +337,7 @@ export default function JohnDeere6RPage() {
                 {/* --- Sticky Sub-nav --- */}
                 <div className="sticky top-[64px] z-40 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
                     <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
-                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Konfigurator', 'Sammenlign', 'Tjenester', 'Kontakt'].map((item) => (
+                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Sammenlign', 'Tjenester', 'Kontakt'].map((item) => (
                             <Link
                                 key={item}
                                 href={`#${item.toLowerCase().replace(' ', '-')}`}
@@ -405,77 +453,8 @@ export default function JohnDeere6RPage() {
                     </div>
                 </section>
                 
-                 {/* --- Bygg din 6R --- */}
-                <section id="konfigurator" className="bg-white py-16 lg:py-24">
-                    <TooltipProvider>
-                    <div className="container mx-auto max-w-7xl px-4">
-                        <div className="text-center mb-12">
-                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Bygg din 6R</h2>
-                            <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-                                Skreddersy traktoren etter dine behov. Velg utstyr og se prisen oppdateres i sanntid.
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                            {Object.entries(configOptions).map(([key, category]) => (
-                                <Card key={key} className="overflow-hidden">
-                                <CardHeader className="bg-secondary/30">
-                                    <CardTitle className="flex items-center gap-2 font-headline text-xl">
-                                        <category.icon className="h-6 w-6 text-primary" />
-                                        {category.title}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent className="p-4">
-                                    <RadioGroup
-                                        value={configSelection[key as keyof ConfigSelection]}
-                                        onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
-                                    >
-                                    {category.options.map(option => (
-                                        <Label key={option.id} className={cn(
-                                            "flex items-start gap-4 rounded-lg border p-4 cursor-pointer transition-colors hover:bg-accent/10",
-                                            configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
-                                        )}>
-                                            <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
-                                            <div className="flex-1">
-                                                <div className="flex justify-between items-center">
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="font-semibold text-foreground">{option.name}</span>
-                                                        <Tooltip>
-                                                            <TooltipTrigger asChild>
-                                                                <button type="button" aria-label="Mer informasjon">
-                                                                    <Info className="h-4 w-4 text-muted-foreground" />
-                                                                </button>
-                                                            </TooltipTrigger>
-                                                            <TooltipContent>
-                                                                <p className="max-w-xs">{option.longDescription}</p>
-                                                            </TooltipContent>
-                                                        </Tooltip>
-                                                    </div>
-                                                </div>
-                                                <p className="text-sm text-muted-foreground">{option.description}</p>
-                                            </div>
-                                        </Label>
-                                    ))}
-                                    </RadioGroup>
-                                </CardContent>
-                                </Card>
-                            ))}
-                        </div>
-                        <div className="mt-12 text-center">
-                            <QuoteRequestDialog
-                                selection={configSelection}
-                                trigger={
-                                    <Button size="lg" className="h-12 text-base px-8">
-                                        <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
-                                    </Button>
-                                }
-                            />
-                        </div>
-                    </div>
-                    </TooltipProvider>
-                </section>
-
                 {/* --- Sammenlign modeller --- */}
-                <section id="sammenlign" className="bg-secondary/30 py-16 lg:py-24">
+                <section id="sammenlign" className="bg-white py-16 lg:py-24">
                   <div className="container mx-auto max-w-6xl px-4">
                     <div className="text-center mb-12">
                       <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Finn riktig 6R for deg</h2>
@@ -543,7 +522,7 @@ export default function JohnDeere6RPage() {
 
 
                 {/* --- Tjenester --- */}
-                 <section id="tjenester" className="py-16 lg:py-24 bg-white">
+                 <section id="tjenester" className="py-16 lg:py-24 bg-secondary/30">
                     <div className="container mx-auto max-w-[1542px] px-4">
                        <div className="text-center">
                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Vi er med deg hele veien</h2>
@@ -584,14 +563,13 @@ export default function JohnDeere6RPage() {
                         </p>
                         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                              <QuoteRequestDialog
-                                selection={configSelection}
                                 trigger={
                                     <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                         <Mail className="mr-2"/> Finn din lokale selger
                                     </Button>
                                 }
                             />
-                            <Button asChild size="lg" className="h-14 px-8 text-lg border-2 border-yellow-300 bg-transparent text-yellow-300 hover:bg-yellow-300/10 hover:text-yellow-300">
+                            <Button asChild size="lg" className="h-14 px-8 text-lg border-2 border-yellow-300 bg-transparent text-yellow-300 hover:bg-yellow-300/10">
                                 <Link href="#"><Phone className="mr-2"/> Ring oss: 72 50 50 50</Link>
                             </Button>
                         </div>
