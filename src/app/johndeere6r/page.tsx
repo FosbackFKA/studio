@@ -75,8 +75,8 @@ const configOptions = {
     title: "Frontlaster",
     icon: Loader,
     options: [
-      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', longDescription: 'Fullt integrert John Deere frontlaster, perfekt tilpasset 6R-serien for optimal balanse, sikt og ytelse. Inkluderer joystick-kontroll i CommandARM™.' },
       { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', longDescription: 'Leveres uten frontlaster for de som ikke har behov, eller ønsker å ettermontere eget utstyr. Traktoren er fortsatt klargjort for laster.' },
+      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', longDescription: 'Fullt integrert John Deere frontlaster, perfekt tilpasset 6R-serien for optimal balanse, sikt og ytelse. Inkluderer joystick-kontroll i CommandARM™.' },
     ],
   },
   dekk: {
