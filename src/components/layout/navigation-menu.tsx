@@ -77,6 +77,17 @@ const kampanjeProducts: Product[] = [
       onlineStock: true,
       storeStockCount: 68,
     },
+     {
+      id: 'KARCHERK4P',
+      title: 'Høytrykkspyler K4 Premium',
+      brand: 'Kärcher',
+      price: '3 199,-',
+      salePrice: '2 699,-',
+      imageUrl: popular4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 81,
+    },
 ];
 
 const hageArticles = [
@@ -458,7 +469,7 @@ export const hjemOgFritidMenuData = {
       },
     ],
   ],
-  articles: hageArticles, // Using hage as a placeholder
+  articles: hageArticles, 
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
@@ -647,12 +658,12 @@ export const kampanjerMenuData = {
         href: '#',
         links: [
           { name: 'Lagersalg', href: '#' },
-          { name: 'Søndagskupp', href: '#', isSundayOnly: true },
+          { name: 'Søndagskupp', href: '#' },
         ],
       },
     ],
   ],
-  products: kampanjeProducts.slice(0, 3),
+  products: kampanjeProducts.slice(0, 4),
   productsTitle: 'Utvalgte produkter på kampanje',
   footerLink: { name: 'Se alle produkter på kampanje', href: '#' },
 };
@@ -750,12 +761,7 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
 
 // Main Navigation Component
 export function MainNavMenu() {
-  const [isSunday, setIsSunday] = React.useState(false);
-
-  React.useEffect(() => {
-    // This will only run on the client, avoiding hydration mismatches.
-    setIsSunday(new Date().getDay() === 0);
-  }, []);
+  const isSunday = new Date().getDay() === 0;
   
   const renderNavItems = (items: typeof leftNavItems) => {
     return items.map((item) => {
@@ -773,7 +779,6 @@ export function MainNavMenu() {
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
                   
-                  {/* Link columns */}
                   <div className={cn("grid gap-x-8", isCampaign ? "md:grid-cols-1 md:col-span-1" : "md:grid-cols-3 md:col-span-3")}>
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
@@ -785,23 +790,10 @@ export function MainNavMenu() {
                           })}
                         </div>
                       ))}
-                      {!megaMenuData.columns && megaMenuData.links && (
-                          <div className="flex flex-col gap-2 md:col-span-1">
-                              <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
-                              <Separator className="mb-2" />
-                              {megaMenuData.links.map((link: { title: string, href: string }) => (
-                                  <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
-                                      <span>{link.title}</span>
-                                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                                  </Link>
-                              ))}
-                          </div>
-                      )}
                   </div>
                  
-                 {/* Products Section */}
                  {megaMenuData.products && (
-                    <div className={cn("flex gap-8", isCampaign ? "md:col-span-3" : "md:col-span-3")}>
+                    <div className={cn("flex gap-8", "md:col-span-3")}>
                        <Separator orientation="vertical" className="h-auto" />
                        <div className="flex-1">
                             {megaMenuData.productsTitle && (
@@ -810,16 +802,25 @@ export function MainNavMenu() {
                                   <Separator className="mb-2" />
                                 </>
                             )}
-                           <div className={cn("grid gap-4", isCampaign ? "grid-cols-3" : "grid-cols-1")}>
-                               {megaMenuData.products.slice(0, 3).map((product: Product) => (
+                           <div className={cn("grid gap-4", "grid-cols-4")}>
+                               {megaMenuData.products.slice(0, 4).map((product: Product) => (
                                  <ProductCard key={product.id} {...product} />
                                ))}
                            </div>
+                           {megaMenuData.footerLink && (
+                              <div className="mt-4">
+                                <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
+                                  <Link href={megaMenuData.footerLink.href}>
+                                    {megaMenuData.footerLink.name}
+                                    <ChevronRight className="ml-2 h-4 w-4" />
+                                  </Link>
+                                </Button>
+                              </div>
+                            )}
                        </div>
                     </div>
                  )}
 
-                 {/* Articles Section */}
                  {megaMenuData.articles && (
                     <div className="md:col-span-1 flex gap-8">
                         <Separator orientation="vertical" className="h-auto" />
@@ -849,8 +850,7 @@ export function MainNavMenu() {
                     </div>
                  )}
 
-                 {/* Footer Link */}
-                 {megaMenuData.footerLink && (
+                 {megaMenuData.footerLink && !megaMenuData.products && (
                   <div className="md:col-span-4 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                       <Link href={megaMenuData.footerLink.href}>
