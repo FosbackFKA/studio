@@ -59,8 +59,10 @@ const techSpecs = [
 
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
+    const blueprintSectionRef = React.useRef<HTMLElement>(null);
 
     const handleScroll = () => {
+        // --- Nav-lenke-scrolling ---
         const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'kontakt'];
         const scrollPosition = window.scrollY + 200;
         
@@ -71,12 +73,31 @@ export default function JohnDeere6RPage() {
                 break;
             }
         }
+        
+        // --- Blueprint-animasjon-scrolling ---
+        const section = blueprintSectionRef.current;
+        if (!section) return;
+
+        const { top, height } = section.getBoundingClientRect();
+        const screenHeight = window.innerHeight;
+
+        // Calculate progress from when the top of the section enters the bottom of the viewport
+        // to when the bottom of the section leaves the top of the viewport.
+        const start = screenHeight;
+        const end = -height;
+        const current = top;
+        
+        let progress = (start - current) / (start - end);
+        progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
+
+        section.style.setProperty('--scroll-progress', progress.toString());
     };
 
     React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [activeSection]);
+
 
     return (
         <div className="flex min-h-screen flex-col bg-background">
@@ -172,7 +193,7 @@ export default function JohnDeere6RPage() {
                 </div>
 
                 {/* --- Interaktiv tegning --- */}
-                <section className="interactive-blueprint-section h-[300vh] relative">
+                <section ref={blueprintSectionRef} className="interactive-blueprint-section h-[300vh] relative">
                     <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
                         <div className="container mx-auto max-w-[1542px] px-4 relative flex items-center justify-center">
                             <div className="blueprint-container">

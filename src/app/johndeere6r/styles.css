@@ -1,9 +1,6 @@
 
 .interactive-blueprint-section {
     --scroll-progress: 0;
-    animation: color-in linear forwards;
-    animation-timeline: view();
-    animation-range: entry 25% cover 50%;
 }
 
 .blueprint-container {
@@ -32,11 +29,3 @@
     clip-path: inset(0 calc(100% * (1 - var(--scroll-progress))) 0 0);
 }
 
-@keyframes color-in {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
