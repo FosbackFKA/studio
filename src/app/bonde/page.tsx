@@ -4,7 +4,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HeaderComponent } from '@/components/layout/header';
+import { BondeHeaderComponent } from '@/components/layout/bonde-header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -107,7 +107,7 @@ const services = [
 export default function BondePage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
+      <BondeHeaderComponent />
       <main className="flex-grow">
         
         {/* Hero Section */}
