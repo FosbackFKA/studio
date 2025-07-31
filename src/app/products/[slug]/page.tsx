@@ -20,7 +20,6 @@ import { useParams } from 'next/navigation';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { StarRating } from '@/components/common/star-rating';
 import { RelatedProductsSection } from '@/components/sections/related-products-section';
-import { FaqSection } from '@/components/sections/faq-section';
 import { ReviewsSection } from '@/components/sections/reviews-section';
 import { ArticleCard } from '@/components/common/article-card';
 
@@ -83,6 +82,26 @@ const productData = {
     { name: 'Robotgressklipper Navimow H3000E med VisionFence', href: '/products/SEGNAVH3000E' },
   ]
 };
+
+const faqs = [
+  {
+    question: "Hvor stor plen kan Navimow H3000E håndtere?",
+    answer: "Denne modellen er designet for å håndtere plener på opptil 3000 kvadratmeter, noe som gjør den ideell for store hager."
+  },
+  {
+    question: "Trenger jeg å legge ned kantledning?",
+    answer: "Nei, Navimow bruker et satellittbasert system (EFLS) og VisionFence-kamera for å navigere. Du definerer klippeområdet virtuelt via appen, så du slipper helt unna graving og kantledning."
+  },
+  {
+    question: "Hvordan fungerer den i områder med dårlig GPS-signal?",
+    answer: "Det medfølgende VisionFence-kameraet bruker AI til å gjenkjenne kanter og hindringer. Hvis GPS-signalet blir svakt, for eksempel under store trær, tar VisionFence over for å sikre presis og kontinuerlig klipping."
+  },
+  {
+    question: "Kan jeg styre klipperen fra telefonen?",
+    answer: "Ja, alt styres via Navimow-appen. Der kan du sette opp klippeområder, no-go-soner, justere klippehøyden og sette opp tidsplaner for når du vil at plenen skal klippes."
+  }
+];
+
 
 const relevantArticles = [
     {
@@ -402,6 +421,21 @@ export default function ProductPage() {
                   </Table>
                 </AccordionContent>
               </AccordionItem>
+              <AccordionItem value="faq">
+                <AccordionTrigger className="text-lg font-bold">Ofte stilte spørsmål</AccordionTrigger>
+                <AccordionContent>
+                  <Accordion type="single" collapsible className="w-full">
+                    {faqs.map((faq, index) => (
+                      <AccordionItem value={`faq-item-${index}`} key={index}>
+                        <AccordionTrigger>{faq.question}</AccordionTrigger>
+                        <AccordionContent>
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </AccordionContent>
+              </AccordionItem>
               <AccordionItem value="reviews">
                 <AccordionTrigger className="text-lg font-bold">Anmeldelser</AccordionTrigger>
                 <AccordionContent>
@@ -413,7 +447,6 @@ export default function ProductPage() {
         </div>
         
         <GuidesAndArticlesSection />
-        <FaqSection />
         <RelatedProductsSection />
 
       </main>
