@@ -322,7 +322,7 @@ function Tractor360Viewer() {
     const isDragging = React.useRef(false);
     const startX = React.useRef(0);
     const startFrame = React.useRef(0);
-    const sensitivity = 2; // How many pixels to drag for one frame change
+    const sensitivity = 8; // How many pixels to drag for one frame change
 
     const imageUrls = React.useMemo(() => 
         [img0, img1, img3, img4, img5, img7, img8, img9, img11, img12, img13, img15, img16, img17, img19, img20, img21, img23, img24, img26, img28, img30, img32, img34, img36, img38, img40, img42, img44, img46, img48, img50, img52, img54, img56, img58, img60]
