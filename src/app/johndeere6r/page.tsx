@@ -291,7 +291,7 @@ export default function JohnDeere6RPage() {
                                     </Button>
                                 }
                             />
-                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-yellow-300/10 hover:text-yellow-300 backdrop-blur-sm">
+                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-white/10 hover:text-white backdrop-blur-sm">
                                 <Link href="#spesifikasjoner">Se tekniske data</Link>
                             </Button>
                         </div>
@@ -427,17 +427,17 @@ export default function JohnDeere6RPage() {
                                 Skreddersy traktoren etter dine behov. Velg utstyr og se prisen oppdateres i sanntid.
                             </p>
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
                            {/* Tractor Image */}
-                            <div className="lg:col-span-2 lg:sticky lg:top-40">
-                                <Card className="overflow-hidden">
+                            <div className="lg:col-span-1">
+                                <Card className="overflow-hidden sticky top-36">
                                 <div className="relative aspect-video w-full bg-secondary/30">
                                     <Image
                                         src={heroImage}
                                         alt={`John Deere 6R 110 med ${configSelection.frontlaster === 'med_laster' ? 'frontlaster' : 'uten frontlaster'}`}
                                         fill
                                         className="object-contain p-8 transition-all duration-300"
-                                        sizes="(max-width: 1024px) 100vw, 66vw"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                     {configSelection.frontlaster === 'med_laster' && (
                                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex items-center justify-center" data-ai-hint="tractor front loader">
@@ -496,42 +496,40 @@ export default function JohnDeere6RPage() {
                                     </CardContent>
                                     </Card>
                                 ))}
+                                
+                                {/* Price Summary */}
+                                <Card className="shadow-lg sticky bottom-8">
+                                   <CardHeader>
+                                       <CardTitle className="font-headline text-2xl">Prisoverslag</CardTitle>
+                                   </CardHeader>
+                                   <CardContent className="space-y-2">
+                                       <div className="flex justify-between">
+                                           <span className="text-muted-foreground">Grunnpris</span>
+                                           <span>{basePrice.toLocaleString('nb-NO')} kr</span>
+                                       </div>
+                                        <div className="flex justify-between">
+                                           <span className="text-muted-foreground">Valgt utstyr</span>
+                                           <span>{(totalPrice - basePrice).toLocaleString('nb-NO')} kr</span>
+                                       </div>
+                                       <Separator className="my-2" />
+                                       <div className="flex justify-between items-baseline font-bold text-2xl">
+                                           <span>Totalpris (eks. mva)</span>
+                                           <span>{totalPrice.toLocaleString('nb-NO')} kr</span>
+                                       </div>
+                                   </CardContent>
+                                   <div className="p-6 pt-0">
+                                       <QuoteRequestDialog
+                                            selection={configSelection}
+                                            totalPrice={totalPrice}
+                                            trigger={
+                                                <Button size="lg" className="w-full h-12 text-base">
+                                                    <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
+                                                </Button>
+                                            }
+                                       />
+                                   </div>
+                               </Card>
                             </div>
-                        </div>
-
-                        {/* Sticky Price Summary */}
-                        <div className="lg:col-start-3 mt-8 lg:sticky lg:bottom-8">
-                           <Card className="shadow-lg">
-                               <CardHeader>
-                                   <CardTitle className="font-headline text-2xl">Prisoverslag</CardTitle>
-                               </CardHeader>
-                               <CardContent className="space-y-2">
-                                   <div className="flex justify-between">
-                                       <span className="text-muted-foreground">Grunnpris</span>
-                                       <span>{basePrice.toLocaleString('nb-NO')} kr</span>
-                                   </div>
-                                    <div className="flex justify-between">
-                                       <span className="text-muted-foreground">Valgt utstyr</span>
-                                       <span>{(totalPrice - basePrice).toLocaleString('nb-NO')} kr</span>
-                                   </div>
-                                   <Separator className="my-2" />
-                                   <div className="flex justify-between items-baseline font-bold text-2xl">
-                                       <span>Totalpris (eks. mva)</span>
-                                       <span>{totalPrice.toLocaleString('nb-NO')} kr</span>
-                                   </div>
-                               </CardContent>
-                               <div className="p-6 pt-0">
-                                   <QuoteRequestDialog
-                                        selection={configSelection}
-                                        totalPrice={totalPrice}
-                                        trigger={
-                                            <Button size="lg" className="w-full h-12 text-base">
-                                                <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
-                                            </Button>
-                                        }
-                                   />
-                               </div>
-                           </Card>
                         </div>
                     </div>
                     </TooltipProvider>
