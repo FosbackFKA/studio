@@ -653,9 +653,9 @@ export const merkevarerMenuData = {
 export const kampanjerMenuData = {
   links: [
     { title: 'Alle kampanjer', href: '#' },
+    { title: 'Lagersalg', href: '#', isSpecial: true },
     { title: 'Søndagskupp', href: '#', isSundayOnly: true },
   ],
-  specialLink: { title: 'Lagersalg', href: '#'},
   products: kampanjeProducts,
   footerLink: { name: 'Se alle kampanjer', href: '#' }
 };
@@ -777,27 +777,37 @@ export function MainNavMenu() {
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
                   {isCampaign ? (
                      <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-                        <div className="md:col-span-1 flex flex-col gap-4">
-                          <Button asChild size="lg" className="h-auto py-3 text-base">
-                            <Link href={megaMenuData.links[0].href}>{megaMenuData.links[0].title}</Link>
-                          </Button>
-                          <Button asChild size="lg" variant="outline" className="h-auto py-3 text-base border-primary text-primary hover:bg-primary/10">
-                            <Link href={megaMenuData.specialLink.href}>{megaMenuData.specialLink.title}</Link>
-                          </Button>
-                          {isSunday && (
-                            <Button asChild size="lg" variant="outline" className="h-auto py-3 text-base border-yellow-400 text-yellow-500 hover:bg-yellow-50 hover:text-yellow-600">
-                                <Link href="#">{megaMenuData.links.find((l: any) => l.isSundayOnly)?.title}</Link>
-                            </Button>
-                          )}
-                        </div>
-                        <div className="md:col-span-4">
-                           <h3 className="mb-4 text-lg font-bold text-primary">Populære produkter på kampanje</h3>
-                           <div className="grid grid-cols-4 gap-4">
-                              {megaMenuData.products.slice(0, 4).map((product: Product) => (
-                                 <ProductCard key={product.id} {...product} />
-                              ))}
-                           </div>
-                        </div>
+                       <div className="md:col-span-1 flex flex-col gap-4">
+                           {megaMenuData.links.filter((l: any) => !l.isSundayOnly).map((link: any) => (
+                             <Button
+                               key={link.title}
+                               asChild
+                               size="lg"
+                               variant={link.isSpecial ? 'default' : 'outline'}
+                               className={cn(
+                                 "h-auto justify-start py-3 text-base",
+                                 link.isSpecial ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border-primary text-primary hover:bg-primary/10 hover:text-primary"
+                               )}
+                             >
+                               <Link href={link.href}>{link.title}</Link>
+                             </Button>
+                           ))}
+                           {isSunday && megaMenuData.links.find((l: any) => l.isSundayOnly) && (
+                              <Button asChild size="lg" variant="outline" className="h-auto justify-start py-3 text-base border-yellow-400 text-yellow-500 hover:bg-yellow-50 hover:text-yellow-600">
+                                <Link href={megaMenuData.links.find((l: any) => l.isSundayOnly).href}>
+                                    {megaMenuData.links.find((l: any) => l.isSundayOnly).title}
+                                </Link>
+                              </Button>
+                           )}
+                       </div>
+                       <div className="md:col-span-4">
+                          <h3 className="mb-4 text-lg font-bold text-primary">Populære produkter på kampanje</h3>
+                          <div className="grid grid-cols-4 gap-4">
+                             {megaMenuData.products.slice(0, 4).map((product: Product) => (
+                                <ProductCard key={product.id} {...product} />
+                             ))}
+                          </div>
+                       </div>
                      </div>
                   ) : (
                     <>
