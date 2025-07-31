@@ -2,17 +2,17 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { HeaderComponent } from '@/components/layout/header';
 import { FooterComponent } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info } from 'lucide-react';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
@@ -102,6 +102,19 @@ const configOptions = {
   },
 };
 
+const comparisonData = {
+  headers: ['6R 110', '6R 120', '6R 130'],
+  specs: [
+    { label: 'Maks. effekt (IPM)', values: ['130 hk', '140 hk', '150 hk'] },
+    { label: 'Nominell effekt', values: ['110 hk', '120 hk', '130 hk'] },
+    { label: 'Motortype', values: ['PowerTech™ PVS', 'PowerTech™ PVS', 'PowerTech™ PSS'] },
+    { label: 'Hydraulikkapasitet', values: ['114 l/min', '114 l/min', '155 l/min'] },
+    { label: 'Maks. løftekapasitet', values: ['5700 kg', '5700 kg', '6000 kg'] },
+    { label: 'Girkasse', values: ['AutoPowr™', 'AutoPowr™', 'AutoPowr™'] },
+  ],
+};
+
+
 type ConfigSelection = {
   girkasse: string;
   frontlaster: string;
@@ -137,7 +150,7 @@ export default function JohnDeere6RPage() {
     };
 
     const handleScroll = () => {
-        const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'konfigurator', 'tjenester', 'kontakt'];
+        const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'konfigurator', 'sammenlign', 'tjenester', 'kontakt'];
         const scrollPosition = window.scrollY + 200;
         
         for (const sectionId of sections) {
@@ -182,7 +195,7 @@ export default function JohnDeere6RPage() {
                             <Button asChild size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                 <Link href="#kontakt">Be om et tilbud</Link>
                             </Button>
-                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-white/10 hover:text-white backdrop-blur-sm">
+                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-yellow-300/10 hover:text-yellow-300 backdrop-blur-sm">
                                 <Link href="#spesifikasjoner">Se tekniske data</Link>
                             </Button>
                         </div>
@@ -192,17 +205,17 @@ export default function JohnDeere6RPage() {
                 {/* --- Sticky Sub-nav --- */}
                 <div className="sticky top-[64px] z-40 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
                     <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
-                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Konfigurator', 'Tjenester', 'Kontakt'].map((item) => (
+                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Konfigurator', 'Sammenlign', 'Tjenester', 'Kontakt'].map((item) => (
                             <Link
                                 key={item}
-                                href={`#${item.toLowerCase()}`}
+                                href={`#${item.toLowerCase().replace(' ', '-')}`}
                                 className={cn(
                                     "relative font-headline text-lg font-medium transition-colors hover:text-primary",
-                                    activeSection === item.toLowerCase() ? "text-primary" : "text-muted-foreground"
+                                    activeSection === item.toLowerCase().replace(' ', '-') ? "text-primary" : "text-muted-foreground"
                                 )}
                             >
                                 {item}
-                                {activeSection === item.toLowerCase() && (
+                                {activeSection === item.toLowerCase().replace(' ', '-') && (
                                     <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-primary" />
                                 )}
                             </Link>
@@ -422,9 +435,78 @@ export default function JohnDeere6RPage() {
                     </TooltipProvider>
                 </section>
 
+                {/* --- Sammenlign modeller --- */}
+                <section id="sammenlign" className="bg-secondary/30 py-16 lg:py-24">
+                  <div className="container mx-auto max-w-6xl px-4">
+                    <div className="text-center mb-12">
+                      <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Finn riktig 6R for deg</h2>
+                      <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                        Sammenlign nøkkelspesifikasjoner på tvers av de mest populære modellene i 6R-serien for å finne den som passer dine behov perfekt.
+                      </p>
+                    </div>
+                    <Card className="overflow-hidden shadow-lg">
+                      <div className="overflow-x-auto">
+                        <Table>
+                          <TableHeader>
+                            <TableRow className="bg-transparent hover:bg-transparent">
+                              <TableHead className="text-left font-semibold text-foreground w-[25%]">Modell</TableHead>
+                              {comparisonData.headers.map((header, index) => (
+                                <TableHead
+                                  key={header}
+                                  className={cn(
+                                    "text-center font-semibold text-foreground w-1/4",
+                                    header === '6R 110' && "text-primary"
+                                  )}
+                                >
+                                  {header === '6R 110' ? (
+                                    <div className="flex items-center justify-center gap-2">
+                                      <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                                      {header}
+                                    </div>
+                                  ) : header}
+                                </TableHead>
+                              ))}
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {comparisonData.specs.map((spec) => (
+                              <TableRow key={spec.label} className="bg-white even:bg-secondary/20">
+                                <TableCell className="font-semibold">{spec.label}</TableCell>
+                                {spec.values.map((value, index) => (
+                                  <TableCell
+                                    key={index}
+                                    className={cn(
+                                      "text-center",
+                                      comparisonData.headers[index] === '6R 110' && "font-bold text-foreground"
+                                    )}
+                                  >
+                                    {value}
+                                  </TableCell>
+                                ))}
+                              </TableRow>
+                            ))}
+                            <TableRow className="bg-transparent hover:bg-transparent">
+                                <TableCell></TableCell>
+                                {comparisonData.headers.map((header, index) => (
+                                    <TableCell key={header} className="text-center p-4">
+                                        <Button asChild variant={header === '6R 110' ? 'default' : 'outline'}>
+                                            <Link href={header === '6R 110' ? '#' : '#'}>
+                                                {header === '6R 110' ? 'Valgt modell' : 'Be om tilbud'}
+                                            </Link>
+                                        </Button>
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </Card>
+                  </div>
+                </section>
+
 
                 {/* --- Tjenester --- */}
-                 <section id="tjenester" className="py-16 lg:py-24 bg-secondary/30">
+                 <section id="tjenester" className="py-16 lg:py-24 bg-white">
                     <div className="container mx-auto max-w-[1542px] px-4">
                        <div className="text-center">
                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Vi er med deg hele veien</h2>
