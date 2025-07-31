@@ -678,6 +678,14 @@ export const guiderOgArtiklerMenuData = {
           { name: 'Vedlikehold av utemøbler', href: '#' },
         ],
       },
+      {
+        title: 'Skog og ved',
+        href: '#',
+        links: [
+            { name: 'Tips til vedlikehold av motorsag', href: '#' },
+            { name: 'Slik kløyver du ved trygt og effektivt', href: '#' },
+        ],
+      },
     ],
     [
       {
@@ -754,9 +762,14 @@ export function MainNavMenu() {
     return items.map((item) => {
       const megaMenuData = menuDataMap[item.name];
       
+      const isCampaign = item.name === 'Kampanjer';
+
       return (
         <NavigationMenuItem key={item.name}>
-          <NavigationMenuTrigger>{item.name}</NavigationMenuTrigger>
+          <NavigationMenuTrigger 
+            className={cn(isCampaign && "bg-yellow-300 text-primary hover:bg-yellow-300/90 focus:bg-yellow-300/90 data-[active]:bg-yellow-300/90 data-[state=open]:bg-yellow-300/90")}>
+              {item.name}
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
