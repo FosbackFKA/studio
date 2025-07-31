@@ -19,9 +19,6 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } 
 // Import local images
 import heroImage from '@/components/common/inspirasjonsmal/inspirasjon-hero.jpg';
 import challengeImage from '@/components/common/inspirasjonsmal/foer.png';
-import takAvLysImage from '@/components/common/inspirasjonsmal/hengelys.png';
-import ledVeienImage from '@/components/common/inspirasjonsmal/solcellelys.jpg';
-import levendeLysImage from '@/components/common/inspirasjonsmal/lanterne.jpg';
 import baalpanneImage from '@/components/common/inspirasjonsmal/p_baalpanne.jpg';
 import popcornImage from '@/components/common/inspirasjonsmal/p_popcorn.jpg';
 import lyslenkeImage from '@/components/common/inspirasjonsmal/p_lyslenke.jpg';
@@ -29,6 +26,13 @@ import ullpleddImage from '@/components/common/inspirasjonsmal/p_ullpledd.jpg';
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
+
+// Import new inspiration gallery images
+import inspo1 from '@/components/common/inspirasjonsmal/inspo1.jpg';
+import inspo2 from '@/components/common/inspirasjonsmal/inspo2.jpg';
+import inspo3 from '@/components/common/inspirasjonsmal/inspo3.jpg';
+import inspo4 from '@/components/common/inspirasjonsmal/inspo4.jpg';
+import inspo5 from '@/components/common/inspirasjonsmal/inspo5.jpg';
 
 
 // --- Page Specific Data ---
@@ -119,43 +123,43 @@ const galleryImages: {
   className: string;
 }[] = [
   {
-    src: takAvLysImage,
-    alt: 'En lyslenke spent over en terrasse',
-    title: 'Tak av lys',
-    description: 'Lyslenker over sittegruppen skaper en følelse av et lunt og definert uterom.',
-    hint: 'string lights patio',
+    src: inspo1,
+    alt: 'En koselig uteplass med bålpanne og stoler om kvelden',
+    title: 'Samlingspunkt med bålpanne',
+    description: 'En bålpanne blir raskt det naturlige midtpunktet for varme og hygge.',
+    hint: 'cozy firepit evening',
     className: 'col-span-1 md:col-span-2 row-span-2',
   },
   {
-    src: ledVeienImage,
-    alt: 'Solcellelamper langs en hagesti',
-    title: 'Led veien',
-    description: 'Solcellelamper langs stier og i bed fremhever hagens vakre detaljer.',
-    hint: 'solar lights path',
+    src: inspo2,
+    alt: 'To personer som koser seg med ullpledd rundt en bålpanne',
+    title: 'Hold varmen',
+    description: 'Myke ullpledd er perfekte for å forlenge de kjølige sommerkveldene.',
+    hint: 'couple wool blanket',
     className: 'col-span-1',
   },
   {
-    src: levendeLysImage,
-    alt: 'En stor lanterne med blokklys på et bord',
-    title: 'Levende lys',
-    description: 'Store lanterner og lykter gir en ekstra koselig og levende glød.',
-    hint: 'lantern candle table',
+    src: inspo3,
+    alt: 'En lyslenke som henger i et tre og lyser opp uteplassen',
+    title: 'Stemningsfull belysning',
+    description: 'Lyslenker i trær eller over terrassen skaper en magisk atmosfære.',
+    hint: 'string lights tree',
     className: 'col-span-1',
   },
   {
-    src: artikkel1,
-    alt: 'Høytrykkspyler i bruk på terrasse',
-    title: 'Rengjør uteområdet',
-    description: 'En skinnende ren terrasse er den perfekte basen for en koselig uteplass.',
-    hint: 'pressure washer patio',
+    src: inspo4,
+    alt: 'Popcorn som popper i en popcorngryte over åpen ild',
+    title: 'Noe godt å bite i',
+    description: 'Lag deilig popcorn over bålpannen – en favoritt for både store og små.',
+    hint: 'popcorn campfire',
     className: 'col-span-1',
   },
     {
-    src: artikkel2,
-    alt: 'Nærbilde av treverk på utemøbler',
-    title: 'Vedlikehold møblene',
-    description: 'Sørg for at tremøblene dine tåler vær og vind sesong etter sesong.',
-    hint: 'wood furniture oil',
+    src: inspo5,
+    alt: 'Nærbilde av en moderne solcellelampe i et blomsterbed',
+    title: 'Moderne solcellelys',
+    description: 'Stilrene solcellelamper gir et elegant og funksjonelt lys langs stier og i bed.',
+    hint: 'modern solar light',
     className: 'col-span-1',
   },
 ];
