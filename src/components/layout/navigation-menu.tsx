@@ -451,6 +451,7 @@ export const hjemOgFritidMenuData = {
       },
     ],
   ],
+  articles: hageArticles, // Using hage as a placeholder
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
