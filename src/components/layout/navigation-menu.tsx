@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import type { Product } from '@/types/product';
 import { ArticleCard } from '@/components/common/article-card';
+import { ProductCard } from '@/components/common/product-card';
 
 
 // Import products for campaign menu
@@ -41,7 +42,6 @@ import saaing1 from '@/components/common/saaing/saaing1.webp';
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
-import { ProductCard } from '../common/product-card';
 
 const kampanjeProducts: Product[] = [
     {
@@ -652,9 +652,8 @@ export const merkevarerMenuData = {
 
 export const kampanjerMenuData = {
   links: [
-    { title: 'Ukens kampanjer', href: '#' },
-    { title: 'Tilbud på robotgressklippere', href: '/robotgressklipper' },
-    { title: 'Tilbud på klær og sko', href: '#' },
+    { title: 'Alle kampanjer', href: '#' },
+    { title: 'Søndagskupp', href: '#', isSundayOnly: true },
   ],
   specialLink: { title: 'Lagersalg', href: '#'},
   products: kampanjeProducts,
@@ -754,6 +753,13 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
 
 // Main Navigation Component
 export function MainNavMenu() {
+  const [isSunday, setIsSunday] = React.useState(false);
+
+  React.useEffect(() => {
+    // This will only run on the client, avoiding hydration mismatches.
+    setIsSunday(new Date().getDay() === 0);
+  }, []);
+  
   const renderNavItems = (items: typeof leftNavItems) => {
     return items.map((item) => {
       const megaMenuData = menuDataMap[item.name];
@@ -771,32 +777,29 @@ export function MainNavMenu() {
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
                   {/* Special Layout for Kampanjer */}
                   {isCampaign ? (
-                    <>
-                      <div className="md:col-span-1 flex flex-col gap-4">
-                        {megaMenuData.specialLink && (
-                           <Button asChild size="lg" className="bg-destructive hover:bg-destructive/90 text-destructive-foreground">
+                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                        <div className="md:col-span-1 flex flex-col gap-4">
+                           <Button asChild size="lg" className="h-auto py-3 text-base">
+                            <Link href={megaMenuData.footerLink.href}>{megaMenuData.links[0].title}</Link>
+                          </Button>
+                           <Button asChild size="lg" variant="outline" className="h-auto py-3 text-base">
                             <Link href={megaMenuData.specialLink.href}>{megaMenuData.specialLink.title}</Link>
                           </Button>
-                        )}
-                        <div className="flex flex-col gap-2">
-                           <h3 className="px-3 text-lg font-bold text-primary">Ukens kampanjer</h3>
-                           <Separator className="mb-2" />
-                            {megaMenuData.links.map((link: { title: string, href: string }) => (
-                                <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
-                                    <span>{link.title}</span>
-                                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                                </Link>
-                            ))}
+                          {isSunday && (
+                            <Button asChild size="lg" variant="outline" className="h-auto py-3 text-base border-yellow-400 text-yellow-500 hover:bg-yellow-50 hover:text-yellow-600">
+                                <Link href="#">{megaMenuData.links.find((l: any) => l.isSundayOnly)?.title}</Link>
+                            </Button>
+                          )}
                         </div>
-                      </div>
-                      <div className="md:col-span-3">
-                        <div className="grid grid-cols-4 gap-4">
-                           {megaMenuData.products.map((product: Product) => (
-                            <ProductCard key={product.id} {...product} />
-                          ))}
+                        <div className="md:col-span-2">
+                           <h3 className="mb-4 text-lg font-bold text-primary">Populære produkter på kampanje</h3>
+                           <div className="grid grid-cols-2 gap-4">
+                              {megaMenuData.products.slice(0, 4).map((product: Product) => (
+                                 <ProductCard key={product.id} {...product} />
+                              ))}
+                           </div>
                         </div>
-                      </div>
-                    </>
+                     </div>
                   ) : (
                     <>
                       <div className="grid md:grid-cols-3 gap-x-8 md:col-span-3" >
@@ -852,7 +855,7 @@ export function MainNavMenu() {
                     </>
                   )}
                  
-                 {megaMenuData.footerLink && (
+                 {megaMenuData.footerLink && !isCampaign && (
                   <div className="md:col-span-4 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                       <Link href={megaMenuData.footerLink.href}>
