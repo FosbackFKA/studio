@@ -54,6 +54,13 @@ import img40 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00040.jpg';
 import img42 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00042.jpg';
 import img44 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00044.avif';
 import img46 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00046.avif';
+import img48 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00048.jpg';
+import img50 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00050.jpg';
+import img52 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00052.jpg';
+import img54 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00054.jpg';
+import img56 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00056.jpg';
+import img58 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00058.avif';
+import img60 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00060.jpg';
 
 
 
@@ -309,7 +316,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
 
 
 function Tractor360Viewer() {
-    const totalFrames = 30;
+    const totalFrames = 37;
     const [currentFrame, setCurrentFrame] = React.useState(0);
     const [isLoaded, setIsLoaded] = React.useState(false);
     const isDragging = React.useRef(false);
@@ -318,7 +325,7 @@ function Tractor360Viewer() {
     const sensitivity = 2; // How many pixels to drag for one frame change
 
     const imageUrls = React.useMemo(() => 
-        [img0, img1, img3, img4, img5, img7, img8, img9, img11, img12, img13, img15, img16, img17, img19, img20, img21, img23, img24, img26, img28, img30, img32, img34, img36, img38, img40, img42, img44, img46]
+        [img0, img1, img3, img4, img5, img7, img8, img9, img11, img12, img13, img15, img16, img17, img19, img20, img21, img23, img24, img26, img28, img30, img32, img34, img36, img38, img40, img42, img44, img46, img48, img50, img52, img54, img56, img58, img60]
     , []);
 
     React.useEffect(() => {
