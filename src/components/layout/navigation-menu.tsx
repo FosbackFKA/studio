@@ -24,11 +24,18 @@ import { ArticleCard } from '@/components/common/article-card';
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
 import popular2 from '../common/aktuelle-kampanjer/2.webp';
 import popular3 from '../common/aktuelle-kampanjer/3.webp';
+import popular4 from '../common/aktuelle-kampanjer/4.webp';
 
 // Import product images
 import hund1 from '@/components/common/hund/hund1.webp';
 import hund2 from '@/components/common/hund/hund2.webp';
 import hund3 from '@/components/common/hund/hund3.webp';
+import gressklipper1 from '@/components/common/gressklipper/gressklipper1.webp';
+import gressklipper2 from '@/components/common/gressklipper/gressklipper2.webp';
+import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
+import vanning1 from '@/components/common/vanning/vanning1.webp';
+import saaing1 from '@/components/common/saaing/saaing1.webp';
+
 
 // Import article images for the new menu
 import artikkel1 from '@/components/common/artikler/1.webp';
@@ -69,6 +76,17 @@ const kampanjeProducts: Product[] = [
       productUrl: '#',
       onlineStock: true,
       storeStockCount: 68,
+    },
+    {
+      id: 'KARCHERK4P',
+      title: 'Høytrykkspyler K4 Premium',
+      brand: 'Kärcher',
+      price: '3 199,-',
+      salePrice: '2 699,-',
+      imageUrl: popular4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 81,
     },
 ];
 
@@ -637,8 +655,8 @@ export const kampanjerMenuData = {
     { title: 'Ukens kampanjer', href: '#' },
     { title: 'Tilbud på robotgressklippere', href: '/robotgressklipper' },
     { title: 'Tilbud på klær og sko', href: '#' },
-    { title: 'Lagersalg', href: '#' },
   ],
+  specialLink: { title: 'Lagersalg', href: '#'},
   products: kampanjeProducts,
   footerLink: { name: 'Se alle kampanjer', href: '#' }
 };
@@ -751,68 +769,87 @@ export function MainNavMenu() {
           <NavigationMenuContent>
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
-                  <div className={cn(
-                    "grid md:grid-cols-3 gap-x-8",
-                    megaMenuData.articles ? "md:col-span-3" : (megaMenuData.products ? "md:col-span-3" : "md:col-span-4")
-                    )} >
-                      {megaMenuData.columns?.map((col: any[], idx: number) => (
-                        <div key={idx} className="flex flex-col gap-4">
-                          {col.map((group) => (
-                            <MegaMenuColumn key={group.title || group.links[0].name} {...group} />
+                  {/* Special Layout for Kampanjer */}
+                  {isCampaign ? (
+                    <>
+                      <div className="md:col-span-1 flex flex-col gap-4">
+                        {megaMenuData.specialLink && (
+                           <Button asChild size="lg" className="bg-destructive hover:bg-destructive/90 text-destructive-foreground">
+                            <Link href={megaMenuData.specialLink.href}>{megaMenuData.specialLink.title}</Link>
+                          </Button>
+                        )}
+                        <div className="flex flex-col gap-2">
+                           <h3 className="px-3 text-lg font-bold text-primary">Ukens kampanjer</h3>
+                           <Separator className="mb-2" />
+                            {megaMenuData.links.map((link: { title: string, href: string }) => (
+                                <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
+                                    <span>{link.title}</span>
+                                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                                </Link>
+                            ))}
+                        </div>
+                      </div>
+                      <div className="md:col-span-3">
+                        <div className="grid grid-cols-4 gap-4">
+                           {megaMenuData.products.map((product: Product) => (
+                            <ProductCard key={product.id} {...product} />
                           ))}
                         </div>
-                      ))}
-                      {!megaMenuData.columns && megaMenuData.links && (
-                           <div className="flex flex-col gap-2 md:col-span-1">
-                              <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
-                              <Separator className="mb-2" />
-                              {megaMenuData.links.map((link: { title: string, href: string }) => (
-                                  <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
-                                      <span>{link.title}</span>
-                                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                                  </Link>
-                              ))}
-                          </div>
-                      )}
-                  </div>
-                  {(megaMenuData.articles) && (
-                    <div className="md:col-span-1 flex gap-8">
-                       <Separator orientation="vertical" className="h-auto" />
-                       <div className="flex-1">
-                        <div>
-                          <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
-                          <Separator className="mb-2" />
-                          <div className="flex flex-col gap-2">
-                            {megaMenuData.articles[0] && <ArticleCard {...megaMenuData.articles[0]} />}
-                            <div className="mt-2 flex flex-col gap-1 pl-2">
-                                {megaMenuData.articles.slice(1).map((article: any) => (
-                                    <Link href={article.articleUrl} key={article.title} className="group flex items-center gap-2 rounded-md p-2 text-sm text-sidebar-foreground/80 hover:bg-black/5 hover:text-primary">
-                                        <FileText className="h-4 w-4 flex-shrink-0 text-primary/80" />
-                                        <span className="truncate group-hover:underline">{article.title}</span>
-                                    </Link>
-                                ))}
-                            </div>
-                             <Button asChild variant="link" className="justify-start mt-2">
-                              <Link href="#">
-                                Se alle artikler i {item.name.toLowerCase()}
-                                <ChevronRight className="ml-1 h-4 w-4" />
-                              </Link>
-                            </Button>
-                          </div>
-                       </div>
-                    </div>
-                    </div>
-                  )}
-
-                  {megaMenuData.products && (
-                    <div className="md:col-span-2">
-                      <h3 className="mb-4 px-3 text-lg font-bold text-primary">Populære produkter</h3>
-                      <div className="grid grid-cols-3 gap-4">
-                        {megaMenuData.products.map((product: Product) => (
-                          <ProductCard key={product.id} {...product} />
-                        ))}
                       </div>
-                    </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="grid md:grid-cols-3 gap-x-8 md:col-span-3" >
+                          {megaMenuData.columns?.map((col: any[], idx: number) => (
+                            <div key={idx} className="flex flex-col gap-4">
+                              {col.map((group) => (
+                                <MegaMenuColumn key={group.title || group.links[0].name} {...group} />
+                              ))}
+                            </div>
+                          ))}
+                          {!megaMenuData.columns && megaMenuData.links && (
+                              <div className="flex flex-col gap-2 md:col-span-1">
+                                  <h3 className="px-3 text-lg font-bold text-primary">{item.name}</h3>
+                                  <Separator className="mb-2" />
+                                  {megaMenuData.links.map((link: { title: string, href: string }) => (
+                                      <Link key={link.title} href={link.href} className="flex items-center justify-between rounded-md p-3 text-base font-medium text-foreground hover:bg-black/5 hover:text-primary">
+                                          <span>{link.title}</span>
+                                          <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                                      </Link>
+                                  ))}
+                              </div>
+                          )}
+                      </div>
+                      
+                      {megaMenuData.articles && (
+                        <div className="md:col-span-1 flex gap-8">
+                           <Separator orientation="vertical" className="h-auto" />
+                           <div className="flex-1">
+                            <div>
+                              <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
+                              <Separator className="mb-2" />
+                              <div className="flex flex-col gap-2">
+                                {megaMenuData.articles[0] && <ArticleCard {...megaMenuData.articles[0]} />}
+                                <div className="mt-2 flex flex-col gap-1 pl-2">
+                                    {megaMenuData.articles.slice(1).map((article: any) => (
+                                        <Link href={article.articleUrl} key={article.title} className="group flex items-center gap-2 rounded-md p-2 text-sm text-sidebar-foreground/80 hover:bg-black/5 hover:text-primary">
+                                            <FileText className="h-4 w-4 flex-shrink-0 text-primary/80" />
+                                            <span className="truncate group-hover:underline">{article.title}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                                <Button asChild variant="link" className="justify-start mt-2">
+                                  <Link href="#">
+                                    Se alle artikler i {item.name.toLowerCase()}
+                                    <ChevronRight className="ml-1 h-4 w-4" />
+                                  </Link>
+                                </Button>
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                      )}
+                    </>
                   )}
                  
                  {megaMenuData.footerLink && (
