@@ -25,6 +25,9 @@ import { ArticleCard } from '@/components/common/article-card';
 import popular1 from '../common/aktuelle-kampanjer/1.webp';
 import popular2 from '../common/aktuelle-kampanjer/2.webp';
 import popular3 from '../common/aktuelle-kampanjer/3.webp';
+import popular4 from '@/components/common/aktuelle-kampanjer/4.webp';
+import popular5 from '@/components/common/aktuelle-kampanjer/5.webp';
+
 
 // Import product images
 import hund1 from '@/components/common/hund/hund1.webp';
@@ -143,6 +146,42 @@ const kjaeledyrProducts: Product[] = [
       productUrl: '#',
       onlineStock: false,
       storeStockCount: 63,
+    },
+];
+
+const verktoyProducts: Product[] = [
+    {
+      id: 'KARCHERK4P',
+      title: 'Høytrykkspyler K4 Premium',
+      brand: 'Kärcher',
+      price: '3 199,-',
+      salePrice: '2 699,-',
+      imageUrl: popular4,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 81,
+    },
+    {
+      id: 'CHAMP92001I',
+      title: 'Strømaggregat 92001I-EU bensin inverter 2,2 kW',
+      brand: 'Champion Europe',
+      price: '7 999,-',
+      salePrice: '5 999,-',
+      imageUrl: popular2,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
+    },
+    {
+      id: 'GARDENACLAS30',
+      title: 'Hageslange Classic (1/2") 30 M',
+      brand: 'Gardena',
+      price: '499,-',
+      salePrice: '379,-',
+      imageUrl: popular5,
+      productUrl: '#',
+      onlineStock: true,
+      storeStockCount: 88,
     },
 ];
 
@@ -383,6 +422,7 @@ export const klaerOgSkoMenuData = {
       },
     ],
   ],
+  products: verktoyProducts.slice(0,3),
   footerLink: { name: 'Se alt i klær og sko', href: '#' },
 };
 
@@ -476,6 +516,7 @@ export const hjemOgFritidMenuData = {
       },
     ],
   ],
+  products: kampanjeProducts.slice(0,3),
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
@@ -549,6 +590,7 @@ export const verktoyOgRedskapMenuData = {
       },
     ],
   ],
+  products: verktoyProducts,
   footerLink: { name: 'Se alt i verktøy og redskap', href: '#' },
 };
 
@@ -601,6 +643,7 @@ export const skogOgVedMenuData = {
       },
     ],
   ],
+  products: kampanjeProducts.slice(0,3),
   footerLink: { name: 'Se alt i skog og ved', href: '#' },
 };
 
