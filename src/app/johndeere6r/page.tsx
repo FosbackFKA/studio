@@ -12,7 +12,6 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, PlayCircle, Settings, Tractor, Wallet } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import './styles.css';
 
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
@@ -59,7 +58,6 @@ const techSpecs = [
 
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
-    const blueprintSectionRef = React.useRef<HTMLElement>(null);
 
     const handleScroll = () => {
         // --- Nav-lenke-scrolling ---
@@ -73,24 +71,6 @@ export default function JohnDeere6RPage() {
                 break;
             }
         }
-        
-        // --- Blueprint-animasjon-scrolling ---
-        const section = blueprintSectionRef.current;
-        if (!section) return;
-
-        const { top, height } = section.getBoundingClientRect();
-        const screenHeight = window.innerHeight;
-
-        // Calculate progress from when the top of the section enters the bottom of the viewport
-        // to when the bottom of the section leaves the top of the viewport.
-        const start = screenHeight;
-        const end = -height;
-        const current = top;
-        
-        let progress = (start - current) / (start - end);
-        progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
-
-        section.style.setProperty('--scroll-progress', progress.toString());
     };
 
     React.useEffect(() => {
@@ -191,20 +171,6 @@ export default function JohnDeere6RPage() {
                         </section>
                     </div>
                 </div>
-
-                {/* --- Interaktiv tegning --- */}
-                <section ref={blueprintSectionRef} className="interactive-blueprint-section h-[300vh] relative">
-                    <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
-                        <div className="container mx-auto max-w-[1542px] px-4 relative flex items-center justify-center">
-                            <div className="blueprint-container">
-                                <Image src="https://placehold.co/800x450.png" alt="Teknisk tegning av traktor" className="blueprint-outline" fill data-ai-hint="tractor blueprint outline" />
-                                <div className="blueprint-fill-wrapper">
-                                    <Image src={heroImage} alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill data-ai-hint="tractor field sunrise" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <div id="funksjoner" className="bg-white py-16 lg:py-24">
                     <div className="container mx-auto max-w-[1542px] px-4">
