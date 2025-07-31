@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ProductCard } from '@/components/common/product-card';
 import type { Product } from '@/types/product';
+import { ArticleCard } from '@/components/common/article-card';
 
 
 // Import products for campaign menu
@@ -33,6 +34,11 @@ import hund3 from '@/components/common/hund/hund3.webp';
 import gressklipper1 from '@/components/common/gressklipper/gressklipper1.webp';
 import gressklipper2 from '@/components/common/gressklipper/gressklipper2.webp';
 import gressklipper3 from '@/components/common/gressklipper/gressklipper3.webp';
+
+// Import article images for the new menu
+import artikkel1 from '@/components/common/artikler/1.webp';
+import artikkel2 from '@/components/common/artikler/2.webp';
+import artikkel3 from '@/components/common/artikler/3.webp';
 
 
 const kampanjeProducts: Product[] = [
@@ -140,6 +146,30 @@ const kjaeledyrProducts: Product[] = [
     },
 ];
 
+const guideArticles = [
+   {
+      title: 'Slik velger du riktig høytrykkspyler',
+      excerpt: 'En høytrykkspyler er et fantastisk verktøy for rengjøring. Lær deg hva du bør se etter for å finne modellen som passer dine behov perfekt.',
+      imageUrl: artikkel1,
+      dataAiHint: 'pressure washer cleaning',
+      articleUrl: '#',
+    },
+    {
+      title: 'Vedlikehold av utemøbler i tre',
+      excerpt: 'Med riktig vedlikehold kan utemøblene dine i tre vare i mange år. Følg våre enkle steg for å beskytte og bevare treverket.',
+      imageUrl: artikkel2,
+      dataAiHint: 'wooden outdoor furniture',
+      articleUrl: '#',
+    },
+    {
+      title: 'Skap en summende oase for biene',
+      excerpt: 'Hjelp de viktige pollinatorene! Lær hvilke blomster du kan plante for å skape en frodig og bievennlig hage eller balkong.',
+      imageUrl: artikkel3,
+      dataAiHint: 'bees flowers garden',
+      articleUrl: '#',
+    },
+]
+
 export const leftNavItems = [
   { name: 'Hage og uterom', href: '#' },
   { name: 'Kjæledyr', href: '#' },
@@ -151,8 +181,8 @@ export const leftNavItems = [
 
 export const rightNavItems = [
   { name: 'Kampanjer', href: '#' },
-  { name: 'Lagersalg', href: '#' },
   { name: 'Merkevarer', href: '#' },
+  { name: 'Guider og artikler', href: '#' },
 ];
 
 // Data for all menus
@@ -629,18 +659,71 @@ export const kampanjerMenuData = {
     { title: 'Ukens kampanjer', href: '#' },
     { title: 'Tilbud på robotgressklippere', href: '#' },
     { title: 'Tilbud på klær og sko', href: '#' },
+    { title: 'Lagersalg', href: '#' },
   ],
   products: kampanjeProducts,
   footerLink: { name: 'Se alle kampanjer', href: '#' }
 };
 
-export const lagersalgMenuData = {
-  links: [
-    { title: 'Siste sjanse', href: '#' },
-    { title: 'Utgående varer', href: '#' },
+export const guiderOgArtiklerMenuData = {
+  columns: [
+     [
+      {
+        title: 'Hage og uterom',
+        href: '#',
+        links: [
+          { name: 'Slik velger du riktig gressklipper', href: '#' },
+          { name: 'Guide til høytrykkspyler', href: '#' },
+          { name: 'Slik blir du kvitt ugress i plenen', href: '#' },
+          { name: 'Vedlikehold av utemøbler', href: '#' },
+        ],
+      },
+    ],
+    [
+      {
+        title: 'Kjæledyr',
+        href: '#',
+        links: [
+          { name: 'Slik velger du riktig fôr til hunden din', href: '/hundefor' },
+          { name: 'Førstehjelp til hund', href: '#' },
+          { name: 'Velg riktig utstyr til valpen', href: '#' },
+        ],
+      },
+    ],
+     [
+      {
+        title: 'Vedlikehold og redskap',
+        href: '#',
+        links: [
+          { name: 'Hvordan velge riktig motorsag?', href: '#' },
+          { name: 'Vask og vedlikehold av bil', href: '#' },
+          { name: 'Slik bruker du en kompostkvern', href: '#' },
+        ],
+      },
+    ],
   ],
-  footerLink: { name: 'Se alle tilbud', href: '#' }
+  articles: guideArticles,
+  footerLink: { name: 'Se alle guider og artikler', href: '#' },
 };
+
+
+export const menuDataMap: Record<string, any> = {
+  'Hage og uterom': hageUteromMenuData,
+  'Kjæledyr': kjaeledyrMenuData,
+  'Klær og sko': klaerOgSkoMenuData,
+  'Hjem og fritid': hjemOgFritidMenuData,
+  'Verktøy og redskap': verktoyOgRedskapMenuData,
+  'Skog og ved': skogOgVedMenuData,
+  'Merkevarer': merkevarerMenuData,
+  'Kampanjer': kampanjerMenuData,
+  'Guider og artikler': guiderOgArtiklerMenuData,
+};
+
+export const allMegaMenusData = leftNavItems.map(item => ({
+  name: item.name,
+  data: menuDataMap[item.name],
+}));
+
 
 const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string; links: { name: string; href: string }[] }) => (
   <div className="flex flex-col">
@@ -665,24 +748,6 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
   </div>
 );
 
-export const menuDataMap: Record<string, any> = {
-  'Hage og uterom': hageUteromMenuData,
-  'Kjæledyr': kjaeledyrMenuData,
-  'Klær og sko': klaerOgSkoMenuData,
-  'Hjem og fritid': hjemOgFritidMenuData,
-  'Verktøy og redskap': verktoyOgRedskapMenuData,
-  'Skog og ved': skogOgVedMenuData,
-  'Merkevarer': merkevarerMenuData,
-  'Kampanjer': kampanjerMenuData,
-  'Lagersalg': lagersalgMenuData,
-};
-
-export const allMegaMenusData = leftNavItems.map(item => ({
-  name: item.name,
-  data: menuDataMap[item.name],
-}));
-
-
 // Main Navigation Component
 export function MainNavMenu() {
   const renderNavItems = (items: typeof leftNavItems) => {
@@ -696,7 +761,7 @@ export function MainNavMenu() {
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
                   {/* Link Columns */}
-                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products})}>
+                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products && !megaMenuData.articles, "md:grid-cols-2 col-span-2": megaMenuData.articles})}>
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
                           {col.map((group) => (
@@ -726,6 +791,19 @@ export function MainNavMenu() {
                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {megaMenuData.products.slice(0,3).map((product: any) => (
                               <ProductCard key={product.id} {...product} />
+                            ))}
+                        </div>
+                    </div>
+                  )}
+
+                  {/* Articles Column */}
+                  {megaMenuData.articles && (
+                    <div className="md:col-span-3">
+                       <h3 className="px-3 text-lg font-bold text-primary">Utvalgte guider</h3>
+                       <Separator className="mb-2" />
+                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            {megaMenuData.articles.slice(0,3).map((article: any) => (
+                              <ArticleCard key={article.title} {...article} />
                             ))}
                         </div>
                     </div>

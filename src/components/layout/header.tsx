@@ -553,49 +553,51 @@ export function HeaderComponent() {
     const hasSubCategories = menuData.columns && listItems[0]?.links;
 
     return (
-      <>
-        {menuData.footerLink && (
-           <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between py-3 font-medium text-primary border-b" onClick={() => setIsMenuOpen(false)}>
-             <span>{menuData.footerLink.name}</span>
+      <div className="flex h-full flex-col">
+        <div className="flex-grow">
+          {menuData.footerLink && (
+            <Link href={menuData.footerLink.href} className="flex w-full items-center justify-between border-b py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
+              <span>{menuData.footerLink.name}</span>
               <ChevronRight className="h-5 w-5 text-muted-foreground" />
-           </Link>
-         )}
+            </Link>
+          )}
 
-       <ul className="flex flex-col flex-grow">
-        {hasSubCategories ? (
-          listItems.map((group: any) => (
-            <li key={group.title}>
-              <button onClick={() => handleNavigate({ title: group.title, items: group.links, parentTitle: menuData.title })} className="flex w-full items-center justify-between py-3 font-medium text-primary">
-                <span>{group.title}</span>
-                <ChevronRight className="h-5 w-5 text-muted-foreground" />
-              </button>
-            </li>
-          ))
-        ) : (
-          listItems.map((link: any) => (
-              <li key={link.title || link.name}>
-              <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
-                  <span>{link.title || link.name}</span>
-              </Link>
-              </li>
-          ))
-        )}
-        </ul>
-
+          <ul className="flex flex-col">
+            {hasSubCategories ? (
+              listItems.map((group: any) => (
+                <li key={group.title}>
+                  <button onClick={() => handleNavigate({ title: group.title, items: group.links, parentTitle: menuData.title })} className="flex w-full items-center justify-between py-3 font-medium text-primary">
+                    <span>{group.title}</span>
+                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                  </button>
+                </li>
+              ))
+            ) : (
+              listItems.map((link: any) => (
+                  <li key={link.title || link.name}>
+                  <Link href={link.href} className="flex w-full items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
+                      <span>{link.title || link.name}</span>
+                  </Link>
+                  </li>
+              ))
+            )}
+          </ul>
+        </div>
+        
         {menuData.products && (
-          <div className="mt-auto pt-4">
+          <div className="mt-auto flex-shrink-0 pt-4">
             <Separator />
             <h3 className="my-4 text-base font-semibold text-foreground">Populære produkter</h3>
             <div className="flex space-x-4 overflow-x-auto pb-4 no-scrollbar">
               {menuData.products.map((product: Product) => (
-                 <div key={product.id} className="w-40 flex-shrink-0">
-                    <MiniProductCard product={product} />
+                 <div key={product.id} className="w-48 flex-shrink-0">
+                    <ProductCard {...product} />
                 </div>
               ))}
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
 
@@ -738,7 +740,3 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
-
-
-
-
