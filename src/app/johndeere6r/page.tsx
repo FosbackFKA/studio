@@ -14,6 +14,8 @@ import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, PlayCircle, S
 import { cn } from '@/lib/utils';
 import './styles.css';
 
+import heroImage from '@/components/common/johndeere6r/hero.jpg';
+
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
     { name: 'Maskin og redskap', href: '#' },
@@ -81,7 +83,7 @@ export default function JohnDeere6RPage() {
                 {/* --- Hero Seksjon --- */}
                 <section id="oversikt" className="relative h-screen min-h-[700px] w-full text-white">
                     <Image
-                        src="https://placehold.co/1920x1080.png"
+                        src={heroImage}
                         alt="John Deere 6R 110 traktor på et jorde ved soloppgang"
                         fill
                         className="object-cover"
@@ -192,7 +194,7 @@ export default function JohnDeere6RPage() {
                                 </p>
                             </div>
                             <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg">
-                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 1024px) 50vw, 100vw" data-ai-hint="tractor joystick controls" />
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" data-ai-hint="tractor joystick controls" />
                             </div>
                         </section>
 
@@ -206,7 +208,7 @@ export default function JohnDeere6RPage() {
                                 </p>
                             </div>
                             <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
-                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 1024px) 50vw, 100vw" data-ai-hint="tractor display screen"/>
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" data-ai-hint="tractor display screen"/>
                             </div>
                         </section>
                     </div>
