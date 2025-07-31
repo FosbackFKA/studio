@@ -320,7 +320,7 @@ export default function InspirationTemplatePage() {
                                   className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8"
                                   onClick={(e) => e.stopPropagation()} 
                               >
-                                  <div className="relative flex-1 flex items-center justify-center w-full max-h-[calc(100vh-180px)]">
+                                  <div className="relative flex-1 flex items-center justify-center w-full max-h-[calc(100vh-120px)]">
                                       <Image
                                           src={galleryImages[selectedImageIndex].src}
                                           alt={galleryImages[selectedImageIndex].alt}
