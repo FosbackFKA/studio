@@ -109,7 +109,7 @@ export default function JohnDeere6RPage() {
                 </section>
 
                 {/* --- Sticky Sub-nav --- */}
-                <div className="sticky top-0 z-40 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
+                <div className="sticky top-[64px] z-40 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
                     <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
                         {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Kontakt'].map((item) => (
                             <Link
@@ -154,14 +154,14 @@ export default function JohnDeere6RPage() {
 
                         {/* --- Se den i aksjon --- */}
                         <section>
-                            <div className="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-xl shadow-lg">
-                                <Image src="https://placehold.co/1280x720.png" alt="John Deere 6R 110 i arbeid" fill className="object-cover" data-ai-hint="tractor action video"/>
-                                <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/50"></div>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-transform group-hover:scale-110">
-                                        <PlayCircle className="h-20 w-20 text-white" />
-                                    </div>
-                                </div>
+                            <div className="aspect-video w-full overflow-hidden rounded-xl shadow-lg">
+                                <iframe
+                                    className="h-full w-full"
+                                    src="https://www.youtube.com/embed/pCJK1xopEds?start=18"
+                                    title="John Deere 6R Series Tractors"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                ></iframe>
                             </div>
                         </section>
                     </div>
@@ -191,8 +191,8 @@ export default function JohnDeere6RPage() {
                                     Den ergonomiske CommandARM™-konsollen samler alle viktige funksjoner, fra gass og gir til hydraulikk og trepunkt, på ett sted. Dette reduserer stress og øker presisjonen i arbeidet.
                                 </p>
                             </div>
-                            <div className="aspect-video overflow-hidden rounded-xl shadow-lg">
-                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="tractor joystick controls" />
+                            <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg">
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 1024px) 50vw, 100vw" data-ai-hint="tractor joystick controls" />
                             </div>
                         </section>
 
@@ -205,8 +205,8 @@ export default function JohnDeere6RPage() {
                                     Den nye G5Plus CommandCenter™ er mer enn bare en skjerm. Med 35 % større visningsareal, raskere prosessor og full HD-oppløsning, gir den deg en krystallklar oversikt og lynrask tilgang til alt du trenger for presisjonslandbruk.
                                 </p>
                             </div>
-                            <div className="aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
-                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="tractor display screen"/>
+                            <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
+                                <Image src="https://placehold.co/600x450.png" alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 1024px) 50vw, 100vw" data-ai-hint="tractor display screen"/>
                             </div>
                         </section>
                     </div>
