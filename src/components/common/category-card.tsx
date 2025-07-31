@@ -24,8 +24,8 @@ export function CategoryCard({ title, imageUrl, categoryUrl, dataAiHint }: Categ
             data-ai-hint={dataAiHint || "category item"}
           />
         </div>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 text-left">
-           <h3 className="font-headline text-xl font-bold text-white group-hover:underline">{title}</h3>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-left">
+           <h3 className="font-headline text-xl font-bold text-yellow-300 group-hover:underline break-words">{title}</h3>
         </div>
       </Card>
     </Link>
