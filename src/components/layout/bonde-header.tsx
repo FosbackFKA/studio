@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { FkaLogo } from '@/components/common/logo';
-import { Search, Menu as MenuIcon, User, StoreIcon } from 'lucide-react';
+import { Search, Menu as MenuIcon, User, StoreIcon, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 
