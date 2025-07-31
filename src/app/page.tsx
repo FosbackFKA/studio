@@ -324,16 +324,16 @@ export default async function HomePage() {
     {
       title: 'Guide: Slik trives kaninen ute',
       excerpt: 'Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.',
-      imageUrl: artikkel2, // Using a placeholder image, can be updated.
+      imageUrl: artikkel2,
       articleUrl: '/artikler/stegforsteg',
       dataAiHint: 'rabbit hutch'
     },
     {
-      title: 'Hvordan bekjempe snegler?',
-      excerpt: 'De er ikke spesielt trivelige, brune, slimete og spiser det meste de kommer over. Brunsneglen har blitt et stort problem i hagene våre. Men...',
-      imageUrl: artikkel3,
+      title: 'Guide: Slik velger du riktig høytrykkspyler',
+      excerpt: 'En høytrykkspyler er et fantastisk verktøy for rengjøring. Lær deg hva du bør se etter for å finne modellen som passer dine behov perfekt.',
+      imageUrl: artikkel1,
+      dataAiHint: 'pressure washer cleaning',
       articleUrl: '#',
-      dataAiHint: 'slug leaf'
     },
   ];
 

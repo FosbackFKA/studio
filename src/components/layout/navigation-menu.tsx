@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -116,6 +117,13 @@ const hageArticles = [
 
 const kjaeledyrArticles = [
      {
+      title: 'Guide: Slik trives kaninen ute',
+      excerpt: 'Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.',
+      imageUrl: artikkel2,
+      articleUrl: '/artikler/stegforsteg',
+      dataAiHint: 'rabbit hutch'
+    },
+    {
       title: 'Slik velger du riktig fôr til hunden din',
       excerpt: 'Det kan være vanskelig å vite hvilket fôr som er best. Les vår guide for å finne det perfekte fôret tilpasset din hunds alder, størrelse og aktivitetsnivå.',
       imageUrl: hund1,
@@ -129,28 +137,21 @@ const kjaeledyrArticles = [
       articleUrl: '#',
       dataAiHint: 'veterinarian dog checkup'
     },
-    {
-      title: 'Velg riktig utstyr til valpen',
-      excerpt: 'En ny valp i huset? Her er en sjekkliste over alt du trenger av utstyr for å gi den en trygg og god start på livet.',
-      imageUrl: hund3,
-      articleUrl: '#',
-      dataAiHint: 'puppy playing toys'
-    },
 ];
 
 const guideArticles = [
+   {
+      title: 'Guide: Slik trives kaninen ute',
+      excerpt: 'Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.',
+      imageUrl: artikkel2,
+      articleUrl: '/artikler/stegforsteg',
+      dataAiHint: 'rabbit hutch'
+    },
    {
       title: 'Slik velger du riktig høytrykkspyler',
       excerpt: 'En høytrykkspyler er et fantastisk verktøy for rengjøring. Lær deg hva du bør se etter for å finne modellen som passer dine behov perfekt.',
       imageUrl: artikkel1,
       dataAiHint: 'pressure washer cleaning',
-      articleUrl: '#',
-    },
-    {
-      title: 'Vedlikehold av utemøbler i tre',
-      excerpt: 'Med riktig vedlikehold kan utemøblene dine i tre vare i mange år. Følg våre enkle steg for å beskytte og bevare treverket.',
-      imageUrl: artikkel2,
-      dataAiHint: 'wooden outdoor furniture',
       articleUrl: '#',
     },
     {
