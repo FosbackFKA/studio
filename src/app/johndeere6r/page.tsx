@@ -174,7 +174,7 @@ export default function JohnDeere6RPage() {
                             <div className="blueprint-container">
                                 <Image src="https://placehold.co/800x450.png" alt="Teknisk tegning av traktor" className="blueprint-outline" fill data-ai-hint="tractor blueprint outline" />
                                 <div className="blueprint-fill-wrapper">
-                                    <Image src="https://placehold.co/800x450.png" alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill data-ai-hint="tractor blueprint fill" />
+                                    <Image src="https://placehold.co/1920x1080.png" alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill data-ai-hint="tractor field sunrise" />
                                 </div>
                             </div>
                         </div>
