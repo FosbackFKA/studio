@@ -643,7 +643,8 @@ export const kampanjerMenuData = {
   columns: [
     [
       {
-        title: 'Alle kampanjer', href: '#',
+        title: 'Alle kampanjer',
+        href: '#',
         links: [
           { name: 'Lagersalg', href: '#' },
           { name: 'Søndagskupp', href: '#', isSundayOnly: true },
@@ -651,8 +652,9 @@ export const kampanjerMenuData = {
       },
     ],
   ],
-  products: kampanjeProducts,
-  productsTitle: "Utvalgte produkter på kampanje",
+  products: kampanjeProducts.slice(0, 3),
+  productsTitle: 'Utvalgte produkter på kampanje',
+  footerLink: { name: 'Se alle produkter på kampanje', href: '#' },
 };
 
 export const guiderOgArtiklerMenuData = {
@@ -799,7 +801,7 @@ export function MainNavMenu() {
                  
                  {/* Products Section */}
                  {megaMenuData.products && (
-                    <div className={cn("flex gap-8", isCampaign ? "md:col-span-3" : "md:col-span-1")}>
+                    <div className={cn("flex gap-8", isCampaign ? "md:col-span-3" : "md:col-span-3")}>
                        <Separator orientation="vertical" className="h-auto" />
                        <div className="flex-1">
                             {megaMenuData.productsTitle && (
