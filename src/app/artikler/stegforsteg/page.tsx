@@ -16,10 +16,8 @@ import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Import local images
-import product1 from '@/components/common/kanin/p-hus.jpg';
-import product2 from '@/components/common/kanin/p-hoy.jpg';
-import product3 from '@/components/common/kanin/p-mat.jpg';
-import product4 from '@/components/common/kanin/p-drikke.jpg';
+import product1 from '@/components/common/artikler/1.webp';
+import product3 from '@/components/common/artikler/2.webp';
 
 const step1Image = product1;
 const heroImage = step1Image;
@@ -88,17 +86,6 @@ const shopTheLookProducts: Product[] = [
     dataAiHint: 'rabbit hutch wood'
   },
   {
-    id: 'HOY01',
-    title: 'Timothy Høy 2 kg',
-    brand: 'Felleskjøpet',
-    price: '229,-',
-    imageUrl: product2,
-    productUrl: '#',
-    onlineStock: true,
-    storeStockCount: 150,
-    dataAiHint: 'hay bale'
-  },
-  {
     id: 'KANINFOR01',
     title: 'Kaninpellets Komplett 5kg',
     brand: 'Felleskjøpet',
@@ -108,17 +95,6 @@ const shopTheLookProducts: Product[] = [
     onlineStock: true,
     storeStockCount: 112,
     dataAiHint: 'rabbit food pellets'
-  },
-  {
-    id: 'DRIKKEFLASKE01',
-    title: 'Drikkeflaske 500ml',
-    brand: 'Classic',
-    price: '119,-',
-    imageUrl: product4,
-    productUrl: '#',
-    onlineStock: true,
-    storeStockCount: 210,
-    dataAiHint: 'rabbit water bottle'
   },
 ];
 
