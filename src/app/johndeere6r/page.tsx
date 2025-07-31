@@ -312,20 +312,22 @@ function Tractor360Viewer() {
     const totalFrames = 30;
     const [currentFrame, setCurrentFrame] = React.useState(0);
     const [isLoaded, setIsLoaded] = React.useState(false);
+    const isDragging = React.useRef(false);
+    const startX = React.useRef(0);
+    const startFrame = React.useRef(0);
+    const sensitivity = 2; // How many pixels to drag for one frame change
 
-    // Create an array of image URLs (placeholders for a 360 sequence)
     const imageUrls = React.useMemo(() => 
         [img0, img1, img3, img4, img5, img7, img8, img9, img11, img12, img13, img15, img16, img17, img19, img20, img21, img23, img24, img26, img28, img30, img32, img34, img36, img38, img40, img42, img44, img46]
     , []);
 
-    // Preload images to ensure smooth interaction
     React.useEffect(() => {
         let loadedCount = 0;
         const imageElements: HTMLImageElement[] = [];
 
         imageUrls.forEach((src) => {
             const img = document.createElement('img');
-            img.src = src.src; // Access the src property of StaticImageData
+            img.src = src.src; 
             img.onload = () => {
                 loadedCount++;
                 if (loadedCount === totalFrames) {
@@ -334,16 +336,39 @@ function Tractor360Viewer() {
             };
             imageElements.push(img);
         });
-
     }, [imageUrls]);
 
-    const handleSliderChange = (value: number[]) => {
-        setCurrentFrame(value[0]);
+    const handleInteractionStart = (clientX: number) => {
+        isDragging.current = true;
+        startX.current = clientX;
+        startFrame.current = currentFrame;
+    };
+
+    const handleInteractionMove = (clientX: number) => {
+        if (!isDragging.current) return;
+        
+        const dx = clientX - startX.current;
+        const frameOffset = Math.round(dx / sensitivity);
+        const newFrame = (startFrame.current - frameOffset + totalFrames * 100) % totalFrames; // Negativ modulo
+        setCurrentFrame(newFrame);
+    };
+
+    const handleInteractionEnd = () => {
+        isDragging.current = false;
     };
 
     return (
-        <Card className="p-4 shadow-lg overflow-hidden">
-            <div className="relative aspect-[3/2] w-full">
+        <Card className="p-4 shadow-lg overflow-hidden select-none">
+            <div 
+                className="relative aspect-[3/2] w-full cursor-grab active:cursor-grabbing"
+                onMouseDown={(e) => handleInteractionStart(e.clientX)}
+                onMouseMove={(e) => handleInteractionMove(e.clientX)}
+                onMouseUp={handleInteractionEnd}
+                onMouseLeave={handleInteractionEnd}
+                onTouchStart={(e) => handleInteractionStart(e.touches[0].clientX)}
+                onTouchMove={(e) => handleInteractionMove(e.touches[0].clientX)}
+                onTouchEnd={handleInteractionEnd}
+            >
                 {!isLoaded && (
                     <div className="absolute inset-0 flex items-center justify-center bg-secondary">
                         <Loader className="h-12 w-12 animate-spin text-primary" />
@@ -356,7 +381,7 @@ function Tractor360Viewer() {
                         alt={`John Deere 6R 110 - Angle ${index + 1}`}
                         fill
                         className={cn(
-                            "object-contain transition-opacity duration-100",
+                            "object-contain transition-opacity duration-100 pointer-events-none",
                             currentFrame === index && isLoaded ? "opacity-100" : "opacity-0"
                         )}
                         sizes="(max-width: 768px) 100vw, 80vw"
@@ -364,19 +389,9 @@ function Tractor360Viewer() {
                     />
                 ))}
             </div>
-            <div className="mt-4 px-4">
-                <div className="flex items-center gap-4">
-                    <Search className="h-5 w-5 text-muted-foreground" />
-                    <Slider
-                        defaultValue={[0]}
-                        min={0}
-                        max={totalFrames - 1}
-                        step={1}
-                        onValueChange={handleSliderChange}
-                        disabled={!isLoaded}
-                    />
-                     <MoveHorizontal className="h-5 w-5 text-muted-foreground" />
-                </div>
+            <div className="mt-4 flex items-center justify-center gap-2 text-muted-foreground">
+                <MoveHorizontal className="h-5 w-5" />
+                <span className="text-sm">Dra for å rotere</span>
             </div>
         </Card>
     );
@@ -418,7 +433,6 @@ export default function JohnDeere6RPage() {
                         fill
                         className="object-cover"
                         priority
-                        data-ai-hint="tractor field sunrise"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
                     <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
@@ -503,7 +517,7 @@ export default function JohnDeere6RPage() {
                         <section className="mb-16 lg:mb-24 text-center">
                              <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Utforsk 6R 110 i 360 grader</h2>
                              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                                Dra i slideren under for å rotere traktoren og se den fra alle vinkler.
+                                Dra i bildet under for å rotere traktoren og se den fra alle vinkler.
                              </p>
                              <div className="mt-8 max-w-5xl mx-auto">
                                 <Tractor360Viewer />
