@@ -67,16 +67,14 @@ export function ProductCard({
             </Badge>
           )}
           <div className="relative aspect-square w-full bg-white">
-            <div className="relative h-full w-full p-2">
-                <Image
-                src={imageUrl}
-                alt={imageAlt || title}
-                fill
-                sizes="(max-width: 640px) 75vw, (max-width: 1024px) 40vw, 30vw"
-                className="object-contain transition-transform duration-300 group-hover:scale-105"
-                data-ai-hint={dataAiHint || "product agriculture"}
-                />
-            </div>
+            <Image
+            src={imageUrl}
+            alt={imageAlt || title}
+            fill
+            sizes="(max-width: 640px) 75vw, (max-width: 1024px) 40vw, 30vw"
+            className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+            data-ai-hint={dataAiHint || "product agriculture"}
+            />
           </div>
         </div>
 
