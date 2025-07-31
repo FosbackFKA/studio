@@ -67,40 +67,40 @@ const configOptions = {
     title: "Girkasse",
     icon: GitCommit,
     options: [
-      { id: 'autopowr', name: 'AutoPowr™ IVT™', description: 'Trinnløs og sømløs giring for maksimal effektivitet.', longDescription: 'AutoPowr™ er en hydro-mekanisk girkasse som leverer trinnløs og kontinuerlig kraft ved alle hastigheter. Den kombinerer mekanisk effektivitet med presisjonen til hydrostatisk drift, ideelt for varierte oppgaver.', price: 0 },
-      { id: 'autoquad', name: 'AutoQuad™ Plus', description: 'Manuell giring med automatiserte funksjoner.', longDescription: 'AutoQuad™ Plus gir deg fire powershift-trinn i hver av de seks gruppene. Den tilbyr manuell kontroll med tilleggsfunksjoner som SoftShift for myke girskift under belastning.', price: -25000 },
+      { id: 'autopowr', name: 'AutoPowr™ IVT™', description: 'Trinnløs og sømløs giring for maksimal effektivitet.', longDescription: 'AutoPowr™ er en hydro-mekanisk girkasse som leverer trinnløs og kontinuerlig kraft ved alle hastigheter. Den kombinerer mekanisk effektivitet med presisjonen til hydrostatisk drift, ideelt for varierte oppgaver.' },
+      { id: 'autoquad', name: 'AutoQuad™ Plus', description: 'Manuell giring med automatiserte funksjoner.', longDescription: 'AutoQuad™ Plus gir deg fire powershift-trinn i hver av de seks gruppene. Den tilbyr manuell kontroll med tilleggsfunksjoner som SoftShift for myke girskift under belastning.' },
     ],
   },
   frontlaster: {
     title: "Frontlaster",
     icon: Loader,
     options: [
-      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', longDescription: 'Fullt integrert John Deere frontlaster, perfekt tilpasset 6R-serien for optimal balanse, sikt og ytelse. Inkluderer joystick-kontroll i CommandARM™.', price: 95000 },
-      { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', longDescription: 'Leveres uten frontlaster for de som ikke har behov, eller ønsker å ettermontere eget utstyr. Traktoren er fortsatt klargjort for laster.', price: 0 },
+      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', longDescription: 'Fullt integrert John Deere frontlaster, perfekt tilpasset 6R-serien for optimal balanse, sikt og ytelse. Inkluderer joystick-kontroll i CommandARM™.' },
+      { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', longDescription: 'Leveres uten frontlaster for de som ikke har behov, eller ønsker å ettermontere eget utstyr. Traktoren er fortsatt klargjort for laster.' },
     ],
   },
   dekk: {
     title: "Dekk",
     icon: Tractor,
     options: [
-      { id: 'standard_dekk', name: 'Standard dekk', description: 'Allsidige dekk for varierte oppgaver.', longDescription: 'Et balansert dekkvalg som gir god ytelse for både jordbearbeiding, transport og arbeid på gårdsplassen. Et godt kompromiss mellom trekkraft og veiegenskaper.', price: 0 },
-      { id: 'brede_dekk', name: 'Brede dekk', description: 'For redusert marktrykk og bedre trekkraft.', longDescription: 'Brede dekk fordeler vekten over et større område, noe som reduserer jordpakking og øker trekkraften på mykt underlag. Ideelt for arbeid på sensitive jorder.', price: 42000 },
+      { id: 'standard_dekk', name: 'Standard dekk', description: 'Allsidige dekk for varierte oppgaver.', longDescription: 'Et balansert dekkvalg som gir god ytelse for både jordbearbeiding, transport og arbeid på gårdsplassen. Et godt kompromiss mellom trekkraft og veiegenskaper.' },
+      { id: 'brede_dekk', name: 'Brede dekk', description: 'For redusert marktrykk og bedre trekkraft.', longDescription: 'Brede dekk fordeler vekten over et større område, noe som reduserer jordpakking og øker trekkraften på mykt underlag. Ideelt for arbeid på sensitive jorder.' },
     ],
   },
   lys: {
     title: "Lyspakke",
     icon: Sun,
     options: [
-      { id: 'standard_lys', name: 'Standard lyspakke', description: 'Halogenlys for god sikt.', longDescription: 'Standardpakken gir solid belysning med velprøvde halogenpærer, tilstrekkelig for de fleste arbeidsoppgaver under normale lysforhold.', price: 0 },
-      { id: 'premium_lys', name: 'Premium 360° LED', description: 'Full LED-belysning for overlegen sikt om natten.', longDescription: 'Premium-pakken oppgraderer all arbeidsbelysning til kraftig LED. Gir et hvitt, dagslyslignende lys i 360 grader rundt traktoren for maksimal sikt og sikkerhet ved nattarbeid.', price: 35000 },
+      { id: 'standard_lys', name: 'Standard lyspakke', description: 'Halogenlys for god sikt.', longDescription: 'Standardpakken gir solid belysning med velprøvde halogenpærer, tilstrekkelig for de fleste arbeidsoppgaver under normale lysforhold.' },
+      { id: 'premium_lys', name: 'Premium 360° LED', description: 'Full LED-belysning for overlegen sikt om natten.', longDescription: 'Premium-pakken oppgraderer all arbeidsbelysning til kraftig LED. Gir et hvitt, dagslyslignende lys i 360 grader rundt traktoren for maksimal sikt og sikkerhet ved nattarbeid.' },
     ],
   },
   gps: {
     title: "GPS-system",
     icon: Map,
     options: [
-      { id: 'gps_forberedt', name: 'GPS-forberedt', description: 'Klargjort for ettermontering av GPS.', longDescription: 'Traktoren leveres klargjort for AutoTrac™, noe som betyr at kabler og braketter er på plass for enkel ettermontering av en StarFire™-mottaker og aktivering av autostyring.', price: 0 },
-      { id: 'integrert_gps', name: 'Integrert StarFire™', description: 'Fullt integrert GPS for presisjonslandbruk.', longDescription: 'Fabrikkmontert StarFire™-mottaker og full aktivering av AutoTrac™ på G5Plus-skjermen. Klar for presisjonslandbruk rett fra levering, noe som sikrer nøyaktige pass og redusert overlapping.', price: 120000 },
+      { id: 'gps_forberedt', name: 'GPS-forberedt', description: 'Klargjort for ettermontering av GPS.', longDescription: 'Traktoren leveres klargjort for AutoTrac™, noe som betyr at kabler og braketter er på plass for enkel ettermontering av en StarFire™-mottaker og aktivering av autostyring.' },
+      { id: 'integrert_gps', name: 'Integrert StarFire™', description: 'Fullt integrert GPS for presisjonslandbruk.', longDescription: 'Fabrikkmontert StarFire™-mottaker og full aktivering av AutoTrac™ på G5Plus-skjermen. Klar for presisjonslandbruk rett fra levering, noe som sikrer nøyaktige pass og redusert overlapping.' },
     ],
   },
 };
@@ -128,15 +128,15 @@ type ConfigSelection = {
 };
 
 
-function QuoteRequestDialog({ trigger, selection, totalPrice }: { trigger: React.ReactNode; selection: ConfigSelection; totalPrice: number; }) {
+function QuoteRequestDialog({ trigger, selection }: { trigger: React.ReactNode; selection: ConfigSelection; }) {
   const selectedOptions = React.useMemo(() => {
     return Object.entries(selection).map(([key, value]) => {
       const category = configOptions[key as keyof typeof configOptions];
       const option = category.options.find(opt => opt.id === value);
-      if (option && option.price > 0) {
+      // Only include non-default selections
+      if (option && !option.id.includes('standard') && !option.id.includes('uten') && !option.id.includes('forberedt')) {
         return {
           name: option.name,
-          price: option.price,
         };
       }
       return null;
@@ -160,19 +160,18 @@ function QuoteRequestDialog({ trigger, selection, totalPrice }: { trigger: React
               <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-1 text-sm">
-                {selectedOptions.map(option => option && (
-                  <li key={option.name} className="flex justify-between">
-                    <span className="text-muted-foreground">{option.name}</span>
-                    <span>+ {option.price.toLocaleString('nb-NO')} kr</span>
-                  </li>
-                ))}
-              </ul>
-              <Separator className="my-2" />
-              <div className="flex justify-between font-bold">
-                <span>Estimert totalpris (eks. mva)</span>
-                <span>{totalPrice.toLocaleString('nb-NO')} kr</span>
-              </div>
+              {selectedOptions.length > 0 ? (
+                <>
+                  <p className='text-sm font-medium mb-2'>Valgt utstyr:</p>
+                  <ul className="space-y-1 text-sm list-disc pl-5">
+                    {selectedOptions.map(option => option && (
+                      <li key={option.name} className="text-muted-foreground">{option.name}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p className="text-sm text-muted-foreground">Standard konfigurasjon valgt.</p>
+              )}
             </CardContent>
           </Card>
           
@@ -225,16 +224,6 @@ export default function JohnDeere6RPage() {
         gps: 'gps_forberedt',
     });
 
-    const basePrice = 1450000;
-
-    const totalPrice = React.useMemo(() => {
-        return Object.keys(configSelection).reduce((acc, key) => {
-            const category = configOptions[key as keyof typeof configOptions];
-            const selectedOption = category.options.find(opt => opt.id === configSelection[key as keyof typeof configSelection]);
-            return acc + (selectedOption?.price || 0);
-        }, basePrice);
-    }, [configSelection]);
-
     const handleConfigChange = (category: keyof ConfigSelection, value: string) => {
         setConfigSelection(prev => ({ ...prev, [category]: value }));
     };
@@ -284,7 +273,6 @@ export default function JohnDeere6RPage() {
                         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                              <QuoteRequestDialog
                                 selection={configSelection}
-                                totalPrice={totalPrice}
                                 trigger={
                                     <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                         Be om et tilbud
@@ -427,109 +415,60 @@ export default function JohnDeere6RPage() {
                                 Skreddersy traktoren etter dine behov. Velg utstyr og se prisen oppdateres i sanntid.
                             </p>
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-                           {/* Tractor Image */}
-                            <div className="lg:col-span-1">
-                                <Card className="overflow-hidden sticky top-36">
-                                <div className="relative aspect-video w-full bg-secondary/30">
-                                    <Image
-                                        src={heroImage}
-                                        alt={`John Deere 6R 110 med ${configSelection.frontlaster === 'med_laster' ? 'frontlaster' : 'uten frontlaster'}`}
-                                        fill
-                                        className="object-contain p-8 transition-all duration-300"
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
-                                    />
-                                    {configSelection.frontlaster === 'med_laster' && (
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex items-center justify-center" data-ai-hint="tractor front loader">
-                                            <p className="bg-black/20 text-white p-4 rounded-lg backdrop-blur-sm">Visuell representasjon av frontlaster</p>
-                                        </div>
-                                    )}
-                                </div>
-                                </Card>
-                            </div>
-                            
-                            {/* Configuration Options */}
-                            <div className="lg:col-span-1 space-y-6">
-                                {Object.entries(configOptions).map(([key, category]) => (
-                                    <Card key={key} className="overflow-hidden">
-                                    <CardHeader className="bg-secondary/30">
-                                        <CardTitle className="flex items-center gap-2 font-headline text-xl">
-                                            <category.icon className="h-6 w-6 text-primary" />
-                                            {category.title}
-                                        </CardTitle>
-                                    </CardHeader>
-                                    <CardContent className="p-4">
-                                        <RadioGroup
-                                            value={configSelection[key as keyof ConfigSelection]}
-                                            onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
-                                        >
-                                        {category.options.map(option => (
-                                            <Label key={option.id} className={cn(
-                                                "flex items-start gap-4 rounded-lg border p-4 cursor-pointer transition-colors hover:bg-accent/10",
-                                                configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
-                                            )}>
-                                                <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
-                                                <div className="flex-1">
-                                                    <div className="flex justify-between items-center">
-                                                        <div className="flex items-center gap-2">
-                                                            <span className="font-semibold text-foreground">{option.name}</span>
-                                                            <Tooltip>
-                                                                <TooltipTrigger asChild>
-                                                                    <button type="button" aria-label="Mer informasjon">
-                                                                        <Info className="h-4 w-4 text-muted-foreground" />
-                                                                    </button>
-                                                                </TooltipTrigger>
-                                                                <TooltipContent>
-                                                                    <p className="max-w-xs">{option.longDescription}</p>
-                                                                </TooltipContent>
-                                                            </Tooltip>
-                                                        </div>
-                                                        <span className="text-sm font-medium text-primary">
-                                                            {option.price > 0 ? `+ ${option.price.toLocaleString('nb-NO')} kr` : (option.price < 0 ? `- ${(option.price * -1).toLocaleString('nb-NO')} kr` : 'Standard')}
-                                                        </span>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                            {Object.entries(configOptions).map(([key, category]) => (
+                                <Card key={key} className="overflow-hidden">
+                                <CardHeader className="bg-secondary/30">
+                                    <CardTitle className="flex items-center gap-2 font-headline text-xl">
+                                        <category.icon className="h-6 w-6 text-primary" />
+                                        {category.title}
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent className="p-4">
+                                    <RadioGroup
+                                        value={configSelection[key as keyof ConfigSelection]}
+                                        onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
+                                    >
+                                    {category.options.map(option => (
+                                        <Label key={option.id} className={cn(
+                                            "flex items-start gap-4 rounded-lg border p-4 cursor-pointer transition-colors hover:bg-accent/10",
+                                            configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
+                                        )}>
+                                            <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
+                                            <div className="flex-1">
+                                                <div className="flex justify-between items-center">
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="font-semibold text-foreground">{option.name}</span>
+                                                        <Tooltip>
+                                                            <TooltipTrigger asChild>
+                                                                <button type="button" aria-label="Mer informasjon">
+                                                                    <Info className="h-4 w-4 text-muted-foreground" />
+                                                                </button>
+                                                            </TooltipTrigger>
+                                                            <TooltipContent>
+                                                                <p className="max-w-xs">{option.longDescription}</p>
+                                                            </TooltipContent>
+                                                        </Tooltip>
                                                     </div>
-                                                    <p className="text-sm text-muted-foreground">{option.description}</p>
                                                 </div>
-                                            </Label>
-                                        ))}
-                                        </RadioGroup>
-                                    </CardContent>
-                                    </Card>
-                                ))}
-                                
-                                {/* Price Summary */}
-                                <Card className="shadow-lg sticky bottom-8">
-                                   <CardHeader>
-                                       <CardTitle className="font-headline text-2xl">Prisoverslag</CardTitle>
-                                   </CardHeader>
-                                   <CardContent className="space-y-2">
-                                       <div className="flex justify-between">
-                                           <span className="text-muted-foreground">Grunnpris</span>
-                                           <span>{basePrice.toLocaleString('nb-NO')} kr</span>
-                                       </div>
-                                        <div className="flex justify-between">
-                                           <span className="text-muted-foreground">Valgt utstyr</span>
-                                           <span>{(totalPrice - basePrice).toLocaleString('nb-NO')} kr</span>
-                                       </div>
-                                       <Separator className="my-2" />
-                                       <div className="flex justify-between items-baseline font-bold text-2xl">
-                                           <span>Totalpris (eks. mva)</span>
-                                           <span>{totalPrice.toLocaleString('nb-NO')} kr</span>
-                                       </div>
-                                   </CardContent>
-                                   <div className="p-6 pt-0">
-                                       <QuoteRequestDialog
-                                            selection={configSelection}
-                                            totalPrice={totalPrice}
-                                            trigger={
-                                                <Button size="lg" className="w-full h-12 text-base">
-                                                    <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
-                                                </Button>
-                                            }
-                                       />
-                                   </div>
-                               </Card>
-                            </div>
+                                                <p className="text-sm text-muted-foreground">{option.description}</p>
+                                            </div>
+                                        </Label>
+                                    ))}
+                                    </RadioGroup>
+                                </CardContent>
+                                </Card>
+                            ))}
+                        </div>
+                        <div className="mt-12 text-center">
+                            <QuoteRequestDialog
+                                selection={configSelection}
+                                trigger={
+                                    <Button size="lg" className="h-12 text-base px-8">
+                                        <Mail className="mr-2 h-5 w-5"/> Be om et tilbud
+                                    </Button>
+                                }
+                            />
                         </div>
                     </div>
                     </TooltipProvider>
@@ -646,7 +585,6 @@ export default function JohnDeere6RPage() {
                         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                              <QuoteRequestDialog
                                 selection={configSelection}
-                                totalPrice={totalPrice}
                                 trigger={
                                     <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                         <Mail className="mr-2"/> Finn din lokale selger
