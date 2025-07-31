@@ -428,7 +428,7 @@ export const klaerOgSkoMenuData = {
 
 export const hjemOgFritidMenuData = {
   columns: [
-    [ // Column 1
+    [
       {
         title: 'Brannvern og sikkerhet', href: '#',
         links: [
@@ -443,18 +443,15 @@ export const hjemOgFritidMenuData = {
           { name: 'Turmat', href: '#' },
         ],
       },
-       {
-        title: 'Vask og renhold', href: '#',
+      {
+        title: 'Fanshop', href: '#',
         links: [
-          { name: 'Desinfeksjonsmidler', href: '#' },
-          { name: 'Personlig pleie', href: '#' },
-          { name: 'Rengjøringmiddel innendørs', href: '#' },
-          { name: 'Rengjøringmiddel utendørs', href: '#' },
-          { name: 'Renholdsutstyr', href: '#' },
+          { name: 'Felleskjøpet fanshop', href: '#' },
+          { name: 'John Deere fanshop', href: '#' },
         ],
       },
     ],
-    [ // Column 2
+    [
       {
         title: 'El-artikler og belysning', href: '#',
         links: [
@@ -473,14 +470,16 @@ export const hjemOgFritidMenuData = {
           { name: 'Leketraktorer', href: '#' },
         ],
       },
-      
     ],
-    [ // Column 3
+    [
       {
-        title: 'Fanshop', href: '#',
+        title: 'Vask og renhold', href: '#',
         links: [
-          { name: 'Felleskjøpet fanshop', href: '#' },
-          { name: 'John Deere fanshop', href: '#' },
+          { name: 'Desinfeksjonsmidler', href: '#' },
+          { name: 'Personlig pleie', href: '#' },
+          { name: 'Rengjøringmiddel innendørs', href: '#' },
+          { name: 'Rengjøringmiddel utendørs', href: '#' },
+          { name: 'Renholdsutstyr', href: '#' },
         ],
       },
       {
@@ -492,31 +491,7 @@ export const hjemOgFritidMenuData = {
         ],
       },
     ],
-    [ // Column 4
-      {
-        title: 'Fyring og oppvarming', href: '#',
-        links: [
-          { name: 'Lighter, gass og tennvæske', href: '#' },
-          { name: 'Propan', href: '#' },
-          { name: 'Utstyr til ildsted', href: '#' },
-          { name: 'Vedbag', href: '#' },
-          { name: 'Varmeovner', href: '#' },
-          { name: 'Se flere', href: '#' },
-        ],
-      },
-       {
-        title: 'Skadedyrbekjempelse', href: '#',
-        links: [
-          { name: 'Fugleskremsel', href: '#' },
-          { name: 'Insektmiddel', href: '#' },
-          { name: 'Mus og rotter', href: '#' },
-          { name: 'Snegler', href: '#' },
-          { name: 'Insektfelle', href: '#' },
-        ],
-      },
-    ],
   ],
-  products: kampanjeProducts.slice(0,3),
   footerLink: { name: 'Se alt i hjem og fritid', href: '#' },
 };
 
@@ -817,7 +792,7 @@ export function MainNavMenu() {
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
                   {/* Link Columns */}
-                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products && !megaMenuData.articles, "md:grid-cols-2 col-span-2": megaMenuData.articles})}>
+                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products && !megaMenuData.articles, "md:grid-cols-2 col-span-2": megaMenuData.articles, "md:grid-cols-3 col-span-5": item.name === 'Hjem og fritid' })} >
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
                           {col.map((group) => (
