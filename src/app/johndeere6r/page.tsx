@@ -103,7 +103,7 @@ export default function JohnDeere6RPage() {
                             <Button asChild size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
                                 <Link href="#kontakt">Be om et tilbud</Link>
                             </Button>
-                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white hover:bg-white/10 hover:text-white">
+                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-white/10 hover:text-white backdrop-blur-sm">
                                 <Link href="#spesifikasjoner">Se tekniske data</Link>
                             </Button>
                         </div>
@@ -176,7 +176,7 @@ export default function JohnDeere6RPage() {
                             <div className="blueprint-container">
                                 <Image src="https://placehold.co/800x450.png" alt="Teknisk tegning av traktor" className="blueprint-outline" fill data-ai-hint="tractor blueprint outline" />
                                 <div className="blueprint-fill-wrapper">
-                                    <Image src="https://placehold.co/1920x1080.png" alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill data-ai-hint="tractor field sunrise" />
+                                    <Image src={heroImage} alt="Fargelagt teknisk tegning av traktor" className="blueprint-fill" fill data-ai-hint="tractor field sunrise" />
                                 </div>
                             </div>
                         </div>
