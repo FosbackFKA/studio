@@ -62,7 +62,7 @@ export function ProductCard({
       <Card className="flex h-full flex-col overflow-hidden rounded-lg border border-primary/20 bg-card shadow-sm transition-all duration-300 hover:border-primary/60 hover:shadow-md">
         <div className="relative">
           {discountText && (
-            <Badge variant="outline" className="absolute left-3 top-3 z-10 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">
+            <Badge variant="outline" className="absolute left-3 top-3 z-10 border-none bg-accent px-2 py-1 text-sm font-semibold text-accent-foreground">
               {discountText}
             </Badge>
           )}

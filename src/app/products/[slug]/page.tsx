@@ -292,7 +292,7 @@ export default function ProductPage() {
                     style={ zoomActive ? { transformOrigin: `${imgPos.x} ${imgPos.y}` } : {} }
                     priority
                  />
-                 <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent/20 px-2 py-1 text-sm font-semibold text-primary">{product.badgeText}</Badge>
+                 <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent px-2 py-1 text-sm font-semibold text-accent-foreground">{product.badgeText}</Badge>
                </div>
                <div className="grid grid-cols-4 gap-4">
                 {product.gallery.map((img, idx) => (
