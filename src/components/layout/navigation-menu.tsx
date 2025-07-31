@@ -116,36 +116,27 @@ const hageProducts: Product[] = [
     },
 ];
 
-const kjaeledyrProducts: Product[] = [
+const kjaeledyrArticles = [
      {
-      id: 'LABB01',
-      title: 'Hundefôr Voksen små hunder 3 kg',
-      brand: 'Labb',
-      price: '249,-',
+      title: 'Slik velger du riktig fôr til hunden din',
+      excerpt: 'Det kan være vanskelig å vite hvilket fôr som er best. Les vår guide for å finne det perfekte fôret tilpasset din hunds alder, størrelse og aktivitetsnivå.',
       imageUrl: hund1,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 120,
+      articleUrl: '/hundefor',
+      dataAiHint: 'dog eating food'
     },
     {
-      id: 'LABB02',
-      title: 'Hundefôr Voksen mellom- og stor rase 15 kg',
-      brand: 'Labb',
-      price: '649,-',
+      title: 'Førstehjelp til hund',
+      excerpt: 'Ulykker kan skje. Vær forberedt med vår guide til førstehjelp for hund. Lær hva du skal gjøre ved kutt, forgiftning eller andre akutte situasjoner.',
       imageUrl: hund2,
-      productUrl: '#',
-      onlineStock: true,
-      storeStockCount: 95,
+      articleUrl: '#',
+      dataAiHint: 'veterinarian dog checkup'
     },
     {
-      id: 'NONSTOP01',
-      title: 'Kobbel Move Leash 150 cm grønn',
-      brand: 'Non-stop dogwear',
-      price: '349,-',
+      title: 'Velg riktig utstyr til valpen',
+      excerpt: 'En ny valp i huset? Her er en sjekkliste over alt du trenger av utstyr for å gi den en trygg og god start på livet.',
       imageUrl: hund3,
-      productUrl: '#',
-      onlineStock: false,
-      storeStockCount: 63,
+      articleUrl: '#',
+      dataAiHint: 'puppy playing toys'
     },
 ];
 
@@ -352,7 +343,7 @@ export const kjaeledyrMenuData = {
       },
     ],
   ],
-  products: kjaeledyrProducts,
+  articles: kjaeledyrArticles,
   footerLink: { name: 'Se alt i kjæledyr', href: '#' },
 };
 
@@ -792,7 +783,7 @@ export function MainNavMenu() {
             {megaMenuData ? (
               <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
                   {/* Link Columns */}
-                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products && !megaMenuData.articles, "md:grid-cols-2 col-span-2": megaMenuData.articles, "md:grid-cols-3 col-span-5": item.name === 'Hjem og fritid' })} >
+                  <div className={cn("grid md:grid-cols-3 gap-x-8 col-span-3", { "md:grid-cols-4 col-span-4" : !megaMenuData.products && !megaMenuData.articles, "md:grid-cols-2 col-span-2": megaMenuData.articles && !megaMenuData.products, "md:grid-cols-3 col-span-3": megaMenuData.products || megaMenuData.articles })} >
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
                           {col.map((group) => (
@@ -829,8 +820,8 @@ export function MainNavMenu() {
 
                   {/* Articles Column */}
                   {megaMenuData.articles && (
-                    <div className="md:col-span-3">
-                       <h3 className="px-3 text-lg font-bold text-primary">Utvalgte guider</h3>
+                    <div className={cn("md:col-span-2", { "md:col-span-3": !megaMenuData.products })}>
+                       <h3 className="px-3 text-lg font-bold text-primary">Populære artikler</h3>
                        <Separator className="mb-2" />
                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {megaMenuData.articles.slice(0,3).map((article: any) => (
