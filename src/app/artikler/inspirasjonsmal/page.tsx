@@ -99,11 +99,11 @@ const relatedArticles = [
       articleUrl: '#',
     },
     {
-      title: 'Vedlikehold av utemøbler i tre',
-      excerpt: 'Med riktig vedlikehold kan utemøblene dine i tre vare i mange år. Følg våre enkle steg for å beskytte og bevare treverket.',
+      title: 'Guide: Slik trives kaninen ute',
+      excerpt: 'Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.',
       imageUrl: artikkel2,
-      dataAiHint: 'wooden outdoor furniture',
-      articleUrl: '#',
+      articleUrl: '/artikler/stegforsteg',
+      dataAiHint: 'rabbit hutch'
     },
     {
       title: 'Skap en summende oase for biene',

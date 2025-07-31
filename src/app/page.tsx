@@ -322,11 +322,11 @@ export default async function HomePage() {
       dataAiHint: 'fire pit cozy'
     },
     {
-      title: 'Slik blir du kvitt ugress',
-      excerpt: 'Vi elsker når det blir varmere i været og hagen våkner til liv. Knoppene blomstrer og gresset spirer, men det gjør dessverre også ugresset. Vi...',
-      imageUrl: artikkel2,
-      articleUrl: '#',
-      dataAiHint: 'dandelions weeds'
+      title: 'Guide: Slik trives kaninen ute',
+      excerpt: 'Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.',
+      imageUrl: artikkel2, // Using a placeholder image, can be updated.
+      articleUrl: '/artikler/stegforsteg',
+      dataAiHint: 'rabbit hutch'
     },
     {
       title: 'Hvordan bekjempe snegler?',
