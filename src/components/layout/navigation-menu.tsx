@@ -18,7 +18,6 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import type { Product } from '@/types/product';
 import { ArticleCard } from '@/components/common/article-card';
-import { ProductCard } from '@/components/common/product-card';
 
 
 // Import products for campaign menu
@@ -35,6 +34,7 @@ import hund3 from '@/components/common/hund/hund3.webp';
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
+import { ProductCard } from '../common/product-card';
 
 const kampanjeProducts: Product[] = [
     {
@@ -750,10 +750,10 @@ export function MainNavMenu() {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             {megaMenuData ? (
-              <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-5">
+              <div className="container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8 md:grid-cols-4">
                   <div className={cn(
                     "grid md:grid-cols-3 gap-x-8",
-                    megaMenuData.articles ? "md:col-span-3" : (megaMenuData.products ? "md:col-span-3" : "md:col-span-5")
+                    megaMenuData.articles ? "md:col-span-3" : (megaMenuData.products ? "md:col-span-3" : "md:col-span-4")
                     )} >
                       {megaMenuData.columns?.map((col: any[], idx: number) => (
                         <div key={idx} className="flex flex-col gap-4">
@@ -776,7 +776,7 @@ export function MainNavMenu() {
                       )}
                   </div>
                   {(megaMenuData.articles) && (
-                    <div className="md:col-span-2 flex gap-8">
+                    <div className="md:col-span-1 flex gap-8">
                        <Separator orientation="vertical" className="h-auto" />
                        <div className="flex-1">
                         <div>
@@ -816,7 +816,7 @@ export function MainNavMenu() {
                   )}
                  
                  {megaMenuData.footerLink && (
-                  <div className="md:col-span-5 mt-8 border-t border-sidebar-border pt-4">
+                  <div className="md:col-span-4 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                       <Link href={megaMenuData.footerLink.href}>
                         {megaMenuData.footerLink.name}
