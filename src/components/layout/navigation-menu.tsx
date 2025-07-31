@@ -601,29 +601,19 @@ export const skogOgVedMenuData = {
 };
 
 export const merkevarerMenuData = {
-  brands: [
-    { name: 'Stihl', href: '#', description: 'Kraft og presisjon for skog og hage.', imageUrl: artikkel1 },
-    { name: 'Segway', href: '#', description: 'Smarte og effektive robotgressklippere.', imageUrl: popular1 },
-    { name: 'Gardena', href: '#', description: 'Alt du trenger for vanning i hagen.', imageUrl: vanning1 },
-    { name: 'Labb', href: '#', description: 'Norskprodusert kvalitetsfôr til hund.', imageUrl: hund2 },
-  ],
-  links: [
-    { name: 'Felleskjøpet', href: '#' },
-    { name: 'Ryobi', href: '#' },
-    { name: 'Espegard', href: '#' },
-    { name: 'Gaupen', href: '#' },
-    { name: 'Champion Europe', href: '#' },
-    { name: 'Ariens', href: '#' },
-    { name: 'Stiga', href: '#' },
-    { name: '3M', href: '#' },
-    { name: 'DeLaval', href: '#' },
-    { name: 'John Deere', href: '#' },
-    { name: 'Appetitt', href: '#' },
-    { name: 'Falkeberg', href: '#' },
-    { name: 'Champion', href: '#' },
-    { name: 'Katrin', href: '#' },
-    { name: 'Kerbl', href: '#' },
-    { name: 'Kärcher', href: '#' },
+  columns: [
+    [
+      { links: [{ name: 'Felleskjøpet', href: '#' }, { name: 'Appetitt', href: '#' }, { name: 'Labb', href: '#' }, { name: 'Champion', href: '#' }, { name: 'Falkeberg', href: '#' }] },
+    ],
+    [
+      { links: [{ name: 'Stihl', href: '#' }, { name: 'Kärcher', href: '#' }, { name: 'Gardena', href: '#' }, { name: 'John Deere', href: '#' }, { name: 'Segway', href: '#' }] },
+    ],
+    [
+      { links: [{ name: 'Ryobi', href: '#' }, { name: 'Gaupen', href: '#' }, { name: 'Ariens', href: '#' }, { name: 'Stiga', href: '#' }, { name: 'Espegard', href: '#' }] },
+    ],
+    [
+      { links: [{ name: 'DeLaval', href: '#' }, { name: 'Katrin', href: '#' }, { name: 'Kerbl', href: '#' }, { name: '3M', href: '#' }, { name: 'Champion Europe', href: '#' }] },
+    ]
   ],
   footerLink: { name: 'Se alle merkevarer', href: '#' },
 };
@@ -635,7 +625,7 @@ export const kampanjerMenuData = {
         title: 'Alle kampanjer',
         href: '#',
         links: [
-          { name: 'Lagersalg', href: '#', isSundayOnly: false },
+          { name: 'Lagersalg', href: '#' },
           { name: 'Søndagskupp', href: '#', isSundayOnly: false },
         ],
       },
@@ -737,42 +727,6 @@ const MegaMenuColumn = ({ title, links, href }: { title?: string; href?: string;
   </div>
 );
 
-const BrandListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'> & {
-    title: string;
-    imageUrl: string | StaticImageData;
-  }
->(({ className, title, children, imageUrl, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            'group block relative h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md overflow-hidden',
-            className
-          )}
-          {...props}
-        >
-          <Image 
-            src={imageUrl} 
-            alt={title} 
-            fill
-            sizes="(max-width: 1024px) 20vw, 15vw" 
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-          <div className="relative z-10 mt-4 text-white">
-             <div className="text-lg font-bold font-headline text-yellow-300">{title}</div>
-             <p className="text-sm leading-tight text-white/90">{children}</p>
-          </div>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-BrandListItem.displayName = 'BrandListItem';
 
 // Main Navigation Component
 export function MainNavMenu() {
@@ -795,38 +749,25 @@ export function MainNavMenu() {
             {megaMenuData ? (
                <div className={cn(
                   "container mx-auto grid max-w-[1542px] gap-x-8 gap-y-4 px-4 py-8",
-                  isBrands ? "grid-cols-1" : "md:grid-cols-4"
+                  "md:grid-cols-4"
                 )}>
                   
-                  {isBrands ? (
-                     <div className="grid grid-cols-4 gap-4">
-                        <div className="col-span-3">
-                           <ul className="grid grid-cols-4 gap-4 md:grid-cols-4 lg:grid-cols-4">
-                            {megaMenuData.brands.map((brand: any) => (
-                              <BrandListItem key={brand.name} title={brand.name} href={brand.href} imageUrl={brand.imageUrl}>
-                                {brand.description}
-                              </BrandListItem>
-                            ))}
-                          </ul>
+                  <div className={cn("grid gap-x-8", 
+                    isCampaign ? "md:grid-cols-1 md:col-span-1" :
+                    isBrands ? "md:grid-cols-4 md:col-span-4" : 
+                    "md:grid-cols-3 md:col-span-3"
+                  )}>
+                      {megaMenuData.columns?.map((col: any[], idx: number) => (
+                        <div key={idx} className="flex flex-col gap-4">
+                          {col.map((group: any) => {
+                             const links = group.links?.filter((l: any) => !(l.isSundayOnly && !isSunday));
+                             if (!links || links.length === 0) return null;
+                            
+                             return <MegaMenuColumn key={group.title || group.links[0].name} {...group} links={links} />;
+                          })}
                         </div>
-                        <div className="col-span-1">
-                          <MegaMenuColumn links={megaMenuData.links} />
-                        </div>
-                     </div>
-                  ) : (
-                    <div className={cn("grid gap-x-8", isCampaign ? "md:grid-cols-1 md:col-span-1" : "md:grid-cols-3 md:col-span-3")}>
-                        {megaMenuData.columns?.map((col: any[], idx: number) => (
-                          <div key={idx} className="flex flex-col gap-4">
-                            {col.map((group: any) => {
-                               const links = group.links?.filter((l: any) => !(l.isSundayOnly && !isSunday));
-                               if (!links || links.length === 0) return null;
-                              
-                               return <MegaMenuColumn key={group.title || group.links[0].name} {...group} links={links} />;
-                            })}
-                          </div>
-                        ))}
-                    </div>
-                  )}
+                      ))}
+                  </div>
                  
                  {megaMenuData.products && (
                     <div className={cn("flex gap-8", "md:col-span-3")}>
@@ -886,7 +827,7 @@ export function MainNavMenu() {
                     </div>
                  )}
 
-                 {megaMenuData.footerLink && !megaMenuData.products && !isBrands &&(
+                 {megaMenuData.footerLink && !megaMenuData.products && (
                   <div className="md:col-span-4 mt-8 border-t border-sidebar-border pt-4">
                     <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
                       <Link href={megaMenuData.footerLink.href}>
@@ -895,16 +836,6 @@ export function MainNavMenu() {
                       </Link>
                     </Button>
                   </div>
-                )}
-                 {isBrands && megaMenuData.footerLink && (
-                    <div className="md:col-span-4 mt-8 border-t border-sidebar-border pt-4">
-                        <Button asChild variant="outline" className="border-primary bg-transparent text-primary hover:bg-primary/10 hover:text-primary">
-                            <Link href={megaMenuData.footerLink.href}>
-                                {megaMenuData.footerLink.name}
-                                <ChevronRight className="ml-2 h-4 w-4" />
-                            </Link>
-                        </Button>
-                    </div>
                 )}
               </div>
             ) : null}
