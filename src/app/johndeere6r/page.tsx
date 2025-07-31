@@ -378,20 +378,16 @@ function Tractor360Viewer() {
                         <Loader className="h-12 w-12 animate-spin text-primary" />
                     </div>
                 )}
-                {imageUrls.map((src, index) => (
+                 {isLoaded && (
                     <Image
-                        key={index}
-                        src={src}
-                        alt={`John Deere 6R 110 - Angle ${index + 1}`}
+                        src={imageUrls[currentFrame]}
+                        alt={`John Deere 6R 110 - Angle ${currentFrame + 1}`}
                         fill
-                        className={cn(
-                            "object-contain transition-opacity duration-100 pointer-events-none",
-                            currentFrame === index && isLoaded ? "opacity-100" : "opacity-0"
-                        )}
+                        className="object-contain pointer-events-none"
                         sizes="(max-width: 768px) 100vw, 80vw"
-                        priority={index === 0}
+                        priority
                     />
-                ))}
+                )}
             </div>
             <div className="mt-4 flex items-center justify-center gap-2 text-muted-foreground">
                 <MoveHorizontal className="h-5 w-5" />
@@ -719,7 +715,7 @@ export default function JohnDeere6RPage() {
                                     </Button>
                                 }
                             />
-                            <Button asChild size="lg" className="h-14 px-8 text-lg border-2 border-yellow-300 bg-transparent text-yellow-300 hover:bg-yellow-300/10">
+                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-yellow-300 bg-transparent text-yellow-300 hover:bg-yellow-300/10">
                                 <Link href="#"><Phone className="mr-2"/> Ring oss: 72 50 50 50</Link>
                             </Button>
                         </div>
