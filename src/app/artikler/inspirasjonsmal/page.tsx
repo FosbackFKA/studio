@@ -314,13 +314,10 @@ export default function InspirationTemplatePage() {
                               onTouchMove={handleTouchMove}
                               onTouchEnd={handleTouchEnd}
                           >
-                              <div className="absolute inset-0 bg-black/80"></div>
+                              <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
                               
-                              <div 
-                                  className="relative z-10 flex flex-1 flex-col items-center justify-center p-4 md:p-8"
-                                  onClick={(e) => e.stopPropagation()} 
-                              >
-                                  <div className="relative flex-1 flex items-center justify-center w-full max-h-[calc(100vh-120px)]">
+                              <div className="relative z-10 flex flex-1 flex-col items-center justify-start p-4 md:p-8" onClick={(e) => e.stopPropagation()}>
+                                  <div className="relative flex-1 w-full h-full flex items-center justify-center">
                                       <Image
                                           src={galleryImages[selectedImageIndex].src}
                                           alt={galleryImages[selectedImageIndex].alt}
@@ -330,10 +327,11 @@ export default function InspirationTemplatePage() {
                                           sizes="100vw"
                                       />
                                   </div>
-                                   <div className="relative z-10 flex-shrink-0 bg-black/50 p-4 text-center text-white backdrop-blur-sm mt-4 rounded-lg max-w-3xl">
-                                      <DialogTitle className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</DialogTitle>
-                                      <DialogDescription className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</DialogDescription>
-                                  </div>
+                              </div>
+                              
+                              <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
+                                  <DialogTitle className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</DialogTitle>
+                                  <DialogDescription className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</DialogDescription>
                               </div>
                               
                               <Button onClick={(e) => { e.stopPropagation(); closeDialog(); }} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
@@ -387,3 +385,5 @@ export default function InspirationTemplatePage() {
     </div>
   );
 }
+
+    
