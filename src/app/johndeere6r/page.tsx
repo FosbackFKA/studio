@@ -209,8 +209,54 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         
         <ScrollArea className="flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
+             {/* Right Column: Configurator */}
+            <TooltipProvider>
+              <div className="space-y-4 md:order-1">
+                {Object.entries(configOptions).map(([key, category]) => (
+                    <div key={key}>
+                        <CardTitle className="flex items-center gap-2 font-headline text-lg mb-2">
+                            <category.icon className="h-5 w-5 text-primary" />
+                            {category.title}
+                        </CardTitle>
+                        <RadioGroup
+                            value={configSelection[key as keyof ConfigSelection]}
+                            onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
+                            className="grid grid-cols-2 gap-2"
+                        >
+                        {category.options.map(option => (
+                            <Label key={option.id} className={cn(
+                                "flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-accent/10",
+                                configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
+                            )}>
+                                <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
+                                <div className="flex-1">
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex items-center gap-2">
+                                            <span className="font-semibold text-foreground text-sm">{option.name}</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground">{option.description}</p>
+                                </div>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <button type="button" aria-label="Mer informasjon" className="mt-0.5">
+                                            <Info className="h-4 w-4 text-muted-foreground" />
+                                        </button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p className="max-w-xs">{option.longDescription}</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </Label>
+                        ))}
+                        </RadioGroup>
+                    </div>
+                ))}
+              </div>
+            </TooltipProvider>
+
             {/* Left Column: Contact Form & Summary */}
-            <div className="space-y-6">
+            <div className="space-y-6 md:order-2">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="name">Fullt navn</Label>
@@ -256,52 +302,6 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
                   </CardContent>
                 </Card>
             </div>
-
-            {/* Right Column: Configurator */}
-            <TooltipProvider>
-              <div className="space-y-4">
-                {Object.entries(configOptions).map(([key, category]) => (
-                    <div key={key}>
-                        <CardTitle className="flex items-center gap-2 font-headline text-lg mb-2">
-                            <category.icon className="h-5 w-5 text-primary" />
-                            {category.title}
-                        </CardTitle>
-                        <RadioGroup
-                            value={configSelection[key as keyof ConfigSelection]}
-                            onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
-                            className="grid grid-cols-2 gap-2"
-                        >
-                        {category.options.map(option => (
-                            <Label key={option.id} className={cn(
-                                "flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-accent/10",
-                                configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
-                            )}>
-                                <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
-                                <div className="flex-1">
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex items-center gap-2">
-                                            <span className="font-semibold text-foreground text-sm">{option.name}</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-xs text-muted-foreground">{option.description}</p>
-                                </div>
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <button type="button" aria-label="Mer informasjon" className="mt-0.5">
-                                            <Info className="h-4 w-4 text-muted-foreground" />
-                                        </button>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p className="max-w-xs">{option.longDescription}</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </Label>
-                        ))}
-                        </RadioGroup>
-                    </div>
-                ))}
-              </div>
-            </TooltipProvider>
           </div>
         </ScrollArea>
 
