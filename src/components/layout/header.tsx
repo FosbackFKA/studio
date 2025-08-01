@@ -197,28 +197,29 @@ function CartItemCard({ item }: { item: CartItem }) {
   const displayPrice = parsePrice(item.salePrice || item.price);
   const originalPrice = item.salePrice ? parsePrice(item.price) : undefined;
 
-
   return (
     <div className="flex items-start gap-4">
       <div className="relative h-24 w-24 flex-shrink-0">
-        <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain" />
+        <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain bg-white" />
         {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent px-1.5 py-0.5 text-xs font-semibold text-accent-foreground">{item.badgeText}</Badge>}
       </div>
-      <div className="flex-1">
+      <div className="flex-1 space-y-2">
         <div className="flex justify-between items-start">
           <div className="pr-2">
             {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
-            <p className="text-sm font-medium line-clamp-2">{item.title}</p>
+            <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
           </div>
-          <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0" onClick={() => removeItem(item.id)}>
+          <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0 -mt-1 -mr-2" onClick={() => removeItem(item.id)}>
             <Trash2 className="h-4 w-4 text-muted-foreground" />
           </Button>
         </div>
-        <div className="text-xs text-primary flex items-center gap-4 mt-1">
+        
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary">
           {item.onlineStock && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> På nettlager</div>}
           {item.storeStockCount && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Finnes i {item.storeStockCount} butikker</div>}
         </div>
-        <div className="flex items-center justify-between mt-2">
+
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 border rounded-full p-0.5">
             <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity - 1)} disabled={item.quantity <= 1}>
               <Minus className="h-4 w-4" />
@@ -513,7 +514,7 @@ export function HeaderComponent() {
       })}
        <Separator className="my-2" />
        <li>
-          <Link href="#" className="flex items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
+          <Link href="#" className="flex items-center justify-between py-3 font-medium text-primary" onClick={() => { setStoreSheetOpen(true); setIsMenuOpen(false); }}>
               <span>Butikker og åpningstider</span>
               <ChevronRight className="h-5 w-5 text-muted-foreground" />
           </Link>
