@@ -14,7 +14,6 @@ import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 
 
@@ -175,7 +174,7 @@ export default function StegForStegPage() {
 
         <div className="bg-background py-12 lg:py-16">
           <div className="container mx-auto max-w-[1542px] px-4">
-            <div className='max-w-5xl mx-auto'>
+            <div className='max-w-4xl mx-auto'>
                 <Breadcrumb items={breadcrumbs} className="mb-8" />
                 
                 <div className="prose prose-lg max-w-none mx-auto text-foreground">
@@ -209,34 +208,35 @@ export default function StegForStegPage() {
                     </div>
                 ))}
                 </section>
-                
-                <section className="my-16 md:my-24 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
-                    <div className="mb-12 text-center max-w-4xl mx-auto">
-                        <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
-                        <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
+            </div>
+            
+            <section className="my-16 md:my-24 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
+                <div className="mb-12 text-center max-w-4xl mx-auto">
+                    <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
+                    <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
+                </div>
+                {/* Desktop Grid */}
+                <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                    {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
+                </div>
+                {/* Mobile Horizontal Scroll */}
+                <div className="md:hidden">
+                    <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
+                        {shopTheLookProducts.map((product) => (
+                            <div key={product.id} className="w-2/3 flex-shrink-0">
+                                <ProductCard {...product} />
+                            </div>
+                        ))}
                     </div>
-                    {/* Desktop Grid */}
-                    <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                        {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
-                    </div>
-                    {/* Mobile Horizontal Scroll */}
-                    <div className="md:hidden">
-                        <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
-                            {shopTheLookProducts.map((product) => (
-                                <div key={product.id} className="w-2/3 flex-shrink-0">
-                                    <ProductCard {...product} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="mt-12 text-left lg:text-center">
-                        <Button asChild size="lg" variant="outline-primary"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
-                    </div>
-                </section>
+                </div>
+                <div className="mt-12 text-left lg:text-center">
+                    <Button asChild size="lg" variant="outline-primary"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+                </div>
+            </section>
 
-
+            <div className='max-w-4xl mx-auto'>
                 <div className="my-16 space-y-12 md:my-24">
-                     <div className='max-w-4xl mx-auto prose prose-lg'>
+                     <div className='prose prose-lg'>
                         <h2 className="font-headline text-2xl font-bold text-foreground mb-4">Fordeler med uteliv for kanin</h2>
                         <ul className="space-y-3">
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mer plass og bevegelsesfrihet,</strong> som forebygger atferdsproblemer.</span></li>
@@ -246,7 +246,37 @@ export default function StegForStegPage() {
                         </ul>
                     </div>
                     
-                    <Card className="bg-primary/5 border-primary/20 max-w-4xl mx-auto">
+                    <div className="prose prose-lg">
+                        <p>Et godt utemiljø gir ikke bare fysiske fordeler, men bidrar også til kaninens mentale velvære. Muligheten til å utforske, grave og gjemme seg i trygge omgivelser er essensielt for å unngå stress og apati. Sørg for at luftegården er stor nok, og gjerne innred den med tunneler, sandkasser eller andre elementer som oppfordrer til lek og aktivitet.</p>
+                        
+                        <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12">
+                            <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                                <div className="relative aspect-square md:aspect-[3/4] rounded-lg overflow-hidden shadow-md md:col-span-1">
+                                    <Image 
+                                        src={ekspertImage}
+                                        alt="Felleskjøpets smådyrekspert"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 50vw, 25vw"
+                                    />
+                                </div>
+                                <blockquote className="md:col-span-2">
+                                    <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                                        "Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove."
+                                    </p>
+                                    <footer className="mt-4 text-base not-italic text-foreground">
+                                        <span className="font-bold">Eline S. Andersen</span><br />
+                                        <span className="text-muted-foreground">Felleskjøpets smådyrekspert</span>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <p>Husk også at kaniner er sosiale dyr. Hvis du kun har én kanin, er det ekstra viktig at du setter av tid til å være sammen med den hver dag. Selv om den bor ute, trenger den menneskelig kontakt for å trives. En kanin som er vant til å være ute, kan også fint fortsette med det om vinteren, så lenge den har et lunt, tørt og trekkfritt hus med rikelig med halm.</p>
+                    </div>
+
+                    <Card className="bg-primary/5 border-primary/20">
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
                         </CardHeader>
@@ -255,30 +285,6 @@ export default function StegForStegPage() {
                             <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
                         </CardContent>
                     </Card>
-                    
-                    <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden">
-                        <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                            <div className="relative aspect-square md:aspect-[3/4] rounded-lg overflow-hidden shadow-md md:col-span-1">
-                                <Image 
-                                    src={ekspertImage}
-                                    alt="Felleskjøpets smådyrekspert"
-                                    fill
-                                    className="object-cover"
-                                    sizes="(max-width: 768px) 50vw, 25vw"
-                                />
-                            </div>
-                            <blockquote className="md:col-span-2">
-                                <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
-                                    "Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove."
-                                </p>
-                                <footer className="mt-4 text-base not-italic text-foreground">
-                                    <span className="font-bold">Eline S. Andersen</span><br />
-                                    <span className="text-muted-foreground">Felleskjøpets smådyrekspert</span>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </div>
                 </div>
 
                 <ArticlesSection 
@@ -297,3 +303,4 @@ export default function StegForStegPage() {
     </div>
   );
 }
+
