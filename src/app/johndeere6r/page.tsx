@@ -210,35 +210,6 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         
         <ScrollArea className="flex-1">
           <div className="py-4 space-y-6">
-            {/* Contact Form */}
-            <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <Label htmlFor="name">Fullt navn</Label>
-                    <Input id="name" placeholder="Ola Nordmann" />
-                  </div>
-                  <div className="space-y-1">
-                    <Label htmlFor="phone">Telefon</Label>
-                    <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <Label htmlFor="email">E-post</Label>
-                    <Input id="email" type="email" placeholder="din@epost.no" />
-                  </div>
-                  <div className="space-y-1">
-                    <Label htmlFor="zip">Postnummer</Label>
-                    <Input id="zip" placeholder="Ditt postnummer" />
-                  </div>
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="comments">Kommentarer eller spørsmål</Label>
-                  <Textarea id="comments" placeholder="Har du spesifikke behov, spørsmål eller ønsker du et tilbud på en spesiell konfigurasjon?" />
-                </div>
-            </div>
-            
-            {/* Optional Configurator */}
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="configurator">
                 <AccordionTrigger>
@@ -296,7 +267,33 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
               </AccordionItem>
             </Accordion>
             
-            {/* Summary */}
+            <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <Label htmlFor="name">Fullt navn</Label>
+                    <Input id="name" placeholder="Ola Nordmann" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="phone">Telefon</Label>
+                    <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <Label htmlFor="email">E-post</Label>
+                    <Input id="email" type="email" placeholder="din@epost.no" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="zip">Postnummer</Label>
+                    <Input id="zip" placeholder="Ditt postnummer" />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="comments">Kommentarer eller spørsmål</Label>
+                  <Textarea id="comments" placeholder="Har du spesifikke behov, spørsmål eller ønsker du et tilbud på en spesiell konfigurasjon?" />
+                </div>
+            </div>
+            
             <Card className="bg-secondary/30">
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
@@ -770,4 +767,3 @@ export default function JohnDeere6RPage() {
         </div>
     );
 }
-
