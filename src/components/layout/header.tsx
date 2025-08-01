@@ -203,10 +203,9 @@ function CartItemCard({ item }: { item: CartItem }) {
         <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain bg-white" />
         {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent px-1.5 py-0.5 text-xs font-semibold text-accent-foreground">{item.badgeText}</Badge>}
       </div>
-      <div className="flex flex-1 flex-col justify-between self-stretch">
-        <div>
+      <div className="flex-1 flex flex-col">
           <div className="flex justify-between items-start">
-            <div className="pr-2">
+            <div className="pr-2 flex-1">
               {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
               <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
             </div>
@@ -215,13 +214,12 @@ function CartItemCard({ item }: { item: CartItem }) {
             </Button>
           </div>
           
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary mt-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary mt-1">
             {item.onlineStock && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> På nettlager</div>}
             {item.storeStockCount && item.storeStockCount > 0 && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Finnes i {item.storeStockCount} butikker</div>}
           </div>
-        </div>
 
-        <div className="flex items-end justify-between mt-2">
+        <div className="flex items-end justify-between mt-auto pt-2">
           <div className="flex items-center gap-2 rounded-full border p-0.5">
             <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity - 1)} disabled={item.quantity <= 1}>
               <Minus className="h-4 w-4" />
@@ -247,6 +245,24 @@ function ShoppingCartSheet() {
   const totalItems = useCartStore(selectTotalItems);
   const totalPrice = useCartStore(selectTotalPrice);
   const [isOpen, setIsOpen] = React.useState(false);
+  const { addItem } = useCartStore();
+
+  React.useEffect(() => {
+    if (items.length === 0) {
+       addItem({
+        id: 'SEGNAVH3000E',
+        title: 'Robotgressklipper Navimow H3000E med VisionFence',
+        brand: 'Segway',
+        price: '34 999,-',
+        salePrice: '29 999,-',
+        imageUrl: popular1,
+        productUrl: '/products/SEGNAVH3000E',
+        onlineStock: true,
+        storeStockCount: 63,
+        badgeText: '- 14 %',
+       });
+    }
+  }, [items, addItem]);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
