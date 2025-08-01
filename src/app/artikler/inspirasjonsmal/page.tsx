@@ -121,7 +121,7 @@ const galleryImages: {
   title: string;
   description: string;
   hint: string;
-  className: string;
+  className?: string;
 }[] = [
   {
     src: inspo1,
@@ -129,7 +129,7 @@ const galleryImages: {
     title: 'Samlingspunkt med bålpanne',
     description: 'En bålpanne blir raskt det naturlige midtpunktet for varme og hygge.',
     hint: 'cozy firepit evening',
-    className: 'col-span-2 row-span-2 md:col-span-2',
+    className: 'col-span-2', 
   },
   {
     src: inspo2,
@@ -137,7 +137,6 @@ const galleryImages: {
     title: 'Hold varmen',
     description: 'Myke ullpledd er perfekte for å forlenge de kjølige sommerkveldene.',
     hint: 'couple wool blanket',
-    className: 'col-span-1',
   },
   {
     src: inspo3,
@@ -145,7 +144,6 @@ const galleryImages: {
     title: 'Stemningsfull belysning',
     description: 'Lyslenker i trær eller over terrassen skaper en magisk atmosfære.',
     hint: 'string lights tree',
-    className: 'col-span-1',
   },
   {
     src: inspo4,
@@ -153,7 +151,6 @@ const galleryImages: {
     title: 'Noe godt å bite i',
     description: 'Lag deilig popcorn over bålpannen – en favoritt for både store og små.',
     hint: 'popcorn campfire',
-    className: 'col-span-1',
   },
     {
     src: inspo5,
@@ -161,7 +158,6 @@ const galleryImages: {
     title: 'Moderne solcellelys',
     description: 'Stilrene solcellelamper gir et elegant og funksjonelt lys langs stier og i bed.',
     hint: 'modern solar light',
-    className: 'col-span-1',
   },
 ];
 
@@ -271,19 +267,15 @@ export default function InspirationTemplatePage() {
                     </div>
                     <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12 lg:my-24">
                         <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                            <div className="flex justify-center items-center md:col-span-1">
-                            </div>
-                            <blockquote className="md:col-span-2">
-                                <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
-                                    "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
-                                </p>
-                                <footer className="mt-4 text-base not-italic text-foreground">
-                                    <span className="font-bold">Kari N.</span><br />
-                                    <span className="text-muted-foreground">Fornøyd kunde</span>
-                                </footer>
-                            </blockquote>
-                        </div>
+                        <blockquote className="relative z-10">
+                            <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                                "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
+                            </p>
+                            <footer className="mt-4 text-base not-italic text-foreground">
+                                <span className="font-bold">Kari N.</span><br />
+                                <span className="text-muted-foreground">Fornøyd kunde</span>
+                            </footer>
+                        </blockquote>
                     </div>
                 </section>
 
@@ -297,22 +289,21 @@ export default function InspirationTemplatePage() {
                     </div>
 
                     <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
-                      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-auto md:auto-rows-[250px] gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                           {galleryImages.map((image, index) => (
                               <DialogTrigger key={index} asChild>
-                                  <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
+                                  <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg aspect-[4/3]', image.className)}>
                                       <Image
                                           src={image.src}
                                           alt={image.alt}
                                           fill
                                           className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                                          sizes="(max-width: 768px) 50vw, 33vw"
                                           data-ai-hint={image.hint}
                                       />
                                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                                       <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
                                           <h3 className="font-bold">{image.title}</h3>
-                                          <p className="text-sm text-white/80">{image.description}</p>
                                       </div>
                                   </button>
                               </DialogTrigger>
