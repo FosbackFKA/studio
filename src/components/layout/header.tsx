@@ -206,29 +206,28 @@ function CartItemCard({ item }: { item: CartItem }) {
         {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent px-1.5 py-0.5 text-xs font-semibold text-accent-foreground">{item.badgeText}</Badge>}
       </div>
       <div className="flex min-w-0 flex-1 flex-col gap-3">
-          <div className="flex min-w-0 items-start justify-between gap-4">
-            <div className="flex-1 pr-2">
-                {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
-                <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
-            </div>
+          <div className="flex min-w-0 flex-col">
+              {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
+              <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
           </div>
           
           <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary">
             {item.onlineStock && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> På nettlager</div>}
             {item.storeStockCount && item.storeStockCount > 0 && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Finnes i {item.storeStockCount} butikker</div>}
           </div>
-          
-          <div className="text-right font-bold text-primary">
-            kr {displayPrice.toLocaleString('nb-NO')},-
-            {originalPrice && <span className="ml-2 text-sm font-normal text-muted-foreground line-through">kr {originalPrice.toLocaleString('nb-NO')},-</span>}
+
+          <div className="flex flex-col items-end">
+              <p className="font-bold text-primary">kr {displayPrice.toLocaleString('nb-NO')},-</p>
+              {originalPrice && (
+                <p className="text-sm text-muted-foreground line-through">
+                  kr {originalPrice.toLocaleString('nb-NO')},-
+                </p>
+              )}
           </div>
 
           <Separator className="my-1"/>
 
-          <div className="flex items-center justify-between">
-             <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0 text-muted-foreground hover:bg-destructive/10 hover:text-destructive" onClick={() => removeItem(item.id)}>
-              <Trash2 className="h-4 w-4" />
-            </Button>
+          <div className="flex items-center justify-center">
             <div className="flex items-center gap-2 rounded-full border p-0.5">
                 <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity - 1)} disabled={item.quantity <= 1}>
                 <Minus className="h-4 w-4" />
@@ -238,6 +237,9 @@ function CartItemCard({ item }: { item: CartItem }) {
                 <Plus className="h-4 w-4" />
                 </Button>
             </div>
+            <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0 text-muted-foreground hover:bg-destructive/10 hover:text-destructive ml-auto" onClick={() => removeItem(item.id)}>
+              <Trash2 className="h-4 w-4" />
+            </Button>
           </div>
       </div>
     </div>
@@ -253,7 +255,7 @@ function ShoppingCartSheet() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { addItem, items: cartItems } = useCartStore();
 
-  React.useEffect(() => {
+   React.useEffect(() => {
     if (typeof window !== 'undefined' && cartItems.length === 0) {
        addItem({
         id: 'SEGNAVH3000E',
@@ -721,7 +723,7 @@ export function HeaderComponent() {
                             <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
                                 <User className="mr-2 h-5 w-5"/>
                                 Logg inn
-                            </Button>
+                            </Button> 
                             <Button 
                                 variant="outline" 
                                 className="w-full justify-start text-left h-12 text-base font-medium"
@@ -731,7 +733,7 @@ export function HeaderComponent() {
                                 }}
                             >
                                 <StoreIcon className="mr-2 h-5 w-5"/>
-                                {hasMounted && selectedStore ? selectedStore.name : 'Velg min butikk'}
+                                {hasMounted && selectedStore ? selectedStore.name : 'Butikker og åpningstider'}
                             </Button>
                           </div>
                           {renderMainMenu()}
