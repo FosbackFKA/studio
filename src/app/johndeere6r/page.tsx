@@ -426,7 +426,7 @@ export default function JohnDeere6RPage() {
     return (
         <div className="flex min-h-screen flex-col bg-background">
             <HeaderComponent />
-            <main className="flex-grow">
+            <main className="flex-grow pb-24 md:pb-0">
                 {/* --- Hero Seksjon --- */}
                 <section id="oversikt" className="relative h-screen min-h-[700px] w-full text-white">
                     <Image
@@ -723,8 +723,24 @@ export default function JohnDeere6RPage() {
                         </div>
                     </div>
                 </section>
-
             </main>
+            
+            {/* Sticky Mobile CTA */}
+            <div className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background p-3 md:hidden">
+              <div className="flex items-center justify-between gap-3">
+                 <QuoteRequestDialog
+                    trigger={
+                        <Button size="lg" className="h-12 flex-1 bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                            <Mail className="mr-2"/> Be om et tilbud
+                        </Button>
+                    }
+                />
+                <Button asChild size="lg" variant="outline" className="h-12 flex-1">
+                    <Link href="#"><Phone className="mr-2"/> Ring oss</Link>
+                </Button>
+              </div>
+            </div>
+
             <FooterComponent />
         </div>
     );
