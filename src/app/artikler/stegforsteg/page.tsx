@@ -161,7 +161,7 @@ export default function StegForStegPage() {
             sizes="100vw"
             className="object-cover"
             priority
-            dataAiHint="happy rabbit green grass"
+            data-ai-hint="happy rabbit green grass"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-start justify-end px-4 pb-16 text-left">
