@@ -63,6 +63,12 @@ import img56 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00056.jpg';
 import img58 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00058.avif';
 import img60 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00060.jpg';
 
+// Import images for other series
+import series4Image from '@/components/common/johndeere6r/4series.avif';
+import series5Image from '@/components/common/johndeere6r/5serie.webp';
+import series7Image from '@/components/common/johndeere6r/7serie.avif';
+import series8Image from '@/components/common/johndeere6r/8serie.avif';
+
 
 
 const breadcrumbs = [
@@ -119,29 +125,29 @@ const comparisonData = {
 
 const otherSeriesData = [
   {
-    icon: Leaf,
-    series: "5R-serien",
-    description: "Kompakt og smidig, ideell for mindre gårdsbruk, spesialavlinger og arbeid på trange områder.",
+    image: series4Image,
+    series: "4-serie",
+    description: "Perfekt for spesialiserte oppgaver, som i frukthager og på trange områder hvor smidighet er nøkkelen.",
     href: "#"
   },
   {
-    icon: Tractor,
-    series: "7R-serien",
+    image: series5Image,
+    series: "5-serie",
+    description: "Kompakt og smidig, ideell for mindre gårdsbruk, fôring og varierte oppgaver på tunet.",
+    href: "#"
+  },
+  {
+    image: series7Image,
+    series: "7-serie",
     description: "Rå kraft og avansert teknologi for store arealer og krevende redskaper. Optimal for stordrift.",
     href: "#"
   },
   {
-    icon: Mountain,
-    series: "8R-serien",
+    image: series8Image,
+    series: "8-serie",
     description: "Uovertruffen ytelse og trekkraft for de aller tyngste oppgavene innen moderne, storskala landbruk.",
     href: "#"
   },
-  {
-    icon: TruckIcon,
-    series: "Spesialtraktorer",
-    description: "Skreddersydde løsninger for frukthager, vingårder og andre spesialiserte behov.",
-    href: "#"
-  }
 ];
 
 
@@ -149,7 +155,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="max-w-md w-full flex flex-col p-0 h-[90vh]">
+      <DialogContent className="w-full max-w-md p-0 flex flex-col h-full md:h-auto md:max-h-[90vh]">
         <DialogHeader className="p-6 pb-4">
           <DialogTitle className="font-headline text-2xl">Still oss et spørsmål eller be om et tilbud</DialogTitle>
           <DialogDescription>
@@ -159,6 +165,31 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         
         <ScrollArea className="flex-1">
           <div className="space-y-6 px-6 py-4">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Gjør tilpasninger på utstyr (valgfritt)</AccordionTrigger>
+                <AccordionContent>
+                   <p className="text-sm text-muted-foreground mb-4">Velg utstyr for å få et mer nøyaktig tilbud.</p>
+                   {/* Placeholder for configuration options */}
+                   <div className="space-y-4">
+                     <div>
+                       <Label>Frontlaster</Label>
+                       <RadioGroup defaultValue="none">
+                         <div className="flex items-center space-x-2"><RadioGroupItem value="none" id="laster-none" /><Label htmlFor="laster-none">Ingen</Label></div>
+                         <div className="flex items-center space-x-2"><RadioGroupItem value="623r" id="laster-623r" /><Label htmlFor="laster-623r">John Deere 623R</Label></div>
+                       </RadioGroup>
+                     </div>
+                     <div>
+                       <Label>Dekktype</Label>
+                        <RadioGroup defaultValue="standard">
+                         <div className="flex items-center space-x-2"><RadioGroupItem value="standard" id="dekk-standard" /><Label htmlFor="dekk-standard">Standard landbruksdekk</Label></div>
+                         <div className="flex items-center space-x-2"><RadioGroupItem value="grass" id="dekk-grass" /><Label htmlFor="dekk-grass">Gressdekk</Label></div>
+                       </RadioGroup>
+                     </div>
+                   </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
             <div className="space-y-4">
                 <div className="space-y-1">
                   <Label htmlFor="name">Fullt navn</Label>
@@ -184,7 +215,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
           </div>
         </ScrollArea>
 
-        <DialogFooter className="mt-auto p-6 pt-4 border-t bg-secondary/30">
+        <DialogFooter className="p-6 pt-4 border-t bg-secondary/30">
           <DialogClose asChild>
             <Button type="button" variant="outline">Avbryt</Button>
           </DialogClose>
@@ -565,17 +596,25 @@ export default function JohnDeere6RPage() {
                         </div>
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                             {otherSeriesData.map((series) => (
-                                <Card key={series.series} className="flex flex-col text-center items-center p-6 shadow-lg bg-card transform hover:-translate-y-1 transition-transform duration-300">
-                                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                                        <series.icon className="h-8 w-8 text-primary" />
+                                <Card key={series.series} className="flex flex-col text-center items-center p-0 shadow-lg bg-card transform hover:-translate-y-1 transition-transform duration-300 overflow-hidden">
+                                     <div className="relative w-full h-48">
+                                        <Image
+                                          src={series.image}
+                                          alt={`John Deere ${series.series}`}
+                                          fill
+                                          className="object-cover"
+                                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                        />
                                     </div>
-                                    <CardTitle className="font-headline text-2xl">{series.series}</CardTitle>
-                                    <CardContent className="mt-2 text-muted-foreground flex-grow p-0">
-                                        <p>{series.description}</p>
-                                    </CardContent>
-                                    <Button asChild variant="outline-primary" className="mt-6">
-                                        <Link href={series.href}>Utforsk serien</Link>
-                                    </Button>
+                                    <div className="p-6 flex flex-col flex-grow items-center text-center">
+                                      <CardTitle className="font-headline text-2xl">{series.series}</CardTitle>
+                                      <CardContent className="mt-2 text-muted-foreground flex-grow p-0">
+                                          <p>{series.description}</p>
+                                      </CardContent>
+                                      <Button asChild variant="outline-primary" className="mt-6">
+                                          <Link href={series.href}>Utforsk serien</Link>
+                                      </Button>
+                                    </div>
                                 </Card>
                             ))}
                         </div>
