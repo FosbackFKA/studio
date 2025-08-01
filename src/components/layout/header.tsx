@@ -203,9 +203,9 @@ function CartItemCard({ item }: { item: CartItem }) {
         <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain bg-white" />
         {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent px-1.5 py-0.5 text-xs font-semibold text-accent-foreground">{item.badgeText}</Badge>}
       </div>
-      <div className="flex-1 flex flex-col">
+      <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex justify-between items-start">
-            <div className="pr-2 flex-1">
+            <div className="pr-2 flex-1 min-w-0">
               {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
               <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
             </div>
@@ -248,7 +248,8 @@ function ShoppingCartSheet() {
   const { addItem } = useCartStore();
 
   React.useEffect(() => {
-    if (items.length === 0) {
+    // Only run this on the client
+    if (typeof window !== 'undefined' && items.length === 0) {
        addItem({
         id: 'SEGNAVH3000E',
         title: 'Robotgressklipper Navimow H3000E med VisionFence',
@@ -262,7 +263,8 @@ function ShoppingCartSheet() {
         badgeText: '- 14 %',
        });
     }
-  }, [items, addItem]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
