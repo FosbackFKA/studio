@@ -165,31 +165,6 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         
         <ScrollArea className="flex-1">
           <div className="p-6 space-y-6">
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Gjør tilpasninger på utstyr (valgfritt)</AccordionTrigger>
-                <AccordionContent>
-                   <p className="text-sm text-muted-foreground mb-4">Velg utstyr for å få et mer nøyaktig tilbud.</p>
-                   {/* Placeholder for configuration options */}
-                   <div className="space-y-4">
-                     <div>
-                       <Label>Frontlaster</Label>
-                       <RadioGroup defaultValue="none">
-                         <div className="flex items-center space-x-2"><RadioGroupItem value="none" id="laster-none" /><Label htmlFor="laster-none">Ingen</Label></div>
-                         <div className="flex items-center space-x-2"><RadioGroupItem value="623r" id="laster-623r" /><Label htmlFor="laster-623r">John Deere 623R</Label></div>
-                       </RadioGroup>
-                     </div>
-                     <div>
-                       <Label>Dekktype</Label>
-                        <RadioGroup defaultValue="standard">
-                         <div className="flex items-center space-x-2"><RadioGroupItem value="standard" id="dekk-standard" /><Label htmlFor="dekk-standard">Standard landbruksdekk</Label></div>
-                         <div className="flex items-center space-x-2"><RadioGroupItem value="grass" id="dekk-grass" /><Label htmlFor="dekk-grass">Gressdekk</Label></div>
-                       </RadioGroup>
-                     </div>
-                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
             <div className="space-y-4">
                 <div className="space-y-1">
                   <Label htmlFor="name">Fullt navn</Label>
@@ -329,16 +304,13 @@ export default function JohnDeere6RPage() {
                 break;
             }
         }
-        // Show mobile CTA after scrolling down
+        
         if (window.scrollY > 500) {
+            setIsCtaBarVisible(true);
             setIsMobileCtaVisible(true);
         } else {
+            setIsCtaBarVisible(false);
             setIsMobileCtaVisible(false);
-        }
-
-        if (ctaTriggerRef.current) {
-            const { top } = ctaTriggerRef.current.getBoundingClientRect();
-            setIsCtaBarVisible(top < 108); // 108px is the height of both top navs
         }
     }, [activeSection]);
 
@@ -356,10 +328,10 @@ export default function JohnDeere6RPage() {
 
             {/* Sticky Desktop CTA */}
              <div
-                style={{ top: '108px' }}
+                style={{ top: '168px' }}
                 className={cn(
                     "fixed left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
-                    isCtaBarVisible ? 'translate-y-0' : '-translate-y-[calc(100%_+_108px)]'
+                    isCtaBarVisible ? 'translate-y-0' : '-translate-y-[calc(100%_+_168px)]'
             )}>
                 <div className="container mx-auto flex h-20 items-center justify-between gap-6 max-w-[1542px] px-4">
                      <div className="flex items-center gap-4">
