@@ -289,7 +289,7 @@ export default function InspirationTemplatePage() {
                     </div>
 
                     <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-2 gap-4">
                           {galleryImages.map((image, index) => (
                               <DialogTrigger key={index} asChild>
                                   <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg aspect-[4/3]', image.className)}>
