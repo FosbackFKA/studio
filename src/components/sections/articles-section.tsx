@@ -28,9 +28,6 @@ export function ArticlesSection({ title, articles, linkText, linkHref, className
       <div className="container mx-auto max-w-[1542px] px-0">
         <div className="mb-8 flex items-center justify-between px-4">
           <h2 className="font-headline text-2xl font-bold">{title}</h2>
-          <Button variant="link" asChild className="text-primary hover:underline">
-            <Link href={linkHref}>{linkText} <ChevronRight className="ml-1 h-4 w-4" /></Link>
-          </Button>
         </div>
         
         {/* Desktop Grid */}
@@ -49,6 +46,12 @@ export function ArticlesSection({ title, articles, linkText, linkHref, className
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-8 text-center px-4">
+            <Button variant="link" asChild className="text-primary hover:underline">
+                <Link href={linkHref}>{linkText} <ChevronRight className="ml-1 h-4 w-4" /></Link>
+            </Button>
         </div>
       </div>
     </section>
