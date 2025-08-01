@@ -50,7 +50,7 @@ const promoItems: PromoItem[] = [
 const PromoCard = ({ item }: { item: PromoItem }) => (
     <Link href={item.href} className="group block h-full">
       <Card className="relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg h-full">
-        <div className="relative h-56 w-full">
+        <div className="relative w-full aspect-[4/5]">
           <Image
             src={item.imageUrl}
             alt={item.title}
