@@ -242,14 +242,14 @@ export default function InspirationTemplatePage() {
             <div className="container mx-auto max-w-[1542px] px-4">
                  <Breadcrumb items={breadcrumbs} className="mb-8" />
 
-                <div className="prose prose-lg max-w-4xl mx-auto mb-12 text-foreground">
+                <div className="mx-auto mb-12 max-w-4xl text-foreground">
                     <div className="mb-8 text-sm text-muted-foreground">
                         <span>Av <strong>Kari Nordmann, Hageentusiast</strong></span>
                         <span className="mx-2" aria-hidden="true">&bull;</span>
                         <span>Publisert: 18. august 2024</span>
                     </div>
                     <Separator className="mb-8" />
-                    <p className="lead">
+                    <p className="prose prose-lg max-w-none text-foreground">
                         Se hvordan enkle grep og de riktige produktene forvandlet en vanlig uteplass til en magisk oase for hele familien.
                     </p>
                 </div>
@@ -259,7 +259,7 @@ export default function InspirationTemplatePage() {
                     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
-                            <div className="prose mt-4 max-w-none text-foreground">
+                            <div className="prose prose-lg mt-4 max-w-none text-foreground">
                                 <p>
                                     "Vi hadde en fin terrasse, men brukte den altfor sjeldent," forteller Kari. "Så fort solen gikk ned, ble det kjølig og mørkt. Vi manglet et naturlig samlingspunkt som kunne forlenge sommerkveldene." Karis utfordring er vanlig – hvordan gjøre uteplassen like innbydende etter mørkets frembrudd? Løsningen ble å fokusere på varme og lys.
                                 </p>
@@ -287,7 +287,7 @@ export default function InspirationTemplatePage() {
                 <section className="mb-16 lg:mb-24">
                     <div className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
-                        <p className="mx-auto mt-2 max-w-3xl text-lg text-muted-foreground">
+                        <p className="prose prose-lg mx-auto mt-2 max-w-3xl text-foreground">
                             Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
                         </p>
                     </div>
@@ -365,7 +365,7 @@ export default function InspirationTemplatePage() {
                 <section className="rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
                     <div className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
-                        <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">
+                        <p className="prose prose-lg mx-auto mt-2 max-w-2xl text-foreground">
                             Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
                         </p>
                     </div>
