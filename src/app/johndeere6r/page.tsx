@@ -403,6 +403,7 @@ function Tractor360Viewer() {
 
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
+    const [isMobileCtaVisible, setIsMobileCtaVisible] = React.useState(false);
 
     const handleScroll = () => {
         const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'sammenlign', 'tjenester', 'kontakt'];
@@ -414,6 +415,12 @@ export default function JohnDeere6RPage() {
                 if(activeSection !== sectionId) setActiveSection(sectionId);
                 break;
             }
+        }
+        // Show mobile CTA after scrolling down
+        if (window.scrollY > 500) {
+            setIsMobileCtaVisible(true);
+        } else {
+            setIsMobileCtaVisible(false);
         }
     };
 
@@ -726,11 +733,14 @@ export default function JohnDeere6RPage() {
             </main>
             
             {/* Sticky Mobile CTA */}
-            <div className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background p-3 md:hidden">
+             <div className={cn(
+                "fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 p-3 backdrop-blur-sm transition-transform duration-300 md:hidden",
+                isMobileCtaVisible ? 'translate-y-0' : 'translate-y-full'
+            )}>
               <div className="flex items-center justify-between gap-3">
                  <QuoteRequestDialog
                     trigger={
-                        <Button size="lg" className="h-12 flex-1 bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                        <Button size="lg" className="h-12 flex-1">
                             <Mail className="mr-2"/> Be om et tilbud
                         </Button>
                     }
@@ -745,4 +755,3 @@ export default function JohnDeere6RPage() {
         </div>
     );
 }
-
