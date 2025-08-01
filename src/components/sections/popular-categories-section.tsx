@@ -36,7 +36,7 @@ export function PopularCategoriesSection() {
         <div className="lg:hidden">
           <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
             {categories.map((category) => (
-              <div key={category.title} className="w-2/5 flex-shrink-0 sm:w-1/3">
+              <div key={category.title} className="w-3/4 flex-shrink-0 sm:w-1/2">
                 <CategoryCard {...category} />
               </div>
             ))}
