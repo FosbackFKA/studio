@@ -246,24 +246,6 @@ function ShoppingCartSheet() {
   const totalPrice = useCartStore(selectTotalPrice);
   const [isOpen, setIsOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    // This is just for demonstration purposes.
-    if (useCartStore.getState().items.length === 0) {
-      useCartStore.getState().addItem({
-        id: 'SEGNAVH3000E',
-        title: 'Robotgressklipper Navimow H3000E med VisionFence',
-        brand: 'Segway',
-        price: '34 999,-',
-        salePrice: '29 999,-',
-        imageUrl: popular1,
-        productUrl: '#',
-        onlineStock: true,
-        storeStockCount: 60,
-        badgeText: '- 14 %'
-      });
-    }
-  }, []);
-
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
