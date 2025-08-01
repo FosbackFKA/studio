@@ -342,9 +342,9 @@ export default function JohnDeere6RPage() {
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsCtaBarVisible(!entry.isIntersecting);
+                setIsCtaBarVisible(entry.boundingClientRect.top < 171 && !entry.isIntersecting);
             },
-            { rootMargin: "-100px", threshold: 0 }
+            { rootMargin: "-171px 0px 0px 0px", threshold: 0 }
         );
 
         if (ctaTriggerRef.current) {
@@ -369,7 +369,7 @@ export default function JohnDeere6RPage() {
                 "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
                 isCtaBarVisible ? 'translate-y-0' : '-translate-y-full'
             )}>
-                <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-end gap-4 px-4 pt-[64px]">
+                <div className="container mx-auto flex h-20 items-center justify-end gap-6 max-w-[1542px] px-4 pt-[171px]">
                      <div className="flex items-center gap-4">
                          <span className="font-headline text-lg font-bold">John Deere 6R 110</span>
                          <Separator orientation="vertical" className="h-8"/>
@@ -741,5 +741,5 @@ export default function JohnDeere6RPage() {
             <FooterComponent />
         </div>
     );
+}
 
-    
