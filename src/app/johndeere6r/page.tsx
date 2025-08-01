@@ -12,7 +12,7 @@ import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X, MoveHorizontal, Search, Settings2 } from 'lucide-react';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X, MoveHorizontal, Search, Settings2, Leaf, Mountain, Truck as TruckIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
@@ -117,12 +117,39 @@ const comparisonData = {
   ],
 };
 
+const otherSeriesData = [
+  {
+    icon: Leaf,
+    series: "5R-serien",
+    description: "Kompakt og smidig, ideell for mindre gårdsbruk, spesialavlinger og arbeid på trange områder.",
+    href: "#"
+  },
+  {
+    icon: Tractor,
+    series: "7R-serien",
+    description: "Rå kraft og avansert teknologi for store arealer og krevende redskaper. Optimal for stordrift.",
+    href: "#"
+  },
+  {
+    icon: Mountain,
+    series: "8R-serien",
+    description: "Uovertruffen ytelse og trekkraft for de aller tyngste oppgavene innen moderne, storskala landbruk.",
+    href: "#"
+  },
+  {
+    icon: TruckIcon,
+    series: "Spesialtraktorer",
+    description: "Skreddersydde løsninger for frukthager, vingårder og andre spesialiserte behov.",
+    href: "#"
+  }
+];
+
 
 function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col p-0">
+      <DialogContent className="max-w-md w-full flex flex-col p-0 h-[90vh]">
         <DialogHeader className="p-6 pb-4">
           <DialogTitle className="font-headline text-2xl">Still oss et spørsmål eller be om et tilbud</DialogTitle>
           <DialogDescription>
@@ -133,25 +160,21 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         <ScrollArea className="flex-1">
           <div className="space-y-6 px-6 py-4">
             <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <Label htmlFor="name">Fullt navn</Label>
-                    <Input id="name" placeholder="Ola Nordmann" />
-                  </div>
-                  <div className="space-y-1">
-                    <Label htmlFor="phone">Telefon</Label>
-                    <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
-                  </div>
+                <div className="space-y-1">
+                  <Label htmlFor="name">Fullt navn</Label>
+                  <Input id="name" placeholder="Ola Nordmann" />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <Label htmlFor="email">E-post</Label>
-                    <Input id="email" type="email" placeholder="din@epost.no" />
-                  </div>
-                  <div className="space-y-1">
-                    <Label htmlFor="zip">Postnummer</Label>
-                    <Input id="zip" placeholder="Ditt postnummer" />
-                  </div>
+                <div className="space-y-1">
+                  <Label htmlFor="phone">Telefon</Label>
+                  <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="email">E-post</Label>
+                  <Input id="email" type="email" placeholder="din@epost.no" />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="zip">Postnummer</Label>
+                  <Input id="zip" placeholder="Ditt postnummer" />
                 </div>
                 <div className="space-y-1">
                   <Label htmlFor="comments">Kommentarer eller spørsmål</Label>
@@ -161,11 +184,11 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
           </div>
         </ScrollArea>
 
-        <DialogFooter className="mt-auto p-6 pt-4 border-t">
+        <DialogFooter className="mt-auto p-6 pt-4 border-t bg-secondary/30">
           <DialogClose asChild>
             <Button type="button" variant="outline">Avbryt</Button>
           </DialogClose>
-          <Button type="submit" disabled>Send forespørsel</Button>
+          <Button type="submit">Send forespørsel</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -531,9 +554,37 @@ export default function JohnDeere6RPage() {
                   </div>
                 </section>
 
+                {/* --- Utforsk andre serier --- */}
+                <section id="utforsk" className="bg-secondary/30 py-16 lg:py-24">
+                    <div className="container mx-auto max-w-[1542px] px-4">
+                        <div className="text-center mb-12">
+                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Ikke helt rett? Utforsk andre serier</h2>
+                            <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                                John Deere tilbyr et bredt spekter av traktorer for alle typer oppgaver. Finn serien som passer perfekt for din drift.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                            {otherSeriesData.map((series) => (
+                                <Card key={series.series} className="flex flex-col text-center items-center p-6 shadow-lg bg-card transform hover:-translate-y-1 transition-transform duration-300">
+                                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                                        <series.icon className="h-8 w-8 text-primary" />
+                                    </div>
+                                    <CardTitle className="font-headline text-2xl">{series.series}</CardTitle>
+                                    <CardContent className="mt-2 text-muted-foreground flex-grow p-0">
+                                        <p>{series.description}</p>
+                                    </CardContent>
+                                    <Button asChild variant="outline-primary" className="mt-6">
+                                        <Link href={series.href}>Utforsk serien</Link>
+                                    </Button>
+                                </Card>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
 
                 {/* --- Tjenester --- */}
-                 <section id="tjenester" className="py-16 lg:py-24 bg-secondary/30">
+                 <section id="tjenester" className="py-16 lg:py-24 bg-white">
                     <div className="container mx-auto max-w-[1542px] px-4">
                        <div className="text-center">
                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Vi er med deg hele veien</h2>
@@ -545,20 +596,20 @@ export default function JohnDeere6RPage() {
                             <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
                                 <Settings className="h-12 w-12 text-primary" />
                                 <CardTitle className="mt-4 font-headline text-2xl">Verkstedtjenester</CardTitle>
-                                <CardContent className="mt-2 flex-grow text-muted-foreground">Våre sertifiserte teknikere over hele landet sikrer profesjonell service og vedlikehold, slik at din maskin alltid yter sitt beste.</CardContent>
-                                <Button variant="link">Les mer <ArrowRight className="ml-2" /></Button>
+                                <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Våre sertifiserte teknikere over hele landet sikrer profesjonell service og vedlikehold, slik at din maskin alltid yter sitt beste.</CardContent>
+                                <Button variant="link" className="mt-4">Les mer <ArrowRight className="ml-2"/></Button>
                             </Card>
                              <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
                                 <Wallet className="h-12 w-12 text-primary" />
                                 <CardTitle className="mt-4 font-headline text-2xl">Finansiering og leasing</CardTitle>
-                                <CardContent className="mt-2 flex-grow text-muted-foreground">Vi tilbyr skreddersydde og konkurransedyktige finansieringsløsninger som passer din drift og dine investeringsplaner.</CardContent>
-                                 <Button variant="link">Se dine muligheter <ArrowRight className="ml-2" /></Button>
+                                <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Vi tilbyr skreddersydde og konkurransedyktige finansieringsløsninger som passer din drift og dine investeringsplaner.</CardContent>
+                                 <Button variant="link" className="mt-4">Se dine muligheter <ArrowRight className="ml-2" /></Button>
                             </Card>
                              <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
                                 <Tractor className="h-12 w-12 text-primary" />
                                 <CardTitle className="mt-4 font-headline text-2xl">Presisjonsjordbruk</CardTitle>
-                                <CardContent className="mt-2 flex-grow text-muted-foreground">Få mest mulig ut av hver kvadratmeter med våre løsninger for presisjonslandbruk. Vi hjelper deg med alt fra autostyring til avansert dataanalyse.</CardContent>
-                                <Button variant="link">Utforsk teknologien <ArrowRight className="ml-2" /></Button>
+                                <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Få mest mulig ut av hver kvadratmeter med våre løsninger for presisjonslandbruk. Vi hjelper deg med alt fra autostyring til avansert dataanalyse.</CardContent>
+                                <Button variant="link" className="mt-4">Utforsk teknologien <ArrowRight className="ml-2" /></Button>
                             </Card>
                         </div>
                     </div>
