@@ -203,12 +203,12 @@ export default function StegForStegPage() {
                     <div key={step.step} className={cn("grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-12", index % 2 !== 0 && "md:grid-flow-col-dense")}>
                     <div className={cn("order-2", index % 2 !== 0 && "md:order-1")}>
                         <div className="flex items-center gap-4 mb-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary font-headline text-2xl font-bold text-primary-foreground">
+                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary font-headline text-2xl font-bold text-primary-foreground">
                             {step.step}
                         </div>
                         <h2 className="font-headline text-3xl font-bold text-foreground">{step.title}</h2>
                         </div>
-                        <p className="text-lg leading-relaxed text-muted-foreground">{step.description}</p>
+                        <p className="prose prose-lg max-w-none text-foreground">{step.description}</p>
                     </div>
                     <div className={cn("relative aspect-video overflow-hidden rounded-lg shadow-xl", index % 2 !== 0 ? "md:order-2" : "md:order-1")}>
                         <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint={step['data-ai-hint']} />
@@ -231,7 +231,7 @@ export default function StegForStegPage() {
                 </section>
 
                 <div className="my-16 space-y-12 md:my-24">
-                     <div className='max-w-4xl mx-auto'>
+                     <div className='max-w-4xl mx-auto prose prose-lg'>
                         <h2 className="font-headline text-2xl font-bold text-foreground mb-4">Fordeler med uteliv for kanin</h2>
                         <ul className="space-y-3 text-lg">
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mer plass og bevegelsesfrihet,</strong> som forebygger atferdsproblemer.</span></li>
@@ -250,13 +250,12 @@ export default function StegForStegPage() {
                             <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
                         </CardContent>
                     </Card>
+                    
+                    <div className="prose prose-lg max-w-4xl mx-auto">
+                        <p className='font-semibold'>Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove.</p>
+                        <p className='text-sm text-muted-foreground'>— Felleskjøpets smådyrekspert</p>
+                    </div>
                 </div>
-                
-                <div className="prose prose-lg max-w-4xl mx-auto my-16 md:my-24">
-                     <p className='font-semibold'>Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove.</p>
-                     <p className='text-sm text-muted-foreground'>— Felleskjøpets smådyrekspert</p>
-                </div>
-                
 
                 <ArticlesSection 
                     title="Mer om kaninhold"
