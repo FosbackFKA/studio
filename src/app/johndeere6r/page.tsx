@@ -155,7 +155,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="w-full max-w-md p-0 flex flex-col h-full md:h-auto md:max-h-[90vh]">
+      <DialogContent className="p-0 w-full max-w-md flex flex-col h-full md:h-auto md:max-h-[90vh]">
         <DialogHeader className="p-6 pb-4">
           <DialogTitle className="font-headline text-2xl">Still oss et spørsmål eller be om et tilbud</DialogTitle>
           <DialogDescription>
@@ -164,7 +164,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         </DialogHeader>
         
         <ScrollArea className="flex-1">
-          <div className="space-y-6 px-6 py-4">
+          <div className="px-6 py-4 space-y-6">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger>Gjør tilpasninger på utstyr (valgfritt)</AccordionTrigger>
@@ -314,8 +314,11 @@ function Tractor360Viewer() {
 export default function JohnDeere6RPage() {
     const [activeSection, setActiveSection] = React.useState('oversikt');
     const [isMobileCtaVisible, setIsMobileCtaVisible] = React.useState(false);
+    const [isCtaBarVisible, setIsCtaBarVisible] = React.useState(false);
+    const ctaTriggerRef = React.useRef<HTMLDivElement>(null);
 
-    const handleScroll = () => {
+
+    const handleScroll = React.useCallback(() => {
         const sections = ['oversikt', 'funksjoner', 'spesifikasjoner', 'sammenlign', 'tjenester', 'kontakt'];
         const scrollPosition = window.scrollY + 200;
         
@@ -332,17 +335,55 @@ export default function JohnDeere6RPage() {
         } else {
             setIsMobileCtaVisible(false);
         }
-    };
+    }, [activeSection]);
 
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [activeSection]);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsCtaBarVisible(!entry.isIntersecting);
+            },
+            { rootMargin: "-100px", threshold: 0 }
+        );
+
+        if (ctaTriggerRef.current) {
+            observer.observe(ctaTriggerRef.current);
+        }
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (ctaTriggerRef.current) {
+                observer.unobserve(ctaTriggerRef.current);
+            }
+        };
+    }, [handleScroll]);
 
 
     return (
         <div className="flex min-h-screen flex-col bg-background">
             <HeaderComponent />
+
+            {/* Sticky Desktop CTA */}
+             <div className={cn(
+                "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+                isCtaBarVisible ? 'translate-y-0' : '-translate-y-full'
+            )}>
+                <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-end gap-4 px-4 pt-[64px]">
+                     <div className="flex items-center gap-4">
+                         <span className="font-headline text-lg font-bold">John Deere 6R 110</span>
+                         <Separator orientation="vertical" className="h-8"/>
+                         <QuoteRequestDialog
+                            trigger={
+                                <Button size="lg" className="h-12 px-6 text-base bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                                    <Mail className="mr-2"/> Be om et tilbud
+                                </Button>
+                            }
+                        />
+                     </div>
+                </div>
+            </div>
+
             <main className="flex-grow pb-24 md:pb-0">
                 {/* --- Hero Seksjon --- */}
                 <section id="oversikt" className="relative h-screen min-h-[700px] w-full text-white">
@@ -362,7 +403,7 @@ export default function JohnDeere6RPage() {
                         <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
                             Kraft, intelligens og komfort – redefinert for moderne landbruk.
                         </p>
-                        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                        <div ref={ctaTriggerRef} className="mt-8 flex flex-col gap-4 sm:flex-row">
                              <QuoteRequestDialog
                                 trigger={
                                     <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
@@ -700,4 +741,5 @@ export default function JohnDeere6RPage() {
             <FooterComponent />
         </div>
     );
-}
+
+    
