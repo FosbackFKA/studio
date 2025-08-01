@@ -14,6 +14,7 @@ import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Separator } from '@/components/ui/separator';
 
 
 // Import local images
@@ -234,22 +235,31 @@ export default function InspirationTemplatePage() {
             <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-6xl lg:text-7xl">
               Kari skapte sin drømmehage med Felleskjøpet
             </h1>
-            <p className="mt-4 max-w-3xl text-lg text-yellow-300/90 md:text-xl">
-              Se hvordan enkle grep og de riktige produktene forvandlet en vanlig uteplass til en magisk oase for hele familien.
-            </p>
           </div>
         </section>
 
         <div className="bg-background py-12 lg:py-16">
             <div className="container mx-auto max-w-[1542px] px-4">
-                 <Breadcrumb items={breadcrumbs} className="mb-12" />
+                 <Breadcrumb items={breadcrumbs} className="mb-8" />
+
+                <div className="prose prose-lg max-w-4xl mx-auto mb-12 text-foreground">
+                    <div className="mb-8 text-sm text-muted-foreground">
+                        <span>Av <strong>Kari Nordmann, Hageentusiast</strong></span>
+                        <span className="mx-2" aria-hidden="true">&bull;</span>
+                        <span>Publisert: 18. august 2024</span>
+                    </div>
+                    <Separator className="mb-8" />
+                    <p className="lead">
+                        Se hvordan enkle grep og de riktige produktene forvandlet en vanlig uteplass til en magisk oase for hele familien.
+                    </p>
+                </div>
                  
                 {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
-                <section className="mb-16 md:mb-24 mx-auto max-w-[1542px]">
+                <section className="mb-16 md:mb-24 mx-auto max-w-4xl">
                     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
-                            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                            <p className="mt-4 prose max-w-none text-foreground">
                                 "Vi hadde en fin terrasse, men brukte den altfor sjeldent," forteller Kari. "Så fort solen gikk ned, ble det kjølig og mørkt. Vi manglet et naturlig samlingspunkt som kunne forlenge sommerkveldene." Karis utfordring er vanlig – hvordan gjøre uteplassen like innbydende etter mørkets frembrudd? Løsningen ble å fokusere på varme og lys.
                             </p>
                         </div>
@@ -357,10 +367,19 @@ export default function InspirationTemplatePage() {
                             Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-6 md:grid-cols-4 max-w-5xl mx-auto">
-                        {shopTheLookProducts.map((product) => (
-                            <ProductCard key={product.id} {...product} />
-                        ))}
+                    {/* Desktop Grid */}
+                    <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                        {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
+                    </div>
+                     {/* Mobile Horizontal Scroll */}
+                    <div className="md:hidden">
+                        <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
+                            {shopTheLookProducts.map((product) => (
+                                <div key={product.id} className="w-2/3 flex-shrink-0">
+                                    <ProductCard {...product} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     {/* Call-to-Action */}
                     <div className="mt-12 text-center">
