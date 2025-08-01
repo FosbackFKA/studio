@@ -207,7 +207,7 @@ export default function StegForStegPage() {
                         </div>
                         <h2 className="font-headline text-3xl font-bold text-foreground">{step.title}</h2>
                         </div>
-                        <p className="prose prose-lg max-w-none text-foreground">{step.description}</p>
+                        <p className="prose max-w-none text-foreground">{step.description}</p>
                     </div>
                     <div className={cn("relative aspect-video overflow-hidden rounded-lg shadow-xl", index % 2 !== 0 ? "md:order-2" : "md:order-1")}>
                         <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint={step['data-ai-hint']} />
@@ -235,8 +235,8 @@ export default function StegForStegPage() {
                             ))}
                         </div>
                     </div>
-                    <div className="mt-12 text-center">
-                        <Button asChild size="lg"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+                    <div className="mt-12 text-left lg:text-center">
+                        <Button asChild size="lg" variant="outline"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
                     </div>
                 </section>
 
@@ -256,7 +256,7 @@ export default function StegForStegPage() {
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
                         </CardHeader>
-                        <CardContent className="prose prose-lg max-w-none">
+                        <CardContent className="prose max-w-none text-foreground">
                             <p>Kaniner har et synsfelt på nesten 360 grader, noe som hjelper dem å oppdage rovdyr fra nesten alle vinkler! Den eneste blindsonen er en liten flekk rett foran nesen.</p>
                             <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
                         </CardContent>
