@@ -44,35 +44,35 @@ const steps = [
     title: 'Velg riktig kaninhus',
     description: 'Et godt kaninhus er nøkkelen. Se etter et hus med en adskilt, trekkfri sovedel og en romslig, nettingkledd løpegård. Huset må være solid og rovdyrsikkert, med materialer som tåler vær og vind. Sørg for at det er enkelt å rengjøre, med tak som kan åpnes eller uttrekkbar bunn.',
     image: step1Image,
-    dataAiHint: 'rabbit hutch wood'
+    'data-ai-hint': 'rabbit hutch wood'
   },
   {
     step: 2,
     title: 'Finn den perfekte plasseringen',
     description: 'Plasser huset på et sted som er beskyttet mot direkte sollys om sommeren og kald vind om vinteren. En lun krok inntil en husvegg eller under et tak er ideelt. Underlaget bør være jevnt og tørt. Unngå å plassere det rett på fuktig gress, da dette kan føre til råte i treverket.',
     image: step2Image,
-    dataAiHint: 'sheltered corner garden'
+    'data-ai-hint': 'sheltered corner garden'
   },
   {
     step: 3,
     title: 'Innred for komfort og trivsel',
     description: 'Fyll sovedelen rikelig med halm eller annet egnet redemateriale. I løpegården legger du et tykt lag med bunnstrø, som f.eks. flis eller spon, for å absorbere fuktighet. Sørg for at kaninen har tilgang til en solid matskål som ikke kan tippes, og en drikkeflaske eller vannskål med friskt vann.',
     image: step3Image,
-    dataAiHint: 'rabbit bedding hay'
+    'data-ai-hint': 'rabbit bedding hay'
   },
   {
     step: 4,
     title: 'Riktig fôring er avgjørende',
     description: 'Hoveddelen av kaninens kosthold skal bestå av høy av god kvalitet. Dette er avgjørende for fordøyelsen og tannhelsen. Gi i tillegg en liten mengde kaninpellets daglig, og suppler med trygge, grønne bladgrønnsaker. Friskt vann må alltid være tilgjengelig.',
     image: step4Image,
-    dataAiHint: 'rabbit food pellets'
+    'data-ai-hint': 'rabbit food pellets'
   },
   {
     step: 5,
     title: 'Aktivisering og tilsyn',
     description: 'Selv med en løpegård, trenger kaninen din daglig aktivisering og sosial kontakt. La den hoppe fritt i en sikker, større luftegård under oppsyn. Sjekk kaninen og huset daglig for å forsikre deg om at alt er som det skal. Se etter tegn på sykdom og påse at huset er rent og trygt.',
     image: step5Image,
-    dataAiHint: 'rabbit playing tunnel'
+    'data-ai-hint': 'rabbit playing tunnel'
   },
 ];
 
@@ -86,7 +86,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 32,
-    dataAiHint: 'rabbit hutch wood'
+    'data-ai-hint': 'rabbit hutch wood'
   },
   {
     id: 'KANINFOR01',
@@ -97,7 +97,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 112,
-    dataAiHint: 'rabbit food pellets'
+    'data-ai-hint': 'rabbit food pellets'
   },
   {
     id: 'HOY01',
@@ -108,7 +108,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 250,
-    dataAiHint: 'hay small animals'
+    'data-ai-hint': 'hay small animals'
   },
   {
     id: 'VANNFLASKE01',
@@ -119,7 +119,7 @@ const shopTheLookProducts: Product[] = [
     productUrl: '#',
     onlineStock: true,
     storeStockCount: 180,
-    dataAiHint: 'water bottle rodent'
+    'data-ai-hint': 'water bottle rodent'
   },
 ];
 
@@ -129,21 +129,21 @@ const relatedArticles = [
       excerpt: 'Lær hvilke grønnsaker, urter og grener som er trygge og sunne for kaninen din. En variert diett er viktig for trivselen.',
       imageUrl: artikkel1,
       articleUrl: '#',
-      dataAiHint: 'rabbit eating greens'
+      'data-ai-hint': 'rabbit eating greens'
     },
     {
       title: 'Slik unngår du de vanligste kaninsykdommene',
       excerpt: 'Forebygging er den beste medisin. Les om hvordan riktig kosthold, renhold og oppmerksomhet kan holde kaninen din frisk og glad.',
       imageUrl: artikkel2,
       articleUrl: '#',
-      dataAiHint: 'healthy rabbit checkup'
+      'data-ai-hint': 'healthy rabbit checkup'
     },
     {
       title: 'Aktiviseringstips for kanin',
       excerpt: 'En stimulert kanin er en lykkelig kanin. Få tips til leker og aktiviteter som utfordrer kaninens naturlige instinkter.',
       imageUrl: artikkel3,
       articleUrl: '#',
-      dataAiHint: 'rabbit toys'
+      'data-ai-hint': 'rabbit toys'
     },
 ];
 
@@ -176,7 +176,7 @@ export default function StegForStegPage() {
             <div className='max-w-5xl mx-auto'>
                 <Breadcrumb items={breadcrumbs} className="mb-8" />
                 
-                <div className="mb-12 flex items-center gap-6 border-y py-4">
+                <div className="mb-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-y py-4">
                     <div className="flex items-center gap-3">
                         <Avatar>
                             <AvatarFallback>FK</AvatarFallback>
@@ -211,7 +211,7 @@ export default function StegForStegPage() {
                         <p className="text-lg leading-relaxed text-muted-foreground">{step.description}</p>
                     </div>
                     <div className={cn("relative aspect-video overflow-hidden rounded-lg shadow-xl", index % 2 !== 0 ? "md:order-2" : "md:order-1")}>
-                        <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint={step.dataAiHint} />
+                        <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint={step['data-ai-hint']} />
                     </div>
                     </div>
                 ))}
@@ -230,8 +230,8 @@ export default function StegForStegPage() {
                 </div>
                 </section>
 
-                <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-                    <section>
+                <div className="my-16 space-y-12 md:my-24">
+                     <div className='max-w-4xl mx-auto'>
                         <h2 className="font-headline text-2xl font-bold text-foreground mb-4">Fordeler med uteliv for kanin</h2>
                         <ul className="space-y-3 text-lg">
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mer plass og bevegelsesfrihet,</strong> som forebygger atferdsproblemer.</span></li>
@@ -239,26 +239,24 @@ export default function StegForStegPage() {
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Bedre pels- og neglhelse</strong> gjennom et mer naturlig miljø.</span></li>
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mulighet til å utøve naturlig atferd</strong> som graving og hopping.</span></li>
                         </ul>
-                    </section>
+                    </div>
                     
-                    <Card className="bg-primary/5 border-primary/20">
+                    <Card className="bg-primary/5 border-primary/20 max-w-4xl mx-auto">
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-2 text-muted-foreground">
+                        <CardContent className="prose max-w-none text-muted-foreground">
                             <p>Kaniner har et synsfelt på nesten 360 grader, noe som hjelper dem å oppdage rovdyr fra nesten alle vinkler! Den eneste blindsonen er en liten flekk rett foran nesen.</p>
                             <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
                         </CardContent>
                     </Card>
                 </div>
-
-                <section className="mt-16 text-center mx-auto max-w-3xl lg:mt-24">
-                    <Rabbit className="mx-auto h-12 w-12 text-primary/30" />
-                    <blockquote className="mt-4">
-                        <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">"Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove."</p>
-                        <cite className="mt-6 block text-base not-italic text-muted-foreground">— Felleskjøpets smådyrekspert</cite>
-                    </blockquote>
-                </section>
+                
+                <div className="prose prose-lg max-w-4xl mx-auto my-16 md:my-24">
+                     <p className='font-semibold'>Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove.</p>
+                     <p className='text-sm text-muted-foreground'>— Felleskjøpets smådyrekspert</p>
+                </div>
+                
 
                 <ArticlesSection 
                     title="Mer om kaninhold"
