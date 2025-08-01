@@ -176,23 +176,22 @@ export default function StegForStegPage() {
             <div className='max-w-5xl mx-auto'>
                 <Breadcrumb items={breadcrumbs} className="mb-8" />
                 
-                <div className="mb-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-y py-4">
-                    <div className="flex items-center gap-3">
-                        <Avatar>
-                            <AvatarFallback>FK</AvatarFallback>
-                        </Avatar>
-                        <div>
-                            <p className="font-semibold text-foreground">Felleskjøpets ekspert</p>
-                            <p className="text-sm text-muted-foreground">Våre agronomer og produkspesialister</p>
+                <div className="prose prose-lg max-w-none mx-auto text-foreground">
+                    <div className="mb-12 border-y py-4">
+                        <div className="flex items-center gap-3">
+                            <Avatar>
+                                <AvatarFallback>FK</AvatarFallback>
+                            </Avatar>
+                            <div>
+                                <p className="font-semibold text-foreground">Felleskjøpets ekspert</p>
+                                <p className="text-sm text-muted-foreground">Våre agronomer og produkspesialister</p>
+                            </div>
+                        </div>
+                         <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+                            <Calendar className="h-4 w-4" />
+                            <span>Publisert: 14. august 2024</span>
                         </div>
                     </div>
-                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Calendar className="h-4 w-4" />
-                        <span>Publisert: 14. august 2024</span>
-                    </div>
-                </div>
-
-                <div className="prose prose-lg max-w-none mx-auto text-foreground">
                     <p>
                         Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn. Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
                     </p>
@@ -217,18 +216,30 @@ export default function StegForStegPage() {
                 ))}
                 </section>
                 
-                <section className="my-16 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16 md:my-24">
-                <div className="mb-12 text-center max-w-4xl mx-auto">
-                    <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
-                    <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
-                </div>
-                <div className="grid grid-cols-2 gap-6 md:grid-cols-4 max-w-5xl mx-auto">
-                    {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
-                </div>
-                <div className="mt-12 text-center">
-                    <Button asChild size="lg"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
-                </div>
+                <section className="my-16 md:my-24 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
+                    <div className="mb-12 text-center max-w-4xl mx-auto">
+                        <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
+                        <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
+                    </div>
+                    {/* Desktop Grid */}
+                    <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                        {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
+                    </div>
+                    {/* Mobile Horizontal Scroll */}
+                    <div className="md:hidden">
+                        <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
+                            {shopTheLookProducts.map((product) => (
+                                <div key={product.id} className="w-2/3 flex-shrink-0">
+                                    <ProductCard {...product} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="mt-12 text-center">
+                        <Button asChild size="lg"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+                    </div>
                 </section>
+
 
                 <div className="my-16 space-y-12 md:my-24">
                      <div className='max-w-4xl mx-auto prose prose-lg'>
