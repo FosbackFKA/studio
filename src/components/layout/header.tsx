@@ -203,36 +203,35 @@ function CartItemCard({ item }: { item: CartItem }) {
         <Image src={item.imageUrl} alt={item.title} fill sizes="96px" className="rounded-md border p-1 object-contain bg-white" />
         {item.badgeText && <Badge variant="outline" className="absolute -left-1 -top-1 border-none bg-accent px-1.5 py-0.5 text-xs font-semibold text-accent-foreground">{item.badgeText}</Badge>}
       </div>
-      <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex justify-between items-start">
-            <div className="pr-2 flex-1 min-w-0">
-              {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
-              <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
-            </div>
-            <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0 -mt-1 -mr-2" onClick={() => removeItem(item.id)}>
-              <Trash2 className="h-4 w-4 text-muted-foreground" />
-            </Button>
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+          <div>
+            {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
+            <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
           </div>
           
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary mt-1">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary">
             {item.onlineStock && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> På nettlager</div>}
             {item.storeStockCount && item.storeStockCount > 0 && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Finnes i {item.storeStockCount} butikker</div>}
           </div>
 
-        <div className="flex items-end justify-between mt-auto pt-2">
-          <div className="flex items-center gap-2 rounded-full border p-0.5">
-            <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity - 1)} disabled={item.quantity <= 1}>
-              <Minus className="h-4 w-4" />
+        <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 rounded-full border p-0.5">
+                <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity - 1)} disabled={item.quantity <= 1}>
+                <Minus className="h-4 w-4" />
+                </Button>
+                <span className="w-4 text-center text-sm font-medium">{item.quantity}</span>
+                <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity + 1)}>
+                <Plus className="h-4 w-4" />
+                </Button>
+            </div>
+            <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0" onClick={() => removeItem(item.id)}>
+              <Trash2 className="h-4 w-4 text-muted-foreground" />
             </Button>
-            <span className="w-4 text-center text-sm font-medium">{item.quantity}</span>
-            <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity + 1)}>
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
-          <div className="text-right flex-shrink-0">
+        </div>
+
+        <div className="text-right">
             <p className="font-bold text-primary whitespace-nowrap">kr {displayPrice.toLocaleString('nb-NO')},-</p>
             {originalPrice && <p className="text-sm text-muted-foreground line-through whitespace-nowrap">kr {originalPrice.toLocaleString('nb-NO')},-</p>}
-          </div>
         </div>
       </div>
     </div>
