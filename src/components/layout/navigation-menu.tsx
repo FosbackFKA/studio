@@ -640,47 +640,62 @@ export const kampanjerMenuData = {
 
 export const guiderOgArtiklerMenuData = {
   columns: [
-     [
+    [
       {
-        title: 'Hage og uterom',
-        href: '#',
+        title: '🌿 Hage og dyrking', href: '#',
         links: [
+          { name: '8 tips for nabolagets grønneste plen', href: '#' },
           { name: 'Slik velger du riktig gressklipper', href: '#' },
-          { name: 'Guide til høytrykkspyler', href: '#' },
-          { name: 'Slik blir du kvitt ugress i plenen', href: '#' },
-          { name: 'Vedlikehold av utemøbler', href: '#' },
+          { name: 'Guide: robotklippere og installasjon', href: '#' },
+          { name: 'Dyrk dine egne poteter', href: '#' },
+          { name: 'Gjør hagen din bievennlig', href: '#' },
         ],
       },
       {
-        title: 'Skog og ved',
-        href: '#',
+        title: '🧰 Maskiner og utstyr', href: '#',
         links: [
-            { name: 'Tips til vedlikehold av motorsag', href: '#' },
-            { name: 'Slik kløyver du ved trygt og effektivt', href: '#' },
+            { name: 'Hvilken motorsag skal jeg velge?', href: '#' },
+            { name: 'Vedlikehold og oppbevaring av motorsag', href: '#' },
+            { name: 'Slik velger du riktig snøfreser', href: '#' },
         ],
       },
     ],
     [
       {
-        title: 'Kjæledyr',
-        href: '#',
+        title: '🚗 Bil og garasje', href: '#',
         links: [
-          { name: 'Slik velger du riktig fôr til hunden din', href: '/hundefor' },
-          { name: 'Førstehjelp til hund', href: '#' },
-          { name: 'Velg riktig utstyr til valpen', href: '#' },
+          { name: 'Slik velger du riktig høytrykkspyler', href: '#' },
+          { name: 'Dekkskift – guide for å bytte selv', href: '#' },
+          { name: 'Kjør sikkert med tilhenger', href: '#' },
+        ],
+      },
+      {
+        title: '🏠 Hus og hjem', href: '#',
+        links: [
+            { name: 'Slik holder du huset fritt for mus', href: '#' },
+            { name: 'Egenberedskap – dette bør du ha hjemme', href: '#' },
+            { name: 'Synlig og sikker med refleks', href: '#' },
         ],
       },
     ],
      [
       {
-        title: 'Vedlikehold og redskap',
-        href: '#',
+        title: '🐶 Kjæledyr (hund og katt)', href: '#',
         links: [
-          { name: 'Hvordan velge riktig motorsag?', href: '#' },
-          { name: 'Vask og vedlikehold av bil', href: '#' },
-          { name: 'Slik bruker du en kompostkvern', href: '#' },
+          { name: 'Slik velger du riktig hundefôr', href: '/hundefor' },
+          { name: 'Hva trenger hunden eller valpen?', href: '#' },
+          { name: 'Guide: Slik trives kaninen ute', href: '/artikler/stegforsteg' },
+          { name: 'Kattemat og fôring', href: '#' },
         ],
       },
+      {
+        title: '🐓 Hobbyhøns og smådyr',
+        href: '#',
+        links: [
+          { name: 'Høner i hagen: ansvar og stell', href: '#' },
+          { name: 'Kanin og hamster: stell og behov', href: '#' },
+        ]
+      }
     ],
   ],
   articles: guideArticles,
