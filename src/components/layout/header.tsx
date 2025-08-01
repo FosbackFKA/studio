@@ -16,7 +16,7 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import type { CartItem } from '@/hooks/use-cart-store';
-import { useCartStore, selectCartItems, selectTotalItems, selectTotalPrice } from '@/hooks/use-cart-store';
+import { useCartStore, selectCartItems, selectTotalItems, selectTotalPrice, selectTotalDiscount } from '@/hooks/use-cart-store';
 import popular1 from '@/components/common/aktuelle-kampanjer/1.webp';
 import popular2 from '@/components/common/aktuelle-kampanjer/2.webp';
 import popular3 from '@/components/common/aktuelle-kampanjer/3.webp';
@@ -211,7 +211,6 @@ function CartItemCard({ item }: { item: CartItem }) {
                 {item.brand && <p className="text-sm font-semibold text-primary">{item.brand}</p>}
                 <p className="text-sm font-medium leading-tight line-clamp-2">{item.title}</p>
             </div>
-            
           </div>
           
           <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary">
@@ -219,16 +218,16 @@ function CartItemCard({ item }: { item: CartItem }) {
             {item.storeStockCount && item.storeStockCount > 0 && <div className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Finnes i {item.storeStockCount} butikker</div>}
           </div>
           
-          <div className="text-right">
-            <p className="font-bold text-primary whitespace-nowrap">kr {displayPrice.toLocaleString('nb-NO')},-</p>
-            {originalPrice && <p className="text-sm text-muted-foreground line-through whitespace-nowrap">kr {originalPrice.toLocaleString('nb-NO')},-</p>}
+          <div className="text-right font-bold text-primary">
+            kr {displayPrice.toLocaleString('nb-NO')},-
+            {originalPrice && <span className="ml-2 text-sm font-normal text-muted-foreground line-through">kr {originalPrice.toLocaleString('nb-NO')},-</span>}
           </div>
 
           <Separator className="my-1"/>
 
           <div className="flex items-center justify-between">
-            <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0" onClick={() => removeItem(item.id)}>
-              <Trash2 className="h-4 w-4 text-muted-foreground" />
+             <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0 text-muted-foreground hover:bg-destructive/10 hover:text-destructive" onClick={() => removeItem(item.id)}>
+              <Trash2 className="h-4 w-4" />
             </Button>
             <div className="flex items-center gap-2 rounded-full border p-0.5">
                 <Button variant="ghost" size="icon" className="h-7 w-7 rounded-full" onClick={() => handleQuantityChange(item.quantity - 1)} disabled={item.quantity <= 1}>
@@ -250,11 +249,11 @@ function ShoppingCartSheet() {
   const items = useCartStore(selectCartItems);
   const totalItems = useCartStore(selectTotalItems);
   const totalPrice = useCartStore(selectTotalPrice);
+  const totalDiscount = useCartStore(selectTotalDiscount);
   const [isOpen, setIsOpen] = React.useState(false);
   const { addItem, items: cartItems } = useCartStore();
 
   React.useEffect(() => {
-    // Only run this on the client
     if (typeof window !== 'undefined' && cartItems.length === 0) {
        addItem({
         id: 'SEGNAVH3000E',
@@ -322,7 +321,7 @@ function ShoppingCartSheet() {
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-muted-foreground">Rabatt</span>
-                                <span className="text-destructive">- kr 0,00</span>
+                                <span className="text-destructive">- kr {totalDiscount.toLocaleString('nb-NO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-muted-foreground">Frakt</span>
@@ -769,4 +768,3 @@ export function HeaderComponent() {
     </Sheet>
   );
 }
-

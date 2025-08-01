@@ -56,3 +56,15 @@ export const selectTotalPrice = (state: CartState) => {
     return total + price * item.quantity;
   }, 0);
 };
+
+export const selectTotalDiscount = (state: CartState) => {
+  return state.items.reduce((totalDiscount, item) => {
+    if (item.salePrice) {
+      const originalPrice = parsePrice(item.price);
+      const salePrice = parsePrice(item.salePrice);
+      const discount = (originalPrice - salePrice) * item.quantity;
+      return totalDiscount + discount;
+    }
+    return totalDiscount;
+  }, 0);
+};
