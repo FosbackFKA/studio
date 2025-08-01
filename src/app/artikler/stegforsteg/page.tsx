@@ -176,13 +176,7 @@ export default function StegForStegPage() {
             <div className='max-w-5xl mx-auto'>
                 <Breadcrumb items={breadcrumbs} className="mb-8" />
                 
-                <div className="prose prose-lg max-w-none mx-auto text-foreground">
-                    <p className="lead text-xl text-muted-foreground">
-                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.
-                    </p>
-                </div>
-                
-                <div className="mt-6 mb-12 flex items-center gap-6 border-y py-4">
+                <div className="mb-12 flex items-center gap-6 border-y py-4">
                     <div className="flex items-center gap-3">
                         <Avatar>
                             <AvatarFallback>FK</AvatarFallback>
@@ -198,10 +192,9 @@ export default function StegForStegPage() {
                     </div>
                 </div>
 
-
                 <div className="prose prose-lg max-w-none mx-auto text-foreground">
                     <p>
-                        Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
+                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn. Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
                     </p>
                 </div>
                 
