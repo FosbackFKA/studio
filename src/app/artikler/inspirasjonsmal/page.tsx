@@ -273,7 +273,6 @@ export default function InspirationTemplatePage() {
                         <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                             <div className="flex justify-center items-center md:col-span-1">
-                                 <Quote className="h-24 w-24 text-primary/20" />
                             </div>
                             <blockquote className="md:col-span-2">
                                 <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
