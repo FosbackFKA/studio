@@ -514,7 +514,7 @@ export function HeaderComponent() {
        <Separator className="my-2" />
        <li>
           <Link href="#" className="flex items-center justify-between py-3 font-medium text-primary" onClick={() => setIsMenuOpen(false)}>
-              <span>Våre butikker</span>
+              <span>Butikker og åpningstider</span>
               <ChevronRight className="h-5 w-5 text-muted-foreground" />
           </Link>
       </li>
