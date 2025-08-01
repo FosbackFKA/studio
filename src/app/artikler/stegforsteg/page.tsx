@@ -203,7 +203,7 @@ export default function StegForStegPage() {
                     <div key={step.step} className={cn("grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-12", index % 2 !== 0 && "md:grid-flow-col-dense")}>
                     <div className={cn("order-2", index % 2 !== 0 && "md:order-1")}>
                         <div className="flex items-center gap-4 mb-4">
-                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary font-headline text-2xl font-bold text-primary-foreground">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary font-headline text-2xl font-bold text-primary-foreground">
                             {step.step}
                         </div>
                         <h2 className="font-headline text-3xl font-bold text-foreground">{step.title}</h2>
@@ -233,7 +233,7 @@ export default function StegForStegPage() {
                 <div className="my-16 space-y-12 md:my-24">
                      <div className='max-w-4xl mx-auto prose prose-lg'>
                         <h2 className="font-headline text-2xl font-bold text-foreground mb-4">Fordeler med uteliv for kanin</h2>
-                        <ul className="space-y-3 text-lg">
+                        <ul className="space-y-3">
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mer plass og bevegelsesfrihet,</strong> som forebygger atferdsproblemer.</span></li>
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Naturlig stimulering</strong> fra lyder, lukter og synsinntrykk.</span></li>
                             <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Bedre pels- og neglhelse</strong> gjennom et mer naturlig miljø.</span></li>
@@ -245,16 +245,23 @@ export default function StegForStegPage() {
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
                         </CardHeader>
-                        <CardContent className="prose max-w-none">
+                        <CardContent className="prose prose-lg max-w-none">
                             <p>Kaniner har et synsfelt på nesten 360 grader, noe som hjelper dem å oppdage rovdyr fra nesten alle vinkler! Den eneste blindsonen er en liten flekk rett foran nesen.</p>
                             <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
                         </CardContent>
                     </Card>
                     
-                    <div className="prose prose-lg max-w-4xl mx-auto">
-                        <p className='font-semibold'>Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove.</p>
-                        <p className='text-sm text-muted-foreground'>— Felleskjøpets smådyrekspert</p>
-                    </div>
+                    <Card className="bg-secondary/30 border-secondary-foreground/10 max-w-4xl mx-auto">
+                        <CardContent className="p-6 flex items-start gap-4">
+                            <Avatar className="h-12 w-12 flex-shrink-0">
+                                <AvatarFallback>FK</AvatarFallback>
+                            </Avatar>
+                            <blockquote className="prose prose-lg max-w-none">
+                                <p className="font-semibold not-italic">Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove.</p>
+                                <footer className="text-sm not-italic text-muted-foreground">— Felleskjøpets smådyrekspert</footer>
+                            </blockquote>
+                        </CardContent>
+                    </Card>
                 </div>
 
                 <ArticlesSection 
