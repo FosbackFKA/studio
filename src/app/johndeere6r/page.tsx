@@ -200,8 +200,8 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
-        <DialogHeader>
+      <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col p-0">
+        <DialogHeader className="p-6 pb-4">
           <DialogTitle className="font-headline text-2xl">Still oss et spørsmål eller be om et tilbud</DialogTitle>
           <DialogDescription>
             En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud eller svare på det du lurer på.
@@ -209,7 +209,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         </DialogHeader>
         
         <ScrollArea className="flex-1">
-          <div className="py-4 space-y-6">
+          <div className="space-y-6 px-6 py-4">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="configurator">
                 <AccordionTrigger>
@@ -317,7 +317,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
           </div>
         </ScrollArea>
 
-        <DialogFooter className="mt-auto pt-4 border-t">
+        <DialogFooter className="mt-auto p-6 pt-4 border-t">
           <DialogClose asChild>
             <Button type="button" variant="outline">Avbryt</Button>
           </DialogClose>
