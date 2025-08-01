@@ -129,7 +129,7 @@ const galleryImages: {
     title: 'Samlingspunkt med bålpanne',
     description: 'En bålpanne blir raskt det naturlige midtpunktet for varme og hygge.',
     hint: 'cozy firepit evening',
-    className: 'col-span-2 md:aspect-video', 
+    className: 'col-span-2 aspect-video', 
   },
   {
     src: inspo2,
