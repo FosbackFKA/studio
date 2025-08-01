@@ -156,7 +156,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="p-0 w-full max-w-md flex flex-col h-full md:h-auto md:max-h-[90vh]">
-        <DialogHeader className="p-6 pb-4">
+        <DialogHeader className="p-6 pb-4 border-b">
           <DialogTitle className="font-headline text-2xl">Still oss et spørsmål eller be om et tilbud</DialogTitle>
           <DialogDescription>
             En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud eller svare på det du lurer på.
@@ -164,7 +164,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         </DialogHeader>
         
         <ScrollArea className="flex-1">
-          <div className="px-6 py-4 space-y-6">
+          <div className="p-6 space-y-6">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger>Gjør tilpasninger på utstyr (valgfritt)</AccordionTrigger>
@@ -335,28 +335,17 @@ export default function JohnDeere6RPage() {
         } else {
             setIsMobileCtaVisible(false);
         }
+
+        if (ctaTriggerRef.current) {
+            const { top } = ctaTriggerRef.current.getBoundingClientRect();
+            setIsCtaBarVisible(top < 108); // 108px is the height of both top navs
+        }
     }, [activeSection]);
 
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                // Set true if the trigger is above the viewport's top edge
-                setIsCtaBarVisible(entry.boundingClientRect.top < 0 && !entry.isIntersecting);
-            },
-            { threshold: [0] }
-        );
-
-        if (ctaTriggerRef.current) {
-            observer.observe(ctaTriggerRef.current);
-        }
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            if (ctaTriggerRef.current) {
-                observer.unobserve(ctaTriggerRef.current);
-            }
         };
     }, [handleScroll]);
 
@@ -366,9 +355,11 @@ export default function JohnDeere6RPage() {
             <HeaderComponent />
 
             {/* Sticky Desktop CTA */}
-             <div className={cn(
-                "fixed top-[64px] left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
-                isCtaBarVisible ? 'translate-y-0' : '-translate-y-full'
+             <div
+                style={{ top: '108px' }}
+                className={cn(
+                    "fixed left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+                    isCtaBarVisible ? 'translate-y-0' : '-translate-y-[calc(100%_+_108px)]'
             )}>
                 <div className="container mx-auto flex h-20 items-center justify-between gap-6 max-w-[1542px] px-4">
                      <div className="flex items-center gap-4">
@@ -422,7 +413,7 @@ export default function JohnDeere6RPage() {
                 </section>
 
                 {/* --- Sticky Sub-nav --- */}
-                <div className="sticky top-[64px] z-40 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
+                <div className="sticky top-[108px] z-30 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
                     <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
                         {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Sammenlign', 'Tjenester', 'Kontakt'].map((item) => (
                             <Link
@@ -745,4 +736,3 @@ export default function JohnDeere6RPage() {
         </div>
     );
 }
-
