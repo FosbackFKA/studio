@@ -15,6 +15,7 @@ import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Separator } from '@/components/ui/separator';
 
 
 // Import local images for the article
@@ -177,23 +178,18 @@ export default function StegForStegPage() {
                 <Breadcrumb items={breadcrumbs} className="mb-8" />
                 
                 <div className="prose prose-lg max-w-none mx-auto text-foreground">
-                    <div className="mb-12 border-y py-4">
-                        <div className="flex items-center gap-3">
-                            <Avatar>
-                                <AvatarFallback>FK</AvatarFallback>
-                            </Avatar>
-                            <div>
-                                <p className="font-semibold text-foreground">Felleskjøpets ekspert</p>
-                                <p className="text-sm text-muted-foreground">Våre agronomer og produkspesialister</p>
-                            </div>
-                        </div>
-                         <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-                            <Calendar className="h-4 w-4" />
-                            <span>Publisert: 14. august 2024</span>
-                        </div>
+                    <div className="mb-8 text-sm text-muted-foreground">
+                        <span>Av <strong>Felleskjøpets ekspert</strong></span>
+                        <span className="mx-2" aria-hidden="true">&bull;</span>
+                        <span>Publisert: 14. august 2024</span>
                     </div>
+                    <Separator className="mb-8" />
+                    
+                    <p className="lead">
+                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.
+                    </p>
                     <p>
-                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn. Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
+                        Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
                     </p>
                 </div>
                 
