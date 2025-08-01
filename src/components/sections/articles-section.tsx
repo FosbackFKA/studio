@@ -48,8 +48,8 @@ export function ArticlesSection({ title, articles, linkText, linkHref, className
           </div>
         </div>
 
-        <div className="mt-4 px-4 text-left lg:mt-8 lg:text-center">
-            <Button asChild size="lg" variant="outline">
+        <div className="mt-4 px-4 text-left lg:text-center lg:mt-8">
+            <Button asChild size="lg" variant="outline-primary">
               <Link href={linkHref}>
                 {linkText}
                 <ArrowRight className="ml-2 h-4 w-4" />

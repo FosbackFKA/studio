@@ -236,7 +236,7 @@ export default function StegForStegPage() {
                         </div>
                     </div>
                     <div className="mt-12 text-left lg:text-center">
-                        <Button asChild size="lg" variant="outline"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+                        <Button asChild size="lg" variant="outline-primary"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
                     </div>
                 </section>
 
