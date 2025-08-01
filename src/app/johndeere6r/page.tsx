@@ -342,9 +342,10 @@ export default function JohnDeere6RPage() {
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsCtaBarVisible(entry.boundingClientRect.top < 171 && !entry.isIntersecting);
+                // Set true if the trigger is above the viewport's top edge
+                setIsCtaBarVisible(entry.boundingClientRect.top < 0 && !entry.isIntersecting);
             },
-            { rootMargin: "-171px 0px 0px 0px", threshold: 0 }
+            { threshold: [0] }
         );
 
         if (ctaTriggerRef.current) {
@@ -366,12 +367,14 @@ export default function JohnDeere6RPage() {
 
             {/* Sticky Desktop CTA */}
              <div className={cn(
-                "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+                "fixed top-[64px] left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
                 isCtaBarVisible ? 'translate-y-0' : '-translate-y-full'
             )}>
-                <div className="container mx-auto flex h-20 items-center justify-end gap-6 max-w-[1542px] px-4 pt-[171px]">
+                <div className="container mx-auto flex h-20 items-center justify-between gap-6 max-w-[1542px] px-4">
                      <div className="flex items-center gap-4">
                          <span className="font-headline text-lg font-bold">John Deere 6R 110</span>
+                     </div>
+                     <div className="flex items-center gap-4">
                          <Separator orientation="vertical" className="h-8"/>
                          <QuoteRequestDialog
                             trigger={
