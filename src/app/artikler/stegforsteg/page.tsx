@@ -9,11 +9,13 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, CheckCircle2, Rabbit, Info } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Rabbit, Info, Calendar, User } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+
 
 // Import local images for the article
 import heroImage from '@/components/common/stegforstegmal/hero.jpg';
@@ -159,28 +161,48 @@ export default function StegForStegPage() {
             sizes="100vw"
             className="object-cover"
             priority
-            data-ai-hint="happy rabbit green grass"
+            dataAiHint="happy rabbit green grass"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-start justify-end px-4 pb-16 text-left">
             <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-5xl lg:text-6xl">
               Guide: Slik trives kaninen i utendørs kaninhus
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-yellow-300/90 md:text-xl">
-              Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.
-            </p>
           </div>
         </section>
 
         <div className="bg-background py-12 lg:py-16">
           <div className="container mx-auto max-w-[1542px] px-4">
             <div className='max-w-5xl mx-auto'>
-                <Breadcrumb items={breadcrumbs} className="mb-12" />
+                <Breadcrumb items={breadcrumbs} className="mb-8" />
+                
+                <div className="prose prose-lg max-w-none mx-auto text-foreground">
+                    <p className="lead text-xl text-muted-foreground">
+                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.
+                    </p>
+                </div>
+                
+                <div className="mt-6 mb-12 flex items-center gap-6 border-y py-4">
+                    <div className="flex items-center gap-3">
+                        <Avatar>
+                            <AvatarFallback>FK</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <p className="font-semibold text-foreground">Felleskjøpets ekspert</p>
+                            <p className="text-sm text-muted-foreground">Våre agronomer og produkspesialister</p>
+                        </div>
+                    </div>
+                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4" />
+                        <span>Publisert: 14. august 2024</span>
+                    </div>
+                </div>
+
 
                 <div className="prose prose-lg max-w-none mx-auto text-foreground">
-                <p>
-                    Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
-                </p>
+                    <p>
+                        Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
+                    </p>
                 </div>
                 
                 <section className="my-16 md:my-24 mx-auto max-w-4xl space-y-16">
