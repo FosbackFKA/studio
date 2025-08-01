@@ -240,9 +240,9 @@ export default function InspirationTemplatePage() {
 
         <div className="bg-background py-12 lg:py-16">
             <div className="container mx-auto max-w-[1542px] px-4">
-                 <Breadcrumb items={breadcrumbs} className="mb-8" />
-
+                 
                 <div className="mx-auto mb-12 max-w-4xl text-foreground">
+                    <Breadcrumb items={breadcrumbs} className="mb-8" />
                     <div className="mb-8 text-sm text-muted-foreground">
                         <span>Av <strong>Kari Nordmann, Hageentusiast</strong></span>
                         <span className="mx-2" aria-hidden="true">&bull;</span>
@@ -287,9 +287,11 @@ export default function InspirationTemplatePage() {
                 <section className="mb-16 lg:mb-24">
                     <div className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
-                        <p className="prose prose-lg mx-auto mt-2 max-w-3xl text-foreground">
-                            Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
-                        </p>
+                        <div className="prose prose-lg mx-auto mt-2 max-w-3xl text-foreground">
+                            <p>
+                                Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
+                            </p>
+                        </div>
                     </div>
 
                     <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
@@ -365,9 +367,11 @@ export default function InspirationTemplatePage() {
                 <section className="rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
                     <div className="mb-12 text-center max-w-4xl mx-auto">
                         <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
-                        <p className="prose prose-lg mx-auto mt-2 max-w-2xl text-foreground">
-                            Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
-                        </p>
+                        <div className="prose prose-lg mx-auto mt-2 max-w-2xl text-foreground">
+                            <p>
+                                Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
+                            </p>
+                        </div>
                     </div>
                     {/* Desktop Grid */}
                     <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
