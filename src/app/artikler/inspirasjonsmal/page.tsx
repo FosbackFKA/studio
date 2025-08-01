@@ -259,24 +259,32 @@ export default function InspirationTemplatePage() {
                     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
-                            <p className="mt-4 prose max-w-none text-foreground">
-                                "Vi hadde en fin terrasse, men brukte den altfor sjeldent," forteller Kari. "Så fort solen gikk ned, ble det kjølig og mørkt. Vi manglet et naturlig samlingspunkt som kunne forlenge sommerkveldene." Karis utfordring er vanlig – hvordan gjøre uteplassen like innbydende etter mørkets frembrudd? Løsningen ble å fokusere på varme og lys.
-                            </p>
+                            <div className="prose mt-4 max-w-none text-foreground">
+                                <p>
+                                    "Vi hadde en fin terrasse, men brukte den altfor sjeldent," forteller Kari. "Så fort solen gikk ned, ble det kjølig og mørkt. Vi manglet et naturlig samlingspunkt som kunne forlenge sommerkveldene." Karis utfordring er vanlig – hvordan gjøre uteplassen like innbydende etter mørkets frembrudd? Løsningen ble å fokusere på varme og lys.
+                                </p>
+                            </div>
                         </div>
                         <div className="relative order-1 aspect-square overflow-hidden rounded-lg shadow-xl md:order-2">
                             <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
                         </div>
                     </div>
-                     <div className="mt-16 text-center mx-auto max-w-3xl lg:mt-24">
-                        <Quote className="mx-auto h-12 w-12 text-primary/30" />
-                        <blockquote className="mt-4">
-                            <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
-                                "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
-                            </p>
-                            <cite className="mt-6 block text-base not-italic text-muted-foreground">
-                                — Kari N, Fornøyd kunde
-                            </cite>
-                        </blockquote>
+                    <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12 lg:my-24">
+                        <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                            <div className="flex justify-center items-center md:col-span-1">
+                                 <Quote className="h-24 w-24 text-primary/20" />
+                            </div>
+                            <blockquote className="md:col-span-2">
+                                <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                                    "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
+                                </p>
+                                <footer className="mt-4 text-base not-italic text-foreground">
+                                    <span className="font-bold">Kari N.</span><br />
+                                    <span className="text-muted-foreground">Fornøyd kunde</span>
+                                </footer>
+                            </blockquote>
+                        </div>
                     </div>
                 </section>
 
