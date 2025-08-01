@@ -129,7 +129,7 @@ const galleryImages: {
     title: 'Samlingspunkt med bålpanne',
     description: 'En bålpanne blir raskt det naturlige midtpunktet for varme og hygge.',
     hint: 'cozy firepit evening',
-    className: 'col-span-1 md:col-span-2 row-span-2',
+    className: 'col-span-2 row-span-2 md:col-span-2',
   },
   {
     src: inspo2,
@@ -297,7 +297,7 @@ export default function InspirationTemplatePage() {
                     </div>
 
                     <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
-                      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-auto md:auto-rows-[250px] gap-4">
                           {galleryImages.map((image, index) => (
                               <DialogTrigger key={index} asChild>
                                   <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
