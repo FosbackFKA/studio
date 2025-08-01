@@ -77,7 +77,7 @@ export function HeroSection() {
   return (
     <section className="w-full bg-background">
       {/* Hero Image Area - Full Width */}
-      <div className="relative w-full h-[350px] md:h-[450px] lg:h-[500px]">
+      <div className="relative w-full h-[450px] md:h-[550px] lg:h-[650px]">
         <Image
           src={heroImage}
           alt="Sommer i hver krukke og bed!"
