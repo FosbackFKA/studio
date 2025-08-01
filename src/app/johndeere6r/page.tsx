@@ -12,7 +12,7 @@ import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X, MoveHorizontal, Search } from 'lucide-react';
+import { ArrowRight, Zap, Cpu, Armchair, ShieldCheck, Mail, Phone, Settings, Tractor, Wallet, GitCommit, Check, Sun, Moon, Map, Loader, Info, Star, X, MoveHorizontal, Search, Settings2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import heroImage from '@/components/common/johndeere6r/hero.jpg';
 import consoleImage from '@/components/common/johndeere6r/console.png';
@@ -22,6 +22,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 // Import 360 images
 import img0 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00000.jpg';
@@ -201,63 +202,17 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="max-w-4xl w-full h-[90vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle className="font-headline text-2xl">Be om et uforpliktende tilbud</DialogTitle>
+          <DialogTitle className="font-headline text-2xl">Still oss et spørsmål eller be om et tilbud</DialogTitle>
           <DialogDescription>
-            En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud. Du kan justere valgene under, eller sende inn som den er.
+            En av våre maskinselgere vil kontakte deg for å skreddersy et tilbud eller svare på det du lurer på.
           </DialogDescription>
         </DialogHeader>
         
         <ScrollArea className="flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
-             {/* Right Column: Configurator */}
-            <TooltipProvider>
-              <div className="space-y-4 md:order-1">
-                {Object.entries(configOptions).map(([key, category]) => (
-                    <div key={key}>
-                        <CardTitle className="flex items-center gap-2 font-headline text-lg mb-2">
-                            <category.icon className="h-5 w-5 text-primary" />
-                            {category.title}
-                        </CardTitle>
-                        <RadioGroup
-                            value={configSelection[key as keyof ConfigSelection]}
-                            onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
-                            className="grid grid-cols-2 gap-2"
-                        >
-                        {category.options.map(option => (
-                            <Label key={option.id} className={cn(
-                                "flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-accent/10",
-                                configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
-                            )}>
-                                <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
-                                <div className="flex-1">
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex items-center gap-2">
-                                            <span className="font-semibold text-foreground text-sm">{option.name}</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-xs text-muted-foreground">{option.description}</p>
-                                </div>
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <button type="button" aria-label="Mer informasjon" className="mt-0.5">
-                                            <Info className="h-4 w-4 text-muted-foreground" />
-                                        </button>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p className="max-w-xs">{option.longDescription}</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </Label>
-                        ))}
-                        </RadioGroup>
-                    </div>
-                ))}
-              </div>
-            </TooltipProvider>
-
-            {/* Left Column: Contact Form & Summary */}
-            <div className="space-y-6 md:order-2">
-                <div className="grid grid-cols-2 gap-4">
+          <div className="py-4 space-y-6">
+            {/* Contact Form */}
+            <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="name">Fullt navn</Label>
                     <Input id="name" placeholder="Ola Nordmann" />
@@ -267,7 +222,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
                     <Input id="phone" type="tel" placeholder="Ditt telefonnummer" />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <Label htmlFor="email">E-post</Label>
                     <Input id="email" type="email" placeholder="din@epost.no" />
@@ -278,30 +233,90 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <Label htmlFor="comments">Kommentarer eller spørsmål (valgfritt)</Label>
-                  <Textarea id="comments" placeholder="Har du spesifikke behov eller spørsmål til selgeren?" />
+                  <Label htmlFor="comments">Kommentarer eller spørsmål</Label>
+                  <Textarea id="comments" placeholder="Har du spesifikke behov, spørsmål eller ønsker du et tilbud på en spesiell konfigurasjon?" />
                 </div>
-
-                <Card className="bg-secondary/30">
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {selectedOptions.length > 0 ? (
-                      <>
-                        <p className='text-sm font-medium mb-2'>Valgt utstyr:</p>
-                        <ul className="space-y-1 text-sm list-disc pl-5">
-                          {selectedOptions.map(option => option && (
-                            <li key={option.name} className="text-muted-foreground">{option.name}</li>
-                          ))}
-                        </ul>
-                      </>
-                    ) : (
-                      <p className="text-sm text-muted-foreground">Standard konfigurasjon valgt.</p>
-                    )}
-                  </CardContent>
-                </Card>
             </div>
+            
+            {/* Optional Configurator */}
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="configurator">
+                <AccordionTrigger>
+                    <div className="flex items-center gap-2 font-semibold">
+                        <Settings2 className="h-5 w-5"/>
+                        Gjør tilpasninger på utstyr (valgfritt)
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <TooltipProvider>
+                    <div className="space-y-4 pt-4">
+                      {Object.entries(configOptions).map(([key, category]) => (
+                          <div key={key}>
+                              <CardTitle className="flex items-center gap-2 font-headline text-lg mb-2">
+                                  <category.icon className="h-5 w-5 text-primary" />
+                                  {category.title}
+                              </CardTitle>
+                              <RadioGroup
+                                  value={configSelection[key as keyof ConfigSelection]}
+                                  onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
+                                  className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                              >
+                              {category.options.map(option => (
+                                  <Label key={option.id} className={cn(
+                                      "flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-accent/10",
+                                      configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
+                                  )}>
+                                      <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
+                                      <div className="flex-1">
+                                          <div className="flex justify-between items-center">
+                                              <div className="flex items-center gap-2">
+                                                  <span className="font-semibold text-foreground text-sm">{option.name}</span>
+                                              </div>
+                                          </div>
+                                          <p className="text-xs text-muted-foreground">{option.description}</p>
+                                      </div>
+                                      <Tooltip>
+                                          <TooltipTrigger asChild>
+                                              <button type="button" aria-label="Mer informasjon" className="mt-0.5">
+                                                  <Info className="h-4 w-4 text-muted-foreground" />
+                                              </button>
+                                          </TooltipTrigger>
+                                          <TooltipContent>
+                                              <p className="max-w-xs">{option.longDescription}</p>
+                                          </TooltipContent>
+                                      </Tooltip>
+                                  </Label>
+                              ))}
+                              </RadioGroup>
+                          </div>
+                      ))}
+                    </div>
+                  </TooltipProvider>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            
+            {/* Summary */}
+            <Card className="bg-secondary/30">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {selectedOptions.length > 0 ? (
+                  <>
+                    <p className='text-sm font-medium mb-2'>Valgte tilpasninger:</p>
+                    <ul className="space-y-1 text-sm list-disc pl-5">
+                      {selectedOptions.map(option => option && (
+                        <li key={option.name} className="text-muted-foreground">{option.name}</li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <p className="text-sm text-muted-foreground">Standard konfigurasjon valgt. Spesifiser gjerne i kommentarfeltet om du har andre ønsker.</p>
+                )}
+              </CardContent>
+            </Card>
+
           </div>
         </ScrollArea>
 
@@ -755,3 +770,4 @@ export default function JohnDeere6RPage() {
         </div>
     );
 }
+
