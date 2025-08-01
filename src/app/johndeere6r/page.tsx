@@ -207,7 +207,7 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
           </DialogDescription>
         </DialogHeader>
         
-        <ScrollArea className="flex-1 -mr-6 pr-6">
+        <ScrollArea className="flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-4">
             {/* Left Column: Contact Form & Summary */}
             <div className="space-y-6">
@@ -740,7 +740,7 @@ export default function JohnDeere6RPage() {
               <div className="flex items-center justify-between gap-3">
                  <QuoteRequestDialog
                     trigger={
-                        <Button size="lg" className="h-12 flex-1">
+                        <Button size="lg" className="h-12 flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
                             <Mail className="mr-2"/> Be om et tilbud
                         </Button>
                     }
