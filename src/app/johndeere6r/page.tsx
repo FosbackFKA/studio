@@ -104,49 +104,6 @@ const techSpecs = [
     { label: 'Hydraulikkapasitet', value: '114 l/min' },
 ];
 
-const configOptions = {
-  girkasse: {
-    title: "Girkasse",
-    icon: GitCommit,
-    options: [
-      { id: 'autopowr', name: 'AutoPowr™ IVT™', description: 'Trinnløs og sømløs giring for maksimal effektivitet.', longDescription: 'AutoPowr™ er en hydro-mekanisk girkasse som leverer trinnløs og kontinuerlig kraft ved alle hastigheter. Den kombinerer mekanisk effektivitet med presisjonen til hydrostatisk drift, ideelt for varierte oppgaver.' },
-      { id: 'autoquad', name: 'AutoQuad™ Plus', description: 'Manuell giring med automatiserte funksjoner.', longDescription: 'AutoQuad™ Plus gir deg fire powershift-trinn i hver av de seks gruppene. Den tilbyr manuell kontroll med tilleggsfunksjoner som SoftShift for myke girskift under belastning.' },
-    ],
-  },
-  frontlaster: {
-    title: "Frontlaster",
-    icon: Loader,
-    options: [
-      { id: 'uten_laster', name: 'Uten frontlaster', description: 'Standard konfigurasjon uten laster.', longDescription: 'Leveres uten frontlaster for de som ikke har behov, eller ønsker å ettermontere eget utstyr. Traktoren er fortsatt klargjort for laster.' },
-      { id: 'med_laster', name: 'Med frontlaster', description: 'Fabrikkmontert John Deere frontlaster.', longDescription: 'Fullt integrert John Deere frontlaster, perfekt tilpasset 6R-serien for optimal balanse, sikt og ytelse. Inkluderer joystick-kontroll i CommandARM™.' },
-    ],
-  },
-  dekk: {
-    title: "Dekk",
-    icon: Tractor,
-    options: [
-      { id: 'standard_dekk', name: 'Standard dekk', description: 'Allsidige dekk for varierte oppgaver.', longDescription: 'Et balansert dekkvalg som gir god ytelse for både jordbearbeiding, transport og arbeid på gårdsplassen. Et godt kompromiss mellom trekkraft og veiegenskaper.' },
-      { id: 'brede_dekk', name: 'Brede dekk', description: 'For redusert marktrykk og bedre trekkraft.', longDescription: 'Brede dekk fordeler vekten over et større område, noe som reduserer jordpakking og øker trekkraften på mykt underlag. Ideelt for arbeid på sensitive jorder.' },
-    ],
-  },
-  lys: {
-    title: "Lyspakke",
-    icon: Sun,
-    options: [
-      { id: 'standard_lys', name: 'Standard lyspakke', description: 'Halogenlys for god sikt.', longDescription: 'Standardpakken gir solid belysning med velprøvde halogenpærer, tilstrekkelig for de fleste arbeidsoppgaver under normale lysforhold.' },
-      { id: 'premium_lys', name: 'Premium 360° LED', description: 'Full LED-belysning for overlegen sikt om natten.', longDescription: 'Premium-pakken oppgraderer all arbeidsbelysning til kraftig LED. Gir et hvitt, dagslyslignende lys i 360 grader rundt traktoren for maksimal sikt og sikkerhet ved nattarbeid.' },
-    ],
-  },
-  gps: {
-    title: "GPS-system",
-    icon: Map,
-    options: [
-      { id: 'gps_forberedt', name: 'GPS-forberedt', description: 'Klargjort for ettermontering av GPS.', longDescription: 'Traktoren leveres klargjort for AutoTrac™, noe som betyr at kabler og braketter er på plass for enkel ettermontering av en StarFire™-mottaker og aktivering av autostyring.' },
-      { id: 'integrert_gps', name: 'Integrert StarFire™', description: 'Fullt integrert GPS for presisjonslandbruk.', longDescription: 'Fabrikkmontert StarFire™-mottaker og full aktivering av AutoTrac™ på G5Plus-skjermen. Klar for presisjonslandbruk rett fra levering, noe som sikrer nøyaktige pass og redusert overlapping.' },
-    ],
-  },
-};
-
 const comparisonData = {
   headers: ['6R 110', '6R 120', '6R 130'],
   specs: [
@@ -161,42 +118,7 @@ const comparisonData = {
 };
 
 
-type ConfigSelection = {
-  girkasse: string;
-  frontlaster: string;
-  dekk: string;
-  lys: string;
-  gps: string;
-};
-
-
 function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
-    const [configSelection, setConfigSelection] = React.useState<ConfigSelection>({
-        girkasse: 'autopowr',
-        frontlaster: 'uten_laster',
-        dekk: 'standard_dekk',
-        lys: 'standard_lys',
-        gps: 'gps_forberedt',
-    });
-
-    const handleConfigChange = (category: keyof ConfigSelection, value: string) => {
-        setConfigSelection(prev => ({ ...prev, [category]: value }));
-    };
-
-    const selectedOptions = React.useMemo(() => {
-        return Object.entries(configSelection).map(([key, value]) => {
-          const category = configOptions[key as keyof typeof configOptions];
-          const option = category.options.find(opt => opt.id === value);
-          // Only include non-default selections
-          if (option && !option.id.includes('standard') && !option.id.includes('uten_laster') && !option.id.includes('gps_forberedt')) {
-            return {
-              name: option.name,
-            };
-          }
-          return null;
-        }).filter(Boolean);
-    }, [configSelection]);
-
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
@@ -210,63 +132,6 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
         
         <ScrollArea className="flex-1">
           <div className="space-y-6 px-6 py-4">
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="configurator">
-                <AccordionTrigger>
-                    <div className="flex items-center gap-2 font-semibold">
-                        <Settings2 className="h-5 w-5"/>
-                        Gjør tilpasninger på utstyr (valgfritt)
-                    </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <TooltipProvider>
-                    <div className="space-y-4 pt-4">
-                      {Object.entries(configOptions).map(([key, category]) => (
-                          <div key={key}>
-                              <CardTitle className="flex items-center gap-2 font-headline text-lg mb-2">
-                                  <category.icon className="h-5 w-5 text-primary" />
-                                  {category.title}
-                              </CardTitle>
-                              <RadioGroup
-                                  value={configSelection[key as keyof ConfigSelection]}
-                                  onValueChange={(value) => handleConfigChange(key as keyof ConfigSelection, value)}
-                                  className="grid grid-cols-1 sm:grid-cols-2 gap-2"
-                              >
-                              {category.options.map(option => (
-                                  <Label key={option.id} className={cn(
-                                      "flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-accent/10",
-                                      configSelection[key as keyof ConfigSelection] === option.id && "bg-primary/5 border-primary"
-                                  )}>
-                                      <RadioGroupItem value={option.id} id={`${key}-${option.id}`} className="mt-1"/>
-                                      <div className="flex-1">
-                                          <div className="flex justify-between items-center">
-                                              <div className="flex items-center gap-2">
-                                                  <span className="font-semibold text-foreground text-sm">{option.name}</span>
-                                              </div>
-                                          </div>
-                                          <p className="text-xs text-muted-foreground">{option.description}</p>
-                                      </div>
-                                      <Tooltip>
-                                          <TooltipTrigger asChild>
-                                              <button type="button" aria-label="Mer informasjon" className="mt-0.5">
-                                                  <Info className="h-4 w-4 text-muted-foreground" />
-                                              </button>
-                                          </TooltipTrigger>
-                                          <TooltipContent>
-                                              <p className="max-w-xs">{option.longDescription}</p>
-                                          </TooltipContent>
-                                      </Tooltip>
-                                  </Label>
-                              ))}
-                              </RadioGroup>
-                          </div>
-                      ))}
-                    </div>
-                  </TooltipProvider>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-            
             <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
@@ -293,27 +158,6 @@ function QuoteRequestDialog({ trigger }: { trigger: React.ReactNode }) {
                   <Textarea id="comments" placeholder="Har du spesifikke behov, spørsmål eller ønsker du et tilbud på en spesiell konfigurasjon?" />
                 </div>
             </div>
-            
-            <Card className="bg-secondary/30">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-lg">Oppsummering: John Deere 6R 110</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {selectedOptions.length > 0 ? (
-                  <>
-                    <p className='text-sm font-medium mb-2'>Valgte tilpasninger:</p>
-                    <ul className="space-y-1 text-sm list-disc pl-5">
-                      {selectedOptions.map(option => option && (
-                        <li key={option.name} className="text-muted-foreground">{option.name}</li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <p className="text-sm text-muted-foreground">Standard konfigurasjon valgt. Spesifiser gjerne i kommentarfeltet om du har andre ønsker.</p>
-                )}
-              </CardContent>
-            </Card>
-
           </div>
         </ScrollArea>
 
