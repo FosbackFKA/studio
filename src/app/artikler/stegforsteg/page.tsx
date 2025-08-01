@@ -245,7 +245,7 @@ export default function StegForStegPage() {
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
                         </CardHeader>
-                        <CardContent className="prose max-w-none text-muted-foreground">
+                        <CardContent className="prose max-w-none">
                             <p>Kaniner har et synsfelt på nesten 360 grader, noe som hjelper dem å oppdage rovdyr fra nesten alle vinkler! Den eneste blindsonen er en liten flekk rett foran nesen.</p>
                             <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
                         </CardContent>
