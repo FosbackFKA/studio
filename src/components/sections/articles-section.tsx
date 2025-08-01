@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import type { StaticImageData } from 'next/image';
 import { cn } from '@/lib/utils';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 
 interface Article {
   title: string;
@@ -49,8 +49,11 @@ export function ArticlesSection({ title, articles, linkText, linkHref, className
         </div>
 
         <div className="mt-8 text-center px-4">
-            <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href={linkHref}>{linkText} <ChevronRight className="ml-1 h-4 w-4" /></Link>
+            <Button asChild size="lg">
+              <Link href={linkHref}>
+                {linkText}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
         </div>
       </div>
