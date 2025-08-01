@@ -668,7 +668,7 @@ export function HeaderComponent() {
                         </Button>
                       )}
                       <div className="font-bold text-lg text-primary flex items-center justify-center">
-                          {navStack.length === 0 ? <FkaLogo className="h-8" /> : currentMenu?.title}
+                          {currentMenu?.title || "Meny"}
                       </div>
                       <SheetTitle className="sr-only">
                           {currentMenu?.title || 'Hovedmeny'}
@@ -688,6 +688,10 @@ export function HeaderComponent() {
                             navStack.length > 0 ? "-translate-x-full" : "translate-x-0"
                           )}
                         >
+                          <div className="relative w-full mb-4">
+                            <Input type="search" placeholder="Søk" className="h-12 w-full rounded-md border border-primary/50 bg-input pl-12 pr-4 text-base" />
+                            <Search className="absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 text-muted-foreground" />
+                          </div>
                           <div className="flex flex-col gap-2 mb-4">
                             <Button variant="outline" className="w-full justify-start text-left h-12 text-base font-medium">
                                 <User className="mr-2 h-5 w-5"/>
@@ -727,15 +731,6 @@ export function HeaderComponent() {
                   </div>
                 </SheetContent>
               </Sheet>
-            </div>
-          </div>
-        </div>
-
-        <div className="lg:hidden border-t">
-          <div className="container mx-auto px-4 py-3 max-w-[1542px] flex items-center gap-2">
-            <div className="relative w-full">
-                <Input type="search" placeholder="Søk" className="h-10 w-full rounded-full border border-primary/50 bg-input pl-10 pr-4 text-sm" />
-                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
             </div>
           </div>
         </div>
