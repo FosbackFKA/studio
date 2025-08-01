@@ -9,7 +9,7 @@ import { FooterComponent } from '@/components/layout/footer';
 import { Breadcrumb } from '@/components/common/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/product-card';
-import { ArrowRight, CheckCircle2, Rabbit, Info, Calendar, User } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Rabbit, Info, Calendar, User, Quote } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
@@ -32,6 +32,7 @@ import product3 from '@/components/common/artikler/2.webp';
 import artikkel1 from '@/components/common/artikler/1.webp';
 import artikkel2 from '@/components/common/artikler/2.webp';
 import artikkel3 from '@/components/common/artikler/3.webp';
+import ekspertImage from '@/components/common/artikler/ekspert.jpg';
 
 const breadcrumbs = [
     { name: 'Forsiden', href: '/' },
@@ -185,11 +186,8 @@ export default function StegForStegPage() {
                     </div>
                     <Separator className="mb-8" />
                     
-                    <p className="lead">
-                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn.
-                    </p>
                     <p>
-                        Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
+                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn. Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
                     </p>
                 </div>
                 
@@ -258,17 +256,29 @@ export default function StegForStegPage() {
                         </CardContent>
                     </Card>
                     
-                    <Card className="bg-secondary/30 border-secondary-foreground/10 max-w-4xl mx-auto">
-                        <CardContent className="p-6 flex items-start gap-4">
-                            <Avatar className="h-12 w-12 flex-shrink-0">
-                                <AvatarFallback>FK</AvatarFallback>
-                            </Avatar>
-                            <blockquote className="prose prose-lg max-w-none">
-                                <p className="font-semibold not-italic">Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove.</p>
-                                <footer className="text-sm not-italic text-muted-foreground">— Felleskjøpets smådyrekspert</footer>
+                    <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden">
+                        <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                            <div className="relative aspect-square md:aspect-[3/4] rounded-lg overflow-hidden shadow-md md:col-span-1">
+                                <Image 
+                                    src={ekspertImage}
+                                    alt="Felleskjøpets smådyrekspert"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
+                                />
+                            </div>
+                            <blockquote className="md:col-span-2">
+                                <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                                    "Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove."
+                                </p>
+                                <footer className="mt-4 text-base not-italic text-foreground">
+                                    <span className="font-bold">Eline S. Andersen</span><br />
+                                    <span className="text-muted-foreground">Felleskjøpets smådyrekspert</span>
+                                </footer>
                             </blockquote>
-                        </CardContent>
-                    </Card>
+                        </div>
+                    </div>
                 </div>
 
                 <ArticlesSection 
