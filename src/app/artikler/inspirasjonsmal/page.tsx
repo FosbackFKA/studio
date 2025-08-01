@@ -129,7 +129,7 @@ const galleryImages: {
     title: 'Samlingspunkt med bålpanne',
     description: 'En bålpanne blir raskt det naturlige midtpunktet for varme og hygge.',
     hint: 'cozy firepit evening',
-    className: 'col-span-2', 
+    className: 'col-span-2 md:aspect-video', 
   },
   {
     src: inspo2,
@@ -137,6 +137,7 @@ const galleryImages: {
     title: 'Hold varmen',
     description: 'Myke ullpledd er perfekte for å forlenge de kjølige sommerkveldene.',
     hint: 'couple wool blanket',
+    className: 'aspect-[4/3]',
   },
   {
     src: inspo3,
@@ -144,6 +145,7 @@ const galleryImages: {
     title: 'Stemningsfull belysning',
     description: 'Lyslenker i trær eller over terrassen skaper en magisk atmosfære.',
     hint: 'string lights tree',
+    className: 'aspect-[4/3]',
   },
   {
     src: inspo4,
@@ -151,6 +153,7 @@ const galleryImages: {
     title: 'Noe godt å bite i',
     description: 'Lag deilig popcorn over bålpannen – en favoritt for både store og små.',
     hint: 'popcorn campfire',
+    className: 'aspect-[4/3]',
   },
     {
     src: inspo5,
@@ -158,6 +161,7 @@ const galleryImages: {
     title: 'Moderne solcellelys',
     description: 'Stilrene solcellelamper gir et elegant og funksjonelt lys langs stier og i bed.',
     hint: 'modern solar light',
+    className: 'aspect-[4/3]',
   },
 ];
 
@@ -292,7 +296,7 @@ export default function InspirationTemplatePage() {
                       <div className="grid grid-cols-2 gap-4">
                           {galleryImages.map((image, index) => (
                               <DialogTrigger key={index} asChild>
-                                  <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg aspect-[4/3]', image.className)}>
+                                  <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
                                       <Image
                                           src={image.src}
                                           alt={image.alt}
