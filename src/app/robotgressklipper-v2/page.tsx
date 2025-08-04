@@ -19,6 +19,7 @@ import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import allProductsAndGuides from '@/data/robotklipper_products.json';
+import chatbotIcon from '@/components/common/chat-bot.png';
 
 // Import images
 import heroImage from '@/components/common/gressklipper/gressklipper1.webp';
@@ -181,21 +182,40 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
 
 function DialogFlowChatbot() {
   React.useEffect(() => {
-    // This component will re-render on the client, which is fine.
-    // The <df-messenger> tag is what matters.
-    // We also add the style to the head dynamically for this page.
     const styleTag = document.createElement('style');
     styleTag.innerHTML = `
       df-messenger {
         z-index: 999;
         position: fixed;
-        --df-messenger-font-color: #000;
-        --df-messenger-font-family: Google Sans;
-        --df-messenger-chat-background: #f3f6fc;
-        --df-messenger-message-user-background: #d3e3fd;
-        --df-messenger-message-bot-background: #fff;
-        bottom: 16px;
-        right: 16px;
+        bottom: 1rem;
+        right: 1rem;
+        --df-messenger-bot-message: hsl(var(--card));
+        --df-messenger-button-titlebar-color: hsl(var(--primary-foreground));
+        --df-messenger-button-titlebar-font-color: hsl(var(--primary));
+        --df-messenger-chat-background: hsl(var(--background));
+        --df-messenger-font-color: hsl(var(--foreground));
+        --df-messenger-input-box-background: hsl(var(--card));
+        --df-messenger-input-font-color: hsl(var(--foreground));
+        --df-messenger-input-placeholder-font-color: hsl(var(--muted-foreground));
+        --df-messenger-minimized-chat-close-icon-color: #fff;
+        --df-messenger-send-icon: hsl(var(--primary));
+        --df-messenger-titlebar-background: hsl(var(--primary));
+        --df-messenger-titlebar-font-color: hsl(var(--primary-foreground));
+        --df-messenger-user-message: hsl(var(--primary));
+        --df-messenger-user-font-color: hsl(var(--primary-foreground));
+        --df-messenger-chat-bubble-background: transparent;
+        --df-messenger-chat-bubble-font-color: transparent;
+      }
+      df-messenger::part(chat-wrapper) {
+        border-radius: 1rem;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      }
+       df-messenger::part(header) {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+      }
+      df-messenger::part(input) {
+        border-radius: 9999px;
       }
     `;
     document.head.appendChild(styleTag);
@@ -205,22 +225,16 @@ function DialogFlowChatbot() {
     };
   }, []);
 
-  return (
-    // The df-messenger element is not a standard HTML element,
-    // so we need to tell React how to render it. We use `dangerouslySetInnerHTML`
-    // to render the HTML as-is. This is safe because we control the HTML.
-    // However, the standard React way to handle custom elements is to declare them.
-    // For this prototype, we'll use a more direct approach.
-    React.createElement('df-messenger', {
-      'project-id': 'fka-genai-for-marketing',
-      'agent-id': '1fd4ca46-2441-43f3-ab50-565c70728878',
-      'language-code': 'en',
-      'max-query-length': -1,
-      children: React.createElement('df-messenger-chat-bubble', {
-        'chat-title': 'Robotgressklippere',
-      }),
-    })
-  );
+  return React.createElement('df-messenger', {
+    'project-id': 'fka-genai-for-marketing',
+    'agent-id': '1fd4ca46-2441-43f3-ab50-565c70728878',
+    'language-code': 'no',
+    'max-query-length': -1,
+    'chat-icon': chatbotIcon.src,
+    children: React.createElement('df-messenger-chat-bubble', {
+      'chat-title': 'KI-Eksperten',
+    }),
+  });
 }
 
 
