@@ -39,8 +39,8 @@ const searchRobotklippereTool = ai.defineTool(
         brand: p.brand,
         price: p.price,
         salePrice: p.salePrice,
-        productUrl: p.productUrl,
-        imageUrl: p.imageUrl,
+        productUrl: p.link, // Use the 'link' field from the data source
+        imageUrl: p.image_link, // Use the 'image_link' field
         description: p.description,
         usp: p.usp,
     }));
@@ -128,7 +128,17 @@ const robotklipperChatFlow = ai.defineFlow(
         if (!output) {
             return { responseText: "Beklager, jeg fikk ikke generert et svar. Prøv igjen." };
         }
-        return output;
+        
+        // Map image identifiers to full URLs before returning
+        const recommendedProducts = output.recommendedProducts?.map(p => ({
+            ...p,
+            productUrl: p.productUrl,
+        }));
+
+        return {
+            ...output,
+            recommendedProducts: recommendedProducts,
+        };
     }
 );
 
