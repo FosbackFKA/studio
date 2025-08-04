@@ -190,8 +190,8 @@ function DialogFlowChatbot() {
         bottom: 1rem;
         right: 1rem;
         --df-messenger-bot-message: hsl(var(--card));
-        --df-messenger-button-titlebar-color: hsl(var(--primary-foreground));
-        --df-messenger-button-titlebar-font-color: hsl(var(--primary));
+        --df-messenger-button-titlebar-color: hsl(var(--primary));
+        --df-messenger-button-titlebar-font-color: hsl(var(--primary-foreground));
         --df-messenger-chat-background: hsl(var(--background));
         --df-messenger-font-color: hsl(var(--foreground));
         --df-messenger-input-box-background: hsl(var(--card));
@@ -203,8 +203,6 @@ function DialogFlowChatbot() {
         --df-messenger-titlebar-font-color: hsl(var(--primary-foreground));
         --df-messenger-user-message: hsl(var(--primary));
         --df-messenger-user-font-color: hsl(var(--primary-foreground));
-        --df-messenger-chat-bubble-background: transparent;
-        --df-messenger-chat-bubble-font-color: transparent;
       }
       df-messenger::part(chat-wrapper) {
         border-radius: 1rem;
@@ -216,6 +214,10 @@ function DialogFlowChatbot() {
       }
       df-messenger::part(input) {
         border-radius: 9999px;
+      }
+       df-messenger::part(launcher) {
+        background-color: transparent !important;
+        border: none !important;
       }
     `;
     document.head.appendChild(styleTag);
