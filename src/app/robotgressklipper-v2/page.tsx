@@ -181,52 +181,6 @@ function GuideCard({ title, excerpt, imageUrl, link, span }: { title: string; ex
 }
 
 function DialogFlowChatbot() {
-  React.useEffect(() => {
-    const styleTag = document.createElement('style');
-    styleTag.innerHTML = `
-      df-messenger {
-        z-index: 999;
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
-        --df-messenger-bot-message: hsl(var(--card));
-        --df-messenger-button-titlebar-color: hsl(var(--primary));
-        --df-messenger-button-titlebar-font-color: hsl(var(--primary-foreground));
-        --df-messenger-chat-background: hsl(var(--background));
-        --df-messenger-font-color: hsl(var(--foreground));
-        --df-messenger-input-box-background: hsl(var(--card));
-        --df-messenger-input-font-color: hsl(var(--foreground));
-        --df-messenger-input-placeholder-font-color: hsl(var(--muted-foreground));
-        --df-messenger-minimized-chat-close-icon-color: #fff;
-        --df-messenger-send-icon: hsl(var(--primary));
-        --df-messenger-titlebar-background: hsl(var(--primary));
-        --df-messenger-titlebar-font-color: hsl(var(--primary-foreground));
-        --df-messenger-user-message: hsl(var(--primary));
-        --df-messenger-user-font-color: hsl(var(--primary-foreground));
-      }
-      df-messenger::part(chat-wrapper) {
-        border-radius: 1rem;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-      }
-       df-messenger::part(header) {
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-      }
-      df-messenger::part(input) {
-        border-radius: 9999px;
-      }
-       df-messenger::part(launcher) {
-        background-color: transparent !important;
-        border: none !important;
-      }
-    `;
-    document.head.appendChild(styleTag);
-
-    return () => {
-      document.head.removeChild(styleTag);
-    };
-  }, []);
-
   return React.createElement('df-messenger', {
     'project-id': 'fka-genai-for-marketing',
     'agent-id': '1fd4ca46-2441-43f3-ab50-565c70728878',
