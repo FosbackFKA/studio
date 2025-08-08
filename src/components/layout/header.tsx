@@ -1,5 +1,6 @@
 
 
+
 'use client';
 
 import * as React from 'react';
@@ -27,6 +28,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import type { Product } from '@/types/product';
 import { ArticleCard } from '@/components/common/article-card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { AudienceSwitcher } from '@/components/common/audience-switcher';
 
 
 const parsePrice = (priceString?: string): number => {
@@ -641,14 +643,7 @@ export function HeaderComponent() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div>
           <div className="container mx-auto hidden h-10 items-center justify-start px-4 max-w-[1542px] lg:flex">
-            <div className="flex items-center space-x-1">
-              <Button size="sm" className="rounded-full bg-primary px-3 py-1 h-auto text-xs font-medium text-primary-foreground hover:bg-primary/90">
-                Privat
-              </Button>
-              <Button variant="outline" size="sm" className="rounded-full border-primary bg-transparent px-3 py-1 h-auto text-xs font-medium text-primary hover:bg-primary/10">
-                Bonde & Bedrift
-              </Button>
-            </div>
+            <AudienceSwitcher />
           </div>
         </div>
 
@@ -750,10 +745,7 @@ export function HeaderComponent() {
                     </ScrollArea>
 
                     <div className="border-t p-4">
-                      <div className="flex items-center space-x-2">
-                        <Button size="lg" className="flex-1 rounded-full bg-primary px-3 py-1 h-auto font-medium text-primary-foreground hover:bg-primary/90">Privat</Button>
-                        <Button variant="outline" size="lg" className="flex-1 rounded-full border-primary bg-transparent px-3 py-1 h-auto font-medium text-primary hover:bg-primary/10">Bonde & Bedrift</Button>
-                      </div>
+                       <AudienceSwitcher />
                     </div>
                   </div>
                 </SheetContent>
