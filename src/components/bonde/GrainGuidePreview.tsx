@@ -1,6 +1,4 @@
 
-'use client';
-
 import { Card, CardContent } from '@/components/ui/card';
 import type { GrainGuideLink } from '@/data/bonde';
 import Link from 'next/link';
@@ -36,4 +34,3 @@ export function GrainGuidePreview({ links }: GrainGuidePreviewProps) {
         </section>
     );
 }
-
