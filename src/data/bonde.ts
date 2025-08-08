@@ -1,6 +1,6 @@
 
 import type { LucideIcon } from 'lucide-react';
-import { Wheat, CalendarCheck, Tractor, MessageSquare, Handshake, Leaf, Droplets, ArrowRight } from 'lucide-react';
+import { Wheat, CalendarCheck, Tractor, MessageSquare, Handshake, Leaf, Droplets } from 'lucide-react';
 
 export type Region = { id: string; name: string };
 export type Reception = {
@@ -75,3 +75,9 @@ export const heroData = {
     ctaHref: 'https://mingaard.felleskjopet.no'
 };
 
+
+export const grainContracts: GrainContract[] = [
+    { id: 'kontrakt1', title: 'Markedspriskontrakt', cta: 'Tegn avtale', bonus: '+ 5 øre/kg' },
+    { id: 'kontrakt2', title: 'Fastpriskontrakt', cta: 'Tegn avtale' },
+    { id: 'kontrakt3', title: 'Min/Maks-priskontrakt', cta: 'Tegn avtale', bonus: '+ 3 øre/kg' },
+];
