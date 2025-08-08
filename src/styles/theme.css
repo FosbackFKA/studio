@@ -2,7 +2,7 @@
 /* src/styles/theme.css */
 
 /* :root is equivalent to [data-theme='consumer'] */
-:root {
+:root, [data-theme='consumer'] {
   --color-accent: 147 100% 21%; /* FK Green */
   --color-surface: 30 25% 97%; /* Light Gray from --background */
   --radius: 0.5rem;
