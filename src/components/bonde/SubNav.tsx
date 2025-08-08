@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
 const subNavItems = [
-    { name: 'Selg til oss', href: '/bonde/salg' },
+    { name: 'Selg til oss', href: '/bonde/selg' },
     { name: 'Kjøp til drifta', href: '/bonde/kjop' },
     { name: 'Kunnskap', href: '/bonde/kunnskap' },
     { name: 'Tjenester', href: '/bonde/tjenester' },
@@ -24,7 +24,7 @@ export function SubNav() {
             <nav className="container mx-auto flex h-14 max-w-[1542px] items-center justify-start px-4">
                 <div className="flex items-center space-x-1">
                     {subNavItems.map((item) => {
-                        const isActive = pathname.startsWith(item.href) && item.href !== 'https://mingaard.felleskjopet.no';
+                        const isActive = item.href.startsWith('/') && pathname.startsWith(item.href);
                         return (
                             <Button
                                 key={item.name}
