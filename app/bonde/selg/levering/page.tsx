@@ -1,4 +1,6 @@
 
+'use client';
+
 import { ReceptionList } from '@/components/bonde/ReceptionList';
 import { SlotBookingStub } from '@/components/bonde/SlotBookingStub';
 import { Breadcrumbs, type BreadcrumbItem } from '@/components/nav/Breadcrumbs';

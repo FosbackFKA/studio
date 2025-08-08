@@ -1,3 +1,4 @@
+'use client';
 
 import { AgreementOverview } from '@/components/bonde/AgreementOverview';
 import { Breadcrumbs, type BreadcrumbItem } from '@/components/nav/Breadcrumbs';
