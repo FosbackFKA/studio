@@ -5,78 +5,51 @@ import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { TopTasks } from '@/components/bonde/TopTasks';
 
 export default function BondePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <section className="relative h-[60vh] w-full bg-gray-800 text-white">
-        <Image
-          src="https://placehold.co/1920x800.png"
-          alt="Traktor på et jorde"
-          fill
-          className="object-cover opacity-50"
-          data-ai-hint="tractor field"
-        />
-        <div className="container mx-auto h-full flex flex-col items-center justify-center text-center relative z-10">
-          <h1 className="text-5xl font-bold font-headline">For den norske bonden</h1>
-          <p className="mt-4 max-w-2xl text-lg">
-            Finn alt du trenger for en effektiv og lønnsom drift.
-          </p>
-          <div className="mt-8 w-full max-w-2xl relative">
-            <Input
-              type="search"
-              placeholder="Søk i produkt, fagstoff eller tjenester..."
-              className="h-14 pl-12 pr-4 rounded-full text-base text-foreground"
-            />
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-          </div>
+    <div className="flex flex-col min-h-screen bg-background">
+      <section className="py-12 bg-background">
+        <div className="container mx-auto max-w-[1542px] px-4">
+            <TopTasks />
         </div>
       </section>
-
-      <section className="py-16 bg-background">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <section className="py-16 bg-secondary">
+        <div className="container mx-auto max-w-[1542px] px-4">
+          <h2 className="text-3xl font-bold font-headline mb-8 text-center">Aktuelt for deg</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Driftsmidler</CardTitle>
+                <CardTitle>Kornpriser - Uke 34</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>Se vårt utvalg av gjødsel, såvarer og plantevern.</p>
-                <Button variant="link" asChild className="p-0 mt-2">
-                  <Link href="#">Gå til Driftsmidler</Link>
+                <p>Se de siste oppdaterte kornprisene for din region. Prisene er justert for lokale forhold.</p>
+                <Button variant="link" asChild className="p-0 mt-4">
+                  <Link href="#">Gå til kornpriser</Link>
                 </Button>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Maskin og redskap</CardTitle>
+                <CardTitle>Teikn kornavtale for 2024</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>Traktorer, treskere og redskap fra John Deere.</p>
-                <Button variant="link" asChild className="p-0 mt-2">
-                  <Link href="#">Se maskiner</Link>
+                <p>Sikre deg forutsigbarhet og gode betingelser. Se våre ulike avtaletyper og tegn digitalt i dag.</p>
+                <Button variant="link" asChild className="p-0 mt-4">
+                  <Link href="#">Se avtaler</Link>
                 </Button>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Fag og rådgivning</CardTitle>
+                <CardTitle>Nytt fra Felleskjøpet</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>Få eksperthjelp til din produksjon.</p>
-                <Button variant="link" asChild className="p-0 mt-2">
-                  <Link href="#">Les fagstoff</Link>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Min Gård</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Logg inn for å administrere din drift.</p>
-                <Button variant="link" asChild className="p-0 mt-2">
-                  <Link href="#">Logg inn</Link>
+                <p>Les siste nytt om produkter, tjenester og faglige råd som hjelper deg i din drift.</p>
+                <Button variant="link" asChild className="p-0 mt-4">
+                  <Link href="#">Les nyheter</Link>
                 </Button>
               </CardContent>
             </Card>
