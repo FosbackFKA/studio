@@ -15,7 +15,7 @@ export type Reception = {
 export type WeeklyPrice = { id: string; regionId: string; week: string; grain: string; base: number; localAdj: number; updated: string; };
 export type GrainContract = { id: string; title: string; bonus?: string; cta: string };
 export type KnowledgeArticle = { id: string; title: string; teaser: string; tags: string[] };
-export type CuratedLink = { id: string; label: string; href: string; icon: LucideIcon };
+export interface CuratedLink { id: string; label: string; href: string; iconName: string; };
 export type SeasonCardData = { id: string; title: string; text: string; linkText: string; href: string; };
 export type GrainGuideLink = { id: string; title: string; text: string; href: string; icon: LucideIcon };
 
@@ -43,10 +43,10 @@ export const weeklyPrices: WeeklyPrice[] = [
 ];
 
 export const topTasks: CuratedLink[] = [
-    { id: 'tt1', label: 'Kornpriser', href: '#', icon: Wheat },
-    { id: 'tt2', label: 'Bestill leveringstime', href: '#', icon: CalendarCheck },
-    { id: 'tt3', label: 'Bestill gjødsel', href: '#', icon: Droplets },
-    { id: 'tt4', label: 'Kontakt rådgiver', href: '#', icon: MessageSquare },
+    { id: 'tt1', label: 'Kornpriser', href: '#', iconName: 'Wheat' },
+    { id: 'tt2', label: 'Bestill leveringstime', href: '#', iconName: 'CalendarCheck' },
+    { id: 'tt3', label: 'Bestill gjødsel', href: '#', iconName: 'Droplets' },
+    { id: 'tt4', label: 'Kontakt rådgiver', href: '#', iconName: 'MessageSquare' },
 ];
 
 export const seasonCards: SeasonCardData[] = [
