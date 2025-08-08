@@ -1,4 +1,6 @@
 
+'use client';
+
 import { GrainPriceTable } from '@/components/bonde/GrainPriceTable';
 import { RegionPicker } from '@/components/bonde/RegionPicker';
 import { Breadcrumbs, type BreadcrumbItem } from '@/components/nav/Breadcrumbs';
@@ -36,4 +38,3 @@ export default function PriserPage({ searchParams }: { searchParams: { [key: str
         </div>
     );
 }
-
