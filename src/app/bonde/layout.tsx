@@ -32,11 +32,8 @@ export default function BondeLayout({
         <main>
             <div className="border-b bg-background">
                 <div className="container mx-auto flex max-w-[1542px] flex-col items-start gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-4">
-                        <SectionBadge section="Bonde" />
-                        <div className="hidden sm:block">
-                            <Breadcrumbs items={bondeBreadcrumbs} />
-                        </div>
+                    <div className="hidden sm:block">
+                        <Breadcrumbs items={bondeBreadcrumbs} />
                     </div>
                     <div className="hidden lg:block">
                         <AudienceSwitcher />
