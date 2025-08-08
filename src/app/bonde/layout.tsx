@@ -31,17 +31,9 @@ export default function BondeLayout({
         <BondeHeader />
         <main>
             <div className="border-b bg-background">
-                <div className="container mx-auto flex max-w-[1542px] flex-col items-start gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="hidden sm:block">
-                        <Breadcrumbs items={bondeBreadcrumbs} />
-                    </div>
-                    <div className="hidden lg:block">
-                        <AudienceSwitcher />
-                    </div>
+                <div className="container mx-auto flex max-w-[1542px] items-center gap-4 px-4 py-3">
+                    <Breadcrumbs items={bondeBreadcrumbs} />
                 </div>
-            </div>
-            <div className="container mx-auto max-w-[1542px] px-4 py-4 sm:hidden">
-                 <Breadcrumbs items={bondeBreadcrumbs} />
             </div>
             {children}
         </main>

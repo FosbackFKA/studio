@@ -1,6 +1,7 @@
 
 
 
+
 'use client';
 
 import * as React from 'react';
@@ -28,7 +29,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import type { Product } from '@/types/product';
 import { ArticleCard } from '@/components/common/article-card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { AudienceSwitcher } from '@/components/common/audience-switcher';
+import { AudienceSwitcher } from '../nav/AudienceSwitcher';
 
 
 const parsePrice = (priceString?: string): number => {

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FkaLogo } from '@/components/common/logo';
 import { Search, User, Menu } from 'lucide-react';
-import { AudienceSwitcher } from '../common/audience-switcher';
+import { AudienceSwitcher } from '../nav/AudienceSwitcher';
 import { Input } from '@/components/ui/input';
 
 const navItems = [
@@ -82,4 +82,3 @@ export function BondeHeader() {
     </header>
   );
 }
-
