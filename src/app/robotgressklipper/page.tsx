@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -23,6 +24,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import allProductsAndGuides from '@/data/robotklipper_products.json';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 
 // Import images
@@ -405,107 +407,109 @@ export default function RobotklipperPage() {
   const guide = allProductsAndGuides.find(item => item && item.type === 'guide');
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
-      <main className="flex-grow">
-        <section className="relative h-[300px] w-full md:h-[400px]">
-          <Image src={heroImage} alt="Robotgressklipper på en grønn plen" fill className="object-cover" sizes="100vw" priority />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
-            <h1 className="font-headline text-4xl font-bold text-white md:text-5xl lg:text-6xl">Få en perfekt plen, helt automatisk</h1>
-            <p className="mt-2 max-w-2xl text-lg text-gray-200">Utforsk vårt utvalg av smarte robotgressklippere som gir deg mer tid til å nyte hagen.</p>
-          </div>
-        </section>
-        
-        <div className="container mx-auto max-w-[1542px] px-4 py-8 lg:py-12">
-            <Breadcrumb items={breadcrumbs} />
-        </div>
-
-        <div id="products" className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-                <aside className="hidden lg:block lg:col-span-1">
-                    <div className="sticky top-32">
-                        <h2 className="text-xl font-bold mb-4">Filtre</h2>
-                        <FilterPanel />
-                    </div>
-                </aside>
-                <div className="lg:col-span-3">
-                    <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                        <h2 className="text-2xl font-bold whitespace-nowrap">Alle robotgressklippere ({products.length})</h2>
-                        <div className="flex w-full sm:w-auto items-center gap-4">
-                            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-                                <SheetTrigger asChild>
-                                    <Button variant="outline" className="lg:hidden flex-1">
-                                        <SlidersHorizontal className="mr-2 h-4 w-4" /> Filter
-                                    </Button>
-                                </SheetTrigger>
-                                <SheetContent>
-                                     <div className="flex h-full flex-col bg-card">
-                                        <SheetHeader className="flex-row items-center justify-between border-b p-4">
-                                            <SheetTitle>Filtre</SheetTitle>
-                                            <SheetClose asChild>
-                                                <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                                                    <X className="h-8 w-8 text-primary" />
-                                                </Button>
-                                            </SheetClose>
-                                        </SheetHeader>
-                                        <div className="p-4">
-                                           <FilterPanel />
-                                        </div>
-                                    </div>
-                                </SheetContent>
-                            </Sheet>
-                            <Select defaultValue="popularitet">
-                                <SelectTrigger className="w-full sm:w-[180px]"><SelectValue placeholder="Sorter etter" /></SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="popularitet">Popularitet</SelectItem>
-                                    <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
-                                    <SelectItem value="pris-hoy-lav">Pris: Høy-lav</SelectItem>
-                                    <SelectItem value="nyeste">Nyeste</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                        {products.map((p: any) => {
-                          const imageSrc = imageMap[p.id as string] || imageMap[p.image_link as string] || guideImage;
-                          if (!p.id) return null; // Make sure product has an ID
-                          
-                          // Assign a valid image source
-                          const finalImageUrl = imageMap[p.id] || imageMap[p.image_link] || guideImage;
-
-                          // Ensure the product object has the imageUrl field for ProductCard
-                          const productData: Product & { imageUrl: StaticImageData | string } = {
-                            ...p,
-                            imageUrl: finalImageUrl,
-                          };
-
-                          return (
-                            <ProductCard 
-                                key={p.id} 
-                                {...productData}
-                                productUrl={`/products/SEGNAVH3000E`} // Hardcoded for demo
-                            />
-                          )
-                        })}
-                        {guide && imageMap[(guide as any).image_link as string] && (
-                            <div className="col-span-2 lg:col-span-3">
-                                <GuideCard {...(guide as any)} imageUrl={imageMap[(guide as any).image_link as string]} />
-                            </div>
-                        )}
-                    </div>
-                    
-                    <div className="mt-12 flex justify-center">
-                        <Button variant="outline" size="lg">Last inn flere</Button>
-                    </div>
-                </div>
+    <ThemeProvider value="consumer">
+      <div className="flex min-h-screen flex-col bg-background">
+        <HeaderComponent />
+        <main className="flex-grow">
+          <section className="relative h-[300px] w-full md:h-[400px]">
+            <Image src={heroImage} alt="Robotgressklipper på en grønn plen" fill className="object-cover" sizes="100vw" priority />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
+              <h1 className="font-headline text-4xl font-bold text-white md:text-5xl lg:text-6xl">Få en perfekt plen, helt automatisk</h1>
+              <p className="mt-2 max-w-2xl text-lg text-gray-200">Utforsk vårt utvalg av smarte robotgressklippere som gir deg mer tid til å nyte hagen.</p>
             </div>
-        </div>
+          </section>
+          
+          <div className="container mx-auto max-w-[1542px] px-4 py-8 lg:py-12">
+              <Breadcrumb items={breadcrumbs} />
+          </div>
 
-      </main>
-      <FooterComponent />
-      <FloatingChatbot />
-    </div>
+          <div id="products" className="container mx-auto max-w-[1542px] px-4">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+                  <aside className="hidden lg:block lg:col-span-1">
+                      <div className="sticky top-32">
+                          <h2 className="text-xl font-bold mb-4">Filtre</h2>
+                          <FilterPanel />
+                      </div>
+                  </aside>
+                  <div className="lg:col-span-3">
+                      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                          <h2 className="text-2xl font-bold whitespace-nowrap">Alle robotgressklippere ({products.length})</h2>
+                          <div className="flex w-full sm:w-auto items-center gap-4">
+                              <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+                                  <SheetTrigger asChild>
+                                      <Button variant="outline" className="lg:hidden flex-1">
+                                          <SlidersHorizontal className="mr-2 h-4 w-4" /> Filter
+                                      </Button>
+                                  </SheetTrigger>
+                                  <SheetContent>
+                                      <div className="flex h-full flex-col bg-card">
+                                          <SheetHeader className="flex-row items-center justify-between border-b p-4">
+                                              <SheetTitle>Filtre</SheetTitle>
+                                              <SheetClose asChild>
+                                                  <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+                                                      <X className="h-8 w-8 text-primary" />
+                                                  </Button>
+                                              </SheetClose>
+                                          </SheetHeader>
+                                          <div className="p-4">
+                                            <FilterPanel />
+                                          </div>
+                                      </div>
+                                  </SheetContent>
+                              </Sheet>
+                              <Select defaultValue="popularitet">
+                                  <SelectTrigger className="w-full sm:w-[180px]"><SelectValue placeholder="Sorter etter" /></SelectTrigger>
+                                  <SelectContent>
+                                      <SelectItem value="popularitet">Popularitet</SelectItem>
+                                      <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
+                                      <SelectItem value="pris-hoy-lav">Pris: Høy-lav</SelectItem>
+                                      <SelectItem value="nyeste">Nyeste</SelectItem>
+                                  </SelectContent>
+                              </Select>
+                          </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                          {products.map((p: any) => {
+                            const imageSrc = imageMap[p.id as string] || imageMap[p.image_link as string] || guideImage;
+                            if (!p.id) return null; // Make sure product has an ID
+                            
+                            // Assign a valid image source
+                            const finalImageUrl = imageMap[p.id] || imageMap[p.image_link] || guideImage;
+
+                            // Ensure the product object has the imageUrl field for ProductCard
+                            const productData: Product & { imageUrl: StaticImageData | string } = {
+                              ...p,
+                              imageUrl: finalImageUrl,
+                            };
+
+                            return (
+                              <ProductCard 
+                                  key={p.id} 
+                                  {...productData}
+                                  productUrl={`/products/SEGNAVH3000E`} // Hardcoded for demo
+                              />
+                            )
+                          })}
+                          {guide && imageMap[(guide as any).image_link as string] && (
+                              <div className="col-span-2 lg:col-span-3">
+                                  <GuideCard {...(guide as any)} imageUrl={imageMap[(guide as any).image_link as string]} />
+                              </div>
+                          )}
+                      </div>
+                      
+                      <div className="mt-12 flex justify-center">
+                          <Button variant="outline" size="lg">Last inn flere</Button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+        </main>
+        <FooterComponent />
+        <FloatingChatbot />
+      </div>
+    </ThemeProvider>
   );
 }

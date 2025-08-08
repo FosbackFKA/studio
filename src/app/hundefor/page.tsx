@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -22,6 +23,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Checkbox } from '@/components/ui/checkbox';
 import guideImage from '@/components/common/hund/hund1.webp';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 // Fôrvelger component - refaktorert for å passe i accordion
 function Forvelger() {
@@ -298,104 +300,106 @@ export default function HundeforPage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
-      <main className="flex-grow">
-        <div className="container mx-auto max-w-6xl px-4 pt-8 pb-12 lg:pt-12">
-          <Breadcrumb items={breadcrumbs} className="mb-8" />
+    <ThemeProvider value="consumer">
+      <div className="flex min-h-screen flex-col bg-background">
+        <HeaderComponent />
+        <main className="flex-grow">
+          <div className="container mx-auto max-w-6xl px-4 pt-8 pb-12 lg:pt-12">
+            <Breadcrumb items={breadcrumbs} className="mb-8" />
+            
+            <Accordion type="single" collapsible className="w-full group mb-8 lg:mb-12">
+                <AccordionItem value="forvelger" className="overflow-hidden rounded-xl border bg-card shadow-lg">
+                    <AccordionTrigger className="w-full p-6 text-left hover:no-underline [&[data-state=open]]:bg-secondary/20">
+                        <div className="flex w-full items-center justify-between gap-4">
+                            <div className="flex-shrink-0">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                                  <Sparkles className="h-6 w-6 text-primary" />
+                                </div>
+                            </div>
+                            <div className="flex-1 text-left">
+                                <h2 className="font-headline text-xl font-bold">Prøv vår KI-drevne fôrvelger</h2>
+                                <p className="mt-1 text-muted-foreground">Få hjelp av vår KI-assistent til å finne det perfekte fôret til din hund.</p>
+                            </div>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <Forvelger />
+                    </AccordionContent>
+                </AccordionItem>
+            </Accordion>
           
-          <Accordion type="single" collapsible className="w-full group mb-8 lg:mb-12">
-              <AccordionItem value="forvelger" className="overflow-hidden rounded-xl border bg-card shadow-lg">
-                  <AccordionTrigger className="w-full p-6 text-left hover:no-underline [&[data-state=open]]:bg-secondary/20">
-                      <div className="flex w-full items-center justify-between gap-4">
-                          <div className="flex-shrink-0">
-                              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                                <Sparkles className="h-6 w-6 text-primary" />
-                              </div>
-                          </div>
-                          <div className="flex-1 text-left">
-                              <h2 className="font-headline text-xl font-bold">Prøv vår KI-drevne fôrvelger</h2>
-                              <p className="mt-1 text-muted-foreground">Få hjelp av vår KI-assistent til å finne det perfekte fôret til din hund.</p>
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+                  {/* Filters - Sidebar for Desktop */}
+                  <aside className="hidden lg:block lg:col-span-1">
+                      <div className="sticky top-32">
+                          <h2 className="text-xl font-bold mb-4">Filtre</h2>
+                          <FilterPanel />
+                      </div>
+                  </aside>
+
+                  {/* Products Grid */}
+                  <div className="lg:col-span-3">
+                      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                          <h2 className="text-2xl font-bold whitespace-nowrap">Utforsk alt hundefôr ({allDogFoodProducts.length})</h2>
+                          
+                          <div className="flex w-full sm:w-auto items-center gap-4">
+                                {/* Mobile Filter Trigger */}
+                              <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+                                  <SheetTrigger asChild>
+                                      <Button variant="outline" className="lg:hidden flex-1">
+                                          <SlidersHorizontal className="mr-2 h-4 w-4" /> Filter
+                                      </Button>
+                                  </SheetTrigger>
+                                  <SheetContent>
+                                      <div className="flex h-full flex-col bg-card">
+                                          <SheetHeader className="flex-row items-center justify-between border-b p-4">
+                                              <SheetTitle>Filtre</SheetTitle>
+                                              <SheetClose asChild>
+                                                  <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+                                                      <X className="h-8 w-8 text-primary" />
+                                                  </Button>
+                                              </SheetClose>
+                                          </SheetHeader>
+                                          <div className="p-4">
+                                              <FilterPanel />
+                                          </div>
+                                      </div>
+                                  </SheetContent>
+                              </Sheet>
+
+                              <Select defaultValue="popularitet">
+                                  <SelectTrigger className="w-full sm:w-[180px]">
+                                      <SelectValue placeholder="Sorter etter" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                      <SelectItem value="popularitet">Popularitet</SelectItem>
+                                      <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
+                                      <SelectItem value="pris-hoy-lav">Pris: Høy-lav</SelectItem>
+                                      <SelectItem value="nyeste">Nyeste</SelectItem>
+                                  </SelectContent>
+                              </Select>
                           </div>
                       </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                      <Forvelger />
-                  </AccordionContent>
-              </AccordionItem>
-          </Accordion>
-        
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-                {/* Filters - Sidebar for Desktop */}
-                <aside className="hidden lg:block lg:col-span-1">
-                    <div className="sticky top-32">
-                        <h2 className="text-xl font-bold mb-4">Filtre</h2>
-                        <FilterPanel />
-                    </div>
-                </aside>
+                      
+                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                        {itemsToDisplay.map((item, index) => {
+                            if (item && 'type' in item && item.type === 'guide') {
+                                return <GuideCard key={`guide-${index}`} />;
+                            }
+                            const product = item as Product;
+                            if (product && product.id) {
+                              return <ProductCard key={product.id || index} {...product} />;
+                            }
+                            return null;
+                        })}
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-                {/* Products Grid */}
-                <div className="lg:col-span-3">
-                    <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                        <h2 className="text-2xl font-bold whitespace-nowrap">Utforsk alt hundefôr ({allDogFoodProducts.length})</h2>
-                        
-                        <div className="flex w-full sm:w-auto items-center gap-4">
-                              {/* Mobile Filter Trigger */}
-                            <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
-                                <SheetTrigger asChild>
-                                    <Button variant="outline" className="lg:hidden flex-1">
-                                        <SlidersHorizontal className="mr-2 h-4 w-4" /> Filter
-                                    </Button>
-                                </SheetTrigger>
-                                <SheetContent>
-                                    <div className="flex h-full flex-col bg-card">
-                                        <SheetHeader className="flex-row items-center justify-between border-b p-4">
-                                            <SheetTitle>Filtre</SheetTitle>
-                                            <SheetClose asChild>
-                                                <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                                                    <X className="h-8 w-8 text-primary" />
-                                                </Button>
-                                            </SheetClose>
-                                        </SheetHeader>
-                                        <div className="p-4">
-                                            <FilterPanel />
-                                        </div>
-                                    </div>
-                                </SheetContent>
-                            </Sheet>
-
-                            <Select defaultValue="popularitet">
-                                <SelectTrigger className="w-full sm:w-[180px]">
-                                    <SelectValue placeholder="Sorter etter" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="popularitet">Popularitet</SelectItem>
-                                    <SelectItem value="pris-lav-hoy">Pris: Lav-høy</SelectItem>
-                                    <SelectItem value="pris-hoy-lav">Pris: Høy-lav</SelectItem>
-                                    <SelectItem value="nyeste">Nyeste</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-                       {itemsToDisplay.map((item, index) => {
-                          if (item && 'type' in item && item.type === 'guide') {
-                              return <GuideCard key={`guide-${index}`} />;
-                          }
-                          const product = item as Product;
-                          if (product && product.id) {
-                            return <ProductCard key={product.id || index} {...product} />;
-                          }
-                          return null;
-                      })}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-      </main>
-      <FooterComponent />
-    </div>
+        </main>
+        <FooterComponent />
+      </div>
+    </ThemeProvider>
   );
 }

@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -15,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 
 // Import local images for the article
@@ -150,157 +152,158 @@ const relatedArticles = [
 
 export default function StegForStegPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
+    <ThemeProvider value="consumer">
+      <div className="flex min-h-screen flex-col bg-background">
+        <HeaderComponent />
 
-      <main className="flex-grow">
-        <section className="relative h-[50vh] min-h-[350px] w-full lg:h-[60vh]">
-          <Image
-            src={heroImage}
-            alt="En glad kanin i et frodig, grønt utemiljø"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-            data-ai-hint="happy rabbit green grass"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-start justify-end px-4 pb-16 text-left">
-            <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-5xl lg:text-6xl">
-              Guide: Slik trives kaninen i utendørs kaninhus
-            </h1>
-          </div>
-        </section>
-
-        <div className="bg-background py-12 lg:py-16">
-          <div className="container mx-auto max-w-[1542px] px-4">
-            <div className='max-w-4xl mx-auto'>
-                <Breadcrumb items={breadcrumbs} className="mb-8" />
-                
-                <div className="prose prose-lg max-w-none mx-auto text-foreground">
-                    <div className="mb-8 text-sm text-muted-foreground">
-                        <span>Av <strong>Felleskjøpets ekspert</strong></span>
-                        <span className="mx-2" aria-hidden="true">&bull;</span>
-                        <span>Publisert: 14. august 2024</span>
-                    </div>
-                    <Separator className="mb-8" />
-                    
-                    <p>
-                        Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn. Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
-                    </p>
-                </div>
-                
-                <section className="my-16 md:my-24 mx-auto max-w-4xl space-y-16">
-                {steps.map((step, index) => (
-                    <div key={step.step} className={cn("grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-12", index % 2 !== 0 && "md:grid-flow-col-dense")}>
-                    <div className={cn("order-2", index % 2 !== 0 && "md:order-1")}>
-                        <div className="flex items-center gap-4 mb-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary font-headline text-2xl font-bold text-primary-foreground">
-                            {step.step}
-                        </div>
-                        <h2 className="font-headline text-3xl font-bold text-foreground">{step.title}</h2>
-                        </div>
-                        <p className="prose max-w-none text-foreground">{step.description}</p>
-                    </div>
-                    <div className={cn("relative aspect-video overflow-hidden rounded-lg shadow-xl", index % 2 !== 0 ? "md:order-2" : "md:order-1")}>
-                        <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint={step['data-ai-hint']} />
-                    </div>
-                    </div>
-                ))}
-                </section>
+        <main className="flex-grow">
+          <section className="relative h-[50vh] min-h-[350px] w-full lg:h-[60vh]">
+            <Image
+              src={heroImage}
+              alt="En glad kanin i et frodig, grønt utemiljø"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+              data-ai-hint="happy rabbit green grass"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-start justify-end px-4 pb-16 text-left">
+              <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-5xl lg:text-6xl">
+                Guide: Slik trives kaninen i utendørs kaninhus
+              </h1>
             </div>
-            
-            <section className="my-16 md:my-24 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
-                <div className="mb-12 text-center max-w-4xl mx-auto">
-                    <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
-                    <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
-                </div>
-                {/* Desktop Grid */}
-                <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                    {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
-                </div>
-                {/* Mobile Horizontal Scroll */}
-                <div className="md:hidden">
-                    <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
-                        {shopTheLookProducts.map((product) => (
-                            <div key={product.id} className="w-2/3 flex-shrink-0">
-                                <ProductCard {...product} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="mt-12 text-left lg:text-center">
-                    <Button asChild size="lg" variant="outline-primary"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
-                </div>
-            </section>
+          </section>
 
-            <div className='max-w-4xl mx-auto'>
-                <div className="my-16 space-y-12 md:my-24">
-                     <div className='prose prose-lg'>
-                        <h2 className="font-headline text-2xl font-bold text-foreground mb-4">Fordeler med uteliv for kanin</h2>
-                        <ul className="space-y-3">
-                            <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mer plass og bevegelsesfrihet,</strong> som forebygger atferdsproblemer.</span></li>
-                            <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Naturlig stimulering</strong> fra lyder, lukter og synsinntrykk.</span></li>
-                            <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Bedre pels- og neglhelse</strong> gjennom et mer naturlig miljø.</span></li>
-                            <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mulighet til å utøve naturlig atferd</strong> som graving og hopping.</span></li>
-                        </ul>
-                    </div>
-                    
-                    <div className="prose prose-lg">
-                        <p>Et godt utemiljø gir ikke bare fysiske fordeler, men bidrar også til kaninens mentale velvære. Muligheten til å utforske, grave og gjemme seg i trygge omgivelser er essensielt for å unngå stress og apati. Sørg for at luftegården er stor nok, og gjerne innred den med tunneler, sandkasser eller andre elementer som oppfordrer til lek og aktivitet.</p>
-                        
-                        <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12">
-                            <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                                <div className="relative aspect-square md:aspect-[3/4] rounded-lg overflow-hidden shadow-md md:col-span-1">
-                                    <Image 
-                                        src={ekspertImage}
-                                        alt="Felleskjøpets smådyrekspert"
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 50vw, 25vw"
-                                    />
-                                </div>
-                                <blockquote className="md:col-span-2">
-                                    <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
-                                        "Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove."
-                                    </p>
-                                    <footer className="mt-4 text-base not-italic text-foreground">
-                                        <span className="font-bold">Eline S. Andersen</span><br />
-                                        <span className="text-muted-foreground">Felleskjøpets smådyrekspert</span>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
+          <div className="bg-background py-12 lg:py-16">
+            <div className="container mx-auto max-w-[1542px] px-4">
+              <div className='max-w-4xl mx-auto'>
+                  <Breadcrumb items={breadcrumbs} className="mb-8" />
+                  
+                  <div className="prose prose-lg max-w-none mx-auto text-foreground">
+                      <div className="mb-8 text-sm text-muted-foreground">
+                          <span>Av <strong>Felleskjøpets ekspert</strong></span>
+                          <span className="mx-2" aria-hidden="true">&bull;</span>
+                          <span>Publisert: 14. august 2024</span>
+                      </div>
+                      <Separator className="mb-8" />
+                      
+                      <p>
+                          Å la kaninen bo ute kan gi den et rikt og stimulerende liv. Følg våre steg for å skape et trygt og komfortabelt hjem for din langørede venn. Kaniner er sosiale og nysgjerrige dyr som elsker frisk luft og god plass. Et godt tilrettelagt utendørs kaninhus gir dem mulighet til å utfolde seg i et naturlig miljø, samtidig som de er beskyttet mot vær og rovdyr. Denne guiden tar deg gjennom alt du trenger å vite for å skape det perfekte utendørshjemmet for kaninen din.
+                      </p>
+                  </div>
+                  
+                  <section className="my-16 md:my-24 mx-auto max-w-4xl space-y-16">
+                  {steps.map((step, index) => (
+                      <div key={step.step} className={cn("grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-12", index % 2 !== 0 && "md:grid-flow-col-dense")}>
+                      <div className={cn("order-2", index % 2 !== 0 && "md:order-1")}>
+                          <div className="flex items-center gap-4 mb-4">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary font-headline text-2xl font-bold text-primary-foreground">
+                              {step.step}
+                          </div>
+                          <h2 className="font-headline text-3xl font-bold text-foreground">{step.title}</h2>
+                          </div>
+                          <p className="prose max-w-none text-foreground">{step.description}</p>
+                      </div>
+                      <div className={cn("relative aspect-video overflow-hidden rounded-lg shadow-xl", index % 2 !== 0 ? "md:order-2" : "md:order-1")}>
+                          <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint={step['data-ai-hint']} />
+                      </div>
+                      </div>
+                  ))}
+                  </section>
+              </div>
+              
+              <section className="my-16 md:my-24 rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
+                  <div className="mb-12 text-center max-w-4xl mx-auto">
+                      <h2 className="font-headline text-3xl font-bold text-foreground">Utstyret du trenger</h2>
+                      <p className="mx-auto mt-2 max-w-2xl text-muted-foreground">Her er produktene som gir kaninen din en trygg og god start på utelivet.</p>
+                  </div>
+                  {/* Desktop Grid */}
+                  <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                      {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
+                  </div>
+                  {/* Mobile Horizontal Scroll */}
+                  <div className="md:hidden">
+                      <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
+                          {shopTheLookProducts.map((product) => (
+                              <div key={product.id} className="w-2/3 flex-shrink-0">
+                                  <ProductCard {...product} />
+                              </div>
+                          ))}
+                      </div>
+                  </div>
+                  <div className="mt-12 text-left lg:text-center">
+                      <Button asChild size="lg" variant="outline-primary"><Link href="#">Se alt til smådyr <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+                  </div>
+              </section>
 
-                        <p>Husk også at kaniner er sosiale dyr. Hvis du kun har én kanin, er det ekstra viktig at du setter av tid til å være sammen med den hver dag. Selv om den bor ute, trenger den menneskelig kontakt for å trives. En kanin som er vant til å være ute, kan også fint fortsette med det om vinteren, så lenge den har et lunt, tørt og trekkfritt hus med rikelig med halm.</p>
-                    </div>
+              <div className='max-w-4xl mx-auto'>
+                  <div className="my-16 space-y-12 md:my-24">
+                      <div className='prose prose-lg'>
+                          <h2 className="font-headline text-2xl font-bold text-foreground mb-4">Fordeler med uteliv for kanin</h2>
+                          <ul className="space-y-3">
+                              <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mer plass og bevegelsesfrihet,</strong> som forebygger atferdsproblemer.</span></li>
+                              <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Naturlig stimulering</strong> fra lyder, lukter og synsinntrykk.</span></li>
+                              <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Bedre pels- og neglhelse</strong> gjennom et mer naturlig miljø.</span></li>
+                              <li className="flex items-start"><CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" /><span><strong>Mulighet til å utøve naturlig atferd</strong> som graving og hopping.</span></li>
+                          </ul>
+                      </div>
+                      
+                      <div className="prose prose-lg">
+                          <p>Et godt utemiljø gir ikke bare fysiske fordeler, men bidrar også til kaninens mentale velvære. Muligheten til å utforske, grave og gjemme seg i trygge omgivelser er essensielt for å unngå stress og apati. Sørg for at luftegården er stor nok, og gjerne innred den med tunneler, sandkasser eller andre elementer som oppfordrer til lek og aktivitet.</p>
+                          
+                          <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12">
+                              <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                                  <div className="relative aspect-square md:aspect-[3/4] rounded-lg overflow-hidden shadow-md md:col-span-1">
+                                      <Image 
+                                          src={ekspertImage}
+                                          alt="Felleskjøpets smådyrekspert"
+                                          fill
+                                          className="object-cover"
+                                          sizes="(max-width: 768px) 50vw, 25vw"
+                                      />
+                                  </div>
+                                  <blockquote className="md:col-span-2">
+                                      <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                                          "Et godt utemiljø gir kaninen muligheten til et fullverdig liv. Husk at daglig tilsyn og sosial kontakt er like viktig som selve huset. En kanin som er vant til å være ute tåler kulde godt, så lenge den har et tørt og trekkfritt sted å sove."
+                                      </p>
+                                      <footer className="mt-4 text-base not-italic text-foreground">
+                                          <span className="font-bold">Eline S. Andersen</span><br />
+                                          <span className="text-muted-foreground">Felleskjøpets smådyrekspert</span>
+                                      </footer>
+                                  </blockquote>
+                              </div>
+                          </div>
 
-                    <Card className="bg-primary/5 border-primary/20">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
-                        </CardHeader>
-                        <CardContent className="prose max-w-none text-foreground">
-                            <p>Kaniner har et synsfelt på nesten 360 grader, noe som hjelper dem å oppdage rovdyr fra nesten alle vinkler! Den eneste blindsonen er en liten flekk rett foran nesen.</p>
-                            <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
-                        </CardContent>
-                    </Card>
-                </div>
+                          <p>Husk også at kaniner er sosiale dyr. Hvis du kun har én kanin, er det ekstra viktig at du setter av tid til å være sammen med den hver dag. Selv om den bor ute, trenger den menneskelig kontakt for å trives. En kanin som er vant til å være ute, kan også fint fortsette med det om vinteren, så lenge den har et lunt, tørt og trekkfritt hus med rikelig med halm.</p>
+                      </div>
 
-                <ArticlesSection 
-                    title="Mer om kaninhold"
-                    articles={relatedArticles}
-                    linkText="Se alle artikler om smådyr"
-                    linkHref="#"
-                    className="mt-12"
-                />
+                      <Card className="bg-primary/5 border-primary/20">
+                          <CardHeader>
+                              <CardTitle className="flex items-center gap-2 font-headline text-2xl"><Info className="h-7 w-7 text-primary" />Visste du at?</CardTitle>
+                          </CardHeader>
+                          <CardContent className="prose max-w-none text-foreground">
+                              <p>Kaniner har et synsfelt på nesten 360 grader, noe som hjelper dem å oppdage rovdyr fra nesten alle vinkler! Den eneste blindsonen er en liten flekk rett foran nesen.</p>
+                              <p>Tennene deres slutter aldri å vokse. Derfor er det livsviktig med rikelig tilgang på høy, slik at tennene slipes ned naturlig.</p>
+                          </CardContent>
+                      </Card>
+                  </div>
+
+                  <ArticlesSection 
+                      title="Mer om kaninhold"
+                      articles={relatedArticles}
+                      linkText="Se alle artikler om smådyr"
+                      linkHref="#"
+                      className="mt-12"
+                  />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      <FooterComponent />
-    </div>
+        <FooterComponent />
+      </div>
+    </ThemeProvider>
   );
 }
-

@@ -1,4 +1,5 @@
 
+
 'use client'; 
 
 import * as React from 'react';
@@ -22,6 +23,7 @@ import { StarRating } from '@/components/common/star-rating';
 import { RelatedProductsSection } from '@/components/sections/related-products-section';
 import { ReviewsSection } from '@/components/sections/reviews-section';
 import { ArticleCard } from '@/components/common/article-card';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 // Import local images
 import navimow1 from '@/components/common/navimow/1.jpg';
@@ -227,245 +229,247 @@ export default function ProductPage() {
   };
   
   return (
-     <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
+    <ThemeProvider value="consumer">
+      <div className="flex min-h-screen flex-col bg-background">
+        <HeaderComponent />
 
-      {/* Sticky CTA Bar for Desktop */}
-      <div className={cn(
-          "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
-          isSticky ? "translate-y-0" : "-translate-y-full"
-      )}>
-          <div className="container mx-auto max-w-[1542px] px-4 pt-[171px]">
-              <div className="flex h-20 items-center justify-between gap-6">
-                  <div className="flex items-center gap-4">
-                      <Image src={mainImage} alt={product.title} width={64} height={64} className="h-16 w-16 rounded-md object-contain border bg-white p-1" />
-                      <div>
-                          <p className="font-semibold">{product.brand}</p>
-                          <h2 className="text-lg font-bold text-foreground line-clamp-1">{product.title}</h2>
-                      </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                      <div className="text-right">
-                        <p className="text-2xl font-bold text-destructive">{product.salePrice}</p>
-                        <p className="text-md text-muted-foreground line-through">{product.price}</p>
-                      </div>
-                      <div className="flex items-center gap-2 rounded-full border p-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
-                              <Minus className="h-4 w-4" />
-                          </Button>
-                          <span className="w-8 text-center text-lg font-medium">{quantity}</span>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
-                              <Plus className="h-4 w-4" />
-                          </Button>
-                      </div>
-                      <Button size="lg" className="h-12 w-56 text-base" onClick={handleAddToCart}>
-                          <ShoppingCart className="mr-2 h-5 w-5" />
-                          Legg i handlekurv
-                      </Button>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <main className="flex-grow py-8 lg:pb-24">
-        <div className="container mx-auto max-w-[1542px] px-4">
-          <Breadcrumb items={product.breadcrumbs} className="mb-6" />
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
-            {/* Image Gallery */}
-            <div className="space-y-4">
-               <div 
-                  className="relative aspect-square w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white"
-                  onMouseEnter={() => setZoomActive(true)}
-                  onMouseLeave={() => setZoomActive(false)}
-                  onMouseMove={handleMouseMove}
-                >
-                 <Image 
-                    src={mainImage} 
-                    alt={`Produktbilde av ${product.title}`} 
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className={cn(
-                      "p-4 object-contain transition-transform duration-200 ease-out",
-                      zoomActive ? 'scale-[2]' : 'scale-100'
-                    )}
-                    style={ zoomActive ? { transformOrigin: `${imgPos.x} ${imgPos.y}` } : {} }
-                    priority
-                 />
-                 <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent px-2 py-1 text-sm font-semibold text-accent-foreground">{product.badgeText}</Badge>
-               </div>
-               <div className="grid grid-cols-4 gap-4">
-                {product.gallery.map((img, idx) => (
-                  <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
-                    <Image 
-                      src={img} 
-                      alt={`Miniatyrbilde ${idx + 1} av ${product.title}`} 
-                      fill
-                      sizes="25vw"
-                      className="object-contain p-1"
-                    />
-                  </button>
-                ))}
-               </div>
-            </div>
-
-            {/* Product Details */}
-            <div className="flex flex-col">
-              <p className="font-semibold text-primary">{product.brand}</p>
-              <h1 className="font-headline text-3xl font-bold text-foreground">{product.title}</h1>
-              
-              <div className="mt-2">
-                 <StarRating rating={product.rating} reviewCount={product.reviewCount} />
-              </div>
-
-              <div className="mt-4 flex items-baseline gap-3">
-                <p className="text-4xl font-bold text-destructive">{product.salePrice}</p>
-                <p className="text-xl text-muted-foreground line-through">{product.price}</p>
-              </div>
-              <p className="text-sm text-muted-foreground">Kampanjepris gyldig t.o.m. 28.07.24</p>
-              
-              <div className="mt-6 rounded-lg border bg-secondary/30 p-4">
-                <h3 className="mb-3 font-bold text-foreground">Høydepunkter</h3>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                  {product.highlights.map(highlight => (
-                    <div key={highlight.text} className="flex items-center gap-2 text-sm">
-                      <highlight.icon className="h-5 w-5 text-primary" />
-                      <span>{highlight.text}</span>
+        {/* Sticky CTA Bar for Desktop */}
+        <div className={cn(
+            "fixed top-0 left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+            isSticky ? "translate-y-0" : "-translate-y-full"
+        )}>
+            <div className="container mx-auto max-w-[1542px] px-4 pt-[171px]">
+                <div className="flex h-20 items-center justify-between gap-6">
+                    <div className="flex items-center gap-4">
+                        <Image src={mainImage} alt={product.title} width={64} height={64} className="h-16 w-16 rounded-md object-contain border bg-white p-1" />
+                        <div>
+                            <p className="font-semibold">{product.brand}</p>
+                            <h2 className="text-lg font-bold text-foreground line-clamp-1">{product.title}</h2>
+                        </div>
                     </div>
+                    <div className="flex items-center gap-4">
+                        <div className="text-right">
+                          <p className="text-2xl font-bold text-destructive">{product.salePrice}</p>
+                          <p className="text-md text-muted-foreground line-through">{product.price}</p>
+                        </div>
+                        <div className="flex items-center gap-2 rounded-full border p-1">
+                            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
+                                <Minus className="h-4 w-4" />
+                            </Button>
+                            <span className="w-8 text-center text-lg font-medium">{quantity}</span>
+                            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
+                                <Plus className="h-4 w-4" />
+                            </Button>
+                        </div>
+                        <Button size="lg" className="h-12 w-56 text-base" onClick={handleAddToCart}>
+                            <ShoppingCart className="mr-2 h-5 w-5" />
+                            Legg i handlekurv
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main className="flex-grow py-8 lg:pb-24">
+          <div className="container mx-auto max-w-[1542px] px-4">
+            <Breadcrumb items={product.breadcrumbs} className="mb-6" />
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-16">
+              {/* Image Gallery */}
+              <div className="space-y-4">
+                <div 
+                    className="relative aspect-square w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white"
+                    onMouseEnter={() => setZoomActive(true)}
+                    onMouseLeave={() => setZoomActive(false)}
+                    onMouseMove={handleMouseMove}
+                  >
+                  <Image 
+                      src={mainImage} 
+                      alt={`Produktbilde av ${product.title}`} 
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className={cn(
+                        "p-4 object-contain transition-transform duration-200 ease-out",
+                        zoomActive ? 'scale-[2]' : 'scale-100'
+                      )}
+                      style={ zoomActive ? { transformOrigin: `${imgPos.x} ${imgPos.y}` } : {} }
+                      priority
+                  />
+                  <Badge variant="outline" className="absolute left-3 top-3 border-none bg-accent px-2 py-1 text-sm font-semibold text-accent-foreground">{product.badgeText}</Badge>
+                </div>
+                <div className="grid grid-cols-4 gap-4">
+                  {product.gallery.map((img, idx) => (
+                    <button key={idx} onClick={() => handleSetMainImage(img)} className={cn('relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white', mainImage === img ? 'border-primary' : 'border-transparent')}>
+                      <Image 
+                        src={img} 
+                        alt={`Miniatyrbilde ${idx + 1} av ${product.title}`} 
+                        fill
+                        sizes="25vw"
+                        className="object-contain p-1"
+                      />
+                    </button>
                   ))}
                 </div>
               </div>
 
-              <div ref={ctaSectionRef} className={cn(isSticky && "md:invisible")}>
-                <Separator className="my-6" />
+              {/* Product Details */}
+              <div className="flex flex-col">
+                <p className="font-semibold text-primary">{product.brand}</p>
+                <h1 className="font-headline text-3xl font-bold text-foreground">{product.title}</h1>
+                
+                <div className="mt-2">
+                  <StarRating rating={product.rating} reviewCount={product.reviewCount} />
+                </div>
 
-                <div className="hidden md:block">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 rounded-full border p-1">
-                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
-                        <Minus className="h-4 w-4" />
-                      </Button>
-                      <span className="w-8 text-center text-lg font-medium">{quantity}</span>
-                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
-                        <Plus className="h-4 w-4" />
-                      </Button>
-                    </div>
-                    <Button size="lg" className="h-12 flex-1 text-base" onClick={handleAddToCart}>
-                      <ShoppingCart className="mr-2 h-5 w-5" />
-                      Legg i handlekurv
-                    </Button>
+                <div className="mt-4 flex items-baseline gap-3">
+                  <p className="text-4xl font-bold text-destructive">{product.salePrice}</p>
+                  <p className="text-xl text-muted-foreground line-through">{product.price}</p>
+                </div>
+                <p className="text-sm text-muted-foreground">Kampanjepris gyldig t.o.m. 28.07.24</p>
+                
+                <div className="mt-6 rounded-lg border bg-secondary/30 p-4">
+                  <h3 className="mb-3 font-bold text-foreground">Høydepunkter</h3>
+                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                    {product.highlights.map(highlight => (
+                      <div key={highlight.text} className="flex items-center gap-2 text-sm">
+                        <highlight.icon className="h-5 w-5 text-primary" />
+                        <span>{highlight.text}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-6 space-y-4 rounded-lg border bg-secondary/30 p-4">
-                 <div className="flex items-start gap-3">
-                    <Truck className="h-6 w-6 flex-shrink-0 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-semibold text-foreground">På nettlager</p>
-                      <p className="text-sm text-muted-foreground">Forventet leveringstid 2-5 dager</p>
+                <div ref={ctaSectionRef} className={cn(isSticky && "md:invisible")}>
+                  <Separator className="my-6" />
+
+                  <div className="hidden md:block">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2 rounded-full border p-1">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => Math.max(1, q-1))} disabled={quantity <= 1}>
+                          <Minus className="h-4 w-4" />
+                        </Button>
+                        <span className="w-8 text-center text-lg font-medium">{quantity}</span>
+                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={() => setQuantity(q => q+1)}>
+                          <Plus className="h-4 w-4" />
+                        </Button>
+                      </div>
+                      <Button size="lg" className="h-12 flex-1 text-base" onClick={handleAddToCart}>
+                        <ShoppingCart className="mr-2 h-5 w-5" />
+                        Legg i handlekurv
+                      </Button>
                     </div>
-                 </div>
-                 <Separator />
-                 <div className="flex items-start gap-3">
-                    <MapPin className="h-6 w-6 flex-shrink-0 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-semibold text-foreground">Sjekk lagerstatus i butikk</p>
-                      <p className="text-sm text-muted-foreground">Finnes i 63 Felleskjøpet-butikker</p>
-                      <Button variant="link" className="p-0 h-auto text-sm mt-1">Velg din butikk</Button>
-                    </div>
-                 </div>
-              </div>
+                  </div>
+                </div>
 
-              <div className="mt-6 flex items-center gap-3 text-sm">
-                <KlarnaLogo className="h-8 w-auto flex-shrink-0 rounded-md" />
-                <p className="text-foreground">
-                  Betal 5 295,02 kr/mnd i 6 måneder, 21,90% rente.{' '}
-                  <Link href="#" className="text-primary underline hover:text-primary/80">
-                    Les mer
-                  </Link>
-                </p>
-              </div>
+                <div className="mt-6 space-y-4 rounded-lg border bg-secondary/30 p-4">
+                  <div className="flex items-start gap-3">
+                      <Truck className="h-6 w-6 flex-shrink-0 text-primary mt-0.5" />
+                      <div>
+                        <p className="font-semibold text-foreground">På nettlager</p>
+                        <p className="text-sm text-muted-foreground">Forventet leveringstid 2-5 dager</p>
+                      </div>
+                  </div>
+                  <Separator />
+                  <div className="flex items-start gap-3">
+                      <MapPin className="h-6 w-6 flex-shrink-0 text-primary mt-0.5" />
+                      <div>
+                        <p className="font-semibold text-foreground">Sjekk lagerstatus i butikk</p>
+                        <p className="text-sm text-muted-foreground">Finnes i 63 Felleskjøpet-butikker</p>
+                        <Button variant="link" className="p-0 h-auto text-sm mt-1">Velg din butikk</Button>
+                      </div>
+                  </div>
+                </div>
 
+                <div className="mt-6 flex items-center gap-3 text-sm">
+                  <KlarnaLogo className="h-8 w-auto flex-shrink-0 rounded-md" />
+                  <p className="text-foreground">
+                    Betal 5 295,02 kr/mnd i 6 måneder, 21,90% rente.{' '}
+                    <Link href="#" className="text-primary underline hover:text-primary/80">
+                      Les mer
+                    </Link>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+            
+            <div className="mt-12">
+              <Accordion type="single" collapsible defaultValue="description" className="w-full">
+                <AccordionItem value="description">
+                  <AccordionTrigger className="text-lg font-bold">Beskrivelse</AccordionTrigger>
+                  <AccordionContent className="prose prose-sm max-w-none text-base text-foreground">
+                    <p>{product.description}</p>
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="included">
+                  <AccordionTrigger className="text-lg font-bold">Inkludert i esken</AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="list-disc space-y-1 pl-5 text-foreground">
+                      {product.included.map(item => <li key={item}>{item}</li>)}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="specs">
+                  <AccordionTrigger className="text-lg font-bold">Spesifikasjoner</AccordionTrigger>
+                  <AccordionContent>
+                    <Table>
+                      <TableBody>
+                        {product.specs.map(spec => (
+                          <TableRow key={spec.label}>
+                            <TableCell className="font-medium">{spec.label}</TableCell>
+                            <TableCell>{spec.value}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="faq">
+                  <AccordionTrigger className="text-lg font-bold">Ofte stilte spørsmål</AccordionTrigger>
+                  <AccordionContent>
+                    <Accordion type="single" collapsible className="w-full">
+                      {faqs.map((faq, index) => (
+                        <AccordionItem value={`faq-item-${index}`} key={index}>
+                          <AccordionTrigger>{faq.question}</AccordionTrigger>
+                          <AccordionContent>
+                            {faq.answer}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="reviews">
+                  <AccordionTrigger className="text-lg font-bold">Anmeldelser</AccordionTrigger>
+                  <AccordionContent>
+                    <ReviewsSection />
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
           
-          <div className="mt-12">
-            <Accordion type="single" collapsible defaultValue="description" className="w-full">
-              <AccordionItem value="description">
-                <AccordionTrigger className="text-lg font-bold">Beskrivelse</AccordionTrigger>
-                <AccordionContent className="prose prose-sm max-w-none text-base text-foreground">
-                  <p>{product.description}</p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="included">
-                <AccordionTrigger className="text-lg font-bold">Inkludert i esken</AccordionTrigger>
-                <AccordionContent>
-                  <ul className="list-disc space-y-1 pl-5 text-foreground">
-                    {product.included.map(item => <li key={item}>{item}</li>)}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-               <AccordionItem value="specs">
-                <AccordionTrigger className="text-lg font-bold">Spesifikasjoner</AccordionTrigger>
-                <AccordionContent>
-                  <Table>
-                    <TableBody>
-                      {product.specs.map(spec => (
-                        <TableRow key={spec.label}>
-                          <TableCell className="font-medium">{spec.label}</TableCell>
-                          <TableCell>{spec.value}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="faq">
-                <AccordionTrigger className="text-lg font-bold">Ofte stilte spørsmål</AccordionTrigger>
-                <AccordionContent>
-                  <Accordion type="single" collapsible className="w-full">
-                    {faqs.map((faq, index) => (
-                      <AccordionItem value={`faq-item-${index}`} key={index}>
-                        <AccordionTrigger>{faq.question}</AccordionTrigger>
-                        <AccordionContent>
-                          {faq.answer}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="reviews">
-                <AccordionTrigger className="text-lg font-bold">Anmeldelser</AccordionTrigger>
-                <AccordionContent>
-                  <ReviewsSection />
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+          <GuidesAndArticlesSection />
+          <RelatedProductsSection />
+
+        </main>
+
+        {/* Sticky Mobile CTA */}
+        <div className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background p-4 md:hidden">
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-left">
+              <p className="text-lg font-bold text-destructive">{product.salePrice}</p>
+              <p className="text-sm text-muted-foreground line-through">{product.price}</p>
+            </div>
+            <Button size="lg" className="h-12 flex-1" onClick={handleAddToCart}>
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              Legg i kurv
+            </Button>
           </div>
         </div>
-        
-        <GuidesAndArticlesSection />
-        <RelatedProductsSection />
 
-      </main>
-
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background p-4 md:hidden">
-        <div className="flex items-center justify-between gap-4">
-          <div className="text-left">
-            <p className="text-lg font-bold text-destructive">{product.salePrice}</p>
-            <p className="text-sm text-muted-foreground line-through">{product.price}</p>
-          </div>
-          <Button size="lg" className="h-12 flex-1" onClick={handleAddToCart}>
-            <ShoppingCart className="mr-2 h-5 w-5" />
-            Legg i kurv
-          </Button>
-        </div>
+        <FooterComponent />
       </div>
-
-      <FooterComponent />
-    </div>
+    </ThemeProvider>
   );
 }

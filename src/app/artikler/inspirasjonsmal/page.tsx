@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -15,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { ArticlesSection } from '@/components/sections/articles-section';
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 
 // Import local images
@@ -215,198 +217,200 @@ export default function InspirationTemplatePage() {
     };
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
+    <ThemeProvider value="consumer">
+      <div className="flex min-h-screen flex-col bg-background">
+        <HeaderComponent />
 
-      <main className="flex-grow">
+        <main className="flex-grow">
 
-        {/* 1. Tittel, ingress og bilde (Hero) */}
-        <section className="relative h-[60vh] min-h-[400px] w-full lg:h-[70vh]">
-          <Image
-            src={heroImage}
-            alt="Kari sin drømmehage i skumringen med en tent bålpanne og lyslenker"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-end px-4 pb-16 text-center md:pb-24">
-            <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-6xl lg:text-7xl">
-              Kari skapte sin drømmehage med Felleskjøpet
-            </h1>
-          </div>
-        </section>
+          {/* 1. Tittel, ingress og bilde (Hero) */}
+          <section className="relative h-[60vh] min-h-[400px] w-full lg:h-[70vh]">
+            <Image
+              src={heroImage}
+              alt="Kari sin drømmehage i skumringen med en tent bålpanne og lyslenker"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+            <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-end px-4 pb-16 text-center md:pb-24">
+              <h1 className="font-headline text-4xl font-bold leading-tight text-yellow-300 md:text-6xl lg:text-7xl">
+                Kari skapte sin drømmehage med Felleskjøpet
+              </h1>
+            </div>
+          </section>
 
-        <div className="bg-background py-12 lg:py-16">
-            <div className="container mx-auto max-w-[1542px] px-4">
-                 
-                <div className="mx-auto mb-12 max-w-4xl text-foreground">
-                    <Breadcrumb items={breadcrumbs} className="mb-8" />
-                    <div className="mb-8 text-sm text-muted-foreground">
-                        <span>Av <strong>Kari Nordmann, Hageentusiast</strong></span>
-                        <span className="mx-2" aria-hidden="true">&bull;</span>
-                        <span>Publisert: 18. august 2024</span>
-                    </div>
-                    <Separator className="mb-8" />
-                    <p className="prose prose-lg max-w-none text-foreground">
-                        Se hvordan enkle grep og de riktige produktene forvandlet en vanlig uteplass til en magisk oase for hele familien.
-                    </p>
-                </div>
-                 
-                {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
-                <section className="mb-16 md:mb-24 mx-auto max-w-4xl">
-                    <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-                        <div className="order-2 md:order-1">
-                            <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
-                            <div className="prose prose-lg mt-4 max-w-none text-foreground">
-                                <p>
-                                    "Vi hadde en fin terrasse, men brukte den altfor sjeldent," forteller Kari. "Så fort solen gikk ned, ble det kjølig og mørkt. Vi manglet et naturlig samlingspunkt som kunne forlenge sommerkveldene." Karis utfordring er vanlig – hvordan gjøre uteplassen like innbydende etter mørkets frembrudd? Løsningen ble å fokusere på varme og lys.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="relative order-1 aspect-square overflow-hidden rounded-lg shadow-xl md:order-2">
-                            <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
-                        </div>
-                    </div>
-                    <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12 lg:my-24">
-                        <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
-                        <blockquote className="relative z-10">
-                            <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
-                                "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
-                            </p>
-                            <footer className="mt-4 text-base not-italic text-foreground">
-                                <span className="font-bold">Kari N.</span><br />
-                                <span className="text-muted-foreground">Fornøyd kunde</span>
-                            </footer>
-                        </blockquote>
-                    </div>
-                </section>
+          <div className="bg-background py-12 lg:py-16">
+              <div className="container mx-auto max-w-[1542px] px-4">
+                  
+                  <div className="mx-auto mb-12 max-w-4xl text-foreground">
+                      <Breadcrumb items={breadcrumbs} className="mb-8" />
+                      <div className="mb-8 text-sm text-muted-foreground">
+                          <span>Av <strong>Kari Nordmann, Hageentusiast</strong></span>
+                          <span className="mx-2" aria-hidden="true">&bull;</span>
+                          <span>Publisert: 18. august 2024</span>
+                      </div>
+                      <Separator className="mb-8" />
+                      <p className="prose prose-lg max-w-none text-foreground">
+                          Se hvordan enkle grep og de riktige produktene forvandlet en vanlig uteplass til en magisk oase for hele familien.
+                      </p>
+                  </div>
+                  
+                  {/* 2. Sesongens utfordring & løsning + Kundeeksempel */}
+                  <section className="mb-16 md:mb-24 mx-auto max-w-4xl">
+                      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+                          <div className="order-2 md:order-1">
+                              <h2 className="font-headline text-3xl font-bold text-foreground">Utfordringen: En kjedelig og lite brukt uteplass</h2>
+                              <div className="prose prose-lg mt-4 max-w-none text-foreground">
+                                  <p>
+                                      "Vi hadde en fin terrasse, men brukte den altfor sjeldent," forteller Kari. "Så fort solen gikk ned, ble det kjølig og mørkt. Vi manglet et naturlig samlingspunkt som kunne forlenge sommerkveldene." Karis utfordring er vanlig – hvordan gjøre uteplassen like innbydende etter mørkets frembrudd? Løsningen ble å fokusere på varme og lys.
+                                  </p>
+                              </div>
+                          </div>
+                          <div className="relative order-1 aspect-square overflow-hidden rounded-lg shadow-xl md:order-2">
+                              <Image src={challengeImage} alt="En kjedelig uteplass før forvandlingen" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" data-ai-hint="boring patio before"/>
+                          </div>
+                      </div>
+                      <div className="relative max-w-4xl mx-auto rounded-xl bg-accent/50 p-8 shadow-lg overflow-hidden my-12 lg:my-24">
+                          <Quote className="absolute -top-4 -left-4 h-24 w-24 text-primary/10" />
+                          <blockquote className="relative z-10">
+                              <p className="font-headline text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                                  "Bålpannen ble hjertet i hagen vår. Den gir ikke bare varme, men skaper en helt unik stemning. Det har totalt forandret hvordan vi bruker uteområdet vårt."
+                              </p>
+                              <footer className="mt-4 text-base not-italic text-foreground">
+                                  <span className="font-bold">Kari N.</span><br />
+                                  <span className="text-muted-foreground">Fornøyd kunde</span>
+                              </footer>
+                          </blockquote>
+                      </div>
+                  </section>
 
-                {/* 3. Visuell Inspirasjon (New Gallery) */}
-                <section className="mb-16 lg:mb-24">
-                    <div className="mb-12 text-center max-w-4xl mx-auto">
-                        <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
-                        <div className="prose prose-lg mx-auto mt-2 max-w-3xl text-foreground">
-                            <p>
-                                Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
-                            </p>
-                        </div>
-                    </div>
-
-                    <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
-                      <div className="grid grid-cols-2 gap-4">
-                          {galleryImages.map((image, index) => (
-                              <DialogTrigger key={index} asChild>
-                                  <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
-                                      <Image
-                                          src={image.src}
-                                          alt={image.alt}
-                                          fill
-                                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                          sizes="(max-width: 768px) 50vw, 33vw"
-                                          data-ai-hint={image.hint}
-                                      />
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-                                      <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
-                                          <h3 className="font-bold">{image.title}</h3>
-                                      </div>
-                                  </button>
-                              </DialogTrigger>
-                          ))}
+                  {/* 3. Visuell Inspirasjon (New Gallery) */}
+                  <section className="mb-16 lg:mb-24">
+                      <div className="mb-12 text-center max-w-4xl mx-auto">
+                          <h2 className="font-headline text-3xl font-bold text-foreground">Løsningen: Skap magi med lys og varme</h2>
+                          <div className="prose prose-lg mx-auto mt-2 max-w-3xl text-foreground">
+                              <p>
+                                  Riktig belysning og en sentral varmekilde kan forvandle enhver uteplass. Ved å kombinere funksjonelt og stemningsskapende lys, skapte Kari et eventyrlig landskap.
+                              </p>
+                          </div>
                       </div>
 
-                      <DialogContent 
-                          className="bg-transparent border-none shadow-none p-0 max-w-none w-screen h-screen"
-                          onOpenAutoFocus={(e) => e.preventDefault()}
-                      >
-                          {selectedImageIndex !== null && (
-                          <div 
-                              className="fixed inset-0 z-50 flex flex-col"
-                              onClick={closeDialog}
-                              onTouchStart={handleTouchStart}
-                              onTouchMove={handleTouchMove}
-                              onTouchEnd={handleTouchEnd}
-                          >
-                              <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-                              
-                              <div className="relative z-10 flex flex-1 items-center justify-start p-4 md:p-8" onClick={(e) => e.stopPropagation()}>
-                                  <div className="relative flex-1 w-full h-full flex items-center justify-center">
-                                      <Image
-                                          src={galleryImages[selectedImageIndex].src}
-                                          alt={galleryImages[selectedImageIndex].alt}
-                                          width={1920}
-                                          height={1080}
-                                          className="h-auto w-auto max-h-full max-w-full object-contain rounded-lg"
-                                          sizes="100vw"
-                                      />
-                                  </div>
-                              </div>
-                              
-                              <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
-                                  <DialogTitle className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</DialogTitle>
-                                  <DialogDescription className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</DialogDescription>
-                              </div>
-                              
-                              <Button onClick={(e) => { e.stopPropagation(); closeDialog(); }} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
-                                  <X className="h-8 w-8" />
-                              </Button>
-                              <Button onClick={(e) => { e.stopPropagation(); prevImage(); }} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
-                                  <ChevronLeft className="h-10 w-10" />
-                              </Button>
-                              <Button onClick={(e) => { e.stopPropagation(); nextImage(); }} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
-                                  <ChevronRight className="h-10 w-10" />
-                              </Button>
-                          </div>
-                          )}
-                      </DialogContent>
-                    </Dialog>
-                </section>
-
-                {/* 4. Produktkarusell ("Shop the Look") */}
-                <section className="rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
-                    <div className="mb-12 text-center max-w-4xl mx-auto">
-                        <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
-                        <div className="prose prose-lg mx-auto mt-2 max-w-2xl text-foreground">
-                            <p>
-                                Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
-                            </p>
-                        </div>
-                    </div>
-                    {/* Desktop Grid */}
-                    <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                        {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
-                    </div>
-                     {/* Mobile Horizontal Scroll */}
-                    <div className="md:hidden">
-                        <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
-                            {shopTheLookProducts.map((product) => (
-                                <div key={product.id} className="w-2/3 flex-shrink-0">
-                                    <ProductCard {...product} />
-                                </div>
+                      <Dialog open={selectedImageIndex !== null} onOpenChange={(isOpen) => !isOpen && closeDialog()}>
+                        <div className="grid grid-cols-2 gap-4">
+                            {galleryImages.map((image, index) => (
+                                <DialogTrigger key={index} asChild>
+                                    <button onClick={() => openDialog(index)} className={cn('group relative overflow-hidden rounded-lg shadow-lg', image.className)}>
+                                        <Image
+                                            src={image.src}
+                                            alt={image.alt}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                            sizes="(max-width: 768px) 50vw, 33vw"
+                                            data-ai-hint={image.hint}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                                        <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
+                                            <h3 className="font-bold">{image.title}</h3>
+                                        </div>
+                                    </button>
+                                </DialogTrigger>
                             ))}
                         </div>
-                    </div>
-                    {/* Call-to-Action */}
-                    <div className="mt-12 text-center">
-                        <Button asChild size="lg">
-                            <Link href="#">Se alt til uteplassen <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                        </Button>
-                    </div>
-                </section>
 
-                <ArticlesSection 
-                    title="Mer inspirasjon"
-                    articles={relatedArticles}
-                    linkText="Se alle artikler"
-                    linkHref="#"
-                />
+                        <DialogContent 
+                            className="bg-transparent border-none shadow-none p-0 max-w-none w-screen h-screen"
+                            onOpenAutoFocus={(e) => e.preventDefault()}
+                        >
+                            {selectedImageIndex !== null && (
+                            <div 
+                                className="fixed inset-0 z-50 flex flex-col"
+                                onClick={closeDialog}
+                                onTouchStart={handleTouchStart}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
+                            >
+                                <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+                                
+                                <div className="relative z-10 flex flex-1 items-center justify-start p-4 md:p-8" onClick={(e) => e.stopPropagation()}>
+                                    <div className="relative flex-1 w-full h-full flex items-center justify-center">
+                                        <Image
+                                            src={galleryImages[selectedImageIndex].src}
+                                            alt={galleryImages[selectedImageIndex].alt}
+                                            width={1920}
+                                            height={1080}
+                                            className="h-auto w-auto max-h-full max-w-full object-contain rounded-lg"
+                                            sizes="100vw"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/50 p-4 text-center text-white backdrop-blur-sm">
+                                    <DialogTitle className="text-lg font-bold">{galleryImages[selectedImageIndex].title}</DialogTitle>
+                                    <DialogDescription className="text-sm text-white/90">{galleryImages[selectedImageIndex].description}</DialogDescription>
+                                </div>
+                                
+                                <Button onClick={(e) => { e.stopPropagation(); closeDialog(); }} variant="ghost" size="icon" className="absolute top-4 right-4 z-20 h-12 w-12 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                    <X className="h-8 w-8" />
+                                </Button>
+                                <Button onClick={(e) => { e.stopPropagation(); prevImage(); }} variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                    <ChevronLeft className="h-10 w-10" />
+                                </Button>
+                                <Button onClick={(e) => { e.stopPropagation(); nextImage(); }} variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-14 w-14 rounded-full bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white">
+                                    <ChevronRight className="h-10 w-10" />
+                                </Button>
+                            </div>
+                            )}
+                        </DialogContent>
+                      </Dialog>
+                  </section>
 
-            </div>
-        </div>
-      </main>
+                  {/* 4. Produktkarusell ("Shop the Look") */}
+                  <section className="rounded-lg bg-secondary/30 p-8 md:p-12 lg:p-16">
+                      <div className="mb-12 text-center max-w-4xl mx-auto">
+                          <h2 className="font-headline text-3xl font-bold text-foreground">Produktene Kari brukte</h2>
+                          <div className="prose prose-lg mx-auto mt-2 max-w-2xl text-foreground">
+                              <p>
+                                  Her er produktene som forvandlet uteplassen. Gjenskap stilen og magien selv.
+                              </p>
+                          </div>
+                      </div>
+                      {/* Desktop Grid */}
+                      <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                          {shopTheLookProducts.map((product) => <ProductCard key={product.id} {...product} />)}
+                      </div>
+                      {/* Mobile Horizontal Scroll */}
+                      <div className="md:hidden">
+                          <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar -mx-4">
+                              {shopTheLookProducts.map((product) => (
+                                  <div key={product.id} className="w-2/3 flex-shrink-0">
+                                      <ProductCard {...product} />
+                                  </div>
+                              ))}
+                          </div>
+                      </div>
+                      {/* Call-to-Action */}
+                      <div className="mt-12 text-center">
+                          <Button asChild size="lg">
+                              <Link href="#">Se alt til uteplassen <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                          </Button>
+                      </div>
+                  </section>
 
-      <FooterComponent />
-    </div>
+                  <ArticlesSection 
+                      title="Mer inspirasjon"
+                      articles={relatedArticles}
+                      linkText="Se alle artikler"
+                      linkHref="#"
+                  />
+
+              </div>
+          </div>
+        </main>
+
+        <FooterComponent />
+      </div>
+    </ThemeProvider>
   );
 }

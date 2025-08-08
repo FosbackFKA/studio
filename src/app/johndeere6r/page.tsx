@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import * as React from 'react';
@@ -23,6 +24,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 // Import 360 images
 import img0 from '@/components/common/johndeere6r/JD_6R_TT_Cabin_00000.jpg';
@@ -323,388 +325,390 @@ export default function JohnDeere6RPage() {
 
 
     return (
-        <div className="flex min-h-screen flex-col bg-background">
-            <HeaderComponent />
+        <ThemeProvider value="consumer">
+          <div className="flex min-h-screen flex-col bg-background">
+              <HeaderComponent />
 
-            {/* Sticky Desktop CTA */}
-             <div
-                style={{ top: '168px' }}
-                className={cn(
-                    "fixed left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
-                    isCtaBarVisible ? 'translate-y-0' : '-translate-y-[calc(100%_+_168px)]'
-            )}>
-                <div className="container mx-auto flex h-20 items-center justify-between gap-6 max-w-[1542px] px-4">
-                     <div className="flex items-center gap-4">
-                         <span className="font-headline text-lg font-bold">John Deere 6R 110</span>
-                     </div>
-                     <div className="flex items-center gap-4">
-                         <Separator orientation="vertical" className="h-8"/>
-                         <QuoteRequestDialog
-                            trigger={
-                                <Button size="lg" className="h-12 px-6 text-base bg-yellow-300 text-primary hover:bg-yellow-300/90">
-                                    <Mail className="mr-2"/> Be om et tilbud
-                                </Button>
-                            }
-                        />
-                     </div>
-                </div>
-            </div>
+              {/* Sticky Desktop CTA */}
+              <div
+                  style={{ top: '168px' }}
+                  className={cn(
+                      "fixed left-0 right-0 z-40 hidden bg-background/90 shadow-md backdrop-blur-sm transition-transform duration-300 ease-in-out md:block",
+                      isCtaBarVisible ? 'translate-y-0' : '-translate-y-[calc(100%_+_168px)]'
+              )}>
+                  <div className="container mx-auto flex h-20 items-center justify-between gap-6 max-w-[1542px] px-4">
+                      <div className="flex items-center gap-4">
+                          <span className="font-headline text-lg font-bold">John Deere 6R 110</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                          <Separator orientation="vertical" className="h-8"/>
+                          <QuoteRequestDialog
+                              trigger={
+                                  <Button size="lg" className="h-12 px-6 text-base bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                                      <Mail className="mr-2"/> Be om et tilbud
+                                  </Button>
+                              }
+                          />
+                      </div>
+                  </div>
+              </div>
 
-            <main className="flex-grow pb-24 md:pb-0">
-                {/* --- Hero Seksjon --- */}
-                <section id="oversikt" className="relative h-screen min-h-[700px] w-full text-white">
-                    <Image
-                        src={heroImage}
-                        alt="John Deere 6R 110 traktor på et jorde ved soloppgang"
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
-                    <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
-                        <p className="font-headline text-2xl font-medium text-yellow-300">John Deere 6R Serie</p>
-                        <h1 className="font-headline text-6xl font-bold leading-tight text-white md:text-8xl lg:text-9xl">
-                            6R 110
-                        </h1>
-                        <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
-                            Kraft, intelligens og komfort – redefinert for moderne landbruk.
-                        </p>
-                        <div ref={ctaTriggerRef} className="mt-8 flex flex-col gap-4 sm:flex-row">
-                             <QuoteRequestDialog
-                                trigger={
-                                    <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
-                                        Be om et tilbud
-                                    </Button>
-                                }
-                            />
-                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-white/10 hover:text-white backdrop-blur-sm">
-                                <Link href="#spesifikasjoner">Se tekniske data</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </section>
+              <main className="flex-grow pb-24 md:pb-0">
+                  {/* --- Hero Seksjon --- */}
+                  <section id="oversikt" className="relative h-screen min-h-[700px] w-full text-white">
+                      <Image
+                          src={heroImage}
+                          alt="John Deere 6R 110 traktor på et jorde ved soloppgang"
+                          fill
+                          className="object-cover"
+                          priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+                      <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center">
+                          <p className="font-headline text-2xl font-medium text-yellow-300">John Deere 6R Serie</p>
+                          <h1 className="font-headline text-6xl font-bold leading-tight text-white md:text-8xl lg:text-9xl">
+                              6R 110
+                          </h1>
+                          <p className="mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
+                              Kraft, intelligens og komfort – redefinert for moderne landbruk.
+                          </p>
+                          <div ref={ctaTriggerRef} className="mt-8 flex flex-col gap-4 sm:flex-row">
+                              <QuoteRequestDialog
+                                  trigger={
+                                      <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                                          Be om et tilbud
+                                      </Button>
+                                  }
+                              />
+                              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-white text-white bg-black/20 hover:bg-white/10 hover:text-white backdrop-blur-sm">
+                                  <Link href="#spesifikasjoner">Se tekniske data</Link>
+                              </Button>
+                          </div>
+                      </div>
+                  </section>
 
-                {/* --- Sticky Sub-nav --- */}
-                <div className="sticky top-[108px] z-30 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
-                    <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
-                        {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Sammenlign', 'Tjenester', 'Kontakt'].map((item) => (
-                            <Link
-                                key={item}
-                                href={`#${item.toLowerCase().replace(' ', '-')}`}
-                                className={cn(
-                                    "relative font-headline text-lg font-medium transition-colors hover:text-primary",
-                                    activeSection === item.toLowerCase().replace(' ', '-') ? "text-primary" : "text-muted-foreground"
-                                )}
-                            >
-                                {item}
-                                {activeSection === item.toLowerCase().replace(' ', '-') && (
-                                    <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-primary" />
-                                )}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="bg-white py-16 lg:py-24">
-                    <div className="container mx-auto max-w-[1542px] px-4">
-                        {/* --- Kjernefordeler --- */}
-                        <section className="text-center">
-                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Bygget for å prestere</h2>
-                            <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-                                Hver eneste komponent i en 6R-traktor er utviklet for å levere maksimal ytelse og oppetid, uansett oppgave.
-                            </p>
-                            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                                {keyFeatures.map((feature) => (
-                                    <div key={feature.title} className="flex flex-col items-center">
-                                        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                                            <feature.icon className="h-8 w-8 text-primary" />
-                                        </div>
-                                        <h3 className="font-headline text-xl font-semibold text-foreground">{feature.title}</h3>
-                                        <p className="mt-2 text-muted-foreground">{feature.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-                <div className="bg-secondary/30 py-16 lg:py-24">
-                    <div className="container mx-auto max-w-4xl px-4 text-left">
-                        <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Allsidig, kraftig og smart</h2>
-                        <p className="mt-4 text-lg text-muted-foreground">
-                            John Deere 6R 110 er mer enn bare en traktor; det er en partner i din daglige drift. Den er designet for å være den ultimate allrounderen, perfekt for gårdsarbeid, fôrhåndtering, transport og lettere jordbearbeiding. Med sin kompakte størrelse kombinert med en kraftig motor og avansert teknologi, gir den deg fleksibiliteten til å takle varierte oppgaver med presisjon og effektivitet. Enten du navigerer trange fjøs eller jobber på åpne jorder, er 6R 110 bygget for å gjøre arbeidsdagen enklere og mer produktiv.
-                        </p>
-                    </div>
-                </div>
-
-
-                <div id="funksjoner" className="bg-white py-16 lg:py-24">
-                    <div className="container mx-auto max-w-[1542px] px-4">
-                        <section className="mb-16 lg:mb-24 text-center">
-                             <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Utforsk 6R 110 i 360 grader</h2>
-                             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                                Dra i bildet under for å rotere traktoren og se den fra alle vinkler.
-                             </p>
-                             <div className="mt-8 max-w-5xl mx-auto">
-                                <Tractor360Viewer />
-                             </div>
-                        </section>
-
-                        <Separator className="my-16 lg:my-24" />
-
-                        {/* --- CommandARM og Display --- */}
-                        <section className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
-                            <div>
-                                <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Full kontroll, fingertuppene unna</h2>
-                                <p className="mt-4 text-lg text-muted-foreground">
-                                    Den ergonomiske CommandARM™-konsollen samler alle viktige funksjoner, fra gass og gir til hydraulikk og trepunkt, på ett sted. Dette reduserer stress og øker presisjonen i arbeidet.
-                                </p>
-                            </div>
-                            <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg">
-                                <Image src={consoleImage} alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" />
-                            </div>
-                        </section>
-
-                        <Separator className="my-16 lg:my-24" />
-
-                        <section className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
-                            <div className="lg:order-2">
-                                <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Større. Raskere. Skarpere.</h2>
-                                <p className="mt-4 text-lg text-muted-foreground">
-                                    Den nye G5Plus CommandCenter™ er mer enn bare en skjerm. Med 35 % større visningsareal, raskere prosessor og full HD-oppløsning, gir den deg en krystallklar oversikt og lynrask tilgang til alt du trenger for presisjonslandbruk.
-                                </p>
-                            </div>
-                            <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
-                                <Image src={g5PlusImage} alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" />
-                            </div>
-                        </section>
-
-                        <Separator className="my-16 lg:my-24" />
-
-                        {/* --- Se den i aksjon --- */}
-                        <section>
-                            <div className="aspect-video w-full overflow-hidden rounded-xl shadow-lg">
-                                <iframe
-                                    className="h-full w-full"
-                                    src="https://www.youtube.com/embed/pCJK1xopEds?start=18"
-                                    title="John Deere 6R Series Tractors"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen
-                                ></iframe>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-                {/* --- Spesifikasjoner --- */}
-                <section id="spesifikasjoner" className="bg-secondary/30 py-16 lg:py-24">
-                    <div className="container mx-auto max-w-4xl px-4">
-                        <div className="text-center">
-                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Tekniske Spesifikasjoner</h2>
-                            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                                John Deere 6R 110 er designet for å levere kraft og ytelse. Her er nøkkeldataene.
-                            </p>
-                        </div>
-                        <Card className="mt-12 overflow-hidden shadow-lg">
-                            <Table>
-                                <TableBody>
-                                    {techSpecs.map((spec, index) => (
-                                        <TableRow key={spec.label} className={cn(index % 2 === 0 ? "bg-white" : "")}>
-                                            <TableCell className="font-semibold text-foreground">{spec.label}</TableCell>
-                                            <TableCell>{spec.value}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </Card>
-                        <div className="mt-8 text-center">
-                             <Button asChild variant="outline">
-                                <Link href="#">Last ned fullstendig produktark <ArrowRight className="ml-2"/></Link>
-                            </Button>
-                        </div>
-                    </div>
-                </section>
-                
-                {/* --- Sammenlign modeller --- */}
-                <section id="sammenlign" className="bg-white py-16 lg:py-24">
-                  <div className="container mx-auto max-w-6xl px-4">
-                    <div className="text-center mb-12">
-                      <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Finn riktig 6R for deg</h2>
-                      <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-                        Sammenlign nøkkelspesifikasjoner på tvers av de mest populære modellene i 6R-serien for å finne den som passer dine behov perfekt.
-                      </p>
-                    </div>
-                    <Card className="overflow-hidden shadow-lg">
-                      <div className="overflow-x-auto">
-                        <Table>
-                          <TableHeader>
-                            <TableRow className="bg-secondary/50 hover:bg-secondary/50 border-b-2 border-border">
-                              <TableHead className="text-left font-semibold text-foreground w-[25%] py-4">Modell</TableHead>
-                              {comparisonData.headers.map((header) => (
-                                <TableHead
-                                  key={header}
+                  {/* --- Sticky Sub-nav --- */}
+                  <div className="sticky top-[108px] z-30 hidden bg-background/80 shadow-md backdrop-blur-sm lg:block">
+                      <div className="container mx-auto flex h-16 max-w-[1542px] items-center justify-center gap-8 px-4">
+                          {['Oversikt', 'Funksjoner', 'Spesifikasjoner', 'Sammenlign', 'Tjenester', 'Kontakt'].map((item) => (
+                              <Link
+                                  key={item}
+                                  href={`#${item.toLowerCase().replace(' ', '-')}`}
                                   className={cn(
-                                    "text-center font-semibold text-foreground w-1/4 p-4",
-                                    header === '6R 110' && "bg-primary/10 text-primary"
+                                      "relative font-headline text-lg font-medium transition-colors hover:text-primary",
+                                      activeSection === item.toLowerCase().replace(' ', '-') ? "text-primary" : "text-muted-foreground"
                                   )}
-                                >
-                                  <div className="flex items-center justify-center gap-2">
-                                      {header === '6R 110' && <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />}
-                                      {header}
-                                  </div>
-                                </TableHead>
-                              ))}
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {comparisonData.specs.map((spec) => (
-                              <TableRow key={spec.label} className="bg-white even:bg-secondary/20">
-                                <TableCell className="font-semibold">{spec.label}</TableCell>
-                                {spec.values.map((value, index) => (
-                                  <TableCell
-                                    key={index}
+                              >
+                                  {item}
+                                  {activeSection === item.toLowerCase().replace(' ', '-') && (
+                                      <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-primary" />
+                                  )}
+                              </Link>
+                          ))}
+                      </div>
+                  </div>
+
+                  <div className="bg-white py-16 lg:py-24">
+                      <div className="container mx-auto max-w-[1542px] px-4">
+                          {/* --- Kjernefordeler --- */}
+                          <section className="text-center">
+                              <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Bygget for å prestere</h2>
+                              <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                                  Hver eneste komponent i en 6R-traktor er utviklet for å levere maksimal ytelse og oppetid, uansett oppgave.
+                              </p>
+                              <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                                  {keyFeatures.map((feature) => (
+                                      <div key={feature.title} className="flex flex-col items-center">
+                                          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                                              <feature.icon className="h-8 w-8 text-primary" />
+                                          </div>
+                                          <h3 className="font-headline text-xl font-semibold text-foreground">{feature.title}</h3>
+                                          <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                                      </div>
+                                  ))}
+                              </div>
+                          </section>
+                      </div>
+                  </div>
+
+                  <div className="bg-secondary/30 py-16 lg:py-24">
+                      <div className="container mx-auto max-w-4xl px-4 text-left">
+                          <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Allsidig, kraftig og smart</h2>
+                          <p className="mt-4 text-lg text-muted-foreground">
+                              John Deere 6R 110 er mer enn bare en traktor; det er en partner i din daglige drift. Den er designet for å være den ultimate allrounderen, perfekt for gårdsarbeid, fôrhåndtering, transport og lettere jordbearbeiding. Med sin kompakte størrelse kombinert med en kraftig motor og avansert teknologi, gir den deg fleksibiliteten til å takle varierte oppgaver med presisjon og effektivitet. Enten du navigerer trange fjøs eller jobber på åpne jorder, er 6R 110 bygget for å gjøre arbeidsdagen enklere og mer produktiv.
+                          </p>
+                      </div>
+                  </div>
+
+
+                  <div id="funksjoner" className="bg-white py-16 lg:py-24">
+                      <div className="container mx-auto max-w-[1542px] px-4">
+                          <section className="mb-16 lg:mb-24 text-center">
+                              <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Utforsk 6R 110 i 360 grader</h2>
+                              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                                  Dra i bildet under for å rotere traktoren og se den fra alle vinkler.
+                              </p>
+                              <div className="mt-8 max-w-5xl mx-auto">
+                                  <Tractor360Viewer />
+                              </div>
+                          </section>
+
+                          <Separator className="my-16 lg:my-24" />
+
+                          {/* --- CommandARM og Display --- */}
+                          <section className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
+                              <div>
+                                  <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Full kontroll, fingertuppene unna</h2>
+                                  <p className="mt-4 text-lg text-muted-foreground">
+                                      Den ergonomiske CommandARM™-konsollen samler alle viktige funksjoner, fra gass og gir til hydraulikk og trepunkt, på ett sted. Dette reduserer stress og øker presisjonen i arbeidet.
+                                  </p>
+                              </div>
+                              <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg">
+                                  <Image src={consoleImage} alt="John Deere CommandARM" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" />
+                              </div>
+                          </section>
+
+                          <Separator className="my-16 lg:my-24" />
+
+                          <section className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
+                              <div className="lg:order-2">
+                                  <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Større. Raskere. Skarpere.</h2>
+                                  <p className="mt-4 text-lg text-muted-foreground">
+                                      Den nye G5Plus CommandCenter™ er mer enn bare en skjerm. Med 35 % større visningsareal, raskere prosessor og full HD-oppløsning, gir den deg en krystallklar oversikt og lynrask tilgang til alt du trenger for presisjonslandbruk.
+                                  </p>
+                              </div>
+                              <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg lg:order-1">
+                                  <Image src={g5PlusImage} alt="John Deere G5Plus CommandCenter display" className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" />
+                              </div>
+                          </section>
+
+                          <Separator className="my-16 lg:my-24" />
+
+                          {/* --- Se den i aksjon --- */}
+                          <section>
+                              <div className="aspect-video w-full overflow-hidden rounded-xl shadow-lg">
+                                  <iframe
+                                      className="h-full w-full"
+                                      src="https://www.youtube.com/embed/pCJK1xopEds?start=18"
+                                      title="John Deere 6R Series Tractors"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                      allowFullScreen
+                                  ></iframe>
+                              </div>
+                          </section>
+                      </div>
+                  </div>
+
+                  {/* --- Spesifikasjoner --- */}
+                  <section id="spesifikasjoner" className="bg-secondary/30 py-16 lg:py-24">
+                      <div className="container mx-auto max-w-4xl px-4">
+                          <div className="text-center">
+                              <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Tekniske Spesifikasjoner</h2>
+                              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                                  John Deere 6R 110 er designet for å levere kraft og ytelse. Her er nøkkeldataene.
+                              </p>
+                          </div>
+                          <Card className="mt-12 overflow-hidden shadow-lg">
+                              <Table>
+                                  <TableBody>
+                                      {techSpecs.map((spec, index) => (
+                                          <TableRow key={spec.label} className={cn(index % 2 === 0 ? "bg-white" : "")}>
+                                              <TableCell className="font-semibold text-foreground">{spec.label}</TableCell>
+                                              <TableCell>{spec.value}</TableCell>
+                                          </TableRow>
+                                      ))}
+                                  </TableBody>
+                              </Table>
+                          </Card>
+                          <div className="mt-8 text-center">
+                              <Button asChild variant="outline">
+                                  <Link href="#">Last ned fullstendig produktark <ArrowRight className="ml-2"/></Link>
+                              </Button>
+                          </div>
+                      </div>
+                  </section>
+                  
+                  {/* --- Sammenlign modeller --- */}
+                  <section id="sammenlign" className="bg-white py-16 lg:py-24">
+                    <div className="container mx-auto max-w-6xl px-4">
+                      <div className="text-center mb-12">
+                        <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Finn riktig 6R for deg</h2>
+                        <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                          Sammenlign nøkkelspesifikasjoner på tvers av de mest populære modellene i 6R-serien for å finne den som passer dine behov perfekt.
+                        </p>
+                      </div>
+                      <Card className="overflow-hidden shadow-lg">
+                        <div className="overflow-x-auto">
+                          <Table>
+                            <TableHeader>
+                              <TableRow className="bg-secondary/50 hover:bg-secondary/50 border-b-2 border-border">
+                                <TableHead className="text-left font-semibold text-foreground w-[25%] py-4">Modell</TableHead>
+                                {comparisonData.headers.map((header) => (
+                                  <TableHead
+                                    key={header}
                                     className={cn(
-                                      "text-center",
-                                      comparisonData.headers[index] === '6R 110' && "font-bold text-foreground"
+                                      "text-center font-semibold text-foreground w-1/4 p-4",
+                                      header === '6R 110' && "bg-primary/10 text-primary"
                                     )}
                                   >
-                                    {value}
-                                  </TableCell>
+                                    <div className="flex items-center justify-center gap-2">
+                                        {header === '6R 110' && <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />}
+                                        {header}
+                                    </div>
+                                  </TableHead>
                                 ))}
                               </TableRow>
-                            ))}
-                            <TableRow className="bg-transparent hover:bg-transparent">
-                                <TableCell></TableCell>
-                                {comparisonData.headers.map((header) => (
-                                    <TableCell key={header} className="text-center p-4">
-                                        <Button asChild variant={header === '6R 110' ? 'default' : 'outline'}>
-                                            <Link href="#">
-                                                {header === '6R 110' ? 'Valgt modell' : 'Gå til modell'}
-                                            </Link>
-                                        </Button>
+                            </TableHeader>
+                            <TableBody>
+                              {comparisonData.specs.map((spec) => (
+                                <TableRow key={spec.label} className="bg-white even:bg-secondary/20">
+                                  <TableCell className="font-semibold">{spec.label}</TableCell>
+                                  {spec.values.map((value, index) => (
+                                    <TableCell
+                                      key={index}
+                                      className={cn(
+                                        "text-center",
+                                        comparisonData.headers[index] === '6R 110' && "font-bold text-foreground"
+                                      )}
+                                    >
+                                      {value}
                                     </TableCell>
-                                ))}
-                            </TableRow>
-                          </TableBody>
-                        </Table>
+                                  ))}
+                                </TableRow>
+                              ))}
+                              <TableRow className="bg-transparent hover:bg-transparent">
+                                  <TableCell></TableCell>
+                                  {comparisonData.headers.map((header) => (
+                                      <TableCell key={header} className="text-center p-4">
+                                          <Button asChild variant={header === '6R 110' ? 'default' : 'outline'}>
+                                              <Link href="#">
+                                                  {header === '6R 110' ? 'Valgt modell' : 'Gå til modell'}
+                                              </Link>
+                                          </Button>
+                                      </TableCell>
+                                  ))}
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        </div>
+                      </Card>
+                    </div>
+                  </section>
+
+                  {/* --- Utforsk andre serier --- */}
+                  <section id="utforsk" className="bg-secondary/30 py-16 lg:py-24">
+                      <div className="container mx-auto max-w-[1542px] px-4">
+                          <div className="text-center mb-12">
+                              <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Ikke helt rett? Utforsk andre serier</h2>
+                              <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                                  John Deere tilbyr et bredt spekter av traktorer for alle typer oppgaver. Finn serien som passer perfekt for din drift.
+                              </p>
+                          </div>
+                          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                              {otherSeriesData.map((series) => (
+                                  <Card key={series.series} className="flex flex-col text-center items-center p-0 shadow-lg bg-card transform hover:-translate-y-1 transition-transform duration-300 overflow-hidden">
+                                      <div className="relative w-full h-48">
+                                          <Image
+                                            src={series.image}
+                                            alt={`John Deere ${series.series}`}
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                          />
+                                      </div>
+                                      <div className="p-6 flex flex-col flex-grow items-center text-center">
+                                        <CardTitle className="font-headline text-2xl">{series.series}</CardTitle>
+                                        <CardContent className="mt-2 text-muted-foreground flex-grow p-0">
+                                            <p>{series.description}</p>
+                                        </CardContent>
+                                        <Button asChild variant="outline-primary" className="mt-6">
+                                            <Link href={series.href}>Utforsk serien</Link>
+                                        </Button>
+                                      </div>
+                                  </Card>
+                              ))}
+                          </div>
                       </div>
-                    </Card>
-                  </div>
-                </section>
+                  </section>
 
-                {/* --- Utforsk andre serier --- */}
-                <section id="utforsk" className="bg-secondary/30 py-16 lg:py-24">
-                    <div className="container mx-auto max-w-[1542px] px-4">
-                        <div className="text-center mb-12">
-                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Ikke helt rett? Utforsk andre serier</h2>
-                            <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-                                John Deere tilbyr et bredt spekter av traktorer for alle typer oppgaver. Finn serien som passer perfekt for din drift.
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {otherSeriesData.map((series) => (
-                                <Card key={series.series} className="flex flex-col text-center items-center p-0 shadow-lg bg-card transform hover:-translate-y-1 transition-transform duration-300 overflow-hidden">
-                                     <div className="relative w-full h-48">
-                                        <Image
-                                          src={series.image}
-                                          alt={`John Deere ${series.series}`}
-                                          fill
-                                          className="object-cover"
-                                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                        />
-                                    </div>
-                                    <div className="p-6 flex flex-col flex-grow items-center text-center">
-                                      <CardTitle className="font-headline text-2xl">{series.series}</CardTitle>
-                                      <CardContent className="mt-2 text-muted-foreground flex-grow p-0">
-                                          <p>{series.description}</p>
-                                      </CardContent>
-                                      <Button asChild variant="outline-primary" className="mt-6">
-                                          <Link href={series.href}>Utforsk serien</Link>
+
+                  {/* --- Tjenester --- */}
+                  <section id="tjenester" className="py-16 lg:py-24 bg-white">
+                      <div className="container mx-auto max-w-[1542px] px-4">
+                        <div className="text-center">
+                              <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Vi er med deg hele veien</h2>
+                              <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
+                                  Et traktorkjøp er bare starten på partnerskapet. Felleskjøpet tilbyr et komplett økosystem av tjenester for å sikre deg maksimal oppetid og lønnsomhet.
+                              </p>
+                          </div>
+                          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+                              <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
+                                  <Settings className="h-12 w-12 text-primary" />
+                                  <CardTitle className="mt-4 font-headline text-2xl">Verkstedtjenester</CardTitle>
+                                  <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Våre sertifiserte teknikere over hele landet sikrer profesjonell service og vedlikehold, slik at din maskin alltid yter sitt beste.</CardContent>
+                                  <Button variant="link" className="mt-4">Les mer <ArrowRight className="ml-2"/></Button>
+                              </Card>
+                              <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
+                                  <Wallet className="h-12 w-12 text-primary" />
+                                  <CardTitle className="mt-4 font-headline text-2xl">Finansiering og leasing</CardTitle>
+                                  <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Vi tilbyr skreddersydde og konkurransedyktige finansieringsløsninger som passer din drift og dine investeringsplaner.</CardContent>
+                                  <Button variant="link" className="mt-4">Se dine muligheter <ArrowRight className="ml-2" /></Button>
+                              </Card>
+                              <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
+                                  <Tractor className="h-12 w-12 text-primary" />
+                                  <CardTitle className="mt-4 font-headline text-2xl">Presisjonsjordbruk</CardTitle>
+                                  <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Få mest mulig ut av hver kvadratmeter med våre løsninger for presisjonslandbruk. Vi hjelper deg med alt fra autostyring til avansert dataanalyse.</CardContent>
+                                  <Button variant="link" className="mt-4">Utforsk teknologien <ArrowRight className="ml-2" /></Button>
+                              </Card>
+                          </div>
+                      </div>
+                  </section>
+
+
+                  {/* --- Kontakt --- */}
+                  <section id="kontakt" className="bg-primary-dark-background py-20 lg:py-32">
+                      <div className="container mx-auto max-w-4xl px-4 text-center">
+                          <h2 className="font-headline text-4xl font-bold text-yellow-300">Klar for en ny arbeidshverdag?</h2>
+                          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
+                            Våre maskinselgere står klare til å hjelpe deg med å konfigurere en John Deere 6R som er perfekt tilpasset din gård og dine behov. Ta kontakt for en uforpliktende prat eller et skreddersydd tilbud.
+                          </p>
+                          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                              <QuoteRequestDialog
+                                  trigger={
+                                      <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
+                                          <Mail className="mr-2"/> Be om et tilbud
                                       </Button>
-                                    </div>
-                                </Card>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-
-                {/* --- Tjenester --- */}
-                 <section id="tjenester" className="py-16 lg:py-24 bg-white">
-                    <div className="container mx-auto max-w-[1542px] px-4">
-                       <div className="text-center">
-                            <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">Vi er med deg hele veien</h2>
-                            <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-                                Et traktorkjøp er bare starten på partnerskapet. Felleskjøpet tilbyr et komplett økosystem av tjenester for å sikre deg maksimal oppetid og lønnsomhet.
-                            </p>
-                        </div>
-                         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-                            <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
-                                <Settings className="h-12 w-12 text-primary" />
-                                <CardTitle className="mt-4 font-headline text-2xl">Verkstedtjenester</CardTitle>
-                                <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Våre sertifiserte teknikere over hele landet sikrer profesjonell service og vedlikehold, slik at din maskin alltid yter sitt beste.</CardContent>
-                                <Button variant="link" className="mt-4">Les mer <ArrowRight className="ml-2"/></Button>
-                            </Card>
-                             <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
-                                <Wallet className="h-12 w-12 text-primary" />
-                                <CardTitle className="mt-4 font-headline text-2xl">Finansiering og leasing</CardTitle>
-                                <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Vi tilbyr skreddersydde og konkurransedyktige finansieringsløsninger som passer din drift og dine investeringsplaner.</CardContent>
-                                 <Button variant="link" className="mt-4">Se dine muligheter <ArrowRight className="ml-2" /></Button>
-                            </Card>
-                             <Card className="flex flex-col items-center p-8 text-center shadow-lg bg-card">
-                                <Tractor className="h-12 w-12 text-primary" />
-                                <CardTitle className="mt-4 font-headline text-2xl">Presisjonsjordbruk</CardTitle>
-                                <CardContent className="mt-2 flex-grow text-muted-foreground p-0">Få mest mulig ut av hver kvadratmeter med våre løsninger for presisjonslandbruk. Vi hjelper deg med alt fra autostyring til avansert dataanalyse.</CardContent>
-                                <Button variant="link" className="mt-4">Utforsk teknologien <ArrowRight className="ml-2" /></Button>
-                            </Card>
-                        </div>
-                    </div>
-                </section>
-
-
-                {/* --- Kontakt --- */}
-                <section id="kontakt" className="bg-primary-dark-background py-20 lg:py-32">
-                    <div className="container mx-auto max-w-4xl px-4 text-center">
-                        <h2 className="font-headline text-4xl font-bold text-yellow-300">Klar for en ny arbeidshverdag?</h2>
-                        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-                           Våre maskinselgere står klare til å hjelpe deg med å konfigurere en John Deere 6R som er perfekt tilpasset din gård og dine behov. Ta kontakt for en uforpliktende prat eller et skreddersydd tilbud.
-                        </p>
-                        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                             <QuoteRequestDialog
-                                trigger={
-                                    <Button size="lg" className="h-14 px-8 text-lg bg-yellow-300 text-primary hover:bg-yellow-300/90">
-                                        <Mail className="mr-2"/> Be om et tilbud
-                                    </Button>
-                                }
-                            />
-                            <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-yellow-300 text-yellow-300 bg-transparent hover:bg-yellow-300/10 hover:text-yellow-300">
-                                <Link href="#"><Phone className="mr-2"/> Ring oss: 72 50 50 50</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </section>
-            </main>
-            
-            {/* Sticky Mobile CTA */}
-             <div className={cn(
-                "fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 p-3 backdrop-blur-sm transition-transform duration-300 md:hidden",
-                isMobileCtaVisible ? 'translate-y-0' : 'translate-y-full'
-            )}>
-              <div className="flex items-center justify-between gap-3">
-                 <QuoteRequestDialog
-                    trigger={
-                        <Button size="lg" className="h-12 flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
-                            <Mail className="mr-2"/> Be om et tilbud
-                        </Button>
-                    }
-                />
-                <Button asChild size="lg" variant="outline" className="h-12 flex-1">
-                    <Link href="#"><Phone className="mr-2"/> Ring oss</Link>
-                </Button>
+                                  }
+                              />
+                              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg border-2 border-yellow-300 text-yellow-300 bg-transparent hover:bg-yellow-300/10 hover:text-yellow-300">
+                                  <Link href="#"><Phone className="mr-2"/> Ring oss: 72 50 50 50</Link>
+                              </Button>
+                          </div>
+                      </div>
+                  </section>
+              </main>
+              
+              {/* Sticky Mobile CTA */}
+              <div className={cn(
+                  "fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 p-3 backdrop-blur-sm transition-transform duration-300 md:hidden",
+                  isMobileCtaVisible ? 'translate-y-0' : 'translate-y-full'
+              )}>
+                <div className="flex items-center justify-between gap-3">
+                  <QuoteRequestDialog
+                      trigger={
+                          <Button size="lg" className="h-12 flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
+                              <Mail className="mr-2"/> Be om et tilbud
+                          </Button>
+                      }
+                  />
+                  <Button asChild size="lg" variant="outline" className="h-12 flex-1">
+                      <Link href="#"><Phone className="mr-2"/> Ring oss</Link>
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <FooterComponent />
-        </div>
+              <FooterComponent />
+          </div>
+        </ThemeProvider>
     );
 }

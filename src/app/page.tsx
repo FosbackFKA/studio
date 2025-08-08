@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { FkaLogo } from '@/components/common/logo';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import type { Product } from '@/types/product';
+import { ThemeProvider } from '@/lib/theme/provider';
 
 // Import new sections
 import { PopularCategoriesSection } from '@/components/sections/popular-categories-section';
@@ -339,238 +340,238 @@ export default async function HomePage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <HeaderComponent />
-      
-      <main className="flex-grow">
-        <HeroSection />
-
-        <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto max-w-[1542px]">
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 px-4 text-center md:flex-row">
-              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Mest populære akkurat nå</h2>
-            </div>
-            
-            {/* Desktop Grid */}
-            <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
-              {mostPopularProducts.map((item) => (
-                <ProductCard
-                  key={item.id}
-                  {...item}
-                />
-              ))}
-            </div>
-            
-            {/* Mobile Horizontal Scroll */}
-            <div className="lg:hidden">
-              <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
-                {mostPopularProducts.map((item) => (
-                  <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
-                    <ProductCard {...item} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <PopularCategoriesSection />
+    <ThemeProvider value="consumer">
+      <div className="flex min-h-screen flex-col bg-background">
+        <HeaderComponent />
         
-        {/* New Pet Section */}
-        <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {/* Left Column: Sticky Promo Image */}
-              <div className="self-start md:sticky md:top-36">
-                <Link href="/hundefor" className="group block aspect-square">
-                  <div className="relative h-full w-full overflow-hidden rounded-lg">
-                    <Image
-                      src={hund1}
-                      alt="Alt til kjæledyr"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
-                      <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
-                      <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
-                        <ArrowRight className="mr-2 h-4 w-4" />
-                        <span>Utstyr og fôr til alt fra hund til hobbyhøns</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
+        <main className="flex-grow">
+          <HeroSection />
 
-              {/* Right Column: Product Grid */}
-              <div className="grid grid-cols-2 gap-4 self-start">
-                {newKjaeledyrProducts.map((item) => (
+          <section className="py-8 lg:py-12 bg-background">
+            <div className="container mx-auto max-w-[1542px]">
+              <div className="mb-6 flex flex-col items-center justify-between gap-4 px-4 text-center md:flex-row">
+                <h2 className="font-headline text-2xl font-bold lg:text-3xl">Mest populære akkurat nå</h2>
+              </div>
+              
+              {/* Desktop Grid */}
+              <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
+                {mostPopularProducts.map((item) => (
                   <ProductCard
                     key={item.id}
                     {...item}
                   />
                 ))}
               </div>
+              
+              {/* Mobile Horizontal Scroll */}
+              <div className="lg:hidden">
+                <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                  {mostPopularProducts.map((item) => (
+                    <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
+                      <ProductCard {...item} />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="relative flex min-h-[400px] w-full items-center justify-start overflow-hidden rounded-lg text-white">
-              <Image
-                src={gressImage}
-                alt="Perfekt plen"
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
-              <div className="relative z-10 p-6 lg:p-12 max-w-2xl">
-                <p className="font-headline text-xl text-yellow-300">Drømmer du om en</p>
-                <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
-                <p className="mb-8 mt-4 text-lg text-white/90">
-                  Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
-                </p>
-                <Button asChild className="h-11 rounded-full bg-yellow-300 px-6 text-primary hover:bg-yellow-300/90">
-                  <Link href="#">
-                    <ArrowRight className="mr-2 h-4 w-4" />
-                    Se produktene
+          <PopularCategoriesSection />
+          
+          {/* New Pet Section */}
+          <section className="py-8 lg:py-12 bg-secondary">
+            <div className="container mx-auto max-w-[1542px] px-4">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Left Column: Sticky Promo Image */}
+                <div className="self-start md:sticky md:top-36">
+                  <Link href="/hundefor" className="group block aspect-square">
+                    <div className="relative h-full w-full overflow-hidden rounded-lg">
+                      <Image
+                        src={hund1}
+                        alt="Alt til kjæledyr"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
+                        <h3 className="font-headline text-3xl font-bold text-yellow-300">Alt til kjæledyr</h3>
+                        <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
+                          <ArrowRight className="mr-2 h-4 w-4" />
+                          <span>Utstyr og fôr til alt fra hund til hobbyhøns</span>
+                        </div>
+                      </div>
+                    </div>
                   </Link>
+                </div>
+
+                {/* Right Column: Product Grid */}
+                <div className="grid grid-cols-2 gap-4 self-start">
+                  {newKjaeledyrProducts.map((item) => (
+                    <ProductCard
+                      key={item.id}
+                      {...item}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-8 lg:py-12 bg-background">
+            <div className="container mx-auto max-w-[1542px] px-4">
+              <div className="relative flex min-h-[400px] w-full items-center justify-start overflow-hidden rounded-lg text-white">
+                <Image
+                  src={gressImage}
+                  alt="Perfekt plen"
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+                <div className="relative z-10 p-6 lg:p-12 max-w-2xl">
+                  <p className="font-headline text-xl text-yellow-300">Drømmer du om en</p>
+                  <h2 className="font-headline text-5xl font-bold text-yellow-300">Perfekt plen?</h2>
+                  <p className="mb-8 mt-4 text-lg text-white/90">
+                    Vi har gressfrøene du trenger for å få en grønn og fyldig plen i hagen.
+                  </p>
+                  <Button asChild className="h-11 rounded-full bg-yellow-300 px-6 text-primary hover:bg-yellow-300/90">
+                    <Link href="#">
+                      <ArrowRight className="mr-2 h-4 w-4" />
+                      Se produktene
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-8 lg:py-12 bg-background">
+            <div className="container mx-auto max-w-[1542px] px-4">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Left Column: Sticky Promo Image */}
+                <div className="self-start md:sticky md:top-36">
+                  <Link href="/robotgressklipper" className="group block aspect-square">
+                    <div className="relative h-full w-full overflow-hidden rounded-lg">
+                      <Image
+                        src={gressklipper1}
+                        alt="Robotgressklippere"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
+                        <p className="font-body text-sm font-medium text-yellow-300 mb-0.5">Se vårt utvalg av</p>
+                        <h3 className="font-headline text-3xl font-bold text-yellow-300">Robotgressklippere</h3>
+                        <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
+                          <ArrowRight className="mr-2 h-4 w-4" />
+                          <span>For både store og små hager</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+
+                {/* Right Column: Product Grid */}
+                <div className="grid grid-cols-2 gap-4 self-start">
+                  {newRobotklipperProducts.map((item) => (
+                    <ProductCard
+                      key={item.id}
+                      {...item}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-8 lg:py-12 bg-secondary">
+            <div className="container mx-auto max-w-[1542px]">
+              <div className="mb-6 flex flex-col items-start justify-between gap-4 px-4 md:flex-row md:items-center">
+                <h2 className="font-headline text-2xl font-bold lg:text-3xl">Favorittene våre til vanning i hagen</h2>
+              </div>
+              
+              {/* Desktop Grid */}
+              <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
+                {newVanningProducts.map((item) => (
+                  <ProductCard
+                      key={item.id}
+                      {...item}
+                    />
+                ))}
+              </div>
+
+              {/* Mobile Horizontal Scroll */}
+              <div className="lg:hidden">
+                <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                  {newVanningProducts.map((item) => (
+                    <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
+                      <ProductCard {...item} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-8 lg:py-12 bg-secondary">
+            <div className="container mx-auto max-w-[1542px]">
+              <div className="mb-6 flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
+                <h2 className="font-headline text-2xl font-bold lg:text-3xl">Utstyr til å så jevnt</h2>
+                <Button variant="link" asChild className="text-primary hover:underline">
+                  <Link href="#">Så og strøredskap <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
                 </Button>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-8 lg:py-12 bg-background">
-          <div className="container mx-auto max-w-[1542px] px-4">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {/* Left Column: Sticky Promo Image */}
-              <div className="self-start md:sticky md:top-36">
-                <Link href="/robotgressklipper" className="group block aspect-square">
-                  <div className="relative h-full w-full overflow-hidden rounded-lg">
-                    <Image
-                      src={gressklipper1}
-                      alt="Robotgressklippere"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20 text-white">
-                      <p className="font-body text-sm font-medium text-yellow-300 mb-0.5">Se vårt utvalg av</p>
-                      <h3 className="font-headline text-3xl font-bold text-yellow-300">Robotgressklippere</h3>
-                      <div className="mt-1 flex items-center text-sm font-medium text-yellow-300 group-hover:underline">
-                        <ArrowRight className="mr-2 h-4 w-4" />
-                        <span>For både store og små hager</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-
-              {/* Right Column: Product Grid */}
-              <div className="grid grid-cols-2 gap-4 self-start">
-                {newRobotklipperProducts.map((item) => (
+              
+              {/* Desktop Grid */}
+              <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
+                {newSaaingProducts.map((item) => (
                   <ProductCard
                     key={item.id}
                     {...item}
                   />
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto max-w-[1542px]">
-            <div className="mb-6 flex flex-col items-start justify-between gap-4 px-4 md:flex-row md:items-center">
-              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Favorittene våre til vanning i hagen</h2>
-            </div>
-            
-            {/* Desktop Grid */}
-            <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
-              {newVanningProducts.map((item) => (
-                 <ProductCard
-                    key={item.id}
-                    {...item}
-                  />
-              ))}
-            </div>
-
-            {/* Mobile Horizontal Scroll */}
-            <div className="lg:hidden">
-              <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
-                {newVanningProducts.map((item) => (
-                  <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
-                    <ProductCard {...item} />
-                  </div>
-                ))}
+              {/* Mobile Horizontal Scroll */}
+              <div className="lg:hidden">
+                <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
+                  {newSaaingProducts.map((item) => (
+                    <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
+                      <ProductCard {...item} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-8 lg:py-12 bg-secondary">
-          <div className="container mx-auto max-w-[1542px]">
-            <div className="mb-6 flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
-              <h2 className="font-headline text-2xl font-bold lg:text-3xl">Utstyr til å så jevnt</h2>
-               <Button variant="link" asChild className="text-primary hover:underline">
-                <Link href="#">Så og strøredskap <ChevronRight className="ml-1 inline h-4 w-4"/></Link>
-              </Button>
-            </div>
-            
-            {/* Desktop Grid */}
-            <div className="hidden px-4 lg:grid lg:grid-cols-5 lg:gap-4">
-              {newSaaingProducts.map((item) => (
-                <ProductCard
-                  key={item.id}
-                  {...item}
-                />
-              ))}
-            </div>
-
-            {/* Mobile Horizontal Scroll */}
-            <div className="lg:hidden">
-              <div className="flex space-x-4 overflow-x-auto px-4 pb-4 no-scrollbar">
-                {newSaaingProducts.map((item) => (
-                  <div key={item.id} className="w-2/3 flex-shrink-0 sm:w-2/5 md:w-[30%]">
-                    <ProductCard {...item} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <ArticlesSection 
-            title="Nyttige artikler og guider"
-            articles={homePageArticles}
-            linkText="Se alle artikler"
-            linkHref="#"
-        />
-
-        <section className="relative h-[300px] w-full md:h-[400px]">
-           <Image
-            src={footerHeroImage}
-            alt="Ta vare på jorda, dyra og framtida"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            quality={80}
+          <ArticlesSection 
+              title="Nyttige artikler og guider"
+              articles={homePageArticles}
+              linkText="Se alle artikler"
+              linkHref="#"
           />
-          <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-primary">
-            <FkaLogo className="mb-4 h-12 w-auto" />
-            <h2 className="font-headline text-3xl font-bold md:text-4xl lg:text-5xl">
-              Ta vare på jorda, dyra og framtida
-            </h2>
-          </div>
-        </section>
 
-      </main>
-      <FooterComponent />
-    </div>
+          <section className="relative h-[300px] w-full md:h-[400px]">
+            <Image
+              src={footerHeroImage}
+              alt="Ta vare på jorda, dyra og framtida"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              quality={80}
+            />
+            <div className="container relative z-10 mx-auto flex h-full max-w-[1542px] flex-col items-center justify-center px-4 text-center text-primary">
+              <FkaLogo className="mb-4 h-12 w-auto" />
+              <h2 className="font-headline text-3xl font-bold md:text-4xl lg:text-5xl">
+                Ta vare på jorda, dyra og framtida
+              </h2>
+            </div>
+          </section>
+
+        </main>
+        <FooterComponent />
+      </div>
+    </ThemeProvider>
   );
 }
-
-    
