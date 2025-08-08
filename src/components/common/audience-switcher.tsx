@@ -30,39 +30,35 @@ export function AudienceSwitcher() {
   };
 
   const PrivatButton = (
-    <Link href={getLink('privat')} legacyBehavior passHref>
-      <Button
-        asChild
-        size="sm"
-        className={cn(
-          'rounded-full px-3 py-1 h-auto text-xs font-medium',
-          activeAudience === 'privat'
-            ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-            : 'border-primary bg-transparent text-primary hover:bg-primary/10'
-        )}
-        variant={activeAudience === 'privat' ? 'default' : 'outline'}
-      >
-        <a>Privat</a>
-      </Button>
-    </Link>
+    <Button
+      asChild
+      size="sm"
+      className={cn(
+        'rounded-full px-3 py-1 h-auto text-xs font-medium',
+        activeAudience === 'privat'
+          ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+          : 'border-primary bg-transparent text-primary hover:bg-primary/10'
+      )}
+      variant={activeAudience === 'privat' ? 'default' : 'outline'}
+    >
+      <Link href={getLink('privat')}>Privat</Link>
+    </Button>
   );
 
   const BondeButton = (
-    <Link href={getLink('bonde')} legacyBehavior passHref>
-      <Button
-        asChild
-        size="sm"
-        className={cn(
-          'rounded-full px-3 py-1 h-auto text-xs font-medium',
-          activeAudience === 'bonde'
-            ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-            : 'border-primary bg-transparent text-primary hover:bg-primary/10'
-        )}
-        variant={activeAudience === 'bonde' ? 'default' : 'outline'}
-      >
-        <a>Bonde</a>
-      </Button>
-    </Link>
+    <Button
+      asChild
+      size="sm"
+      className={cn(
+        'rounded-full px-3 py-1 h-auto text-xs font-medium',
+        activeAudience === 'bonde'
+          ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+          : 'border-primary bg-transparent text-primary hover:bg-primary/10'
+      )}
+      variant={activeAudience === 'bonde' ? 'default' : 'outline'}
+    >
+      <Link href={getLink('bonde')}>Bonde</Link>
+    </Button>
   );
 
   return (
