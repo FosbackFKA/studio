@@ -24,7 +24,7 @@ export function SubNav() {
             <nav className="container mx-auto flex h-14 max-w-[1542px] items-center justify-start px-4">
                 <div className="flex items-center space-x-1">
                     {subNavItems.map((item) => {
-                        const isActive = item.href.startsWith('/') && pathname.startsWith(item.href);
+                        const isActive = pathname.startsWith(item.href) && item.href !== 'https://mingaard.felleskjopet.no';
                         return (
                             <Button
                                 key={item.name}
