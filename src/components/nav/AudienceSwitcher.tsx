@@ -26,7 +26,7 @@ export function AudienceSwitcher() {
   const activeAudience = getActiveAudience();
 
   return (
-    <nav aria-label="Målgruppe" className="flex items-center space-x-2 rounded-full border bg-secondary p-1">
+    <nav aria-label="Målgruppe" className="flex items-center gap-4">
       {audienceConfig.map((audience) => {
         const isActive = audience.id === activeAudience;
         return (
@@ -35,13 +35,16 @@ export function AudienceSwitcher() {
                 href={audience.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={cn(
-                    'rounded-full px-3 py-1 text-sm font-medium transition-colors',
+                    'relative py-1 text-sm font-medium transition-colors',
                     isActive
-                    ? 'bg-background text-primary shadow-sm'
-                    : 'text-muted-foreground hover:bg-background/50 hover:text-foreground'
+                    ? 'text-primary'
+                    : 'text-muted-foreground/80 hover:text-foreground'
                 )}
             >
             {audience.name}
+            {isActive && (
+                <span className="absolute bottom-[-2px] left-0 w-full h-0.5 bg-primary rounded-full"></span>
+            )}
           </Link>
         );
       })}
