@@ -1,5 +1,7 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
+import '@/styles/theme.css'; // Import the new theme file
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {

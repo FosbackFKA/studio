@@ -1,21 +1,24 @@
 
 import type { Metadata } from 'next';
+import { ThemeProvider } from '@/lib/theme/provider';
+// Placeholder components, replace with actual Bedrift components when ready
 import { BondeHeader } from '@/components/layout/bonde-header';
 import { BondeFooter } from '@/components/layout/bonde-footer';
-import { ThemeProvider } from '@/lib/theme/provider';
+
 
 export const metadata: Metadata = {
-  title: 'FK Bonde',
-  description: 'Felleskjøpet for den norske bonden',
+  title: 'FK Bedrift',
+  description: 'Felleskjøpet for bedriftskunder',
 };
 
-export default function BondeLayout({
+export default function BedriftLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider value="bonde">
+    <ThemeProvider value="bedrift">
+      {/* Replace with BedriftHeader and BedriftFooter when they exist */}
       <BondeHeader />
       <main>{children}</main>
       <BondeFooter />

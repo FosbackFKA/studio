@@ -30,8 +30,8 @@
     --muted: 29 21% 85%;
     /* --fk-grey-2-c: 119 119 119 */
     --muted-foreground: 0 0% 47%;
-    /* New accent color: #e4ecc9 */
-    --accent: 77 33% 85%;
+    /* New accent color: #e4ecc9 - now defined in theme.css */
+    --accent: var(--color-accent);
     /* Darker foreground for the new light accent */
     --accent-foreground: 147 100% 14%;
     /* --fk-red-40-c: 215 12 40 */
@@ -44,7 +44,6 @@
     --input: 27 27% 92%;
     /* --fk-focus-c (endret til primærfargen for konsistens) */
     --ring: var(--primary);
-    --radius: 0.5rem;
     
     --primary-dark-background: 145 100% 16%;
 
@@ -94,7 +93,7 @@
     --muted: 0 0% 18%;
     --muted-foreground: 0 0% 50%;
     /* En lysere/mer mettet versjon av aksentfargen */
-    --accent: 79 82% 55%;
+    --accent: var(--color-accent);
     --accent-foreground: 147 100% 14%; /* Mørk tekst på lys aksent */
     /* Destructive kan være likt, eller en lysere rød */
     --destructive: 352 89% 55%;
@@ -119,28 +118,6 @@
     --sidebar-accent-foreground: 147 100% 14%;
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: var(--primary);
-  }
-
-  .theme-bonde {
-    --background: 220 13% 97%;
-    --foreground: 220 25% 25%;
-    --card: 220 13% 100%;
-    --card-foreground: 220 25% 25%;
-    --popover: 220 13% 100%;
-    --popover-foreground: 220 25% 25%;
-    --primary: 220 44% 46%; /* #536F8B */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 13% 92%;
-    --secondary-foreground: 220 25% 25%;
-    --muted: 220 13% 85%;
-    --muted-foreground: 220 10% 40%;
-    --accent: 150 25% 44%; /* #538B6F */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 80%;
-    --input: 220 13% 92%;
-    --ring: 220 44% 46%;
   }
 }
 

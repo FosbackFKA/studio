@@ -1,0 +1,60 @@
+
+/* src/styles/theme.css */
+
+/* :root is equivalent to [data-theme='consumer'] */
+:root {
+  --color-accent: 147 100% 21%; /* FK Green */
+  --color-surface: 30 25% 97%; /* Light Gray from --background */
+  --radius: 0.5rem;
+  --density: 1; /* Standard density */
+  --easing: ease-in-out;
+  --table-stripe: rgba(0, 0, 0, 0.02);
+  --kbd: hsl(var(--muted));
+  --link: hsl(var(--primary));
+}
+
+[data-theme='bonde'] {
+  --color-accent: 48 96% 62%; /* Olive-600 approx */
+  --color-surface: 40 22% 96%; /* Stone-50 approx */
+  --radius: 8px;
+  --density: 0.92;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --table-stripe: rgba(0, 0, 0, 0.04);
+  --kbd: hsl(40 22% 90%);
+  --link: hsl(var(--primary)); /* Keeping link color tied to primary for now */
+
+  /* Overriding base colors for the Bonde theme */
+  --background: 220 13% 97%;
+  --foreground: 220 25% 25%;
+  --card: 220 13% 100%;
+  --card-foreground: 220 25% 25%;
+  --popover: 220 13% 100%;
+  --popover-foreground: 220 25% 25%;
+  --primary: 220 44% 46%; /* #536F8B */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 13% 92%;
+  --secondary-foreground: 220 25% 25%;
+  --muted: 220 13% 85%;
+  --muted-foreground: 220 10% 40%;
+  --accent: var(--color-accent); /* Using the new accent token */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 80%;
+  --input: 220 13% 92%;
+  --ring: 220 44% 46%;
+}
+
+[data-theme='bedrift'] {
+  --color-accent: 220 13% 46%; /* Slate-600 approx */
+  --color-surface: 220 14% 96%; /* Slate-50 approx */
+  --radius: 10px;
+  --density: 0.95;
+  --easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --table-stripe: rgba(0, 0, 0, 0.03);
+  --kbd: hsl(220 14% 90%);
+  --link: hsl(var(--primary));
+
+  /* Base colors for Bedrift theme would go here */
+  /* For now, they can inherit from consumer or be defined explicitly */
+}
