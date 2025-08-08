@@ -14,14 +14,14 @@
 }
 
 [data-theme='bonde'] {
-  --color-accent: 48 96% 62%; /* Olive-600 approx */
+  --color-accent: 147 100% 21%; /* FK Green - Changed from Olive */
   --color-surface: 40 22% 96%; /* Stone-50 approx */
   --radius: 8px;
   --density: 0.92;
   --easing: cubic-bezier(0.4, 0, 0.2, 1);
   --table-stripe: rgba(0, 0, 0, 0.04);
   --kbd: hsl(40 22% 90%);
-  --link: hsl(var(--primary)); /* Keeping link color tied to primary for now */
+  --link: hsl(var(--primary));
 
   /* Overriding base colors for the Bonde theme */
   --background: 220 13% 97%;
@@ -30,7 +30,7 @@
   --card-foreground: 220 25% 25%;
   --popover: 220 13% 100%;
   --popover-foreground: 220 25% 25%;
-  --primary: 220 44% 46%; /* #536F8B */
+  --primary: 147 100% 21%; /* FK Green - Changed from blue */
   --primary-foreground: 0 0% 100%;
   --secondary: 220 13% 92%;
   --secondary-foreground: 220 25% 25%;
@@ -42,7 +42,7 @@
   --destructive-foreground: 0 0% 100%;
   --border: 220 13% 80%;
   --input: 220 13% 92%;
-  --ring: 220 44% 46%;
+  --ring: 147 100% 21%; /* FK Green - Changed from blue */
 }
 
 [data-theme='bedrift'] {
